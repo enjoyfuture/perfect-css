@@ -1,0 +1,8 @@
+# Ignore files
+.idea
+.DS_Store
+Thumbs.db
+node_modules
+_gh_pages
+dist
+docs/assets/css

@@ -1,0 +1,38 @@
+# Dependencies
+# 指定 Markdown 编译器 kramdown， 官方 http://kramdown.gettalong.org/
+markdown:         kramdown
+# 指定处理代码高亮解析器 rouge 官方 http://rouge.jneen.net/
+# 关于 jekyll 高亮插件参见这篇文章，写的不错 http://blog.csdn.net/qiujuer/article/details/5041927
+highlighter:      rouge
+
+kramdown:
+  auto_ids: true # 如果没有指定 headers 的 id 值，则自动生成
+
+# Permalinks
+permalink:        pretty
+
+# Server
+source:           docs
+destination:      _gh_pages
+host:             0.0.0.0
+port:             9090
+baseurl:          ""
+url:              http://perfect.com
+encoding:         UTF-8
+exclude:          [assets/scss/]
+
+# gems 插件
+# https://github.com/jekyll/jekyll-redirect-from
+# https://github.com/jekyll/jekyll-sitemap
+gems:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+
+# Custom vars 自定义变量
+current_version:  0.1.0
+repo:             https://github.com/enjoyfuture/perfect
+
+download:
+  source:         https://github.com/enjoyfuture/perfect/archive/master.zip
+  dist:           https://github.com/enjoyfuture/perfect/archive/master.zip #待上传
+

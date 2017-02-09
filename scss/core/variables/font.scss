@@ -1,0 +1,62 @@
+// 设置全局字体，使用系统自带的字体，参考 https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
+/**
+ * Safari for OS X and iOS (San Francisco)
+  -apple-system,
+  Chrome for OS X (San Francisco)
+  BlinkMacSystemFont,
+  Windows
+  "Segoe UI",
+  Android
+  "Roboto",
+  Linux
+  "Oxygen", // KDE
+  "Ubuntu",
+  "Cantarell", // GNOME
+  Firefox OS [R.I.P.]
+  "Fira Sans",
+  Older Android
+  "Droid Sans",
+  Basic web fallback
+  "Helvetica Neue", Arial, sans-serif !default;
+**/
+$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif !default;
+//本地化字体
+$font-family-cn: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei" !default;
+
+//字体大小，基于 rem ，根字体大小设置为浏览器默认字体大小 16px
+$font-size-root: 16px !default;
+
+$font-size-base: 1rem !default;
+$font-size-lg: 1.25rem !default;
+$font-size-sm: .875rem !default;
+$font-size-xs: .75rem !default;
+
+$line-height-base: 1.5 !default;
+
+// font weight
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应的
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 页对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参加上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
+$font-weight-lighter: lighter !default;
+$font-weight-2: 200 !default;
+$font-weight-3: 300 !default;
+$font-weight-normal: normal !default;
+$font-weight-5: 500 !default;
+$font-weight-bold: bold !default;
+$font-weight-bolder: bolder !default;

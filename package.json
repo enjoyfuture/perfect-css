@@ -1,0 +1,46 @@
+{
+  "name": "perfect",
+  "version": "0.1.0",
+  "author": {
+    "name": "Linder Wang",
+    "email": "linder0209@126.com",
+    "url": "https://github.com/hopefuture"
+  },
+  "description": "Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.",
+  "keywords": [
+    "css",
+    "perfect"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^6.7.2",
+    "babel-core": "^6.22.1",
+    "babel-preset-es2015": "^6.22.0",
+    "chalk": "^1.1.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-sass": "^3.1.0",
+    "require-dir": "^0.3.1"
+  },
+  "engines": {
+    "node": ">=6.9.1"
+  },
+  "scripts": {
+    "jekyll": "bundle install && bundle exec jekyll serve --drafts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enjoyfuture/perfect.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/enjoyfuture/perfect/issues"
+  },
+  "homepage": "https://github.com/enjoyfuture/perfect#readme"
+}

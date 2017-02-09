@@ -1,0 +1,312 @@
+/**!
+ * reset
+ * 在 normalize.css 的基础上重新定义样式
+**/
+
+/**
+ * 重新设置盒模型为 border-box，让盒子宽度包括 padding border
+ * 这样给元素添加 padding border 时，盒子宽度不会发生变化
+ * 设置为 border-box 后会更好的控制元素的宽度，以及百分比布局
+ * 有篇文章详细的说明了 border-box 的最佳实践
+ * https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+**/
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+* 为 ie 版本设置 device-width
+* 因为 IE 10+ 在某些原因下不会正确设置 <meta name="viewport">
+**/
+@at-root {
+  @-ms-viewport {
+    width: device-width;
+  }
+}
+
+/**
+* 重置 html body
+**/
+html {
+  //设置默认字体大小，其他元素采用 rem ，动态的根据 html 来计算其大小
+  font-size: $font-size-root;
+  // https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7165383/
+  // 在 ie11 和 edge 中，当鼠标离开滚动条时，会自动隐藏，这样用户体验可能不是很好，故显式开启，当有滚动条时，一直显示
+  -ms-overflow-style: scrollbar;
+  // 在 IOS 下点击高亮修改为完全透明
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  //font-weight: $font-weight-base;，该属性待定
+  line-height: $line-height-base;
+  color: $body-color;
+  background-color: $body-bg;
+}
+
+// 对于 tabindex 设为 -1 的元素，获取焦点时去掉外边虚框
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+//
+// 排版重置样式
+//
+
+// 去掉 `<h1>`-`<h6>` margin-top，并重置 margin-bottom
+h1, h2, h3, h4, h5, h6 {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+// 重置 p 元素
+p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+// 给 abbr 添加一个点边框
+abbr[title],
+abbr[data-original-title] {
+  cursor: help;
+}
+
+address {
+  margin-bottom: 1rem;
+  font-style: normal;
+  line-height: inherit;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  //font-weight: $dt-font-weight;
+}
+
+dd {
+  margin-bottom: .5rem;
+  margin-left: 0;
+}
+
+blockquote {
+  margin: 0 0 1rem;
+}
+
+//
+// Links
+//
+
+a {
+  color: $link-color;
+  text-decoration: $link-decoration;
+
+  @include hover-focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+// 对于没有 href 并且没有设置 tabindex 的 a 元素修改为样式跟普通元素一样
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+
+  @include hover-focus {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+//
+// Code
+//
+
+pre {
+  // Remove browser default top margin
+  margin-top: 0;
+  // Reset browser default of `1em` to use `rem`s
+  margin-bottom: 1rem;
+  overflow: auto;
+}
+
+//
+// Figures
+//
+
+figure {
+  margin: 0 0 1rem;
+}
+
+//
+// 重置图片样式
+//
+
+img {
+  // 重置为垂直居中
+  vertical-align: middle;
+}
+
+// 对于包含属性 role="button" 默认设置为 pointer
+// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+
+[role="button"] {
+  cursor: pointer;
+}
+
+/**
+* 在手机端点击事件有 300ms 的延迟
+* 在一些现代浏览器可以通过样式 touch-action: manipulation 来删除点击延迟
+* 下面这些元素不需要延迟
+* http://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
+* https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action
+* http://caniuse.com/#feat=css-touch-action
+* http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+**/
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+
+//
+// Table 重置样式
+//
+
+table {
+  border-collapse: collapse;
+  background-color: $table-bg;
+}
+
+caption {
+  padding-top: $table-cell-padding;
+  padding-bottom: $table-cell-padding;
+  //color: $text-muted;
+  text-align: left;
+  caption-side: bottom;
+}
+
+th {
+  // Centered by default, but left-align-ed to match the `td`s below.
+  text-align: left;
+}
+
+//
+// 重置 Forms 表单样式
+//
+
+label {
+  // Allow labels to use `margin` for spacing.
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+// 在Firefox 和 IE 中的实现，是没有 outline 的，个人建议去掉更好，待定 FIXME
+// Work around a Firefox/IE bug where the transparent `button` background
+// results in a loss of the default `button` focus styles.
+//
+// Credit: https://github.com/suitcss/base/
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+input,
+button,
+select,
+textarea {
+  line-height: inherit;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  // Apply a disabled cursor for radios and checkboxes.
+  //
+  // Note: Neither radios nor checkboxes can be readonly.
+  &:disabled {
+    cursor: $cursor-disabled;
+  }
+}
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  // Remove the default appearance of temporal inputs to avoid a Mobile Safari
+  // bug where setting a custom line-height prevents text from being vertically
+  // centered within the input.
+  // See https://bugs.webkit.org/show_bug.cgi?id=139848
+  // and https://github.com/twbs/bootstrap/issues/11266
+  -webkit-appearance: listbox;
+}
+
+textarea {
+  // 重置 textarea 不能改变其大小
+  resize: none;
+}
+
+fieldset {
+  // Browsers set a default `min-width: min-content;` on fieldsets,
+  // unlike e.g. `<div>`s, which have `min-width: 0;` by default.
+  // So we reset that to ensure fieldsets behave more like a standard block element.
+  // See https://github.com/twbs/bootstrap/issues/12359
+  // and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
+  min-width: 0;
+  // Reset the default outline behavior of fieldsets so they don't affect page layout.
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  // Reset the entire legend element to match the `fieldset`
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+}
+
+input[type="search"] {
+  // This overrides the extra rounded corners on search inputs in iOS so that our
+  // `.form-control` class can properly style them. Note that this cannot simply
+  // be added to `.form-control` as it's not specific enough. For details, see
+  // https://github.com/twbs/bootstrap/issues/11586.
+  -webkit-appearance: none;
+}
+
+// Always hide an element with the `hidden` HTML attribute (from PureCSS).
+[hidden] {
+  display: none !important;
+}

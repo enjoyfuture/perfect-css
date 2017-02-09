@@ -1,0 +1,20 @@
+// Colors
+
+// 灰色颜色参考 Bootstrap 默认颜色
+$gray-dark: #373a3c !default;
+$gray: #55595c !default;
+$gray-light: #818a91 !default;
+$gray-lighter: #eceeef !default;
+$gray-lightest: #f7f7f9 !default;
+
+//主题颜色
+$theme-primary: #00A8C6 !default;
+$theme-secondary: #40C0CB !default;
+$theme-info: #8FBE00 !default;
+$theme-warning: #FF8A00 !default;
+$theme-error: #FF003C !default;
+
+//body 默认背景和字体颜色
+$body-bg: #fff !default;
+$body-color: $gray-dark !default;
+

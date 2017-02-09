@@ -1,0 +1,17 @@
+---
+layout: process
+title: Perfect Process
+---
+
+<div>
+  <ol>
+    {% for process in site.data.process %}
+    <li>
+      <a class="bd-toc-link"
+         href="{{ site.baseurl }}/process/{{ process.file}}/">
+        {{ process.title }}
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+</div>
