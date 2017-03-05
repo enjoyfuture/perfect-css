@@ -1,0 +1,41 @@
+
+.doc-pageheader {
+  padding: 2rem 1rem;
+  margin-bottom: 1.5rem;
+  color: $doc-primary-light;
+  text-align: center;
+  background-color: $doc-primary;
+
+  .container {
+    position: relative;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: normal;
+    color: #fff;
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    text-align: left;
+  }
+
+  @include media-breakpoint-up(md) {
+    h1 {
+      font-size: 4rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+}

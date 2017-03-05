@@ -47,7 +47,7 @@ html {
 body {
   font-family: $font-family-base;
   font-size: $font-size-base;
-  //font-weight: $font-weight-base;，该属性待定
+  font-weight: $font-weight-base;
   line-height: $line-height-base;
   color: $body-color;
   background-color: $body-bg;
@@ -101,7 +101,7 @@ ul ol {
 }
 
 dt {
-  //font-weight: $dt-font-weight;
+  font-weight: $dt-font-weight;
 }
 
 dd {
@@ -211,7 +211,7 @@ table {
 caption {
   padding-top: $table-cell-padding;
   padding-bottom: $table-cell-padding;
-  //color: $text-muted;
+  color: $text-muted;
   text-align: left;
   caption-side: bottom;
 }

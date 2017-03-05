@@ -11,3 +11,9 @@
 // normalize 和 reset
 @import "core/normalize";
 @import "core/reset";
+
+//Component
+@import "core/components/typography";
+@import "core/components/navbar";
+@import "core/components/grid";
+@import "core/components/crumbs";

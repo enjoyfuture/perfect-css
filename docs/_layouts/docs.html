@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  {% include header.html %}
+</head>
+<body>
+
+{% include nav-home.html %}
+
+<div class="doc-pageheader">
+  <div class="container">
+    {% include page-headers.html %}
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3 push-md-9 bd-sidebar">
+      {% include nav-docs.html %}
+    </div>
+    <div class="col-12 col-md-9 pull-md-3 bd-content">
+      <h1 class="bd-title" id="content">{{ page.title }}</h1>
+      {{ content }}
+    </div>
+  </div>
+</div>
+
+{% include footer.html %}
+</body>
+</html>

@@ -1,5 +1,20 @@
+// 定义用到的变量值，这里说明一下，所有的变量都加上 !default，
+// 这样的好处是在需要的地方通过重新定义该变量来覆盖值
+
+// 关于 scss 定义变量可以设置 default 和 global，
+// 加上 default 表示可以重新定义该值，即覆盖，加上 global 表示是全局变量，该变量不论放在那里，都可以直接使用
+// 如果不加 global，必须先定义变量值，才能使用
+
+@import "variables/options";
 @import "variables/colors";
+@import "variables/common";
 @import "variables/cursor";
 @import "variables/font";
 @import "variables/links";
 @import "variables/tables";
+@import "variables/spacing";
+@import "variables/typography";
+@import "variables/assert";
+@import "variables/navbar";
+@import "variables/grid";
+@import "variables/crumbs";
