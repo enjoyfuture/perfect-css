@@ -1,4 +1,4 @@
-// Contents
+// 导航栏，主要提供了顶部导航栏的功能，包括以下内容
 //
 // Navbar
 // Navbar brand
@@ -9,30 +9,29 @@
 // Navbar position
 // Navbar themes
 
-
 // Navbar
-//
-// Provide a static navbar from which we expand to create full-width, fixed, and
-// other navbar variations.
 
+// 基础导航样式，在此基础上可以扩展成 full-width，fixed 和其他导航栏样式
 .navbar {
   position: relative;
   display: flex;
   flex-direction: column;
   padding: $navbar-padding-y $navbar-padding-x;
 
-  @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
-    > .container {
-      margin-right: 0;
-      margin-left: 0;
+  @if $enable-responsive {
+    //小屏幕的把左右外边距设为 0
+    @include media-responsive-down(nth(map-keys($grid-responsive), 1)) {
+      > .container {
+        margin-left: 0;
+        margin-right: 0;
+      }
     }
   }
 }
 
-
 // Navbar brand
 //
-// Used for brand, project, or site names.
+// 该导航用来设置 brand, project, or site 的名字，另一个就是当设备变小后，只显示该名称
 
 .navbar-brand {
   display: inline-block;
@@ -49,10 +48,9 @@
   }
 }
 
-
 // Navbar nav
 //
-// Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
+// 导航列表栏，与 nav-link 一起使用.
 
 .navbar-nav {
   display: flex;
@@ -62,118 +60,119 @@
   list-style: none;
 
   .nav-link {
-    padding-right: 0;
     padding-left: 0;
+    padding-right: 0;
   }
 }
 
-
 // Navbar text
-//
+// 一段描述内容的导航
 //
 
 .navbar-text {
   display: inline-block;
-  padding-top:    .425rem;
+  padding-top: .425rem;
   padding-bottom: .425rem;
 }
 
-
 // Responsive navbar
-//
-// Custom styles for responsive collapsing and toggling of navbar contents.
-// Powered by the collapse Bootstrap JavaScript plugin.
+// 响应式导航
+@if $enable-responsive {
+  // 响应式导航，当设备变小后，会显示该导航按钮，当点击或触摸时，会显示隐藏的导航列表，
+  // 需要借助 JavaScript
+  .navbar-toggler {
+    align-self: flex-start; // Prevent toggler from growing to full width when it's the only visible navbar child
+    padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+    font-size: $navbar-toggler-font-size;
+    line-height: 1;
+    background: transparent; // remove default button style
+    border: $border-width solid transparent; // remove default button style
+    @include border-radius($navbar-toggler-border-radius);
 
-// Button for toggling the navbar when in its collapsed state
-.navbar-toggler {
-  align-self: flex-start; // Prevent toggler from growing to full width when it's the only visible navbar child
-  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
-  font-size: $navbar-toggler-font-size;
-  line-height: 1;
-  background: transparent; // remove default button style
-  border: $border-width solid transparent; // remove default button style
-  @include border-radius($navbar-toggler-border-radius);
-
-  @include hover-focus {
-    text-decoration: none;
+    @include hover-focus {
+      text-decoration: none;
+    }
   }
-}
 
-// Keep as a separate element so folks can easily override it with another icon
-// or image file as needed.
-.navbar-toggler-icon {
-  display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: middle;
-  content: "";
-  background: no-repeat center center;
-  background-size: 100% 100%;
-}
+  // 用来定义一个图标来告知用户，当点击时可以展开下拉导航
+  .navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: no-repeat center center;
+    background-size: 100% 100%;
+  }
 
-// Use `position` on the toggler to prevent it from being auto placed as a flex
-// item and allow easy placement.
-.navbar-toggler-left {
-  position: absolute;
-  left: $navbar-padding-x;
-}
-.navbar-toggler-right {
-  position: absolute;
-  right: $navbar-padding-x;
-}
+  // Use `position` on the toggler to prevent it from being auto placed as a flex
+  // item and allow easy placement.
+  .navbar-toggler-left {
+    position: absolute;
+    left: $navbar-padding-x;
+  }
 
-// Generate series of `.navbar-toggleable-*` responsive classes for configuring
-// where your navbar collapses.
-.navbar-toggleable {
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  .navbar-toggler-right {
+    position: absolute;
+    right: $navbar-padding-x;
+  }
+  // Generate series of `.navbar-toggleable-*` responsive classes for configuring
+  // where your navbar collapses.
+  // 定义 `.navbar-toggleable-*` 来控制设备大小是多少时，来显示导航按钮
+  // 如果我们添加 .navbar-toggleable-md，表示只有当设备小于 992px 才显示该按钮，下面是对应表
+  /**
+    样式                   小于多少才显示导航按钮
+    .navbar-toggleable     576px
+    .navbar-toggleable-xs(无该样式)
+    .navbar-toggleable-sm  768px
+    .navbar-toggleable-md  992px
+    .navbar-toggleable-lg  1200px
+    .navbar-toggleable-xl  一直隐藏
+   */
+  .navbar-toggleable {
+    @each $responsive in map-keys($grid-responsive) {
+      $next: responsive-next($responsive, $grid-responsive);
+      $infix: responsive-infix($responsive, $grid-responsive);
 
-    &#{$infix} {
-      @include media-breakpoint-down($breakpoint) {
-        .navbar-nav {
-          .dropdown-menu {
-            position: static;
-            float: none;
+      &#{$infix} {
+        @include media-responsive-down($responsive) {
+          > .container {
+            padding-left: 0;
+            padding-right: 0;
           }
         }
 
-        > .container {
-          padding-right: 0;
-          padding-left: 0;
-        }
-      }
-
-      @include media-breakpoint-up($next) {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: center;
-
-        .navbar-nav {
+        @include media-responsive-up($next) {
           flex-direction: row;
-
-          .nav-link {
-            padding-right: .5rem;
-            padding-left: .5rem;
-          }
-        }
-
-        // For nesting containers, have to redeclare for alignment purposes
-        > .container {
-          display: flex;
           flex-wrap: nowrap;
           align-items: center;
-        }
 
-        // scss-lint:disable ImportantRule
-        .navbar-collapse {
-          display: flex !important;
-          width: 100%;
-        }
-        // scss-lint:enable ImportantRule
+          .navbar-nav {
+            flex-direction: row;
 
-        .navbar-toggler {
-          display: none;
+            .nav-link {
+              padding-left: .5rem;
+              padding-right: .5rem;
+            }
+          }
+
+          // For nesting containers, have to redeclare for alignment purposes
+          > .container {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+          }
+
+          // scss-lint:disable ImportantRule
+          .navbar-collapse {
+            display: flex !important;
+            width: 100%;
+          }
+          // scss-lint:enable ImportantRule
+
+          .navbar-toggler {
+            display: none;
+          }
         }
       }
     }

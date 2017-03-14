@@ -35,11 +35,12 @@ html {
 * 重置 html body
 **/
 html {
+  // https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7165383/
+  // 在 ie11 和 edge 中，当鼠标离开滚动条时，会自动隐藏，这样用户体验可能不是很好，
+  // 故显式开启，当有滚动条时，一直显示
+  -ms-overflow-style: scrollbar;
   //设置默认字体大小，其他元素采用 rem ，动态的根据 html 来计算其大小
   font-size: $font-size-root;
-  // https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7165383/
-  // 在 ie11 和 edge 中，当鼠标离开滚动条时，会自动隐藏，这样用户体验可能不是很好，故显式开启，当有滚动条时，一直显示
-  -ms-overflow-style: scrollbar;
   // 在 IOS 下点击高亮修改为完全透明
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -236,6 +237,7 @@ label {
 // results in a loss of the default `button` focus styles.
 //
 // Credit: https://github.com/suitcss/base/
+// sass-lint:disable no-duplicate-properties
 button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;

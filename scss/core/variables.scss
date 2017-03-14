@@ -5,16 +5,35 @@
 // 加上 default 表示可以重新定义该值，即覆盖，加上 global 表示是全局变量，该变量不论放在那里，都可以直接使用
 // 如果不加 global，必须先定义变量值，才能使用
 
+//通用变量
 @import "variables/options";
 @import "variables/colors";
-@import "variables/common";
-@import "variables/cursor";
-@import "variables/font";
-@import "variables/links";
-@import "variables/tables";
 @import "variables/spacing";
-@import "variables/typography";
+@import "variables/common";
+@import "variables/font";
+@import "variables/state";
+
+//组件样式变量
+@import "variables/alert";
 @import "variables/assert";
-@import "variables/navbar";
-@import "variables/grid";
+@import "variables/badge";
+@import "variables/buttons";
+@import "variables/cursor";
 @import "variables/crumbs";
+@import "variables/dropdown";
+@import "variables/forms";
+@import "variables/grid";
+@import "variables/image";
+@import "variables/jumbotron";
+@import "variables/links";
+@import "variables/list-group";
+@import "variables/nav";
+@import "variables/navbar";
+@import "variables/pagination";
+@import "variables/popover";
+@import "variables/progress";
+@import "variables/tables";
+@import "variables/tooltip";
+@import "variables/typography";
+@import "variables/zindex";
+

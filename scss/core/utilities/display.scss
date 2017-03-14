@@ -1,0 +1,25 @@
+//
+// 工具类样式，定义 display 样式
+//
+
+@mixin display-cls($infix: '') {
+  .d#{$infix}-none         { display: none !important; }
+  .d#{$infix}-inline       { display: inline !important; }
+  .d#{$infix}-inline-block { display: inline-block !important; }
+  .d#{$infix}-block        { display: block !important; }
+  .d#{$infix}-table        { display: table !important; }
+  .d#{$infix}-table-cell   { display: table-cell !important; }
+  .d#{$infix}-flex         { display: flex !important; }
+  .d#{$infix}-inline-flex  { display: inline-flex !important; }
+}
+
+@if $enable-responsive {
+  @each $responsive in map-keys($grid-responsive) {
+    @include media-responsive-up($responsive) {
+      $infix: responsive-infix($responsive, $grid-responsive);
+      @include display-cls(#{$infix});
+    }
+  }
+} @else {
+  @include display-cls();
+}

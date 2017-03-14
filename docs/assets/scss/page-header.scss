@@ -22,14 +22,14 @@
     font-weight: 300;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include media-responsive-up(sm) {
     padding-top: 3rem;
     padding-bottom: 3rem;
     margin-bottom: 3rem;
     text-align: left;
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-responsive-up(md) {
     h1 {
       font-size: 4rem;
     }

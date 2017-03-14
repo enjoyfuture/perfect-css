@@ -1,0 +1,17 @@
+//
+// 定义常用背景
+//
+
+@include bg-variant('faded', darken($body-bg, 3%));
+
+@include bg-variant('primary', $theme-primary);
+
+@include bg-variant('secondary', $theme-secondary);
+
+@include bg-variant('info', $theme-info);
+
+@include bg-variant('warning', $theme-warning);
+
+@include bg-variant('danger', $theme-danger);
+
+@include bg-variant('inverse', $theme-inverse);

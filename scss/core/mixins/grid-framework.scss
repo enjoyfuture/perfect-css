@@ -3,22 +3,22 @@
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `$grid-columns`.
 
-@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width-base, $breakpoints: $grid-breakpoints) {
-  // Common properties for all breakpoints
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width-base, $responsive: $grid-responsive) {
+  // Common properties for all responsives
   // 定义列样式函数
   %grid-column {
     position: relative;
     width: 100%;
     min-height: 1px; // Prevent columns from collapsing when empty
-    padding-right: ($gutter / 2);
     padding-left: ($gutter / 2);
+    padding-right: ($gutter / 2);
   }
 
   @if $enable-responsive {
-    @each $breakpoint in map-keys($breakpoints) {
-      $infix: breakpoint-infix($breakpoint, $breakpoints);
+    @each $response in map-keys($responsive) {
+      $infix: responsive-infix($response, $responsive);
 
-      // Allow columns to stretch full width below their breakpoints
+      // Allow columns to stretch full width below their responsives
       @for $i from 1 through $columns {
         .col#{$infix}-#{$i} {
           @extend %grid-column;
@@ -28,7 +28,7 @@
         @extend %grid-column;
       }
 
-      @include media-breakpoint-up($breakpoint, $breakpoints) {
+      @include media-responsive-up($responsive, $responsive) {
         // Provide basic `.col-{bp}` classes for equal-width flexbox columns
         .col#{$infix} {
           flex-basis: 0;
@@ -64,8 +64,7 @@
         }
       }
     }
-  }
-  @else {
+  } @else {
     @for $i from 1 through $columns {
       .col-#{$i} {
         @extend %grid-column;

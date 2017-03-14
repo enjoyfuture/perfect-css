@@ -6,3 +6,11 @@
 $enable-responsive: true !default;
 //是否使用圆角
 $enable-rounded: true !default;
+//是否开启阴影效果
+$enable-shadows: false !default;
+//是否开启 transition 动画
+$enable-transitions: true !default;
+//是否开启 gradients 渐变
+$enable-gradients: false !default;
+//？？
+$enable-hover-media-query: false !default;

@@ -124,8 +124,8 @@ mark,
 
 // Opposite alignment of blockquote
 .blockquote-reverse {
-  padding-right: $spacer;
   padding-left: 0;
+  padding-right: $spacer;
   text-align: right;
   border-right: $blockquote-border-width solid $blockquote-border-color;
   border-left: 0;

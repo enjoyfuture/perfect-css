@@ -9,7 +9,7 @@ requireDir('./gulp');
 const $ = gulpLoadPlugins();
 
 // exec jekyll serve
-gulp.task('jekyll', ['sass-compile'], () => {
+gulp.task('jekyll', ['sass-compile', 'scss-lint'], () => {
   const spawn = childProcess.spawn;
   const bundle = spawn('bundle', ['exec', 'jekyll', 'serve']);
 
@@ -26,7 +26,7 @@ gulp.task('jekyll', ['sass-compile'], () => {
   });
 
   //监听
-  gulp.watch(['scss/**/*.scss', 'docs/assets/scss/**/*.scss'], ['sass-compile']);
+  gulp.watch(['scss/**/*.scss', 'docs/assets/scss/**/*.scss'], ['sass-compile', 'scss-lint']);
 });
 
 //build

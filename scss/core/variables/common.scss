@@ -15,3 +15,11 @@ $caret-width: .3em !default;
 $transition-base: all .2s ease-in-out !default;
 $transition-fade: opacity .15s linear !default;
 $transition-collapse: height .35s ease !default;
+
+// Reassign color vars to semantic color scheme
+$brand-primary:             $blue !default;
+$brand-success:             $green !default;
+$brand-info:                $cyan !default;
+$brand-warning:             $orange !default;
+$brand-danger:              $red !default;
+$brand-inverse:             $gray-dark !default;

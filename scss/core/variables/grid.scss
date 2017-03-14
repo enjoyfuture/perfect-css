@@ -1,17 +1,17 @@
-// Grid breakpoints
+// Grid responsives
 //
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 
-$grid-breakpoints: (
+$grid-responsive: (
   xs: 0,
   sm: 576px,
   md: 768px,
   lg: 992px,
   xl: 1200px
 ) !default;
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-@include _assert-starts-at-zero($grid-breakpoints);
+@include _assert-ascending($grid-responsive, "$grid-responsive");
+@include _assert-starts-at-zero($grid-responsive);
 
 
 // Grid containers

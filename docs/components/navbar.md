@@ -1,11 +1,11 @@
 ---
 layout: docs
-title: Navbar
-description: Documentation and examples for Bootstrap's powerful, responsive navigation header.
+title: 导航栏
+description: Perfect 提供了一个可响应式布局的导航栏功能
 group: components
 ---
 
-The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. It's easily extensible and, thanks to our Collapse plugin, can easily integrate responsive behaviors.
+导航栏可以帮助浏览者快速的定位自己想要的东西，通过响应式的处理，很容易的在不同大小的设备上展现不一样的导航栏。
 
 ## Contents
 
@@ -64,9 +64,9 @@ Here's an example of all the sub-components included in a responsive light-theme
 </nav>
 {% endexample %}
 
-### Brand
+### Navbar Brand
 
-The `.navbar-brand` can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.
+`.navbar-brand` 可以用在大部分元素上，使用场景，待定
 
 {% example html %}
 <!-- As a link -->
@@ -80,13 +80,13 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 </nav>
 {% endexample %}
 
-Adding images to the `.navbar-brand` will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.
+还可以在其中添加一图标，这需要额外的样式
 
 {% example html %}
 <!-- Just an image -->
 <nav class="navbar navbar-light bg-faded">
   <a class="navbar-brand" href="#">
-    <img src="{{ site.baseurl }}/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+    <img src="{{ site.baseurl }}/assets/logo/perfect-solid.svg" width="30" height="30" alt="">
   </a>
 </nav>
 {% endexample %}
@@ -95,17 +95,17 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 <!-- Image and text -->
 <nav class="navbar navbar-light bg-faded">
   <a class="navbar-brand" href="#">
-    <img src="{{ site.baseurl }}/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    <img src="{{ site.baseurl }}/assets/logo/perfect-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
     Bootstrap
   </a>
 </nav>
 {% endexample %}
 
-### Nav
+### Nav 导航列表
 
-Navbar navigation links build on our `.nav` options with their own modifier class and require the use of [toggler classes](#toggler) for proper responsive styling. **Navigation in navbars will also grow to occupy as much horizontal space as possible** to keep your navbar contents securely aligned.
-
-Active states—with `.active`—to indicate the current page can be applied directly to `.nav-link`s or their immediate parent `.nav-item`s.
+导航列表由 .navbar-nav .nav-item 和 .navbar-link 组成，对于响应式的处理，用到了[toggler classes](#toggler)，
+当设备变小了，会隐藏导航栏列表，只显示其导航按钮，用户点击可以选择导航。
+`.active` 用来表示当前导航页，他可以用在 `.nav-link` 或者 他的父元素 `.nav-item` 上。
 
 {% example html %}
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -116,13 +116,13 @@ Active states—with `.active`—to indicate the current page can be applied dir
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Docs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#">About</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>

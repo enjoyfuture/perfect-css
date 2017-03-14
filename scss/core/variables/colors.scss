@@ -3,27 +3,26 @@
 // 定义几种常用的颜色
 $white: #fff !default;
 $black: #000 !default;
-$red: #FF003C !default;
-$orange: #FF8A00 !default;
+$red: #ff003c !default;
+$orange: #ff8a00 !default;
 $yellow: #ffd500 !default;
-$olive: #B5CC18 !default; // 橄榄色
+$olive: #b5cc18 !default; // 橄榄色
 $green: #5cb85c !default;
-$cyan: #39CCCC !default; //青色
-$blue: #2185D0 !default;
-$violet: #6435C9 !default; // 紫罗兰色
-$purple: #A333C8 !default; // 紫色
+$cyan: #39cccc !default; //青色
+$blue: #2185d0 !default;
+$violet: #6435c9 !default; // 紫罗兰色
+$purple: #a333c8 !default; // 紫色
 $pink: #ff5b77 !default; // 粉色
-$brown: #A5673F !default; // 棕色
+$brown: #a5673f !default; // 棕色
 
 /*---  Light Colors  ---*/
-$light-red: #FF695E;
-$light-orange: #FF851B;
-$light-yellow: #FFE21F;
-$light-green: #2ECC40;
-$light-blue: #54C8FF;
-$light-purple: #CDC6FF;
-$light-pink: #FF8EDF;
-$lightRed: #FF695E;
+$light-red: #ff695e;
+$light-orange: #ff851b;
+$light-yellow: #ffe21f;
+$light-green: #2ecc40;
+$light-blue: #54c8ff;
+$light-purple: #cdc6ff;
+$light-pink: #ff8edf;
 
 // 灰色颜色参考 Bootstrap 默认颜色
 $gray-dark: #373a3c !default;
@@ -33,11 +32,11 @@ $gray-lighter: #eceeef !default;
 $gray-lightest: #f7f7f9 !default;
 
 //主题颜色
-$theme-primary: #00A8C6 !default;
-$theme-secondary: #40C0CB !default;
-$theme-info: #8FBE00 !default;
-$theme-warning: #FF8A00 !default;
-$theme-danger: #FF003C !default;
+$theme-primary: #00a8c6 !default;
+$theme-secondary: $blue !default;
+$theme-info: #8fbe00 !default;
+$theme-warning: #ff8a00 !default;
+$theme-danger: #ff003c !default;
 $theme-inverse: $gray-dark !default;
 
 // body 默认背景和字体颜色
