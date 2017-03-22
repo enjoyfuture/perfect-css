@@ -3,14 +3,10 @@ layout: docs
 title: Forms
 description: Examples and usage guidelines for form controls, form layouts, and custom forms.
 group: components
+toc: true
 ---
 
 Bootstrap provides several form control styles, layout options, and custom components for creating a wide variety of forms.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Form controls
 
@@ -586,7 +582,7 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 {% endexample %}
 
 {% callout warning %}
-#### Caveat about link functionality of `<a>`
+#### Caveat about link functionality of 
 
 By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons]({{ site.baseurl }}/components/buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
 {% endcallout %}

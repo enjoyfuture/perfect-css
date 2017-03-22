@@ -1,11 +1,7 @@
-// Framework grid generation
-//
-// Used only by Bootstrap to generate the correct number of grid classes given
-// any value of `$grid-columns`.
+// 定义生成 gird framework mixin
 
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width-base, $responsive: $grid-responsive) {
-  // Common properties for all responsives
-  // 定义列样式函数
+  // 定义列公共样式，通过占位符选择器
   %grid-column {
     position: relative;
     width: 100%;
@@ -28,7 +24,7 @@
         @extend %grid-column;
       }
 
-      @include media-responsive-up($responsive, $responsive) {
+      @include media-responsive-up($response, $responsive) {
         // Provide basic `.col-{bp}` classes for equal-width flexbox columns
         .col#{$infix} {
           flex-basis: 0;

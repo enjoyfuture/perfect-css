@@ -1,24 +1,24 @@
 // 定义 docs 样式
 // 样式以前缀 .doc-开头来书写
-
 // 使用 Perfect 的变量个函数
 @import "../../../scss/core/variables";
 @import "../../../scss/core/mixins";
 
 // Local docs variables
-$doc-primary:         #00A8C6;
-$doc-primary-bright:  lighten(saturate($doc-primary, 5%), 15%);
-$doc-primary-light:   lighten(saturate(#40C0CB, 5%), 35%);
-$doc-graphite:       #2a2730;
+$doc-primary: #00A8C6;
+$doc-primary-bright: lighten(saturate($doc-primary, 5%), 15%);
+$doc-primary-light: lighten(saturate(#40C0CB, 5%), 35%);
+$doc-graphite: #2a2730;
 $doc-graphite-light: lighten($doc-graphite, 40%);
-$doc-yellow:         #FABE28;
-$doc-error:         #FF003C;
-$doc-warning:        #FF8A00;
-$doc-info:           #8FBE00;
+$doc-yellow: #FABE28;
+$doc-error: #FF003C;
+$doc-warning: #FF8A00;
+$doc-info: #8FBE00;
 
 // 代码高亮样式
 @import "highlight";
-
+// 容器样式
+@import "container";
 //头部样式
 @import "navbar";
 // 加载相关组件

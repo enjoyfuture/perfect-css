@@ -71,7 +71,7 @@ In need of a button, but not the hefty background colors they bring? Replace the
 {% endexample %}
 
 
-## Sizes
+# Sizes
 
 Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes.
 
@@ -101,7 +101,7 @@ Buttons will appear pressed (with a darker background, darker border, and inset 
 <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Link</a>
 {% endexample %}
 
-## Disabled state
+### Disabled state
 
 Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element.
 
@@ -131,7 +131,7 @@ The `.disabled` class uses `pointer-events: none` to try to disable the link fun
 
 Do more with buttons. Control button states or create groups of buttons for more components like toolbars.
 
-### Toggle states
+#### Toggle states
 
 Add `data-toggle="button"` to toggle a button's `active` state. If you're pre-toggling a button, you must manually add the `.active` class **and** `aria-pressed="true"` to the `<button>`.
 
@@ -141,6 +141,10 @@ Add `data-toggle="button"` to toggle a button's `active` state. If you're pre-to
 </button>
 {% endexample %}
 
+##### Checkbox and radio buttons
+
+ghhgh
+'
 ### Checkbox and radio buttons
 
 Bootstrap's `.button` styles can be applied to other elements, such as `<label>`s, to provide checkbox or radio style button toggling. Add `data-toggle="buttons"` to a `.btn-group` containing those modified buttons to enable toggling in their respective styles.

@@ -1,6 +1,5 @@
 /// Grid system
 // 容器
-// Generate semantic grid columns with these mixins.
 
 @mixin make-container($gutter: $grid-gutter-width-base) {
   position: relative;
@@ -10,9 +9,9 @@
   margin-right: auto;
 }
 
-// For each responsive, define the maximum width of the container in a media query
-// 根据 media 设置容器的最大宽度
+// 根据 media query 设置响应式容器的最大宽度
 @mixin make-container-max-widths($max-widths: $container-max-widths, $responsive: $grid-responsive) {
+  // 循环取出键值，然后调用media-responsive-up来设置
   @each $response, $container-max-width in $max-widths {
     @include media-responsive-up($response, $responsive) {
       width: $container-max-width;
@@ -29,32 +28,15 @@
   margin-right: ($gutter / -2);
 }
 
-@mixin make-col-ready($gutters: $grid-gutter-widths) {
-  position: relative;
-  // Prevent columns from becoming too narrow when at smaller grid tiers by
-  // always setting `width: 100%;`. This works because we use `flex` values
-  // later on to override this initial width.
-  width: 100%;
-  min-height: 1px; // Prevent collapsing
-
-  @each $responsive in map-keys($gutters) {
-    @include media-responsive-up($responsive) {
-      $gutter: map-get($gutters, $responsive);
-      padding-left: ($gutter / 2);
-      padding-right: ($gutter / 2);
-    }
-  }
-}
-
+// 设置列样式
 @mixin make-col($size, $columns: $grid-columns) {
   flex: 0 0 percentage($size / $columns);
-  // width: percentage($size / $columns);
-  // Add a `max-width` to ensure content within each column does not blow out
-  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
-  // do not appear to require this.
+  // 设置最大宽度，使每列的内容不会超过该宽度，该属性的设置，在 IE10+ 和 Firefox 中使用，
+  // Chrome 和 Safari 不需要这样设置
   max-width: percentage($size / $columns);
 }
 
+// offset 是指偏移，用 margin-left 设置其偏移量，而 pull 和 push 是指定位位置，用 left 和 right 来设置
 @mixin make-col-offset($size, $columns: $grid-columns) {
   margin-left: percentage($size / $columns);
 }
@@ -68,7 +50,6 @@
 }
 
 @mixin make-col-modifier($type, $size, $columns) {
-  // Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
   @if $type == push {
     @include make-col-push($size, $columns);
   } @else if $type == pull {

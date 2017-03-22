@@ -1,0 +1,129 @@
+// 定义菜单类样式
+
+// 对于使用 ul 或 ol 书写菜单时，设置其默认样式
+ul.menu, ol.menu {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.menu-title {
+  display: block;
+  padding: .3rem .5rem;
+  color: $gray-light;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    @include hover-focus {
+      color: $gray-dark;
+      text-decoration: none;
+    }
+  }
+
+  &.active {
+    color: $gray-dark;
+  }
+}
+
+.menu-header {
+  font-size: 1.1rem;
+  color: $gray-dark;
+}
+
+//下拉菜单，如果采用 li 来书写菜单，则直接定义 li 样式即可
+.menu-dropdown {
+  @include clearfix();
+  //下拉菜单，子菜单默认是隐藏的
+  &.menu .menu {
+    display: none;
+  }
+  > .menu-item, > li {
+    float: left;
+    &:hover > .menu {
+      display: block;
+    }
+  }
+}
+
+// 级联菜单
+.menu-cascaded {
+  position: relative;
+
+  > .menu {
+    position: absolute;
+    top: 0;
+    left: 90%;
+    width: 100%;
+  }
+
+  &:hover > .menu {
+    display: block;
+  }
+}
+
+//目录菜单，如果采用 li 来书写菜单，则直接定义 li 样式即可
+//最多支持6级目录结构
+.menu-catalogue {
+  counter-reset: catalogue1;
+  > .menu-item, > li {
+    > a::before {
+      margin-right: .5rem;
+      font-weight: bold;
+      content: counter(catalogue1, decimal) ". ";
+      counter-increment: catalogue1;
+    }
+  }
+
+  .menu-catalogue {
+    counter-reset: catalogue2;
+    > .menu-item, > li {
+      > a::before {
+        content: counter(catalogue1, decimal) "." counter(catalogue2, decimal) ". ";
+        counter-increment: catalogue2;
+      }
+    }
+  }
+
+  .menu-catalogue .menu-catalogue {
+    counter-reset: catalogue3;
+    > .menu-item, > li {
+      > a::before {
+        content: counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) ". ";
+        counter-increment: catalogue3;
+      }
+    }
+  }
+  .menu-catalogue .menu-catalogue .menu-catalogue {
+    counter-reset: catalogue4;
+    > .menu-item, > li {
+      > a::before {
+        content: counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) "." counter(catalogue4, decimal) ". ";
+        counter-increment: catalogue4;
+      }
+    }
+  }
+
+  .menu-catalogue .menu-catalogue .menu-catalogue .menu-catalogue {
+    counter-reset: catalogue5;
+    > .menu-item, > li {
+      > a::before {
+        content: counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) "." counter(catalogue4, decimal) "." counter(catalogue5, decimal) ". ";
+        counter-increment: catalogue5;
+      }
+    }
+  }
+
+  .menu-catalogue .menu-catalogue .menu-catalogue .menu-catalogue .menu-catalogue {
+    counter-reset: catalogue6;
+    > .menu-item, > li {
+      > a::before {
+        content: counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) "." counter(catalogue4, decimal) "." counter(catalogue5, decimal) "." counter(catalogue6, decimal) ". ";
+        counter-increment: catalogue6;
+      }
+    }
+  }
+}
+
+//折叠菜单
+
+//主题 theme

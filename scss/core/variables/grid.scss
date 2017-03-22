@@ -1,7 +1,6 @@
 // Grid responsives
 //
-// Define the minimum dimensions at which your layout will change,
-// adapting to different screen sizes, for use in media queries.
+// 对于媒体查询，根据不同的设备大小定义最小宽度来布局页面
 
 $grid-responsive: (
   xs: 0,
@@ -16,8 +15,7 @@ $grid-responsive: (
 
 // Grid containers
 //
-// Define the maximum width of `.container` for different screen sizes.
-
+// 定义样式 .container 最大宽度指对应不同的屏幕大小
 $container-max-widths: (
   sm: 540px,
   md: 720px,
@@ -29,8 +27,7 @@ $container-max-widths: (
 
 // Grid columns
 //
-// Set the number of columns and specify the width of the gutters.
-
+// 设置列布局个数和间距值
 $grid-columns: 12 !default;
 $grid-gutter-width-base: 2rem !default;
 $grid-gutter-widths: (
