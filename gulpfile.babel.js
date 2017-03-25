@@ -9,8 +9,8 @@ requireDir('./gulp');
 const $ = gulpLoadPlugins();
 
 // exec jekyll serve
-gulp.task('jekyll', ['sass-compile', 'scss-lint'], () => {
-  const spawn = childProcess.spawn;
+gulp.task('jekyll', ['scss-lint', 'eslint', 'sass-compile', 'build-js'], () => {
+  const {spawn} = childProcess;
   const bundle = spawn('bundle', ['exec', 'jekyll', 'serve']);
 
   bundle.stdout.on('data', (data) => {
@@ -25,16 +25,24 @@ gulp.task('jekyll', ['sass-compile', 'scss-lint'], () => {
     console.log(chalk.red(data));
   });
 
-  //监听
+  // 监听
   gulp.watch(['scss/**/*.scss', 'docs/assets/scss/**/*.scss'], ['sass-compile', 'scss-lint']);
+  gulp.watch(['javascript/src/**/*.js'], ['babel-dist', 'babel-compress', 'eslint']);
 });
 
-//build
+// build js
+gulp.task('build-js', ['clean'], () => {
+  gulp.start('babel-dist');
+  gulp.start('babel-compress');
+});
+
+// build
 gulp.task('build', () => {
   gulp.start('sass');
+  gulp.start('build-js');
 });
 
-//默认任务
+// 默认任务
 gulp.task('default', () => {
   gulp.start('jekyll');
 });

@@ -7,7 +7,7 @@ import flexbugs from 'postcss-flexbugs-fixes';
 const $ = gulpLoadPlugins();
 
 const sassOption = {
-  outputStyle: 'expanded', //不压缩，设为 compressed 表示压缩
+  outputStyle: 'expanded', // 不压缩，设为 compressed 表示压缩
   precision: 10,
   includePaths: ['.']
 };
@@ -46,18 +46,18 @@ gulp.task('sass-docs', () => {
     .pipe(gulp.dest('docs/assets/css'));
 });
 
-//把 css copy 到 docs 下
+// 把 css copy 到 docs 下
 gulp.task('copy-css-to-docs', () => {
   return gulp.src('dist/css/*.css')
     .pipe(gulp.dest('docs/assets/css'));
 });
 
-//编译 sass
+// 编译 sass
 gulp.task('sass-compile', ['sass', 'sass-docs'], () => {
   gulp.start('copy-css-to-docs');
 });
 
-//检测样式加前缀
+// 检测样式加前缀
 gulp.task('css-pre', () => {
   const info = autoprefixer({
     browsers

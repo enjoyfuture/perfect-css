@@ -12,10 +12,10 @@ const sassLint = require('gulp-sass-lint');
  * WebStorm plugin   https://github.com/idok/sass-lint-plugin
  * Convert your SCSS-Lint Config File to Sass-Lint  http://sasstools.github.io/make-sass-lint-config/
  */
-gulp.task('scss-lint', function () {
+gulp.task('scss-lint', () => {
   return gulp.src('scss/**/*.scss')
     .pipe($.sassLint({
-      configFile: '.scss-lint.yml'
+      configFile: '.sass-lint.yml'
     }))
     .pipe(sassLint.format())
     .pipe(sassLint.failOnError())

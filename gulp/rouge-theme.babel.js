@@ -9,7 +9,8 @@ const $ = gulpLoadPlugins();
 // colorful, github, molokai, monokai, monokai.sublime, thankful_eyes
 // https://havee.me/internet/2016-02/upgrade-github-pages-site-to-jekyll-3.html
 gulp.task('rouge-theme', () => {
-  const exec = childProcess.exec;
+  /* global childProcess:true */
+  const {exec} = childProcess;
   exec('rougify style github > docs/assets/scss/highlight.scss', (error, stdout, stderr) => {
     if (error) {
       console.error(error);

@@ -12,7 +12,10 @@
 @import "core/normalize";
 @import "core/reset";
 
-//Component
+// 字体
+@import "core/iconfont";
+
+// Component
 @import "core/components/alert";
 @import "core/components/badge";
 @import "core/components/button-group";

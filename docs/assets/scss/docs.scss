@@ -19,7 +19,9 @@ $doc-info: #8FBE00;
 @import "highlight";
 // 容器样式
 @import "container";
-//头部样式
+// 头部样式
 @import "navbar";
+// fixed to the top
+@import "navbar-top-fixed";
 // 加载相关组件
 @import "page-header";
