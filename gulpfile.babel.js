@@ -9,7 +9,7 @@ requireDir('./gulp');
 const $ = gulpLoadPlugins();
 
 // exec jekyll serve
-gulp.task('jekyll', ['scss-lint', 'eslint', 'sass-compile', 'build-js'], () => {
+gulp.task('jekyll', ['sass-compile', 'build-js'], () => {
   const {spawn} = childProcess;
   const bundle = spawn('bundle', ['exec', 'jekyll', 'serve']);
 
@@ -26,23 +26,28 @@ gulp.task('jekyll', ['scss-lint', 'eslint', 'sass-compile', 'build-js'], () => {
   });
 
   // 监听
-  gulp.watch(['scss/**/*.scss', 'docs/assets/scss/**/*.scss'], ['sass-compile', 'scss-lint']);
-  gulp.watch(['javascript/src/**/*.js'], ['babel-dist', 'babel-compress', 'eslint']);
+  gulp.watch(['scss/**/*.scss', 'docs/assets/scss/**/*.scss'], ['sass-compile']);
+  gulp.watch(['js/src/**/*.js'], ['build-js']);
+});
+
+// 开启 docs 服务
+gulp.task('serve', ['clean'], () => {
+  gulp.start('jekyll');
 });
 
 // build js
-gulp.task('build-js', ['clean'], () => {
+gulp.task('build-js', () => {
   gulp.start('babel-dist');
   gulp.start('babel-compress');
 });
 
 // build
-gulp.task('build', () => {
+gulp.task('build', ['clean'], () => {
   gulp.start('sass');
   gulp.start('build-js');
 });
 
 // 默认任务
 gulp.task('default', () => {
-  gulp.start('jekyll');
+  gulp.start('serve');
 });

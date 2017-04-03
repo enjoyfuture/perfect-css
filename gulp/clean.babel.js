@@ -4,6 +4,6 @@ const $ = gulpLoadPlugins();
 
 // 清理临时和打包目录
 gulp.task('clean', () => {
-  return gulp.src(['dist', 'docs/assets/css'])
+  return gulp.src(['dist', 'js/dist', 'docs/assets/css'])
     .pipe($.clean({force: true}));
 });

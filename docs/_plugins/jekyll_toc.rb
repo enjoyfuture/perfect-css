@@ -104,10 +104,9 @@ module Jekyll
               entries[:children] << toc
 
              elsif
-              currentLevel = 7 - name[1].to_i
-              if currentLevel == prevLevel  # 相等的话
+              if level == prevLevel  # 相等的话
                 toc = {
-                  level: currentLevel,
+                  level: level,
                   children: [],
                   depth: currentToc[:depth],
                   parent: currentToc[:parent],
@@ -117,9 +116,9 @@ module Jekyll
                 }
                 currentToc[:parent][:children] << toc
 
-              elsif currentLevel < prevLevel # 如果当前级别小于前一个
+              elsif level < prevLevel # 如果当前级别小于前一个
                 toc = {
-                  level: currentLevel,
+                  level: level,
                   children: [],
                   depth: currentToc[:depth] + 1,
                   parent: currentToc,
@@ -131,12 +130,12 @@ module Jekyll
 
               else # 如果当前级别大于前一个 查找祖先节点
                 ancestor = currentToc[:parent]
-                while ancestor[:level] <= currentLevel && ancestor[:root] == nil do
+                while ancestor[:level] <= level && ancestor[:root] == nil do
                    ancestor = ancestor[:parent]
                 end
 
                 toc = {
-                  level: currentLevel,
+                  level: level,
                   children: [],
                   depth: ancestor[:depth] + 1,
                   parent: ancestor,

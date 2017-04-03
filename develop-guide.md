@@ -7,6 +7,7 @@
 * [sass 参考](http://www.sass.hk/docs/)
 * [sass-lint](https://github.com/sasstools/sass-lint)
 * [在线 sass 转换为 css](http://www.sassmeister.com/)
+* [热部署，热加载](https://browsersync.io)
 
 ## 开发说明
 

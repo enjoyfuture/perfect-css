@@ -31,7 +31,7 @@ const postcssPlugins = [
  * [浏览器列表](https://github.com/ai/browserslist)
  *
  */
-gulp.task('sass', () => {
+gulp.task('sass', ['scss-lint'], () => {
   return gulp.src('scss/*.scss')
     .pipe($.sass.sync(sassOption).on('error', $.sass.logError))
     .pipe($.postcss(postcssPlugins))
@@ -39,7 +39,7 @@ gulp.task('sass', () => {
 });
 
 // 文档 sass 样式
-gulp.task('sass-docs', () => {
+gulp.task('sass-docs', ['scss-lint'], () => {
   return gulp.src('docs/assets/scss/docs.scss')
     .pipe($.sass.sync(sassOption).on('error', $.sass.logError))
     .pipe($.postcss(postcssPlugins))

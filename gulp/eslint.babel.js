@@ -4,7 +4,7 @@ const $ = gulpLoadPlugins();
 
 // eslint 检测 js 代码
 gulp.task('eslint', () => {
-  return gulp.src(['javascript/src/**/*.js'])
+  return gulp.src(['js/src/**/*.js', 'gulp/*.js', 'gulpfile.babel.js'])
     .pipe($.eslint({
       configFile: '.eslintrc'
     }))
