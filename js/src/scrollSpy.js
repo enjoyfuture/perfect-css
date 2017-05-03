@@ -9,7 +9,7 @@ const ScrollSpy = ((perfect) => {
 
   class ScrollSpy {
     static defaultConfig = {
-      offset: 10,
+      offset: 0,
       method: 'auto',
       menu: '', // 菜单导航
       menuCls: null, // 自定义菜单样式
@@ -19,9 +19,10 @@ const ScrollSpy = ((perfect) => {
       prefix: 'menu-', // 导航目录前缀
       anchor: true, // 是否用锚点来控制，默认用锚点处理
       animation: true, // 是否开启动画
+      extend: false, // 默认菜单没有展开
     };
 
-    constructor(element, config) {
+    constructor(element, config = {}) {
       this.element = element;
       this.scrollElement = element.tagName === 'BODY' ? win : element;
       this.config = this.getConfig(config);
@@ -74,6 +75,7 @@ const ScrollSpy = ((perfect) => {
       }
 
       // 加载插件
+      const {pluginConfig} = this.config;
       let {plugins} = this.config;
       if (plugins) {
         if (!Array.isArray(plugins)) {
@@ -83,7 +85,7 @@ const ScrollSpy = ((perfect) => {
         const {menu, container} = this.config;
         plugins.forEach((plugin) => {
           // 把当前实例传给插件
-          const instance = new plugin(this);
+          const instance = new plugin(this, pluginConfig);
           instance.mount();
           this.plugins.push(instance);
         });
@@ -216,10 +218,14 @@ const ScrollSpy = ((perfect) => {
      * @return {string}
      */
     generateMenusHtml(nodes, prefix) {
-      const {menuClsPrefix, menuCls} = this.config;
+      const {menuClsPrefix, menuCls, extend} = this.config;
       let html = '';
       if (nodes && nodes.length > 0) {
-        html = `<ul class="${menuClsPrefix} ${menuClsPrefix}-catalogue${menuCls ? ` ${menuCls}` : ''}">`;
+        html = `<ul class="${menuClsPrefix} ${menuClsPrefix}-catalogue${menuCls ? ` ${menuCls}` : ''}"`;
+        if (extend) {
+          html += ' style="display: block;"';
+        }
+        html += '>';
         for (let i = 0, len = nodes.length; i < len; i++) {
           const node = nodes[i];
           // 为对应的内容加锚点
@@ -299,8 +305,14 @@ const ScrollSpy = ((perfect) => {
     }
 
     // 鼠标滚动事件
-    scrollEvent = () => {
+    scrollEvent = (event) => {
       this.process();
+
+      this.plugins.forEach((plugin) => {
+        if (typeof plugin.handleScroll === 'function') {
+          plugin.handleScroll()(event);
+        }
+      });
     };
 
     /**

@@ -65,16 +65,17 @@
     "no-case-declarations": 2, // 在 case 语句中使用声明式语句时，需要用 {} 括起来
     "no-div-regex": 0, // 消除除法运算符迷惑用户使用 例如 return /=foo/; 应该写成 return /\=foo/;
     "no-else-return": 2, // 如果在if语句中有return，则在else中可以不用return，可以放到最外面返回
-    "no-empty-function": 2, //不要定义空函数
+    "no-empty-function": 0, //不要定义空函数
     "no-empty-pattern": 2, // 不允许空的解构赋值，例如 var {a: {}} = foo;
     "no-eq-null": 0, // 对于null比较也应该使用 === 来比较
     "no-eval": 2, // 不允许使用 eval()
     "no-extend-native": 2, // 不允许修改扩展内置对象的属性，比如 Object.prototype.a = "a";
-    "no-extra-bind": 2, // 可以规范代码，防止滥用 bind 方法
+    "no-extra-bind": 0, // 可以规范代码，防止滥用 bind 方法
+    "no-extra-label": 2, // 当使用 label 表达式时，检测不必要的 label 表达式
     "no-fallthrough": 2, // 是否检测switch语句中 case 后没有break，return或throw
     "no-floating-decimal": 2, // 对于浮点数，不能省略.前或.后的数字2
     "no-global-assign": [2, {"exceptions": ["Object"]}], // 不要给全局变量赋值，需要先定义在赋值
-    "no-implicit-coercion": 2, // 不要使用隐身转换，应该使用直接转换，如果针对 boolean number string ，比如 var n = +foo; 应该为 var n = Number(foo); 代替
+    "no-implicit-coercion": [2, {"string": false}], // 不要使用隐身转换，应该使用直接转换，如果针对 boolean number string ，比如 var n = +foo; 应该为 var n = Number(foo); 代替
     "no-implicit-globals": 0,
     "no-implied-eval": 2, // 不要使用隐式调用eval的语句，比如 setInterval("alert('Hi!');", 122);
     "no-invalid-this": 0, // 用来检测 this 关键字使用的地方是否正确，我们可以设置关闭该规则
@@ -82,12 +83,12 @@
     "no-labels": 2, // 不建议使用 label 表达式
     "no-lone-blocks": 2, // 禁止内部不必要的嵌套块
     "no-loop-func": 2, // 不要在循环中定义函数，并且该函数中调用了循环变量
-    "no-magic-numbers": [2, { // 一些系数最好定义为常量
+    "no-magic-numbers": [0, { // 一些系数最好定义为常量
       "ignore": [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16],
       "ignoreArrayIndexes": true
       }
     ],
-    "no-multi-spaces": [2, { // 表达式中是否允许有多余的空格
+    "no-multi-spaces": [0, { // 表达式中是否允许有多余的空格
       "exceptions": {
         "AssignmentExpression": true,
         "ArrowFunctionExpression": true,
@@ -97,17 +98,22 @@
       }
     ],
     "no-multi-str": 2, // 是否允许多行字符串
-    "no-new": 2, // 不允许实例化类，而没有赋给任何变量
+    "no-new": 0, // 不允许实例化类，而没有赋给任何变量
     "no-new-func": 2, // 不建议使用 new Function 来声明函数
     "no-new-wrappers": 2, // 对于String, Number, 和 Boolean，不建议使用 new，即 new String 等
     "no-octal": 2, // 不允许使用八进制数字
     "no-octal-escape": 2, // 不允许使用八进制转义字符串
-    "no-param-reassign": 2, // 如果开启，则不允许重新修改函数参数值，或者参数属性值
+    "no-param-reassign": 0, // 如果开启，则不允许重新修改函数参数值，或者参数属性值
     "no-proto": 2, // 不建议使用该属性 __proto__
     "no-redeclare": 2, // 不允许重复声明同一个变量
+    "no-restricted-properties": [2, { // 定义不允许的对象属性
+      "object": "disallowedObjectName",
+      "property": "disallowedPropertyName",
+      "message": "Please use allowedObjectName.allowedPropertyName."
+    }],
     "no-return-assign": 2, // 不允许在return语句中有赋值语句
     "no-return-await": 2, // disallow unnecessary return await
-    "no-script-url": 2, // 不要使用javascript:url，比如 location.href = "js:void(2)";是错误的
+    "no-script-url": 2, // 不要使用javascript:url，比如 location.href = "scripts:void(2)";是错误的
     "no-self-assign": [2, {"props": false}],// 不建议自己给自己赋值，比如 foo = foo
     "no-self-compare": 2, // 不允许变量自己跟自己做比较
     "no-sequences": 2, // 需要正确的使用逗号操作符
@@ -125,8 +131,8 @@
     "prefer-promise-reject-errors": 2, // 对于Promise.reject，参数必须是一个 Error 对象，比如 Promise.reject(5); 是不允许的，应该写成 Promise.reject(new Error("something bad happened"));
     "radix": 2, // 在调用 parseInt 应该指定基数
     "require-await": 2, // 对于 async 表达式，必须有对应的 await 表达式
-    "vars-on-top": 2, // 所有变量声明是否都放在函数最上面或过程快最上面
-    "wrap-iife": 2, // 立即执行函数是里面包裹还是外面包裹，默认是外面包裹，即 outside
+    "vars-on-top": 0, // 所有变量声明是否都放在函数最上面或过程快最上面
+    "wrap-iife": [2, "any"], // 立即执行函数是里面包裹还是外面包裹，默认是外面包裹，即 outside
     "yoda": 2, // 不允许使用 yoda 条件表达式，常量值在前的比较表达式，比如： if(1 === a){ }
 
     // Variables
@@ -147,13 +153,13 @@
     "no-unused-vars": [0, {"vars": "all", "args": "none"}],
     "no-use-before-define": [0, "nofunc"], // 变量和函数的声明需要在使用之前，可以设置 [2, "nofunc"]，只检测变量，而不检测函数
 
-    //Node.js and CommonJS
+    //Node.scripts and CommonJS
     "callback-return": 0, // 调用callback时需要加上return语句
-    "global-require": 2, // require加载依赖应该放在代码最上边显示，比如 var fs = require("fs");
+    "global-require": 0, // require加载依赖应该放在代码最上边显示，比如 var fs = require("fs");
     "handle-callback-err": 2, // 如果回调函数中有错误变量（比如err），我们需要判断处理错误的情况
     "no-mixed-requires": 2, // require与其他变量声明应该不要放在一起
     "no-new-require": 2, // 不用对表达式 require 直接使用 new,例如 var appHeader = new require('app-header');
-    "no-path-concat": 2, // 不要使用 __dirname 或 __filename 与字符串连接生成路径，应该使用 path.join(__dirname, "foo.js"); 或 path.resolve(__dirname, "foo.js");
+    "no-path-concat": 2, // 不要使用 __dirname 或 __filename 与字符串连接生成路径，应该使用 path.join(__dirname, "foo.scripts"); 或 path.resolve(__dirname, "foo.scripts");
     "no-process-env": 2, // 在node环境中，不建议使用 process.env ，而使用 config 来配置
     "no-process-exit": 2, // 不要直接调用 process.exit();
     "no-restricted-modules": 2, // 限制使用某些模块，比如 no-restricted-modules: [2, "fs"] ，不能使用fs模块
@@ -174,14 +180,14 @@
     "func-call-spacing": 2, // 函数名与括号之间是否需要一个空格
     "func-name-matching": 2, // 定义函数变量时，匿名名称是否应该跟变量名称一致，默认一致
     "func-names": 0, // 函数表达式需要一个名称，包括匿名函数，该规则可以关闭
-    "func-style": [2, "declaration", {  // 是声明式的函数，还是定义变量式的函数，我们采用声明式，但箭头函数允许变量式
+    "func-style": [0, "declaration", {  // 是声明式的函数，还是定义变量式的函数，我们采用声明式，但箭头函数允许变量式
       "allowArrowFunctions": true
     }],
     "id-blacklist": 2, // 指定一些黑名单变量，这些变量不能出现在代码中，比如 "id-blacklist": [2, "data", "err", "e", "cb", "callback"],
     "id-length": 0, // 定义变量名或属性名的最小最大长度
     "id-match": 2, // 规范变量名或属性名的命名规范
     "indent": [2, 2], // 缩进，我们采用2个空格来缩进
-    "jsx-quotes": 2, // jsx属性值应该用双引号
+    "jsx-quotes": 0, // jsx属性值应该用双引号
     "key-spacing": 2, // 键值之间的空格
     "keyword-spacing": 2, // 关键字 if, else, for, while, do, switch, try, catch, finally, and with 要求有空格
     "linebreak-style": 0, // 验证 unix (LF) or windows (CRLF)
@@ -189,14 +195,14 @@
     "lines-around-directive": 2, // 不同的语句中间是否加一空行
     "max-depth": [2, 12], // 限制语句块最大嵌套深度
     "max-len": [ // 限定每行最大长度
-      2, 120, {
+      2, 200, {
 
       }
     ],
     "max-lines": [2, {"max": 800, "skipBlankLines": true, "skipComments": true}], // 指定每个文件最大行
-    "max-nested-callbacks": [2, 3], // 限定回调函数最大深度
-    "max-params": [2, 4], // 限定函数参数最大个数
-    "max-statements": [2, 32, {"ignoreTopLevelFunctions": true}], // 在一个函数中限定声明表达式最多个数,内部函数会或略
+    "max-nested-callbacks": [1, 3], // 限定回调函数最大深度
+    "max-params": [2, 8], // 限定函数参数最大个数
+    "max-statements": [2, 80, {"ignoreTopLevelFunctions": true}], // 在一个函数中限定声明表达式最多个数,内部函数会或略
     "max-statements-per-line": [2, {"max": 2}], // 每行最大表达式
     "multiline-ternary": 0, // 三元表达式，是否需要多行书写
     "new-cap": 0, // 构造函数首字母应该大写
@@ -204,13 +210,14 @@
     "newline-after-var": 0, // 用var声明变量时，是否允许换行
     "newline-before-return": 0,
     "newline-per-chained-call": 0,
-    "no-array-constructor": 2, // 不允许使用 new Array(2, 1, 2) 来创建数组，而改用 []
-    "no-bitwise": 2, // 禁止使用位运算符,包括以下情况 var x = y | z; var x = y & z; var x = y ^ z; var x = ~ z; var x = y << z; var x = y >> z; var x = y >>> z; x |= y; x &= y; x ^= y; x <<= y; x >>= y; x >>>= y;
+    "no-array-constructor": 0, // 不允许使用 new Array(2, 1, 2) 来创建数组，而改用 []
+    "no-bitwise": 0, // 禁止使用位运算符,包括以下情况 var x = y | z; var x = y & z; var x = y ^ z; var x = ~ z; var x = y << z; var x = y >> z; var x = y >>> z; x |= y; x &= y; x ^= y; x <<= y; x >>= y; x >>>= y;
     "no-continue": 0, // 是否允许使用 continue语句
     "no-inline-comments": 0,// 注释是否允许在代码的后面，开启则不允许
     "no-lonely-if": 0, // 应该使用 else if ，而不要使用 else { if(){} }
+    "no-mixed-operators": 2, // 不要把多个操作符写在一起使用，最好用括号括起来
     "no-mixed-spaces-and-tabs": 2, // 不允许空格和制表位混合使用
-    "no-multi-assign": 2, // 不要连续赋值，比如 var a = b = c = 5;
+    "no-multi-assign": 0, // 不要连续赋值，比如 var a = b = c = 5;
     "no-multiple-empty-lines": 2, // 代码中不要出现太多空行，默认最多为2行
     "no-negated-condition": 0, // 是否允许使用否定表达式 if (!a)
     "no-nested-ternary": 2, // 是否允许使用嵌套的三元表达式
@@ -223,6 +230,7 @@
     "no-underscore-dangle": 0, // 是否允许变量名前后有 _
     "no-unneeded-ternary": 2, // 请不要使用不必要的三元表达式，比如 var isYes = answer === 1 ? true : false;
     "no-whitespace-before-property": 0,
+    "nonblock-statement-body-position": 2, // 如果在条件或循环表达式中，只有一行的表达式，并且没有使用 {} ，最好跟条件写在一行
     "object-curly-newline": 0,
     "object-curly-spacing": 0, // 验证花括号内的空格
     "object-property-newline": 0, // 对象属性在新行显示
@@ -236,14 +244,14 @@
     "require-jsdoc": 0, // 是否需要 jsdoc 来注释代码
     "semi": [0, "always"], // 总是要求加上分号
     "semi-spacing": 2, // 分号与代码之间的间隔
-    "sort-keys": 0,
+    "sort-keys": 0, // 属性是否需要排序
     "sort-vars": 0, // 定义多个变量时，是否按字符顺序来排序，不建议开启该规则
     "space-before-blocks": 2, // 在每一块后面需要添加一空格
     "space-before-function-paren": 0, // 在函数名和() 之间有一空格
-    "space-in-parens": 2, // 括号和参数之间应该没有空格
+    "space-in-parens": 0, // 括号和参数之间应该没有空格
     "space-infix-ops": 2, // 表达式中间应该添加空白
     "space-unary-ops": 2, // 在一元操作符前或后不应该有空白
-    "spaced-comment": [2, "always", {
+    "spaced-comment": [0, "always", {
       "line": {
         "markers": ["/"],
         "exceptions": ["-", "+"]
@@ -344,5 +352,5 @@
       "onlyFilesWithFlowAnnotation": false
     }
   },
-  "root": true //设置他后，子的js文件找到该 eslint配置文件后，则不再向上查找其他eslint配置文件
+  "root": true // 设置他后，子的js文件找到该 eslint配置文件后，则不再向上查找其他eslint配置文件
 }

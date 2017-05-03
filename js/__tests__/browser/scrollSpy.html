@@ -6,13 +6,9 @@
   <link rel="stylesheet" href="../../../dist/css/perfect.css">
   <title>Scrollspy Test</title>
   <style>
-    body { padding-top: 50px; }
 
-    .menu-guide {
-      padding-left: 5px !important;
-    }
-
-    .menu-guide .menu-title {
+    .doc-menu .menu-title {
+      position: relative;
       padding-left: 10px;
       border-left: 2px solid transparent;
       overflow: hidden;
@@ -21,30 +17,39 @@
       width: 230px;
     }
 
-    .menu-guide .menu-title:hover {
-      padding-left: 11px;
+    .doc-menu .menu-title:hover::after {
+      content: '';
+      position: absolute;
+      top: 25%;
+      bottom: 20%;
+      left: 0;
       border-left: 1px solid #193c5a;
     }
 
-    .menu-guide .menu-title.active {
-      padding-left: 10px;
+    .doc-menu .menu-title.active::after {
+      content: '';
+      position: absolute;
+      top: 25%;
+      bottom: 20%;
+      left: 0;
       border-left: 2px solid #193c5a;
     }
 
-    .menu-guide .menu-guide {
+    .doc-menu .doc-menu {
       display: none;
     }
 
-    .active + .menu-guide {
+    .active + .doc-menu {
       display: block;
     }
 
-    #catalogue {
+    .doc-catalogue {
       position: fixed;
       top: 30px;
       right: 10px;
       overflow: hidden;
       min-width: 250px;
+      background-color: #fff9ff;
     }
   </style>
 </head>
@@ -224,7 +229,7 @@
       <p>内容内容内容内容内容内容内容内容内容内容</p>
     </div>
   </div>
-  <div id="catalogue">
+  <div class="doc-catalogue">
 
   </div>
 </div>
@@ -238,12 +243,13 @@
   var ScrollSpy = perfect.default.ScrollSpy;
   var CatalogueSpy = perfect.default.CatalogueSpy;
   new ScrollSpy(document.body, {
-    menu: '#catalogue',
+    menu: '.doc-catalogue',
     container: '#scrollSpyDemo',
     initMenus: true,
     anchor: false,
+    extend: true,
     plugins: CatalogueSpy,
-    menuCls: 'menu-guide'
+    menuCls: 'doc-menu',
   });
 </script>
 </body>
