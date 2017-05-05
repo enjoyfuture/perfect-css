@@ -15,7 +15,10 @@ module Jekyll
 
       # 生成目录
       def build_toc
-        toc = generateToc(@entries[:children], TOC_PREFIX)
+        toc = %Q{<div class="doc-catalogue-panel">\n}
+        toc << %Q{<div class="doc-catalogue-header"><a class="icon icon-catalogue doc-icon-catalogue" title="目录"></a></div>\n}
+        toc << generateToc(@entries[:children], TOC_PREFIX)
+        toc << "</div>"
       end
 
       # 加锚点后的内容
@@ -31,14 +34,14 @@ module Jekyll
 
       # 循环遍历生成 html
       def generateToc(nodes, prefix)
-        html = %Q{<ul class="menu menu-catalogue">\n}
+        html = %Q{<ul class="menu menu-catalogue doc-catalogue">\n}
         i = 0
         nodes.each do |node|
            # 为栏目对应的内容加锚点
-           node[:content_node].add_previous_sibling(%Q{<a id="#{prefix}#{i + 1}" class="menu-anchor" href="##{prefix}#{i + 1}" aria-hidden="true"></a>})
+           node[:content_node].add_previous_sibling(%Q{<a id="#{prefix}#{i + 1}" class="menu-anchor" data-target="#{prefix}#{i + 1}" aria-hidden="true"></a>})
 
            html << %Q{  <li>\n}
-           html << %Q{    <a class="menu-title menu-header" href="##{prefix}#{i + 1}">#{node[:text]}</a>\n}
+           html << %Q{    <a class="menu-title" href="#" data-menu="#{prefix}#{i + 1}">#{node[:text]}</a>\n}
            if node[:children] && node[:children].length > 0
              subHtml = generateToc(node[:children], "#{prefix}#{i + 1}-");
              html << subHtml

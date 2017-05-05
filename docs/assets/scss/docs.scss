@@ -1,6 +1,6 @@
 // 定义 docs 样式
 // 样式以前缀 .doc-开头来书写
-// 使用 Perfect 的变量个函数
+// 使用 Perfect 的变量和函数
 @import "../../../scss/core/variables";
 @import "../../../scss/core/mixins";
 
@@ -17,11 +17,17 @@ $doc-info: #8FBE00;
 
 // 代码高亮样式
 @import "highlight";
+// 字体样式
+@import "iconfont";
 // 容器样式
 @import "container";
 // 头部样式
 @import "navbar";
 // fixed to the top
 @import "navbar-top-fixed";
-// 加载相关组件
+// 页面头部
 @import "page-header";
+// 菜单样式
+@import "menu";
+// 目录样式
+@import "catalogue";

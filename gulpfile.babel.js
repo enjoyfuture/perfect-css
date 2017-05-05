@@ -36,9 +36,8 @@ gulp.task('serve', ['clean'], () => {
 });
 
 // build js
-gulp.task('build-js', () => {
-  gulp.start('babel-dist');
-  gulp.start('babel-compress');
+gulp.task('build-js', ['babel-dist', 'babel-compress'], () => {
+  gulp.start('copy-js-to-docs');
 });
 
 // build

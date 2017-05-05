@@ -46,12 +46,6 @@ gulp.task('sass-docs', ['scss-lint'], () => {
     .pipe(gulp.dest('docs/assets/css'));
 });
 
-// 把 css copy 到 docs 下
-gulp.task('copy-css-to-docs', () => {
-  return gulp.src('dist/css/*.css')
-    .pipe(gulp.dest('docs/assets/css'));
-});
-
 // 编译 sass
 gulp.task('sass-compile', ['sass', 'sass-docs'], () => {
   gulp.start('copy-css-to-docs');

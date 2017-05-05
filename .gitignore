@@ -6,3 +6,4 @@ node_modules
 _gh_pages
 dist
 docs/assets/css
+docs/assets/js

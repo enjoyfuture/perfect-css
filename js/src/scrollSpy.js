@@ -26,13 +26,26 @@ const ScrollSpy = ((perfect) => {
       this.element = element;
       this.scrollElement = element.tagName === 'BODY' ? win : element;
       this.config = this.getConfig(config);
-      const {menu, menuClsPrefix} = this.config;
+      const {menu, menuClsPrefix, extend} = this.config;
       // 菜单 目录 等选择器
       this.menuSelector = `${menu} .${menuClsPrefix}-title`;
       this.offsets = [];
       this.targets = [];
       this.activeTarget = null;
       this.scrollHeight = 0;
+
+      // 如果默认不展开，则用样式来控制
+      if (!extend) {
+        const extendStyle = doc.createElement('style');
+        extendStyle.innerHTML = `
+          .menu-catalogue .menu-catalogue {
+            display: none;
+          }
+          .active + .menu-catalogue {
+            display: block;
+          }`;
+        doc.getElementsByTagName('head')[0].append(extendStyle);
+      }
 
       // 添加事件，页面滚动时，处理目录和内容对应坐标
       this.scrollElement.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.scrollEvent, false);
@@ -44,6 +57,7 @@ const ScrollSpy = ((perfect) => {
 
       // 菜单面板
       this.menuPanel = `${menu} .${menuClsPrefix}.${menuClsPrefix}-catalogue`;
+      this.$menuPanel = doc.querySelector(this.menuPanel);
 
       // 不用锚点处理的情况
       if (anchor === false) {
@@ -54,11 +68,11 @@ const ScrollSpy = ((perfect) => {
             e.preventDefault();
             e.stopPropagation();
             const el = e.currentTarget;
-            const {target} = el.dataset;
+            const {menu} = el.dataset;
             const {offsetMethod, container} = this.config;
             const offsetXY = this.config.offset;
 
-            const targetEl = doc.querySelector(`${container} [data-target="${target}"]`).parentNode;
+            const targetEl = doc.querySelector(`${container} [data-target="${menu}"]`).parentNode;
             const top = offsetMethod === 'offset' ? offset(targetEl).top : position(targetEl).top;
             const offsetBase = offsetMethod === 'position' ? this.getScrollTop() : 0;
 
@@ -69,10 +83,6 @@ const ScrollSpy = ((perfect) => {
           }, false);
         });
       }
-      if (immedLoad) {
-        this.refresh();
-        this.process();
-      }
 
       // 加载插件
       const {pluginConfig} = this.config;
@@ -82,13 +92,20 @@ const ScrollSpy = ((perfect) => {
           plugins = [plugins];
         }
         this.plugins = [];
-        const {menu, container} = this.config;
+        const {container} = this.config;
         plugins.forEach((plugin) => {
           // 把当前实例传给插件
           const instance = new plugin(this, pluginConfig);
           instance.mount();
           this.plugins.push(instance);
         });
+      }
+
+      // 显示菜单
+      doc.querySelector(menu).style.display = 'block';
+      if (immedLoad) {
+        this.refresh();
+        this.process();
       }
     }
 
@@ -218,14 +235,10 @@ const ScrollSpy = ((perfect) => {
      * @return {string}
      */
     generateMenusHtml(nodes, prefix) {
-      const {menuClsPrefix, menuCls, extend} = this.config;
+      const {menuClsPrefix, menuCls} = this.config;
       let html = '';
       if (nodes && nodes.length > 0) {
-        html = `<ul class="${menuClsPrefix} ${menuClsPrefix}-catalogue${menuCls ? ` ${menuCls}` : ''}"`;
-        if (extend) {
-          html += ' style="display: block;"';
-        }
-        html += '>';
+        html = `<ul class="${menuClsPrefix} ${menuClsPrefix}-catalogue${menuCls ? ` ${menuCls}` : ''}">`;
         for (let i = 0, len = nodes.length; i < len; i++) {
           const node = nodes[i];
           // 为对应的内容加锚点
@@ -235,7 +248,7 @@ const ScrollSpy = ((perfect) => {
           if (this.config.anchor) {
             newChild.href = `#${prefix + (i + 1)}`;
           } else {
-            newChild.dataset.target = `${prefix + (i + 1)}`;
+            newChild.dataset.menu = `${prefix + (i + 1)}`;
           }
 
           newChild.setAttribute('aria-hidden', true);
@@ -276,9 +289,9 @@ const ScrollSpy = ((perfect) => {
         // 目标元素
         let target = null;
         const {anchor, container} = this.config;
-        const selector = anchor ? element.getAttribute('href') : element.dataset.target;
+        const selector = anchor ? element.getAttribute('href') : element.dataset.menu;
         const targetSelector = anchor ? element.getAttribute('href') :
-          `${container} [data-target="${element.dataset.target}"]`;
+          `${container} [data-target="${element.dataset.menu}"]`;
 
         if (targetSelector) {
           target = doc.querySelector(targetSelector).parentNode;
@@ -307,12 +320,6 @@ const ScrollSpy = ((perfect) => {
     // 鼠标滚动事件
     scrollEvent = (event) => {
       this.process();
-
-      this.plugins.forEach((plugin) => {
-        if (typeof plugin.handleScroll === 'function') {
-          plugin.handleScroll()(event);
-        }
-      });
     };
 
     /**
@@ -370,8 +377,9 @@ const ScrollSpy = ((perfect) => {
 
       this.clearActiveCls();
 
-      const {anchor, menu} = this.config;
+      const {anchor} = this.config;
       let queries = this.menuSelector.split(',');
+      const lastSelector = []; // 最后一个菜单项，即当前的子节点
       // 当前选中的和父目录都添加活动样式
       const parentEls = target.split('-');
       queries = queries.map((query) => {
@@ -382,9 +390,10 @@ const ScrollSpy = ((perfect) => {
             catalog += it;
           } else {
             catalog += `-${it}`;
-            selector.push(anchor ? `${query}[href="${catalog}"]` : `${query}[data-target="${catalog}"]`);
+            selector.push(anchor ? `${query}[href="${catalog}"]` : `${query}[data-menu="${catalog}"]`);
           }
         });
+        lastSelector.push(selector[selector.length - 1]);
         return selector.join(',');
       });
 
@@ -393,6 +402,12 @@ const ScrollSpy = ((perfect) => {
       for (let i = 0, len = $link.length; i < len; i++) {
         $link[i].classList.add('active');
       }
+
+      this.plugins.forEach((plugin) => {
+        if (typeof plugin.scrollMenu === 'function') {
+          plugin.scrollMenu(lastSelector);
+        }
+      });
 
       // todo 事件，待补充
 

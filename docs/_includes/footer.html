@@ -2,3 +2,33 @@
   底部，待补充
 </footer>
 
+<script src="{{ site.baseurl }}/assets/js/perfect.js"></script>
+<script src="{{ site.baseurl }}/assets/js/util.js"></script>
+<script src="{{ site.baseurl }}/assets/js/scrollSpy.js"></script>
+<script src="{{ site.baseurl }}/assets/js/plugins/catalogueSpy.js"></script>
+
+<script>
+  var ScrollSpy = perfect.default.ScrollSpy;
+  var CatalogueSpy = perfect.default.CatalogueSpy;
+  new ScrollSpy(document.body, {
+    menu: '.doc-catalogue-panel',
+    container: '.doc-content',
+    offset: 50,
+    anchor: false,
+    extend: true,
+    plugins: CatalogueSpy,
+  });
+
+
+  document.querySelector('.doc-icon-catalogue').addEventListener('click', function () {
+    var catalogue = document.querySelector('.doc-catalogue-panel > .doc-catalogue');
+    var visibility = catalogue.style.visibility;
+    // fixme 这里用样式来控制，动画实现
+    if (visibility === 'visible') {
+      catalogue.style.visibility = 'hidden';
+    } else {
+      catalogue.style.visibility = 'visible';
+    }
+  }, false);
+
+</script>
