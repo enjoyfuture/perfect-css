@@ -1,0 +1,20 @@
+// copy 到剪贴板样式
+
+.doc-copy {
+  position: relative;
+}
+
+.doc-copy-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .5rem 1rem;
+  border: 0;
+  color: #fff;
+  background: $doc-primary;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background: darken($doc-primary, 10%);
+  }
+}

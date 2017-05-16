@@ -25,8 +25,8 @@
   // Hover state
   @include hover-focus {
     color: $list-group-link-hover-color;
-    text-decoration: none;
     background-color: $list-group-hover-bg;
+    text-decoration: none;
   }
 
   &:active {
@@ -48,8 +48,8 @@
   padding: $list-group-item-padding-y $list-group-item-padding-x;
   // Place the border on the list items and negative margin up for better styling
   margin-bottom: -$list-group-border-width;
-  background-color: $list-group-bg;
   border: $list-group-border-width solid $list-group-border-color;
+  background-color: $list-group-bg;
 
   &:first-child {
     @include border-top-radius($list-group-border-radius);
@@ -67,16 +67,16 @@
   &.disabled,
   &:disabled {
     color: $list-group-disabled-color;
-    cursor: $cursor-disabled;
     background-color: $list-group-disabled-bg;
+    cursor: $cursor-disabled;
   }
 
   // Include both here for `<a>`s and `<button>`s
   &.active {
     z-index: 2; // Place active items above their siblings for proper border styling
+    border-color: $list-group-active-border;
     color: $list-group-active-color;
     background-color: $list-group-active-bg;
-    border-color: $list-group-active-border;
   }
 }
 
@@ -88,8 +88,8 @@
 
 .list-group-flush {
   .list-group-item {
-    border-right: 0;
     border-left: 0;
+    border-right: 0;
     border-radius: 0;
   }
 

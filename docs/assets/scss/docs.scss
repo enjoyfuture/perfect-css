@@ -5,29 +5,37 @@
 @import "../../../scss/core/mixins";
 
 // Local docs variables
-$doc-primary: #00A8C6;
+$doc-primary: #00a8c6;
 $doc-primary-bright: lighten(saturate($doc-primary, 5%), 15%);
-$doc-primary-light: lighten(saturate(#40C0CB, 5%), 35%);
+$doc-primary-light: lighten(saturate(#40c0cb, 5%), 35%);
 $doc-graphite: #2a2730;
 $doc-graphite-light: lighten($doc-graphite, 40%);
-$doc-yellow: #FABE28;
-$doc-error: #FF003C;
-$doc-warning: #FF8A00;
-$doc-info: #8FBE00;
+$doc-yellow: #fabe28;
+$doc-error: #ff003c;
+$doc-warning: #ff8a00;
+$doc-info: #8fbe00;
 
-// 代码高亮样式
-@import "highlight";
+// 公共的样式
 // 字体样式
 @import "iconfont";
-// 容器样式
-@import "container";
+@import "main";
+
+// 目录样式
+@import "catalogue";
+// copy 样式
+@import "copy";
+// 例子样式
+@import "example";
+// 底部样式
+@import "footer";
+// 代码高亮样式，由 rouge生成
+@import "highlight";
+// 自定义代码高亮样式
+@import "highlight-custom";
+// 菜单样式
+@import "menu";
 // 头部样式
 @import "navbar";
 // fixed to the top
 @import "navbar-top-fixed";
-// 页面头部
-@import "page-header";
-// 菜单样式
-@import "menu";
-// 目录样式
-@import "catalogue";
+

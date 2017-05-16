@@ -1,3 +1,5 @@
+// sass-lint:disable no-duplicate-properties
+
 @font-face {
   font-family: "icon";
   src: url('../fonts/iconfont.eot?t=1493977267384'); /* IE9*/
@@ -15,4 +17,4 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-catalogue:before { content: "\e601"; }
+.icon-catalogue::before { content: "\e601"; }

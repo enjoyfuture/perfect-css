@@ -1,0 +1,61 @@
+
+<script src="{{ site.baseurl }}/assets/js/vendor/clipboard.min.js"></script>
+<script src="{{ site.baseurl }}/assets/js/perfect.js"></script>
+<script src="{{ site.baseurl }}/assets/js/util.js"></script>
+<script src="{{ site.baseurl }}/assets/js/scrollSpy.js"></script>
+<script src="{{ site.baseurl }}/assets/js/plugins/catalogueSpy.js"></script>
+
+<script>
+  var ScrollSpy = perfect.default.ScrollSpy;
+  var CatalogueSpy = perfect.default.CatalogueSpy;
+  new ScrollSpy(document.body, {
+    menu: '.doc-catalogue-panel',
+    container: '.doc-content',
+    offset: 50,
+    anchor: false,
+    extend: true,
+    plugins: CatalogueSpy,
+  });
+
+
+  // 点击显示菜单项
+  document.querySelector('.doc-icon-catalogue').addEventListener('click', function () {
+    var cataloguePanel = document.querySelector('.doc-catalogue-panel');
+    var catalogue = document.querySelector('.doc-catalogue-panel > .doc-catalogue');
+    var visibility = catalogue.style.visibility;
+    // fixme 这里用样式来控制，动画实现
+    if (visibility === 'visible') {
+      catalogue.style.visibility = 'hidden';
+      cataloguePanel.style.backgroundColor = 'transparent';
+    } else {
+      catalogue.style.visibility = 'visible';
+      cataloguePanel.style.backgroundColor = '#fff';
+    }
+  }, false);
+
+  // 复制到剪贴板
+  var clipboard = new Clipboard('.doc-copy-btn', {
+    target: function (trigger) {
+      return trigger.parentNode.nextElementSibling
+    }
+  });
+
+  clipboard.on('success', function (e) {
+    //$(e.trigger)
+    //  .attr('title', 'Copied!')
+    e.clearSelection()
+  });
+
+  clipboard.on('error', function (e) {
+    var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
+    var fallbackMsg = 'Press ' + modifierKey + 'C to copy';
+
+    //$(e.trigger)
+    //.attr('title', fallbackMsg)
+    //.tooltip('_fixTitle')
+    //.tooltip('show')
+    //.attr('title', 'Copy to clipboard')
+    //.tooltip('_fixTitle')
+  });
+
+</script>

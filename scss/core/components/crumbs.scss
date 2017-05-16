@@ -1,8 +1,8 @@
 .crumbs {
   padding: $crumbs-padding-y $crumbs-padding-x;
   margin-bottom: $spacer-y;
-  list-style: none;
   background-color: $crumbs-bg;
+  list-style: none;
   @include border-radius($border-radius);
   @include clearfix;
 }

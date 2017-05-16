@@ -4,13 +4,13 @@
 
 .btn {
   display: inline-block;
+  border: $input-btn-border-width solid transparent;
   font-weight: $btn-font-weight;
   line-height: $btn-line-height;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  border: $input-btn-border-width solid transparent;
   @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
   @include transition($btn-transition);
 
@@ -96,9 +96,9 @@ fieldset[disabled] a.btn {
 
 // Make a button look and behave like a link
 .btn-link {
+  border-radius: 0;
   font-weight: $font-weight-normal;
   color: $link-color;
-  border-radius: 0;
 
   &,
   &:active,
@@ -117,8 +117,8 @@ fieldset[disabled] a.btn {
   }
   @include hover-focus {
     color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
     background-color: transparent;
+    text-decoration: $link-hover-decoration;
   }
   &:disabled {
     color: $btn-link-disabled-color;

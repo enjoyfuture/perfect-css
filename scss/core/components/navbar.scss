@@ -20,7 +20,7 @@
 
   @if $enable-responsive {
     //小屏幕的把左右外边距设为 0
-    @include media-responsive-down(nth(map-keys($grid-responsive), 1)) {
+    @include media-breakpoint-up(nth(map-keys($responsive-breakpoints), 1)) {
       > .container {
         margin-left: 0;
         margin-right: 0;
@@ -83,10 +83,10 @@
   .navbar-toggler {
     align-self: flex-start; // Prevent toggler from growing to full width when it's the only visible navbar child
     padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+    border: $border-width solid transparent; // remove default button style
     font-size: $navbar-toggler-font-size;
     line-height: 1;
     background: transparent; // remove default button style
-    border: $border-width solid transparent; // remove default button style
     @include border-radius($navbar-toggler-border-radius);
 
     @include hover-focus {
@@ -99,10 +99,10 @@
     display: inline-block;
     width: 1.5em;
     height: 1.5em;
-    vertical-align: middle;
-    content: "";
     background: no-repeat center center;
     background-size: 100% 100%;
+    vertical-align: middle;
+    content: "";
   }
 
   // Use `position` on the toggler to prevent it from being auto placed as a flex
@@ -130,19 +130,19 @@
     .navbar-toggleable-xl  一直隐藏
    */
   .navbar-toggleable {
-    @each $responsive in map-keys($grid-responsive) {
-      $next: responsive-next($responsive, $grid-responsive);
-      $infix: responsive-infix($responsive, $grid-responsive);
+    @each $breakpoints in map-keys($responsive-breakpoints) {
+      $next: breakpoint-next($breakpoints, $responsive-breakpoints);
+      $infix: breakpoint-infix($breakpoints, $responsive-breakpoints);
 
       &#{$infix} {
-        @include media-responsive-down($responsive) {
+        @include media-breakpoint-down($breakpoints) {
           > .container {
             padding-left: 0;
             padding-right: 0;
           }
         }
 
-        @include media-responsive-up($next) {
+        @include media-breakpoint-up($next) {
           flex-direction: row;
           flex-wrap: nowrap;
           align-items: center;

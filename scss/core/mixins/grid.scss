@@ -1,27 +1,8 @@
-/// Grid system
-// 容器
+/// Grid mixin
 
-@mixin make-container($gutter: $grid-gutter-width-base) {
-  position: relative;
-  padding-left: ($gutter / 2);
-  padding-right: ($gutter / 2);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-// 根据 media query 设置响应式容器的最大宽度
-@mixin make-container-max-widths($max-widths: $container-max-widths, $responsive: $grid-responsive) {
-  // 循环取出键值，然后调用media-responsive-up来设置
-  @each $response, $container-max-width in $max-widths {
-    @include media-responsive-up($response, $responsive) {
-      width: $container-max-width;
-      max-width: 100%;
-    }
-  }
-}
-
-//设置 row 样式
-@mixin make-row($gutter: $grid-gutter-width-base) {
+// 设置 row 样式
+// 我们采用 flex 布局来实现
+@mixin make-row($gutter: $grid-gutter-width) {
   display: flex;
   flex-wrap: wrap;
   margin-left: ($gutter / -2);
@@ -30,10 +11,7 @@
 
 // 设置列样式
 @mixin make-col($size, $columns: $grid-columns) {
-  flex: 0 0 percentage($size / $columns);
-  // 设置最大宽度，使每列的内容不会超过该宽度，该属性的设置，在 IE10+ 和 Firefox 中使用，
-  // Chrome 和 Safari 不需要这样设置
-  max-width: percentage($size / $columns);
+  width: percentage($size / $columns);
 }
 
 // offset 是指偏移，用 margin-left 设置其偏移量，而 pull 和 push 是指定位位置，用 left 和 right 来设置
@@ -56,5 +34,108 @@
     @include make-col-pull($size, $columns);
   } @else if $type == offset {
     @include make-col-offset($size, $columns);
+  }
+}
+
+
+// 定义生成 gird framework mixin
+
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $responsive-breakpoints) {
+  // 定义列公共样式，通过占位符选择器
+  %grid-column {
+    position: relative;
+    width: 100%;
+    min-height: 1px; // 防止没内容时，列塌陷合并到一起
+    padding-left: ($gutter / 2);
+    padding-right: ($gutter / 2);
+  }
+
+  @if $enable-responsive {
+    @each $breakpoint in map-keys($breakpoints) {
+      // 返回前缀，比如：-md
+      $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+      // 设置所有响应式的列样式，从 1 到 $columns
+      @for $i from 1 through $columns {
+        .col#{$infix}-#{$i} {
+          @extend %grid-column;
+        }
+      }
+      .col#{$infix} ,
+      .col#{$infix}-auto {
+        @extend %grid-column;
+      }
+
+      @include media-breakpoint-up($breakpoint, $breakpoints) {
+        // 基于 Flexbox 设置相等宽度的列，例如 .col-md 等
+        .col#{$infix} {
+          flex-basis: 0;
+          flex-grow: 1;
+          max-width: 100%;
+        }
+        .col#{$infix}-auto {
+          flex: 0 0 auto;
+          width: auto;
+        }
+
+        @for $i from 1 through $columns {
+          .col#{$infix}-#{$i} {
+            @include make-col($i, $columns);
+          }
+        }
+
+        @each $modifier in (pull, push) {
+          @for $i from 0 through $columns {
+            .#{$modifier}#{$infix}-#{$i} {
+              @include make-col-modifier($modifier, $i, $columns)
+            }
+          }
+        }
+
+        // 设置 offset ，从 0 到 $columns - 1
+        @for $i from 0 through ($columns - 1) {
+          @if not ($infix == "" and $i == 0) { // 对于有响应式前缀，并且是第0个，则或略，例如 .offset-xs-0
+            .offset#{$infix}-#{$i} {
+              @include make-col-modifier(offset, $i, $columns)
+            }
+          }
+        }
+      }
+    }
+  } @else { // 如果不是响应式的情况
+    @for $i from 1 through $columns {
+      .col-#{$i} {
+        @extend %grid-column;
+      }
+    }
+    .col,
+    .col-auto {
+      @extend %grid-column;
+    }
+    .col {
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+    .col-auto {
+      flex: 0 0 auto;
+      width: auto;
+    }
+
+    @each $modifier in (pull, push) {
+      @for $i from 0 through $columns {
+        .#{$modifier}-#{$i} {
+          @include make-col-modifier($modifier, $i, $columns)
+        }
+      }
+    }
+
+    @for $i from 0 through ($columns - 1) {
+      @if not ($i == 0) {
+        .offset-#{$i} {
+          @include make-col-modifier(offset, $i, $columns)
+        }
+      }
+    }
   }
 }

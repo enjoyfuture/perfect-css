@@ -1,34 +1,17 @@
-<footer>
-  底部，待补充
+<div class="footer-assist"></div>
+<footer class="footer">
+  <div class="footer-links container-fluid">
+    <div class="links-item text-center">
+      <a href="https://github.com/enjoyfuture/perfect" target="_blank">GitHub 仓库</a>
+      <a href="#" target="_blank">Npm 仓库</a>
+      <a href="#" target="_blank">实例</a>
+      <a href="#" target="_blank">主题</a>
+    </div>
+  </div>
+
+  <div class="footer-copyright">
+    <div class="container-fluid text-center">
+      <p>Copyright © 2017-2017 Powered by Perfect 团队</p>
+    </div>
+  </div>
 </footer>
-
-<script src="{{ site.baseurl }}/assets/js/perfect.js"></script>
-<script src="{{ site.baseurl }}/assets/js/util.js"></script>
-<script src="{{ site.baseurl }}/assets/js/scrollSpy.js"></script>
-<script src="{{ site.baseurl }}/assets/js/plugins/catalogueSpy.js"></script>
-
-<script>
-  var ScrollSpy = perfect.default.ScrollSpy;
-  var CatalogueSpy = perfect.default.CatalogueSpy;
-  new ScrollSpy(document.body, {
-    menu: '.doc-catalogue-panel',
-    container: '.doc-content',
-    offset: 50,
-    anchor: false,
-    extend: true,
-    plugins: CatalogueSpy,
-  });
-
-
-  document.querySelector('.doc-icon-catalogue').addEventListener('click', function () {
-    var catalogue = document.querySelector('.doc-catalogue-panel > .doc-catalogue');
-    var visibility = catalogue.style.visibility;
-    // fixme 这里用样式来控制，动画实现
-    if (visibility === 'visible') {
-      catalogue.style.visibility = 'hidden';
-    } else {
-      catalogue.style.visibility = 'visible';
-    }
-  }, false);
-
-</script>

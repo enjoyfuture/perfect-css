@@ -1,35 +1,11 @@
-// Container widths
-//
-// Set the container width, and override it for fixed navbars in media queries.
 
-.container {
-  @include make-container();
-  @if $enable-responsive {
-    @include make-container-max-widths();
-  }
-}
-
-// Fluid container
-//
-// Utilizes the mixin meant for fixed width containers, but without any defined
-// width for fluid, full width layouts.
-
-@if $enable-responsive {
-  .container-fluid {
-    @include make-container();
-  }
-}
-
-// Row
-//
-// Rows contain and clear the floats of your columns.
-
+// 列布局对应的容器行
 .row {
   @include make-row();
 }
 
-// Remove the negative margin from default .row, then the horizontal padding
-// from all immediate children columns (to prevent runaway style inheritance).
+// 当采用列布局时，不需要设置间距时，可以加上改样式
+// 用法： <div class="row no-gutters"> </div>
 .no-gutters {
   margin-left: 0;
   margin-right: 0;
@@ -41,8 +17,5 @@
   }
 }
 
-// Columns
-//
-// Common styles for small and large grid columns
-
+// 列样式，包括响应式列布局
 @include make-grid-columns();

@@ -11,11 +11,11 @@
     width: 0;
     height: 0;
     margin-left: $caret-width;
+    border-top: $caret-width solid;
+    border-left: $caret-width solid transparent;
+    border-right: $caret-width solid transparent;
     vertical-align: middle;
     content: "";
-    border-top: $caret-width solid;
-    border-right: $caret-width solid transparent;
-    border-left: $caret-width solid transparent;
   }
 
   // Prevent the focus on the dropdown toggle when closing dropdowns
@@ -44,13 +44,13 @@
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y 0;
   margin: $dropdown-margin-top 0 0; // override default ul
+  border: $dropdown-border-width solid $dropdown-border-color;
   font-size: $font-size-base; // Redeclare because nesting can cause inheritance issues
   color: $body-color;
-  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
-  list-style: none;
   background-color: $dropdown-bg;
   background-clip: padding-box;
-  border: $dropdown-border-width solid $dropdown-border-color;
+  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  list-style: none;
   @include border-radius($border-radius);
   @include box-shadow($dropdown-box-shadow);
 }
@@ -67,32 +67,32 @@
   display: block;
   width: 100%; // For `<button>`s
   padding: 3px $dropdown-item-padding-x;
+  border: 0; // For `<button>`s
   clear: both;
   font-weight: $font-weight-normal;
   color: $dropdown-link-color;
+  background: none; // For `<button>`s
   text-align: inherit; // For `<button>`s
   white-space: nowrap; // prevent links from randomly breaking onto new lines
-  background: none; // For `<button>`s
-  border: 0; // For `<button>`s
 
   @include hover-focus {
     color: $dropdown-link-hover-color;
-    text-decoration: none;
     background-color: $dropdown-link-hover-bg;
+    text-decoration: none;
   }
 
   &.active,
   &:active {
     color: $dropdown-link-active-color;
-    text-decoration: none;
     background-color: $dropdown-link-active-bg;
+    text-decoration: none;
   }
 
   &.disabled,
   &:disabled {
     color: $dropdown-link-disabled-color;
-    cursor: $cursor-disabled;
     background-color: transparent;
+    cursor: $cursor-disabled;
     // Remove CSS gradients if they're enabled
     @if $enable-gradients {
       background-image: none;
@@ -118,13 +118,13 @@
 // Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
 // menu with the parent.
 .dropdown-menu-right {
-  right: 0;
   left: auto; // Reset the default from `.dropdown-menu`
+  right: 0;
 }
 
 .dropdown-menu-left {
-  right: auto;
   left: 0;
+  right: auto;
 }
 
 // Dropdown section headers
@@ -141,9 +141,9 @@
 .dropdown-backdrop {
   position: fixed;
   top: 0;
-  right: 0;
   bottom: 0;
   left: 0;
+  right: 0;
   z-index: $zindex-dropdown-backdrop;
 }
 

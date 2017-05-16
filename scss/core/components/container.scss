@@ -1,0 +1,19 @@
+// 设置响应式容器宽度
+.container {
+  @include make-container();
+  @if $enable-responsive {
+    max-width: 100%;
+    @include make-container-max-widths();
+  } @else {
+    width: 100%;
+  }
+}
+
+// 自适应容器
+// 根据浏览器的宽度来 100% 来填充整个浏览器，更适合 pc 端布局
+@if $enable-responsive {
+  .container-fluid {
+    width: 100%;
+    @include make-container();
+  }
+}

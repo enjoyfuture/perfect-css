@@ -24,7 +24,7 @@ const CatalogueSpy = ((perfect) => {
 
       const {$menuPanel} = scrollSpy;
       $menuPanel.style.transform = 'translateY(0)';
-      $menuPanel.style.height = `${menuHeight}px`;
+      $menuPanel.style.maxHeight = `${menuHeight}px`;
       this.$menuPanel = $menuPanel;
     }
 
@@ -36,9 +36,9 @@ const CatalogueSpy = ((perfect) => {
 
     handleScroll = (prevent) => {
       return (event) => {
-        const {scrollHeight} = this.$menuPanel;
-        const {menuHeight, step} = this.config;
-        this.maxOffset = scrollHeight - menuHeight; // 最大滚动的高度
+        const {scrollHeight, clientHeight} = this.$menuPanel;
+        const {step} = this.config;
+        this.maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
 
         // 判断鼠标滑轮向上还是向下滑动
         let upDown;
@@ -63,13 +63,13 @@ const CatalogueSpy = ((perfect) => {
         let y = reg.exec(transform);
         y = y ? parseFloat(y[1], 10) : 0;
 
-        if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === this.maxOffset)) {
-          return;
-        }
-
         if (prevent) {
           event.preventDefault();
           event.stopPropagation();
+        }
+
+        if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === this.maxOffset)) {
+          return;
         }
 
         if (upDown === 'up' && y < 0) {
@@ -82,12 +82,16 @@ const CatalogueSpy = ((perfect) => {
 
     // 当定位到某一个菜单项时，而由于限制了高度，该菜单有可能不在可视范围内
     scrollMenu = (lastSelector) => {
-      const {menuHeight, step} = this.config;
+      const {step} = this.config;
       const {$menuPanel} = this;
-      const {scrollHeight} = $menuPanel;
-      const maxOffset = scrollHeight - menuHeight; // 最大滚动的高度
-
+      const {scrollHeight, clientHeight} = $menuPanel;
+      const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+      if (maxOffset === 0) {
+        return;
+      }
       // 如果当前菜单项隐藏，则向上拉
+      // Fixme 注意这里还需计算 $menuPanel.parentElement padding 和 border 的值
+      // 待处理
       const menuRect = $menuPanel.parentElement.getBoundingClientRect();
       const currentTarget = doc.querySelectorAll(lastSelector.join(','));
       currentTarget.forEach((el) => {

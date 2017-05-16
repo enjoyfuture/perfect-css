@@ -2,8 +2,8 @@
 
 // Make the div behave like a button
 .btn-group,
-.btn-group-vertical {
-  position: relative;
+.btn-group-vertical {position: relative;
+
   display: inline-flex;
   vertical-align: middle; // match .btn alignment given font-size hack above
 

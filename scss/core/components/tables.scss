@@ -11,13 +11,13 @@
   th,
   td {
     padding: $table-cell-padding;
-    vertical-align: top;
     border-top: $table-border-width solid $table-border-color;
+    vertical-align: top;
   }
 
   thead th {
-    vertical-align: bottom;
     border-bottom: (2 * $table-border-width) solid $table-border-color;
+    vertical-align: bottom;
   }
 
   tbody + tbody {

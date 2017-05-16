@@ -68,13 +68,13 @@
 .input-group-addon {
   padding: $input-padding-y $input-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
+  border: $input-btn-border-width solid $input-group-addon-border-color;
   font-size: $font-size-base; // Match inputs
   font-weight: $font-weight-normal;
   line-height: $input-line-height;
   color: $input-color;
-  text-align: center;
   background-color: $input-group-addon-bg;
-  border: $input-btn-border-width solid $input-group-addon-border-color;
+  text-align: center;
   @include border-radius($input-border-radius);
 
   // Sizing

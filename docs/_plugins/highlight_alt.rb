@@ -1,25 +1,30 @@
+# 高亮例子代码
+# 打印到控制台语句 puts "#{tag_name}"
+
 module Jekyll
   module Tags
     class ExampleBlock < Liquid::Block
       include Liquid::StandardFilters
 
-      # The regular expression syntax checker. Start with the language specifier.
-      # Follow that by zero or more space separated options that take one of three
-      # forms: name, name=value, or name="<quoted list>"
-      #
-      # <quoted list> is a space-separated list of numbers
+      # 正则表达式，来高亮处理语言，比如 html 等，有四种格式：name, name attr, name attr=value or name attr="<quoted list>"
+      # <quoted list> 是用空格分割开的数字列表，如 name attr="1 2 3"
       SYNTAX = /^([a-zA-Z0-9.+#-]+)((\s+\w+(=((\w|[0-9_-])+|"([0-9]+\s)*[0-9]+"))?)*)$/
 
+      # ruby 会执行该方法，tag_name 为 example  markup 要高亮的语言，比如 html
       def initialize(tag_name, markup, tokens)
         super
         if markup.strip =~ SYNTAX
           @lang = $1.downcase
           @options = {}
+
+          # 如果是 name=value, or name="<quoted list>" 的情况
           if defined?($2) && $2 != ''
-            # Split along 3 possible forms -- key="<quoted list>", key=value, or key
+            # puts "----#{$2}-------"
+            # $2 有三种情况： attr, attr=value or attr="<quoted list>"
             $2.scan(/(?:\w+(?:=(?:(?:\w|[0-9_-])+|"[^"]*")?)?)/) do |opt|
+              # puts "----#{opt}-------"
               key, value = opt.split('=')
-              # If a quoted list, convert to array
+              # 如果是数字列表的话，转换为数组
               if value && value.include?("\"")
                   value.gsub!(/"/, "")
                   value = value.split
@@ -29,16 +34,18 @@ module Jekyll
           end
           @options[:linenos] = false
         else
+          # 输出错误
           raise SyntaxError.new <<-eos
-Syntax Error in tag 'example' while parsing the following markup:
+语法错误：在 'example' 中，由于 markup 不是这四种情况，name, name attr, name attr=value or name attr="<quoted list>"
 
   #{markup}
 
-Valid syntax: example <lang>
+请检查 example <lang> 格式
 eos
         end
       end
 
+      # 渲染方法
       def render(context)
         prefix = context["highlighter_prefix"] || ""
         suffix = context["highlighter_suffix"] || ""
@@ -50,27 +57,39 @@ eos
           render_rouge(code)
         end
 
-        rendered_output = example(code) + add_code_tag(output)
+        rendered_output = example(code) + clipboard() + add_code_tag(output)
         prefix + rendered_output + suffix
       end
 
+      # 用 <div class="doc-example"></div> 包裹例子
       def example(output)
-        "<div class=\"bd-example\" data-example-id=\"#{@options[:id]}\">\n#{output}\n</div>"
+        "<div class=\"doc-example\" data-example-id=\"#{@options[:id]}\">\n#{output}\n</div>"
       end
 
+      def clipboard()
+        "<div class=\"doc-copy\"><button class=\"doc-copy-btn\" title=\"复制到剪贴板\">复制</button></div>"
+      end
+
+      # 加入高量化代码 highlight
+      def add_code_tag(code)
+        code = code.sub(/<pre>\n*/,'<pre><code class="language-' + @lang.to_s.gsub("+", "-") + '" data-lang="' + @lang.to_s + '">')
+        code = code.sub(/\n*<\/pre>/,"</code></pre>")
+        code.strip
+      end
+
+      # 删除 holder.js
       def remove_holderjs(code)
         code = code.gsub(/data-src="holder.js.+?"/, 'src="..."')
       end
 
       def remove_example_classes(code)
-        # Find `bd-` classes and remove them from the highlighted code. Because of how this regex works, it will also
-        # remove classes that are after the `bd-` class. While this is a bug, I left it because it can be helpful too.
-        # To fix the bug, replace `(?=")` with `(?=("|\ ))`.
+        # 删除代码中包含 'doc-' 开头的样式
         code = code.gsub(/(?!class=".)\ *?bd-.+?(?=")/, "")
-        # Find empty class attributes after the previous regex and remove those too.
+        # 删除空的 class
         code = code.gsub(/\ class=""/, "")
       end
 
+      # 利用插件 rouge 高亮话代码
       def render_rouge(code)
         require 'rouge'
         formatter = Rouge::Formatters::HTML.new(line_numbers: @options[:linenos], wrap: false)
@@ -79,13 +98,6 @@ eos
         code = remove_example_classes(code)
         code = formatter.format(lexer.lex(code))
         "<div class=\"highlight\"><pre>#{code}</pre></div>"
-      end
-
-      def add_code_tag(code)
-        # Add nested <code> tags to code blocks
-        code = code.sub(/<pre>\n*/,'<pre><code class="language-' + @lang.to_s.gsub("+", "-") + '" data-lang="' + @lang.to_s + '">')
-        code = code.sub(/\n*<\/pre>/,"</code></pre>")
-        code.strip
       end
 
     end

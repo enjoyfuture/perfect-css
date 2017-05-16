@@ -1,19 +1,9 @@
 ---
 layout: docs
-title: Best practices
-description: Learn about some of the best practices we've gathered from years of working on and using Bootstrap.
+title: Perfect 之旅-最佳实践
+description: 最佳实践
 group: getting-started
+toc: true
 ---
 
-We've designed and developed Bootstrap to work in a number of environments. Here are some of the best practices we've gathered from years of working on and using it ourselves.
-
-{% callout info %}
-**Heads up!** This copy is a work in progress.
-{% endcallout %}
-
-### General outline
-- Working with CSS
-- Working with Sass files
-- Building new CSS components
-- Working with flexbox
-- Ask in [Slack](https://bootstrap-slack.herokuapp.com/)
+最佳实践

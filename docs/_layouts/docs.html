@@ -7,24 +7,22 @@
 
 {% include nav-home.html %}
 
-<div class="doc-pageheader">
-  <div class="container">
-    {% include page-headers.html %}
-  </div>
-</div>
-
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-12 col-md-3 push-md-9 bd-sidebar">
-      {% include nav-docs.html %}
+    <div class="col-24 col-lg-4 col-md-6 doc-menu">
+      {% include nav-menus.html %}
     </div>
-    <div class="col-12 col-md-9 pull-md-3 bd-content">
-      <h1 class="bd-title" id="content">{{ page.title }}</h1>
-      {{ content | toc }}
+    <div class="col-24 col-lg-20 col-md-18 doc-main">
+      <h1>{{ page.title }}</h1>
+      <p>{{ page.description }}</p>
+      <div class="doc-content">
+        {{ content | toc }}
+      </div>
     </div>
   </div>
 </div>
 
 {% include footer.html %}
+{% include javascript.html %}
 </body>
 </html>

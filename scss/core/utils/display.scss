@@ -14,9 +14,9 @@
 }
 
 @if $enable-responsive {
-  @each $responsive in map-keys($grid-responsive) {
-    @include media-responsive-up($responsive) {
-      $infix: responsive-infix($responsive, $grid-responsive);
+  @each $breakpoint in map-keys($responsive-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $responsive-breakpoints);
       @include display-cls(#{$infix});
     }
   }

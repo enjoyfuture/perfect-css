@@ -1,0 +1,34 @@
+// 页面底部样式
+.footer-assist {
+  padding-top: 9rem;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-links {
+  padding: 1rem 0;
+  border-bottom: 1px solid darken(#193c5a, 10%);
+  background-color: #193c5a;
+  background-image: linear-gradient(to bottom, #1f496e 0, #193c5a 100%);
+}
+
+.footer-copyright {
+  color: #555;
+  background-color: #fff;
+}
+
+.links-item {
+  > a {
+    display: inline-block;
+    margin-right: 1rem;
+    color: #fff;
+    &:hover, &:focus {
+      color: #fff;
+    }
+  }
+}
+

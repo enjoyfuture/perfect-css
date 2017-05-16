@@ -47,17 +47,17 @@
     }
 
     &.disabled {
+      border-color: transparent;
       color: $nav-disabled-link-color;
       background-color: transparent;
-      border-color: transparent;
     }
   }
 
   .nav-link.active,
   .nav-item.show .nav-link {
+    border-color: $nav-tabs-active-link-border-color $nav-tabs-active-link-border-color $nav-tabs-active-link-bg;
     color: $nav-tabs-active-link-color;
     background-color: $nav-tabs-active-link-bg;
-    border-color: $nav-tabs-active-link-border-color $nav-tabs-active-link-border-color $nav-tabs-active-link-bg;
   }
 
   .dropdown-menu {

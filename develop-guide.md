@@ -8,6 +8,8 @@
 * [sass-lint](https://github.com/sasstools/sass-lint)
 * [在线 sass 转换为 css](http://www.sassmeister.com/)
 * [热部署，热加载](https://browsersync.io)
+* [Sass 单元测试](http://oddbird.net/true/)
+* [clipboard 复制到剪贴板插件](https://clipboardjs.com/)
 
 ## 开发说明
 

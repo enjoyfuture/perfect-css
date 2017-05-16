@@ -1,9 +1,11 @@
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
-const $ = gulpLoadPlugins();
+
+const $ = gulpLoadPlugins({
+  pattern: ['gulp-*', 'del']
+});
 
 // 清理临时和打包目录
 gulp.task('clean', () => {
-  return gulp.src(['dist', 'js/dist', 'docs/assets/css'])
-    .pipe($.clean({force: true}));
+  return $.del(['dist', 'js/dist', 'docs/assets/css'], {force: true});
 });
