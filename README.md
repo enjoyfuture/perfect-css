@@ -7,26 +7,16 @@
 
 The Perfect Doc use the Jekyll to generator.
 
-## The development environment
-
-At first, You need to install Ruby. The Perfect docs is based on the [Ruby](https://www.ruby-lang.org/zh_cn/).
-
 ##  Jekyll server
 
 ```
 gulp jekyll
 ```
 
-Note: If you exec the command the first, You should exec the following command to install jekyll and dependency package.
+Note: If you exec the command the first, You should exec `bundle install` to install jekyll dependency package.
 
-```
-gem install jekyll bundler
-bundle install
-```
 
-You can refer to more information to http://jekyllrb.com/
-
-## Build
+## Build css
 
 ```
 gulp build
