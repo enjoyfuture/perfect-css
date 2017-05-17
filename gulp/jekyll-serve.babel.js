@@ -5,10 +5,6 @@ import childProcess from 'child_process';
 
 const $ = gulpLoadPlugins();
 
-const a = /^([a-zA-Z0-9.+#-]+)((\s+\w+(=((\w|[0-9_-])+|"([0-9]+\s)*[0-9]+"))?)*)$/;
-
-const b = /^((\s+\w+(=((\w|[0-9_-])+|"([0-9]+\s)*[0-9]+"))?)*)$/;
-
 // exec jekyll serve
 gulp.task('jekyll', ['scss-docs', 'build-js', 'copy-clipboard-to-docs'], () => {
   const {spawn} = childProcess;
