@@ -57,17 +57,13 @@ eos
           render_rouge(code)
         end
 
-        rendered_output = example(code) + clipboard() + add_code_tag(output)
+        rendered_output = example(code) + add_code_tag(output)
         prefix + rendered_output + suffix
       end
 
       # 用 <div class="doc-example"></div> 包裹例子
       def example(output)
         "<div class=\"doc-example\" data-example-id=\"#{@options[:id]}\">\n#{output}\n</div>"
-      end
-
-      def clipboard()
-        "<div class=\"doc-copy\"><button class=\"doc-copy-btn\" title=\"复制到剪贴板\">复制</button></div>"
       end
 
       # 加入高量化代码 highlight

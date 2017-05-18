@@ -2,7 +2,6 @@
 # 指定 Markdown 编译器 kramdown， 官方 http://kramdown.gettalong.org/
 markdown:         kramdown
 # 指定处理代码高亮解析器 rouge 官方 http://rouge.jneen.net/
-# 关于 jekyll 高亮插件参见这篇文章，写的不错 http://blog.csdn.net/qiujuer/article/details/5041927
 highlighter:      rouge
 
 kramdown:

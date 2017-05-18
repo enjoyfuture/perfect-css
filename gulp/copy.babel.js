@@ -11,6 +11,7 @@ gulp.task('copy-js-to-docs', () => {
 
 // 把 clipboard copy 到 docs 下
 gulp.task('copy-clipboard-to-docs', () => {
-  return gulp.src('node_modules/clipboard/dist/clipboard.min.js')
+  return gulp.src(['node_modules/clipboard/dist/clipboard.min.js',
+    'node_modules/jquery/dist/jquery.min.js'])
     .pipe(gulp.dest('docs/assets/js/vendor'));
 });
