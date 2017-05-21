@@ -5,7 +5,7 @@ markdown:         kramdown
 highlighter:      rouge
 
 kramdown:
-  auto_ids: true # 如果没有指定 headers 的 id 值，则自动生成
+  auto_ids: false # 如果设置 true 并且没有指定 headers 的 id 值，则自动生成
 
 # Permalinks
 permalink:        pretty

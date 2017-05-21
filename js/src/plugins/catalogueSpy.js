@@ -63,7 +63,7 @@ const CatalogueSpy = ((perfect) => {
         let y = reg.exec(transform);
         y = y ? parseFloat(y[1], 10) : 0;
 
-        if (prevent) {
+        if (prevent && this.maxOffset > 0) {
           event.preventDefault();
           event.stopPropagation();
         }
@@ -94,7 +94,7 @@ const CatalogueSpy = ((perfect) => {
       // 待处理
       const menuRect = $menuPanel.parentElement.getBoundingClientRect();
       const currentTarget = doc.querySelectorAll(lastSelector.join(','));
-      currentTarget.forEach((el) => {
+      Array.prototype.forEach.call(currentTarget, (el) => {
         let rect = el.getBoundingClientRect();
         while (rect.top < menuRect.top || rect.bottom > menuRect.bottom) { // 向上移动
           const {transform} = $menuPanel.style;

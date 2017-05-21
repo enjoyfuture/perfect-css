@@ -14,8 +14,8 @@ Perfect 开发指南
 
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-默认情况下，即不设置 shrink-to-fit=no，当内容溢出时，会缩小内容来适应整个浏览器宽度，有时我们不想缩小而是让溢出的内容
-隐藏，这时通过设置 shrink-to-fit=no 来禁用默认的行为
+默认情况下，即不设置 shrink-to-fit=no，当内容溢出时，会缩小内容来适应整个浏览器宽度，
+有时我们不想缩小而是让溢出的内容隐藏，这时通过设置 shrink-to-fit=no 来禁用默认的行为
 
 Subresource Integrity 介绍
 

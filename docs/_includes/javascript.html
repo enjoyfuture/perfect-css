@@ -6,7 +6,7 @@
 <script src="{{ site.baseurl }}/assets/js/plugins/catalogueSpy.js"></script>
 
 <script>
-  $(function() {
+  $(function () {
     var ScrollSpy = perfect.default.ScrollSpy;
     var CatalogueSpy = perfect.default.CatalogueSpy;
     new ScrollSpy(document.body, {
@@ -18,21 +18,31 @@
       plugins: CatalogueSpy,
     });
 
+    // 窗口滑动到某一位置时，修改目录定位位置
+    $(window).on('scroll', function (event) {
+      var top = window.scrollY;
+      var clientHeight = document.documentElement.clientHeight;
+      var scrollHeight = document.documentElement.scrollHeight;
+      var contentTop = $('.doc-content').offset().top;
 
-    // 点击显示菜单项
-    document.querySelector('.doc-icon-catalogue').addEventListener('click', function () {
-      var cataloguePanel = document.querySelector('.doc-catalogue-panel');
-      var catalogue = document.querySelector('.doc-catalogue-panel > .doc-catalogue');
-      var visibility = catalogue.style.visibility;
-      // fixme 这里用样式来控制，动画实现
-      if (visibility === 'visible') {
-        catalogue.style.visibility = 'hidden';
-        cataloguePanel.style.backgroundColor = 'transparent';
+      if (top > scrollHeight - clientHeight) {
+        $('.doc-catalogue-panel').css({
+          position: 'absolute',
+          top: top + 'px'
+        });
+      } else if (top + 52 > contentTop) {
+        $('.doc-catalogue-panel').css({
+          position: 'fixed',
+          top: '50px'
+        });
       } else {
-        catalogue.style.visibility = 'visible';
-        cataloguePanel.style.backgroundColor = '#fff';
+        $('.doc-catalogue-panel').css({
+          position: 'static',
+        });
       }
-    }, false);
+    });
+
+    $(window).trigger('scroll');
 
     // 为代码添加复制按钮
     $('.highlight').each(function () {

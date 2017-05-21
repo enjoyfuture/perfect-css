@@ -2,62 +2,55 @@
   p {
     text-indent: 2em;
   }
-}
-
-.doc-catalogue .menu-title {
-  position: relative;
-  width: 230px;
-  padding-left: 1rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.doc-catalogue .menu-title:hover::after {
-  position: absolute;
-  top: 25%;
-  bottom: 20%;
-  left: 0;
-  border-left: 1px solid #193c5a;
-  content: '';
-}
-
-.doc-catalogue .menu-title.active::after {
-  position: absolute;
-  top: 25%;
-  bottom: 20%;
-  left: 0;
-  border-left: 2px solid #193c5a;
-  content: '';
-}
-
-.doc-catalogue-panel {
-  position: fixed;
-  top: 4.5rem;
-  right: 2rem;
-  z-index: 2000;
-  min-width: 250px;
-  overflow: hidden;
-  > .doc-catalogue {
-    padding: 0 .5rem;
-    visibility: hidden;
+  h1, h2, h3, h4 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 }
 
 .doc-catalogue-header {
-  position: absolute;
-  right: 0;
-  z-index: 1;
+  position: relative;
+  &::before {
+    position: absolute;
+    top: -25px;
+    padding-left: 1rem;
+    color: #999;
+    content: '目录';
+  }
 }
 
-.doc-icon-catalogue {
-  font-size: 30px;
-  cursor: pointer;
+.doc-catalogue {
+  //margin-top: .5rem;
+  .menu-title {
+    position: relative;
+    width: 230px;
+    padding-left: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:hover::after,
+    &.active::after {
+      position: absolute;
+      top: 25%;
+      bottom: 20%;
+      left: 0;
+      border-left: 1px solid #193c5a;
+      content: '';
+    }
+    &.active::after {
+      border-left: 2px solid #193c5a;
+    }
+  }
+}
+
+.doc-catalogue-panel {
+  margin-top: 50px;
+  margin-left: 20px;
 }
 
 // 内容目录大纲编号 start
 .doc-content {
-  font-weight: 500;
   counter-reset: outline1;
   h1, h2, h3, h4, h5, h6 {
     &::before {

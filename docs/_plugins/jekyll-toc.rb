@@ -13,44 +13,79 @@ module Jekyll
         @entries = parse_content
       end
 
-      # 生成目录
-      def build_toc
+      # 生成目录，不为内容添加锚点
+      def toc_catalogue
         toc = %Q{<div class="doc-catalogue-panel">\n}
-        toc << %Q{<div class="doc-catalogue-header"><a class="icon icon-catalogue doc-icon-catalogue" title="目录"></a></div>\n}
-        toc << generateToc(@entries[:children], TOC_PREFIX)
+        toc << generateTocCatalogue(false)
         toc << "</div>"
       end
 
-      # 加锚点后的内容
-      def inject_anchors_into_html
+      # 生成目录，并为内容添加锚点
+      def toc_catalogue_anchor
+        toc = %Q{<div class="doc-catalogue-panel">\n}
+        toc << generateTocCatalogue(true)
+        toc << "</div>"
+      end
+
+      # 加锚点后的内容，需要先调用 toc_catalogue_anchor，toc_catalogue_anchor 方法中遍历的时候已为内容加入了锚点
+      def toc_content
         @doc.inner_html
       end
 
+      # 手动为内容加锚点
+      def toc_content_anchor
+        addAnchorToContent(@entries[:children], TOC_PREFIX)
+        @doc.inner_html
+      end
+
+      # 目录和内容
       def toc
-        build_toc + inject_anchors_into_html
+        toc_catalogue_anchor + toc_content
       end
 
       private
 
-      # 循环遍历生成 html
-      def generateToc(nodes, prefix)
-        html = %Q{<ul class="menu menu-catalogue doc-catalogue">\n}
+      # 循环遍历生成目录html，
+      def generateTocCatalogueHtml(nodes, prefix, anchor, root)
+        header = root ? " doc-catalogue-header" : ""
+        html = %Q{<ul class="menu menu-catalogue doc-catalogue#{header}">\n}
         i = 0
         nodes.each do |node|
-           # 为栏目对应的内容加锚点
-           node[:content_node].add_previous_sibling(%Q{<a id="#{prefix}#{i + 1}" class="menu-anchor" data-target="#{prefix}#{i + 1}" aria-hidden="true"></a>})
+          if anchor
+            # 为栏目对应的内容加锚点
+            node[:content_node].add_previous_sibling(%Q{<a id="#{prefix}#{i + 1}" class="menu-anchor" data-target="#{prefix}#{i + 1}" aria-hidden="true"></a>})
+          end
 
-           html << %Q{  <li>\n}
-           html << %Q{    <a class="menu-title" href="#" data-menu="#{prefix}#{i + 1}">#{node[:text]}</a>\n}
-           if node[:children] && node[:children].length > 0
-             subHtml = generateToc(node[:children], "#{prefix}#{i + 1}-");
-             html << subHtml
-           end
-           html << %Q{  </li>\n}
-           i += 1
+          html << %Q{  <li>\n}
+          html << %Q{    <a class="menu-title" href="#" data-menu="#{prefix}#{i + 1}">#{node[:text]}</a>\n}
+          if node[:children] && node[:children].length > 0
+            subHtml = generateTocCatalogueHtml(node[:children], "#{prefix}#{i + 1}-", anchor, false);
+            html << subHtml
+          end
+          html << %Q{  </li>\n}
+          i += 1
         end
-        html << "</ul>"
+        html << %Q{</ul>\n}
         html
+      end
+
+      # 生成目录
+      def generateTocCatalogue(anchor)
+        generateTocCatalogueHtml(@entries[:children], TOC_PREFIX, anchor, true)
+      end
+
+      # 循环遍历为内容 h1到h6 加锚点
+      def addAnchorToContent(nodes, prefix)
+        i = 0
+        nodes.each do |node|
+          # 为栏目对应的内容加锚点
+          node[:content_node].add_previous_sibling(%Q{<a id="#{prefix}#{i + 1}" class="menu-anchor" data-target="#{prefix}#{i + 1}" aria-hidden="true"></a>})
+
+          if node[:children] && node[:children].length > 0
+            addAnchorToContent(node[:children], "#{prefix}#{i + 1}-");
+          end
+          i += 1
+        end
       end
 
       #  解析目录
@@ -164,7 +199,22 @@ end
 
 module Jekyll
   module TableOfContentsFilter
-    # 定义 方法解析目录结构，需要在页面中设置 toc
+
+    # toc 目录
+    def toc_catalogue(html)
+      return html unless page['toc']
+
+      ::Jekyll::TableOfContents::Parser.new(html).toc_catalogue
+    end
+
+    # toc 内容
+    def toc_content(html)
+      return html unless page['toc']
+
+      ::Jekyll::TableOfContents::Parser.new(html).toc_content_anchor
+    end
+
+    # toc 内容加目录，需要在页面中设置 toc
     def toc(html)
       return html unless page['toc']
 

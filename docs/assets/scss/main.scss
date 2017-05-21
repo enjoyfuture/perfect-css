@@ -8,6 +8,13 @@ html, body {
   min-height: 100%;
 }
 
+a {
+  color: #337ab7;
+  &:hover, &:active {
+    color: #337ab7;
+  }
+}
+
 .doc-main {
   padding-left: 20px;
   padding-right: 20px;

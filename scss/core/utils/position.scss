@@ -1,11 +1,19 @@
 // Positioning
 
 .pos-a {
-  position: absolute;
+  position: absolute !important;
 }
 
 .pos-r {
-  position: relative;
+  position: relative !important;
+}
+
+.pos-f {
+  position: fixed !important;
+}
+
+.pos-s {
+  position: static !important;
 }
 
 .fixed-top {
