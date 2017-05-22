@@ -32,3 +32,21 @@ gulp.task('serve', ['clean'], () => {
   gulp.start('jekyll');
 });
 
+
+// 使用 jekyll 编译生成 doc 文档
+gulp.task('build-doc', ['scss-docs', 'build-js', 'copy-clipboard-to-docs'], () => {
+  const {spawn} = childProcess;
+  const bundle = spawn('bundle', ['exec', 'jekyll', 'build']);
+
+  bundle.stdout.on('data', (data) => {
+    let _data = data.toString();
+    _data = _data.replace(/\n$/, '');
+    if (_data) {
+      console.log(chalk.magenta(_data));
+    }
+  });
+
+  bundle.stderr.on('data', (data) => {
+    console.log(chalk.red(data));
+  });
+});
