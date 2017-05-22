@@ -30,11 +30,12 @@ git subtree add --prefix=_gh_pages origin gh-pages --squash
 gulp build-doc
 git add -A _gh_pages
 git commit -m "Update docs"
+# git subtree pull --prefix=_gh_pages git@github.com:enjoyfuture/perfect.git gh-pages --squash
 git subtree push --prefix=_gh_pages origin gh-pages --squash
 git push
 ```
 
-# 
+# 绑定域名
 
 1. Ping enjoyfuture.github.io 拿到 enjoyfuture.github.io 对应的 ip
 2. 在注册域名服务商，添加 DNS 解析（已万网阿里云为例）
@@ -43,4 +44,4 @@ git push
   	  A	      @	          默认	        1中拿到的对应 ip，不需要设置端口 可以直接访问 perfect-css.com
 3. 绑定域名 perfect-css.com
    在 https://github.com/enjoyfuture/perfect/settings 中，找到 `Custom domain` 处，输入
-   perfect-css.com 点击 save 即可。该操作，相当于在 gh-pages 分支中新建 CNAME 文件，并添加 enjoyfuture.github.io
+   perfect-css.com 点击 save 即可。该操作，相当于在 gh-pages 分支中新建 CNAME 文件，并添加 perfect-css.com
