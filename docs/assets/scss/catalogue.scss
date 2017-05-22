@@ -49,6 +49,12 @@
   margin-left: 20px;
 }
 
+.doc-content-header {
+  > a {
+    margin: 0 .5rem;
+  }
+}
+
 // 内容目录大纲编号 start
 .doc-content {
   counter-reset: outline1;
