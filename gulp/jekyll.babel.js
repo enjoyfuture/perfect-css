@@ -36,7 +36,7 @@ gulp.task('serve', ['clean'], () => {
 // 使用 jekyll 编译生成 doc 文档
 gulp.task('build-doc', ['scss-docs', 'build-js', 'copy-clipboard-to-docs'], () => {
   const {exec} = childProcess;
-  exec('JEKYLL_ENV=production jekyll build --baseurl /perfect', (error, stdout, stderr) => {
+  exec('JEKYLL_ENV=production jekyll build', (error, stdout, stderr) => {
     if (error) {
       console.log(chalk.magenta(error));
       return;
