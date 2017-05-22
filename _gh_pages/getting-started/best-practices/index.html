@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="CSS3 Perfect">
+<meta name="description"
+      content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+<meta name="author" content="Linder Wang">
+
+<title>
+  
+  Perfect 之旅-最佳实践 &middot; Perfect
+  
+</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" href="/favicon.ico">
+
+<!-- Perfect CSS -->
+<link href="/assets/css/perfect.css" rel="stylesheet">
+<link href="/assets/css/docs.css" rel="stylesheet">
+
+</head>
+<body>
+
+<nav class="navbar navbar-doc navbar-toggleable-md fixed-top bd-navbar">
+  <div class="d-flex justify-content-between d-lg-none">
+    <a class="navbar-brand" href="/">
+      Perfect
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav"
+            aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+
+  <div class="collapse navbar-collapse" id="bd-main-nav">
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-item nav-link "
+        href="/">Perfect</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link active"
+           href="/getting-started/introduction/">文档</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+        href="/examples/">例子</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-24 col-lg-4 col-md-6 doc-menu">
+      
+
+<ul class="menu">
+  
+  
+  
+
+  
+  
+  <li>
+    <a href="/getting-started/introduction/" 
+       class="menu-title menu-header active">Perfect 之旅</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/getting-started/introduction/"
+             class="menu-title ">介绍</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/download/"
+             class="menu-title ">下载</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/best-practices/"
+             class="menu-title active">最佳实践</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/css-module/"
+             class="menu-title ">CSS 模块化支持</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/javascript/"
+             class="menu-title ">JavaScript 组件</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/theme/"
+             class="menu-title ">自定义主题</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/color-swatches/"
+             class="menu-title ">七色卡</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/compatibility/"
+             class="menu-title ">兼容性</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/build/"
+             class="menu-title ">开发构建</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/changelog/"
+             class="menu-title ">历史版本</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/issue/"
+             class="menu-title ">问题和建议</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/develop-guide/"
+             class="menu-title ">Perfect 开发指南</a></li>
+      
+      
+
+      
+      <li><a href="/getting-started/browser-bug/"
+             class="menu-title ">浏览器 bug</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+    <a href="/setup/global-styles/" 
+       class="menu-title menu-header ">Perfect 设置</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/setup/global-styles/"
+             class="menu-title ">全局样式</a></li>
+      
+      
+
+      
+      <li><a href="/setup/options/"
+             class="menu-title ">配置项</a></li>
+      
+      
+
+      
+      <li><a href="/setup/sass/"
+             class="menu-title ">Sass</a></li>
+      
+      
+
+      
+      <li><a href="/setup/javascript/"
+             class="menu-title ">JavaScript</a></li>
+      
+      
+
+      
+      <li><a href="/setup/flex/"
+             class="menu-title ">Flex</a></li>
+      
+      
+
+      
+      <li><a href="/setup/media-queries/"
+             class="menu-title ">媒体查询</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+    <a href="/layout/container/" 
+       class="menu-title menu-header ">布局</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/layout/container/"
+             class="menu-title ">容器</a></li>
+      
+      
+
+      
+      <li><a href="/layout/grid/"
+             class="menu-title ">Grid</a></li>
+      
+      
+
+      
+      <li><a href="/layout/responsive/"
+             class="menu-title ">响应式布局</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+    <a href="/base-styles/typography/" 
+       class="menu-title menu-header ">基础样式</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/base-styles/typography/"
+             class="menu-title ">排版</a></li>
+      
+      
+
+      
+      <li><a href="/base-styles/color/"
+             class="menu-title ">颜色</a></li>
+      
+      
+
+      
+      <li><a href="/base-styles/code/"
+             class="menu-title ">代码</a></li>
+      
+      
+
+      
+      <li><a href="/base-styles/table/"
+             class="menu-title ">表格</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+    <a href="/navigation/nav/" 
+       class="menu-title menu-header ">导航类样式</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/navigation/nav/"
+             class="menu-title ">导航</a></li>
+      
+      
+
+      
+      <li><a href="/navigation/navbar/"
+             class="menu-title ">导航栏</a></li>
+      
+      
+
+      
+      <li><a href="/navigation/menu/"
+             class="menu-title ">菜单</a></li>
+      
+      
+
+      
+      <li><a href="/navigation/pagination/"
+             class="menu-title ">分页</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+    <a href="/container/form/" 
+       class="menu-title menu-header ">容器类样式</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/container/form/"
+             class="menu-title ">Form 表单</a></li>
+      
+      
+
+      
+      <li><a href="/container/panel/"
+             class="menu-title ">Panel 组件</a></li>
+      
+      
+
+      
+      <li><a href="/container/tab/"
+             class="menu-title ">Tab Panel 组件</a></li>
+      
+      
+
+      
+      <li><a href="/container/card/"
+             class="menu-title ">Card 组件</a></li>
+      
+      
+
+      
+      <li><a href="/container/list/"
+             class="menu-title ">List Panel 组件</a></li>
+      
+      
+
+      
+      <li><a href="/container/dialog/"
+             class="menu-title ">对话框窗口</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+    <a href="/components/button/" 
+       class="menu-title menu-header ">组件类样式</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/components/button/"
+             class="menu-title ">Button 按钮</a></li>
+      
+      
+
+      
+      <li><a href="/components/input/"
+             class="menu-title ">Input 组件</a></li>
+      
+      
+
+      
+      <li><a href="/components/dropdown/"
+             class="menu-title ">DropDown 组件</a></li>
+      
+      
+
+      
+      <li><a href="/components/progress/"
+             class="menu-title ">Progress 组件</a></li>
+      
+      
+
+      
+      <li><a href="/components/alert/"
+             class="menu-title ">Alert 组件</a></li>
+      
+      
+
+      
+      <li><a href="/components/crumb/"
+             class="menu-title ">面包屑</a></li>
+      
+      
+
+      
+      <li><a href="/components/tooltip/"
+             class="menu-title ">Tooltip 组件</a></li>
+      
+      
+
+      
+      <li><a href="/components/popover/"
+             class="menu-title ">Popover 组件</a></li>
+      
+      
+
+      
+      <li><a href="/components/image/"
+             class="menu-title ">Image 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+    <a href="/utils/float/" 
+       class="menu-title menu-header ">工具类样式</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/utils/float/"
+             class="menu-title ">浮动</a></li>
+      
+      
+
+      
+      <li><a href="/utils/position/"
+             class="menu-title ">定位</a></li>
+      
+      
+
+      
+      <li><a href="/utils/color/"
+             class="menu-title ">颜色</a></li>
+      
+      
+
+      
+      <li><a href="/utils/flex/"
+             class="menu-title ">Flex</a></li>
+      
+      
+
+      
+      <li><a href="/utils/spacing/"
+             class="menu-title ">间距</a></li>
+      
+      
+
+      
+      <li><a href="/utils/border/"
+             class="menu-title ">边框</a></li>
+      
+      
+
+      
+      <li><a href="/utils/align/"
+             class="menu-title ">文本对齐</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+    <a href="/plugins/plugin1/" 
+       class="menu-title menu-header ">插件</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/plugins/plugin1/"
+             class="menu-title ">插件1</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+    <a 
+       class="menu-title menu-header ">辅助样式库</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="http://www.iconfont.cn/"
+             target="_blank"class="menu-title ">阿里图标库</a></li>
+      
+    </ul>
+  </li>
+  
+</ul>
+
+
+    </div>
+    <div class="col-24 col-lg-20 col-md-18 doc-main">
+      <h1>Perfect 之旅-最佳实践</h1>
+      <p>最佳实践</p>
+      <div class="doc-content-header">
+        <a href="https://github.com/enjoyfuture/perfect/edit/master/docs/getting-started/best-practices.md" target="_blank">编辑该页面</a>
+        <a href=https://github.com/enjoyfuture/perfect/issues/new?title=%E9%97%AE%E9%A2%98%E6%88%96%E5%BB%BA%E8%AE%AE" target="_blank">问题和建议</a>
+      </div>
+      <hr/>
+      <div class="row no-gutters">
+        <div class="doc-content col-24 col-lg-19 col-md-17">
+          <p>最佳实践</p>
+
+        </div>
+        <div class="col-24 col-lg-5 col-md-7">
+          <div class="doc-catalogue-panel">
+<ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
+</ul>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-assist"></div>
+<footer class="footer">
+  <div class="footer-links container-fluid">
+    <div class="links-item text-center">
+      <a href="https://github.com/enjoyfuture/perfect" target="_blank">GitHub 仓库</a>
+      <a href="#" target="_blank">Npm 仓库</a>
+      <a href="#" target="_blank">实例</a>
+      <a href="#" target="_blank">主题</a>
+      <a href="#" target="_blank">关于</a>
+    </div>
+  </div>
+
+  <div class="footer-copyright container-fluid text-center">
+    Copyright © 2017-2017 Powered by Perfect 团队
+  </div>
+</footer>
+
+<script src="/assets/js/vendor/jquery.min.js"></script>
+<script src="/assets/js/vendor/clipboard.min.js"></script>
+<script src="/assets/js/perfect.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/scrollSpy.js"></script>
+<script src="/assets/js/plugins/catalogueSpy.js"></script>
+
+<script>
+  $(function () {
+    var ScrollSpy = perfect.default.ScrollSpy;
+    var CatalogueSpy = perfect.default.CatalogueSpy;
+    new ScrollSpy(document.body, {
+      menu: '.doc-catalogue-panel',
+      container: '.doc-content',
+      offset: 50,
+      anchor: false,
+      extend: true,
+      plugins: CatalogueSpy,
+    });
+
+    // 窗口滑动到某一位置时，修改目录定位位置
+    $(window).on('scroll', function (event) {
+      var top = window.scrollY;
+      var clientHeight = document.documentElement.clientHeight;
+      var scrollHeight = document.documentElement.scrollHeight;
+      var contentTop = $('.doc-content').offset().top;
+
+      if (top > scrollHeight - clientHeight) {
+        $('.doc-catalogue-panel').css({
+          position: 'absolute',
+          top: top + 'px'
+        });
+      } else if (top + 52 > contentTop) {
+        $('.doc-catalogue-panel').css({
+          position: 'fixed',
+          top: '50px'
+        });
+      } else {
+        $('.doc-catalogue-panel').css({
+          position: 'static',
+        });
+      }
+    });
+
+    $(window).trigger('scroll');
+
+    // 为代码添加复制按钮
+    $('.highlight').each(function () {
+      var btnHtml = '<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>'
+      $(this).before(btnHtml);
+    });
+
+    // 复制到剪贴板
+    var clipboard = new Clipboard('.doc-copy-btn', {
+      target: function (trigger) {
+        return trigger.parentNode.nextElementSibling
+      }
+    });
+
+    clipboard.on('success', function (e) {
+      //$(e.trigger)
+      //  .attr('title', 'Copied!')
+      e.clearSelection()
+    });
+
+    clipboard.on('error', function (e) {
+      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
+      var fallbackMsg = 'Press ' + modifierKey + 'C to copy';
+
+      //$(e.trigger)
+      //.attr('title', fallbackMsg)
+      //.tooltip('_fixTitle')
+      //.tooltip('show')
+      //.attr('title', 'Copy to clipboard')
+      //.tooltip('_fixTitle')
+    });
+  });
+
+</script>
+
+</body>
+</html>
