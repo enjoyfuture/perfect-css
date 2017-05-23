@@ -10,11 +10,9 @@
 ```
 git checkout -b gh-pages //创建并切换到分支 gh-pages
 rm -rf *  //隐藏文件需要单独删除，结合命令 ls -a
-git add -A
-git commit -m "clear gh-page"
-vim .gitignore
-git add .gitignore //输入要忽略的文件
-git commit -m ".gitignore"
+vim .gitignore //输入要忽略的文件
+git add -A 
+git commit -m "init branch gh-pages"
 git push --set-upstream origin gh-pages
 git checkout master
 ```
