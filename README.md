@@ -33,7 +33,7 @@ http://localhost:9090/
 
 ## Perfect official website
 
-http://enjoyfuture.github.io/perfect/
+http://perfect-css.com
 
 
 ## Build
