@@ -1,0 +1,55 @@
+// 用来展现代码的样式，块级元素和行内元素
+code,
+kbd,
+pre,
+samp {
+  font-family: $font-family-monospace;
+}
+
+// 行内元素
+code {
+  padding: $code-padding-y $code-padding-x;
+  font-size: $code-font-size;
+  color: $code-color;
+  background-color: $code-bg;
+  @include border-radius($border-radius);
+}
+
+// 键盘样式
+kbd {
+  padding: $code-padding-y $code-padding-x;
+  font-size: $code-font-size;
+  color: $kbd-color;
+  background-color: $kbd-bg;
+  @include border-radius($border-radius-sm);
+  @include box-shadow($kbd-box-shadow);
+
+  kbd {
+    padding: 0;
+    font-size: 100%;
+    font-weight: $nested-kbd-font-weight;
+    @include box-shadow(none);
+  }
+}
+
+pre {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: $code-font-size;
+  color: $pre-color;
+
+  code {
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+  }
+}
+
+// 可以滚动的样式代码块
+.pre-scroll {
+  max-height: $pre-scroll-height;
+  overflow-y: scroll;
+}

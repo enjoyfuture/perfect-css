@@ -23,9 +23,7 @@ gulp.task('babel-concat', () => {
 gulp.task('babel-compress', ['babel-concat'], () => {
   return gulp.src('dist/js/perfect.js')
     .pipe($.sourcemaps.init())
-    .pipe($.uglify({
-      preserveComments: 'license'
-    }))
+    .pipe($.uglify({}))
     .pipe($.concat('perfect.min.js'))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('dist/js'));

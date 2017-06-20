@@ -116,7 +116,8 @@
 
     CatalogueSpy.defaultConfig = {
       menuHeight: null, // 设置菜单高度，如果不设置，则取当前浏览器可视高度
-      step: 10 };
+      step: 10 // 滚动鼠标，菜单滑动步长
+    };
 
     var _initialiseProps = function _initialiseProps() {
       var _this = this;

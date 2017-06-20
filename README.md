@@ -18,11 +18,21 @@ npm install
 gulp jekyll
 ```
 
-Note: If you exec the command the first, You should exec the following command to install jekyll and dependency package.
+Note: If you exec the command the first, You should exec the following command
+
+1. Make sure you have installed the ruby. And we use the brew to manage ruby.
+  ```
+    brew update 
+    brew upgrade
+    gem update
+  ```
+2.  Install jekyll and dependency package.
 
 ```
 gem install jekyll bundler
 bundle install
+# or
+bundle update
 ```
 
 You can refer to more information to http://jekyllrb.com/

@@ -26,6 +26,6 @@ group :development, :test do
   gem 'jekyll', '~> 3.5.0'
   gem 'jekyll-redirect-from', '~> 0.12.1'
   gem 'jekyll-sitemap', '~> 1.1.1'
-  gem 'scss_lint', '~> 0.53.0'
+  gem 'scss_lint', '~> 0.54.0'
   gem 'nokogiri', '~> 1.8.0'
 end

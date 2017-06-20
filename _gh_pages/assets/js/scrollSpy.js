@@ -544,7 +544,8 @@
       prefix: 'menu-', // 导航目录前缀
       anchor: true, // 是否用锚点来控制，默认用锚点处理
       animation: true, // 是否开启动画
-      extend: false };
+      extend: false // 默认菜单没有展开
+    };
 
 
     perfect.ScrollSpy = ScrollSpy;

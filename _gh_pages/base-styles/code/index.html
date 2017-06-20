@@ -485,6 +485,31 @@
   
   
   <li>
+    <a href="/tag-property/tag/" 
+       class="menu-title menu-header ">Html 标签和样式属性</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/tag-property/tag/"
+             class="menu-title ">Html 标签</a></li>
+      
+      
+
+      
+      <li><a href="/tag-property/property/"
+             class="menu-title ">样式属性</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
     <a href="/plugins/plugin1/" 
        class="menu-title menu-header ">插件</a>
     <ul class="menu">
@@ -523,20 +548,319 @@
     </div>
     <div class="col-24 col-lg-20 col-md-18 doc-main">
       <h1>基础样式-代码</h1>
-      <p>代码</p>
+      <p>通过定制代码样式来友好的展现编程代码，让用户清晰的查看代码，结合高亮代码插件， 呈现给用户的是可读性强、易于使用的代码格式。</p>
       <div class="doc-content-header">
-        <a href="https://github.com/enjoyfuture/perfect/edit/master/docs/base-styles/code.md" target="_blank">编辑该页面</a>
+        <a href="https://github.com/perfect-ui/perfect/edit/master/docs/base-styles/code.md" target="_blank">编辑该页面</a>
         <a href=https://github.com/enjoyfuture/perfect/issues/new?title=%E9%97%AE%E9%A2%98%E6%88%96%E5%BB%BA%E8%AE%AE" target="_blank">问题和建议</a>
       </div>
       <hr/>
       <div class="row no-gutters">
         <div class="doc-content col-24 col-lg-19 col-md-17">
-          <p>代码</p>
+          <p>代码样式对应源文件：<a href="https://github.com/perfect-ui/perfect/scss/core/base-styles/code.scss" target="_blank">/scss/core/base-styles/code.scss</a></p>
+
+<p>CSS 中用来处理代码的 html 标签主要有 <code class="highlighter-rouge">code</code>  <code class="highlighter-rouge">pre</code> <code class="highlighter-rouge">var</code> <code class="highlighter-rouge">kbd</code> <code class="highlighter-rouge">samp</code></p>
+
+<h2>
+<a id="toc-1" class="menu-anchor" data-target="toc-1" aria-hidden="true"></a>代码块级元素 <code class="highlighter-rouge">pre</code>
+</h2>
+
+<p>我们使用 <code class="highlighter-rouge">pre</code> 来显示多行代码，需要注意的是，代码中的尖括号需要做转义处理，pre 中的内容
+如果没有换行符，默认是不换行处理的，相当于设置了 <code class="highlighter-rouge">white-space:pre</code>，我们可以通过属性 <code class="highlighter-rouge">white-space</code> 来改变换行行为。
+随着 pre 中的内容增加，pre 的高度会越来越高，可以通过添加样式 <code class="highlighter-rouge">.pre-scroll</code> 设置垂直方向滚动条。
+该滚动条高度设置为 <code class="highlighter-rouge">300px</code>。例子中添加了样式 <code class="highlighter-rouge">.pre-scroll</code>，会出现垂直滚动条，我们如果去掉该样式后，垂直滚动条
+会消失。</p>
+
+<div class="doc-example" data-example-id="">
+<pre class="pre-scroll" id="preScroll">
+  <code>&lt;p&gt;代码第一行内容&lt;/p&gt;
+  &lt;p&gt;代码第二行内容&lt;/p&gt;
+  &lt;p&gt;代码第三行内容&lt;/p&gt;
+  </code>
+  <code>
+  function getStyles(element, property, extra) {
+    const styles = element.ownerDocument.defaultView.getComputedStyle(element, null);
+    if (property) {
+      const cssValue = styles.getPropertyValue(property) || styles[property];
+      if (extra) {
+        const num = parseFloat(cssValue);
+        return extra === true || isFinite(num) ? num || 0 : cssValue;
+      }
+      return cssValue;
+    }
+    return styles;
+  }
+  </code>
+</pre>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">"pre-scroll"</span> <span class="na">id=</span><span class="s">"preScroll"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>代码第一行内容<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
+  <span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>代码第二行内容<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
+  <span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>代码第三行内容<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
+  <span class="nt">&lt;/code&gt;</span>
+  <span class="nt">&lt;code&gt;</span>
+  function getStyles(element, property, extra) {
+    const styles = element.ownerDocument.defaultView.getComputedStyle(element, null);
+    if (property) {
+      const cssValue = styles.getPropertyValue(property) || styles[property];
+      if (extra) {
+        const num = parseFloat(cssValue);
+        return extra === true || isFinite(num) ? num || 0 : cssValue;
+      }
+      return cssValue;
+    }
+    return styles;
+  }
+  <span class="nt">&lt;/code&gt;</span>
+<span class="nt">&lt;/pre&gt;</span></code></pre></div>
+
+<h2>
+<a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>代码行内元素 <code class="highlighter-rouge">code</code>
+</h2>
+
+<p>用来处理行内元素，可以使用 <code class="highlighter-rouge">code</code> ，注意代码中的内容尖括号需要转义处理</p>
+
+<div class="doc-example" data-example-id="">
+html <code>&lt;span&gt;</code> 是一个行内元素，这里 &lt;span&gt; 用 code 包裹后显示效果为 <code>&lt;span&gt;</code>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html">html <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> 是一个行内元素，这里 <span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span> 用 code 包裹后显示效果为 <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span></code></pre></div>
+
+<h2>
+<a id="toc-3" class="menu-anchor" data-target="toc-3" aria-hidden="true"></a>键盘字母元素 <code class="highlighter-rouge">kbd</code>
+</h2>
+
+<p>可以用 <code class="highlighter-rouge">kbd</code> 元素来包裹指令、快捷键等。</p>
+
+<div class="doc-example" data-example-id="">
+在 Mac 终端中，我们可以用 <kbd>ls -a</kbd> 来查看当前目录下所有文件和文件夹（包括隐藏的文件）。<br>
+我们按下快捷键 <kbd>command + c</kbd> 复制选中的内容。<br>
+kbd 也可以嵌套使用，嵌套中的内层，字体会加粗显示。例如：<kbd><kbd>command</kbd> + <kbd>a</kbd></kbd>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html">在 Mac 终端中，我们可以用 <span class="nt">&lt;kbd&gt;</span>ls -a<span class="nt">&lt;/kbd&gt;</span> 来查看当前目录下所有文件和文件夹（包括隐藏的文件）。<span class="nt">&lt;br/&gt;</span>
+我们按下快捷键 <span class="nt">&lt;kbd&gt;</span>command + c<span class="nt">&lt;/kbd&gt;</span> 复制选中的内容。<span class="nt">&lt;br/&gt;</span>
+kbd 也可以嵌套使用，嵌套中的内层，字体会加粗显示。例如：<span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>command<span class="nt">&lt;/kbd&gt;</span> + <span class="nt">&lt;kbd&gt;</span>a<span class="nt">&lt;/kbd&gt;&lt;/kbd&gt;</span></code></pre></div>
+
+<h2>
+<a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>输出元素 <code class="highlighter-rouge">samp</code>
+</h2>
+
+<p><code class="highlighter-rouge">samp</code> 是 Sample（示例）的缩写。各种程序的代码示例可以用 <code class="highlighter-rouge">samp</code> 括起来。比如一段输出错误信息等。</p>
+
+<p><code class="highlighter-rouge">samp</code> 元素也可以表示一段用户应该对其没有什么其他解释的文本字符，要从正常的上下文抽取这些字符时，通常要用到这个标签。</p>
+
+<p>更多信息查看这里 <a href="http://html.com/tags/samp/">http://html.com/tags/samp/</a></p>
+
+<div class="doc-example" data-example-id="">
+<samp>计算机示例程序输出，这里发生了一个非常严重的错误：连接数据库出错</samp> <br>
+字符组合 <samp>ae</samp> 被转义后，可以变成 æ 连字字符。
+在 HTML 中，用于 <code>ae</code> 连字的转义写法是 <code>æ</code>，浏览器会将它转换成相应的 <code>æ</code> 连字字符来显示。
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;samp&gt;</span>计算机示例程序输出，这里发生了一个非常严重的错误：连接数据库出错<span class="nt">&lt;/samp&gt;</span> <span class="nt">&lt;br/&gt;</span>
+字符组合 <span class="nt">&lt;samp&gt;</span>ae<span class="nt">&lt;/samp&gt;</span> 被转义后，可以变成 <span class="ni">&amp;aelig;</span> 连字字符。
+在 HTML 中，用于 <span class="nt">&lt;code&gt;</span>ae<span class="nt">&lt;/code&gt;</span> 连字的转义写法是 <span class="nt">&lt;code&gt;</span><span class="ni">&amp;aelig;</span><span class="nt">&lt;/code&gt;</span>，浏览器会将它转换成相应的 <span class="nt">&lt;code&gt;</span>æ<span class="nt">&lt;/code&gt;</span> 连字字符来显示。</code></pre></div>
+
+<h2>
+<a id="toc-5" class="menu-anchor" data-target="toc-5" aria-hidden="true"></a>变量 <code class="highlighter-rouge">var</code>
+</h2>
+
+<p>在程序代码中，可以用 var 来包裹变量</p>
+
+<div class="doc-example" data-example-id="">
+let <var>sum</var> = <var>num1</var> + <var>num2</var> * 3;
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html">let <span class="nt">&lt;var&gt;</span>sum<span class="nt">&lt;/var&gt;</span> = <span class="nt">&lt;var&gt;</span>num1<span class="nt">&lt;/var&gt;</span> + <span class="nt">&lt;var&gt;</span>num2<span class="nt">&lt;/var&gt;</span> * 3;</code></pre></div>
+
+<p>.wrap {
+      width: 200px;
+      height: 80px;
+      margin: 0 auto;
+    }</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>.loading {
+  position: relative;
+  text-align: right;
+  height: 20px;
+  width: 185px;
+  font-family: arial;
+  color: #4CBEFF;
+  text-shadow: rgba(255, 255, 255, 0.4) 0 0 35px, rgba(76, 190, 255, 0.95) 0 0 25px;
+}
+
+.loading span {
+  display: block;
+  text-transform: uppercase;
+  position: absolute;
+  right: 30px;
+  height: 20px;
+  width: 200px;
+  line-height: 20px;
+}
+
+.loading span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  right: -21px;
+  height: 20px;
+  width: 16px;
+  background: #4CBEFF;
+  box-shadow: 0 0 15px #bce4ff;
+  animation: blink 5s infinite;
+}
+
+.loading span.title {
+  animation: title 12s linear infinite;
+}
+
+.loading span.text {
+  animation: title 12s linear 5s infinite;
+  opacity: 0;
+}
+
+@keyframes title {
+  0% {
+    opacity: 0;
+    right: 130px;
+  }
+  48% {
+    opacity: 0;
+    right: 130px;
+  }
+  52% {
+    opacity: 1;
+    right: 30px;
+  }
+  70% {
+    opacity: 1;
+    right: 30px;
+  }
+  100% {
+    opacity: 0;
+    right: 30px;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bg {
+  0% {
+    background-color: #306f99;
+  }
+  50% {
+    background-color: #19470f;
+  }
+  90% {
+    background-color: #734a10;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+    right: -21px;
+  }
+  45% {
+    opacity: 1;
+    right: 80px;
+  }
+  50% {
+    opacity: 0;
+    right: -21px;
+  }
+  51% {
+    right: -21px;
+  }
+  55% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  85% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+    right: -21px;
+  }
+  95% {
+    opacity: 1;
+    right: 80px;
+  }
+  96% {
+    right: -21px;
+  }
+  100% {
+    opacity: 0;
+    right: -21px;
+  }
+}
+</code></pre>
+</div>
 
         </div>
         <div class="col-24 col-lg-5 col-md-7">
           <div class="doc-catalogue-panel">
 <ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
+  <li>
+    <a class="menu-title" href="#" data-menu="toc-1">代码块级元素 pre</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" data-menu="toc-2">代码行内元素 code</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" data-menu="toc-3">键盘字母元素 kbd</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" data-menu="toc-4">输出元素 samp</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" data-menu="toc-5">变量 var</a>
+  </li>
 </ul>
 </div>
         </div>

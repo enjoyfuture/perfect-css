@@ -1,7 +1,7 @@
 /*!
  * Perfect
  * Copyright 2016-2016 The Perfect Authors
- * Licensed under MIT (https://github.com/enjoyfuture/perfect/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/perfect-ui/perfect/blob/master/LICENSE)
  */
 
 // 变量和函数
@@ -11,6 +11,9 @@
 // normalize 和 reset
 @import "core/normalize";
 @import "core/reset";
+
+// 基础样式
+@import "core/base-styles";
 
 // Component
 @import "core/components/alert";

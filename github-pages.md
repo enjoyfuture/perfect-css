@@ -11,7 +11,7 @@
 git checkout -b gh-pages //创建并切换到分支 gh-pages
 rm -rf *  //隐藏文件需要单独删除，结合命令 ls -a
 vim .gitignore //输入要忽略的文件
-git add -A 
+git add .
 git commit -m "init branch gh-pages"
 git push --set-upstream origin gh-pages
 git checkout master
@@ -26,7 +26,7 @@ git subtree add --prefix=_gh_pages origin gh-pages --squash
 3. 生成 docs
 ```
 gulp build-doc
-git add -A _gh_pages
+git add _gh_pages
 git commit -m "Update docs"
 # git subtree pull --prefix=_gh_pages git@github.com:enjoyfuture/perfect.git gh-pages --squash
 git subtree push --prefix=_gh_pages origin gh-pages --squash

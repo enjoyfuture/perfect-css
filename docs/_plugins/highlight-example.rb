@@ -80,7 +80,7 @@ eos
 
       def remove_example_classes(code)
         # 删除代码中包含 'doc-' 开头的样式
-        code = code.gsub(/(?!class=".)\ *?bd-.+?(?=")/, "")
+        code = code.gsub(/(?!class=".)\ *?doc-.+?(?=")/, "")
         # 删除空的 class
         code = code.gsub(/\ class=""/, "")
       end

@@ -16,14 +16,14 @@ destination:      _gh_pages
 host:             0.0.0.0
 port:             9090
 baseurl:          ""
-url:              http://perfect.com
+url:              http://perfect-css.com
 encoding:         UTF-8
 exclude:          [assets/scss/]
 
 # gems 插件
 # https://github.com/jekyll/jekyll-redirect-from
 # https://github.com/jekyll/jekyll-sitemap
-gems:
+plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
 
@@ -34,9 +34,9 @@ authors: Linder Wang, and Perfect contributors
 
 # Custom vars 自定义变量
 current_version:  0.1.0
-repo:             https://github.com/enjoyfuture/perfect
+repo:             https://github.com/perfect-ui/perfect
 
 download:
-  source:         https://github.com/enjoyfuture/perfect/archive/master.zip
-  dist:           https://github.com/enjoyfuture/perfect/archive/master.zip #待上传
+  source:         https://github.com/perfect-ui/perfect/archive/master.zip
+  dist:           https://github.com/perfect-ui/perfect/archive/master.zip #待上传
 

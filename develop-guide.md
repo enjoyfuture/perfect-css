@@ -10,6 +10,33 @@
 * [热部署，热加载](https://browsersync.io)
 * [Sass 单元测试](http://oddbird.net/true/)
 * [clipboard 复制到剪贴板插件](https://clipboardjs.com/)
+* [2016年 CSS 库、框架和工具新生榜 TOP 50](https://my.oschina.net/u/2903254/blog/809874)
+* [2016年 CSS 库、框架和工具新生榜 TOP 50-备份链接](https://zhuanlan.zhihu.com/p/24524155)
+* [css hover](http://ianlunn.github.io/Hover/)
+* [一款非常小巧的提示框组件](http://kazzkiq.github.io/balloon.css/)
+* [媒体查询 css](http://elementqueries.com/)
+* [Basscss](http://basscss.com/)
+* [PostCSS 插件](http://postcss.parts/)
+* [轻量级 3D CSS](http://www.voxelcss.com/)
+* [text-spinners](http://tawian.io/text-spinners/)
+* [imagehover](http://imagehover.io/)
+* [CSS 渐变样式](http://evankarageorgos.github.io/hue/)
+* [用 CSS filter 和 blend mode 来模拟 Instagram 风格的滤镜](https://una.im/CSSgram/)
+* [CSS Purge](http://www.csspurge.com/)
+* [styleguide](http://styleguide.devbproto.com/styleguide/)
+* [基于 flex 布局的网格系统](http://flexboxgrid.com/)
+* [纯 CSS3 效果资源收集整理](https://github.com/Zhangjd/awesome-pure-css-no-javascript)
+
+## 参考 css 框架
+
+* [Bootstrap](https://v4-alpha.getbootstrap.com/)
+* [semantic](https://semantic-ui.com/)
+* [foundation](http://foundation.zurb.com/)
+* [Material Design](https://material.io/)
+* [animate.css](https://daneden.github.io/animate.css/)
+* [muse-ui](http://www.muse-ui.org/)
+* [purecss](https://purecss.io/)
+
 
 ## 开发说明
 

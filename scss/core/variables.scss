@@ -5,7 +5,7 @@
 // 加上 default 表示可以重新定义该值，即覆盖，加上 global 表示是全局变量，该变量不论放在那里，都可以直接使用
 // 如果不加 global，必须先定义变量值，才能使用
 
-//通用变量
+// 通用变量
 @import "variables/options";
 @import "variables/colors";
 @import "variables/spacing";
@@ -14,10 +14,11 @@
 @import "variables/state";
 @import "variables/breakpoints";
 
-//组件样式变量
+// 组件样式变量
 @import "variables/alert";
 @import "variables/badge";
 @import "variables/buttons";
+@import "variables/code";
 @import "variables/cursor";
 @import "variables/crumbs";
 @import "variables/dropdown";
