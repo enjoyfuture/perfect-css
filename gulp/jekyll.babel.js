@@ -6,7 +6,7 @@ import childProcess from 'child_process';
 const $ = gulpLoadPlugins();
 
 // exec jekyll serve
-gulp.task('jekyll', ['scss-docs', 'build-js', 'copy-clipboard-to-docs'], () => {
+gulp.task('jekyll', ['scss-docs', 'build-js', 'copy-clipboard-to-docs', 'draft-data'], () => {
   const {spawn} = childProcess;
   const bundle = spawn('bundle', ['exec', 'jekyll', 'serve']);
 
@@ -25,6 +25,7 @@ gulp.task('jekyll', ['scss-docs', 'build-js', 'copy-clipboard-to-docs'], () => {
   // 监听
   gulp.watch(['scss/**/*.scss', 'docs/assets/scss/**/*.scss'], ['scss-docs']);
   gulp.watch(['js/src/**/*.js'], ['build-js']);
+  gulp.watch(['docs/draft/**'], ['draft-data']);
 });
 
 // 开启 docs 服务
@@ -34,7 +35,7 @@ gulp.task('serve', ['clean'], () => {
 
 
 // 使用 jekyll 编译生成 doc 文档
-gulp.task('build-doc', ['scss-docs', 'build-js', 'copy-clipboard-to-docs'], () => {
+gulp.task('build-doc', ['scss-docs', 'build-js', 'copy-clipboard-to-docs', 'draft-data'], () => {
   const {exec} = childProcess;
   exec('JEKYLL_ENV=production jekyll build', (error, stdout, stderr) => {
     if (error) {

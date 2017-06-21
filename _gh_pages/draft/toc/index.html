@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="CSS3 Perfect">
+<meta name="description"
+      content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+<meta name="author" content="Linder Wang">
+
+<title>
+  
+  toc - table of content &middot; Perfect
+  
+</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" href="/favicon.ico">
+
+<!-- Perfect CSS -->
+<link href="/assets/css/perfect.css" rel="stylesheet">
+<link href="/assets/css/docs.css" rel="stylesheet">
+
+</head>
+<body>
+
+<nav class="navbar navbar-doc navbar-toggleable-md fixed-top bd-navbar">
+  <div class="d-flex justify-content-between d-lg-none">
+    <a class="navbar-brand" href="/">
+      Perfect
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav"
+            aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+
+  <div class="collapse navbar-collapse" id="bd-main-nav">
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-item nav-link "
+        href="/">Perfect</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+           href="/docs/getting-started/introduction/">文档</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+        href="/examples/">例子</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+           href="/guide/css">规范</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link active"
+           href="/draft/">草稿</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-24 col-lg-4 col-md-6 doc-menu">
+      
+
+
+<ul class="menu">
+  
+  
+  
+
+  
+  
+  <li>
+
+    
+    <a href="/draft/index/" 
+       class="menu-title menu-header ">草稿文件</a>
+    
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+
+    
+    <a href="/draft/layout/layout/" 
+       class="menu-title menu-header ">布局</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/draft/layout/layout/"
+             class="menu-title ">页面布局 demo</a></li>
+      
+    </ul>
+
+    
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+
+    
+    <a href="/draft/toc/" 
+       class="menu-title menu-header ">table of content</a>
+    
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+
+    
+    <a href="/draft/tone/tone/" 
+       class="menu-title menu-header ">色调</a>
+    <ul class="menu">
+      
+      
+
+      
+      <li><a href="/draft/tone/tone/"
+             class="menu-title ">色调1</a></li>
+      
+      
+
+      
+      <li><a href="/draft/tone/tone2/"
+             class="menu-title ">色调2</a></li>
+      
+    </ul>
+
+    
+  </li>
+  
+</ul>
+
+
+    </div>
+    <div class="col-24 col-lg-20 col-md-18 doc-main">
+      <h1>toc - table of content</h1>
+      <p>toc</p>
+      <hr/>
+
+      <h3>table of content 算法思想</h3>
+<p>根据 h1 到 h6 来动态生成目录结构，此算法比较复杂，也比较优雅，利用树结构来实现</p>
+<p>实现过程比较简单，但构思巧妙，首先初始化根节点树，然后遍历每一个节点，如果级别一样，则说明是相同的父节点</p>
+<p>如果当前级别小于前一个，则作为前一个的儿子，如果当前级别大于前一个，则向上查找共同的祖先节点，</p>
+<p>遍历过程中以当前节点为基准，用到了引用和父子间的关系</p>
+<p>
+  比如页面中给出 ['h2', 'h2', 'h3', 'h4', 'h1', 'h1', 'h1', 'h2', 'h3', 'h2', 'h4', 'h2', 'h5', 'h3', 'h3', 'h4', 'h6', 'h2', 'h1'];
+</p>
+<p>则显示的结果为</p>
+
+<div id="toc"></div>
+
+<script>
+  // 根据 h1 到 h6 来动态生成目录结构，此算法比较复杂，也比较优雅，利用树结构来实现
+  // 实现过程比较简单，但构思巧妙，首先初始化根节点树，然后遍历每一个节点，如果级别一样，则说明是相同的父节点
+  // 如果当前级别小于前一个，则作为前一个的儿子，如果当前级别大于前一个，则向上查找共同的祖先节点，
+  // 遍历过程中以当前节点为基准，用到了引用和父子间的关系
+  const arr = ['h2', 'h2', 'h3', 'h4', 'h1', 'h1', 'h1', 'h2', 'h3', 'h2', 'h4', 'h2', 'h5', 'h3', 'h3', 'h4', 'h6', 'h2', 'h1'];
+
+  //初始化根节点
+  const tocs = {
+    level: 0,
+    children: [],
+    depth: 0,
+    parent: null,
+    text: null,
+    root: true
+  };
+
+  let currentToc = null;
+  arr.forEach(function (item, index) {
+    let toc = null;
+    if (index === 0) {
+      // 初始化第一个元素
+      toc = {
+        level: 7 - parseInt(arr[index][1]),
+        children: [],
+        depth: 1,
+        parent: tocs,
+        text: arr[index]
+      };
+      tocs.children.push(toc);
+    } else {
+      const currentLevel = 7 - parseInt(arr[index][1]);
+      const prevLevel = 7 - parseInt(arr[index - 1][1]);
+      if (currentLevel === prevLevel) { // 相等的话
+        toc = {
+          level: currentLevel,
+          children: [],
+          depth: currentToc.depth,
+          parent: currentToc.parent,
+          text: arr[index]
+        };
+        currentToc.parent.children.push(toc);
+      } else if (currentLevel < prevLevel) {// 如果当前级别小于前一个
+        toc = {
+          level: currentLevel,
+          children: [],
+          depth: currentToc.depth + 1,
+          parent: currentToc,
+          text: arr[index]
+        };
+        currentToc.children.push(toc);
+      } else { //如果当前级别大于前一个 查找祖先节点
+        let ancestor = currentToc.parent;
+        while (ancestor.level <= currentLevel && !ancestor.root) {
+          ancestor = ancestor.parent;
+        }
+        toc = {
+          level: currentLevel,
+          children: [],
+          depth: ancestor.depth + 1,
+          parent: ancestor,
+          text: arr[index]
+        };
+        ancestor.children.push(toc);
+      }
+    }
+    currentToc = toc;
+  });
+
+  function generateToc(nodes, prefix) {
+    var html = '';
+    if (nodes && nodes.length > 0) {
+      html = '<ul class="menu menu-catalogue">\n';
+      for (var i = 0, len = nodes.length; i < len; i++) {
+        var node = nodes[i];
+        html += '  <li>\n';
+        html += '    <a class="menu-title menu-header" href="#' + prefix + (i + 1) + '">' + node.text + '</a>\n';
+        if (node.children && node.children.length > 0) {
+          html += generateToc(node.children, prefix + (i + 1) + '-');
+        }
+
+        html += '  </li>\n';
+      }
+      html += '</ul>';
+    }
+    return html;
+  }
+
+  const tocPrefix = 'toc-';
+  const html = generateToc(tocs.children, tocPrefix);
+
+  document.getElementById('toc').innerHTML = html;
+
+
+</script>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="footer-assist"></div>
+<footer class="footer">
+  <div class="footer-links container-fluid">
+    <div class="links-item text-center">
+      <a href="https://github.com/enjoyfuture/perfect" target="_blank">GitHub 仓库</a>
+      <a href="#" target="_blank">Npm 仓库</a>
+      <a href="#" target="_blank">实例</a>
+      <a href="#" target="_blank">主题</a>
+      <a href="#" target="_blank">关于</a>
+    </div>
+  </div>
+
+  <div class="footer-copyright container-fluid text-center">
+    Copyright © 2016-2017 Powered by Perfect 团队
+  </div>
+</footer>
+
+</body>
+</html>

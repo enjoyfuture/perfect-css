@@ -1,0 +1,113 @@
+---
+layout: draft
+title: toc - table of content
+description: toc
+---
+
+<h3>table of content 算法思想</h3>
+<p>根据 h1 到 h6 来动态生成目录结构，此算法比较复杂，也比较优雅，利用树结构来实现</p>
+<p>实现过程比较简单，但构思巧妙，首先初始化根节点树，然后遍历每一个节点，如果级别一样，则说明是相同的父节点</p>
+<p>如果当前级别小于前一个，则作为前一个的儿子，如果当前级别大于前一个，则向上查找共同的祖先节点，</p>
+<p>遍历过程中以当前节点为基准，用到了引用和父子间的关系</p>
+<p>
+  比如页面中给出 ['h2', 'h2', 'h3', 'h4', 'h1', 'h1', 'h1', 'h2', 'h3', 'h2', 'h4', 'h2', 'h5', 'h3', 'h3', 'h4', 'h6', 'h2', 'h1'];
+</p>
+<p>则显示的结果为</p>
+
+<div id="toc"></div>
+
+<script>
+  // 根据 h1 到 h6 来动态生成目录结构，此算法比较复杂，也比较优雅，利用树结构来实现
+  // 实现过程比较简单，但构思巧妙，首先初始化根节点树，然后遍历每一个节点，如果级别一样，则说明是相同的父节点
+  // 如果当前级别小于前一个，则作为前一个的儿子，如果当前级别大于前一个，则向上查找共同的祖先节点，
+  // 遍历过程中以当前节点为基准，用到了引用和父子间的关系
+  const arr = ['h2', 'h2', 'h3', 'h4', 'h1', 'h1', 'h1', 'h2', 'h3', 'h2', 'h4', 'h2', 'h5', 'h3', 'h3', 'h4', 'h6', 'h2', 'h1'];
+
+  //初始化根节点
+  const tocs = {
+    level: 0,
+    children: [],
+    depth: 0,
+    parent: null,
+    text: null,
+    root: true
+  };
+
+  let currentToc = null;
+  arr.forEach(function (item, index) {
+    let toc = null;
+    if (index === 0) {
+      // 初始化第一个元素
+      toc = {
+        level: 7 - parseInt(arr[index][1]),
+        children: [],
+        depth: 1,
+        parent: tocs,
+        text: arr[index]
+      };
+      tocs.children.push(toc);
+    } else {
+      const currentLevel = 7 - parseInt(arr[index][1]);
+      const prevLevel = 7 - parseInt(arr[index - 1][1]);
+      if (currentLevel === prevLevel) { // 相等的话
+        toc = {
+          level: currentLevel,
+          children: [],
+          depth: currentToc.depth,
+          parent: currentToc.parent,
+          text: arr[index]
+        };
+        currentToc.parent.children.push(toc);
+      } else if (currentLevel < prevLevel) {// 如果当前级别小于前一个
+        toc = {
+          level: currentLevel,
+          children: [],
+          depth: currentToc.depth + 1,
+          parent: currentToc,
+          text: arr[index]
+        };
+        currentToc.children.push(toc);
+      } else { //如果当前级别大于前一个 查找祖先节点
+        let ancestor = currentToc.parent;
+        while (ancestor.level <= currentLevel && !ancestor.root) {
+          ancestor = ancestor.parent;
+        }
+        toc = {
+          level: currentLevel,
+          children: [],
+          depth: ancestor.depth + 1,
+          parent: ancestor,
+          text: arr[index]
+        };
+        ancestor.children.push(toc);
+      }
+    }
+    currentToc = toc;
+  });
+
+  function generateToc(nodes, prefix) {
+    var html = '';
+    if (nodes && nodes.length > 0) {
+      html = '<ul class="menu menu-catalogue">\n';
+      for (var i = 0, len = nodes.length; i < len; i++) {
+        var node = nodes[i];
+        html += '  <li>\n';
+        html += '    <a class="menu-title menu-header" href="#' + prefix + (i + 1) + '">' + node.text + '</a>\n';
+        if (node.children && node.children.length > 0) {
+          html += generateToc(node.children, prefix + (i + 1) + '-');
+        }
+
+        html += '  </li>\n';
+      }
+      html += '</ul>';
+    }
+    return html;
+  }
+
+  const tocPrefix = 'toc-';
+  const html = generateToc(tocs.children, tocPrefix);
+
+  document.getElementById('toc').innerHTML = html;
+
+
+</script>

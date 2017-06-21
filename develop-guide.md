@@ -26,16 +26,21 @@
 * [styleguide](http://styleguide.devbproto.com/styleguide/)
 * [基于 flex 布局的网格系统](http://flexboxgrid.com/)
 * [纯 CSS3 效果资源收集整理](https://github.com/Zhangjd/awesome-pure-css-no-javascript)
+* https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
 
 ## 参考 css 框架
 
 * [Bootstrap](https://v4-alpha.getbootstrap.com/)
-* [semantic](https://semantic-ui.com/)
+* [Semantic UI](https://semantic-ui.com/)
 * [foundation](http://foundation.zurb.com/)
 * [Material Design](https://material.io/)
 * [animate.css](https://daneden.github.io/animate.css/)
 * [muse-ui](http://www.muse-ui.org/)
 * [purecss](https://purecss.io/)
+* [Loaders.css](https://connoratherton.com/loaders)
+* [Pure.css](http://purecss.io/)
+* [Uikit](http://getuikit.com/index.html)
+* [矢量图标上传](http://iconfont.cn/)
 
 
 ## 开发说明

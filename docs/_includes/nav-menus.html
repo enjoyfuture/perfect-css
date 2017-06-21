@@ -1,4 +1,5 @@
 {% assign pageLastPath = page.url | split: '/' | last %}
+{% assign prefix = 'docs' %}
 
 <ul class="menu">
   {% for group in site.data.menu %}
@@ -10,7 +11,7 @@
   {% assign active = 'active' %}
   {% endif %}
   <li>
-    <a {% if group.file %}href="/{{ group.file }}/{{ link }}{% if link %}/{% endif %}" {% endif %}
+    <a {% if group.file %}href="/{{ prefix }}/{{ group.file }}/{{ link }}{% if link %}/{% endif %}" {% endif %}
        class="menu-title menu-header {{ active }}">{{ group.title }}</a>
     <ul class="menu">
       {% for doc in group.pages %}
@@ -19,7 +20,7 @@
       {% if page.group == group.file and doc.file == pageLastPath %}
       {% assign active = 'active' %}
       {% endif %}
-      <li><a href="{% if doc.file %}/{{ group.file }}/{{ doc.file }}/{% else %}{{ doc.url }}{% endif %}"
+      <li><a href="{% if doc.file %}/{{ prefix }}/{{ group.file }}/{{ doc.file }}/{% else %}{{ doc.url }}{% endif %}"
              {% if doc.url %}target="_blank"{% endif %}class="menu-title {{ active }}">{{ doc.title }}</a></li>
       {% endfor %}
     </ul>

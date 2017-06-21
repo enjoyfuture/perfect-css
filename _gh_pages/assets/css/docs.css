@@ -190,6 +190,7 @@ a:hover, a:active {
 }
 
 .doc-main {
+  min-height: 500px;
   padding-left: 20px;
   padding-right: 20px;
 }
