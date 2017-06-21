@@ -119,7 +119,7 @@ rules:
   no-mergeable-selectors: 0 # 同样的选择器中的内容应写在一起，二不应该分开书写
   no-misspelled-properties: # 检测正确的样式属性值
     - 1
-    - extra-properties: []
+    - extra-properties: ['-webkit-overflow-scrolling', '-ms-flex-preferred-size', '-ms-flex-positive']
   no-qualifying-elements: # 不允许选择器 have qualifying elements
     - 0
     - allow-element-with-attribute: false
@@ -144,6 +144,9 @@ rules:
     - 1
     - ignore-custom-properties: false
       order:
+
+      # Layout
+
       - position
       - top
       - bottom
@@ -154,12 +157,16 @@ rules:
       - '-moz-box-sizing'
       - box-sizing
       - display
+      - '-webkit-box-flex'
       - flex
       - flex-align
+      - '-ms-flex-preferred-size'
       - flex-basis
+      - '-webkit-box-orient' # 指定一个box子元素是否应按水平或垂直排列
       - flex-direction
       - flex-wrap
       - flex-flow
+      - '-ms-flex-positive'
       - flex-grow
       - flex-order
       - flex-pack
@@ -167,6 +174,9 @@ rules:
       - align-self
       - justify-content
       - float
+
+      # Box
+
       - width
       - min-width
       - max-width
@@ -232,15 +242,11 @@ rules:
       - '-moz-border-image-repeat'
       - '-o-border-image-repeat'
       - border-image-repeat
-      - overflow
-      - overflow-x
-      - overflow-y
-      - '-webkit-overflow-scrolling'
-      - '-ms-overflow-x'
-      - '-ms-overflow-y'
-      - '-ms-overflow-style'
-      - clip
-      - clear
+      - border-spacing
+      - border-collapse
+
+      # Font
+
       - font
       - font-family
       - font-size
@@ -258,6 +264,9 @@ rules:
       - '-moz-hyphens'
       - hyphens
       - line-height
+
+      # Typographic 排版
+
       - color
       - background
       - background-color
@@ -302,6 +311,7 @@ rules:
       - '-webkit-text-size-adjust'
       - '-ms-text-size-adjust'
       - letter-spacing
+      - '-webkit-line-clamp'
       - '-ms-word-break'
       - word-break
       - word-spacing
@@ -313,10 +323,28 @@ rules:
       - tab-size
       - white-space
       - vertical-align
+
+      # List
+
       - list-style
       - list-style-position
       - list-style-type
       - list-style-image
+
+     # Overflow
+
+      - overflow
+      - overflow-x
+      - overflow-y
+      - '-webkit-overflow-scrolling'
+      - '-ms-overflow-x'
+      - '-ms-overflow-y'
+      - '-ms-overflow-style'
+      - clip
+      - clear
+
+      # Other
+
       - pointer-events
       - '-ms-touch-action'
       - touch-action
@@ -326,8 +354,6 @@ rules:
       - table-layout
       - empty-cells
       - caption-side
-      - border-spacing
-      - border-collapse
       - content
       - quotes
       - counter-reset
@@ -353,8 +379,21 @@ rules:
       - box-shadow
       - 'filter:progid:DXImageTransform.Microsoft.Alpha(Opacity'
       - '-ms-filter:\\''progid:DXImageTransform.Microsoft.Alpha'
+
+      # animation and opacity
+
       - opacity
       - '-ms-interpolation-mode'
+      - '-webkit-transform'
+      - '-moz-transform'
+      - '-ms-transform'
+      - '-o-transform'
+      - transform
+      - '-webkit-transform-origin'
+      - '-moz-transform-origin'
+      - '-ms-transform-origin'
+      - '-o-transform-origin'
+      - transform-origin
       - '-webkit-transition'
       - '-moz-transition'
       - '-ms-transition'
@@ -380,16 +419,6 @@ rules:
       - '-ms-transition-property'
       - '-o-transition-property'
       - transition-property
-      - '-webkit-transform'
-      - '-moz-transform'
-      - '-ms-transform'
-      - '-o-transform'
-      - transform
-      - '-webkit-transform-origin'
-      - '-moz-transform-origin'
-      - '-ms-transform-origin'
-      - '-o-transform-origin'
-      - transform-origin
       - '-webkit-animation'
       - '-moz-animation'
       - '-ms-animation'
@@ -429,6 +458,7 @@ rules:
       - '-moz-animation-direction'
       - '-ms-animation-direction'
       - '-o-animation-direction'
+      - will-change
   property-units: # 单位名称
     - 1
     - global:

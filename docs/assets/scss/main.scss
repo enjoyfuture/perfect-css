@@ -19,4 +19,11 @@ a {
   min-height: 500px;
   padding-left: 20px;
   padding-right: 20px;
+  p {
+    text-indent: 2em;
+  }
+  h1, h2, h3, h4 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 }
