@@ -557,7 +557,7 @@
     </div>
     <div class="col-24 col-lg-20 col-md-18 doc-main">
       <h1>布局-容器</h1>
-      <p>容器布局分为自适应布局和响应式布局，结合强大的 Grid 可实现任意布局</p>
+      <p>容器布局分为自适应布局和响应式布局，结合强大的 Grid 可实现任意布局 <p>两列等高布局传统PC端布局，两列子容器高度始终保持一致。支持：ie6+</p></p>
       <div class="doc-content-header">
         <a href="https://github.com/perfect-ui/perfect/edit/master/docs/docs/layout/container.md" target="_blank">编辑该页面</a>
         <a href=https://github.com/enjoyfuture/perfect/issues/new?title=%E9%97%AE%E9%A2%98%E6%88%96%E5%BB%BA%E8%AE%AE" target="_blank">问题和建议</a>
@@ -581,6 +581,150 @@
 
 </div>
 
+<h3>
+<a id="toc-1-1" class="menu-anchor" data-target="toc-1-1" aria-hidden="true"></a>自适应布局 - float横向自适应</h3>
+<p>利用<code class="highlighter-rouge">overflow: hidden;</code>触发浏览器<code class="highlighter-rouge">haslayout</code>的特性，实现的浮动布局方式。<code class="highlighter-rouge">container-float-full</code>容器的宽度会根据<code class="highlighter-rouge">container-float-cell</code>容器的内容自动填补剩余空间。兼容性：ie7+</p>
+
+<div class="doc-example-container">
+
+<div class="doc-example" data-example-id="">
+<div class="container-fluid-float exp1">
+  <div class="container-fluid-float-cell">浮动元素-宽度自适应</div>
+  <div class="container-fluid-float-full text-center">填充块</div>
+</div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid-float exp1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid-float-cell"</span><span class="nt">&gt;</span>浮动元素-宽度自适应<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid-float-full text-center"</span><span class="nt">&gt;</span>填充块<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<p><strong>可以随意进行多层嵌套：</strong></p>
+<div class="doc-example-container">
+
+<div class="doc-example" data-example-id="">
+<div class="container-fluid-float exp2">
+  <div class="container-fluid-float-cell">1级-浮动元素</div>
+  <div class="container-fluid-float-full">
+<!--1级-填充块-->
+    <div class="container-fluid-float-cell float-right" style="background: #adecbd;">2级-浮动元素</div>
+    <div class="container-fluid-float-full text-center">2级-填充块</div>
+  </div>
+</div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid-float exp2"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid-float-cell"</span><span class="nt">&gt;</span>1级-浮动元素<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid-float-full"</span><span class="nt">&gt;</span><span class="c">&lt;!--1级-填充块--&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid-float-cell float-right"</span> <span class="na">style=</span><span class="s">"background: #adecbd;"</span><span class="nt">&gt;</span>2级-浮动元素<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid-float-full text-center"</span><span class="nt">&gt;</span>2级-填充块<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<h3>
+<a id="toc-1-2" class="menu-anchor" data-target="toc-1-2" aria-hidden="true"></a>自适应方块</h3>
+<p>常见于移动端图片展示等位置，根据手机屏幕大小不同，等比例显示方块。</p>
+
+<div class="doc-example-container">
+
+<div class="doc-example" data-example-id="">
+<div style="width: 200px;">
+  <div class="container-square">
+    <div class="container-square-box">
+      自适应方块
+    </div>
+  </div>
+</div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"width: 200px;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-square"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-square-box"</span><span class="nt">&gt;</span>
+      自适应方块
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<p>也可结合<code class="highlighter-rouge">float</code>或<code class="highlighter-rouge">inline-block</code>来进行排列</p>
+<div class="doc-example-container">
+
+<div class="doc-example" data-example-id="">
+<div class="inline-block-wrap exp-square">
+    <div class="inline-block">
+      <div class="container-square">
+        <div class="container-square-box">
+          自适应方块
+        </div>
+      </div>
+    </div>
+    <div class="inline-block">
+      <div class="container-square">
+        <div class="container-square-box">
+          自适应方块
+        </div>
+      </div>
+    </div>
+    <div class="inline-block">
+      <div class="container-square">
+        <div class="container-square-box">
+          自适应方块
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"inline-block-wrap exp-square"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"inline-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-square"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-square-box"</span><span class="nt">&gt;</span>
+          自适应方块
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"inline-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-square"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-square-box"</span><span class="nt">&gt;</span>
+          自适应方块
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"inline-block"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-square"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-square-box"</span><span class="nt">&gt;</span>
+          自适应方块
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<p>此外，给container-square改写不同的padding-top百分比，也可改变方块的长宽比例。</p>
+<div class="inline-block" style="width: 200px;">
+  <div class="container-square" style="padding-top: 70%;">
+    <div class="container-square-box" style="background: #adecbd;">
+      width: 200px; padding-top: 70%;
+    </div>
+  </div>
+</div>
+<div class="inline-block" style="width: 200px;">
+  <div class="container-square" style="padding-top: 100%;">
+    <div class="container-square-box" style="background: #adecbd;">
+      width: 200px; padding-top: 100%;
+    </div>
+  </div>
+</div>
+<div class="inline-block" style="width: 100px;">
+  <div class="container-square" style="padding-top: 200%;">
+    <div class="container-square-box" style="background: #adecbd;">
+      width: 100px; padding-top: 200%;
+    </div>
+  </div>
+</div>
+
 <h2>
 <a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>响应式布局</h2>
 
@@ -598,10 +742,102 @@
 </div>
 
 <h2>
-<a id="toc-3" class="menu-anchor" data-target="toc-3" aria-hidden="true"></a>媒体查询</h2>
+<a id="toc-3" class="menu-anchor" data-target="toc-3" aria-hidden="true"></a>等高布局</h2>
+
+<p>传统pc端常见的两列等高布局。场景常见于：左侧导航栏右侧正文，或右侧导航栏左侧正文，背景色不同需要同时铺满等高的情况。兼容性：ie6/7+</p>
+
+<ul>
+  <li>父容器container-equal-height：
+    <ol>
+      <li>定义父容器<code class="highlighter-rouge">width</code>、<code class="highlighter-rouge">padding-left</code>，</li>
+      <li>
+<code class="highlighter-rouge">padding-left</code>与导航容器宽度保持一致。</li>
+    </ol>
+  </li>
+  <li>导航container-equal-height-nav：
+    <ol>
+      <li>定义导航<code class="highlighter-rouge">width</code>、<code class="highlighter-rouge">margin-left</code>，</li>
+      <li>
+<code class="highlighter-rouge">margin-left</code>为<code class="highlighter-rouge">width</code>的负值，</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="doc-example-container">
+
+<div class="doc-example" data-example-id="">
+<div class="container-equal-height exp1">
+  <div class="container-equal-height-nav text-center">
+    导航1<br>
+  </div>
+  <div class="container-equal-height-main text-center">
+    正文<br>
+    正文<br>
+    正文<br>
+  </div>
+</div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-equal-height exp1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-equal-height-nav text-center"</span><span class="nt">&gt;</span>
+    导航1<span class="nt">&lt;br&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-equal-height-main text-center"</span><span class="nt">&gt;</span>
+    正文<span class="nt">&lt;br&gt;</span>
+    正文<span class="nt">&lt;br&gt;</span>
+    正文<span class="nt">&lt;br&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<ul>
+  <li>导航容器在右侧：
+    <ol>
+      <li>给两个子容器分别添加<code class="highlighter-rouge">float-right</code>，</li>
+      <li>将container-equal-height的<code class="highlighter-rouge">padding-left</code>、container-equal-height-nav的<code class="highlighter-rouge">margin-left</code>，分别改为<code class="highlighter-rouge">padding-right</code>和<code class="highlighter-rouge">margin-right</code>。</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="doc-example-container">
+
+<div class="doc-example" data-example-id="">
+<div class="container-equal-height exp2">
+  <div class="container-equal-height-nav float-right text-center">
+    导航1<br>
+    导航2<br>
+    导航3<br>
+    导航4<br>
+  </div>
+  <div class="container-equal-height-main float-right text-center">
+    正文<br>
+    正文<br>
+  </div>
+</div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-equal-height exp2"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-equal-height-nav float-right text-center"</span><span class="nt">&gt;</span>
+    导航1<span class="nt">&lt;br&gt;</span>
+    导航2<span class="nt">&lt;br&gt;</span>
+    导航3<span class="nt">&lt;br&gt;</span>
+    导航4<span class="nt">&lt;br&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-equal-height-main float-right text-center"</span><span class="nt">&gt;</span>
+    正文<span class="nt">&lt;br&gt;</span>
+    正文<span class="nt">&lt;br&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
 
 <h2>
-<a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>使用场景</h2>
+<a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>垂直居中</h2>
+
+<h2>
+<a id="toc-5" class="menu-anchor" data-target="toc-5" aria-hidden="true"></a>媒体查询</h2>
+
+<h2>
+<a id="toc-6" class="menu-anchor" data-target="toc-6" aria-hidden="true"></a>使用场景</h2>
 
 
         </div>
@@ -610,15 +846,29 @@
 <ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
   <li>
     <a class="menu-title" href="#" data-menu="toc-1">自适应布局</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" data-menu="toc-1-1">自适应布局 - float横向自适应</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" data-menu="toc-1-2">自适应方块</a>
+  </li>
+</ul>
   </li>
   <li>
     <a class="menu-title" href="#" data-menu="toc-2">响应式布局</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-3">媒体查询</a>
+    <a class="menu-title" href="#" data-menu="toc-3">等高布局</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-4">使用场景</a>
+    <a class="menu-title" href="#" data-menu="toc-4">垂直居中</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" data-menu="toc-5">媒体查询</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" data-menu="toc-6">使用场景</a>
   </li>
 </ul>
 </div>

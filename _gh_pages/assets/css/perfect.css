@@ -1736,6 +1736,58 @@ input[type="button"].btn-block {
   margin-right: auto;
 }
 
+.container-equal-height {
+  display: block;
+  overflow: hidden;
+}
+
+.container-equal-height > div {
+  padding-bottom: 30000px;
+  margin-bottom: -30000px;
+}
+
+.container-equal-height .container-equal-height-nav {
+  float: left;
+  display: block;
+}
+
+.container-equal-height .container-equal-height-main {
+  float: left;
+  display: block;
+  width: 100%;
+}
+
+.container-fluid-float::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.container-fluid-float .container-fluid-float-cell {
+  float: left;
+}
+
+.container-fluid-float .container-fluid-float-full {
+  overflow: hidden;
+}
+
+.container-square {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+}
+
+.container-square .container-square-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
+}
+
 .crumbs {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
@@ -6124,6 +6176,14 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   }
 }
 
+.inline-block-wrap {
+  font-size: 0 !important;
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
 .order-first {
   -webkit-box-ordinal-group: 0;
   -webkit-order: -1;
@@ -7501,6 +7561,18 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.float-left {
+  float: left !important;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.float-none {
+  float: none !important;
 }
 
 /*# sourceMappingURL=maps/perfect.css.map */

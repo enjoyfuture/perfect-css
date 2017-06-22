@@ -430,6 +430,62 @@ a:hover, a:active {
   text-align: center;
 }
 
+.doc-example-container .container-equal-height.exp1 {
+  width: 500px;
+  padding-left: 100px;
+}
+
+.doc-example-container .container-equal-height.exp1 .container-equal-height-nav {
+  margin-left: -100px;
+}
+
+.doc-example-container .container-equal-height.exp2 {
+  width: 500px;
+  padding-right: 100px;
+}
+
+.doc-example-container .container-equal-height.exp2 .container-equal-height-nav {
+  margin-right: -100px;
+}
+
+.doc-example-container .container-equal-height .container-equal-height-nav {
+  width: 100px;
+  background-color: #faf4fc;
+}
+
+.doc-example-container .container-equal-height .container-equal-height-main {
+  background-color: #f4f4f4;
+}
+
+.doc-example-container .container-fluid-float .container-fluid-float-cell {
+  background-color: #faf4fc;
+}
+
+.doc-example-container .container-fluid-float .container-fluid-float-full {
+  background-color: #f4f4f4;
+}
+
+.doc-example-container .container-fluid-float.exp1 > div {
+  padding: 10px;
+}
+
+.doc-example-container .container-fluid-float.exp2 .container-fluid-float-cell {
+  padding: 10px;
+}
+
+.doc-example-container .container-fluid-float.exp2 .container-fluid-float-full .container-fluid-float-full {
+  padding: 10px;
+}
+
+.doc-example-container .container-square-box {
+  background-color: #faf4fc;
+}
+
+.doc-example-container .exp-square .inline-block {
+  width: 200px;
+  margin-right: 20px;
+}
+
 .footer-assist {
   padding-top: 7.5rem;
 }
