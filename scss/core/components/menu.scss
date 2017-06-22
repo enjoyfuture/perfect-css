@@ -67,9 +67,9 @@ ul.menu, ol.menu {
   counter-reset: catalogue1;
   > .menu-item, > li {
     > a::before {
+      content: counter(catalogue1, decimal) ". ";
       margin-right: .5rem;
       font-weight: bold;
-      content: counter(catalogue1, decimal) ". ";
       counter-increment: catalogue1;
     }
   }

@@ -91,6 +91,7 @@
 
     // This will remove the popover-title's border just below the arrow
     .popover-title::before {
+      content: "";
       position: absolute;
       top: 0;
       left: 50%;
@@ -98,7 +99,6 @@
       width: 20px;
       margin-left: -10px;
       border-bottom: 1px solid $popover-title-bg;
-      content: "";
     }
   }
 
@@ -162,10 +162,10 @@
 }
 
 .popover::before {
-  border-width: $popover-arrow-outer-width;
   content: "";
+  border-width: $popover-arrow-outer-width;
 }
 .popover::after {
-  border-width: $popover-arrow-width;
   content: "";
+  border-width: $popover-arrow-width;
 }

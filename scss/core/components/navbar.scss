@@ -96,13 +96,13 @@
 
   // 用来定义一个图标来告知用户，当点击时可以展开下拉导航
   .navbar-toggler-icon {
+    content: "";
     display: inline-block;
     width: 1.5em;
     height: 1.5em;
     background: no-repeat center center;
     background-size: 100% 100%;
     vertical-align: middle;
-    content: "";
   }
 
   // Use `position` on the toggler to prevent it from being auto placed as a flex

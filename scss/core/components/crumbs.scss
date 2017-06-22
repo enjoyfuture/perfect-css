@@ -12,11 +12,11 @@
 
   // The separator between crumbss (by default, a forward-slash: "/")
   + .crumbs-item::before {
+    content: "#{$crumbs-divider}";
     display: inline-block; // Suppress underlining of the separator in modern browsers
     padding-left: $crumbs-item-padding;
     padding-right: $crumbs-item-padding;
     color: $crumbs-divider-color;
-    content: "#{$crumbs-divider}";
   }
 
   // IE9-11 hack to properly handle hyperlink underlines for crumbss built
