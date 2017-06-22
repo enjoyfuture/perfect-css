@@ -311,20 +311,23 @@ npm install --save-dev sass-lint
 
 scss 目录下包含
 
-* 主文件 perfect.scss，可以一次性的全部引入所有 css 样式
-* 基础文件 perfect-base.scss，在引入某一 css 模块文件前引入该 css 样式
-* 基础文件 perfect-utils.scss，所有工具类样式，调用之前需引入 perfect-base.scss
-* CSS 模块文件夹 module，可以单独引入某一 css 模块文件，在单独引入之前需要先引入 perfect-base.scss
+* 主文件 `perfect.scss`，可以一次性的全部引入所有 css 样式
+* 基础文件 `perfect-reset.scss`，包括 `normalize.scss` 和 `reset.scss` ，在引入某一 css 模块文件前引入该 css 样式
+* 工具类样式 `perfect-utils.scss`，所有工具类样式，调用之前需引入 `perfect-reset.scss`
+* 动画样式 `perfect-animation.scss`，所有动画样式，调用之前需引入 `perfect-reset.scss`
+* CSS 模块文件夹 `modules`，可以单独引入某一 css 模块文件，在单独引入之前需要先引入 `perfect-reset.scss`
 * CSS 工具类样式文件夹 utils，包含所有工具类样式
-* core 定义变量，mixin 等函数，只作为 scss 编译过程文件，不会生成对应的 css 文件
+* CSS 动画样式文件夹 `animation` ，包含各种动画样式
+* etc 定义变量、mixin、 函数和重置样式，只作为 scss 编译过程文件，不会生成对应的 css 文件
 
-其中 CSS 模块文件夹 module 中会包含以下几类
+其中 CSS 模块文件夹 modules 中会包含以下几类
 
-* base-styles 基础样式
-* layout 布局
-* navigation 导航样式
-* container 容器样式
-* components 组件样式
+* typography 排版样式，包括 Font, Paragraphs, Text, Color, Header(h1-h6), Links, Lists(ul ol dl), code
+* print 打印样式
+* layout 布局，包括 Container, Grid, Float, Box, Fit
+* navigation 导航样式，包括 Nav, Navbar, Menu, Pagination, Breadcrumbs
+* container 容器样式，包括 Accordion, Callout, Form, Panel, Tab Panel, Card, List Panel, Tree Panel, Table, Modal, Carousel 
+* components 组件样式，包括 Button, Input, DropDown, Progress, Alert, Tooltip, Popover, Toast, Image
 
 ## docs 文件结构
 

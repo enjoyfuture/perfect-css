@@ -43,7 +43,7 @@ require('perfect/perfect.min.css');
 ```javascript
 import from 'perfect/dist/css/buttons.css';
 // 或者
-import from 'perfect/scss/core/components/buttons.scss';
+import from etc;
 ```
 
 import classNames from 'classnames/bind';
