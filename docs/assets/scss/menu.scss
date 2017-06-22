@@ -1,3 +1,62 @@
 .doc-menu {
   background-color: #fafafa;
 }
+
+.product-teaser {
+  // 1. Style attributes
+  display: inline-block;
+  padding: 1rem;
+  color: #00a8c6;
+  background-color: #fff9ff;
+
+  // 2. Pseudo selectors with parent selector
+  &:hover {
+    color: #00a8c6;
+  }
+
+  // 3. Pseudo elements with parent selector
+  &::before {
+    content: "";
+    display: block;
+    border-top: 1px solid #00c176;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    border-top: 1px solid #00a8c6;
+  }
+
+  // 4. State classes with parent selector
+  &.active {
+    color: #ff003c;
+    background-color: #ff8edf;
+
+    // 4.2. Pseuso selector in state class selector
+    &:hover {
+      color: #d14;
+    }
+  }
+
+  // 5. Contextual media queries
+  @media screen and (max-width: 640px) {
+    display: block;
+    font-size: 2em;
+  }
+
+  // 6. Brother selectors
+  + .main  {
+    font-size: 1.2em;
+  }
+
+  // 7. Sub selectors
+  > .content > .title {
+    font-size: 1.2em;
+
+    // 7.5. Contextual media queries in sub selector
+    @media screen and (max-width: 640px) {
+      text-transform: uppercase;
+      letter-spacing: .2em;
+    }
+  }
+}

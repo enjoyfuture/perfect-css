@@ -85,13 +85,13 @@ const CatalogueSpy = ((perfect) => {
       const {step} = this.config;
       const {$menuPanel} = this;
       const {scrollHeight, clientHeight} = $menuPanel;
-      const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+      let maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
       if (maxOffset === 0) {
         return;
       }
+      maxOffset += 1; // 由于计算偏差，需要微调1个像素
       // 如果当前菜单项隐藏，则向上拉
-      // Fixme 注意这里还需计算 $menuPanel.parentElement padding 和 border 的值
-      // 待处理
+      // Fixme 注意这里还需计算 $menuPanel.parentElement padding 和 border 的值，待处理
       const menuRect = $menuPanel.parentElement.getBoundingClientRect();
       const currentTarget = doc.querySelectorAll(lastSelector.join(','));
       Array.prototype.forEach.call(currentTarget, (el) => {

@@ -145,6 +145,10 @@ rules:
     - ignore-custom-properties: false
       order:
 
+      # 伪类内容
+
+      - content
+
       # Layout
 
       - position
@@ -245,6 +249,18 @@ rules:
       - border-spacing
       - border-collapse
 
+      # Overflow
+
+      - overflow
+      - overflow-x
+      - overflow-y
+      - '-webkit-overflow-scrolling'
+      - '-ms-overflow-x'
+      - '-ms-overflow-y'
+      - '-ms-overflow-style'
+      - clip
+      - clear
+
       # Font
 
       - font
@@ -331,18 +347,6 @@ rules:
       - list-style-type
       - list-style-image
 
-     # Overflow
-
-      - overflow
-      - overflow-x
-      - overflow-y
-      - '-webkit-overflow-scrolling'
-      - '-ms-overflow-x'
-      - '-ms-overflow-y'
-      - '-ms-overflow-style'
-      - clip
-      - clear
-
       # Other
 
       - pointer-events
@@ -354,7 +358,6 @@ rules:
       - table-layout
       - empty-cells
       - caption-side
-      - content
       - quotes
       - counter-reset
       - counter-increment

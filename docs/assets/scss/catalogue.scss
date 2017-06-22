@@ -1,11 +1,11 @@
 .doc-catalogue-header {
   position: relative;
   &::before {
+    content: '目录';
     position: absolute;
     top: -25px;
     padding-left: 1rem;
     color: #999;
-    content: '目录';
   }
 }
 
@@ -21,12 +21,12 @@
 
     &:hover::after,
     &.active::after {
+      content: '';
       position: absolute;
       top: 25%;
       bottom: 20%;
       left: 0;
       border-left: 1px solid #193c5a;
-      content: '';
     }
     &.active::after {
       border-left: 2px solid #193c5a;

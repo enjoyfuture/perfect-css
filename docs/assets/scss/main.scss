@@ -19,11 +19,44 @@ a {
   min-height: 500px;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.doc-content {
   p {
     text-indent: 2em;
   }
+
   h1, h2, h3, h4 {
     margin-top: 2rem;
     margin-bottom: 2rem;
+  }
+
+  li {
+    padding: .3rem 0;
+  }
+
+  table {
+    width: 80%;
+
+    tr:nth-of-type(odd) {
+      background: #f9f9f9;
+    }
+    th {
+      border-bottom: 1px solid #ddd;
+    }
+
+    th,
+    td {
+      padding: .5rem 1.5rem;
+      border-top: 1px solid #ddd;
+      border-left: 1px solid #ddd;
+
+      &:last-child {
+        border-right: 1px solid #ddd;
+      }
+    }
+    tr:last-child > td {
+      border-bottom: 1px solid #ddd;
+    }
   }
 }
