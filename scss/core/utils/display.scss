@@ -23,3 +23,10 @@
 } @else {
   @include display-cls();
 }
+
+.inline-block-wrap {
+  font-size: 0 !important;
+}
+.inline-block {
+  display: inline-block !important;
+}
