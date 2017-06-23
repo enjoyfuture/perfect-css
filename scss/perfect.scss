@@ -12,42 +12,65 @@
 @import "etc/normalize";
 @import "etc/reset";
 
-// 基础样式
-@import "modules/base-styles";
+// typography 排版样式
+@import "modules/typography/code";
+@import "modules/typography/header";
+@import "modules/typography/link";
+
+// print 打印样式
+@import "modules/print";
+
+// layout 布局
+@import "modules/layout/box";
+@import "modules/layout/container";
+@import "modules/layout/float";
+@import "modules/layout/grid";
+
+// navigation 导航样式
+@import "modules/navigation/crumbs";
+@import "modules/navigation/menu";
+@import "modules/navigation/nav";
+@import "modules/navigation/navbar";
+@import "modules/navigation/pagination";
+@import "modules/navigation/tree";
+
+// container 容器样式
+@import "modules/container/accordion";
+@import "modules/container/callout";
+@import "modules/container/card";
+@import "modules/container/carousel";
+@import "modules/container/form";
+@import "modules/container/list-panel";
+@import "modules/container/modal";
+@import "modules/container/panel";
+@import "modules/container/tab-panel";
+@import "modules/container/table";
 
 // Component
-@import "modules/components/alert";
 @import "modules/components/badge";
-@import "modules/components/button-group";
-@import "modules/components/buttons";
-@import "modules/components/container";
-@import "modules/components/crumbs";
+@import "modules/components/btn";
+@import "modules/components/btn-group";
 @import "modules/components/dropdown";
-@import "modules/components/forms";
-@import "modules/components/grid";
-@import "modules/components/images";
+@import "modules/components/image";
+@import "modules/components/input";
 @import "modules/components/input-group";
-@import "modules/components/jumbotron";
-@import "modules/components/list-group";
-@import "modules/components/menu";
-@import "modules/components/nav";
-@import "modules/components/navbar";
-@import "modules/components/pagination";
 @import "modules/components/popover";
 @import "modules/components/progress";
-@import "modules/components/tables";
+@import "modules/components/toast";
 @import "modules/components/tooltip";
-@import "modules/components/typography";
 
 // Utility classes
 @import "utils/align";
 @import "utils/background";
-@import "utils/borders";
+@import "utils/border";
 @import "utils/clearfix";
+@import "utils/color";
 @import "utils/display";
 @import "utils/flexbox";
 @import "utils/position";
 @import "utils/spacing";
 @import "utils/text";
 
-@import "utils/float";
+// Animation classes
+@import "animation/fade-in";
+

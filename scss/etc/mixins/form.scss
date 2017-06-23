@@ -73,7 +73,7 @@
   }
 
   textarea#{$parent},
-  select[multiple]#{$parent} {
+  select[multiple] {
     height: auto;
   }
 }

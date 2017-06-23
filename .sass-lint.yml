@@ -29,7 +29,6 @@ files:
     - docs/assets/scss/**/*.scss
   ignore:
     - scss/etc/normalize.scss
-    - scss/etc/mixins/forms.scss # sass-lint 会报错，应该是 sass-lint 的 bug，暂时先忽略
     - docs/assets/scss/highlight.scss
 options:
   formatter: stylish # 格式风格

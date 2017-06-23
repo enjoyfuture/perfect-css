@@ -128,10 +128,10 @@ toc: true
 1. 伪类内容
 1. Layout 布局 (Positioning, Flex an Float)
 1. Box model 盒模型 - 按 width height padding margin border 顺序书写
+1. Overflow
 1. Font 字体
 1. Typographic 排版 
 1. List 列表
-1. Overflow
 1. Other 其他
 1. animation 动画相关
 
@@ -312,22 +312,117 @@ npm install --save-dev sass-lint
 scss 目录下包含
 
 * 主文件 `perfect.scss`，可以一次性的全部引入所有 css 样式
-* 基础文件 `perfect-reset.scss`，包括 `normalize.scss` 和 `reset.scss` ，在引入某一 css 模块文件前引入该 css 样式
-* 工具类样式 `perfect-utils.scss`，所有工具类样式，调用之前需引入 `perfect-reset.scss`
-* 动画样式 `perfect-animation.scss`，所有动画样式，调用之前需引入 `perfect-reset.scss`
-* CSS 模块文件夹 `modules`，可以单独引入某一 css 模块文件，在单独引入之前需要先引入 `perfect-reset.scss`
+* 基础文件 `perfect-reset.scss`，包括 `normalize.scss` 和 `reset.scss` 
+* 工具类样式 `perfect-utils.scss`，所有工具类样式，调用之前需先导入 `perfect-reset.scss`
+* 动画样式 `perfect-animation.scss`，所有动画样式，调用之前需先导入 `perfect-reset.scss`
+* CSS 模块文件夹 `modules`，可以单独引入某一 CSS 模块文件，调用之前需先导入 `perfect-reset.scss`
 * CSS 工具类样式文件夹 utils，包含所有工具类样式
 * CSS 动画样式文件夹 `animation` ，包含各种动画样式
-* etc 定义变量、mixin、 函数和重置样式，只作为 scss 编译过程文件，不会生成对应的 css 文件
+* etc 定义变量、mixin、函数和重置样式，只作为 scss 编译过程文件，不会生成对应的 css 文件
 
-其中 CSS 模块文件夹 modules 中会包含以下几类
+其中 CSS 模块 `modules` 中包含以下几类
 
-* typography 排版样式，包括 Font, Paragraphs, Text, Color, Header(h1-h6), Links, Lists(ul ol dl), code
+* typography 排版样式(Font, Paragraphs, Text, Color, Header(h1-h6), Links, Lists(ul ol dl), code)，
+  包括 code, header, link
 * print 打印样式
-* layout 布局，包括 Container, Grid, Float, Box, Fit
-* navigation 导航样式，包括 Nav, Navbar, Menu, Pagination, Breadcrumbs
-* container 容器样式，包括 Accordion, Callout, Form, Panel, Tab Panel, Card, List Panel, Tree Panel, Table, Modal, Carousel 
-* components 组件样式，包括 Button, Input, DropDown, Progress, Alert, Tooltip, Popover, Toast, Image
+* layout 布局，包括 box, container, float, grid
+* navigation 导航样式，包括 crumbs, menu, nav, navbar, pagination, tree
+* container 容器样式，包括 accordion, callout, card, carousel, form, list-panel, modal, panel, tab-panel, table, modal 
+* components 组件样式，包括 badge, btn, btn-group, dropDown, image, input, input-group, popover, progress, toast, tooltip
+
+工具类样式 utils
+
+* align 文本对齐方向
+* background 背景颜色，定义各种基本颜色背景色
+* border 边框和圆角
+* clearfix 清除浮层
+* color 文本颜色，定义各种基本颜色前景色
+* display 可视化
+* flexbox flex 相关样式
+* position 定位
+* spacing 内外边距
+* text 内容样式，比如单行省略，多行省略等
+* 条纹背景
+* 其他
+
+```
+.
+├── animation
+│   └── fade-in.scss
+├── etc
+│   ├── functions.scss
+│   ├── mixins
+│   │   ├── breakpoints.scss
+│   │   ├── buttons.scss
+│   │   ├── cards.scss
+│   │   └── transition.scss
+│   ├── mixins.scss
+│   ├── normalize.scss
+│   ├── reset.scss
+│   ├── variables
+│   │   ├── crumbs.scss
+│   │   ├── cursor.scss
+│   │   ├── dropdown.scss
+│   │   ├── font.scss
+│   │   ├── forms.scss
+│   └── variables.scss
+├── modules
+│   ├── components
+│   │   ├── badge.scss
+│   │   ├── btn-group.scss
+│   │   ├── btn.scss
+│   │   ├── dropdown.scss
+│   │   ├── image.scss
+│   │   ├── input-group.scss
+│   │   ├── input.scss
+│   │   ├── popover.scss
+│   │   ├── progress.scss
+│   │   ├── toast.scss
+│   │   └── tooltip.scss
+│   ├── container
+│   │   ├── accordion.scss
+│   │   ├── callout.scss
+│   │   ├── card.scss
+│   │   ├── carousel.scss
+│   │   ├── form.scss
+│   │   ├── list-panel.scss
+│   │   ├── modal.scss
+│   │   ├── panel.scss
+│   │   ├── tab-panel.scss
+│   │   └── table.scss
+│   ├── layout
+│   │   ├── box.scss
+│   │   ├── container.scss
+│   │   ├── float.scss
+│   │   └── grid.scss
+│   ├── navigation
+│   │   ├── crumbs.scss
+│   │   ├── menu.scss
+│   │   ├── nav.scss
+│   │   ├── navbar.scss
+│   │   ├── pagination.scss
+│   │   └── tree.scss
+│   ├── print.scss
+│   └── typography
+│       ├── code.scss
+│       ├── header.scss
+│       └── link.scss
+├── perfect-animation.scss
+├── perfect-reset.scss
+├── perfect-utils.scss
+├── perfect.scss
+└── utils
+    ├── align.scss
+    ├── background.scss
+    ├── border.scss
+    ├── clearfix.scss
+    ├── color.scss
+    ├── display.scss
+    ├── flexbox.scss
+    ├── position.scss
+    ├── spacing.scss
+    └── text.scss
+```
 
 ## docs 文件结构
 
