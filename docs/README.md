@@ -9,8 +9,10 @@
   可以用这个标签  `{% include file.ext %}` 来把文件 _includes/file.html 包含进来。
 * _layouts 设置网站布局
   layouts 用来设置布局模板，标签  `{{content}}` 可以将content插入到页面中。
-* assets 定义文档样式
-* getting-started 介绍页面
-* process 开发文档
+* _plugins ruby 插件
+* assets 定义 CSS 和 js 文件
+* docs 参考文档
+* draft 开发草稿文件
+* guide 开发规范
 
   
