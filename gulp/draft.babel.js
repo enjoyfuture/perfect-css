@@ -14,16 +14,31 @@ function readFiles(filePath) {
     // 文件，这里也可以使用 const stats = fs.statSync(path); stats.isFile() 来判断
     if (dirs[i].indexOf('.html') !== -1) {
       const contents = fs.readFileSync(path.join(filePath, dirs[i]), 'utf8');
-      const title = (/title:\s*.+\s*-\s*(.+)/g).exec(contents)[1];
+      let execVal = (/title:\s*.+\s*-\s*(.+)/g).exec(contents);
+      let title = '';
+      if (execVal) {
+        title = execVal[1];
+      } else {
+        execVal = (/title:\s*(.+)/g).exec(contents);
+        title = execVal ? execVal[1] : '';
+      }
       const _dir = dirs[i].substring(0, dirs[i].length - 5);
       json.push({
         title,
         file: _dir,
       });
-    } else {
+    } else if (fs.statSync(path.join(filePath, dirs[i])).isDirectory()) {
       const _dirs = fs.readdirSync(path.join(filePath, dirs[i]));
       const contents = fs.readFileSync(path.join(filePath, dirs[i], _dirs[0]), 'utf8');
-      const title = (/title:\s*(.+)\s*-\s*.+/g).exec(contents)[1];
+      let execVal = (/title:\s*(.+)\s*-\s*.+/g).exec(contents);
+      let title = '';
+      if (execVal) {
+        title = execVal[1];
+      } else {
+        execVal = (/title:\s*(.+)/g).exec(contents);
+        title = execVal ? execVal[1] : ''
+      }
+
       json.push({
         title,
         file: dirs[i],
@@ -31,6 +46,7 @@ function readFiles(filePath) {
       });
     }
   }
+
   return json;
 }
 
