@@ -1,59 +1,63 @@
-/**!
- * reset
- * 在 normalize.css 的基础上重新定义样式
-**/
+// sass-lint:disable no-duplicate-properties
+// reset
+// 在 normalize.css 的基础上重新定义样式
 
-/**
- * 重新设置盒模型为 border-box，让盒子宽度包括 padding border
- * 这样给元素添加 padding border 时，盒子宽度不会发生变化
- * 设置为 border-box 后会更好的控制元素的宽度，以及百分比布局
- * 有篇文章详细的说明了 border-box 的最佳实践
- * https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
-**/
+// 重置 html
+//  1. 重新设置盒模型为 border-box，让盒子宽度包括 padding border
+//  这样给元素添加 padding border 时，盒子宽度不会发生变化
+//  设置为 border-box 后会更好的控制元素的宽度，以及百分比布局
+//  有篇文章详细的说明了 border-box 的最佳实践
+// https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+//  2. https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7165383/
+// 在 ie11 和 edge 中，当鼠标离开滚动条时，会自动隐藏，这样用户体验可能不是很好，
+// 故显式开启，当有滚动条时，一直显示
+// 3. 设置字体为 sans-serif
+// 4. 在 IOS 下点击高亮修改为完全透明
 
 html {
-  box-sizing: border-box;
+  box-sizing: border-box; // 1
+  -ms-overflow-style: scrollbar; // 2
+  font-family: sans-serif; // 3
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 4
 }
 
+// 设置所有元素和伪元素盒模型为 border-box
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
 
-/**
-* 为 ie 版本设置 device-width
-* 因为 IE 10+ 在某些原因下不会正确设置 <meta name="viewport">
-**/
+// 为 ie 版本设置 device-width
+// 因为 IE 10+ 在某些原因下不会正确设置 <meta name="viewport">
 @at-root {
   @-ms-viewport {
     width: device-width;
   }
 }
 
-/**
-* 重置 html body
-**/
-html {
-  // https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7165383/
-  // 在 ie11 和 edge 中，当鼠标离开滚动条时，会自动隐藏，这样用户体验可能不是很好，
-  // 故显式开启，当有滚动条时，一直显示
-  -ms-overflow-style: scrollbar;
-  //设置默认字体大小，其他元素采用 rem ，动态的根据 html 来计算其大小
-  font-size: $font-size-root;
-  // 在 IOS 下点击高亮修改为完全透明
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
 
+// 1. 最佳实践，提供一个默认的背景
 body {
   font-family: $font-family-base;
+  //设置默认字体大小，其他元素采用 rem ，动态的根据 body 的字体大小来计算其大小
   font-size: $font-size-base;
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   color: $body-color;
-  background-color: $body-bg;
+  background-color: $body-bg; // 1
 }
 
+// normalize.scss 中设置了一部分，这里再补上几个，让 IE 9- 正确的显示
+dialog,
+figcaption,
+figure,
+hgroup,
+main {
+  display: block;
+}
+
+// Credit: https://github.com/suitcss/base
 // 对于 tabindex 设为 -1 的元素，获取焦点时去掉外边虚框
 [tabindex="-1"]:focus {
   outline: none !important;
@@ -65,20 +69,30 @@ body {
 
 // 去掉 `<h1>`-`<h6>` margin-top，并重置 margin-bottom
 h1, h2, h3, h4, h5, h6 {
-  margin-top: .5rem;
+  margin-top: 0;
   margin-bottom: .5rem;
 }
 
-// 重置 p 元素
+// 重置段落 p 元素
+// 设置 margin-top 为 0， 用 rem 设置 margin-bottom
 p {
-  margin-top: 1rem;
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 
-// 给 abbr 添加一个点边框
+// Abbreviations
+//
+// 1. Remove the bottom border in Chrome 57- and Firefox 39-.
+// 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+// 3. Add explicit cursor to indicate changed behavior.
+// 4. Duplicate behavior to the data-* attribute for our tooltip plugin
+
 abbr[title],
-abbr[data-original-title] {
-  cursor: help;
+abbr[data-original-title] { // 4
+  border-bottom: 0; // 1
+  text-decoration: underline; // 2
+  text-decoration: underline dotted; // 2
+  cursor: help; // 3
 }
 
 address {
@@ -107,7 +121,7 @@ dt {
 
 dd {
   margin-bottom: .5rem;
-  margin-left: 0;
+  margin-left: 0; // Undo browser default
 }
 
 blockquote {
@@ -122,7 +136,7 @@ a {
   color: $link-color;
   text-decoration: $link-decoration;
 
-  @include hover-focus {
+  @include hover {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
   }
@@ -152,6 +166,7 @@ pre {
   margin-top: 0;
   // Reset browser default of `1em` to use `rem`s
   margin-bottom: 1rem;
+  // Don't allow content to break outside
   overflow: auto;
 }
 
@@ -160,6 +175,7 @@ pre {
 //
 
 figure {
+  // Apply a consistent margin strategy (matches our type styles).
   margin: 0 0 1rem;
 }
 
@@ -172,18 +188,10 @@ img {
   vertical-align: middle;
 }
 
-// 对于包含属性 role="button" 默认设置为 pointer
-// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
-
-[role="button"] {
-  cursor: pointer;
-}
-
 /**
 * 在手机端点击事件有 300ms 的延迟
 * 在一些现代浏览器可以通过样式 touch-action: manipulation 来删除点击延迟
 * 下面这些元素不需要延迟
-* http://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
 * https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action
 * http://caniuse.com/#feat=css-touch-action
 * http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
@@ -205,8 +213,7 @@ textarea {
 //
 
 table {
-  border-collapse: collapse;
-  background-color: $table-bg;
+  border-collapse: collapse; // Prevent double borders
 }
 
 caption {
@@ -218,7 +225,7 @@ caption {
 }
 
 th {
-  // Centered by default, but left-align-ed to match the `td`s below.
+  // Matches default `<td>` alignment
   text-align: left;
 }
 
@@ -237,7 +244,6 @@ label {
 // results in a loss of the default `button` focus styles.
 //
 // Credit: https://github.com/suitcss/base/
-// sass-lint:disable no-duplicate-properties
 button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
@@ -246,18 +252,11 @@ button:focus {
 input,
 button,
 select,
+optgroup,
 textarea {
+  font-family: inherit;
+  font-size: inherit;
   line-height: inherit;
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-  // Apply a disabled cursor for radios and checkboxes.
-  //
-  // Note: Neither radios nor checkboxes can be readonly.
-  &:disabled {
-    cursor: $cursor-disabled;
-  }
 }
 
 input[type="date"],
@@ -268,20 +267,18 @@ input[type="month"] {
   // bug where setting a custom line-height prevents text from being vertically
   // centered within the input.
   // See https://bugs.webkit.org/show_bug.cgi?id=139848
-  // and https://github.com/twbs/bootstrap/issues/11266
   -webkit-appearance: listbox;
 }
 
 textarea {
-  // 重置 textarea 不能改变其大小
-  resize: none;
+  // Textareas should really only resize vertically so they don't break their (horizontal) containers.
+  resize: vertical;
 }
 
 fieldset {
   // Browsers set a default `min-width: min-content;` on fieldsets,
   // unlike e.g. `<div>`s, which have `min-width: 0;` by default.
   // So we reset that to ensure fieldsets behave more like a standard block element.
-  // See https://github.com/twbs/bootstrap/issues/12359
   // and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
   min-width: 0;
   // Reset the default outline behavior of fieldsets so they don't affect page layout.
@@ -291,24 +288,22 @@ fieldset {
 }
 
 legend {
-  // Reset the entire legend element to match the `fieldset`
   display: block;
   width: 100%;
-  padding: 0;
   margin-bottom: .5rem;
   font-size: 1.5rem;
   line-height: inherit;
 }
 
-input[type="search"] {
-  // This overrides the extra rounded corners on search inputs in iOS so that our
-  // `.form-control` class can properly style them. Note that this cannot simply
-  // be added to `.form-control` as it's not specific enough. For details, see
-  // https://github.com/twbs/bootstrap/issues/11586.
+[type="search"] {
+  // Correct the odd appearance in Chrome and Safari.
   -webkit-appearance: none;
 }
 
-// Always hide an element with the `hidden` HTML attribute (from PureCSS).
-[hidden] {
-  display: none !important;
+//
+// Correct element displays
+//
+
+output {
+  display: inline-block;
 }
