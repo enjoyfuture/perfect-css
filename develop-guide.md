@@ -1,6 +1,10 @@
 # 开发指南与说明
 该文档记录开发过程中参考资料、知识点总结等。前期可以先不归类，如果整理的多了，后期再归类罗列。
 
+## jekyll 相关
+
+*[liquid 语法](https://liquid.bootcss.com/)
+
 ## 参考资料
 
 * [How to add a Table of Contents to markdown](http://www.seanbuscay.com/blog/jekyll-toc-markdown/)
