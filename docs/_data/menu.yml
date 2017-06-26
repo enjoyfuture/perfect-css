@@ -51,10 +51,10 @@
       file: grid
     - title: 响应式布局
       file: responsive
-- title: 基础样式
-  file: base-styles
+- title: 排版
+  file: typography
   pages:
-    - title: 排版
+    - title: 段落
       file: typography
     - title: 颜色
       file: color

@@ -1,0 +1,36 @@
+// 定义色彩卡样式
+.doc-color-group {
+  color: #fff;
+}
+
+.doc-primary-color {
+  margin-bottom: .5rem;
+}
+
+.doc-color-title {
+  padding: .75rem 1rem 2rem;
+}
+
+.doc-color {
+  display: flex;
+  justify-content: space-between;
+  padding: .75rem 1rem;
+}
+
+.doc-color-dark {
+  color: rgba(0, 0, 0, .87);
+}
+
+.doc-color-a {
+  margin-top: .5rem;
+}
+
+.doc-color-panel {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 3rem;
+  > .col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

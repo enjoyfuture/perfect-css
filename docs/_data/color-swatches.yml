@@ -1,0 +1,760 @@
+- color-group: Red
+  primary-color:
+    - size: 500
+      color: '#f44336'
+  colors:
+    - size: 50
+      color: '#ffebee'
+      dark: 1
+    - size: 100
+      color: '#ffcdd2'
+      dark: 1
+    - size: 200
+      color: '#ef9a9a'
+      dark: 1
+    - size: 300
+      color: '#e57373'
+      dark: 1
+    - size: 400
+      color: '#ef5350'
+    - size: 500
+      color: '#f44336'
+    - size: 600
+      color: '#e53935'
+    - size: 700
+      color: '#d32f2f'
+    - size: 800
+      color: '#c62828'
+    - size: 900
+      color: '#b71c1c'
+  colors-a:
+    - size: A100
+      color: '#ff8a80'
+      dark: 1
+    - size: A200
+      color: '#ff5252'
+    - size: A400
+      color: '#ff1744'
+    - size: A700
+      color: '#d50000'
+
+- color-group: Pink
+  primary-color:
+    - size: 500
+      color: '#e91e63'
+  colors:
+    - size: 50
+      color: '#fce4ec'
+      dark: 1
+    - size: 100
+      color: '#f8bbd0'
+      dark: 1
+    - size: 200
+      color: '#f48fb1'
+      dark: 1
+    - size: 300
+      color: '#f06292'
+      dark: 1
+    - size: 400
+      color: '#ec407a'
+    - size: 500
+      color: '#e91e63'
+    - size: 600
+      color: '#d81b60'
+    - size: 700
+      color: '#c2185b'
+    - size: 800
+      color: '#ad1457'
+    - size: 900
+      color: '#880e4f'
+  colors-a:
+    - size: A100
+      color: '#ff80ab'
+      dark: 1
+    - size: A200
+      color: '#ff4081'
+    - size: A400
+      color: '#f50057'
+    - size: A700
+      color: '#c51162'
+
+- color-group: Purple
+  primary-color:
+    - size: 500
+      color: '#9c27b0'
+  colors:
+    - size: 50
+      color: '#f3e5f5'
+      dark: 1
+    - size: 100
+      color: '#e1bee7'
+      dark: 1
+    - size: 200
+      color: '#ce93d8'
+      dark: 1
+    - size: 300
+      color: '#ba68c8'
+      dark: 1
+    - size: 400
+      color: '#ab47bc'
+    - size: 500
+      color: '#9c27b0'
+    - size: 600
+      color: '#8e24aa'
+    - size: 700
+      color: '#7b1fa2'
+    - size: 800
+      color: '#6a1b9a'
+    - size: 900
+      color: '#4a148c'
+  colors-a:
+    - size: A100
+      color: '#ea80fc'
+      dark: 1
+    - size: A200
+      color: '#e040fb'
+    - size: A400
+      color: '#d500f9'
+    - size: A700
+      color: '#aa00ff'
+
+- color-group: Deep Purple
+  primary-color:
+    - size: 500
+      color: '#673ab7'
+  colors:
+    - size: 50
+      color: '#ede7f6'
+      dark: 1
+    - size: 100
+      color: '#d1c4e9'
+      dark: 1
+    - size: 200
+      color: '#b39ddb'
+      dark: 1
+    - size: 300
+      color: '#9575cd'
+      dark: 1
+    - size: 400
+      color: '#7e57c2'
+    - size: 500
+      color: '#673ab7'
+    - size: 600
+      color: '#5e35b1'
+    - size: 700
+      color: '#512da8'
+    - size: 800
+      color: '#4527a0'
+    - size: 900
+      color: '#311b92'
+  colors-a:
+    - size: A100
+      color: '#b388ff'
+      dark: 1
+    - size: A200
+      color: '#7c4dff'
+    - size: A400
+      color: '#651fff'
+    - size: A700
+      color: '#6200ea'
+
+- color-group: Indigo
+  primary-color:
+    - size: 500
+      color: '#3f51b5'
+  colors:
+    - size: 50
+      color: '#e8eaf6'
+      dark: 1
+    - size: 100
+      color: '#c5cae9'
+      dark: 1
+    - size: 200
+      color: '#9fa8da'
+      dark: 1
+    - size: 300
+      color: '#7986cb'
+      dark: 1
+    - size: 400
+      color: '#5c6bc0'
+    - size: 500
+      color: '#3f51b5'
+    - size: 600
+      color: '#3949ab'
+    - size: 700
+      color: '#303f9f'
+    - size: 800
+      color: '#283593'
+    - size: 900
+      color: '#1a237e'
+  colors-a:
+    - size: A100
+      color: '#8c9eff'
+      dark: 1
+    - size: A200
+      color: '#536dfe'
+    - size: A400
+      color: '#3d5afe'
+    - size: A700
+      color: '#304ffe'
+
+- color-group: Blue
+  primary-color:
+    - size: 500
+      color: '#2196f3'
+  colors:
+    - size: 50
+      color: '#e3f2fd'
+      dark: 1
+    - size: 100
+      color: '#bbdefb'
+      dark: 1
+    - size: 200
+      color: '#90caf9'
+      dark: 1
+    - size: 300
+      color: '#64b5f6'
+      dark: 1
+    - size: 400
+      color: '#42a5f5'
+    - size: 500
+      color: '#2196f3'
+    - size: 600
+      color: '#1e88e5'
+    - size: 700
+      color: '#1976d2'
+    - size: 800
+      color: '#1565c0'
+    - size: 900
+      color: '#0d47a1'
+  colors-a:
+    - size: A100
+      color: '#82b1ff'
+      dark: 1
+    - size: A200
+      color: '#448aff'
+    - size: A400
+      color: '#2979ff'
+    - size: A700
+      color: '#2962ff'
+
+- color-group: Light Blue
+  primary-color:
+    - size: 500
+      color: '#03a9f4'
+  colors:
+    - size: 50
+      color: '#e1f5fe'
+      dark: 1
+    - size: 100
+      color: '#b3e5fc'
+      dark: 1
+    - size: 200
+      color: '#81d4fa'
+      dark: 1
+    - size: 300
+      color: '#4fc3f7'
+      dark: 1
+    - size: 400
+      color: '#29b6f6'
+    - size: 500
+      color: '#03a9f4'
+    - size: 600
+      color: '#039be5'
+    - size: 700
+      color: '#0288d1'
+    - size: 800
+      color: '#0277bd'
+    - size: 900
+      color: '#01579b'
+  colors-a:
+    - size: A100
+      color: '#80d8ff'
+      dark: 1
+    - size: A200
+      color: '#40c4ff'
+    - size: A400
+      color: '#00b0ff'
+    - size: A700
+      color: '#0091ea'
+
+- color-group: Cyan
+  primary-color:
+    - size: 500
+      color: '#00bcd4'
+  colors:
+    - size: 50
+      color: '#e0f7fa'
+      dark: 1
+    - size: 100
+      color: '#b2ebf2'
+      dark: 1
+    - size: 200
+      color: '#80deea'
+      dark: 1
+    - size: 300
+      color: '#4dd0e1'
+      dark: 1
+    - size: 400
+      color: '#26c6da'
+    - size: 500
+      color: '#00bcd4'
+    - size: 600
+      color: '#00acc1'
+    - size: 700
+      color: '#0097a7'
+    - size: 800
+      color: '#00838f'
+    - size: 900
+      color: '#006064'
+  colors-a:
+    - size: A100
+      color: '#84ffff'
+      dark: 1
+    - size: A200
+      color: '#18ffff'
+    - size: A400
+      color: '#00e5ff'
+    - size: A700
+      color: '#00b8d4'
+
+- color-group: Teal
+  primary-color:
+    - size: 500
+      color: '#009688'
+  colors:
+    - size: 50
+      color: '#e0f2f1'
+      dark: 1
+    - size: 100
+      color: '#b2dfdb'
+      dark: 1
+    - size: 200
+      color: '#80cbc4'
+      dark: 1
+    - size: 300
+      color: '#4db6ac'
+      dark: 1
+    - size: 400
+      color: '#26a69a'
+    - size: 500
+      color: '#009688'
+    - size: 600
+      color: '#00897b'
+    - size: 700
+      color: '#00796b'
+    - size: 800
+      color: '#00695c'
+    - size: 900
+      color: '#004d40'
+  colors-a:
+    - size: A100
+      color: '#a7ffeb'
+      dark: 1
+    - size: A200
+      color: '#64ffda'
+    - size: A400
+      color: '#1de9b6'
+    - size: A700
+      color: '#00bfa5'
+
+- color-group: Green
+  primary-color:
+    - size: 500
+      color: '#4caf50'
+  colors:
+    - size: 50
+      color: '#e8f5e9'
+      dark: 1
+    - size: 100
+      color: '#c8e6c9'
+      dark: 1
+    - size: 200
+      color: '#a5d6a7'
+      dark: 1
+    - size: 300
+      color: '#81c784'
+      dark: 1
+    - size: 400
+      color: '#66bb6a'
+    - size: 500
+      color: '#4caf50'
+    - size: 600
+      color: '#43a047'
+    - size: 700
+      color: '#388e3c'
+    - size: 800
+      color: '#2e7d32'
+    - size: 900
+      color: '#1b5e20'
+  colors-a:
+    - size: A100
+      color: '#b9f6ca'
+      dark: 1
+    - size: A200
+      color: '#69f0ae'
+    - size: A400
+      color: '#00e676'
+    - size: A700
+      color: '#00c853'
+
+- color-group: Light Green
+  primary-color:
+    - size: 500
+      color: '#8bc34a'
+  colors:
+    - size: 50
+      color: '#f1f8e9'
+      dark: 1
+    - size: 100
+      color: '#dcedc8'
+      dark: 1
+    - size: 200
+      color: '#c5e1a5'
+      dark: 1
+    - size: 300
+      color: '#aed581'
+      dark: 1
+    - size: 400
+      color: '#9ccc65'
+    - size: 500
+      color: '#8bc34a'
+    - size: 600
+      color: '#7cb342'
+    - size: 700
+      color: '#689f38'
+    - size: 800
+      color: '#558b2f'
+    - size: 900
+      color: '#33691e'
+  colors-a:
+    - size: A100
+      color: '#ccff90'
+      dark: 1
+    - size: A200
+      color: '#b2ff59'
+    - size: A400
+      color: '#76ff03'
+    - size: A700
+      color: '#64dd17'
+
+- color-group: Lime
+  primary-color:
+    - size: 500
+      color: '#cddc39'
+  colors:
+    - size: 50
+      color: '#f9fbe7'
+      dark: 1
+    - size: 100
+      color: '#f0f4c3'
+      dark: 1
+    - size: 200
+      color: '#e6ee9c'
+      dark: 1
+    - size: 300
+      color: '#dce775'
+      dark: 1
+    - size: 400
+      color: '#d4e157'
+    - size: 500
+      color: '#cddc39'
+    - size: 600
+      color: '#c0ca33'
+    - size: 700
+      color: '#afb42b'
+    - size: 800
+      color: '#9e9d24'
+    - size: 900
+      color: '#827717'
+  colors-a:
+    - size: A100
+      color: '#f4ff81'
+      dark: 1
+    - size: A200
+      color: '#eeff41'
+    - size: A400
+      color: '#c6ff00'
+    - size: A700
+      color: '#aeea00'
+
+- color-group: Yellow
+  primary-color:
+    - size: 500
+      color: '#ffeb3b'
+  colors:
+    - size: 50
+      color: '#fffde7'
+      dark: 1
+    - size: 100
+      color: '#fff9c4'
+      dark: 1
+    - size: 200
+      color: '#fff59d'
+      dark: 1
+    - size: 300
+      color: '#fff176'
+      dark: 1
+    - size: 400
+      color: '#ffee58'
+    - size: 500
+      color: '#ffeb3b'
+    - size: 600
+      color: '#fdd835'
+    - size: 700
+      color: '#fbc02d'
+    - size: 800
+      color: '#f9a825'
+    - size: 900
+      color: '#f57f17'
+  colors-a:
+    - size: A100
+      color: '#ffff8d'
+      dark: 1
+    - size: A200
+      color: '#ffff00'
+    - size: A400
+      color: '#ffea00'
+    - size: A700
+      color: '#ffd600'
+
+- color-group: Amber
+  primary-color:
+    - size: 500
+      color: '#ffc107'
+  colors:
+    - size: 50
+      color: '#fff8e1'
+      dark: 1
+    - size: 100
+      color: '#ffecb3'
+      dark: 1
+    - size: 200
+      color: '#ffe082'
+      dark: 1
+    - size: 300
+      color: '#ffd54f'
+      dark: 1
+    - size: 400
+      color: '#ffca28'
+    - size: 500
+      color: '#ffc107'
+    - size: 600
+      color: '#ffb300'
+    - size: 700
+      color: '#ffa000'
+    - size: 800
+      color: '#ff8f00'
+    - size: 900
+      color: '#ff6f00'
+  colors-a:
+    - size: A100
+      color: '#ffe57f'
+      dark: 1
+    - size: A200
+      color: '#ffd740'
+    - size: A400
+      color: '#ffc400'
+    - size: A700
+      color: '#ffab00'
+
+- color-group: Orange
+  primary-color:
+    - size: 500
+      color: '#ff9800'
+  colors:
+    - size: 50
+      color: '#fff3e0'
+      dark: 1
+    - size: 100
+      color: '#ffe0b2'
+      dark: 1
+    - size: 200
+      color: '#ffcc80'
+      dark: 1
+    - size: 300
+      color: '#ffb74d'
+      dark: 1
+    - size: 400
+      color: '#ffa726'
+    - size: 500
+      color: '#ff9800'
+    - size: 600
+      color: '#fb8c00'
+    - size: 700
+      color: '#f57c00'
+    - size: 800
+      color: '#ef6c00'
+    - size: 900
+      color: '#e65100'
+  colors-a:
+    - size: A100
+      color: '#ffd180'
+      dark: 1
+    - size: A200
+      color: '#ffab40'
+    - size: A400
+      color: '#ff9100'
+    - size: A700
+      color: '#ff6d00'
+
+- color-group: Deep Orange
+  primary-color:
+    - size: 500
+      color: '#ff5722'
+  colors:
+    - size: 50
+      color: '#fbe9e7'
+      dark: 1
+    - size: 100
+      color: '#ffccbc'
+      dark: 1
+    - size: 200
+      color: '#ffab91'
+      dark: 1
+    - size: 300
+      color: '#ff8a65'
+      dark: 1
+    - size: 400
+      color: '#ff7043'
+    - size: 500
+      color: '#ff5722'
+    - size: 600
+      color: '#f4511e'
+    - size: 700
+      color: '#e64a19'
+    - size: 800
+      color: '#d84315'
+    - size: 900
+      color: '#bf360c'
+  colors-a:
+    - size: A100
+      color: '#ff9e80'
+      dark: 1
+    - size: A200
+      color: '#ff6e40'
+    - size: A400
+      color: '#ff3d00'
+    - size: A700
+      color: '#dd2c00'
+
+- color-group: Brown
+  primary-color:
+    - size: 500
+      color: '#795548'
+  colors:
+    - size: 50
+      color: '#efebe9'
+      dark: 1
+    - size: 100
+      color: '#d7ccc8'
+      dark: 1
+    - size: 200
+      color: '#bcaaa4'
+      dark: 1
+    - size: 300
+      color: '#a1887f'
+      dark: 1
+    - size: 400
+      color: '#8d6e63'
+    - size: 500
+      color: '#795548'
+    - size: 600
+      color: '#6d4c41'
+    - size: 700
+      color: '#5d4037'
+    - size: 800
+      color: '#4e342e'
+    - size: 900
+      color: '#3e2723'
+
+- color-group: Grey
+  primary-color:
+    - size: 500
+      color: '#9e9e9e'
+  colors:
+    - size: 50
+      color: '#fafafa'
+      dark: 1
+    - size: 100
+      color: '#f5f5f5'
+      dark: 1
+    - size: 200
+      color: '#eeeeee'
+      dark: 1
+    - size: 300
+      color: '#e0e0e0'
+      dark: 1
+    - size: 400
+      color: '#bdbdbd'
+    - size: 500
+      color: '#9e9e9e'
+    - size: 600
+      color: '#757575'
+    - size: 700
+      color: '#616161'
+    - size: 800
+      color: '#424242'
+    - size: 900
+      color: '#212121'
+
+- color-group: Blue Grey
+  primary-color:
+    - size: 500
+      color: '#607d8b'
+  colors:
+    - size: 50
+      color: '#eceff1'
+      dark: 1
+    - size: 100
+      color: '#cfd8dc'
+      dark: 1
+    - size: 200
+      color: '#b0bec5'
+      dark: 1
+    - size: 300
+      color: '#90a4ae'
+      dark: 1
+    - size: 400
+      color: '#78909c'
+    - size: 500
+      color: '#607d8b'
+    - size: 600
+      color: '#546e7a'
+    - size: 700
+      color: '#455a64'
+    - size: 800
+      color: '#37474f'
+    - size: 900
+      color: '#263238'
+
+- color-group: Black
+  primary-color:
+    - size: 500
+      color: '#aaaaaa'
+  colors:
+    - size: 50
+      color: '#ffffff'
+      dark: 1
+    - size: 100
+      color: '#eeeeee'
+      dark: 1
+    - size: 200
+      color: '#cccccc'
+      dark: 1
+    - size: 300
+      color: '#bbbbbb'
+      dark: 1
+    - size: 400
+      color: '#777777'
+    - size: 500
+      color: '#aaaaaa'
+    - size: 600
+      color: '#999999'
+    - size: 700
+      color: '#666666'
+    - size: 800
+      color: '#333333'
+    - size: 900
+      color: '#000000'
+
