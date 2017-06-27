@@ -120,14 +120,18 @@ module Jekyll
         # 前一个元素 level
         prevLevel = 0
 
+        # 这里不支持 >h1 查询，直接连起来查询会报错
+        # nodes = doc.css('>h1, >h2, >h3, >h4, >h5, >h6')
         nodes = doc.css('h1, h2, h3, h4, h5, h6')
         nodes.each do |node|
+          #puts %Q{11#{node.parent['class']}22}
           text = node.text
           name = node.name
           level = 7 - name[1].to_i
           header_content = node.children.first # 取目录下第一个元素
 
-          if header_content # 如果目录下有内容
+          # 如果目录下有内容并且不是例子中的 header
+          if header_content && node.parent['class'] != 'doc-example'
             if index == 0
               # 初始化第一个元素
               toc = {
