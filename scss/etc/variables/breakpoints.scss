@@ -2,6 +2,9 @@
 //
 // 对于媒体查询，根据不同的设备大小定义最小宽度来布局页面
 // TODO 可以参考这个 http://wiki.jikexueyuan.com/project/material-design/layout/adaptive-ui.html
+// https://material.io/guidelines/layout/responsive-ui.html#
+// https://material.io/devices/
+// https://material.io/resizer
 $responsive-breakpoints: (
   xs: 0, // xsmall
   sm: 640px, // small

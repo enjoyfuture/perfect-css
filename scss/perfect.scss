@@ -13,9 +13,15 @@
 @import "etc/reset";
 
 // typography 排版样式
+@import "modules/typography/blockquote";
 @import "modules/typography/code";
+@import "modules/typography/display";
+@import "modules/typography/emphasis";
 @import "modules/typography/header";
+@import "modules/typography/hr";
 @import "modules/typography/link";
+@import "modules/typography/list";
+@import "modules/typography/paragraph";
 
 // print 打印样式
 @import "modules/print";

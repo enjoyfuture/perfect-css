@@ -13,6 +13,13 @@ code {
   color: $code-color;
   background-color: $code-bg;
   @include border-radius($border-radius);
+
+  // 当 a 标签中包含 code 时，修改其样式，让超链接文本显示更美观
+  a > & {
+    padding: 0;
+    color: inherit;
+    background-color: inherit;
+  }
 }
 
 // 键盘样式

@@ -1,7 +1,6 @@
 // Lists
 
-// Unstyled keeps list items block level, just removes default browser padding and list-style
+// 去掉了默认的 list-style 属性值
 @mixin list-unstyled {
-  padding-left: 0;
   list-style: none;
 }
