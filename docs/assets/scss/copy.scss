@@ -18,3 +18,7 @@
     background: darken($doc-primary, 10%);
   }
 }
+
+.doc-copy + .highlight {
+  margin-top: 0;
+}

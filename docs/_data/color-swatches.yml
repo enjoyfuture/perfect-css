@@ -54,7 +54,6 @@
       dark: 1
     - size: 300
       color: '#f06292'
-      dark: 1
     - size: 400
       color: '#ec407a'
     - size: 500
@@ -94,7 +93,6 @@
       dark: 1
     - size: 300
       color: '#ba68c8'
-      dark: 1
     - size: 400
       color: '#ab47bc'
     - size: 500
@@ -134,7 +132,6 @@
       dark: 1
     - size: 300
       color: '#9575cd'
-      dark: 1
     - size: 400
       color: '#7e57c2'
     - size: 500
@@ -174,7 +171,6 @@
       dark: 1
     - size: 300
       color: '#7986cb'
-      dark: 1
     - size: 400
       color: '#5c6bc0'
     - size: 500
@@ -217,6 +213,7 @@
       dark: 1
     - size: 400
       color: '#42a5f5'
+      dark: 1
     - size: 500
       color: '#2196f3'
     - size: 600
@@ -242,6 +239,7 @@
   primary-color:
     - size: 500
       color: '#03a9f4'
+      dark: 1
   colors:
     - size: 50
       color: '#e1f5fe'
@@ -257,8 +255,10 @@
       dark: 1
     - size: 400
       color: '#29b6f6'
+      dark: 1
     - size: 500
       color: '#03a9f4'
+      dark: 1
     - size: 600
       color: '#039be5'
     - size: 700
@@ -273,8 +273,10 @@
       dark: 1
     - size: A200
       color: '#40c4ff'
+      dark: 1
     - size: A400
       color: '#00b0ff'
+      dark: 1
     - size: A700
       color: '#0091ea'
 
@@ -282,6 +284,7 @@
   primary-color:
     - size: 500
       color: '#00bcd4'
+      dark: 1
   colors:
     - size: 50
       color: '#e0f7fa'
@@ -297,10 +300,13 @@
       dark: 1
     - size: 400
       color: '#26c6da'
+      dark: 1
     - size: 500
       color: '#00bcd4'
+      dark: 1
     - size: 600
       color: '#00acc1'
+      dark: 1
     - size: 700
       color: '#0097a7'
     - size: 800
@@ -313,10 +319,13 @@
       dark: 1
     - size: A200
       color: '#18ffff'
+      dark: 1
     - size: A400
       color: '#00e5ff'
+      dark: 1
     - size: A700
       color: '#00b8d4'
+      dark: 1
 
 - color-group: Teal
   primary-color:
@@ -337,6 +346,7 @@
       dark: 1
     - size: 400
       color: '#26a69a'
+      dark: 1
     - size: 500
       color: '#009688'
     - size: 600
@@ -353,15 +363,19 @@
       dark: 1
     - size: A200
       color: '#64ffda'
+      dark: 1
     - size: A400
       color: '#1de9b6'
+      dark: 1
     - size: A700
       color: '#00bfa5'
+      dark: 1
 
 - color-group: Green
   primary-color:
     - size: 500
       color: '#4caf50'
+      dark: 1
   colors:
     - size: 50
       color: '#e8f5e9'
@@ -377,8 +391,10 @@
       dark: 1
     - size: 400
       color: '#66bb6a'
+      dark: 1
     - size: 500
       color: '#4caf50'
+      dark: 1
     - size: 600
       color: '#43a047'
     - size: 700
@@ -393,15 +409,19 @@
       dark: 1
     - size: A200
       color: '#69f0ae'
+      dark: 1
     - size: A400
       color: '#00e676'
+      dark: 1
     - size: A700
       color: '#00c853'
+      dark: 1
 
 - color-group: Light Green
   primary-color:
     - size: 500
       color: '#8bc34a'
+      dark: 1
   colors:
     - size: 50
       color: '#f1f8e9'
@@ -417,10 +437,13 @@
       dark: 1
     - size: 400
       color: '#9ccc65'
+      dark: 1
     - size: 500
       color: '#8bc34a'
+      dark: 1
     - size: 600
       color: '#7cb342'
+      dark: 1
     - size: 700
       color: '#689f38'
     - size: 800
@@ -433,15 +456,19 @@
       dark: 1
     - size: A200
       color: '#b2ff59'
+      dark: 1
     - size: A400
       color: '#76ff03'
+      dark: 1
     - size: A700
       color: '#64dd17'
+      dark: 1
 
 - color-group: Lime
   primary-color:
     - size: 500
       color: '#cddc39'
+      dark: 1
   colors:
     - size: 50
       color: '#f9fbe7'
@@ -457,14 +484,19 @@
       dark: 1
     - size: 400
       color: '#d4e157'
+      dark: 1
     - size: 500
       color: '#cddc39'
+      dark: 1
     - size: 600
       color: '#c0ca33'
+      dark: 1
     - size: 700
       color: '#afb42b'
+      dark: 1
     - size: 800
       color: '#9e9d24'
+      dark: 1
     - size: 900
       color: '#827717'
   colors-a:
@@ -473,15 +505,19 @@
       dark: 1
     - size: A200
       color: '#eeff41'
+      dark: 1
     - size: A400
       color: '#c6ff00'
+      dark: 1
     - size: A700
       color: '#aeea00'
+      dark: 1
 
 - color-group: Yellow
   primary-color:
     - size: 500
       color: '#ffeb3b'
+      dark: 1
   colors:
     - size: 50
       color: '#fffde7'
@@ -497,31 +533,42 @@
       dark: 1
     - size: 400
       color: '#ffee58'
+      dark: 1
     - size: 500
       color: '#ffeb3b'
+      dark: 1
     - size: 600
       color: '#fdd835'
+      dark: 1
     - size: 700
       color: '#fbc02d'
+      dark: 1
     - size: 800
       color: '#f9a825'
+      dark: 1
     - size: 900
       color: '#f57f17'
+      dark: 1
   colors-a:
     - size: A100
       color: '#ffff8d'
       dark: 1
+      dark: 1
     - size: A200
       color: '#ffff00'
+      dark: 1
     - size: A400
       color: '#ffea00'
+      dark: 1
     - size: A700
       color: '#ffd600'
+      dark: 1
 
 - color-group: Amber
   primary-color:
     - size: 500
       color: '#ffc107'
+      dark: 1
   colors:
     - size: 50
       color: '#fff8e1'
@@ -537,31 +584,41 @@
       dark: 1
     - size: 400
       color: '#ffca28'
+      dark: 1
     - size: 500
       color: '#ffc107'
+      dark: 1
     - size: 600
       color: '#ffb300'
+      dark: 1
     - size: 700
       color: '#ffa000'
+      dark: 1
     - size: 800
       color: '#ff8f00'
+      dark: 1
     - size: 900
       color: '#ff6f00'
+      dark: 1
   colors-a:
     - size: A100
       color: '#ffe57f'
       dark: 1
     - size: A200
       color: '#ffd740'
+      dark: 1
     - size: A400
       color: '#ffc400'
+      dark: 1
     - size: A700
       color: '#ffab00'
+      dark: 1
 
 - color-group: Orange
   primary-color:
     - size: 500
       color: '#ff9800'
+      dark: 1
   colors:
     - size: 50
       color: '#fff3e0'
@@ -577,12 +634,16 @@
       dark: 1
     - size: 400
       color: '#ffa726'
+      dark: 1
     - size: 500
       color: '#ff9800'
+      dark: 1
     - size: 600
       color: '#fb8c00'
+      dark: 1
     - size: 700
       color: '#f57c00'
+      dark: 1
     - size: 800
       color: '#ef6c00'
     - size: 900
@@ -593,10 +654,13 @@
       dark: 1
     - size: A200
       color: '#ffab40'
+      dark: 1
     - size: A400
       color: '#ff9100'
+      dark: 1
     - size: A700
       color: '#ff6d00'
+      dark: 1
 
 - color-group: Deep Orange
   primary-color:
@@ -672,6 +736,7 @@
   primary-color:
     - size: 500
       color: '#9e9e9e'
+      dark: 1
   colors:
     - size: 50
       color: '#fafafa'
@@ -687,8 +752,10 @@
       dark: 1
     - size: 400
       color: '#bdbdbd'
+      dark: 1
     - size: 500
       color: '#9e9e9e'
+      dark: 1
     - size: 600
       color: '#757575'
     - size: 700

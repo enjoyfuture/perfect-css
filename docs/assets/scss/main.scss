@@ -8,12 +8,12 @@ html, body {
   min-height: 100%;
 }
 
-a {
+/*a {
   color: #337ab7;
   &:hover, &:active {
     color: #337ab7;
   }
-}
+}*/
 
 .doc-main {
   min-height: 500px;
@@ -22,41 +22,39 @@ a {
 }
 
 .doc-content {
-  p {
+  > p {
     text-indent: 2em;
   }
 
-  h1, h2, h3, h4 {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+  > h2:not(:first-child) {
+    margin-top: 3rem;
+  }
+  > h3 {
+    margin-top: 1.5rem;
+  }
+}
+
+.doc-table {
+  width: 80%;
+
+  tr:nth-of-type(odd) {
+    background: #f9f9f9;
+  }
+  th {
+    border-bottom: 1px solid #ddd;
   }
 
-  li {
-    padding: .3rem 0;
+  th,
+  td {
+    padding: .5rem 1.5rem;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+
+    &:last-child {
+      border-right: 1px solid #ddd;
+    }
   }
-
-  table {
-    width: 80%;
-
-    tr:nth-of-type(odd) {
-      background: #f9f9f9;
-    }
-    th {
-      border-bottom: 1px solid #ddd;
-    }
-
-    th,
-    td {
-      padding: .5rem 1.5rem;
-      border-top: 1px solid #ddd;
-      border-left: 1px solid #ddd;
-
-      &:last-child {
-        border-right: 1px solid #ddd;
-      }
-    }
-    tr:last-child > td {
-      border-bottom: 1px solid #ddd;
-    }
+  tr:last-child > td {
+    border-bottom: 1px solid #ddd;
   }
 }

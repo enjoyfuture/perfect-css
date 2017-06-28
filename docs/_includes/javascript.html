@@ -3,8 +3,8 @@
 <script src="{{ site.baseurl }}/assets/js/perfect.js"></script>
 <script src="{{ site.baseurl }}/assets/js/util.js"></script>
 <script src="{{ site.baseurl }}/assets/js/scrollSpy.js"></script>
+{% if page.toc %}
 <script src="{{ site.baseurl }}/assets/js/plugins/catalogueSpy.js"></script>
-
 <script>
   $(function () {
     var ScrollSpy = perfect.default.ScrollSpy;
@@ -17,7 +17,6 @@
       extend: true,
       plugins: CatalogueSpy,
     });
-
     // 窗口滑动到某一位置时，修改目录定位位置
     $(window).on('scroll', function (event) {
       var top = window.scrollY;
@@ -43,7 +42,12 @@
     });
 
     $(window).trigger('scroll');
+  });
+</script>
+{% endif %}
 
+<script>
+  $(function () {
     // 为代码添加复制按钮
     $('.highlight').each(function () {
       var btnHtml = '<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>'

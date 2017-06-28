@@ -80,7 +80,7 @@ toc: true
 | thumbnail |	缩略图 |
 | date | 日期 |
 | time |	时间 |
-
+{: .doc-table}
 
 ## CSS 书写规范
 

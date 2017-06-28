@@ -20,6 +20,7 @@
         <a href="{{site.repo}}/issues/new?title=问题或建议({{ page.title }})" target="_blank">问题和建议</a>
       </div>
       <hr/>
+      {% if page.toc %}
       <div class="row no-gutters">
         <div class="doc-content col-24 col-lg-19 col-md-17">
           {{ content | toc_content }}
@@ -28,6 +29,11 @@
           {{ content | toc_catalogue }}
         </div>
       </div>
+      {% else %}
+      <div class="doc-content">
+        {{ content | toc_content }}
+      </div>
+      {% endif %}
     </div>
   </div>
 </div>
