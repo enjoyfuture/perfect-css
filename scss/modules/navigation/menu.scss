@@ -10,7 +10,8 @@ ul.menu, ol.menu {
 .menu-title {
   display: block;
   padding: .3rem .5rem;
-  color: $gray-light;
+  font-weight: 400;
+  color: $gray-dark;
   text-decoration: none;
 
   &:hover, &:focus {
@@ -21,12 +22,13 @@ ul.menu, ol.menu {
   }
 
   &.active {
-    color: $gray-dark;
+    color: $theme-primary;
   }
 }
 
 .menu-header {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  font-weight: 700;
   color: $gray-dark;
 }
 
