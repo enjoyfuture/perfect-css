@@ -173,7 +173,7 @@ module.exports = {
     "no-sync": 0, // 我们尽量使用异步方法来代替同步方法，比如操作文件等，
 
     // Stylistic Issues
-    "array-bracket-newline": 2, // 数组最后一个 ] 是否换行，默认规则为，写在一行不需要，多行需要
+    "array-bracket-newline": 0, // 数组最后一个 ] 是否换行，默认规则为，写在一行不需要，多行需要
     "array-bracket-spacing": 2, // 数组元素前后是否要加一空格，默认为不必要加，如 var arr = [ 'foo', 'bar' ];  是不正确的写法
     "array-element-newline": 0, // 数组元素是写在一行，还是多行，该规则不用开启
     "block-spacing": 2, // 花括号与语句间应该有空格
