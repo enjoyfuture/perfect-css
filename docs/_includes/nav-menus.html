@@ -13,7 +13,7 @@
   <li>
     <a {% if group.file %}href="/{{ prefix }}/{{ group.file }}/{{ link }}{% if link %}/{% endif %}" {% endif %}
        class="menu-title menu-header {{ active }}">{{ group.title }}</a>
-    <ul class="menu">
+    <ul class="menu" style="display: none;">
       {% for doc in group.pages %}
       {% assign active = nil %}
 

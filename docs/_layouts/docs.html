@@ -3,17 +3,31 @@
 <head>
   {% include header.html %}
 </head>
-<body>
+<body class="doc1-top-fixed">
 
-{% include nav-home.html %}
+<header class="doc1-header-wrapper">
+  <button class="doc1-menu-btn">
+    <i class="icon doc1-menu-icn"></i>
+  </button>
+  <div class="doc1-header-title">
+    {{ page.title }}
+  </div>
+</header>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-24 col-lg-4 col-md-6 doc-menu">
-      {% include nav-menus.html %}
+<div class="doc1-main">
+  <div class="doc1-side">
+    <div class="doc1-side-wrapper">
+      <div class="doc1-logo-wrapper">
+        <i class="doc1-logo"></i>
+      </div>
+      <nav class="doc1-menu-nav">
+        {% include nav-menus.html %}
+      </nav>
     </div>
-    <div class="col-24 col-lg-20 col-md-18 doc-main">
-      <h1>{{ page.title }}</h1>
+  </div>
+
+  <div class="doc1-content-wrapper">
+    <div class="doc1-content">
       <p>{{ page.description }}</p>
       <div class="doc-content-header">
         <a href="{{site.repo}}/edit/master/docs/{{page.path}}" target="_blank">编辑该页面</a>
@@ -35,10 +49,36 @@
       </div>
       {% endif %}
     </div>
+    <footer>底部区域</footer>
   </div>
 </div>
 
-{% include footer.html %}
+<div class="doc1-mask-modal"></div>
+
 {% include javascript.html %}
+<script>
+  $(function () {
+    $('.doc1-menu-nav').on('click', '.menu-header', function (e) {
+      e.preventDefault();
+      var $el = $(e.currentTarget);
+      var $nextEl = $el.next();
+      if ($nextEl.is(':visible')) {
+        $nextEl.slideUp('slow');
+      } else {
+        $nextEl.slideDown('slow');
+      }
+    });
+
+    $('.doc1-menu-btn').click(function () {
+      $('.doc1-side').addClass('doc1-side-drawer-visible');
+      $('.doc1-mask-modal').addClass('visible');
+    });
+
+    $('.doc1-mask-modal').click(function () {
+      $('.doc1-side').removeClass('doc1-side-drawer-visible');
+      $('.doc1-mask-modal').removeClass('visible');
+    });
+  });
+</script>
 </body>
 </html>

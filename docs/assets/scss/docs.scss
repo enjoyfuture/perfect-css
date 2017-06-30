@@ -5,7 +5,7 @@
 @import "../../../scss/etc/mixins";
 
 // Local docs variables
-$doc-primary: #00a8c6;
+$doc-primary: #00bcd4;
 $doc-primary-bright: lighten(saturate($doc-primary, 5%), 15%);
 $doc-primary-light: lighten(saturate(#40c0cb, 5%), 35%);
 $doc-graphite: #2a2730;
@@ -41,3 +41,6 @@ $doc-info: #8fbe00;
 // fixed to the top
 @import "navbar-top-fixed";
 
+@import "layout";
+
+@import "device-view";
