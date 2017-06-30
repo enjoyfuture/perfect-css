@@ -11,7 +11,7 @@
 
 <title>
   
-  Perfect 之旅-调色板 &middot; Perfect
+  七色卡 &middot; Perfect
   
 </title>
 
@@ -24,25 +24,54 @@
 <link href="/assets/css/docs.css" rel="stylesheet">
 
 </head>
-<body class="doc1-top-fixed">
+<body>
 
-<header class="doc1-header-wrapper">
-  <button class="doc1-menu-btn">
-    <i class="icon doc1-menu-icn"></i>
-  </button>
-  <div class="doc1-header-title">
-    Perfect 之旅-调色板
+<nav class="navbar navbar-doc navbar-toggleable-md fixed-top bd-navbar">
+  <div class="d-flex justify-content-between d-lg-none">
+    <a class="navbar-brand" href="/">
+      Perfect
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav"
+            aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   </div>
-</header>
 
-<div class="doc1-main">
-  <div class="doc1-side">
-    <div class="doc1-side-wrapper">
-      <div class="doc1-logo-wrapper">
-        <i class="doc1-logo"></i>
-      </div>
-      <nav class="doc1-menu-nav">
-        
+  <div class="collapse navbar-collapse" id="bd-main-nav">
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-item nav-link "
+        href="/">Perfect</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+           href="/docs/getting-started/introduction/">文档</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+        href="/examples/">例子</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+           href="/guide/css">规范</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+           href="/theme/">自定义主题</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link active"
+           href="/draft/">草稿</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-24 col-lg-4 col-md-6 doc-menu">
+      
 
 
 <ul class="menu">
@@ -53,89 +82,11 @@
   
   
   <li>
-    <a href="/docs/getting-started/introduction/" 
-       class="menu-title menu-header active">Perfect 之旅</a>
-    <ul class="menu" style="display: none;">
-      
-      
 
-      
-      <li><a href="/docs/getting-started/introduction/"
-             class="menu-title ">介绍</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/download/"
-             class="menu-title ">下载</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/best-practices/"
-             class="menu-title ">最佳实践</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/css-module/"
-             class="menu-title ">CSS 模块化支持</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/javascript/"
-             class="menu-title ">JavaScript 组件</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/theme/"
-             class="menu-title ">自定义主题</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/color-swatches/"
-             class="menu-title active">七色卡</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/compatibility/"
-             class="menu-title ">兼容性</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/build/"
-             class="menu-title ">开发构建</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/changelog/"
-             class="menu-title ">历史版本</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/issue/"
-             class="menu-title ">问题和建议</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/develop-guide/"
-             class="menu-title ">Perfect 开发指南</a></li>
-      
-      
-
-      
-      <li><a href="/docs/getting-started/browser-bug/"
-             class="menu-title ">浏览器 bug</a></li>
-      
-    </ul>
+    
+    <a href="/draft/classname/" 
+       class="menu-title menu-header ">常用 class 命名名称</a>
+    
   </li>
   
   
@@ -144,47 +95,11 @@
   
   
   <li>
-    <a href="/docs/setup/global-styles/" 
-       class="menu-title menu-header ">Perfect 设置</a>
-    <ul class="menu" style="display: none;">
-      
-      
 
-      
-      <li><a href="/docs/setup/global-styles/"
-             class="menu-title ">全局样式</a></li>
-      
-      
-
-      
-      <li><a href="/docs/setup/options/"
-             class="menu-title ">配置项</a></li>
-      
-      
-
-      
-      <li><a href="/docs/setup/sass/"
-             class="menu-title ">Sass</a></li>
-      
-      
-
-      
-      <li><a href="/docs/setup/javascript/"
-             class="menu-title ">JavaScript</a></li>
-      
-      
-
-      
-      <li><a href="/docs/setup/flex/"
-             class="menu-title ">Flex</a></li>
-      
-      
-
-      
-      <li><a href="/docs/setup/media-queries/"
-             class="menu-title ">媒体查询</a></li>
-      
-    </ul>
+    
+    <a href="/draft/color-swatches/" 
+       class="menu-title menu-header ">七色卡</a>
+    
   </li>
   
   
@@ -193,29 +108,34 @@
   
   
   <li>
-    <a href="/docs/layout/container/" 
+
+    
+    <a href="/draft/index/" 
+       class="menu-title menu-header ">草稿文件</a>
+    
+  </li>
+  
+  
+  
+
+  
+  
+  <li>
+
+    
+    <a href="/draft/layout/layout/" 
        class="menu-title menu-header ">布局</a>
-    <ul class="menu" style="display: none;">
+    <ul class="menu">
       
       
 
       
-      <li><a href="/docs/layout/container/"
-             class="menu-title ">容器</a></li>
-      
-      
-
-      
-      <li><a href="/docs/layout/grid/"
-             class="menu-title ">Grid</a></li>
-      
-      
-
-      
-      <li><a href="/docs/layout/responsive/"
-             class="menu-title ">响应式布局</a></li>
+      <li><a href="/draft/layout/layout/"
+             class="menu-title ">页面布局 demo</a></li>
       
     </ul>
+
+    
   </li>
   
   
@@ -224,35 +144,11 @@
   
   
   <li>
-    <a href="/docs/typography/typography/" 
-       class="menu-title menu-header ">排版</a>
-    <ul class="menu" style="display: none;">
-      
-      
 
-      
-      <li><a href="/docs/typography/typography/"
-             class="menu-title ">段落</a></li>
-      
-      
-
-      
-      <li><a href="/docs/typography/color/"
-             class="menu-title ">颜色</a></li>
-      
-      
-
-      
-      <li><a href="/docs/typography/code/"
-             class="menu-title ">代码</a></li>
-      
-      
-
-      
-      <li><a href="/docs/typography/table/"
-             class="menu-title ">表格</a></li>
-      
-    </ul>
+    
+    <a href="/draft/toc/" 
+       class="menu-title menu-header ">table of content</a>
+    
   </li>
   
   
@@ -261,291 +157,45 @@
   
   
   <li>
-    <a href="/docs/navigation/nav/" 
-       class="menu-title menu-header ">导航类样式</a>
-    <ul class="menu" style="display: none;">
+
+    
+    <a href="/draft/tone/tone/" 
+       class="menu-title menu-header ">色调</a>
+    <ul class="menu">
       
       
 
       
-      <li><a href="/docs/navigation/nav/"
-             class="menu-title ">导航</a></li>
+      <li><a href="/draft/tone/tone/"
+             class="menu-title ">色调1</a></li>
       
       
 
       
-      <li><a href="/docs/navigation/navbar/"
-             class="menu-title ">导航栏</a></li>
-      
-      
-
-      
-      <li><a href="/docs/navigation/menu/"
-             class="menu-title ">菜单</a></li>
-      
-      
-
-      
-      <li><a href="/docs/navigation/pagination/"
-             class="menu-title ">分页</a></li>
+      <li><a href="/draft/tone/tone2/"
+             class="menu-title ">色调2</a></li>
       
     </ul>
-  </li>
-  
-  
-  
 
-  
-  
-  <li>
-    <a href="/docs/container/form/" 
-       class="menu-title menu-header ">容器类样式</a>
-    <ul class="menu" style="display: none;">
-      
-      
-
-      
-      <li><a href="/docs/container/form/"
-             class="menu-title ">Form 表单</a></li>
-      
-      
-
-      
-      <li><a href="/docs/container/panel/"
-             class="menu-title ">Panel 组件</a></li>
-      
-      
-
-      
-      <li><a href="/docs/container/tab/"
-             class="menu-title ">Tab Panel 组件</a></li>
-      
-      
-
-      
-      <li><a href="/docs/container/card/"
-             class="menu-title ">Card 组件</a></li>
-      
-      
-
-      
-      <li><a href="/docs/container/list/"
-             class="menu-title ">List Panel 组件</a></li>
-      
-      
-
-      
-      <li><a href="/docs/container/dialog/"
-             class="menu-title ">对话框窗口</a></li>
-      
-    </ul>
-  </li>
-  
-  
-  
-
-  
-  
-  <li>
-    <a href="/docs/components/button/" 
-       class="menu-title menu-header ">组件类样式</a>
-    <ul class="menu" style="display: none;">
-      
-      
-
-      
-      <li><a href="/docs/components/button/"
-             class="menu-title ">Button 按钮</a></li>
-      
-      
-
-      
-      <li><a href="/docs/components/input/"
-             class="menu-title ">Input 组件</a></li>
-      
-      
-
-      
-      <li><a href="/docs/components/dropdown/"
-             class="menu-title ">DropDown 组件</a></li>
-      
-      
-
-      
-      <li><a href="/docs/components/progress/"
-             class="menu-title ">Progress 组件</a></li>
-      
-      
-
-      
-      <li><a href="/docs/components/alert/"
-             class="menu-title ">Alert 组件</a></li>
-      
-      
-
-      
-      <li><a href="/docs/components/crumb/"
-             class="menu-title ">面包屑</a></li>
-      
-      
-
-      
-      <li><a href="/docs/components/tooltip/"
-             class="menu-title ">Tooltip 组件</a></li>
-      
-      
-
-      
-      <li><a href="/docs/components/popover/"
-             class="menu-title ">Popover 组件</a></li>
-      
-      
-
-      
-      <li><a href="/docs/components/image/"
-             class="menu-title ">Image 组件</a></li>
-      
-    </ul>
-  </li>
-  
-  
-  
-
-  
-  
-  <li>
-    <a href="/docs/utils/float/" 
-       class="menu-title menu-header ">工具类样式</a>
-    <ul class="menu" style="display: none;">
-      
-      
-
-      
-      <li><a href="/docs/utils/float/"
-             class="menu-title ">浮动</a></li>
-      
-      
-
-      
-      <li><a href="/docs/utils/position/"
-             class="menu-title ">定位</a></li>
-      
-      
-
-      
-      <li><a href="/docs/utils/color/"
-             class="menu-title ">颜色</a></li>
-      
-      
-
-      
-      <li><a href="/docs/utils/flex/"
-             class="menu-title ">Flex</a></li>
-      
-      
-
-      
-      <li><a href="/docs/utils/spacing/"
-             class="menu-title ">间距</a></li>
-      
-      
-
-      
-      <li><a href="/docs/utils/border/"
-             class="menu-title ">边框</a></li>
-      
-      
-
-      
-      <li><a href="/docs/utils/align/"
-             class="menu-title ">文本对齐</a></li>
-      
-    </ul>
-  </li>
-  
-  
-  
-
-  
-  
-  <li>
-    <a href="/docs/tag-property/tag/" 
-       class="menu-title menu-header ">Html 标签和样式属性</a>
-    <ul class="menu" style="display: none;">
-      
-      
-
-      
-      <li><a href="/docs/tag-property/tag/"
-             class="menu-title ">Html 标签</a></li>
-      
-      
-
-      
-      <li><a href="/docs/tag-property/property/"
-             class="menu-title ">样式属性</a></li>
-      
-    </ul>
-  </li>
-  
-  
-  
-
-  
-  
-  <li>
-    <a href="/docs/plugins/plugin1/" 
-       class="menu-title menu-header ">插件</a>
-    <ul class="menu" style="display: none;">
-      
-      
-
-      
-      <li><a href="/docs/plugins/plugin1/"
-             class="menu-title ">插件1</a></li>
-      
-    </ul>
-  </li>
-  
-  
-  
-
-  
-  
-  <li>
-    <a 
-       class="menu-title menu-header ">辅助样式库</a>
-    <ul class="menu" style="display: none;">
-      
-      
-
-      
-      <li><a href="http://www.iconfont.cn/"
-             target="_blank"class="menu-title ">阿里图标库</a></li>
-      
-    </ul>
+    
   </li>
   
 </ul>
 
 
-      </nav>
     </div>
-  </div>
-
-  <div class="doc1-content-wrapper">
-    <div class="doc1-content">
-      <p>调色板中的颜色源于大自然并从中获取灵感，采用大胆的颜色色彩与单调乏味的周边环境形成鲜明的对比， 强调深度阴影和高亮处理，引出意想不到且充满活力的颜色。</p>
-      <div class="doc-content-header">
-        <a href="https://github.com/perfect-ui/perfect/edit/master/docs/docs/getting-started/color-swatches.md" target="_blank">编辑该页面</a>
-        <a href="https://github.com/perfect-ui/perfect/issues/new?title=问题或建议(Perfect 之旅-调色板)" target="_blank">问题和建议</a>
-      </div>
+    <div class="col-24 col-lg-20 col-md-18 doc-main">
+      <h1>七色卡</h1>
+      <p>利用色卡，你可以定制主题颜色来匹配你的产品颜色</p>
       <hr/>
+
       
-      <div class="doc-content">
-        <p>以下调色板基于 <a href="https://material.io/guidelines/style/color.html" target="_blank">Google Material Design Color</a>。
-调色板以一些基础色为主颜色，通过调整亮度和色彩饱和度为不同的设备提供了一套完整可用的颜色方案。
-颜色变量文件定义在 <a href="https://github.com/perfect-ui/perfect/blob/master/scss/etc/variables/colors.scss" target="_blank">scss/etc/variables/colors.scss</a></p>
+
+
+
+
+
+
 
 <div class="row doc-color-panel">
 
@@ -942,6 +592,7 @@
 
 </div>
 
+
 <div class="row doc-color-panel">
 
 
@@ -1144,7 +795,7 @@
 
   <div class="col">
     <section class="doc-color-group">
-      <div class="doc-primary-color doc-color-dark" style="background-color: #03a9f4;">
+      <div class="doc-primary-color" style="background-color: #03a9f4;">
         <div class="doc-color-title">Light Blue</div>
         <div class="doc-color">
           <span>500</span>
@@ -1242,7 +893,7 @@
 
   <div class="col">
     <section class="doc-color-group">
-      <div class="doc-primary-color doc-color-dark" style="background-color: #00bcd4;">
+      <div class="doc-primary-color" style="background-color: #00bcd4;">
         <div class="doc-color-title">Cyan</div>
         <div class="doc-color">
           <span>500</span>
@@ -1336,6 +987,7 @@
 
 
 </div>
+
 
 <div class="row doc-color-panel">
 
@@ -1441,7 +1093,7 @@
 
   <div class="col">
     <section class="doc-color-group">
-      <div class="doc-primary-color doc-color-dark" style="background-color: #4caf50;">
+      <div class="doc-primary-color" style="background-color: #4caf50;">
         <div class="doc-color-title">Green</div>
         <div class="doc-color">
           <span>500</span>
@@ -1539,7 +1191,7 @@
 
   <div class="col">
     <section class="doc-color-group">
-      <div class="doc-primary-color doc-color-dark" style="background-color: #8bc34a;">
+      <div class="doc-primary-color" style="background-color: #8bc34a;">
         <div class="doc-color-title">Light Green</div>
         <div class="doc-color">
           <span>500</span>
@@ -1637,7 +1289,7 @@
 
   <div class="col">
     <section class="doc-color-group">
-      <div class="doc-primary-color doc-color-dark" style="background-color: #cddc39;">
+      <div class="doc-primary-color" style="background-color: #cddc39;">
         <div class="doc-color-title">Lime</div>
         <div class="doc-color">
           <span>500</span>
@@ -1732,13 +1384,14 @@
 
 </div>
 
+
 <div class="row doc-color-panel">
 
 
 
   <div class="col">
     <section class="doc-color-group">
-      <div class="doc-primary-color doc-color-dark" style="background-color: #ffeb3b;">
+      <div class="doc-primary-color" style="background-color: #ffeb3b;">
         <div class="doc-color-title">Yellow</div>
         <div class="doc-color">
           <span>500</span>
@@ -1836,7 +1489,7 @@
 
   <div class="col">
     <section class="doc-color-group">
-      <div class="doc-primary-color doc-color-dark" style="background-color: #ffc107;">
+      <div class="doc-primary-color" style="background-color: #ffc107;">
         <div class="doc-color-title">Amber</div>
         <div class="doc-color">
           <span>500</span>
@@ -1934,7 +1587,7 @@
 
   <div class="col">
     <section class="doc-color-group">
-      <div class="doc-primary-color doc-color-dark" style="background-color: #ff9800;">
+      <div class="doc-primary-color" style="background-color: #ff9800;">
         <div class="doc-color-title">Orange</div>
         <div class="doc-color">
           <span>500</span>
@@ -2127,6 +1780,7 @@
 
 </div>
 
+
 <div class="row doc-color-panel">
 
 
@@ -2207,7 +1861,7 @@
 
   <div class="col">
     <section class="doc-color-group">
-      <div class="doc-primary-color doc-color-dark" style="background-color: #9e9e9e;">
+      <div class="doc-primary-color" style="background-color: #9e9e9e;">
         <div class="doc-color-title">Grey</div>
         <div class="doc-color">
           <span>500</span>
@@ -2421,109 +2075,55 @@
 
 </div>
 
-<p>选择其中一种饱和度为 500 作为设计的主颜色（primary color），搭配其他颜色做辅助设计。</p>
 
-<p>选择调色方案除了基于给定的这些颜色外，还可以定制你想要的任何颜色来设计，
-但要确保你的应用使用的颜色给人以舒服的感觉，元素色彩之间要有鲜明的对比，震撼或柔和的视觉体验。
-<a href="https://material.io/" target="_blank">Google Material Design</a>
-给我们提供了一个调色板工具 <a href="https://material.io/color" target="_blank">color tool</a></p>
 
-<h3>主颜色（primary color）</h3>
-<p>我们使用主颜色作为应用的主色调，用在屏幕的主要位置，操作按钮以及组件上，通过对主色调调整明暗和亮度，
-在不同的元素上产生对比效果。深浅色调的对比使用有助于区分不同的区域，比如状态栏和工具栏等。</p>
 
-<h3>次要颜色（secondary color）</h3>
-<p>次要颜色主要用在部分 UI 组件上，他是主颜色的重要补充部分，用来协调搭配主颜色，使页面设计更美观。
-次要颜色是可选的，不是所有的应用设计中都加入次要颜色，如果主颜色能更好的对比不同的元素，则可不必添加次要颜色。
-次要颜色主要用在以下几种组件中</p>
 
-<ul>
-  <li>按钮、按钮内容和活动的按钮</li>
-  <li>文本、可以点击的元素、选中的文本</li>
-  <li>进度条</li>
-  <li>操作类组件：比如滑块</li>
-  <li>超链接</li>
-  <li>头条</li>
-</ul>
-
-<p>关于主颜色和次要颜色的使用，在大区域和元素中应该使用主颜色，次要颜色应该用在小区域中。
-更多颜色设计理念可以参考<a href="https://material.io/guidelines/style/color.html" target="_blank">这里</a></p>
-
+<!--模板-->
+<!--<div class="row">
+  <div class="col">
+    <section class="doc-color-group">
+      <div class="doc-primary-color" style="background-color: #f44336;">
+        <div class="doc-color-title">Red</div>
+        <div class="doc-color">
+          <span>500</span>
+          <span>#f44336</span>
+        </div>
       </div>
-      
+      <div class="doc-color" style="background-color: #ffebee;">
+        <span>50</span>
+        <span>#ffebee</span>
+      </div>
+    </section>
+  </div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col">
+
+  </div>
+</div>-->
+
+
     </div>
-    <footer>底部区域</footer>
   </div>
 </div>
 
-<div class="doc1-mask-modal"></div>
+<div class="footer-assist"></div>
+<footer class="footer">
+  <div class="footer-links container-fluid">
+    <div class="links-item text-center">
+      <a href="https://github.com/enjoyfuture/perfect" target="_blank">GitHub 仓库</a>
+      <a href="#" target="_blank">Npm 仓库</a>
+      <a href="#" target="_blank">实例</a>
+      <a href="#" target="_blank">主题</a>
+      <a href="#" target="_blank">关于</a>
+    </div>
+  </div>
 
-<script src="/assets/js/vendor/jquery.min.js"></script>
-<script src="/assets/js/vendor/clipboard.min.js"></script>
-<script src="/assets/js/perfect.js"></script>
-<script src="/assets/js/util.js"></script>
-<script src="/assets/js/scrollSpy.js"></script>
+  <div class="footer-copyright container-fluid text-center">
+    Copyright © 2016-2017 Powered by Perfect 团队
+  </div>
+</footer>
 
-
-<script>
-  $(function () {
-    // 为代码添加复制按钮
-    $('.highlight').each(function () {
-      var btnHtml = '<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>'
-      $(this).before(btnHtml);
-    });
-
-    // 复制到剪贴板
-    var clipboard = new Clipboard('.doc-copy-btn', {
-      target: function (trigger) {
-        return trigger.parentNode.nextElementSibling
-      }
-    });
-
-    clipboard.on('success', function (e) {
-      //$(e.trigger)
-      //  .attr('title', 'Copied!')
-      e.clearSelection()
-    });
-
-    clipboard.on('error', function (e) {
-      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
-      var fallbackMsg = 'Press ' + modifierKey + 'C to copy';
-
-      //$(e.trigger)
-      //.attr('title', fallbackMsg)
-      //.tooltip('_fixTitle')
-      //.tooltip('show')
-      //.attr('title', 'Copy to clipboard')
-      //.tooltip('_fixTitle')
-    });
-  });
-
-</script>
-
-<script>
-  $(function () {
-    $('.doc1-menu-nav').on('click', '.menu-header', function (e) {
-      e.preventDefault();
-      var $el = $(e.currentTarget);
-      var $nextEl = $el.next();
-      if ($nextEl.is(':visible')) {
-        $nextEl.slideUp('slow');
-      } else {
-        $nextEl.slideDown('slow');
-      }
-    });
-
-    $('.doc1-menu-btn').click(function () {
-      $('.doc1-side').addClass('doc1-side-drawer-visible');
-      $('.doc1-mask-modal').addClass('visible');
-    });
-
-    $('.doc1-mask-modal').click(function () {
-      $('.doc1-side').removeClass('doc1-side-drawer-visible');
-      $('.doc1-mask-modal').removeClass('visible');
-    });
-  });
-</script>
 </body>
 </html>

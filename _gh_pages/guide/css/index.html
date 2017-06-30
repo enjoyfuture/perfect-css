@@ -105,7 +105,7 @@
   <li>常用 class 命名名称，以下列出 class 名称或其前缀</li>
 </ol>
 
-<table>
+<table class="doc-table">
   <thead>
     <tr>
       <th>class</th>
@@ -770,8 +770,8 @@
 <script src="/assets/js/perfect.js"></script>
 <script src="/assets/js/util.js"></script>
 <script src="/assets/js/scrollSpy.js"></script>
-<script src="/assets/js/plugins/catalogueSpy.js"></script>
 
+<script src="/assets/js/plugins/catalogueSpy.js"></script>
 <script>
   $(function () {
     var ScrollSpy = perfect.default.ScrollSpy;
@@ -784,7 +784,6 @@
       extend: true,
       plugins: CatalogueSpy,
     });
-
     // 窗口滑动到某一位置时，修改目录定位位置
     $(window).on('scroll', function (event) {
       var top = window.scrollY;
@@ -810,7 +809,12 @@
     });
 
     $(window).trigger('scroll');
+  });
+</script>
 
+
+<script>
+  $(function () {
     // 为代码添加复制按钮
     $('.highlight').each(function () {
       var btnHtml = '<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>'
