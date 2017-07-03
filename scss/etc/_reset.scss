@@ -13,13 +13,14 @@
 // 故显式开启，当有滚动条时，一直显示
 // 3. 设置字体为 sans-serif
 // 4. 在 IOS 下点击高亮修改为完全透明
+// 这里使用浏览器默认字体大小，在实际项目中，根据需要动态设置 html 字体大小
+// 基于 rem ，会根据 html 字体大小动态计算渲染的
 
 html {
   box-sizing: border-box; // 1
   //设置默认字体大小，其他元素采用 rem ，动态的根据 html 来计算其大小
   -ms-overflow-style: scrollbar; // 2
   font-family: sans-serif; // 3
-  font-size: $font-size-root;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 4
 }
 
@@ -69,16 +70,16 @@ main {
 // 排版重置样式
 //
 
-// 去掉 `<h1>`-`<h6>` margin-top，并重置 margin-bottom
+// 重置 margin-top margin-bottom
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: .5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 // 重置段落 p 元素
-// 设置 margin-top 为 0， 用 rem 设置 margin-bottom
+// 用 rem 设置 margin-top margin-bottom
 p {
-  margin-top: 0;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 

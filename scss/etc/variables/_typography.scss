@@ -1,16 +1,15 @@
-$headings-margin-bottom: ($spacer / 2) !default;
 $headings-font-family: inherit !default;
 $headings-font-weight: 500 !default;
 $headings-line-height: 1.1 !default;
 $headings-color: inherit !default;
 
 //对应 h1 到 h6 字体大小
-$font-size-h1: 2.5rem !default;
-$font-size-h2: 2rem !default;
-$font-size-h3: 1.75rem !default;
-$font-size-h4: 1.5rem !default;
-$font-size-h5: 1.25rem !default;
-$font-size-h6: 1rem !default;
+$font-size-h1: 2rem !default;
+$font-size-h2: 1.5rem !default;
+$font-size-h3: 1.25rem !default;
+$font-size-h4: 1.125rem !default;
+$font-size-h5: .875rem !default;
+$font-size-h6: .75rem !default;
 
 $display1-size: 3.5rem !default;
 $display2-size: 4.5rem !default;

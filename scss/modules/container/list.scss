@@ -1,0 +1,174 @@
+// 列表
+// 可用在 ul ol div 等标签上
+
+// 基础样式
+.list {
+  display: block;
+
+  padding-left: 0;
+  margin: .75rem 0 0;
+
+  // 对于 ul ol list-style-type 设为 none
+  list-style-type: none;
+}
+
+// 运用在 a 或 button 上 ，放在 .list-item 书写，因为 .list-item 中 的 active 会覆盖样式
+.list-item-action {
+  width: 100%; // 把 button 的宽度设为 100%
+  color: $list-action-color;
+  text-align: inherit; // 重置 button
+
+  // Hover state
+  @include hover-focus {
+    color: $list-action-hover-color;
+    background-color: $list-hover-bg;
+    text-decoration: none;
+  }
+
+  &:active {
+    color: $list-action-active-color;
+    background-color: $list-action-active-bg;
+  }
+}
+
+// 单独处理 button
+button.list-item-action {
+  border: 0;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+// list 列表项
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: $list-item-padding-y $list-item-padding-x;
+  background-color: $list-bg;
+
+  // 当应用在 a 标签上时
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+  // 活动样式
+  &.active {
+    color: $list-active-color;
+    background-color: $list-active-bg;
+  }
+
+  // 不可用样式
+  &.disabled,
+  &:disabled {
+    color: $list-disabled-color;
+    background-color: $list-disabled-bg;
+  }
+}
+
+.list-dense {
+  font-size: .75rem;
+
+  > .list-item {
+    padding: $list-dense-item-padding-y $list-item-padding-x;
+  }
+}
+
+// 带边框的 list
+
+// 所有边框
+.list-border {
+  .list-item {
+    // 合并边框的一种解决方案
+    margin-bottom: -$list-border-width;
+    border: $list-border-width solid $list-border-color;
+  }
+}
+
+// 内边框
+.list-border-inner {
+  .list-item {
+    border-top: $list-border-width solid $list-border-color;
+    &:first-child {
+      border-top: 0;
+    }
+  }
+}
+
+// 行头和行尾图标，默认高宽度为 24px，即 16px + 8px = 1.5rem
+// 使用时可以根据实际需要调整大小
+.list-item-start-detail,
+.list-item-end-detail {
+  width: $list-item-detail-size;
+  height: $list-item-detail-size;
+  margin-right: $list-item-detail-margin;
+}
+
+.list-item-start-detail {
+  margin-left: 0;
+}
+
+.list-item-end-detail {
+  margin-left: auto;
+}
+
+// 紧凑的
+.list-dense {
+  .list-item-start-detail,
+  .list-item-end-detail {
+    width: $list-item-detail-size * .8333;
+    height: $list-item-detail-size * .8333;
+    margin-right: $list-item-detail-margin;
+  }
+}
+
+// 头像 avatar
+.list-item-avatar {
+  width: $list-item-avatar-size;
+  height: $list-item-avatar-size;
+  margin-left: 0;
+  margin-right: $list-item-avatar-margin;
+  border-radius: 50%;
+}
+
+// 两行
+.list-item-text {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.list-item-text-secondary {
+  font-size: $list-item-text-secondary-font-size;
+  font-weight: $list-item-text-secondary-font-weight;
+  color: $light-black;
+}
+
+.list-dense {
+  .list-item-text-secondary {
+    font-size: $list-dense-font-size;
+  }
+}
+
+// 列表分隔线
+.list-divider {
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid $faint-black;
+}
+
+.list-divider-inset {
+  width: calc(100% - $list-divider-inset-left);
+  margin-left: $list-divider-inset-left;
+  margin-right: 0;
+}
+
+// 列表组
+
+.list-group-header {
+  margin: $list-group-header-padding-y $list-group-header-padding-x;
+  font-size: $list-group-header-font-size;
+  font-weight: $list-group-header-font-weight;
+  color: $dark-black;
+}

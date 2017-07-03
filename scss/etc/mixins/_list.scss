@@ -1,18 +1,14 @@
-// List Groups
+// 根据给定的颜色主题定义不同的列表样式
 
-@mixin list-group-item-variant($state, $background, $color) {
-  .list-group-item-#{$state} {
+@mixin list-item-variant($state, $background, $color) {
+  .list-item-#{$state} {
     color: $color;
     background-color: $background;
   }
 
-  a.list-group-item-#{$state},
-  button.list-group-item-#{$state} {
+  a.list-item-#{$state},
+  button.list-item-#{$state} {
     color: $color;
-
-    .list-group-item-heading {
-      color: inherit;
-    }
 
     @include hover-focus {
       color: $color;
