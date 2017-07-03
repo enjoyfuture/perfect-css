@@ -71,7 +71,7 @@ rules:
     - allow-leading-underscore: true
       convention: hyphenatedlowercase
   hex-length: # 颜色值是短格式还是长格式
-    - 1
+    - 0
     - style: short
   hex-notation: # 颜色值是大写还是小写，默认为小写
     - 1
