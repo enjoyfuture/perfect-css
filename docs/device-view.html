@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="zh-cmn-Hans">
-<head>
-  <meta charset="UTF-8">
-  <title>设备预览</title>
-  <link href="/assets/css/device-view.css" rel="stylesheet">
-</head>
-<body class="device-view-body">
+---
+layout: device-view
+---
 
 <device-resizer style="display: none;">
   <div class="device-toolbar">
     <div class="device-header">
       <div class="device-brand">
         <div class="brand-icon"></div>
-        <div class="brand-name">设备预览</div>
+        <div class="brand-name">组件预览</div>
       </div>
       <div class="device-url-container">
         <div class="device-url-icon">
@@ -69,19 +64,19 @@
     <div class="device-list" view="window">
       <device-view device="window">
         <div class="frame-container">
-          <iframe class="frame-device" src="device-view-demo.html"></iframe>
+          <iframe class="frame-device" src="{{site.baseurl}}/components/"></iframe>
         </div>
       </device-view>
       <device-view device="table" landscape="">
         <div class="frame-container">
           <iframe class="frame-device" sandbox="allow-scripts allow-same-origin"
-                  src="device-view-demo.html"></iframe>
+                  src="{{site.baseurl}}/components/"></iframe>
         </div>
       </device-view>
       <device-view device="handset">
         <div class="frame-container">
           <iframe class="frame-device" sandbox="allow-scripts allow-same-origin"
-                  src="device-view-demo.html"></iframe>
+                  src="{{site.baseurl}}/components/"></iframe>
         </div>
       </device-view>
     </div>
@@ -234,6 +229,7 @@
     };
 
     var json = hash2Json();
+    var url = json.url;
     var device = json.device || 'handset';
 
     var widths = deviceWidth(Number(json.width));
@@ -365,9 +361,24 @@
     updateDeviceView();
 
     $(`.device-select .device-icon[name=${device}]`).addClass('active');
+
+    if (!url) {
+      url = location.origin + '{{site.baseurl}}/components/';
+    }
+
+    $('.device-url-input').val(decodeURIComponent(url));
+    $('.device-list iframe').attr('src', decodeURIComponent(url));
+
+    $('.device-url-input').keypress(function (e) {
+      var keyCode = e.keyCode;
+
+      if (keyCode === 13) {
+        var val = e.currentTarget.value;
+        $('.device-list iframe').attr('src', val);
+      }
+    });
+
     $('device-resizer').show();
   });
 </script>
 
-</body>
-</html>

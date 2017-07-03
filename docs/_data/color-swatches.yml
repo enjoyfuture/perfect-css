@@ -797,31 +797,10 @@
 
 - color-group: Black
   primary-color:
-    - size: 500
-      color: '#aaaaaa'
+    - size: ''
+      color: '#000000'
   colors:
-    - size: 50
+    - size: White
       color: '#ffffff'
       dark: 1
-    - size: 100
-      color: '#eeeeee'
-      dark: 1
-    - size: 200
-      color: '#cccccc'
-      dark: 1
-    - size: 300
-      color: '#bbbbbb'
-      dark: 1
-    - size: 400
-      color: '#777777'
-    - size: 500
-      color: '#aaaaaa'
-    - size: 600
-      color: '#999999'
-    - size: 700
-      color: '#666666'
-    - size: 800
-      color: '#333333'
-    - size: 900
-      color: '#000000'
 

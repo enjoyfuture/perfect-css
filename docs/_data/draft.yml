@@ -9,6 +9,8 @@
   pages:
     - title: 页面布局 demo
       file: layout
+    - title: ''
+      file: layout2
 - title: table of content
   file: toc
 - title: 色调
