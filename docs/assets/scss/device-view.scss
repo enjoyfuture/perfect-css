@@ -168,9 +168,9 @@ device-view {
   display: block;
 
   &[device="handset"] {
-    border-color: #999;
-    border-style: solid;
     border-width: 60px 16px;
+    border-style: solid;
+    border-color: #999;
     border-radius: 36px;
   }
   &[device="handset"][landscape] {
@@ -212,9 +212,9 @@ device-view {
       width: 1366px;
       height: 800px;
       margin-left: 10%;
-      border-color: #666;
-      border-style: solid;
       border-width: 24px 24px 80px;
+      border-style: solid;
+      border-color: #666;
       border-radius: 6px;
       transform-origin: top left;
 
@@ -237,9 +237,9 @@ device-view {
       right: 17%;
       width: 1024px;
       height: 768px;
-      border-color: #757575;
-      border-style: solid;
       border-width: 16px 60px;
+      border-style: solid;
+      border-color: #757575;
       border-radius: 36px;
       transform-origin: bottom right;
     }
@@ -248,9 +248,9 @@ device-view {
       right: 5%;
       width: 360px;
       height: 640px;
-      border-color: #999;
-      border-style: solid;
       border-width: 60px 16px;
+      border-style: solid;
+      border-color: #999;
       border-radius: 36px;
       transform-origin: bottom right;
     }
