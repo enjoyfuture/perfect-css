@@ -1,0 +1,122 @@
+.checkbox {
+  position: relative;
+  box-sizing: content-box;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  padding: 11px;
+  line-height: 0;
+  white-space: nowrap;
+  vertical-align: bottom;
+  cursor: pointer;
+  will-change: transform, opacity;
+  -webkit-tap-highlight-color: transparent;
+
+  input[type="checkbox"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0;
+
+    &:checked ~ .checkbox-background {
+      border-color: $grey-900;
+      background-color: $grey-900;
+      .checkbox-checked {
+        opacity: 1;
+      }
+    }
+
+    &:indeterminate ~ .checkbox-background {
+      border-color: $grey-900;
+      background-color: $grey-900;
+
+      .checkbox-indeterminate {
+        opacity: 1;
+      }
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .26);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 250ms linear;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    opacity: .6;
+    transition-duration: 85ms;
+  }
+
+  &:active::before {
+    opacity: 1;
+    transition-duration: 85ms;
+  }
+}
+
+.checkbox-background {
+  position: absolute;
+  top: 27.5%;
+  bottom: 27.5%;
+  left: 27.5%;
+  right: 27.5%;
+  display: inline-flex;
+  align-items: center;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, .54);
+  border-radius: 2px;
+  background-color: transparent;
+  pointer-events: none;
+  will-change: background-color, border-color;
+}
+
+.checkbox-checked {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  path {
+    stroke-width: 3.12px;
+  }
+}
+
+.checkbox-indeterminate {
+  width: 100%;
+  height: 2px;
+  background-color: $white;
+  opacity: 0;
+}
+
+.checkbox-disabled {
+  pointer-events: none;
+  cursor: default;
+
+  .checkbox-background {
+    border-color: rgba(0, 0, 0, .26);
+  }
+
+  &.checkbox::before {
+    background-color: transparent;
+  }
+
+  input[type="checkbox"]:checked ~ .checkbox-background {
+    border-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, .26);
+  }
+}

@@ -1,0 +1,194 @@
+
+.select {
+  position: relative;
+  display: inline-block;
+  color: rgba(0, 0, 0, .87);
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 2.5px);
+    right: 5px;
+    border-width: 5px 5px 0;
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: $light-black;
+  }
+}
+
+// 可以用在原生的 select 标签上
+// 也可用在模拟的标签上，比如 div
+.select-inner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 2rem;
+  padding-left: .5rem;
+  padding-right: 1.5rem;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+  border-radius: 0;
+  color: inherit;
+  background: none;
+
+  cursor: pointer;
+  transition: border-bottom-color 150ms 0ms cubic-bezier(.4, 0, 1, 1), background-color 150ms 0ms cubic-bezier(.4, 0, 1, 1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+// 为 select 设置 focus 样式
+select.select-inner {
+  &:focus {
+    border-bottom-color: $dark-black;
+    background-color: rgba(0, 0, 0, .06);
+    outline: 0;
+  }
+}
+
+.select:focus {
+  outline: 0;
+  .select-inner:not(select) {
+    border-bottom-color: $dark-black;
+    background-color: rgba(0, 0, 0, .06);
+  }
+}
+
+// div 模拟 select 时，内容样式
+.select-text {
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity 125ms 0ms cubic-bezier(.4, 0, 1, 1), transform 125ms 0ms cubic-bezier(.4, 0, 1, 1);
+}
+
+.select-open .select-text {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 125ms 125ms cubic-bezier(0, 0, .2, 1), transform 125ms 125ms cubic-bezier(0, 0, .2, 1);
+}
+
+.option-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 1.5rem);
+  padding: .5rem 0;
+  margin: 0;
+  background: #fff;
+  list-style: none;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  opacity: 0;
+  transform: scale(0, 0);
+  transform-origin: top left;
+  transition: opacity 125ms 0ms cubic-bezier(.4, 0, 1, 1), transform 125ms 0ms cubic-bezier(.4, 0, 1, 1);
+}
+
+.option-list-item {
+  padding: .25rem .5rem;
+  cursor: pointer;
+
+  // 选中的
+  &[aria-selected="true"] {
+    color: $white;
+    background: $theme-primary;
+  }
+
+  &:hover {
+    color: $white;
+    background: $theme-primary;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+  &.disabled {
+    color: $min-black;
+    cursor: default;
+
+    &:hover {
+      color: $min-black;
+      background: inherit;
+    }
+  }
+}
+
+.select-open {
+  .option-list {
+    opacity: 1;
+    transform: scale(1, 1);
+    transform-origin: center 8px 0;
+    transition: opacity 125ms 125ms cubic-bezier(0, 0, .2, 1), transform 125ms 125ms cubic-bezier(0, 0, .2, 1);
+  }
+}
+
+.select-disabled {
+  color: $min-black;
+  cursor: default;
+  &::after {
+    border-top-color: $min-black;
+  }
+  select[disabled] {
+    pointer-events: none;
+    cursor: default;
+    user-select: none;
+  }
+  &:focus .select-inner:not(select) {
+    border-bottom-color: $faint-black;
+    background-color: #fff;
+  }
+}
+
+// select 多选
+.select-multi {
+  width: 250px;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, .38);
+  outline: none;
+  appearance: none;
+}
+
+.option-group {
+  padding: 0 0 0 1rem;
+  margin: 1rem 0 0;
+  font-weight: normal;
+  color: rgba(0, 0, 0, .38);
+
+  &:last-child {
+    margin-bottom: 1rem;
+  }
+}
+
+.option-item {
+  padding: .75rem 1rem;
+  color: rgba(0, 0, 0, .87);
+  cursor: pointer;
+
+  &:first-child {
+    margin-top: .75rem;
+  }
+
+  &:disabled {
+    color: $min-black;
+    cursor: default;
+  }
+}
+
+optgroup .option-item {
+  margin-left: -1rem;;
+}
+
+.option-divider {
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid $faint-black;
+  cursor: default;
+}

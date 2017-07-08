@@ -1,168 +1,116 @@
 //
 // 按钮 Base styles
+// 合理巧妙的利用伪类处理动态效果
+// 对于低版本 IE 浏览器，需要引入 hock 处理
+// 说明：由于 input 标签不支持伪类 after 和 before，不建议使用
+// <input class="btn" type="button" value="不建议使用" />
 //
 
+// 默认样式
 .btn {
+  position: relative;
   display: inline-block;
-  border: $input-btn-border-width solid transparent;
+  min-width: 4rem;
+  padding: .5rem 1rem;
+  border: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  font-size: 14px;
   font-weight: $btn-font-weight;
-  line-height: $btn-line-height;
+  color: rgba(0, 0, 0, .87);
+  background: transparent;
   text-align: center;
+  text-decoration: none;
   white-space: nowrap;
   vertical-align: middle;
+  cursor: pointer;
   user-select: none;
-  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
-  @include transition($btn-transition);
+  outline: 0;
+  will-change: transform, opacity;
+  -webkit-appearance: none; // 设为 none，去除浏览器默认样式
+  -webkit-tap-highlight-color: rgba(0, 0, 0, .18);
 
-  // Share hover and focus styles
-  @include hover-focus {
-    text-decoration: none;
+  &::before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 100%);
+    left: calc(50% - 100%);
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .06);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 250ms linear;
   }
-  &:focus,
-  &.focus {
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 100%);
+    left: calc(50% - 100%);
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .06);
+    pointer-events: none;
+    opacity: 0;
+    transform-origin: center center;
+    transition: opacity 250ms linear;
+  }
+
+  &:hover::before,
+  &:focus::before,
+  &:active::after {
+    opacity: .6;
+    transition-duration: 85ms;
+  }
+
+  &:focus {
     outline: 0;
-    box-shadow: $btn-focus-box-shadow;
   }
 
-  // Disabled comes first so active can properly restyle
-  &.disabled,
-  &:disabled {
-    cursor: $cursor-disabled;
-    opacity: .65;
-    @include box-shadow(none);
-  }
-
-  &:active,
-  &.active {
-    background-image: none;
-    @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
   }
 }
 
-// Future-proof disabling of clicks on `<a>` elements
-a.btn.disabled,
-fieldset[disabled] a.btn {
+// disabled
+fieldset:disabled .btn,
+.btn:disabled,
+.btn.disabled {
+  color: rgba(0, 0, 0, .26);
   pointer-events: none;
+  cursor: default;
 }
 
+// 浮雕的，凸起样式
+.btn-raised {
+  min-width: 88px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+  will-change: box-shadow;
 
-//
-// Alternate buttons
-//
-
-.btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-}
-.btn-secondary {
-  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
-}
-.btn-info {
-  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
-}
-.btn-success {
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
-}
-.btn-warning {
-  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
-}
-.btn-danger {
-  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
-}
-
-// Remove all backgrounds
-.btn-outline-primary {
-  @include button-outline-variant($btn-primary-bg);
-}
-.btn-outline-secondary {
-  @include button-outline-variant($btn-secondary-border);
-}
-.btn-outline-info {
-  @include button-outline-variant($btn-info-bg);
-}
-.btn-outline-success {
-  @include button-outline-variant($btn-success-bg);
-}
-.btn-outline-warning {
-  @include button-outline-variant($btn-warning-bg);
-}
-.btn-outline-danger {
-  @include button-outline-variant($btn-danger-bg);
-}
-
-
-//
-// Link buttons
-//
-
-// Make a button look and behave like a link
-.btn-link {
-  border-radius: 0;
-  font-weight: $font-weight-normal;
-  color: $link-color;
-
-  &,
-  &:active,
-  &.active,
-  &:disabled {
-    background-color: transparent;
-    @include box-shadow(none);
+  &:active {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
   }
-  &,
+}
+
+// Primary
+.btn-primary {
+  color: $white;
+  background: $theme-primary;
+
+  &:hover,
   &:focus,
   &:active {
-    border-color: transparent;
-  }
-  @include hover {
-    border-color: transparent;
-  }
-  @include hover-focus {
-    color: $link-hover-color;
-    background-color: transparent;
-    text-decoration: $link-hover-decoration;
-  }
-  &:disabled {
-    color: $btn-link-disabled-color;
-
-    @include hover-focus {
-      text-decoration: none;
-    }
+    background: $cyan-700;
   }
 }
 
-
-//
-// Button Sizes
-//
-
-.btn-lg {
-  // line-height: ensure even-numbered height of button next to large input
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
-}
-.btn-sm {
-  // line-height: ensure proper height of button next to small input
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius-sm);
-}
-
-
-//
-// Block button
-//
-
+// block btn
 .btn-block {
   display: block;
   width: 100%;
-}
-
-// Vertically space out multiple block buttons
-.btn-block + .btn-block {
-  margin-top: $btn-block-spacing-y;
-}
-
-// Specificity overrides
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-  &.btn-block {
-    width: 100%;
-  }
 }

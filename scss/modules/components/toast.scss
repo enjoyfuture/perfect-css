@@ -1,0 +1,53 @@
+// toast 样式
+.toast {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2001;
+  //flex 布局
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  //防止阻挡下面元素的操作
+  pointer-events: none;
+  outline: 0;
+  opacity: 0;
+  transform: translateZ(0);
+  will-change: transform; /* 动画性能优化 https://www.w3cplus.com/css3/introduction-css-will-change-property.html*/
+
+  .toast-content {
+    max-width: 80%;
+    padding: .5rem 1rem;
+    border-radius: .7rem;
+    color: #fff;
+    background-color: $dark-black;
+    opacity: 0;
+  }
+
+  &.enter {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+
+    .toast-content {
+      opacity: 1;
+      transition: opacity 500ms ease-in;
+    }
+  }
+
+  &.leave {
+    opacity: 0;
+    transition: opacity 1000ms ease-in;
+
+    .toast-content {
+      opacity: 0;
+      transition: opacity 1000ms ease-in;
+    }
+  }
+}
+

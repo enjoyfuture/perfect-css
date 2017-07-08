@@ -16,7 +16,7 @@ ul.menu, ol.menu {
 
   &:hover, &:focus {
     @include hover-focus {
-      color: $gray-dark;
+      color: $theme-primary;
       text-decoration: none;
     }
   }
@@ -32,7 +32,7 @@ ul.menu, ol.menu {
   color: $gray-dark;
 }
 
-//下拉菜单，如果采用 li 来书写菜单，则直接定义 li 样式即可
+// 下拉菜单，如果采用 li 来书写菜单，则直接定义 li 样式即可
 .menu-dropdown {
   @include clearfix();
   //下拉菜单，子菜单默认是隐藏的

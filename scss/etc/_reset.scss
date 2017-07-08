@@ -39,7 +39,6 @@ html {
   }
 }
 
-
 // 1. 最佳实践，提供一个默认的背景
 body {
   font-family: $font-family-base;
@@ -239,9 +238,7 @@ th {
 //
 
 label {
-  // Allow labels to use `margin` for spacing.
   display: inline-block;
-  margin-bottom: .5rem;
 }
 
 // 在Firefox 和 IE 中的实现，是没有 outline 的，个人建议去掉更好，待定 FIXME
