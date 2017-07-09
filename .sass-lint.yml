@@ -195,25 +195,25 @@ rules:
       - margin-left
       - margin-right
       - border
-      - border-color
-      - border-style
       - border-width
+      - border-style
+      - border-color
       - border-top
-      - border-top-color
-      - border-top-style
       - border-top-width
+      - border-top-style
+      - border-top-color
       - border-bottom
-      - border-bottom-color
-      - border-bottom-style
       - border-bottom-width
+      - border-bottom-style
+      - border-bottom-color
       - border-left
-      - border-left-color
-      - border-left-style
       - border-left-width
+      - border-left-style
+      - border-left-color
       - border-right
-      - border-right-color
-      - border-right-style
       - border-right-width
+      - border-right-style
+      - border-right-color
       - border-radius
       - border-top-left-radius
       - border-top-right-radius
