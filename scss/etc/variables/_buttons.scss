@@ -4,49 +4,9 @@
 $btn-padding-x: 1rem !default;
 $btn-padding-y: .5rem !default;
 $btn-line-height: 1.25 !default;
+$btn-font-size: 14px !default;
 $btn-font-weight: $font-weight-normal !default;
-$btn-box-shadow: inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
-$btn-focus-box-shadow: 0 0 0 2px rgba($theme-primary, .25) !default;
-$btn-active-box-shadow: inset 0 3px 5px rgba($black, .125) !default;
+$btn-color: $grey-900 !default;
 
-$btn-primary-color: $white !default;
-$btn-primary-bg: $theme-primary !default;
-$btn-primary-border: $btn-primary-bg !default;
-
-$btn-secondary-color: $gray-dark !default;
-$btn-secondary-bg: $white !default;
-$btn-secondary-border: #ccc !default;
-
-$btn-info-color: $white !default;
-$btn-info-bg: $theme-info !default;
-$btn-info-border: $btn-info-bg !default;
-
-$btn-success-color: $white !default;
-$btn-success-bg: $theme-secondary !default;
-$btn-success-border: $btn-success-bg !default;
-
-$btn-warning-color: $white !default;
-$btn-warning-bg: $theme-warning !default;
-$btn-warning-border: $btn-warning-bg !default;
-
-$btn-danger-color: $white !default;
-$btn-danger-bg: $theme-danger !default;
-$btn-danger-border: $btn-danger-bg !default;
-
-$btn-link-disabled-color: $gray-light !default;
-
-$btn-padding-x-sm: .5rem !default;
-$btn-padding-y-sm: .25rem !default;
-
-$btn-padding-x-lg: 1.5rem !default;
-$btn-padding-y-lg: .75rem !default;
-
-$btn-block-spacing-y: .5rem !default;
-$btn-toolbar-margin: .5rem !default;
-
-// Allows for customizing button radius independently from global border radius
-$btn-border-radius: $border-radius !default;
-$btn-border-radius-lg: $border-radius-lg !default;
-$btn-border-radius-sm: $border-radius-sm !default;
-
-$btn-transition: all .2s ease-in-out !default;
+$btn-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12) !default;
+$btn-active-box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12) !default;

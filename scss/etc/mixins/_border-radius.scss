@@ -1,5 +1,4 @@
-// Single side border-radius
-
+// 设置圆角 mixin
 @mixin border-radius($radius: $border-radius) {
   @if $enable-rounded {
     border-radius: $radius;

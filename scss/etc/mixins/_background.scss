@@ -1,6 +1,6 @@
-// Contextual backgrounds
+// 背景主题色
 
-@mixin bg-variant($theme, $color) {
+@mixin bg-theme($theme, $color) {
   .bg-#{$theme} {
     background-color: $color !important;
   }

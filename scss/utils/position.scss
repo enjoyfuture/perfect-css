@@ -1,18 +1,18 @@
 // Positioning
 
-.pos-a {
+.pos-absolute {
   position: absolute !important;
 }
 
-.pos-r {
+.pos-relative {
   position: relative !important;
 }
 
-.pos-f {
+.pos-fixed {
   position: fixed !important;
 }
 
-.pos-s {
+.pos-static {
   position: static !important;
 }
 
@@ -33,7 +33,9 @@
 }
 
 .sticky-top {
-  position: sticky;
-  top: 0;
-  z-index: $zindex-sticky;
+  @supports (position: sticky) {
+    position: sticky;
+    top: 0;
+    z-index: $zindex-sticky;
+  }
 }

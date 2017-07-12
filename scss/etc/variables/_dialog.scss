@@ -1,0 +1,23 @@
+// Dialog 变量
+
+$dialog-backdrop-bg: $dark-black !default;
+$dialog-panel-margin-x: 2rem !default;
+$dialog-panel-box-shadow: 0 11px 15px -7px rgba(0, 0, 0, .2), 0 24px 38px 3px rgba(0, 0, 0, .14), 0 9px 46px 8px rgba(0, 0, 0, .12) !default;
+$dialog-panel-transform: translateY(150px) scale(.8) !default;
+
+$dialog-header-padding: 1.5rem !default;
+$dialog-header-margin-bottom: 1.5rem !default;
+$dialog-header-text-align: left !default;
+$dialog-header-font-size: 1.25rem !default;
+$dialog-header-font-weight: 400 !default;
+$dialog-header-line-height: 1.5 !default;
+
+$dialog-body-padding: 1.5rem !default;
+$dialog-body-font-size: .875rem !default;
+$dialog-body-font-weight: 400 !default;
+$dialog-body-line-height: 1.25rem !default;
+$dialog-body-color: $light-black !default;
+
+$dialog-footer-padding-top: 1.5rem !default;
+$dialog-footer-padding-bottom: .5rem !default;
+$dialog-footer-padding-x: .5rem !default;

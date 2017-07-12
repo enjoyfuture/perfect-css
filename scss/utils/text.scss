@@ -1,2 +1,50 @@
+//
+// Text style
+//
 
-.text-ellipsis { @include text-ellipsis; }
+// 单行截取
+.text-ellipsis {
+  @include text-ellipsis;
+}
+
+// 强制换行
+.text-wrap {
+  word-break: break-all;
+  white-space: pre-wrap !important;
+}
+
+// 强制不换行
+.text-nowrap {
+  word-break: keep-all;
+  white-space: nowrap !important;
+}
+
+// 全部小写
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+
+// 全部大写
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+
+// 首字母大写
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+// 主题颜色值
+
+.text-white {
+  color: #fff !important;
+}
+
+@each $color, $value in $theme {
+  @include text-theme('.text-#{$color}', $value);
+}
+
+.text-muted {
+  color: $text-muted !important;
+}
+

@@ -1,0 +1,13 @@
+// 主题颜色值
+
+@mixin text-theme($parent, $color) {
+  #{$parent} {
+    color: $color !important;
+  }
+  // 对于 a 标签需要设置 hover 和 focus
+  a#{$parent} {
+    @include hover-focus {
+      color: darken($color, 10%) !important;
+    }
+  }
+}
