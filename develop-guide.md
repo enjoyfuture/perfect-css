@@ -31,6 +31,7 @@
 * [基于 flex 布局的网格系统](http://flexboxgrid.com/)
 * [纯 CSS3 效果资源收集整理](https://github.com/Zhangjd/awesome-pure-css-no-javascript)
 * https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+* [整理各大公司用到的颜色值](https://brandcolors.net/)
 
 ## 参考 css 框架
 
@@ -55,3 +56,39 @@
 
 * 不要在 tbody thead 或 tr 上设置字体大小，尽量设置在 td 上，因为 ie11会有躲猫猫的显现发生，其表现就是
   渲染的内部不可见，鼠标移上去才能显示出来，又是 ie，万恶的 ie
+* sass 中定义变量时，可以用修饰符 !global 或 !default 来声明，!global 表示全局变量，不论定义在何处，都可以被调用，
+  定义为 !global 的值，可以在其他地方覆盖该变量重新定义新值。
+  !default 表示定义变量的初始值，可以重新定义来覆盖其值，不论重新定义的位置是在定义初始值的前或后面，但如果重新定义为 null
+  则使用定义的初始值
+    ```scss
+      $content: "First content";
+      $content: "Second content?" !default;
+      $new_content: "First time reference" !default;
+      
+      #main {
+        content: $content;
+        new-content: $new_content;
+      }
+    ```
+    编译结果为
+    ```scss
+      #main {
+        content: "First content";
+        new-content: "First time reference"; 
+      }
+    ```
+    变量是空值的时候
+    ```scss
+      $content: null;
+      $content: "Non-null content" !default;
+    
+      #main {
+        content: $content;
+      }
+    ```
+    编译结果为
+    ```scss
+      #main {
+        content: "Non-null content"; 
+      }
+    ```

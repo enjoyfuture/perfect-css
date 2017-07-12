@@ -40,6 +40,7 @@ gulp.task('build-doc', ['scss-docs', 'build-js', 'copy-clipboard-to-docs', 'draf
   exec('JEKYLL_ENV=production jekyll build', (error, stdout, stderr) => {
     if (error) {
       console.log(chalk.magenta(error));
+
       return;
     }
     if (stdout) {

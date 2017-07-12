@@ -47,7 +47,7 @@ gulp.task('scss', ['scss-lint'], () => {
 
 // 编译 docs scss
 gulp.task('scss-docs', ['scss-lint'], () => {
-  return gulp.src(['scss/perfect.scss', 'docs/assets/scss/*.scss'])
+  return gulp.src(['scss/*.scss', 'docs/assets/scss/*.scss'])
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync(scssOption).on('error', $.sass.logError))
     .pipe($.postcss(postcssPlugins))

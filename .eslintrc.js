@@ -9,6 +9,7 @@ module.exports = {
     // for (var i = 0; i < 10; i--) {}
     // for (var i = 10; i >= 0; i++) {}
     "for-direction": 2,
+    "getter-return": 2,
     "no-await-in-loop": 2, // Disallow await inside of loops
     "no-compare-neg-zero": 2, // 不要出现负零，即 -0
     "no-cond-assign": 2, // 条件语句中，不应该出现 = ，比如 if (x = 2) {  } 是会报错的
@@ -195,9 +196,10 @@ module.exports = {
     "id-blacklist": 2, // 指定一些黑名单变量，这些变量不能出现在代码中，比如 "id-blacklist": [2, "data", "err", "e", "cb", "callback"],
     "id-length": 0, // 定义变量名或属性名的最小最大长度
     "id-match": 2, // 规范变量名或属性名的命名规范
-    "indent": [2, 2, {"SwitchCase": 1},
-      {"VariableDeclarator": {"var": 2, "let": 2, "const": 3}},
-    ], // 缩进，我们采用2个空格来缩进
+    "indent": [2, 2, {
+      "SwitchCase": 1, "VariableDeclarator": {"var": 1, "let": 1, "const": 1},
+      "FunctionDeclaration": {"parameters": "first"}
+    }], // 缩进，我们采用2个空格来缩进
     "jsx-quotes": 0, // jsx属性值应该用双引号
     "key-spacing": 2, // 键值之间的空格
     "keyword-spacing": 2, // 关键字 if, else, for, while, do, switch, try, catch, finally, and with 要求有空格
@@ -213,7 +215,7 @@ module.exports = {
     "max-params": [2, 8], // 限定函数参数最大个数
     "max-statements": [2, 80, {"ignoreTopLevelFunctions": true}], // 在一个函数中限定声明表达式最多个数,内部函数会或略
     "max-statements-per-line": [2, {"max": 2}], // 每行最大表达式
-    "multiline-ternary": 0, // 三元表达式，是否需要多行书写
+    "multiline-ternary": [2, "always-multiline"], // 三元表达式，是否需要多行书写
     "new-cap": 0, // 构造函数首字母应该大写
     "new-parens": 2, // 实例化构造函数时，需要加入()，即使没有参数值，所以比如 new Person 是不允许的
     "newline-per-chained-call": 0,
@@ -227,7 +229,7 @@ module.exports = {
     "no-multi-assign": 0, // 不要连续赋值，比如 var a = b = c = 5;
     "no-multiple-empty-lines": 2, // 代码中不要出现太多空行，默认最多为2行
     "no-negated-condition": 0, // 是否允许使用否定表达式 if (!a)
-    "no-nested-ternary": 2, // 是否允许使用嵌套的三元表达式
+    "no-nested-ternary": 0, // 是否允许使用嵌套的三元表达式
     "no-new-object": 2, // 实例化对象时，不要用 new Object(); 而用 {}
     "no-plusplus": [0, {"allowForLoopAfterthoughts": true}], // 是否允许使用 ++ 或 --
     "no-restricted-syntax": [2, "WithStatement"], // 可以指定不允许的语法
@@ -246,7 +248,7 @@ module.exports = {
     "operator-assignment": 2, // 对于赋值表达式，应该使用其简略式写法，比如  x = x + y 应该用 x += y
     "operator-linebreak": 0, // 有操作符时，是否检测打断的行
     "padded-blocks": 0, // 是否验证空白块
-    "padding-line-between-statements": [2, {blankLine: "always", prev: "*", next: "return"}], // 不同的语句中间是否加一空行
+    "padding-line-between-statements": [0, {blankLine: "always", prev: "*", next: "return"}], // 不同的语句中间是否加一空行
     "quote-props": [2, "as-needed"], // 属性加单引号或双引号，个人建议不用加的最好不加
     "quotes": [2, "single"], // 字符串引号，建议使用单引号
     "require-jsdoc": 0, // 是否需要 jsdoc 来注释代码
@@ -346,7 +348,8 @@ module.exports = {
     "es6": true,
     "node": true,
     "browser": true,
-    "mocha": true
+    "mocha": true,
+    "jquery": true
   },
   "parserOptions": {
     "ecmaVersion": 8,

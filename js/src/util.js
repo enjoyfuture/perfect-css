@@ -50,7 +50,7 @@ const util = ((perfect) => {
     let _prefix = prefix;
     do {
       // eslint-disable-next-line no-bitwise
-      _prefix += ~~(Math.random() * MAX_UUID) // "~~" acts like a faster Math.floor() here
+      _prefix += ~~(Math.random() * MAX_UUID); // "~~" acts like a faster Math.floor() here
     } while (document.getElementById(_prefix));
 
     return _prefix;

@@ -121,7 +121,7 @@ const ScrollSpy = ((perfect) => {
           id = getUuid('scrollspy');
           menu.id = id;
         }
-        _config.menu = `#${id}`
+        _config.menu = `#${id}`;
       }
 
       if (!container) {
@@ -133,14 +133,16 @@ const ScrollSpy = ((perfect) => {
           id = getUuid('scrollspy');
           container.id = id;
         }
-        _config.container = `#${id}`
+        _config.container = `#${id}`;
       }
 
       const autoMethod = this.scrollElement !== this.scrollElement.window ?
-        'position' : 'offset';
+        'position' :
+        'offset';
 
       const offsetMethod = _config.method === 'auto' ?
-        autoMethod : _config.method;
+        autoMethod :
+        _config.method;
 
       _config.offsetMethod = offsetMethod;
 
@@ -290,7 +292,8 @@ const ScrollSpy = ((perfect) => {
         let target = null;
         const {anchor, container} = this.config;
         const selector = anchor ? element.getAttribute('href') : element.dataset.menu;
-        const targetSelector = anchor ? element.getAttribute('href') :
+        const targetSelector = anchor ?
+          element.getAttribute('href') :
           `${container} [data-target="${element.dataset.menu}"]`;
 
         if (targetSelector) {
@@ -300,7 +303,7 @@ const ScrollSpy = ((perfect) => {
             return [
               (offsetMethod === 'offset' ? offset(target).top : position(target).top) + offsetBase,
               selector
-            ]
+            ];
           }
         }
         return null;
@@ -353,7 +356,7 @@ const ScrollSpy = ((perfect) => {
       if (this.activeTarget && scrollTop < this.offsets[0] && this.offsets[0] > 0) {
         this.activeTarget = null;
         this.clearActiveCls();
-        return
+        return;
       }
 
       for (let i = this.offsets.length; i--;) {
@@ -453,11 +456,13 @@ const ScrollSpy = ((perfect) => {
 
     getScrollTop() {
       return this.scrollElement === win ?
-        this.scrollElement.pageYOffset : this.scrollElement.scrollTop;
+        this.scrollElement.pageYOffset :
+        this.scrollElement.scrollTop;
     }
 
     getScrollHeight() {
-      return this.scrollElement.scrollHeight || Math.max(
+      return this.scrollElement.scrollHeight ||
+        Math.max(
           doc.body.scrollHeight,
           doc.documentElement.scrollHeight
         );
@@ -465,7 +470,8 @@ const ScrollSpy = ((perfect) => {
 
     getOffsetHeight() {
       return this.scrollElement === win ?
-        win.innerHeight : this.scrollElement.getBoundingClientRect().height;
+        win.innerHeight :
+        this.scrollElement.getBoundingClientRect().height;
     }
 
   }
