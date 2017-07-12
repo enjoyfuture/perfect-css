@@ -1,0 +1,57 @@
+---
+layout: component
+title: Tab 组件
+---
+
+<style>
+  .component-wrap {
+    width: 800px;
+  }
+
+</style>
+
+<div class="component-wrap">
+  <h2>Tab </h2>
+  <section>
+    <h3>左对齐 </h3>
+    <section class="component-container" style="background: #e3f2fd;">
+      <nav class="tab-bar tab-bar-left">
+        <a class="tab active" href="#one">标签1</a>
+        <a class="tab" href="#two">标签2</a>
+        <a class="tab" href="#three">标签3</a>
+      </nav>
+    </section>
+
+    <h3>居中 </h3>
+    <section class="component-container" style="background: #e8eaf6;">
+      <nav class="tab-bar tab-bar-center">
+        <a class="tab active" href="#one">标签1</a>
+        <a class="tab" href="#two">标签2</a>
+        <a class="tab" href="#three">标签3</a>
+      </nav>
+    </section>
+
+    <h3>右对齐 </h3>
+    <section class="component-container" style="background: #f1f8e9;">
+      <nav class="tab-bar tab-bar-right">
+        <a class="tab active" href="#one">标签1</a>
+        <a class="tab" href="#two">标签2</a>
+        <a class="tab" href="#three">标签3</a>
+      </nav>
+    </section>
+
+    <h2 class="m-t-5">Tab Scroller 待补充 </h2>
+    <section class="component-container">
+    </section>
+
+  </section>
+
+</div>
+
+<script>
+  $(function () {
+    $('.tab-bar').on('click', '.tab', function (e) {
+      $(e.currentTarget).addClass('active').siblings().removeClass('active');
+    });
+  });
+</script>

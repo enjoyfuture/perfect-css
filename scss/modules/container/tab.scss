@@ -1,0 +1,95 @@
+// tab style
+.tab-bar {
+  position: relative;
+  display: table;
+  height: 48px;
+  text-transform: uppercase;
+}
+
+.tab-bar-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.tab-bar-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tab-bar-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.tab {
+  position: relative;
+  display: table-cell;
+  padding: 0 24px;
+  overflow: hidden;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  color: rgba(0, 0, 0, .54);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  &:hover {
+    color: rgba(0, 0, 0, .87);
+    text-decoration: none;
+  }
+
+  &:focus {
+    color: rgba(0, 0, 0, .87);
+    outline: 0;
+  }
+
+  &:active,
+  &.active {
+    color: rgba(0, 0, 0, .87);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 46px;
+    left: 0;
+    display: none;
+    width: calc(100% - 4px);
+    height: 2px;
+    background-color: rgba(0, 0, 0, .87);
+    pointer-events: none;
+
+    // 动画效果
+    transform: scale(0);
+  }
+
+  // 获取焦点，鼠标经过或者当前为活动节点时，显示底部边框
+  &:focus::after,
+  &:hover::after,
+  &:active::after,
+  &.active::after {
+    display: block;
+  }
+
+  &.active::after {
+    transform: scale(1);
+    transition: transform 240ms 0ms cubic-bezier(.5, -.5, 1, 1);
+  }
+
+  &:focus::after,
+  &:hover::after {
+    opacity: .38;
+  }
+
+  &.active::after,
+  &:active::after {
+    opacity: .87;
+  }
+
+}
+
