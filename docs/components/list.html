@@ -3,6 +3,25 @@ layout: component
 title: List 组件
 ---
 
+<style>
+  .arrow {
+    position: relative;
+  }
+
+  .arrow:after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    right: 0;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid #bdbdbd;
+    border-right: 2px solid #bdbdbd;
+    transform: rotate(45deg);
+  }
+</style>
+
 <div class="component-wrap">
   <p class="m-3">
     说明：以下例子中，为了演示更直观些，额外的设置了左右外边距 1rem，最大宽度设为 720px，即 max-width: 720px;
@@ -55,6 +74,18 @@ title: List 组件
     </section>
   </section>
 
+  <section class="component-list">
+    <h3>Buttons，使用样式 list-item-action</h3>
+    <div class="list">
+      <button type="button" class="list-item list-item-action">List 组件 - Buttons</button>
+      <button type="button" class="list-item list-item-action active">List 组件 - Buttons(active)
+      </button>
+      <button type="button" class="list-item list-item-action" disabled>List 组件 -
+        Buttons(disabled)
+      </button>
+    </div>
+  </section>
+
   <section>
     <h2>带边框的 List 组件</h2>
     <section class="component-list">
@@ -77,16 +108,28 @@ title: List 组件
   </section>
 
   <section>
-    <h2>行头行尾设置图标</h2>
+    <h2>有间距的 List 组件</h2>
+    <section class="component-list" style="background-color: #f5f5f5;">
+      <ul class="list list-spacing">
+        <li class="list-item">List 组件 - 中间有间距</li>
+        <li class="list-item">List 组件 - 中间有间距</li>
+        <li class="list-item">List 组件 - 中间有间距</li>
+      </ul>
+    </section>
+
+  </section>
+
+  <section>
+    <h2>行首行尾设置图标</h2>
     <p class="m-x-3">说明：这里我们用一个灰色的背景作为演示例子，实际项目中使用具体的图标替换</p>
     <section class="component-list">
-      <h3>行头图标</h3>
+      <h3>行首图标</h3>
       <ul class="list">
-        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行头图标
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行首图标
         </li>
-        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行头图标
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行首图标
         </li>
-        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行头图标
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行首图标
         </li>
       </ul>
     </section>
@@ -101,13 +144,13 @@ title: List 组件
     </section>
 
     <section class="component-list">
-      <h3>行头图标（紧凑的）</h3>
+      <h3>行首图标（紧凑的）</h3>
       <ul class="list list-dense">
-        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行头图标
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行首图标
         </li>
-        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行头图标
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行首图标
         </li>
-        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行头图标
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 行首图标
         </li>
       </ul>
     </section>
@@ -144,6 +187,98 @@ title: List 组件
       </ul>
     </section>
   </section>
+
+  <section>
+    <h2>行首行尾都有文字</h2>
+    <section class="component-list">
+      <h3>只有文字</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right">List 组件 - 行尾文本</span>
+        </li>
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-primary">List 组件 - 行尾文本</span>
+        </li>
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-success">List 组件 - 行尾文本</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>行首行尾文字+行尾图标</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right">List 组件 - 行尾文本</span>
+          <span class="list-item-end-detail arrow"></span>
+        </li>
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-primary">List 组件 - 行尾文本</span>
+          <span class="list-item-end-detail arrow"></span>
+        </li>
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-success">List 组件 - 行尾文本</span>
+          <span class="list-item-end-detail arrow"></span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>行首图标 + 行首行尾文字+行尾图标</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span class="list-item-start-detail grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right">List 组件 - 行尾文本</span>
+          <span class="list-item-end-detail arrow"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-start-detail grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-primary">List 组件 - 行尾文本</span>
+          <span class="list-item-end-detail arrow"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-start-detail grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-success">List 组件 - 行尾文本</span>
+          <span class="list-item-end-detail arrow"></span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>头像 + 行首行尾文字+行尾图标</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right">List 组件 - 行尾文本</span>
+          <span class="list-item-end-detail arrow"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-primary">List 组件 - 行尾文本</span>
+          <span class="list-item-end-detail arrow"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-success">List 组件 - 行尾文本</span>
+          <span class="list-item-end-detail arrow"></span>
+        </li>
+      </ul>
+    </section>
+
+  </section>
+
 
   <section>
     <h2>两行列表</h2>
@@ -278,6 +413,39 @@ title: List 组件
         </li>
       </ul>
     </section>
+
+    <section class="component-list">
+      <h3>头像 + 文本 + 行尾文本 + 行尾图标</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-text-right">行尾文本</span>
+          <span class="list-item-end-detail grey-bg"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-text-right">行尾文本</span>
+          <span class="list-item-end-detail grey-bg"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-text-right">行尾文本</span>
+          <span class="list-item-end-detail grey-bg"></span>
+        </li>
+      </ul>
+    </section>
   </section>
 
   <section>
@@ -296,12 +464,38 @@ title: List 组件
     </section>
 
     <section class="component-list">
-      <h3>inset 宽度</h3>
+      <h3>inset </h3>
+      <ul class="list">
+        <li class="list-item">List 组件 - 小节 1</li>
+        <li class="list-item">List 组件 - 小节 1</li>
+        <li class="list-item">List 组件 - 小节 1</li>
+        <li class="list-divider list-divider-inset"></li>
+        <li class="list-item">List 组件 - 小节 2</li>
+        <li class="list-item">List 组件 - 小节 2</li>
+        <li class="list-item">List 组件 - 小节 2</li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>inset detail</h3>
+      <ul class="list">
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 小节 1</li>
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 小节 1</li>
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 小节 1</li>
+        <li class="list-divider list-divider-inset-detail"></li>
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 小节 2</li>
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 小节 2</li>
+        <li class="list-item"><span class="list-item-start-detail grey-bg"></span>List 组件 - 小节 2</li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>inset 头像(avatar)</h3>
       <ul class="list">
         <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 1</li>
         <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 1</li>
         <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 1</li>
-        <li class="list-divider list-divider-inset"></li>
+        <li class="list-divider list-divider-inset-avatar"></li>
         <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 2</li>
         <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 2</li>
         <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 2</li>
