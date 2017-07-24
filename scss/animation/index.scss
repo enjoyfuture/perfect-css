@@ -1,0 +1,25 @@
+// 动画样式
+
+@import "./mixin";
+
+// .animation-ease-out 减速
+// .animation-ease-in-out 先迅速加速，再缓慢减速
+// .animation-ease-in 加速
+// .animation-sharp 极速
+.animation {
+  &-ease-out {
+    @include animation-ease-out;
+  }
+
+  &-ease-in-out {
+    @include animation-ease-in-out;
+  }
+
+  &-ease-in {
+    @include animation-ease-in;
+  }
+
+  &-sharp {
+    @include animation-sharp;
+  }
+}

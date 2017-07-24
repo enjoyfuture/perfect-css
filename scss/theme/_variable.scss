@@ -1,0 +1,79 @@
+// 自定义主题颜色
+@import "./function";
+
+// 主题颜色，换肤一般改变这三个基本颜色即可
+// 这三种基本颜色主题，会用在所有 CSS 组件上，
+$theme-primary: #2196f3 !default; // 主颜色，使用蓝色 $blue-500 #2196f3
+$theme-accent: #e040fb !default; // 次颜色，也叫强调颜色，使用紫色 $purple-a-200 #e040fb
+$theme-background: #fff !default; // 背景颜色，白色
+
+// 色调，是用浅色还是深色 light or dark
+$theme-primary-tone: theme-light-or-dark($theme-primary);
+$theme-accent-tone: theme-light-or-dark($theme-accent);
+$theme-background-tone: theme-light-or-dark($theme-background);
+
+// 定义文本默认颜色，默认颜色深色用黑色，浅色用白色
+// 分为基本颜色、次要颜色和禁用颜色，分别用在基础颜色、过渡颜色和表单 disabled readonly 以及其他禁用
+$theme-text-colors: (
+  dark: (
+    primary: rgba(0, 0, 0, .87),
+    secondary: rgba(0, 0, 0, .54),
+    disabled: rgba(0, 0, 0, .38)
+  ),
+  light: (
+    primary: #ffffff,
+    secondary: rgba(255, 255, 255, .7),
+    disabled: rgba(255, 255, 255, .5)
+  )
+);
+
+// 主题属性值
+$theme-property-values: (
+  // 主题颜色
+  primary: $theme-primary,
+  accent: $theme-accent,
+  background: $theme-background,
+
+  // TODO 以下用的地方待补充
+  // 用在 $theme-primary 上的 primary secondary 和 disabled 颜色
+  text-primary-on-primary: map-get(map-get($theme-text-colors, $theme-primary-tone), primary),
+  text-secondary-on-primary: map-get(map-get($theme-text-colors, $theme-primary-tone), secondary),
+  text-disabled-on-primary: map-get(map-get($theme-text-colors, $theme-primary-tone), disabled),
+
+  // 用在 $theme-accent 上的 primary secondary 和 disabled 颜色
+  text-primary-on-accent: map-get(map-get($theme-text-colors, $theme-accent-tone), primary),
+  text-secondary-on-accent: map-get(map-get($theme-text-colors, $theme-accent-tone), secondary),
+  text-disabled-on-accent: map-get(map-get($theme-text-colors, $theme-accent-tone), disabled),
+
+  // 用在 $theme-background 上的 primary secondary 和 disabled 颜色
+  text-primary-on-background: map-get(map-get($theme-text-colors, $theme-background-tone), primary),
+  text-secondary-on-background: map-get(map-get($theme-text-colors, $theme-background-tone), secondary),
+  text-disabled-on-background: map-get(map-get($theme-text-colors, $theme-background-tone), disabled),
+);
+
+// 基于 material design 思想，定义三种基本颜色主题，这三种基本颜色主题，会用在所有 CSS 组件上，
+// 另外再定义成功 success 、警告 warning 、错误 error 三种辅助颜色，这三种颜色主要用在背景，文本，背景，按钮等
+// 组件上
+// 除了定义 $theme-primary $theme-accent，再定义成功 success 、信息 info、警告 warning 、错误 error
+// 三种辅助颜色，这三种颜色主要用来区别文本颜色和背景，以及不同表单样式
+$theme-colors: (
+   success: $green,
+   info: $cyan,
+   warning: $yellow,
+   danger: $red,
+ ) !default;
+
+// 黑色透明色
+$transparent: rgba(0, 0, 0, 0);
+$black: #000000;
+$dark-black: rgba(0, 0, 0, .87);
+$med-black: rgba(0, 0, 0, .65);
+$light-black: rgba(0, 0, 0, .54);
+$lighter-black: rgba(0, 0, 0, .38);
+$min-black: rgba(0, 0, 0, .26);
+$faint-black: rgba(0, 0, 0, .12);
+
+// 白色透明色
+$white: #ffffff;
+$light-white: rgba(255, 255, 255, .7);
+$lighter-white: rgba(255, 255, 255, .5);

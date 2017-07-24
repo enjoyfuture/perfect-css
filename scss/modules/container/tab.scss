@@ -1,35 +1,41 @@
 // tab style
+// 对于不支持 flex 的浏览器，可以采用 display table 来处理，看该文件 git 历史记录
 .tab-bar {
   position: relative;
-  display: table;
-  height: 48px;
+  display: flex;
+  flex-direction: row;
   text-transform: uppercase;
 }
 
 .tab-bar-left {
-  margin-left: 0;
-  margin-right: auto;
+  justify-content: flex-start;
 }
 
 .tab-bar-center {
-  margin-left: auto;
-  margin-right: auto;
+  justify-content: center;
 }
 
 .tab-bar-right {
-  margin-left: auto;
-  margin-right: 0;
+  justify-content: flex-end;
+}
+
+.tab-bar-between {
+  justify-content: space-between;
+
+  .tab {
+    flex: 1;
+  }
 }
 
 .tab {
   position: relative;
-  display: table-cell;
-  padding: 0 24px;
+  display: inline-block;
+  padding: $tab-padding-x $tab-padding-y;
   overflow: hidden;
-  font-size: .875rem;
-  font-weight: 500;
-  line-height: 1.5rem;
-  color: rgba(0, 0, 0, .54);
+  font-size: $tab-font-size;
+  font-weight: $tab-font-weight;
+  line-height: $tab-line-height;
+  color: $tab-color;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -39,33 +45,30 @@
   -webkit-font-smoothing: antialiased;
 
   &:hover {
-    color: rgba(0, 0, 0, .87);
+    color: $tab-hover-color;
     text-decoration: none;
   }
 
   &:focus {
-    color: rgba(0, 0, 0, .87);
+    color: $tab-hover-color;
     outline: 0;
   }
 
   &:active,
   &.active {
-    color: rgba(0, 0, 0, .87);
+    color: $tab-active-color;
   }
 
   &::after {
     content: "";
     position: absolute;
-    top: 46px;
+    bottom: 0;
     left: 0;
     display: none;
-    width: calc(100% - 4px);
-    height: 2px;
-    background-color: rgba(0, 0, 0, .87);
+    width: calc(100% - #{$tab-active-width-subtract});
+    height: $tab-active-border;
+    background-color: $tab-active-border-color;
     pointer-events: none;
-
-    // 动画效果
-    transform: scale(0);
   }
 
   // 获取焦点，鼠标经过或者当前为活动节点时，显示底部边框
@@ -74,11 +77,6 @@
   &:active::after,
   &.active::after {
     display: block;
-  }
-
-  &.active::after {
-    transform: scale(1);
-    transition: transform 240ms 0ms cubic-bezier(.5, -.5, 1, 1);
   }
 
   &:focus::after,
@@ -90,6 +88,29 @@
   &:active::after {
     opacity: .87;
   }
-
 }
 
+// 动画效果 涟漪效果 TODO 动画效果结合 js 实现增强版 待实现
+.tab-ripple .tab {
+
+  &::after {
+    transform: scale(0);
+  }
+  &.active::after {
+    transform: scale(1);
+    transition: transform 240ms 0ms cubic-bezier(.5, -.5, 1, 1);
+  }
+}
+
+// 小字体 tab
+.tab-bar-sm .tab {
+  font-size: $tab-font-size-sm;
+  font-weight: $tab-font-weight-sm;;
+}
+
+// 自定义主题Tab
+@each $color, $value in $theme {
+  .tab-#{$color} {
+    @include tab-theme($value, $value);
+  }
+}

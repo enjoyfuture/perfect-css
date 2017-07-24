@@ -15,22 +15,28 @@
 @import "variables/state";
 @import "variables/breakpoints";
 
+// typography 排版样式
+@import "variables/typography/blockquote";
+@import "variables/typography/code";
+@import "variables/typography/display";
+@import "variables/typography/emphasis";
+@import "variables/typography/header";
+@import "variables/typography/hr";
+@import "variables/typography/link";
+@import "variables/typography/li";
 
 // 组件样式变量
 @import "variables/alert";
 @import "variables/badge";
 @import "variables/buttons";
-@import "variables/code";
 @import "variables/cursor";
 @import "variables/dialog";
 @import "variables/crumbs";
 @import "variables/dropdown";
-@import "variables/forms";
 @import "variables/grid";
 @import "variables/image";
 @import "variables/input";
 @import "variables/jumbotron";
-@import "variables/links";
 @import "variables/list";
 @import "variables/sizing";
 @import "variables/nav";
@@ -38,8 +44,8 @@
 @import "variables/pagination";
 @import "variables/popover";
 @import "variables/progress";
+@import "variables/tab";
 @import "variables/tables";
 @import "variables/tooltip";
-@import "variables/typography";
 @import "variables/zindex";
 

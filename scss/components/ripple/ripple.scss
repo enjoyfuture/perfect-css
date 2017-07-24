@@ -1,0 +1,43 @@
+// ripple style
+@import "../../animation/function";
+@import "../../theme/mixin";
+@import "mixin";
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+  outline:  none;
+  @include ripple-base;
+  // 设置 ripple 双层背景 ::before 用来产生动画效果，::after 为动画效果提供渲染背景舞台
+  @include ripple-bg((pseudo: "::before"));
+  @include ripple-bg((pseudo: "::after"));
+}
+
+// 动画效果更明显，需要结合 JavaScript
+.ripple-impact {
+  @include ripple-impact();
+  // 动画效果
+  @include ripple-bg-impact((pseudo: "::before"));
+}
+
+// 无界限的波纹效果
+@include ripple-unbounded();
+
+// 主题 TODO 这里需要结合 css 变量来处理，看 theme 文件
+// 此处可循环定义各个主题
+.ripple-primary {
+  &::before,
+  &::after {
+    @include ripple-theme((background-color: $theme-primary, opacity: .16));
+  }
+}
+
+.ripple-secondary {
+  &::before,
+  &::after {
+    @include ripple-theme((background-color: $theme-accent));
+  }
+}
+
+
+

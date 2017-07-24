@@ -42,6 +42,7 @@ button.list-item-action {
 
 // list 列表项
 .list-item {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -142,6 +143,16 @@ button.list-item-action {
   border-radius: 50%;
 }
 
+// 文本居中
+.list-item-text-center {
+  width: 100%;
+  text-align: center;
+
+  + .list-item-end-detail {
+    position: absolute;
+    right: $list-item-padding-x;
+  }
+}
 // 右侧文本
 .list-item-text-right {
   margin-left: auto;
@@ -162,6 +173,7 @@ button.list-item-action {
 .list-item-text-secondary {
   font-size: $list-item-text-secondary-font-size;
   font-weight: $list-item-text-secondary-font-weight;
+  line-height: $list-item-text-line-height;
   color: $light-black;
 }
 

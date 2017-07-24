@@ -322,10 +322,12 @@ $grey: $grey-500;
 $black: #000000;
 $white: #ffffff;
 
+// 透明色
 $transparent: rgba(0, 0, 0, 0);
 $full-black: rgba(0, 0, 0, 1);
 $dark-black: rgba(0, 0, 0, .87);
+$med-black: rgba(0, 0, 0, .65);
 $light-black: rgba(0, 0, 0, .54);
+$lighter-black: rgba(0, 0, 0, .38);
 $min-black: rgba(0, 0, 0, .26);
 $faint-black: rgba(0, 0, 0, .12);
-

@@ -1,39 +1,37 @@
 // 设置全局字体，使用系统自带的字体，参考 https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
-/**
- * Safari for OS X and iOS (San Francisco)
+
+// sass-lint:disable indentation
+$font-family:
+    // 设置数字字体等宽，更紧凑美观，同时也会影响到超链接字体
+  Helvetica Neue For Number,
+    // Safari for OS X and iOS (San Francisco)
   -apple-system,
-  Chrome for OS X (San Francisco)
+    // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
+  system-ui,
+    // Chrome < 56 for OS X (San Francisco)
   BlinkMacSystemFont,
-  Windows
+    // Windows
   "Segoe UI",
-  Android
+    // Android
   "Roboto",
-  Linux
-  "Oxygen", // KDE
-  "Ubuntu",
-  "Cantarell", // GNOME
-  Firefox OS [R.I.P.]
-  "Fira Sans",
-  Older Android
-  "Droid Sans",
-  Basic web fallback
+    // 平方字体，字体对比度更强，更细长
+  PingFang SC,
+    // 备用字体
+  Hiragino Sans GB,
+    // 在 window 系统下备用字体
+  Microsoft YaHei,
+    // Basic web fallback
   "Helvetica Neue", Arial, sans-serif !default;
-**/
-$font-family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
-$font-family-serif: Georgia, "Times New Roman", Times, serif !default;
+
+// 代码标签使用改字体，用在 code, kbd, pre, samp 中
 $font-family-monospace: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base: $font-family-sans-serif !default;
 
-//本地化字体
-$font-family-cn: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei" !default;
-
-//字体大小，基于 rem ，根字体大小设置为浏览器默认字体大小 16px
-$font-size-root: 16px !default;
-
-$font-size-base: 1rem !default;
-$font-size-lg: 1.25rem !default;
-$font-size-sm: .875rem !default;
-$font-size-xs: .75rem !default;
+// 字体大小，基于 rem ，根字体不在设置，使用浏览器默认字体 16px
+$font-size-base: .875rem !default; // 设置在 body 上，表示默认字体为 14px
+// 设置除去 h1~h6 和 display 后的字体
+$font-size-lg: 1.25rem !default; // 20px
+$font-size-sm: .875rem !default; // 14px
+$font-size-xs: .75rem !default; // 12px 一般浏览器支持的最小字体
 
 $line-height-base: 1.5 !default;
 
@@ -41,30 +39,27 @@ $line-height-base: 1.5 !default;
 /**
 * 关于 font weight 的设置，跟字体粗细值有关
 * 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
-    100-300   400-500  600-700  800-900  四种，对应的
+    100-300   400-500  600-700  800-900  四种，对应为
     lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
     normal 正常粗细，与400等值。
     bold 加粗， 与700等值
     bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
  如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
   100 200 300 400 500 600-900 六种粗细
-  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 页对应 700
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
 
 *  2 在 Chrome 下，默认字体粗细只有两种
    100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
-   如果设为 "PingFang SC" 同样有六种字体粗细，参加上面
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
 * 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
   https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
 **/
 
 $font-weight-lighter: lighter !default;
-$font-weight-2: 200 !default;
-$font-weight-3: 300 !default;
 $font-weight-normal: normal !default;
-$font-weight-5: 500 !default;
 $font-weight-bold: bold !default;
-$font-weight-bolder: bolder !default;
-
 $font-weight-base: $font-weight-normal !default;
 
+// dt font
 $dt-font-weight: $font-weight-bold !default;
+

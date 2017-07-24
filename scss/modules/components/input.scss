@@ -1,15 +1,28 @@
 // input style
 
 .input {
-  padding: $input-padding-y $input-padding-x;
-  border: 1px solid $input-border-color;
-  font-size: $font-size-base;
+  display: inline-block;
+  margin-bottom: $input-margin-bottom;
+  font-size: $input-font-size;
   line-height: $input-line-height;
   color: $input-color;
-  background-color: $input-bg;
+  //background-color: $input-bg;
+  will-change: opacity, transform, color;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.input-field {
+  padding: $input-padding-y $input-padding-x;
+  border: 1px solid $input-border-color;
+  font-size: inherit;
+  line-height: $input-line-height;
+  color: inherit;
+  background-color: inherit;
   // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
   background-image: none;
   background-clip: padding-box;
+  appearance: none;
 
   @if $enable-rounded {
     border-radius: $input-border-radius;
@@ -20,32 +33,85 @@
   @include box-shadow($input-box-shadow);
   @include transition($input-transition);
 
-  // Unstyle the caret on `<select>`s in IE10+.
-  &::-ms-expand {
-    border: 0;
-    background-color: transparent;
-  }
-
-  // Customize the `:focus` state
-  @include form-control-focus();
-
   // Placeholder
   &::placeholder {
     color: $input-placeholder-color;
     opacity: 1;
+    transition: color 180ms cubic-bezier(.4, 0, .2, 1);
+  }
+
+  // 定义 `:focus` 样式
+  @include input-focus();
+
+  &:focus::placeholder {
+    color: rgba(0, 0, 0, .54);
   }
 
   // Disabled
   &:disabled,
   &[readonly] {
-    background-color: $input-disabled-bg;
+    color: $input-disabled-color;
     opacity: 1;
+  }
+
+  &:invalid {
+    box-shadow: none;
   }
 }
 
-.input-text {
+// 扁平化输入框，即只有一条底边框表单
+.input-flat {
   padding-left: 0;
   padding-right: 0;
   border-width: 0 0 1px;
   border-radius: 0;
+}
+
+// full width input
+.input-full {
+  display: block;
+
+  .input-field {
+    display: block;
+    width: 100%;
+  }
+}
+
+.input-label {
+  position: absolute;
+  bottom: $input-label-bottom;
+  left: $input-padding-x;
+  color: rgba(0, 0, 0, .38);
+  pointer-events: none;
+  cursor: text;
+  transition: font-size, color, top 180ms cubic-bezier(.4, 0, .2, 1);
+}
+
+// 点击input时提示文字缩小上移，并改变颜色为高亮色
+.input-float-above {
+  position: relative;
+  padding-top: 2rem;
+  padding-left: $input-padding-x;
+  border-bottom: 1px solid $input-border-color;
+
+  .input-field {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    border-width: 0;
+    border-radius: 0;
+  }
+  .input-field:focus + .input-label,
+  .input-field-focused + .input-label {
+    bottom: $input-label-above-bottom;
+    font-size: $input-label-above-font-size;
+    color: $input-label-above-color;
+  }
+
+  .input-field:invalid + .input-label,
+  .input-field-invalid + .input-label {
+    bottom: $input-label-above-bottom;
+    font-size: $input-label-above-font-size;
+    color: $input-label-above-invalid-color;
+  }
 }

@@ -1,6 +1,6 @@
-// Lists
+// ol ul li mixin
 
 // 去掉了默认的 list-style 属性值
-@mixin list-unstyled {
+@mixin li-unstyled {
   list-style: none;
 }

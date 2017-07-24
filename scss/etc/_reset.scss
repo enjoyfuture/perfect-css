@@ -17,21 +17,20 @@
 // 基于 rem ，会根据 html 字体大小动态计算渲染的
 
 html {
-  box-sizing: border-box; // 1
+  //box-sizing: border-box; // 1
   //设置默认字体大小，其他元素采用 rem ，动态的根据 html 来计算其大小
   -ms-overflow-style: scrollbar; // 2
   font-family: sans-serif; // 3
-  font-size: $font-size-root;
   font-weight: $font-weight-base;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 4
 }
 
 // 设置所有元素和伪元素盒模型为 border-box
-*,
+/**,
 *::before,
 *::after {
   box-sizing: inherit;
-}
+}*/
 
 // 为 ie 版本设置 device-width
 // 因为 IE 10+ 在某些原因下不会正确设置 <meta name="viewport">
@@ -43,7 +42,7 @@ html {
 
 // 1. 最佳实践，提供一个默认的背景
 body {
-  font-family: $font-family-base;
+  font-family: $font-family;
   //设置默认字体大小，其他元素采用 rem ，动态的根据 body 的字体大小来计算其大小
   font-size: $font-size-base;
   font-weight: $font-weight-base;

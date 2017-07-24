@@ -1,18 +1,4 @@
 .form-field {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-
-  > label {
-    padding-left: 4px;
-    margin-right: auto;
-    order: 0;
-  }
-}
-
-.form-field-inline {
-
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
@@ -29,5 +15,18 @@
     padding-right: 4px;
     margin-left: auto;
     order: -1;
+  }
+}
+
+// 100% 显示
+.form-field-full {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+
+  > label {
+    padding-left: 4px;
+    margin-right: auto;
+    order: 0;
   }
 }

@@ -1,0 +1,38 @@
+// rgba 转换为 rgb，需要颜色值 $color 和背景色 $background
+// rgba-to-rgb(rgba(0, 0, 0, .65), #ffffff) => #595959
+// 该方法主要处理 ie8 及以下不支持 rgba，具体解决方法可参考
+// https://stackoverflow.com/questions/6902944/sass-mixin-for-background-transparency-back-to-ie8
+@function rgba-to-rgb($color, $background) {
+  $red: (1 - alpha($color)) * red($background) + alpha($color) * red($color);
+  $green: (1 - alpha($color)) * green($background) + alpha($color) * green($color);
+  $blue: (1 - alpha($color)) * blue($background) + alpha($color) * blue($color);
+  @return rgb($red, $green, $blue);
+}
+
+@function rgb-to-rgba($color) {
+  $red: red($color);
+  $green: green($color);
+  $blue: blue($color);
+  $min: min($red, $green, $blue);
+  $alpha: (255 - $min) / 255;
+
+  // alpha 保留两位有效数字
+  @return rgba(
+      ($red - $min) / $alpha,
+      ($green - $min) / $alpha,
+      ($blue - $min) / $alpha,
+      round($alpha * 100) / 100);
+}
+
+@function sum($z) {
+  @if $z == 1 {
+    @return $z;
+  } @else {
+    @return $z + sum($z - 1);
+  }
+}
+
+/*// 自定义 pow 函数，实现 n 的 m 次方，n 和 m 为任意正数
+@function pow2($n, $m) {
+  @return pow($n, $m)
+}*/

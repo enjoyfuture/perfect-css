@@ -1,0 +1,9 @@
+// radio 变量
+
+$radio-outline-size: 40px !default; // radio 轮廓大小
+$radio-size: 20px !default;
+// radio 渲染百分比
+$radio-pct: percentage($radio-size / $radio-outline-size) !default;
+// 动画持续时间
+$radio-transition-duration: 120ms !default;
+

@@ -36,7 +36,7 @@ $btn-font-weight: 300;
 $btn-line-height: 1.45;
 
 // Dialog 变量
-
+$dialog-backdrop-bg: $dark-black;
 $dialog-header-padding: 1.5rem;
 $dialog-header-text-align: center;
 $dialog-header-font-size: 1.125rem;
@@ -46,3 +46,6 @@ $dialog-body-color: #666;
 
 $dialog-footer-padding-bottom: 0;
 $dialog-footer-padding-x: 0;
+
+// label
+$input-label-above-color: #508cee;

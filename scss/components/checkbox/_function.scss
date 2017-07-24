@@ -1,0 +1,10 @@
+@import "./variables";
+@import "../../animation/function";
+
+@function checkbox-enter($property, $delay: 0ms, $duration: $checkbox-transition-duration) {
+  @return animation-enter($property, $duration, $delay);
+}
+
+@function checkbox-leave($property, $delay: 0ms, $duration: $checkbox-transition-duration) {
+  @return animation-leave-sharp($property, $duration, $delay);
+}

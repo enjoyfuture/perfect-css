@@ -1,0 +1,11 @@
+// input mixin
+
+@mixin input-focus() {
+  &:focus {
+    border-color: $input-focus-border-color;
+    color: $input-focus-color;
+    //background-color: $input-focus-bg;
+    outline: none;
+    @include box-shadow($input-focus-box-shadow);
+  }
+}

@@ -1,6 +1,6 @@
 // Dialog 变量
 
-$dialog-backdrop-bg: $dark-black !default;
+$dialog-backdrop-bg: $min-black !default;
 $dialog-panel-margin-x: 2rem !default;
 $dialog-panel-box-shadow: 0 11px 15px -7px rgba(0, 0, 0, .2), 0 24px 38px 3px rgba(0, 0, 0, .14), 0 9px 46px 8px rgba(0, 0, 0, .12) !default;
 $dialog-panel-transform: translateY(150px) scale(.8) !default;
@@ -19,5 +19,5 @@ $dialog-body-line-height: 1.25rem !default;
 $dialog-body-color: $light-black !default;
 
 $dialog-footer-padding-top: 1.5rem !default;
-$dialog-footer-padding-bottom: .5rem !default;
-$dialog-footer-padding-x: .5rem !default;
+$dialog-footer-padding-bottom: 1.5rem !default;
+$dialog-footer-padding-x: 2rem !default;

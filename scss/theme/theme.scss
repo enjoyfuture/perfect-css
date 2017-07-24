@@ -1,0 +1,34 @@
+// 定义主题 css 变量
+
+@import "./mixin";
+
+// 用 css 定义各种主题变量值
+:root {
+  @each $style in map-keys($theme-property-values) {
+    // 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
+    // https://github.com/sasstools/sass-lint/issues/877
+    #{--theme-#{$style}}: map-get($theme-property-values, $style);
+  }
+}
+
+/* Special case, so that .theme--background changes background color, not text color. */
+// 背景色
+
+.theme-background {
+  @include theme-prop(background-color, background);
+}
+
+@each $style in map-keys($theme-property-values) {
+  @if $style != "background" {
+    .theme-#{$style} {
+      @include theme-prop(color, $style, true);
+    }
+  }
+}
+
+/* CSS rules for using primary and accent as background colors. */
+@each $style in ("primary", "accent") {
+  .theme-#{$style}-bg {
+    @include theme-prop(background-color, $style, true);
+  }
+}
