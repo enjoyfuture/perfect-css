@@ -1,64 +1,110 @@
 ---
 layout: component
-title: Checkbox 组件
+title: Ripple 效果
 ---
+<style>
+  .demo-surface {
+    display:             flex;
+    align-items:         center;
+    justify-content:     center;
+    width:               200px;
+    height:              100px;
+    padding:             1rem;
+    cursor:              pointer;
+    user-select:         none;
+    -webkit-user-select: none;
+    box-shadow:          0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  .ripple[data-ripple-unbounded] {
+    width:         40px;
+    height:        40px;
+    padding:       0;
+    border-radius: 50%;
+    box-shadow:    none;
+  }
+
+  .ripple[data-ripple-unbounded][data-demo-no-js]::before {
+    height: 100%;
+    left:   0;
+    top:    0;
+    width:  100%;
+  }
+
+  .icon-demo {
+    width:         20px;
+    height:        20px;
+    background:    rgba(0, 0, 0, .65);
+    border-radius: 50%;
+  }
+</style>
 
 <div class="component-wrap">
   <section>
-    <h2>Checkbox </h2>
+    <h2>Ripple </h2>
     <section class="component-container">
-      <h3>纯 CSS基本样式</h3>
-      <div class="checkbox">
-        <input class="checkbox-native-control" type="checkbox">
-        <div class="checkbox-background">
-          <div class="checkbox-mark-outer"></div>
-          <div class="checkbox-mark-inner"></div>
+      <div class="m-t-4">
+        <h4>有界的</h4>
+        <div class="ripple ripple-impact demo-surface" tabindex="0">
+          点击看效果，结合 JavaScript 动态设置其 CSS 变量
         </div>
       </div>
-      <div class="checkbox">
-        <input class="checkbox-native-control" type="checkbox">
-        <div class="checkbox-background">
-          <div class="checkbox-mark-outer"></div>
-          <div class="checkbox-mark-inner"></div>
-        </div>
-      </div>
-    </section>
-    <section class="component-container">
-      <h3>纯 CSS 带波纹样式</h3>
-      <div class="checkbox ripple">
-        <input class="checkbox-native-control" type="checkbox">
-        <div class="checkbox-background">
-          <div class="checkbox-mark-outer"></div>
-          <div class="checkbox-mark-inner"></div>
-        </div>
-      </div>
-      <div class="checkbox ripple">
-        <input class="checkbox-native-control" type="checkbox">
-        <div class="checkbox-background">
-          <div class="checkbox-mark-outer"></div>
-          <div class="checkbox-mark-inner"></div>
-        </div>
-      </div>
-    </section>
 
-    <section class="component-container">
-      <h3>JavaScript 动效</h3>
-      <div class="checkbox ripple ripple-impact ripple-unbounded">
-        <input class="checkbox-native-control" type="checkbox">
-        <div class="checkbox-background">
-          <div class="checkbox-mark-outer"></div>
-          <div class="checkbox-mark-inner"></div>
+      <div class="m-t-4">
+        <h4>纯 CSS Ripple</h4>
+        <div class="ripple demo-surface" tabindex="0">
+          纯 CSS 波纹效果
         </div>
       </div>
-      <div class="checkbox ripple ripple-impact ripple-unbounded">
-        <input class="checkbox-native-control" type="checkbox">
-        <div class="checkbox-background">
-          <div class="checkbox-mark-outer"></div>
-          <div class="checkbox-mark-inner"></div>
+
+      <div class="m-t-4">
+        <h4>无界的</h4>
+        <div class="ripple demo-surface" data-ripple-unbounded data-demo-no-js
+             tabindex="0">
+          <div class="icon-demo"></div>
         </div>
+      </div>
+
+      <div class="m-t-4">
+        <h4>无界的动效</h4>
+        <div class="ripple ripple-impact ripple-unbounded demo-surface" data-ripple-unbounded
+             tabindex="0">
+          <div class="icon-demo"></div>
+        </div>
+      </div>
+
+      <div class="m-t-4">
+        <h4>取消当前活动态</h4>
+        <div class="ripple ripple-impact ripple-impact-active demo-surface inactive-demo"
+             tabindex="0" style="--ripple-translate-start: 0; --ripple-translate-end: 50px;">
+          点击看效果，结合 JavaScript 动态设置其 CSS 变量
+        </div>
+      </div>
+
+      <h4>主题样式</h4>
+      <h5>纯 CSS </h5>
+      <div class="d-flex">
+        <div class="ripple ripple-primary demo-surface" tabindex="0">
+           Primary
+        </div>
+        <div class="ripple ripple-secondary demo-surface" tabindex="0">
+          Secondary
+        </div>
+      </div>
+
+      <h5>动效 </h5>
+      <div class="d-flex">
+        <div class="ripple ripple-primary ripple-impact demo-surface" tabindex="0">
+          Primary
+        </div>
+        <div class="ripple ripple-secondary ripple-impact demo-surface" tabindex="0">
+          Secondary
+        </div>
+
       </div>
     </section>
   </section>
+
 </div>
 
 <script>
@@ -131,7 +177,7 @@ title: Checkbox 组件
       }
     }
 
-    $('.ripple-impact').mousedown((e) => {
+    $('.ripple-impact:not(.inactive-demo)').mousedown((e) => {
       const $el = $(e.currentTarget);
 
       const value = getCssVariableValue($el);
@@ -166,7 +212,7 @@ title: Checkbox 组件
 
     });
 
-    $('.ripple-impact').on('mouseup', (e) => {
+    $('.ripple-impact:not(.inactive-demo)').on('mouseup', (e) => {
       const $el = $(e.currentTarget);
       // 延迟260ms 执行
       setTimeout(() => {
@@ -174,13 +220,13 @@ title: Checkbox 组件
       }, 260);
     });
 
-    $('.ripple-impact input').on('focus', (e) => {
-      const $el = $(e.currentTarget).parent();
+    $('.ripple-impact:not(.inactive-demo)').on('focus', (e) => {
+      const $el = $(e.currentTarget);
       $el.addClass('ripple-impact-focused');
     });
 
-    $('.ripple-impact input').on('blur', (e) => {
-      const $el = $(e.currentTarget).parent();
+    $('.ripple-impact:not(.inactive-demo)').on('blur', (e) => {
+      const $el = $(e.currentTarget);
       $el.removeClass('ripple-impact-focused');
     });
 
@@ -192,5 +238,11 @@ title: Checkbox 组件
       setCssVariable($el, value);
     });
 
+    $('.inactive-demo').click(function (e) {
+      const $el = $(e.currentTarget);
+      $el[0].style.setProperty('--ripple-scale', 1);
+
+      $el.addClass('ripple-impact-inactive');
+    });
   });
 </script>

@@ -1,0 +1,29 @@
+---
+layout: jdjr-ui
+title: 京东金融 UI 下拉条目(ios)
+---
+
+<style>
+  .right {
+    border-left: 1px solid #508cee;
+    border-bottom: 1px solid #508cee;
+    height: 5px;
+    width: 10px;
+    transform: rotate(45deg);
+  }
+</style>
+<div class="dialog dialog-open">
+  <div class="dialog-panel">
+    <ul class="list">
+      <li class="list-item active">
+        选择文案
+        <span class="list-item-end-detail right"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="dialog-backdrop"></div>
+</div>
+
+<script>
+  $('body').addClass('dialog-scroll-lock');
+</script>

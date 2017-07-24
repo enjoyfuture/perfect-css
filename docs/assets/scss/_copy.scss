@@ -11,11 +11,11 @@
   padding: .3rem .7rem;
   border: 0;
   color: #fff;
-  background: $doc-primary;
+  //background: $doc-primary;
   cursor: pointer;
   outline: none;
   &:hover {
-    background: darken($doc-primary, 10%);
+    //background: darken($doc-primary, 10%);
   }
 }
 

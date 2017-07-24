@@ -1,0 +1,41 @@
+---
+layout: component
+title: Dialog 对话框
+---
+
+<button class="btn btn-primary">打开对话框</button>
+
+<div class="dialog">
+  <div class="dialog-panel" style="width:800px;">
+    <header class="dialog-header">
+      <h2 class="dialog-header-title">
+        对话框标题
+      </h2>
+    </header>
+    <section class="dialog-body">
+      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+    </section>
+    <footer class="dialog-footer text-right">
+      <button type="button" class="btn btn-raised m-r-2">取消</button>
+      <button type="button" class="btn text-primary btn-raised">确定</button>
+    </footer>
+  </div>
+  <div class="dialog-backdrop"></div>
+</div>
+
+<script>
+  $(function () {
+    $('.btn').click(function () {
+      $('.dialog').addClass('dialog-open');
+      $('body').addClass('dialog-scroll-lock');
+    });
+
+    $('.dialog .btn').click(function () {
+      $('.dialog').removeClass('dialog-open');
+      $('body').removeClass('dialog-scroll-lock');
+    });
+  });
+</script>

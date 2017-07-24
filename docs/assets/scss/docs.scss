@@ -4,17 +4,6 @@
 @import "../../../scss/etc/variables";
 @import "../../../scss/etc/mixins";
 
-// Local docs variables
-$doc-primary: #00bcd4;
-$doc-primary-bright: lighten(saturate($doc-primary, 5%), 15%);
-$doc-primary-light: lighten(saturate(#40c0cb, 5%), 35%);
-$doc-graphite: #2a2730;
-$doc-graphite-light: lighten($doc-graphite, 40%);
-$doc-yellow: #fabe28;
-$doc-error: #ff003c;
-$doc-warning: #ff8a00;
-$doc-info: #8fbe00;
-
 // 公共的样式
 // 字体样式
 @import "iconfont";
