@@ -3,13 +3,17 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import chalk from 'chalk';
 import autoprefixer from 'autoprefixer';
 import flexbugs from 'postcss-flexbugs-fixes';
+import functions from '../scss/js-function/Math';
 
 const $ = gulpLoadPlugins();
 
 const scssOption = {
   outputStyle: 'expanded', // 不压缩，设为 compressed 表示压缩
-  precision: 10, // 设置小数精度
-  includePaths: ['.']
+  precision: 15, // 设置小数精度
+  includePaths: ['.'],
+  // 如果通过 node-sass 命令，可以直接写参数 `--functions scss/base/Math.js` 来让 sass 执行 js
+  // https://www.npmjs.com/package/node-sass#example
+  functions
 };
 
 /**
@@ -39,7 +43,7 @@ const postcssPlugins = [
 gulp.task('scss', ['scss-lint'], () => {
   return gulp.src('scss/*.scss')
     .pipe($.sourcemaps.init())
-    .pipe($.sass.sync(scssOption).on('error', $.sass.logError))
+    .pipe($.sass(scssOption).on('error', $.sass.logError))
     .pipe($.postcss(postcssPlugins))
     .pipe($.sourcemaps.write('./maps'))
     .pipe(gulp.dest('dist/css'));
@@ -49,7 +53,7 @@ gulp.task('scss', ['scss-lint'], () => {
 gulp.task('scss-docs', ['scss-lint'], () => {
   return gulp.src(['scss/*.scss', 'docs/assets/scss/*.scss'])
     .pipe($.sourcemaps.init())
-    .pipe($.sass.sync(scssOption).on('error', $.sass.logError))
+    .pipe($.sass(scssOption).on('error', $.sass.logError))
     .pipe($.postcss(postcssPlugins))
     .pipe($.sourcemaps.write('./maps'))
     .pipe(gulp.dest('docs/assets/css'));

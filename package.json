@@ -11,6 +11,7 @@
     "css",
     "perfect"
   ],
+  "scripts": {},
   "dependencies": {
     "clipboard": "^1.7.1",
     "jquery": "^3.2.1"
@@ -50,7 +51,6 @@
   "engines": {
     "node": ">=6.9.1"
   },
-  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/perfect-ui/perfect.git"
