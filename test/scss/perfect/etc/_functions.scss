@@ -1,0 +1,40 @@
+@import "../../../../scss/etc/functions";
+
+// 使用 test-module 描述测试某一模块，test 描述测试具体的功能点
+
+@include test-module('Perfect Function') {
+  @include test('测试 @function rgba-to-rgb($color, $background) 返回的结果是否正确') {
+    $color: rgba(0, 0, 0, .65);
+    $background: #ffffff;
+    $expect: #595959;
+    @debug rgba-to-rgb($color, $background);
+    @include assert-equal(
+        rgba-to-rgb($color, $background),
+        $expect,
+        '',
+        true);
+  }
+
+  @include test('测试 rgb-to-rgba($color) 返回的结果是否正确') {
+    $color: #595959;
+    //$background: #ffffff;
+    $expect: rgba(0, 0, 0, 0.65);
+    @debug rgb-to-rgba($color);
+    @include assert-equal(
+        rgb-to-rgba($color),
+        $expect,
+        '',
+        true);
+  }
+
+  @include test('递归测试 sum') {
+    $z: 5;
+    $expect: 15;
+    @debug sum($z);
+    @include assert-equal(
+        sum($z),
+        $expect
+    );
+  }
+}
+

@@ -1,0 +1,10 @@
+// True Tests
+// ==========
+
+@import "true";
+
+@import 'etc/functions';
+@import 'theme/function';
+@import 'theme/mixin';
+
+@include report();

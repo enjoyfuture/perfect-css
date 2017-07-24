@@ -1,0 +1,36 @@
+@import "../../../../scss/theme/function";
+
+// 使用 test-module 描述测试某一模块，test 描述测试具体的功能点
+
+@include test-module('Theme Function') {
+  // $rgb: $rgb / 255;
+  // if($rgb < 0.03928, $rgb / 12.92, pow(($rgb + 0.055) / 1.055, 2.4))
+  @include test('测试 @function coefficient($rgb)') {
+    $rgb: [ coefficient(0), coefficient(1), coefficient(200) ];
+    $expect: [ 0, 0.000303526983549, 0.57758044043 ];
+    @include assert-equal($rgb, $expect, '', true);
+  }
+
+  @include test('测试 @function theme-luminance($color)') {
+    $color: [ theme-luminance(#fff), theme-luminance(#000), theme-luminance(#9c27b0) ];
+    $expect: [ 1, 0, 0.116535469457 ];
+    @include assert-equal($color, $expect, '', true);
+  }
+
+  @include test('测试 @function theme-contrast-ratio($back, $front)') {
+    // 黑白对比度为 21
+    @include assert-equal(theme-contrast-ratio(#000, #fff), 21);
+    // 红白对比度
+    @include assert-equal(theme-contrast-ratio(#f44336, #000), 5.70274960156, '', true);
+  }
+
+  @include test('测试 @function theme-light-or-dark($color)') {
+    // $red-500 深色颜色，则返回为 light
+    @include assert-equal(theme-light-or-dark(#f44336), light);
+    // $red-200
+    @include assert-equal(theme-light-or-dark(#ef9a9a), dark);
+    // $red-400
+    @include assert-equal(theme-light-or-dark(#ef5350), light);
+  }
+
+}
