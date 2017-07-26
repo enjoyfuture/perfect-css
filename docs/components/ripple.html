@@ -3,7 +3,7 @@ layout: component
 title: Ripple 效果
 ---
 <style>
-  .demo-surface {
+  .demo-ripple {
     display:             flex;
     align-items:         center;
     justify-content:     center;
@@ -16,7 +16,7 @@ title: Ripple 效果
     box-shadow:          0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
-  .ripple[data-ripple-unbounded] {
+  .ripple-unbounded {
     width:         40px;
     height:        40px;
     padding:       0;
@@ -24,7 +24,7 @@ title: Ripple 效果
     box-shadow:    none;
   }
 
-  .ripple[data-ripple-unbounded][data-demo-no-js]::before {
+  .ripple-unbounded:not(.ripple-impact)::before {
     height: 100%;
     left:   0;
     top:    0;
@@ -37,6 +37,18 @@ title: Ripple 效果
     background:    rgba(0, 0, 0, .65);
     border-radius: 50%;
   }
+
+  .d-flex .ripple {
+    margin-right: 2rem;
+  }
+
+  .ripple-custom1.ripple-bg {
+    --ripple-bg-color: rgba(0, 0, 0, .2);
+  }
+
+  .ripple-custom2.ripple-bg {
+    --ripple-bg-color: rgba(3, 185, 244, .2);
+  }
 </style>
 
 <div class="component-wrap">
@@ -45,21 +57,21 @@ title: Ripple 效果
     <section class="component-container">
       <div class="m-t-4">
         <h4>有界的</h4>
-        <div class="ripple ripple-impact demo-surface" tabindex="0">
+        <div class="ripple ripple-impact demo-ripple" tabindex="0">
           点击看效果，结合 JavaScript 动态设置其 CSS 变量
         </div>
       </div>
 
       <div class="m-t-4">
         <h4>纯 CSS Ripple</h4>
-        <div class="ripple demo-surface" tabindex="0">
+        <div class="ripple demo-ripple" tabindex="0">
           纯 CSS 波纹效果
         </div>
       </div>
 
       <div class="m-t-4">
         <h4>无界的</h4>
-        <div class="ripple demo-surface" data-ripple-unbounded data-demo-no-js
+        <div class="ripple ripple-unbounded demo-ripple"
              tabindex="0">
           <div class="icon-demo"></div>
         </div>
@@ -67,7 +79,7 @@ title: Ripple 效果
 
       <div class="m-t-4">
         <h4>无界的动效</h4>
-        <div class="ripple ripple-impact ripple-unbounded demo-surface" data-ripple-unbounded
+        <div class="ripple ripple-impact ripple-unbounded demo-ripple"
              tabindex="0">
           <div class="icon-demo"></div>
         </div>
@@ -75,33 +87,81 @@ title: Ripple 效果
 
       <div class="m-t-4">
         <h4>取消当前活动态</h4>
-        <div class="ripple ripple-impact ripple-impact-active demo-surface inactive-demo"
+        <div class="ripple ripple-impact ripple-impact-active demo-ripple inactive-demo"
              tabindex="0" style="--ripple-translate-start: 0; --ripple-translate-end: 50px;">
           点击看效果，结合 JavaScript 动态设置其 CSS 变量
+        </div>
+      </div>
+
+      <h4>自定义背景</h4>
+      <div class="d-flex">
+        <div class="ripple ripple-bg ripple-custom1 demo-ripple" tabindex="0">
+          自定义背景1
+        </div>
+        <div class="ripple ripple-bg ripple-custom2 demo-ripple" tabindex="0">
+          自定义背景2
+        </div>
+        <div class="ripple ripple-impact ripple-bg ripple-custom2 demo-ripple" tabindex="0">
+          自定义背景2-动画效果
         </div>
       </div>
 
       <h4>主题样式</h4>
       <h5>纯 CSS </h5>
       <div class="d-flex">
-        <div class="ripple ripple-primary demo-surface" tabindex="0">
-           Primary
+        <div class="ripple ripple-primary demo-ripple" tabindex="0">
+          Primary
         </div>
-        <div class="ripple ripple-secondary demo-surface" tabindex="0">
-          Secondary
+        <div class="ripple ripple-accent demo-ripple" tabindex="0">
+          Accent
         </div>
       </div>
 
       <h5>动效 </h5>
       <div class="d-flex">
-        <div class="ripple ripple-primary ripple-impact demo-surface" tabindex="0">
+        <div class="ripple ripple-primary ripple-impact demo-ripple" tabindex="0">
           Primary
         </div>
-        <div class="ripple ripple-secondary ripple-impact demo-surface" tabindex="0">
-          Secondary
+        <div class="ripple ripple-accent ripple-impact demo-ripple" tabindex="0">
+          Accent
         </div>
 
       </div>
+
+      <h4>辅助样式</h4>
+      <h5>纯 CSS </h5>
+      <div class="d-flex">
+        <div class="ripple ripple-success demo-ripple" tabindex="0">
+           成功
+        </div>
+        <div class="ripple ripple-info demo-ripple" tabindex="0">
+          信息
+        </div>
+        <div class="ripple ripple-warning demo-ripple" tabindex="0">
+          警告
+        </div>
+        <div class="ripple ripple-error demo-ripple" tabindex="0">
+          错误
+        </div>
+      </div>
+
+      <h5>动效 </h5>
+      <div class="d-flex">
+        <div class="ripple ripple-success ripple-impact demo-ripple" tabindex="0">
+          成功
+        </div>
+        <div class="ripple ripple-info ripple-impact demo-ripple" tabindex="0">
+          信息
+        </div>
+        <div class="ripple ripple-warning ripple-impact demo-ripple" tabindex="0">
+          警告
+        </div>
+        <div class="ripple ripple-error ripple-impact demo-ripple" tabindex="0">
+          错误
+        </div>
+
+      </div>
+
     </section>
   </section>
 
