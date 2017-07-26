@@ -26,7 +26,7 @@
   }
 
   &-mark-outer {
-    @include theme-prop(border-color, text-secondary-on-light);
+    @include theme-prop(border-color, text-primary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -40,7 +40,7 @@
   }
 
   &-mark-inner {
-    @include theme-prop(background-color, text-secondary-on-light);
+    @include theme-prop(background-color, text-primary-on-light);
     position:      absolute;
     top:           0;
     left:          0;

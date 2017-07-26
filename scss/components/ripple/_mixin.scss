@@ -142,31 +142,33 @@
   $pseudo: map-get($config, pseudo);
   $radius: map-get($config, radius);
 
-  // 对于无界限的波纹效果，通过设置 [data-ripple-unbounded] 和 .ripple-unbounded 来展现
-  // 单独的设置 [data-ripple-unbounded] 为纯 CSS 实现
-  // 设置 [data-ripple-unbounded] 和 .ripple-unbounded 可以结合 JavaScript 来展现动效
-  .ripple[data-ripple-unbounded] {
+  // 对于无界限，单独设置 .ripple-unbounded 为纯 CSS 实现
+  // 设置.ripple-unbounded 和 .ripple-impact 为动画效果，需要结合 JavaScript 来展现动效
+  .ripple-unbounded {
     overflow: visible;
+
+    &::after {
+      top:    calc(50% - #{$radius / 2});
+      top:    var(--ripple-top, calc(50% - #{$radius / 2}));
+      left:   calc(50% - #{$radius / 2});
+      left:   var(--ripple-left, calc(50% - #{$radius / 2}));
+      width:  $radius;
+      width:  var(--ripple-size, $radius);
+      height: $radius;
+      height: var(--ripple-size, $radius);
+    }
   }
 
-  .ripple[data-ripple-unbounded]::after,
-  .ripple-unbounded::after {
-    top:       calc(50% - #{$radius / 2});
-    top:       var(--ripple-top, calc(50% - #{$radius / 2}));
-    left:      calc(50% - #{$radius / 2});
-    left:      var(--ripple-left, calc(50% - #{$radius / 2}));
-    width:     $radius;
-    width:     var(--ripple-size, $radius);
-    height:    $radius;
-    height:    var(--ripple-size, $radius);
-    transform: scale(0);
-    transform: scale(var(--ripple-scale, 0));
-  }
-
-  .ripple-unbounded::before {
-    top:  0;
-    top:  var(--ripple-top, 0);
-    left: 0;
-    left: var(--ripple-left, 0);
+  .ripple-impact {
+    &.ripple-unbounded::after {
+      transform: scale(0);
+      transform: scale(var(--ripple-scale, 0));
+    }
+    &.ripple-unbounded::before {
+      top:  0;
+      top:  var(--ripple-top, 0);
+      left: 0;
+      left: var(--ripple-left, 0);
+    }
   }
 }

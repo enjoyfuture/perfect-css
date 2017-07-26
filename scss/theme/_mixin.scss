@@ -6,79 +6,40 @@
  * $property is typically color or background-color, but can be any CSS property that accepts color values.
  * $style should be one of the map keys in $theme-property-values (_variables.scss).
  */
+
+// 给属性 $property 设置颜色 $style 值
+// 属性 $property 一般用在 color background-color border-color 等，也可用在任何可以设置颜色值的属性上
+// $style 应该是 $theme-property-values 中某个 key
+// 该 mixin 主要用来设置主题颜色值，并且设置了主题 css 变量值
+// 用户通过修改 css 变量值可以动态的修改整个主题值，比如在 body 上修改 css 变量值
 @mixin theme-prop($property, $style, $important: false) {
   @if not map-has-key($theme-property-values, $style) {
-    @error "Invalid style specified! Choose one of #{map-keys($theme-property-values)}";
+    @error "无效的主题属性值，#{$style} 必须是以下的某一 key #{map-keys($theme-property-values)}";
   }
 
   @if $important {
     #{$property}: map-get($theme-property-values, $style) !important;
     #{$property}: var(--theme-#{$style}, map-get($theme-property-values, $style)) !important;
-  }
-
-  @else {
+  } @else {
     #{$property}: map-get($theme-property-values, $style);
     #{$property}: var(--theme-#{$style}, map-get($theme-property-values, $style));
   }
 }
 
-/**
- * Creates a rule to be used in Web components for dark theming, and applies the provided contents.
- * Should provide the $root-selector option if applied to anything other than the root selector.
- * When used with a modifier class, provide a second argument of `true` for the $compound parameter
- * to specify that this should be attached as a compound class.
- *
- * Usage example:
- *
- * ```scss
- * .foo {
- *   color: black;
- *
- *   @include theme-dark {
- *     color: white;
- *   }
- *
- *   &__bar {
- *     background: black;
- *
- *     @include theme-dark(".foo") {
- *       background: white;
- *     }
- *   }
- * }
- *
- * .foo--disabled {
- *   opacity: .38;
- *
- *   @include theme-dark(".foo", true) {
- *     opacity: .5;
- *   }
- * }
- * ```
- */
-@mixin theme-dark($root-selector: null, $compound: false) {
-  @if ($root-selector) {
-    @at-root {
-      @if ($compound) {
-        #{$root-selector}-theme-dark#{&},
-        .theme--dark & {
-          @content;
-        }
-      }
+// 辅助颜色 mixin
+@mixin theme-assist($property, $style, $color, $opacity: .16) {
+  @if ($property == "backgroud-color") {
+    // 变量 --theme-#{$style} 在 theme.scss 中定义
+    $css-var: var(--theme-#{$style}, $color);
+    background-color: rgba($color, $opacity);
 
-      @else {
-        #{$root-selector}-theme-dark &,
-        .theme--dark & {
-          @content;
-        }
-      }
+    // 可以动态的设置颜色透明度，属于 CSS 4 color 范畴，目前浏览器支持的不是很好
+    // 可以用 rgba 来代替，但只能静态设置，不可以随着颜色和透明度的变化动态设置
+    // https://drafts.csswg.org/css-color/#modifying-colors
+    @supports (background-color: color(green a(10%))) {
+      background-color: color(#{$css-var} a(#{percentage($opacity)}));
     }
-  }
-
-  @else {
-    &--theme-dark,
-    .theme--dark & {
-      @content;
-    }
+  } @else {
+    #{$property}: rgba($color, $opacity);
   }
 }
