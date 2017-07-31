@@ -40,9 +40,9 @@
   .ripple-#{$style} {
     &::before,
     &::after {
-      // 声明 css 变量
+      // 主题样式
       @include theme-prop(background-color, #{$style});
-      // 用 css 变量定义背景
+      // ripple 主题样式
       @include ripple-theme((theme-style: #{$style}, opacity: .16));
     }
   }

@@ -16,6 +16,13 @@ title: Ripple 效果
     box-shadow:          0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
+  button.demo-ripple {
+    display:    inline-block;
+    background: none;
+    border:     0;
+    appearance: none;
+  }
+
   .ripple-unbounded {
     width:         40px;
     height:        40px;
@@ -132,7 +139,7 @@ title: Ripple 效果
       <h5>纯 CSS </h5>
       <div class="d-flex">
         <div class="ripple ripple-success demo-ripple" tabindex="0">
-           成功
+          成功
         </div>
         <div class="ripple ripple-info demo-ripple" tabindex="0">
           信息
@@ -159,7 +166,16 @@ title: Ripple 效果
         <div class="ripple ripple-error ripple-impact demo-ripple" tabindex="0">
           错误
         </div>
+      </div>
 
+      <h4>用在 button 标签上</h4>
+      <div class="d-flex">
+        <button type="button" class="ripple demo-ripple">
+          button
+        </button>
+        <button type="button" class="ripple ripple-impact demo-ripple">
+          impact button
+        </button>
       </div>
 
     </section>

@@ -149,7 +149,6 @@ a {
 
 // 对于没有 href 并且没有设置 tabindex 的 a 元素修改为样式跟普通元素一样
 a:not([href]):not([tabindex]) {
-  color: inherit;
   text-decoration: none;
 
   @include hover-focus {
@@ -240,16 +239,6 @@ th {
 
 label {
   display: inline-block;
-}
-
-// 在Firefox 和 IE 中的实现，是没有 outline 的，个人建议去掉更好，待定 FIXME
-// Work around a Firefox/IE bug where the transparent `button` background
-// results in a loss of the default `button` focus styles.
-//
-// Credit: https://github.com/suitcss/base/
-button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
 }
 
 input,
