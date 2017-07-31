@@ -17,6 +17,14 @@
 
     #{--theme-#{$theme}}: $color;
   }
+
+  // 辅助颜色浅色态
+  @each $theme, $color in $theme-assist-colors-light {
+    // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
+    // https://github.com/sasstools/sass-lint/issues/877
+
+    #{--theme-#{$theme}-light}: $color;
+  }
 }
 
 // 背景色，用在背景上

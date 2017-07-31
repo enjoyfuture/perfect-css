@@ -26,7 +26,7 @@
   }
 
   &-mark-outer {
-    @include theme-prop(border-color, text-primary-on-light);
+    @include theme-prop(border-color, text-secondary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -41,7 +41,7 @@
 
   // 勾选后的样式
   &-mark-inner {
-    @include theme-prop(background-color, text-primary-on-light);
+    @include theme-prop(background-color, text-secondary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -111,6 +111,7 @@
     }
 
     .checkbox-mark-inner {
+      @include theme-prop(background-color, text-primary-on-light);
       transform:  scale(1);
       transition: checkbox-enter(transform), checkbox-enter(background-color);
     }
@@ -150,18 +151,26 @@
 }
 
 // 定义主题样式
-
 @each $style in ("primary", "accent") {
   .checkbox-#{$style} {
     .checkbox-mark-outer {
-      @include theme-prop(border-color, #{$style});
+      @include theme-prop(border-color, #{$style}-light);
     }
 
     .checkbox-mark-inner {
-      @include theme-prop(background-color, #{$style});
+      @include theme-prop(background-color, #{$style}-light);
 
       &::after {
         @include theme-prop(border-color, text-primary-on-#{$style});
+      }
+    }
+
+    .checkbox-native-control:checked,
+    .checkbox-native-control:indeterminate {
+      + .checkbox-background {
+        .checkbox-mark-inner {
+          @include theme-prop(background-color, #{$style});
+        }
       }
     }
   }
@@ -171,16 +180,25 @@
 @each $theme, $color in $theme-assist-colors {
   .checkbox-#{$theme} {
     .checkbox-mark-outer {
-      @include theme-assist(border-color, $theme, $color);
+      @include theme-assist(border-color, #{$theme}-light, map-get($theme-assist-colors, #{$theme}));
     }
 
     .checkbox-mark-inner {
-      @include theme-assist(background-color, $theme, $color);
+      @include theme-assist(background-color, #{$theme}-light, map-get($theme-assist-colors, #{$theme}));
 
       &::after {
         $color-tone: theme-light-or-dark($color);
         // 判断是用浅色还是深色
         border-color: map-get(map-get($theme-text-colors, $color-tone), primary);
+      }
+    }
+
+    .checkbox-native-control:checked,
+    .checkbox-native-control:indeterminate {
+      + .checkbox-background {
+        .checkbox-mark-inner {
+          @include theme-assist(background-color, $theme, $color);
+        }
       }
     }
 

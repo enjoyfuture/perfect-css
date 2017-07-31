@@ -29,7 +29,7 @@
   }
 
   &-circle-outer {
-    @include theme-prop(border-color, text-primary-on-light);
+    @include theme-prop(border-color, text-secondary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -43,7 +43,7 @@
   }
 
   &-circle-inner {
-    @include theme-prop(background-color, text-primary-on-light);
+    @include theme-prop(background-color, text-secondary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -93,12 +93,11 @@
 .radio-native-control:checked {
   + .radio-background {
     .radio-circle-outer {
-      //@include theme-prop(border-color, primary);
+      @include theme-prop(border-color, text-primary-on-light);
     }
 
     .radio-circle-inner {
-      //@include theme-prop(background-color, primary);
-
+      @include theme-prop(background-color, text-primary-on-light);
       transform:  scale(.5);
       transition: radio-enter(transform), radio-enter(background-color);
     }
@@ -127,3 +126,66 @@
   }
 }
 
+// 定义主题样式
+@each $style in ("primary", "accent") {
+  .radio-#{$style} {
+    .radio-circle-outer {
+      @include theme-prop(border-color, #{$style}-light);
+    }
+
+    .radio-circle-inner {
+      @include theme-prop(background-color, #{$style}-light);
+    }
+
+    .radio-native-control:checked {
+      + .radio-background {
+        .radio-circle-outer {
+          @include theme-prop(border-color, #{$style});
+        }
+
+        .radio-circle-inner {
+          @include theme-prop(background-color, #{$style});
+        }
+      }
+    }
+  }
+}
+
+// 辅助颜色对应 radio
+@each $theme, $color in $theme-assist-colors {
+  .radio-#{$theme} {
+    .radio-circle-outer {
+      @include theme-assist(border-color, #{$theme}-light, map-get($theme-assist-colors, #{$theme}));
+    }
+
+    .radio-circle-inner {
+      @include theme-assist(background-color, #{$theme}-light, map-get($theme-assist-colors, #{$theme}));
+    }
+
+    .radio-native-control:checked {
+      + .radio-background {
+        .radio-circle-outer {
+          @include theme-assist(border-color, $theme, $color);
+        }
+        .radio-circle-inner {
+          @include theme-assist(background-color, $theme, $color);
+        }
+      }
+    }
+
+    .radio-native-control:disabled {
+      + .radio-background {
+        .radio-circle-outer {
+          border-color: rgba($color, .26);
+        }
+
+        .radio-circle-inner {
+          background-color: rgba($color, .26);
+          &::after {
+            opacity: .46;
+          }
+        }
+      }
+    }
+  }
+}

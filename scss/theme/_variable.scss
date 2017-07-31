@@ -34,6 +34,10 @@ $theme-property-values: (
   accent: $theme-accent,
   background: $theme-background,
 
+  // 主题颜色浅色
+  primary-light: rgba($theme-primary, .54),
+  accent-light: rgba($theme-accent, .54),
+
   // 可以用在 background-color border-color 或 color 等可以设置颜色的属性上
   // 当 map-get($theme-text-colors, $theme-primary-tone) 返回 light 时，对应浅色值
   // 用在 $theme-primary 上的 primary secondary 和 disabled 对比颜色
@@ -73,3 +77,12 @@ $theme-assist-colors: (
    warning: #ffeb3b, // $yellow-500
    error: #f44336, // $red-500
  ) !default;
+
+// 辅助颜色浅色态
+$theme-assist-colors-light: (
+  success: rgba(map-get($theme-assist-colors, success), .54),
+  info: rgba(map-get($theme-assist-colors, info), .54),
+  warning: rgba(map-get($theme-assist-colors, warning), .54),
+  error: rgba(map-get($theme-assist-colors, error), .54),
+) !default;
+
