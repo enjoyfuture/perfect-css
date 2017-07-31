@@ -27,7 +27,7 @@
 }
 
 // 辅助颜色 mixin
-@mixin theme-assist($property, $style, $color, $opacity: .16) {
+@mixin theme-assist($property, $style, $color, $opacity: 1) {
   @if ($property == "backgroud-color") {
     // 变量 --theme-#{$style} 在 theme.scss 中定义
     $css-var: var(--theme-#{$style}, $color);
@@ -41,5 +41,9 @@
     }
   } @else {
     #{$property}: rgba($color, $opacity);
+  }
+
+  @if ($opacity == 1) {
+    #{$property}: var(--theme-#{$style}, $color);
   }
 }

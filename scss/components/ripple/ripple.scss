@@ -35,7 +35,7 @@
 // 无界限的波纹效果
 @include ripple-unbounded();
 
-// 此处可循环定义各个主题
+// 定义主题样式
 @each $style in ("primary", "accent") {
   .ripple-#{$style} {
     &::before,
@@ -53,7 +53,7 @@
   .ripple-#{$theme} {
     &::before,
     &::after {
-      @include theme-assist(background-color, $theme, $color);
+      @include theme-assist(background-color, $theme, $color, .16);
     }
   }
 }

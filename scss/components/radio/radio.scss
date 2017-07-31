@@ -13,21 +13,23 @@
   width:       $radio-outline-size;
   height:      $radio-outline-size;
   padding:     ($radio-outline-size - $radio-size) / 2;
+  border-radius: 50%;
   cursor:      pointer;
   will-change: opacity, transform, border-color, background-color, color;
 
   // radio 圆形形状
-  .radio-background {
-    position:   absolute;
-    left:       ($radio-outline-size - $radio-size) / 2;
-    box-sizing: border-box;
-    display:    inline-block;
-    width:      $radio-pct;
-    height:     $radio-pct;
+  &-background {
+    position:       absolute;
+    left:           ($radio-outline-size - $radio-size) / 2;
+    box-sizing:     border-box;
+    display:        inline-block;
+    width:          $radio-pct;
+    height:         $radio-pct;
+    pointer-events: none;
   }
 
-  .radio-circle-outer {
-    @include theme-prop(border-color, text-secondary-on-light);
+  &-circle-outer {
+    @include theme-prop(border-color, text-primary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -40,8 +42,8 @@
     transition:    radio-leave(border-color);
   }
 
-  .radio-circle-inner {
-    @include theme-prop(background-color, text-secondary-on-light);
+  &-circle-inner {
+    @include theme-prop(background-color, text-primary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -53,7 +55,7 @@
     transition:    radio-leave(transform), radio-leave(background-color);
   }
 
-  .radio-native-control {
+  &-native-control {
     position: absolute;
     top:      0;
     left:     0;
@@ -67,52 +69,7 @@
   }
 }
 
-// 带波纹的样式
-.radio-ripple {
-  @include ripple-base;
-  @include ripple-bg((pseudo: "::before", opacity: .14));
-  @include ripple-bg((pseudo: "::after", opacity: .14));
-  &::before,
-  &::after {
-    top:    0;
-    left:   0;
-    width:  100%;
-    height: 100%;
-  }
-
-  // radio 背景波纹
-  .radio-background {
-    &::before {
-      // TODO 背景颜色带跟主题配合处理
-      // @include theme-prop(background-color, primary);
-      background-color: rgba(0, 0, 0, .87);
-      content:          "";
-      position:         absolute;
-      top:              0;
-      left:             0;
-      width:            100%;
-      height:           100%;
-      border-radius:    50%;
-      pointer-events:   none;
-      opacity:          0;
-      transform:        scale(0, 0);
-      transition:       radio-leave(opacity), radio-leave(transform);
-    }
-  }
-}
-
-// 动画效果更明显，需要结合 JavaScript
-.radio-impact {
-  &.ripple-impact {
-    .radio-background::before {
-      content: none;
-    }
-  }
-  & {
-    @include ripple-unbounded();
-  }
-}
-
+// checked 和 disabled 动画效果
 .radio-native-control:checked,
 .radio-native-control:disabled {
   + .radio-background {
@@ -129,8 +86,8 @@
 }
 
 .radio-disabled {
-  cursor:         default;
   pointer-events: none;
+  cursor:         default;
 }
 
 .radio-native-control:checked {
@@ -153,20 +110,20 @@
     cursor: default;
 
     .radio-circle-outer {
-      border-color: rgba(black, .26);
+      border-color: rgba(#000, .26);
     }
 
     .radio-circle-inner {
-      background-color: rgba(black, .26);
+      background-color: rgba(#000, .26);
     }
   }
 }
 
 .radio-native-control:focus {
   + .radio-background::before {
+    opacity:    .26;
     transform:  scale(2, 2);
     transition: radio-enter(opacity), radio-enter(transform);
-    opacity:    .26;
   }
 }
 
