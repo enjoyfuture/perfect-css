@@ -1,0 +1,6 @@
+@import "../../animation/variable";
+
+// input function
+@function input-transition($property) {
+  @return #{$property} 180ms $animation-ease-out;
+}

@@ -1,0 +1,139 @@
+// input style
+
+@import "../../animation/variable";
+@import "../ripple/mixin";
+@import "../../theme/variable";
+@import "../../theme/mixin";
+@import "./function";
+
+.input {
+  display: inline-block;
+  margin-bottom: $input-margin-bottom;
+  will-change: opacity, transform, color;
+}
+
+.input-field {
+  @include theme-prop(color, text-primary-on-light);
+  padding: $input-padding-y $input-padding-x;
+  border: 1px solid $input-border-color;
+  font-size: $input-font-size;
+  line-height: $input-line-height;
+  background: none;
+  background-clip: padding-box;
+  appearance: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  @if $enable-rounded {
+    border-radius: $input-border-radius;
+  } @else {
+    border-radius: 0;
+  }
+
+  @include box-shadow($input-box-shadow);
+  @include transition($input-transition);
+
+  // Placeholder
+  &::placeholder {
+    @include theme-prop(color, text-hint-on-light);
+    opacity: 1;
+    transition: input-transition(color);
+  }
+
+  // 定义 `:focus` 样式
+  @include input-focus();
+
+  &:focus::placeholder {
+    @include theme-prop(color, text-secondary-on-light);
+  }
+
+  // Disabled
+  &:disabled,
+  &[readonly] {
+    color: $input-disabled-color;
+    pointer-events: none;
+  }
+
+  // Remove red outline on firefox
+  &:invalid {
+    box-shadow: none;
+  }
+}
+
+// 扁平化输入框，即只有一条底边框表单
+.input-flat {
+  padding-left: 0;
+  padding-right: 0;
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+
+// full width input
+.input-full {
+  display: block;
+
+  .input-field {
+    display: block;
+    width: 100%;
+  }
+}
+
+.input-label {
+  @include theme-prop(color, text-hint-on-light);
+
+  position: absolute;
+  bottom: $input-label-bottom;
+  left: 0;
+  pointer-events: none;
+  cursor: text;
+  transform-origin: left top;
+  transition: input-transition(transform), input-transition(color), input-transition(font-size);
+}
+
+// 点击input时提示文字缩小上移，并改变颜色为高亮色
+.input-float-above {
+  .input-field {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    border-width: 0 0 1px;
+    border-radius: 0;
+  }
+  .input-field:focus + .input-label,
+  .input-field-focused + .input-label,
+  // Move label when textfield gets autofilled in Chrome
+  .input-field:-webkit-autofill + .input-label {
+    cursor: auto;
+    transform: translateY(-100%) scale(.9, .9);
+
+    @include theme-prop(color, text-primary-on-light);
+  }
+}
+
+/*.input-float-above {
+  position: relative;
+  padding-top: 2rem;
+  padding-left: $input-padding-x;
+  border-bottom: 1px solid $input-border-color;
+
+  .input-field {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    border-width: 0;
+    border-radius: 0;
+  }
+  .input-field:focus + .input-label,
+  .input-field-focused + .input-label {
+    bottom: $input-label-above-bottom;
+    font-size: $input-label-above-font-size;
+    color: $input-label-above-color;
+  }
+
+  .input-field:invalid + .input-label,
+  .input-field-invalid + .input-label {
+    bottom: $input-label-above-bottom;
+    font-size: $input-label-above-font-size;
+    color: $input-label-above-invalid-color;
+  }
+}*/
