@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="CSS3 Perfect">
+  <meta name="description"
+        content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+  <meta name="author" content="Linder Wang">
+
+  <title>
+    Tab 组件 &middot; Perfect
+  </title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Perfect CSS -->
+  <link href="/assets/css/perfect.css" rel="stylesheet">
+
+  <!-- Component CSS -->
+  <link href="/assets/css/component.css" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/js/vendor/jquery.min.js"></script>
+<style>
+  .component-wrap {
+    width: 800px;
+  }
+
+</style>
+
+<div class="component-wrap">
+  <h2>Tab </h2>
+  <section>
+    <h3 class="m-t-5">左对齐 </h3>
+    <section class="component-container" style="background: #e3f2fd;">
+      <nav class="tab-bar tab-bar-left">
+        <a class="tab active" href="#one">标签1</a>
+        <a class="tab" href="#two">标签2</a>
+        <a class="tab" href="#three">标签3</a>
+      </nav>
+    </section>
+
+    <h3 class="m-t-5">居中 </h3>
+    <section class="component-container" style="background: #e8eaf6;">
+      <nav class="tab-bar tab-bar-center">
+        <a class="tab active" href="#one">标签1</a>
+        <a class="tab" href="#two">标签2</a>
+        <a class="tab" href="#three">标签3</a>
+      </nav>
+    </section>
+
+    <h3 class="m-t-5">右对齐 </h3>
+    <section class="component-container" style="background: #f1f8e9;">
+      <nav class="tab-bar tab-bar-right">
+        <a class="tab active" href="#one">标签1</a>
+        <a class="tab" href="#two">标签2</a>
+        <a class="tab" href="#three">标签3</a>
+      </nav>
+    </section>
+
+    <h3 class="m-t-5">平铺占满整个容器 </h3>
+    <section class="component-container" style="background: #f9fbe7;">
+      <nav class="tab-bar tab-bar-between">
+        <a class="tab active" href="#one">标签1</a>
+        <a class="tab" href="#two">标签2</a>
+        <a class="tab" href="#three">标签3</a>
+        <a class="tab" href="#four">标签4</a>
+      </nav>
+    </section>
+
+    <h3 class="m-t-5">字体小一点 tab，适合更多 tab 时 </h3>
+    <section class="component-container" style="background: #e0f7fa;">
+      <nav class="tab-bar tab-bar-sm tab-bar-between">
+        <a class="tab active" href="#one">标签1</a>
+        <a class="tab" href="#two">标签2</a>
+        <a class="tab" href="#three">标签3</a>
+        <a class="tab" href="#four">标签4</a>
+        <a class="tab" href="#four">标签5</a>
+        <a class="tab" href="#four">标签6</a>
+      </nav>
+    </section>
+
+    <h3 class="m-t-5">Tab 动画效果 </h3>
+    <section class="component-container" style="background: #ffebee;">
+      <nav class="tab-bar tab-ripple tab-bar-between">
+        <a class="tab active" href="#one">标签1</a>
+        <a class="tab" href="#two">标签2</a>
+        <a class="tab" href="#three">标签3</a>
+        <a class="tab" href="#four">标签4</a>
+        <a class="tab" href="#four">标签5</a>
+      </nav>
+    </section>
+
+
+    <h3 class="m-t-5">primary tab  </h3>
+    <section class="component-container" style="background: #fce4ec;">
+      <nav class="tab-bar tab-primary tab-ripple tab-bar-between">
+        <a class="tab active" href="#one">标签1</a>
+        <a class="tab" href="#two">标签2</a>
+        <a class="tab" href="#three">标签3</a>
+        <a class="tab" href="#four">标签4</a>
+        <a class="tab" href="#four">标签5</a>
+      </nav>
+    </section>
+
+
+    <h2 class="m-t-5">Tab Scroller 待补充 </h2>
+    <section class="component-container">
+    </section>
+
+  </section>
+
+</div>
+
+<script>
+  $(function () {
+    $('.tab-bar').on('click', '.tab', function (e) {
+      $(e.currentTarget).addClass('active').siblings().removeClass('active');
+    });
+  });
+</script>
+
+</body>
+</html>

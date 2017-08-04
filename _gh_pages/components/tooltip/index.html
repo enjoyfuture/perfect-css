@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="CSS3 Perfect">
+  <meta name="description"
+        content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+  <meta name="author" content="Linder Wang">
+
+  <title>
+    Tooltip 组件 &middot; Perfect
+  </title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Perfect CSS -->
+  <link href="/assets/css/perfect.css" rel="stylesheet">
+
+  <!-- Component CSS -->
+  <link href="/assets/css/component.css" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/js/vendor/jquery.min.js"></script>
+<style>
+  .component-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tooltip-demo {
+    min-width: 270px;
+    position: relative;
+  }
+
+  .tooltip-demo .btn:hover ~ .tooltip {
+    opacity: .9;
+  }
+
+  .tooltip-demo .btn:hover ~ .tooltip {
+    opacity: .9;
+  }
+
+  .tooltip-demo .tooltip-top {
+    left: 27px;
+    top: -25px;
+  }
+
+  .tooltip-demo .tooltip-right {
+    top: 25px;
+    left: 145px;
+  }
+
+  .tooltip-demo .tooltip-bottom {
+    top: 60px;
+    left: 24px;
+  }
+
+  .tooltip-demo .tooltip-left {
+    top: 22px;
+    left: -105px;
+  }
+
+  .tooltip-demo2 {
+    position: relative;
+    top: 15px;
+    width: 130px;
+  }
+
+  .tooltip-demo2 .arrow {
+    left: 49%;
+  }
+</style>
+
+<div class="component-wrap">
+  <h3> Tooltip </h3>
+  <section class="component-container">
+    <div class="tooltip-demo2">
+      <div class="tooltip tooltip-top show">
+        <div class="arrow"></div>
+        <div class="tooltip-inner">
+          Tooltip 在上侧
+        </div>
+      </div>
+    </div>
+
+    <div class="tooltip-demo">
+      <button class="btn btn-raised">Tooltip 在上侧</button>
+      <div class="tooltip tooltip-top">
+        <div class="arrow"></div>
+        <div class="tooltip-inner">
+          Tooltip 在上侧
+        </div>
+      </div>
+    </div>
+
+    <div class="tooltip-demo">
+      <button class="btn btn-raised">Tooltip 在右侧</button>
+      <div class="tooltip tooltip-right">
+        <div class="arrow"></div>
+        <div class="tooltip-inner">
+          Tooltip 在右侧
+        </div>
+      </div>
+    </div>
+
+    <div class="tooltip-demo">
+      <button class="btn btn-raised">Tooltip 在下侧</button>
+      <div class="tooltip tooltip-bottom">
+        <div class="arrow"></div>
+        <div class="tooltip-inner">
+          Tooltip 在下侧
+        </div>
+      </div>
+    </div>
+
+    <div class="tooltip-demo">
+      <button class="btn btn-raised">Tooltip 在左侧</button>
+      <div class="tooltip tooltip-left">
+        <div class="arrow"></div>
+        <div class="tooltip-inner">
+          Tooltip 在左侧
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+</body>
+</html>
