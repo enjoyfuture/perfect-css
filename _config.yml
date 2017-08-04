@@ -34,9 +34,9 @@ authors: Linder Wang, and Perfect contributors
 
 # Custom vars 自定义变量
 current_version:  0.1.0
-repo:             https://github.com/perfect-ui/perfect
+repo:             https://github.com/joy-web/perfect-css
 
 download:
-  source:         https://github.com/perfect-ui/perfect/archive/master.zip
-  dist:           https://github.com/perfect-ui/perfect/archive/master.zip #待上传
+  source:         https://github.com/joy-web/perfect-css/archive/master.zip
+  dist:           https://github.com/joy-web/perfect-css/archive/master.zip #待上传
 

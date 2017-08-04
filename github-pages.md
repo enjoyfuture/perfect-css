@@ -41,5 +41,5 @@ git push
   	  A	     www	        默认	        1中拿到的对应 ip，不需要设置端口 访问 www.perfect-css.com
   	  A	      @	          默认	        1中拿到的对应 ip，不需要设置端口 可以直接访问 perfect-css.com
 3. 绑定域名 perfect-css.com
-   在 https://github.com/perfect-ui/perfect/settings 中，找到 `Custom domain` 处，输入
+   在 https://github.com/joy-web/perfect-css/settings 中，找到 `Custom domain` 处，输入
    perfect-css.com 点击 save 即可。该操作，相当于在 gh-pages 分支中新建 CNAME 文件，并添加 perfect-css.com

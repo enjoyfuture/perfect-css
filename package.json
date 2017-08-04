@@ -53,7 +53,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/perfect-ui/perfect.git"
+    "url": "git+https://github.com/joy-web/perfect-css.git"
   },
   "licenses": [
     {
@@ -61,7 +61,7 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/perfect-ui/perfect/issues"
+    "url": "https://github.com/joy-web/perfect-css/issues"
   },
-  "homepage": "https://github.com/perfect-ui/perfect#readme"
+  "homepage": "https://github.com/joy-web/perfect-css#readme"
 }

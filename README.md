@@ -10,7 +10,7 @@ The Perfect docs use the Jekyll to generator.
 If you want to add and contribute to improve the document or translate this document.
 Please exec the following command to start the document service.
 
-### Clone repository from [github](https://github.com/joy-web/react-perfect-component)
+### Clone repository from [github](https://github.com/joy-web/perfect-css)
 
 ```bash
 git clone git@github.com:joy-web/perfect-css.git
@@ -72,7 +72,7 @@ gulp build-doc
 
 ## Issue
 
-https://github.com/enjoyfuture/perfect/issues
+https://github.com/joy-web/perfect-css/issues
 
 ## CHANGELOG
 
