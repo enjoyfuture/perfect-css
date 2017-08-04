@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="CSS3 Perfect">
+  <meta name="description"
+        content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+  <meta name="author" content="Linder Wang">
+
+  <title>
+    Dialog 对话框 &middot; Perfect
+  </title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Perfect CSS -->
+  <link href="/assets/css/perfect.css" rel="stylesheet">
+
+  <!-- Component CSS -->
+  <link href="/assets/css/component.css" rel="stylesheet">
+</head>
+<body>
+<script src="/assets/js/vendor/jquery.min.js"></script>
+<button class="btn btn-primary">打开对话框</button>
+
+<div class="dialog">
+  <div class="dialog-panel" style="width:800px;">
+    <header class="dialog-header">
+      <h2 class="dialog-header-title">
+        对话框标题
+      </h2>
+    </header>
+    <section class="dialog-body">
+      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+    </section>
+    <footer class="dialog-footer text-right">
+      <button type="button" class="btn btn-raised m-r-2">取消</button>
+      <button type="button" class="btn text-primary btn-raised">确定</button>
+    </footer>
+  </div>
+  <div class="dialog-backdrop"></div>
+</div>
+
+<script>
+  $(function () {
+    $('.btn').click(function () {
+      $('.dialog').addClass('dialog-open');
+      $('body').addClass('dialog-scroll-lock');
+    });
+
+    $('.dialog .btn').click(function () {
+      $('.dialog').removeClass('dialog-open');
+      $('body').removeClass('dialog-scroll-lock');
+    });
+  });
+</script>
+
+</body>
+</html>
