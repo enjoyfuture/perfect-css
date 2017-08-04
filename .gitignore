@@ -2,7 +2,6 @@
 .idea
 node_modules
 dist
-_gh_pages
 docs/assets/css
 docs/assets/js
 !docs/assets/js/src
