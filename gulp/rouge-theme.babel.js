@@ -14,7 +14,7 @@ const $ = gulpLoadPlugins();
 // rougify -help style 查看支持的主题，也可以在 github 上搜索主题 https://github.com/search?q=pygments+style
 gulp.task('rouge-theme', () => {
   const {exec} = childProcess;
-  exec('rougify style github > docs/assets/scss/highlight.scss', (error, stdout, stderr) => {
+  exec('rougify style github > docs/assets/scss/_highlight.scss', (error, stdout, stderr) => {
     if (error) {
       console.error(error);
     } else {
