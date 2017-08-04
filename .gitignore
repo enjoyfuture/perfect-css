@@ -1,7 +1,2 @@
 # Ignore files
 .idea
-node_modules
-dist
-docs/assets/css
-docs/assets/js
-!docs/assets/js/src
