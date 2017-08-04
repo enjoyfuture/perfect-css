@@ -26,7 +26,7 @@ git subtree add --prefix=_gh_pages origin gh-pages --squash
 3. 生成 docs
 ```
 gulp build-doc
-git add _gh_pages -f
+git add _gh_pages
 git commit -m "Update docs"
 # git subtree pull --prefix=_gh_pages git@github.com:perfect-ui/perfect.git gh-pages --squash
 git subtree push --prefix=_gh_pages origin gh-pages --squash
