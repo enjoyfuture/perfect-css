@@ -45,7 +45,7 @@ rules:
     - 1
     - convention: zero
   brace-style: # 大括号风格
-    - 1
+    - 0
     - allow-single-line: true
   class-name-format:  # 样式命名规范，以下设置采用小写字母和连接字符 - https://github.com/sasstools/sass-lint/blob/master/docs/rules/class-name-format.md
     - 1

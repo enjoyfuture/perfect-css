@@ -1,6 +1,6 @@
 const path = require('path');
 const sassTrue = require('sass-true');
-const functions = require('../../scss/js-function/Math');
+const functions = require('../../scss/base/js-function/Math');
 
 // 待测试的文件
 // const officialTest = path.join(__dirname, 'official-demo', 'test.scss');

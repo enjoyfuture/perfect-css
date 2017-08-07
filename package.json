@@ -55,11 +55,7 @@
     "type": "git",
     "url": "git+https://github.com/joy-web/perfect-css.git"
   },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/joy-web/perfect-css/issues"
   },

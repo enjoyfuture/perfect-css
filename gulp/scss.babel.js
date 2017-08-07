@@ -3,7 +3,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import chalk from 'chalk';
 import autoprefixer from 'autoprefixer';
 import flexbugs from 'postcss-flexbugs-fixes';
-import functions from '../scss/js-function/Math';
+import functions from '../scss/base/js-function/Math';
 
 const $ = gulpLoadPlugins();
 
@@ -41,7 +41,7 @@ const postcssPlugins = [
  *
  */
 gulp.task('scss', ['scss-lint'], () => {
-  return gulp.src('scss/*.scss')
+  return gulp.src(['scss/*.scss', 'scss/**/*.scss'])
     .pipe($.sourcemaps.init())
     .pipe($.sass(scssOption).on('error', $.sass.logError))
     .pipe($.postcss(postcssPlugins))
@@ -51,7 +51,7 @@ gulp.task('scss', ['scss-lint'], () => {
 
 // 编译 docs scss
 gulp.task('scss-docs', ['scss-lint'], () => {
-  return gulp.src(['scss/*.scss', 'docs/assets/scss/*.scss'])
+  return gulp.src(['scss/*.scss', 'docs/assets/scss/component.scss'])
     .pipe($.sourcemaps.init())
     .pipe($.sass(scssOption).on('error', $.sass.logError))
     .pipe($.postcss(postcssPlugins))
