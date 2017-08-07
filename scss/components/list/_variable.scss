@@ -1,0 +1,43 @@
+// List 变量
+
+$list-margin-top: .75rem !default;
+$list-item-padding-y: .75rem !default;
+$list-item-padding-x: 1rem !default;
+
+// dense 紧凑的
+$list-dense-font-size: .75rem !default;
+$list-dense-item-padding-y: .5625rem !default;
+
+// border
+$list-border-width: $border-width !default;
+
+// detail
+$list-item-detail-size: 1.5rem !default;
+$list-item-detail-margin: .5rem !default;
+
+// avatar
+$list-item-avatar-size: 2.5rem !default;
+$list-item-avatar-margin: 1rem !default;
+
+// secondary
+$list-item-text-secondary-font-size: .75rem !default;
+$list-item-text-secondary-font-weight: 400 !default;
+$list-item-text-line-height: 1.5 !default;
+
+// divider
+$list-divider-inset-left: $list-item-padding-x !default;
+$list-divider-inset-detail-left: $list-item-padding-x + $list-item-detail-size + $list-item-detail-margin !default;
+$list-divider-inset-avatar-left: $list-item-padding-x + $list-item-avatar-size + $list-item-avatar-margin !default;
+
+// list group
+$list-group-header-font-size: .875rem !default;
+$list-group-header-font-weight: 500 !default;
+$list-group-header-padding-y: .75rem !default;
+$list-group-header-padding-x: 1rem !default;
+
+// list spacing  16px * .625rem
+$list-border-spacing: .625rem !default;
+
+// right text
+$list-item-text-right-margin-right: .5rem !default;
+$list-item-text-right-font-size: .875rem !default;

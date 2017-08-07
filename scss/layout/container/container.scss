@@ -1,0 +1,72 @@
+// 容器 style
+@import "../../base/variables/variable";
+@import "../../base/mixins/mixin";
+@import "mixin";
+
+// 设置响应式容器宽度
+.container {
+  @include make-container();
+  @if $enable-responsive {
+    max-width: 100%;
+    @include make-container-max-widths();
+  } @else {
+    width: 100%;
+  }
+}
+
+// 自适应容器
+// 根据浏览器的宽度来 100% 来填充整个浏览器，更适合 pc 端布局
+@if $enable-responsive {
+  .container-fluid {
+    width: 100%;
+    @include make-container();
+  }
+}
+
+// 两列等高布局 ie6+
+.container-equal-height {
+  display: block;
+  overflow: hidden;
+
+  >div {
+    padding-bottom: 30000px;
+    margin-bottom: -30000px;
+  }
+  .container-equal-height-nav {
+    display: block;
+    float: left;
+  }
+  .container-equal-height-main {
+    display: block;
+    float: left;
+    width: 100%;
+  }
+}
+
+// float 自适应布局
+.container-fluid-float {
+  @include clearfix();
+  .container-fluid-float-cell {
+    float: left;
+  }
+  .container-fluid-float-full {
+    overflow: hidden;
+  }
+}
+
+// 自适应方块
+.container-square {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+  .container-square-box {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+  }
+}

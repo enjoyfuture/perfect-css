@@ -1,0 +1,264 @@
+@import "../theme/mixin";
+@import "../base/mixins/mixin";
+@import "normalize-css";
+@import "variable";
+
+// 规范化样式
+// 在 normalize.css 的基础上重新定义样式
+
+// 重置 html
+//  1. https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7165383/
+// 在 ie11 和 edge 中，当鼠标离开滚动条时，会自动隐藏，这样用户体验可能不是很好，
+// 故显式开启，当有滚动条时，一直显示
+// 2. 设置默认字体为 sans-serif
+// 3. 在Windows Phone和iOS中，通过调整字体大小为100%来阻止文本改变位置
+// 4. 在 IOS 下点击高亮修改为完全透明
+
+html {
+  -ms-overflow-style: scrollbar; // 1
+  font-family: sans-serif; // 2
+  font-weight: $font-weight-base;
+  -webkit-text-size-adjust: 100%; // 3
+  -ms-text-size-adjust: 100%; // 3
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 4
+}
+
+// 1. 最佳实践，提供一个默认的前景和背景
+body {
+  font-family: $font-family;
+  //设置默认字体大小，其他元素采用 rem ，动态的根据 body 的字体大小来计算其大小
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  @include theme-prop(color, text-primary-on-light); // 1 前景对应  rgba(0, 0, 0, .87),
+  @include theme-prop(background-color, text-primary-on-dark); // 1 背景对应 #fff
+}
+
+// normalize.scss 中设置了一部分，这里再补上几个，让 IE 9- 正确的显示
+dialog,
+figcaption,
+figure,
+hgroup,
+main {
+  display: block;
+}
+
+// Credit: https://github.com/suitcss/base
+// 对于 tabindex 设为 -1 的元素，获取焦点时去掉外边虚框
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+//
+// 排版重置样式
+//
+
+// 重置 margin-top margin-bottom
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+// 重置段落 p 元素
+// 用 rem 设置 margin-top margin-bottom
+p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+// Abbreviations
+//
+// 1. Remove the bottom border in Chrome 57- and Firefox 39-.
+// 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+// 3. Add explicit cursor to indicate changed behavior.
+// 4. Duplicate behavior to the data-* attribute for our tooltip plugin
+
+abbr[title],
+abbr[data-original-title] { // 4
+  border-bottom: 0; // 1
+  text-decoration: underline; // 2
+  text-decoration: underline dotted; // 2
+  cursor: help; // 3
+}
+
+address {
+  margin-bottom: 1rem;
+  font-style: normal;
+  line-height: inherit;
+}
+
+ol,
+ul,
+dl {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  margin-left: 1.25rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: $dt-font-weight;
+}
+
+dd {
+  margin-bottom: .5rem;
+  margin-left: 0; // Undo browser default
+}
+
+blockquote {
+  margin: 0 0 1rem;
+}
+
+//
+// Links
+//
+
+a {
+  text-decoration: $link-decoration;
+  @include theme-prop(color, primary);
+
+  @include hover {
+    @include theme-prop(color, primary-dark);
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+// 对于没有 href 并且没有设置 tabindex 的 a 元素修改为样式跟普通元素一样
+a:not([href]):not([tabindex]) {
+  text-decoration: none;
+
+  @include hover-focus {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+//
+// Code
+//
+
+pre {
+  // Remove browser default top margin
+  margin-top: 0;
+  // Reset browser default of `1em` to use `rem`s
+  margin-bottom: 1rem;
+  // Don't allow content to break outside
+  overflow: auto;
+}
+
+//
+// Figures
+//
+
+figure {
+  // Apply a consistent margin strategy (matches our type styles).
+  margin: 0 0 1rem;
+}
+
+//
+// 重置图片样式
+//
+
+img {
+  // 重置为垂直居中
+  vertical-align: middle;
+}
+
+/**
+* 在手机端点击事件有 300ms 的延迟
+* 在一些现代浏览器可以通过样式 touch-action: manipulation 来删除点击延迟
+* 下面这些元素不需要延迟
+* https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action
+* http://caniuse.com/#feat=css-touch-action
+* http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+**/
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+
+//
+// 重置 Forms 表单样式
+//
+
+label {
+  display: inline-block;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  // Remove the default appearance of temporal inputs to avoid a Mobile Safari
+  // bug where setting a custom line-height prevents text from being vertically
+  // centered within the input.
+  // See https://bugs.webkit.org/show_bug.cgi?id=139848
+  -webkit-appearance: listbox;
+}
+
+textarea {
+  // Textareas should really only resize vertically so they don't break their (horizontal) containers.
+  resize: vertical;
+}
+
+fieldset {
+  // Browsers set a default `min-width: min-content;` on fieldsets,
+  // unlike e.g. `<div>`s, which have `min-width: 0;` by default.
+  // So we reset that to ensure fieldsets behave more like a standard block element.
+  // and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
+  min-width: 0;
+  // Reset the default outline behavior of fieldsets so they don't affect page layout.
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+}
+
+[type="search"] {
+  // Correct the odd appearance in Chrome and Safari.
+  -webkit-appearance: none;
+}
+
+//
+// Correct element displays
+//
+
+output {
+  display: inline-block;
+}
+

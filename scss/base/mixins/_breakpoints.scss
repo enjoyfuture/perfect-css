@@ -1,0 +1,160 @@
+// 响应式和媒体查询，设备大小分界点为
+// {
+//   xs: 0,
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px
+// }
+
+
+// 返回响应式设备大小的下一个名称值
+// $name 当前值
+// $breakpoint 响应式布局列表值
+// $breakpoint-names 对应的所有键
+// 比如 breakpoint-next(sm)  结果为 md
+// breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px)) 结果为 md
+// breakpoint-next(sm, $breakpoint-names: (xs sm md)) 结果为 md
+// breakpoint-next(md, $breakpoint-names: (xs sm md)) 结果为 null
+
+@function breakpoint-next($name, $breakpoints: $responsive-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// 根据键返回响应式对应的媒体查询区间值的最小值， 如果没找到或值为0返回 null
+// breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px)) 结果为 576px
+// breakpoint-min(xs, (xs: 0, sm: 576px, md: 768px)) 结果为 null
+@function breakpoint-min($name, $breakpoints: $responsive-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+// 根据键返回响应式对应的媒体查询区间值的最大值（即为下一个拐点值 - 1px）， 如果没找到返回 null
+// breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px)) 结果为 767px
+// breakpoint-max(md, (xs: 0, sm: 576px, md: 768px)) 结果为 null
+@function breakpoint-max($name, $breakpoints: $responsive-breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
+}
+
+// 如果 $name 为响应式最小值对应的键，怎返回一个空字符串，否则返回键前面加一个破折号，
+// breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px)) 结果为 ""
+// breakpoint-infix(md, (xs: 0, sm: 576px, md: 768px)) 结果为 "-md"
+@function breakpoint-infix($name, $breakpoints: $responsive-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+// 如果 $name 为最小值，即 xs 时，则不用媒体查询输出样式，否则为媒体查询输出，
+// 并设置其最小宽度，即当设备宽度达到该值时，应用定义的该样式
+// .test {
+//   @include media-breakpoint-up(sm) {
+//    color: red;
+//   }
+// }
+// 输出结果为
+// @media (min-width: 576px) {
+//  .test {
+//    color: red;
+//  }
+// }
+//
+//.test {
+//  @include media-breakpoint-up(sm) {
+//    color: red;
+//  }
+//}
+//输出结果为
+//.test {
+//  color: red;
+//}
+@mixin media-breakpoint-up($name, $breakpoints: $responsive-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// 跟 media-breakpoint-up 相反 如果 $name 为最大值，即 xl 时，则使用媒体查询输出样式，否则不用媒体查询输出，
+// 并设置其最大宽度，即当设备宽度小于等于该值时，应用定义的该样式
+//.test {
+//  @include media-breakpoint-down(sm) {
+//    color: red;
+//  }
+//}
+//输出结果为
+//@media (max-width: 767px) {
+//  .test {
+//    color: red;
+//  }
+//}
+//
+//.test {
+//  @include media-breakpoint-down(xl) {
+//    color: red;
+//  }
+//}
+//输出结果为
+//.test {
+//  color: red;
+//}
+@mixin media-breakpoint-down($name, $breakpoints: $responsive-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+
+// 设置媒体查询最大和最小区间样式
+// .test {
+//  @include media-breakpoint-between(sm, lg) {
+//    color: red;
+//  }
+// }
+// 输出结果为
+// @media (min-width: 576px) and (max-width: 1199px) {
+//  .test {
+//    color: red;
+//  }
+// }
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $responsive-breakpoints) {
+  @include media-breakpoint-up($lower, $breakpoints) {
+    @include media-breakpoint-down($upper, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+// 设置某一媒体查询区间最大和最小区间样式，比如 sm 的区间为 576px  767px
+// .test {
+//  @include media-breakpoint-only(sm) {
+//    color: red;
+//  }
+// }
+// 输出结果为
+// @media (min-width: 576px) and (max-width: 767px) {
+//  .test {
+//    color: red;
+//  }
+//}
+
+@mixin media-breakpoint-only($name, $breakpoints: $responsive-breakpoints) {
+  @include media-breakpoint-between($name, $name, $breakpoints) {
+    @content;
+  }
+}
+
+// 如果我们不使用响应式布局时，即把变量值 $enable-breakpoint 设为 false 时
+@mixin no-media-breakpoint() {
+  @content;
+}
+

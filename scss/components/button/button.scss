@@ -2,7 +2,9 @@
 @import "../../animation/variable";
 @import "../../animation/function";
 @import "../../theme/mixin";
-@import "../ripple/mixin";
+@import "../../ripple/mixin";
+@import "../../normalize/variable";
+@import "variable";
 
 .btn {
   @include theme-prop(color, text-primary-on-light);

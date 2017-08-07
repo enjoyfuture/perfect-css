@@ -1,0 +1,58 @@
+// blockquote variable
+$blockquote-spacer: 1rem !default;
+$blockquote-font-size: ($font-size-base * 1.25) !default;
+$blockquote-border-width: .25rem !default;
+
+// code variable
+$code-font-size: 90% !default;
+$code-padding-y: .2rem !default;
+$code-padding-x: .4rem !default;
+$code-color: #bd4147 !default;
+$code-bg: $grey-100 !default;
+
+$kbd-color: $white !default;
+$kbd-bg: $grey-900 !default;
+$kbd-box-shadow: 0 -.1rem 0 rgba($black, .25) inset !default;
+$nested-kbd-font-weight: $font-weight-bold !default;
+
+$pre-color: $grey-900 !default;
+$pre-scroll-height: 300px !default;
+
+// display variable
+$display1-size: 3.5rem !default;
+$display2-size: 4.5rem !default;
+$display3-size: 5.5rem !default;
+$display4-size: 6.5rem !default;
+
+$display1-weight: 300 !default;
+$display2-weight: 300 !default;
+$display3-weight: 300 !default;
+$display4-weight: 300 !default;
+$display-line-height: 1.1 !default;
+
+// 强调 variable
+$small-font-size: 80% !default;
+$mark-padding: .2em !default;
+$mark-bg: #fcf8e3 !default;
+
+// header variable
+$headings-font-family: inherit !default;
+$headings-font-weight: 300 !default;
+$headings-line-height: 1.1 !default;
+$headings-color: inherit !default;
+
+//对应 h1 到 h6 字体大小
+$font-size-h1: 2.5rem !default; // 40px
+$font-size-h2: 2rem !default; // 32px
+$font-size-h3: 1.75rem !default; // 28px
+$font-size-h4: 1.5rem !default; // 24px
+$font-size-h5: 1.125rem !default; // 20px
+$font-size-h6: 1rem !default; // 16px
+
+// hr
+$hr-border-color: rgba($black, .1) !default;
+$hr-border-width: $border-width !default;
+
+// 作用在 li 上
+$li-inline-padding: 5px !default;
+

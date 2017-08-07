@@ -1,0 +1,62 @@
+// ripple style
+@import "../animation/function";
+@import "../theme/mixin";
+@import "mixin";
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+  outline:  none;
+  @include ripple-base;
+  // 设置 ripple 双层背景 ::before 用来产生动画效果，::after 为动画效果提供渲染背景舞台
+  @include ripple-bg((pseudo: "::before"));
+  @include ripple-bg((pseudo: "::after"));
+}
+
+// 其他组件可以通过设置 css 变量改变样式值，比如 .radio.ripple-bg(--ripple-bg-color: rgba(0, 0, 0, .12));
+// --ripple-bg-color: rgba(0, 0, 0, .06);
+.ripple-bg::before,
+.ripple-bg::after {
+  // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
+  // https://github.com/sasstools/sass-lint/issues/877
+  // 待 sass-lint 支持后，去掉包裹 #{}
+
+  // 默认值
+  background-color: var(--ripple-bg-color, rgba(0, 0, 0, .08));
+}
+
+// 动画效果更明显，需要结合 JavaScript
+.ripple-impact {
+  @include ripple-impact();
+  // 动画效果
+  @include ripple-bg-impact((pseudo: "::before"));
+}
+
+// 无界限的波纹效果
+@include ripple-unbounded();
+
+// 定义主题样式
+@each $style in ("primary", "accent") {
+  .ripple-#{$style} {
+    &::before,
+    &::after {
+      // 主题样式
+      @include theme-prop(background-color, #{$style});
+      // ripple 主题样式
+      @include ripple-theme((theme-style: #{$style}, opacity: .16));
+    }
+  }
+}
+
+// 辅助颜色对应 ripple
+@each $theme, $color in $theme-assist-colors {
+  .ripple-#{$theme} {
+    &::before,
+    &::after {
+      @include theme-assist(background-color, $theme, $color, .16);
+    }
+  }
+}
+
+
+

@@ -1,0 +1,42 @@
+// Blockquotes
+// 引用
+
+.blockquote {
+  padding: ($spacer / 2) $spacer;
+  margin-bottom: $spacer;
+  border-left-width: $blockquote-border-width;
+  border-left-style: solid ;
+  @include theme-prop(border-left-color, text-hint-on-light);
+  font-size: $blockquote-font-size;
+}
+
+.blockquote-footer {
+  display: block;
+  font-size: 80%; // back to default font-size
+  @include theme-prop(color, text-secondary-on-light);
+
+  &::before {
+    content: "\2014 \00A0";
+  }
+}
+
+// 引用从右向左显示
+.blockquote-reverse {
+  padding-left: 0;
+  padding-right: $spacer;
+  border-left: 0;
+  border-right-width: $blockquote-border-width;
+  border-right-style: solid ;
+  @include theme-prop(border-right-color, text-hint-on-light);
+  text-align: right;
+
+  .blockquote-footer {
+    &::before {
+      content: "";
+    }
+    &::after {
+      content: "\00A0 \2014"; // nbsp, em dash
+    }
+  }
+}
+

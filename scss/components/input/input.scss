@@ -1,9 +1,13 @@
 // input style
 
 @import "../../animation/variable";
-@import "../ripple/mixin";
+@import "../../ripple/mixin";
 @import "../../theme/variable";
 @import "../../theme/mixin";
+@import "../../normalize/variable";
+@import "../../base/variables/variable";
+@import "../../base/mixins/mixin";
+@import "./variable";
 @import "./function";
 
 .input {
@@ -31,7 +35,7 @@
   }
 
   @include box-shadow($input-box-shadow);
-  @include transition($input-transition);
+  // @include transition($input-transition);
 
   // Placeholder
   &::placeholder {
@@ -41,7 +45,11 @@
   }
 
   // 定义 `:focus` 样式
-  @include input-focus();
+  &:focus {
+    outline: none;
+    @include theme-prop(color, primary);
+  }
+
 
   &:focus::placeholder {
     @include theme-prop(color, text-secondary-on-light);
@@ -50,7 +58,7 @@
   // Disabled
   &:disabled,
   &[readonly] {
-    color: $input-disabled-color;
+    @include theme-prop(color, text-disabled-on-primary);
     pointer-events: none;
   }
 
@@ -109,31 +117,3 @@
     @include theme-prop(color, text-primary-on-light);
   }
 }
-
-/*.input-float-above {
-  position: relative;
-  padding-top: 2rem;
-  padding-left: $input-padding-x;
-  border-bottom: 1px solid $input-border-color;
-
-  .input-field {
-    padding-top: 0;
-    padding-left: 0;
-    padding-right: 0;
-    border-width: 0;
-    border-radius: 0;
-  }
-  .input-field:focus + .input-label,
-  .input-field-focused + .input-label {
-    bottom: $input-label-above-bottom;
-    font-size: $input-label-above-font-size;
-    color: $input-label-above-color;
-  }
-
-  .input-field:invalid + .input-label,
-  .input-field-invalid + .input-label {
-    bottom: $input-label-above-bottom;
-    font-size: $input-label-above-font-size;
-    color: $input-label-above-invalid-color;
-  }
-}*/

@@ -1,0 +1,13 @@
+// Typography 排版
+// 超链接，使用主题颜色
+
+.link {
+  @include theme-prop(color, primary);
+  text-decoration: $link-decoration;
+  cursor: pointer;
+
+  @include hover {
+    @include theme-prop(color, primary-dark);
+    text-decoration: $link-hover-decoration;
+  }
+}
