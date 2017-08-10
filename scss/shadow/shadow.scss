@@ -1,0 +1,13 @@
+
+@import "./mixin";
+
+// 遍历生成 shadow 样式值
+@for $z-value from 0 through 24 {
+  .shadow-#{$z-value} {
+    @include shadow($z-value);
+  }
+}
+
+.shadow-transition {
+  @include shadow-transition;
+}

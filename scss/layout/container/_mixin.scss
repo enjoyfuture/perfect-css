@@ -1,5 +1,6 @@
 // 容器 mixin
 
+@import "../../responsive/variable";
 @import "../grid/variable";
 
 @mixin make-container($gutter: $grid-gutter-width) {

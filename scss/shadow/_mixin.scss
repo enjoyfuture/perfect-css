@@ -1,0 +1,37 @@
+
+@import "./variable";
+
+// box shadow 属性值
+@mixin shadow($z-value) {
+  @if type-of($z-value) != number or not unitless($z-value) {
+    @error "$z-value 必须是无单位数值";
+  }
+
+  @if $z-value < 0 or $z-value > 24 {
+    @error "$z-value must be between 0 and 24";
+  }
+
+  box-shadow:
+    #{"#{map-get($shadow-umbra-map, $z-value)} #{$shadow-umbra-color}"},
+    #{"#{map-get($shadow-penumbra-map, $z-value)} #{$shadow-penumbra-color}"},
+    #{map-get($shadow-ambient-map, $z-value)} $shadow-ambient-color;
+}
+
+// 动画规则
+//  .foo {
+//      transition: shadow-transition-rule(), opacity 100ms ease;
+//      will-change: box-shadow, opacity;
+//  }
+@function shadow-transition-rule(
+  $duration: $shadow-transition-duration,
+  $easing: $shadow-transition-timing-function) {
+  @return box-shadow #{$duration} #{$easing};
+}
+
+// 动画效果
+@mixin shadow-transition(
+  $duration: $shadow-transition-duration,
+  $easing: $shadow-transition-timing-function) {
+  transition: shadow-transition-rule($duration, $easing);
+  will-change: box-shadow;
+}

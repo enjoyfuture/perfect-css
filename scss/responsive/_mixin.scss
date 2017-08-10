@@ -1,0 +1,200 @@
+// responsive mixin
+@import "variable";
+@import "function";
+
+// 响应式和媒体查询，设备大小分界点为
+// {
+//   xs: 0, // xsmall
+//   sm: 600px, // small
+//   md: 1024px, // medium
+//   lg: 1440px, // large
+//   xl: 1600px, // xlarge
+// }
+
+// https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries
+// 补充一下媒体查询 max-width min-width max-height min-height 知识
+// 以 max-width min-width 为例来说明
+
+// 1
+// max-width 下面的例子指小于等于 600px 时，该样式起作用，即最大宽度不超过 600px 起作用
+//@media screen and (max-width: 600px) {
+//  .class {
+//    background: #ccc;
+//  }
+//}
+
+// 2
+// min-width 下面的例子指大于等于 900px 时，该样式起作用，即最小宽度需要大于等于900px 起作用
+//@media screen and (min-width: 900px) {
+//  .class {
+//    background: #666;
+//  }
+//}
+
+// 3
+// 组合使用，下面的例子指大于等于600px 小于等于900px 时，起作用
+//@media screen and (min-width: 600px) and (max-width: 900px) {
+//  .class {
+//    background: #333;
+//  }
+//}
+
+// 通过上面的例子，结合css属性 min-width 和 max-width 理解，即最小宽度必须是多少才其作用，
+// 不能超过最大宽度才起作用
+// 另外上例中 3 中的情况，min-width 必须小于 max-width ，否则不起作用
+
+// 如果 $name 为最小值，即 xs 时，则不用媒体查询输出样式，否则为媒体查询输出
+// 并设置其最小宽度，即当设备宽度达到该值时，应用定义的该样式
+//@include media-breakpoint-up(xs) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+//
+//输出结果为
+//  .test {
+//    color: #ff0000;
+//  }
+//
+
+//@include media-breakpoint-up(sm) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+//输出结果为
+// @media (min-width: 600px) {
+//  .test {
+//    color: #ff0000;
+//  }
+// }
+
+@mixin media-breakpoint-up($name, $breakpoints: $responsive-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// 跟 media-breakpoint-up 相反 如果 $name 为最大值，即 xl 时，则不使用媒体查询输出样式，
+// 否则使用媒体查询输出，
+// 并设置其最大宽度，即当设备宽度小于等于该值时，应用定义的该样式
+//@include media-breakpoint-down(xs) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+//输出结果为
+//@media (max-width: 599px) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+//
+
+//@include media-breakpoint-down(xl) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+//输出结果为
+//.test {
+//  color: #ff0000;
+//}
+
+@mixin media-breakpoint-down($name, $breakpoints: $responsive-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// 设置媒体查询最大和最小区间样式
+//@include media-breakpoint-between(xs, xl) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+//输出结果为
+//@media (min-width: 599px) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+//
+//@include media-breakpoint-between(sm, md) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+//输出结果为
+//@media (min-width: 1023px) and (max-width: 1439px) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $responsive-breakpoints) {
+  $min: breakpoint-max($lower, $breakpoints);
+  $max: breakpoint-max($upper, $breakpoints);
+
+  @if ($max == null) {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+}
+
+// 设置某一媒体查询区间最大和最小区间样式，比如 sm 的区间为 600px  1023px
+//没有 breakpoint 为 xs 和 xl 的情况，即如果传入 xs 和 xl 返回为空
+//@include media-breakpoint-only(xl) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+//输出结果为空
+//
+//@include media-breakpoint-only(lg) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+//输出结果为
+//@media (min-width: 1440px) and (max-width: 1599px) {
+//  .test {
+//    color: #ff0000;
+//  }
+//}
+
+@mixin media-breakpoint-only($name, $breakpoints: $responsive-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  $max: breakpoint-max($name, $breakpoints);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-breakpoint-up($name)
+  } @else if ($min == null) {
+    @include media-breakpoint-down($name)
+  }
+}
+
+// 如果我们不使用响应式布局时，即把变量值 $enable-breakpoint 设为 false 时
+@mixin no-media-breakpoint() {
+  @content;
+}
+

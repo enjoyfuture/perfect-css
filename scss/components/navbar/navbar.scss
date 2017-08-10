@@ -1,0 +1,218 @@
+// 导航栏
+@import "../../base/variables/variable";
+@import "../../theme/mixin";
+@import "../../responsive/mixin";
+@import "../../animation/mixin";
+@import "../../shadow/mixin";
+@import "variable";
+
+// 导航容器
+.navbar {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap; // 当导航过多时，允许折行处理
+  align-items: center;
+  justify-content: space-between;
+  height: $navbar-height;
+  padding-left: $navbar-padding-x;
+  padding-right: $navbar-padding-x;
+
+  & * {
+    box-sizing: border-box;
+  }
+}
+
+// Navbar brand
+// 该导航用来设置 brand, project, or site 的名字，另一个就是当设备变小后，只显示该名称
+.navbar-brand {
+  display: inline-block;
+  padding-top: $navbar-brand-padding-y;
+  padding-bottom: $navbar-brand-padding-y;
+  margin-right: $navbar-padding-x;
+  font-size: $navbar-font-size;
+  line-height: inherit;
+  white-space: nowrap;
+  @include theme-prop(color, text-primary-on-light);
+
+  @include hover-focus {
+    text-decoration: none;
+    @include theme-prop(color, text-primary-on-light);
+  }
+}
+
+// 当小屏幕时，隐藏导航，通过该按钮显示导航
+// 使用 .navbar-expand-x 来控制
+.navbar-toggler {
+  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+  border: 0; // remove default button style
+  font-size: $navbar-font-size;
+  line-height: 1;
+  background: transparent; // remove default button style
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+// 用来定义一个图标来告知用户，当点击时可以展开下拉菜单导航
+.navbar-toggler-icon {
+  position: relative;
+  display: inline-block;
+  width: 1.2em;
+  height: .9em;
+  border-top: .15em solid currentColor;
+  border-bottom: .15em solid currentColor;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: .24em;
+    left: 0;
+    right: 0;
+    border-top: .15em solid currentColor;
+  }
+}
+
+// 控制导航显示
+.navbar-collapse {
+  display: none;
+  flex-basis: 100%;
+  align-items: center;
+  opacity: 0;
+
+  // 动画 fixme 待完善
+  transition: animation-enter(opacity, 120ms);
+  // 添加 show 样式来显示导航
+  &.show {
+    display: block;
+    opacity: 1;
+  }
+}
+
+// 导航列表栏，与 nav-link 一起使用
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  list-style: none;
+
+  .nav-link {
+    padding-left: .5rem;
+    padding-right: .5rem;
+    cursor: pointer;
+    @include theme-prop(color, text-secondary-on-light);
+
+    @include hover-focus {
+      text-decoration: none;
+      @include theme-prop(color, text-primary-on-light);
+    }
+
+    &.active {
+      @include theme-prop(color, text-primary-on-light);
+    }
+
+    &.disabled {
+      cursor: default;
+      @include theme-prop(color, text-disabled-on-light);
+    }
+  }
+}
+
+// 导航展开后，使用响应式处理
+// .navbar-expand .navbar-expand-sm .navbar-expand-md .navbar-expand-lg .navbar-expand-xl
+// 如果使用 .navbar-expand 则不会随着屏幕变小而改变
+// 建议使用 .navbar-expand-sm，当屏幕小于 600px 时影藏处理
+.navbar-expand {
+  @each $breakpoint in map-keys($responsive-breakpoints) {
+    $next: breakpoint-next($breakpoint, $responsive-breakpoints);
+    $infix: breakpoint-infix($next, $responsive-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-up($next) {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+
+        .navbar-nav {
+          flex-direction: row;
+        }
+
+        .navbar-collapse {
+          display: flex;
+          opacity: 1;
+        }
+
+        .navbar-toggler {
+          display: none;
+          &.show {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 导航采用 fixed 时
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  // todo z-index 应该设置为变量，与页面中其他元素的层级待处理
+  z-index: 4;
+  width: 100%;
+  @include shadow(4);
+}
+
+// 当导航设为 fixed 时，需要给 navbar 下面元素额外设置 margin-top
+.navbar-fixed-adjust {
+  margin-top: $navbar-height;
+}
+
+// 定义主题样式
+@each $style in ("primary", "accent") {
+  .navbar-#{$style} {
+    @include theme-prop(background-color, #{$style});
+
+    .navbar-toggler {
+      @include theme-prop(color, text-primary-on-dark);
+    }
+
+    .navbar-brand {
+      @include theme-prop(color, text-primary-on-dark);
+      @include hover-focus {
+        @include theme-prop(color, text-primary-on-dark);
+      }
+    }
+
+    .navbar-nav {
+      .nav-link {
+        @include theme-prop(color, text-secondary-on-dark);
+
+        @include hover-focus {
+          text-decoration: none;
+          @include theme-prop(color, text-primary-on-dark);
+        }
+
+        &.active {
+          @include theme-prop(color, text-primary-on-dark);
+        }
+
+        &.disabled {
+          cursor: default;
+          @include theme-prop(color, text-disabled-on-dark);
+        }
+      }
+    }
+  }
+}
+
+

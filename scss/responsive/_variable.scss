@@ -1,0 +1,22 @@
+// 响应式布局屏幕大小分界点
+//
+// 对于媒体查询，根据不同的设备大小定义最小宽度来布局页面,参考
+// http://wiki.jikexueyuan.com/project/material-design/layout/adaptive-ui.html
+// https://material.io/guidelines/layout/responsive-ui.html
+// https://material.io/devices/
+// https://material.io/resizer
+$responsive-breakpoints: (
+  xs: 0, // xsmall
+  sm: 600px, // small
+  md: 1024px, // medium
+  lg: 1440px, // large
+  xl: 1600px, // xlarge
+) !default;
+
+// 定义样式 .container 最大宽度指对应不同的屏幕大小
+$container-max-widths: (
+  sm: 600px,
+  md: 1024px,
+  lg: 1440px,
+  xl: 1600px
+) !default;

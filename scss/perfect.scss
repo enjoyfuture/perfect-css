@@ -11,14 +11,18 @@
 // theme
 @import "theme/theme";
 
+// ripple 波纹效果
+@import "ripple/ripple";
+
+// shadow 效果
+@import "shadow/shadow";
+
 // normalize
 @import "normalize/normalize";
 
 // typography 排版样式
 @import "typography/typography";
 
-// ripple 波纹效果
-@import "ripple/ripple";
 
 // layout 布局
 @import "layout/box/box";
@@ -33,6 +37,8 @@
 
 // 组件
 @import "components/list/list";
+@import "components/navbar/navbar";
+@import "components/drawer/drawer";
 
 // 工具类 classes
 @import "utils/utils";

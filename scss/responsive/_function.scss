@@ -1,0 +1,50 @@
+// responsive mixin
+
+@import "variable";
+
+// 响应式和媒体查询，设备大小分界点为
+// {
+//   xs: 0, // xsmall
+//   sm: 600px, // small
+//   md: 1024px, // medium
+//   lg: 1440px, // large
+//   xl: 1600px, // xlarge
+// }
+
+
+// 返回响应式设备大小的下一个名称值
+// $name 当前值
+// $breakpoint 响应式布局列表值
+// $breakpoint-names 对应的所有键
+// 比如 breakpoint-next(sm)  结果为 md
+// breakpoint-next(sm, (xs: 0, sm: 600px, md: 1024px)) 结果为 md
+// breakpoint-next(sm, $breakpoint-names: (xs sm md)) 结果为 md
+// breakpoint-next(md, $breakpoint-names: (xs sm md)) 结果为 null
+@function breakpoint-next($name, $breakpoints: $responsive-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// 根据键返回响应式对应的媒体查询区间值的最小值，如果没找到或值为0返回 null
+// breakpoint-min(sm) 结果为 600px
+// breakpoint-min(xs) 结果为 null
+@function breakpoint-min($name, $breakpoints: $responsive-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+// 根据键返回响应式对应的媒体查询区间值的最大值（即为下一个拐点值 - 1px）， 如果没找到返回 null
+// breakpoint-max(sm) 结果为 1023px
+// breakpoint-max(xl) 结果为 null
+@function breakpoint-max($name, $breakpoints: $responsive-breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
+}
+
+// 如果 $name 为响应式最小值对应的键，则返回一个空字符串，否则返回键前面加一个破折号，
+// breakpoint-infix(xs) 结果为 ""
+// breakpoint-infix(md) 结果为 "-md"
+// 如果 $dash 设为 false 则不加连字符
+@function breakpoint-infix($name, $breakpoints: $responsive-breakpoints, $dash: true) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "",  if($dash, "-#{$name}", "#{$name}"));
+}

@@ -1,0 +1,11 @@
+// drawer mixin
+@mixin drawer-slide {
+  height: 100%;
+  transform: translateX(-107%);
+  transform: translateX(calc(-100% - 20px));
+  will-change: transform;
+}
+
+@mixin drawer-slide-open {
+  transform: none;
+}

@@ -1,0 +1,248 @@
+// 抽屉样式
+@import "../../animation/function";
+@import "../../shadow/mixin";
+@import "../../theme/mixin";
+@import "../../shadow/mixin";
+@import "../../responsive/mixin";
+@import "./variable";
+@import "./mixin";
+
+// 抽屉，主要用在页面布局展示，一般页面的布局为上中下，中间区域又分为左右侧，一侧为菜单，另一侧为内容主区域
+// .drawer 就是为了处理菜单和主区域全屏显示/非全屏显示的切换，通过加入 .drawer 可以实现菜单的显示和隐藏
+// 设计原则：
+// 1. 当屏幕宽度超过 1440px 时，默认页面中的所有元素可见，此时可以点击头部菜单图标，隐藏或显示菜单栏，
+// 布局上，当菜单栏显示时，会使主区域宽度变小，反之充满整个屏幕。
+// 2. 当屏幕宽度小于 1440px 时，默认页面中菜单隐藏，当点击头部菜单图标时，隐藏或显示菜单栏，
+// 布局上，当菜单栏显示时，采用蒙板效果，把主区域盖住，同时在页面上面弹出菜单栏
+
+$drawer-width: 240px;
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5; // todo
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  // contain 属性允许开发者声明当前元素和它的内容尽可能的独立于其他部分的 Dom 树。这会让浏览器在重新计算布局、样式、绘图或它们的组合的时候，仅仅在有限的 Dom 区域中，并不是整个页面。这个属性常用在包含大量独立的 widgets 小部件的页面，这个 contain 属性可以防止某个小部件的 CSS 规则改变页面上的其他东西。
+  // https://developer.mozilla.org/zh-CN/docs/Web/CSS/contain
+  contain: strict;
+
+  // 用伪类显示蒙板背景
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .4);
+    opacity: 0;
+    opacity: var(--drawer-opacity, 0);
+    will-change: opacity;
+  }
+
+  // 用来显示导航菜单或列表等
+  &-nav {
+    @include theme-prop(background, background);
+    @include shadow(16);
+    // 动画
+    @include drawer-slide;
+    position: absolute;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    touch-action: none;
+
+    // 根据不同的设备设置 drawer nav 宽度
+    @each $breakpoint in map-keys($responsive-breakpoints) {
+      $infix: breakpoint-infix($breakpoint, $responsive-breakpoints, $dash: false);
+      @include media-breakpoint-up(#{$infix}) {
+        width: 100%;
+        max-width: map-get($drawer-breakpoints-width, #{$breakpoint});
+      }
+    }
+  }
+
+  // header
+  &-header {
+    position: relative;
+  }
+
+  // 内容
+  &-content {
+    box-sizing: border-box;
+    flex-grow: 1;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  // 动画效果
+  &-animating {
+    &::before {
+      transition: animation-enter(opacity, .3s);
+    }
+
+    &.drawer-open .drawer-nav {
+      transition: $drawer-transition-open;
+    }
+
+    .drawer-nav {
+      transition: $drawer-transition-close;
+    }
+  }
+
+  // drawer 打开时
+  &-open {
+    pointer-events: auto;
+
+    &::before {
+      opacity: 1;
+      opacity: var(--drawer-opacity, 1);
+    }
+
+    .drawer-nav {
+      @include drawer-slide-open;
+    }
+  }
+
+  &-main {
+    transition: $drawer-main-padding-left;
+    will-change: padding-left;
+  }
+
+  // todo 这里应换成 iconfont
+  &-toggle {
+    position: relative;
+    display: inline-block;
+    width: 1.2em;
+    height: 1em;
+    padding: $drawer-toggle-padding-y $drawer-toggle-padding-x;
+    border-top: .15em solid currentColor;
+    border-bottom: .15em solid currentColor;
+    font-size: $drawer-toggle-font-size;
+    line-height: 1;
+    color: #fff;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: .27em;
+      left: 0;
+      right: 0;
+      border-top: .15em solid currentColor;
+    }
+  }
+}
+
+// drawer 打开时，页面禁止滚动，只有设备宽度小于 1440px 才起作用
+// @media screen and (max-width: 1439px)
+@include media-breakpoint-down(lg) {
+  .drawer-scroll-lock {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+// 当屏幕变宽时，为了使菜单平滑过渡，需要设置以下动画
+.drawer-nav:not(.drawer-animating) {
+  transition: $drawer-transition-close;
+}
+
+// 当设备宽度超过 1440px 时，drawer nav 默认显示
+// @media screen and (min-width: 1440px)
+@include media-breakpoint-up(lg) {
+  $width: map-get($drawer-breakpoints-width, lg);
+
+  .drawer {
+    // 修改其宽度与导航宽度一致
+    width: $width;
+    pointer-events: auto;
+
+    &-nav {
+      border-right: 1px solid #e4e4e4;
+      box-shadow: none;
+      transform: none;
+      transition: $drawer-transition-open;
+    }
+
+    // 切换按钮隐藏
+    &-toggle:not(.drawer-permanent-toggle) {
+      display: none;
+    }
+
+    &-main {
+      padding-left: map-get($drawer-breakpoints-width, lg);
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  $width: map-get($drawer-breakpoints-width, lg);
+
+  .drawer {
+    // 修改其宽度与导航宽度一致
+    width: $width;
+  }
+
+  .drawer-main {
+    padding-left: map-get($drawer-breakpoints-width, xl);
+  }
+}
+
+// 如果设备宽度超过 1440px 时，还可以通过切换隐藏导航菜单，则需要加上该样式
+@include media-breakpoint-up(lg) {
+  $width: map-get($drawer-breakpoints-width, lg);
+
+  .drawer-permanent {
+    width: $width;
+    &.drawer-open {
+      &::before {
+        opacity: 0;
+        opacity: var(--drawer-opacity, 0);
+      }
+    }
+
+    // 隐藏显示
+    &.drawer-close {
+      left: -$width;
+      visibility: hidden;
+      transform: translateX(-$width);
+
+      & + .drawer-main {
+        padding-left: 0;
+      }
+    }
+
+    // 动画效果
+    &.drawer-animating {
+      transition: $drawer-transition-open;
+      &.drawer-close {
+        transition: $drawer-transition-close;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  $width: map-get($drawer-breakpoints-width, xl);
+
+  .drawer-permanent {
+    width: $width;
+
+    &.drawer-close {
+      left: -$width;
+      transform: translateX(-$width);
+    }
+  }
+}
