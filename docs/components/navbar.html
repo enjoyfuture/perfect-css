@@ -1,0 +1,75 @@
+---
+layout: component
+title: Nav Bar 组件
+---
+
+<nav class="navbar navbar-expand-sm">
+  <a class="navbar-brand" href="#">Perfect</a>
+  <button class="navbar-toggler" type="button" data-component="navbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="nav-link active" href="#">首页</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#">活动页</a>
+      </li>
+      <li>
+        <a class="nav-link disabled" href="#">禁止 Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<hr>
+<nav class="navbar navbar-expand-sm navbar-primary">
+  <a class="navbar-brand" href="#">Perfect</a>
+  <button class="navbar-toggler" type="button" data-component="navbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="nav-link active" href="#">首页</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#">活动页</a>
+      </li>
+      <li>
+        <a class="nav-link disabled" href="#">禁止 Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<hr>
+<nav class="navbar navbar-expand-sm navbar-accent">
+  <a class="navbar-brand" href="#">Perfect</a>
+  <button class="navbar-toggler" type="button" data-component="navbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="nav-link active" href="#">首页</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#">活动页</a>
+      </li>
+      <li>
+        <a class="nav-link disabled" href="#">禁止 Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  $(function () {
+    $('[data-component="navbar"]').click(function (e) {
+      $(e.currentTarget).parent().find('.navbar-collapse').toggleClass('show');
+    });
+  });
+</script>

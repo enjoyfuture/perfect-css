@@ -1,0 +1,53 @@
+@import "../../../../scss/responsive/function";
+
+// 使用 test-module 描述测试某一模块，test 描述测试具体的功能点
+
+@include test-module('Perfect responsive function') {
+  // breakpoint-next(sm)  结果为 md
+  // breakpoint-next(md)  结果为 lg
+  // breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px)) 结果为 md
+  // breakpoint-next(sm, $breakpoint-names: (xs sm md)) 结果为 md
+  // breakpoint-next(md, $breakpoint-names: (xs sm md)) 结果为 null
+
+  @include test('测试 @function breakpoint-next 返回的结果是否正确') {
+    $result: [breakpoint-next(xs), breakpoint-next(sm), breakpoint-next(md), breakpoint-next(lg), breakpoint-next(xl)];
+    $expect: [sm, md, lg, xl, null];
+    @include assert-equal(
+        $result,
+        $expect,
+        '',
+        true);
+  }
+
+  @include test('测试 @function breakpoint-min 返回的结果是否正确') {
+    $result: [breakpoint-min(xs), breakpoint-min(sm), breakpoint-min(md), breakpoint-min(lg), breakpoint-min(xl)];
+    $expect: [null, 600px, 1024px, 1440px, 1600px];
+    @include assert-equal(
+        $result,
+        $expect,
+        '',
+        true);
+  }
+
+  @include test('测试 @function breakpoint-max 返回的结果是否正确') {
+    $result: [breakpoint-max(xs), breakpoint-max(sm), breakpoint-max(md), breakpoint-max(lg), breakpoint-max(xl)];
+    $expect: [599px, 1023px, 1439px, 1599px, null];
+    @include assert-equal(
+        $result,
+        $expect,
+        '',
+        true);
+  }
+
+  @include test('测试 @function breakpoint-infix 返回的结果是否正确') {
+    $result: [breakpoint-infix(xs), breakpoint-infix(sm), breakpoint-infix(md), breakpoint-infix(lg), breakpoint-infix(xl)];
+    $expect: ["", "-sm", "-md", "-lg", "-xl"];
+    @include assert-equal(
+        $result,
+        $expect,
+        '',
+        true);
+  }
+
+}
+

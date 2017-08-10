@@ -3,7 +3,9 @@
 
 @import "true";
 
-@import 'etc/functions';
+@import 'base/functions';
+@import 'responsive/function';
+@import 'responsive/mixin';
 @import 'theme/function';
 @import 'theme/mixin';
 

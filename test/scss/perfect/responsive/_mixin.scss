@@ -1,0 +1,193 @@
+@import "../../../../scss/responsive/mixin";
+
+// 使用 test-module 描述测试某一模块，test 描述测试具体的功能点
+
+@include test-module('Perfect responsive mixin') {
+
+  @include test('测试 @mixin media-breakpoint-up 返回的结果是否正确') {
+    @include assert('xs-通过测试') {
+      @include output {
+        @include media-breakpoint-up(xs) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+
+      @include expect {
+        .test {
+          color: #ff0000;
+        }
+      }
+    }
+  }
+
+  @include test('测试 @mixin media-breakpoint-up 返回的结果是否正确') {
+    @include assert('sm-通过测试') {
+      @include output {
+        @include media-breakpoint-up(sm) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+
+      @include expect {
+        @media (min-width: 600px) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+    }
+  }
+
+  @include test('测试 @mixin media-breakpoint-down 返回的结果是否正确') {
+    @include assert('xs-通过测试') {
+      @include output {
+        @include media-breakpoint-down(xs) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+
+      @include expect {
+        @media (max-width: 599px) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+    }
+  }
+
+  @include test('测试 @mixin media-breakpoint-down 返回的结果是否正确') {
+    @include assert('xl-通过测试') {
+      @include output {
+        @include media-breakpoint-down(xl) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+
+      @include expect {
+        .test {
+          color: #ff0000;
+        }
+      }
+    }
+  }
+
+  @include test('测试 @mixin media-breakpoint-between 返回的结果是否正确') {
+    @include assert('xs, xl通过测试') {
+      @include output {
+        @include media-breakpoint-between(xs, xl) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+
+      @include expect {
+        @media (min-width: 599px) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+    }
+  }
+
+  @include test('测试 @mixin media-breakpoint-between 返回的结果是否正确') {
+    @include assert('sm, md通过测试') {
+      @include output {
+        @include media-breakpoint-between(sm, md) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+
+      @include expect {
+        @media (min-width: 1023px) and (max-width: 1439px) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+    }
+  }
+
+  @include test('测试 @mixin media-breakpoint-only 返回的结果是否正确') {
+    @include assert('xs-通过测试') {
+      @include output {
+        @include media-breakpoint-only(xs) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+
+      @include expect {
+      }
+    }
+  }
+
+  @include test('测试 @mixin media-breakpoint-only 返回的结果是否正确') {
+    @include assert('xl-通过测试') {
+      @include output {
+        @include media-breakpoint-only(xl) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+
+      @include expect {
+      }
+    }
+  }
+
+  @include test('测试 @mixin media-breakpoint-only 返回的结果是否正确') {
+    @include assert('sm-通过测试') {
+      @include output {
+        @include media-breakpoint-only(sm) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+
+      @include expect {
+        @media (min-width: 600px) and (max-width: 1023px) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+    }
+  }
+
+  @include test('测试 @mixin media-breakpoint-only 返回的结果是否正确') {
+    @include assert('lg-通过测试') {
+      @include output {
+        @include media-breakpoint-only(lg) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+
+      @include expect {
+        @media (min-width: 1440px) and (max-width: 1599px) {
+          .test {
+            color: #ff0000;
+          }
+        }
+      }
+    }
+  }
+
+}
