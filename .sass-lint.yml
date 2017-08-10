@@ -109,7 +109,7 @@ rules:
   no-color-literals: 0
   no-combinators: 0
   no-css-comments: 0 # 单行还是多行注释，默认是单行，个人觉得多行也可以
-  no-debug: 1 # 不用使用 @debug 语句
+  no-debug: 0 # 不用使用 @debug 语句
   no-disallowed-properties: 0 # 不允许使用的属性，需要在 properties 中设置
   no-duplicate-properties: 0 # 不用使用重复的属性
   no-empty-rulesets: 1 # 样式体不能为空

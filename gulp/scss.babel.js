@@ -41,7 +41,7 @@ const postcssPlugins = [
  *
  */
 gulp.task('scss', ['scss-lint'], () => {
-  return gulp.src(['scss/*.scss', 'scss/**/*.scss'])
+  return gulp.src(['scss/**/*.scss'])
     .pipe($.sourcemaps.init())
     .pipe($.sass(scssOption).on('error', $.sass.logError))
     .pipe($.postcss(postcssPlugins))
@@ -51,7 +51,7 @@ gulp.task('scss', ['scss-lint'], () => {
 
 // 编译 docs scss
 gulp.task('scss-docs', ['scss-lint'], () => {
-  return gulp.src(['scss/*.scss', 'docs/assets/scss/component.scss'])
+  return gulp.src(['scss/perfect.scss', 'docs/assets/scss/component.scss'])
     .pipe($.sourcemaps.init())
     .pipe($.sass(scssOption).on('error', $.sass.logError))
     .pipe($.postcss(postcssPlugins))

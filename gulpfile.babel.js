@@ -10,7 +10,7 @@ requireDir('./gulp');
 // build
 gulp.task('build', ['clean'], () => {
   gulp.start('scss');
-  gulp.start('build-js');
+  //gulp.start('build-js');
 });
 
 // 默认任务
