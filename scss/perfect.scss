@@ -30,10 +30,12 @@
 @import "layout/grid/grid";
 
 // 表单组件
+@import "components/form-field/form-field";
 @import "components/button/button";
 @import "components/checkbox/checkbox";
 @import "components/input/input";
 @import "components/radio/radio";
+@import "components/select/select";
 
 // 组件
 @import "components/list/list";

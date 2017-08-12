@@ -7,12 +7,12 @@
 @import "../../normalize/variable";
 @import "../../base/variables/variable";
 @import "../../base/mixins/mixin";
+@import "../../shadow/mixin";
 @import "./variable";
 @import "./function";
 
 .input {
   display: inline-block;
-  margin-bottom: $input-margin-bottom;
   will-change: opacity, transform, color;
 }
 
@@ -47,7 +47,7 @@
   // 定义 `:focus` 样式
   &:focus {
     outline: none;
-    @include theme-prop(color, primary);
+    @include theme-prop(border-color, primary-light);
   }
 
 
@@ -58,7 +58,7 @@
   // Disabled
   &:disabled,
   &[readonly] {
-    @include theme-prop(color, text-disabled-on-primary);
+    @include theme-prop(color, text-disabled-on-light);
     pointer-events: none;
   }
 
@@ -79,6 +79,7 @@
 // full width input
 .input-full {
   display: block;
+  flex: 1;
 
   .input-field {
     display: block;

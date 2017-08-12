@@ -1,0 +1,58 @@
+// form 表单相关
+
+$label-spacing: 5px;
+$form-field-margin-bottom: .5rem;
+
+.form-field {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: $form-field-margin-bottom;
+  vertical-align: middle;
+
+  > label {
+    padding-right: $label-spacing;
+    order: 0;
+  }
+}
+
+// label 在左侧显示
+.form-field-left {
+  > label {
+    padding-right: $label-spacing;
+    margin-left: auto;
+    order: -1;
+  }
+}
+
+// label 在右侧显示
+.form-field-right {
+  > label {
+    padding-right: $label-spacing;
+    margin-right: auto;
+    order: 1;
+  }
+}
+
+// 100% 显示
+.form-field-full {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  vertical-align: middle;
+
+  > label {
+    padding-right: $label-spacing;
+  }
+}
+
+// form 表单组
+
+.form-field-group {
+  > .form-field {
+    margin-left: 1rem;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}

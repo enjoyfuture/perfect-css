@@ -182,7 +182,12 @@ $drawer-width: 240px;
     }
 
     &-main {
-      padding-left: map-get($drawer-breakpoints-width, lg);
+      padding-left: $width;
+    }
+
+    // 设置 navbar 样式
+    &-navbar-spacer {
+      padding-left: $width;
     }
   }
 }
@@ -193,11 +198,17 @@ $drawer-width: 240px;
   .drawer {
     // 修改其宽度与导航宽度一致
     width: $width;
+
+    &-main {
+      padding-left: $width;
+    }
+
+    // 设置 navbar 样式
+    &-navbar-spacer {
+      padding-left: $width;
+    }
   }
 
-  .drawer-main {
-    padding-left: map-get($drawer-breakpoints-width, xl);
-  }
 }
 
 // 如果设备宽度超过 1440px 时，还可以通过切换隐藏导航菜单，则需要加上该样式

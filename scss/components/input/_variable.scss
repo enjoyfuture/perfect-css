@@ -1,13 +1,13 @@
 // input 变量
 
 $input-margin-bottom: .5rem !default;
-$input-padding-x: .75rem !default;
-$input-padding-y: .5rem !default;
+$input-padding-x: .5rem !default;
+$input-padding-y: .4rem !default;
 $input-border-color: rgba($black, .15) !default;
 $input-font-size: $font-size-base !default;
 $input-line-height: 1.25 !default;
 
-$input-border-radius: $border-radius !default;
+$input-border-radius: 2px !default;
 $input-box-shadow: inset 0 1px 1px rgba($black, .075) !default;
 $input-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !default;
 

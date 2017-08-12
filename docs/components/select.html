@@ -11,12 +11,12 @@ title: Select 组件
 <div class="component-wrap">
   <section class="component-container">
     <h3> 原生的 Select 标签</h3>
-    <div class="select" style="width: 200px">
+    <div class="select" style="width: 200px;">
       <select class="select-inner">
         <option value="" selected>选择食物</option>
         <option value="grains">面包</option>
         <option value="vegetables" disabled>蔬菜(disabled)</option>
-        <option value="fruit">水果</option>
+        <option value="fruit">水果水果水果水果水果水果水果</option>
         <option value="milk">牛奶</option>
         <option value="meat">肉</option>
       </select>
@@ -37,25 +37,25 @@ title: Select 组件
   <section class="component-container">
     <h3> 用 div 模拟 Select </h3>
     <div id="selectEl" class="select" tabindex="0" style="width: 200px;">
-      <div class="select-inner">
-        <span class="select-text">选择食物</span>
-        <ul class="option-list">
-          <li class="option-list-item" tabindex="0" aria-selected="true">
+      <div class="select-inner" tabindex="0">
+        <span class="select-selected-text">选择食物</span>
+        <ul class="select-options">
+          <li class="select-options-item" tabindex="0" aria-selected="true">
             选择食物
           </li>
-          <li class="option-list-item" tabindex="0">
+          <li class="select-options-item" tabindex="0">
             面包
           </li>
-          <li class="option-list-item disabled" tabindex="0">
+          <li class="select-options-item" aria-disabled="true" tabindex="0">
             蔬菜(disabled)
           </li>
-          <li class="option-list-item" tabindex="0">
-            水果
+          <li class="select-options-item" tabindex="0">
+            水果水果水果水果水果水果水果水果水果水果水果水
           </li>
-          <li class="option-list-item" tabindex="0">
+          <li class="select-options-item" tabindex="0">
             牛奶
           </li>
-          <li class="option-list-item" tabindex="0">
+          <li class="select-options-item" tabindex="0">
             肉
           </li>
         </ul>
@@ -64,24 +64,24 @@ title: Select 组件
 
     <div class="select select-disabled" tabindex="0" style="width: 200px;">
       <div class="select-inner">
-        <span class="select-text">选择食物</span>
-        <ul class="option-list">
-          <li class="option-list-item" tabindex="0">
+        <span class="select-selected-text">选择食物</span>
+        <ul class="select-options">
+          <li class="select-options-item" tabindex="0">
             选择食物
           </li>
-          <li class="option-list-item" tabindex="0">
+          <li class="select-options-item" tabindex="0">
             面包
           </li>
-          <li class="option-list-item disabled" tabindex="0">
+          <li class="select-options-item disabled" tabindex="0">
             蔬菜(disabled)
           </li>
-          <li class="option-list-item" tabindex="0">
-            水果
+          <li class="select-options-item" tabindex="0">
+            水果水果水果水果水果水果水果
           </li>
-          <li class="option-list-item" tabindex="0">
+          <li class="select-options-item" tabindex="0">
             牛奶
           </li>
-          <li class="option-list-item" tabindex="0">
+          <li class="select-options-item" tabindex="0">
             肉
           </li>
         </ul>
@@ -93,17 +93,14 @@ title: Select 组件
   <section>
     <h2>Select Multiple 多选</h2>
     <select multiple="" size="8" class="select-multi">
-
       <optgroup class="option-group" label="蔬菜">
-        <option class="option-item">土豆</option>
+        <option class="option-item" checked>土豆</option>
         <option class="option-item">茄子</option>
-        <option class="option-item">西红柿</option>
+        <option class="option-item" disabled>西红柿</option>
       </optgroup>
-      <option class="option-divider" disabled>
-
-      </option>
+      <option class="option-divider" disabled></option>
       <optgroup class="option-group" label="水果">
-        <option class="option-item">苹果</option>
+        <option class="option-item" disabled>苹果</option>
         <option class="option-item">百香果</option>
         <option class="option-item">香蕉</option>
       </optgroup>
@@ -127,11 +124,24 @@ title: Select 组件
       $('.select').removeClass('select-open');
     });
 
-    $('#selectEl').click(function (e) {
+    $('#selectEl .select-inner').click(function (e) {
+      e.stopPropagation();
+
+      $('#selectEl').addClass('select-open');
+
+      $('#selectEl .select-options-item[aria-selected="true"]').focus();
+    });
+
+    $('#selectEl .select-options-item').click(function (e) {
       e.stopPropagation();
 
       var $el = $(e.currentTarget);
-      $el.addClass('select-open');
+      if($el.attr('aria-disabled') !== 'true') {
+        $('#selectEl .select-selected-text').text($el.text());
+        $('#selectEl').removeClass('select-open');
+        $('#selectEl .select-inner').focus();
+        $el.attr('aria-selected', true).siblings().removeAttr('aria-selected');
+      }
     });
   });
 </script>

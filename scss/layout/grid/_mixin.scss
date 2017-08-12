@@ -3,10 +3,15 @@
 // 设置 row 样式
 // 我们采用 flex 布局来实现
 @mixin make-row($gutter: $grid-gutter-width) {
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   margin-left: ($gutter / -2);
   margin-right: ($gutter / -2);
+
+  * {
+    box-sizing: border-box;
+  }
 }
 
 // 设置列样式
@@ -19,27 +24,7 @@
   margin-left: percentage($size / $columns);
 }
 
-@mixin make-col-push($size, $columns: $grid-columns) {
-  left: if($size > 0, percentage($size / $columns), auto);
-}
-
-@mixin make-col-pull($size, $columns: $grid-columns) {
-  right: if($size > 0, percentage($size / $columns), auto);
-}
-
-@mixin make-col-modifier($type, $size, $columns) {
-  @if $type == push {
-    @include make-col-push($size, $columns);
-  } @else if $type == pull {
-    @include make-col-pull($size, $columns);
-  } @else if $type == offset {
-    @include make-col-offset($size, $columns);
-  }
-}
-
-
 // 定义生成 gird framework mixin
-
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $responsive-breakpoints) {
   // 定义列公共样式，通过占位符选择器
   %grid-column {
@@ -50,6 +35,7 @@
     padding-right: ($gutter / 2);
   }
 
+  // fixme 响应式和非响应式布局待合并
   @if $enable-responsive {
     @each $breakpoint in map-keys($breakpoints) {
       // 返回前缀，比如：-md
@@ -84,11 +70,10 @@
           }
         }
 
-        @each $modifier in (pull, push) {
-          @for $i from 0 through $columns {
-            .#{$modifier}#{$infix}-#{$i} {
-              @include make-col-modifier($modifier, $i, $columns)
-            }
+        // 重新排列 col 位置
+        @for $i from 1 through $columns {
+          .order#{$infix}-#{$i} {
+            order: $i;
           }
         }
 
@@ -96,7 +81,7 @@
         @for $i from 0 through ($columns - 1) {
           @if not ($infix == "" and $i == 0) { // 对于有响应式前缀，并且是第0个，则或略，例如 .offset-xs-0
             .offset#{$infix}-#{$i} {
-              @include make-col-modifier(offset, $i, $columns)
+              @include make-col-offset($i, $columns)
             }
           }
         }
@@ -122,18 +107,17 @@
       width: auto;
     }
 
-    @each $modifier in (pull, push) {
-      @for $i from 0 through $columns {
-        .#{$modifier}-#{$i} {
-          @include make-col-modifier($modifier, $i, $columns)
-        }
+    // 重新排列 col 位置
+    @for $i from 1 through $columns {
+      .order-#{$i} {
+        order: $i;
       }
     }
 
     @for $i from 0 through ($columns - 1) {
       @if not ($i == 0) {
         .offset-#{$i} {
-          @include make-col-modifier(offset, $i, $columns)
+          @include make-col-offset($i, $columns)
         }
       }
     }
