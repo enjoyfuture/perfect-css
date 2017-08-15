@@ -18,6 +18,7 @@
   ],
   "scripts": {
     "clean": "rimraf build/**",
+    "github-pages": "gulp build-doc && git add _gh_pages && git commit -m \"Update docs\" && git subtree push --prefix=_gh_pages origin gh-pages --squash && git push",
     "publish:config": "node publish-config.js",
     "prepublishOnly": "gulp publish && npm run publish:config && cd build"
   },
