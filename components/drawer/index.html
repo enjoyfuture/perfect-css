@@ -11,7 +11,7 @@
 
 <title>
   
-  首页 &middot; Perfect
+  Drawer 组件 &middot; Perfect
   
 </title>
 
@@ -24,10 +24,15 @@
 <!-- docs CSS -->
 <link href="/assets/css/docs.css" rel="stylesheet">
 
+<!-- Component CSS -->
+<link href="/assets/css/component.css" rel="stylesheet">
+
 
   </head>
   <body>
     <header class="navbar navbar-fixed navbar-expand navbar-primary">
+  
+  <span class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer"></span>
   
 
   <a class="navbar-brand" href="/">
@@ -36,13 +41,13 @@
   <div class="navbar-collapse">
     <ul class="navbar-nav">
       <li>
-        <a class="ripple ripple-primary nav-link active" href="/">首页</a>
+        <a class="ripple ripple-primary nav-link " href="/">首页</a>
       </li>
       <li>
         <a class="ripple ripple-primary nav-link " href="/docs/getting-started/introduction/">文档</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/components/ripple/">组件</a>
+        <a class="ripple ripple-primary nav-link active" href="/components/ripple/">组件</a>
       </li>
       <li>
         <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
@@ -57,43 +62,102 @@
   </div>
 </header>
 
-    <div class="navbar-fixed-adjust">
-      <div class="doc-journey">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="theme-primary">Perfect CSS</h1>
-        <p class="font">
-          Perfect 是一款基于现代浏览器构建的 CSS 框架，运用最新 CSS 技术实现，给你带来完美的用户体验。
-          他也是一款未来的 CSS 框架。
-        </p>
-        <p class="font">
-          Perfect 基于响应式布局、可定制主题实现，能够快速的搭建、开发应用。通过使用 CSS 变量能定制
-          各种主题，尽可能满足各种场景。
-          同时，Perfect 提供了大部分常用组件，并可以自定义组件样式。丰富的组件和定制化功能让你尽可能少些 CSS 样式，
-          只需拿来使用即可。
-        </p>
+    <!--把 jquery 单独引入到页面最上面-->
+<script src="/assets/js/vendor/jquery.min.js"></script>
 
-        <div class="d-flex flex-column flex-md-row justify-content-center m-t-4">
-          <a class="btn btn-raised btn-primary" href="#">开启之旅</a>
-          <a class="btn btn-raised" href="#">下载</a>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <!--这里放置一张 Perfect 相关的图片 TODO-->
-      </div>
-    </div>
+
+    
+    <style>
+  .grey-bg {
+    background: rgba(0, 0, 0, 0.26);
+  }
+
+</style>
+<header class="navbar navbar-fixed navbar-expand navbar-primary">
+  <span class="drawer-toggle" id="toggleDrawer"></span>
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li class="nav-link active">
+        Drawer 组件
+      </li>
+    </ul>
   </div>
-</div>
+</header>
 
-    </div>
+<aside id="drawer" class="drawer navbar-fixed-adjust">
+  <nav class="drawer-nav">
+    <header class="drawer-header">
 
-    <div class="footer-assist"></div>
-<footer class="footer">
-  <div class="text-center">
-    Copyright © 2016-2017 Powered by Perfect 团队
+    </header>
+    <nav class="drawer-content">
+      <ul class="list">
+        <li>
+          <a href="#" class="list-item">
+            <span class="list-item-start-detail grey-bg"></span>Input 组件
+          </a>
+        </li>
+        <li>
+          <a href="#" class="list-item">
+            <span class="list-item-start-detail grey-bg"></span>Select 组件
+          </a>
+        </li>
+        <li>
+          <a href="#" class="list-item">
+            <span class="list-item-start-detail grey-bg"></span>Radio 组件
+          </a>
+        </li>
+        <li>
+          <a href="#" class="list-item">
+            <span class="list-item-start-detail grey-bg"></span>Checkbox 组件
+          </a>
+        </li>
+        <li>
+          <a href="#" class="list-item">
+            <span class="list-item-start-detail grey-bg"></span>Button 组件
+          </a>
+        </li>
+        <li>
+          <a href="#" class="list-item">
+            <span class="list-item-start-detail grey-bg"></span>Form 表单组件
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </nav>
+</aside>
+
+<main class="drawer-main navbar-fixed-adjust">
+  <div class="p-4">
+    <p>Drawer 组件</p>
+    <p>如果左侧菜单固定，可以直接使用 grid 布局来实现</p>
   </div>
-</footer>
+</main>
 
+<script>
+  $(function () {
+    var $drawer = $('#drawer');
+    $drawer[0].addEventListener('transitionend', () => {
+      $drawer.removeClass('drawer-animating');
+    });
+
+    $('#toggleDrawer').click(function (e) {
+      $drawer.toggleClass('drawer-open');
+      $('body').toggleClass('drawer-scroll-lock');
+      $drawer.addClass('drawer-animating');
+    });
+
+    $('#drawer').click(function () {
+      $drawer.removeClass('drawer-open');
+      $('body').removeClass('drawer-scroll-lock');
+      $drawer.addClass('drawer-animating');
+    });
+
+    $('.drawer-content').click(function (e) {
+      e.stopPropagation();
+    });
+  });
+</script>
+
+    
   </body>
 </html>

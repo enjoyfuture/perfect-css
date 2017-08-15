@@ -1,31 +1,228 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="keywords" content="CSS3 Perfect">
-  <meta name="description"
-        content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
-  <meta name="author" content="Linder Wang">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="CSS3 Perfect">
+<meta name="description"
+      content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+<meta name="author" content="Linder Wang">
 
-  <title>
-    Dialog 对话框 &middot; Perfect
-  </title>
+<title>
+  
+  Dialog 对话框 &middot; Perfect
+  
+</title>
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="icon" href="/favicon.ico">
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" href="/favicon.ico">
 
-  <!-- Perfect CSS -->
-  <link href="/assets/css/perfect.css" rel="stylesheet">
+<!-- Perfect CSS -->
+<link href="/assets/css/perfect.css" rel="stylesheet">
+<!-- docs CSS -->
+<link href="/assets/css/docs.css" rel="stylesheet">
 
-  <!-- Component CSS -->
-  <link href="/assets/css/component.css" rel="stylesheet">
-</head>
-<body>
+<!-- Component CSS -->
+<link href="/assets/css/component.css" rel="stylesheet">
+
+
+  </head>
+  <body>
+    <header class="navbar navbar-fixed navbar-expand navbar-primary">
+  
+  <span class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer"></span>
+  
+
+  <a class="navbar-brand" href="/">
+    <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
+  </a>
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/">首页</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/docs/getting-started/introduction/">文档</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link active" href="/components/ripple/">组件</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+    <!--把 jquery 单独引入到页面最上面-->
 <script src="/assets/js/vendor/jquery.min.js"></script>
-<button class="btn btn-primary">打开对话框</button>
+
+
+    
+
+    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+      <nav class="drawer-nav">
+        <nav class="drawer-content">
+          <!--待归类，最后整理 TODO-->
+          <ul class="menu">
+            
+
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/ripple/"
+                 class="menu-title ">Ripple 效果</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/shadow/"
+                 class="menu-title ">Shadow 效果</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/grid/"
+                 class="menu-title ">Grid 布局</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/input/"
+                 class="menu-title ">Input 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/select/"
+                 class="menu-title ">Select 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/radio/"
+                 class="menu-title ">Radio 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/checkbox/"
+                 class="menu-title ">Checkbox 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/button/"
+                 class="menu-title ">Button 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/form/"
+                 class="menu-title ">Form 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/table/"
+                 class="menu-title ">Table 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/menu/"
+                 class="menu-title ">Menu 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/toast/"
+                 class="menu-title ">Toast 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/tooltip/"
+                 class="menu-title ">Tooltip 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/image/"
+                 class="menu-title ">Image 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/tab/"
+                 class="menu-title ">Tab 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/dialog/"
+                 class="menu-title active">Dialog 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/list/"
+                 class="menu-title ">List 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/navbar/"
+                 class="menu-title ">Navbar 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/drawer/"
+                 class="menu-title ">Drawer 组件</a>
+            </li>
+            
+            
+            
+            <li class="menu-item">
+              <a href="/components/drawer-permanent/"
+                 class="menu-title ">Drawer 组件2</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </nav>
+    </aside>
+
+    <main class="drawer-main navbar-fixed-adjust">
+      <button class="btn btn-primary">打开对话框</button>
 
 <div class="dialog">
   <div class="dialog-panel" style="width:800px;">
@@ -62,5 +259,45 @@
   });
 </script>
 
-</body>
+    </main>
+
+    <script>
+  $(function () {
+    var $drawer = $('#drawer');
+    $drawer[0].addEventListener('transitionend', () => {
+      $drawer.removeClass('drawer-animating');
+    });
+
+    $('#toggleDrawer').click(function (e) {
+      const clientWidth = document.documentElement.clientWidth;
+      if(clientWidth < 1440){
+        $drawer.toggleClass('drawer-open');
+        $('body').toggleClass('drawer-scroll-lock');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-close');
+      } else {
+        // 当超过1440px 时，利用该样式，隐藏显示处理
+        $drawer.toggleClass('drawer-close');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-open');
+      }
+    });
+
+    $('#drawer').click(function () {
+      $drawer.removeClass('drawer-open');
+      $('body').removeClass('drawer-scroll-lock');
+      $drawer.addClass('drawer-animating');
+    });
+
+    $('.drawer-content').click(function (e) {
+      e.stopPropagation();
+    });
+  });
+</script>
+
+
+    
+  </body>
 </html>

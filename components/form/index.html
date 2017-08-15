@@ -11,7 +11,7 @@
 
 <title>
   
-  Toast 组件 &middot; Perfect
+  Form 表单组件 &middot; Perfect
   
 </title>
 
@@ -136,7 +136,7 @@
             
             <li class="menu-item">
               <a href="/components/form/"
-                 class="menu-title ">Form 组件</a>
+                 class="menu-title active">Form 组件</a>
             </li>
             
             
@@ -157,7 +157,7 @@
             
             <li class="menu-item">
               <a href="/components/toast/"
-                 class="menu-title active">Toast 组件</a>
+                 class="menu-title ">Toast 组件</a>
             </li>
             
             
@@ -223,31 +223,143 @@
 
     <main class="drawer-main navbar-fixed-adjust">
       <div class="component-wrap">
-  <section class="component-container">
-    <h3> Toast </h3>
-    <button class="btn btn-raised" id="toastBtn">显示 Toast</button>
-    <div class="toast" id="toastEl">
-      <div class="toast-content">轻轻的，我来了</div>
+  <section>
+    <h4>label 在左侧</h4>
+    <div class="form-field-group">
+      <div class="form-field">
+        <label for="input1">账户:</label>
+        <div class="input" id="input1">
+          <input type="text" class="input-field" placeholder="请输入账户">
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="input2">密码:</label>
+        <div class="input" id="input2">
+          <input type="password" class="input-field" placeholder="请输入密码">
+        </div>
+      </div>
     </div>
+
+    <h4>label 位置放在 input 后面，但显示的还在左侧，需要借助于样式 .form-field-left</h4>
+    <div class="form-field-group">
+      <div class="form-field form-field-left">
+        <div class="input" id="input3">
+          <input type="text" class="input-field" placeholder="请输入账户">
+        </div>
+        <label for="input3">账户:</label>
+      </div>
+      <div class="form-field form-field-left">
+        <div class="input" id="input4">
+          <input type="password" class="input-field" placeholder="请输入密码">
+        </div>
+        <label for="input4">密码:</label>
+      </div>
+    </div>
+
+    <h4>label 在右侧，一般用在 radio 和 checkbox 上</h4>
+    <div class="form-field-group">
+      <div class="form-field">
+        <div class="radio">
+          <input class="radio-native-control" type="radio" name="radio1">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <label>男</label>
+
+        <div class="radio">
+          <input class="radio-native-control" type="radio" name="radio1">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <label>女</label>
+      </div>
+      <div class="form-field">
+        <div class="checkbox">
+          <input class="checkbox-native-control" type="checkbox" name="checkbox1">
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        <label>CSS</label>
+        <div class="checkbox">
+          <input class="checkbox-native-control" type="checkbox" name="checkbox1">
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        <label>JavaScript</label>
+      </div>
+    </div>
+
+    <h4>label 位置放在 input 前面，但显示的还在右侧，需要借助于样式 .form-field-right</h4>
+    <div>
+      <div class="form-field form-field-right">
+        <label>男</label>
+        <div class="radio radio-info">
+          <input class="radio-native-control" type="radio" name="radio1">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field form-field-right">
+        <label>女</label>
+        <div class="radio radio-info">
+          <input class="radio-native-control" type="radio" name="radio1">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field form-field-right m-l-4">
+        <label>CSS</label>
+        <div class="checkbox checkbox-warning ripple">
+          <input class="checkbox-native-control" type="checkbox" name="checkbox1">
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-field form-field-right">
+        <label>JavaScript</label>
+        <div class="checkbox checkbox-warning">
+          <input class="checkbox-native-control" type="checkbox" name="checkbox1">
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h4>100% 显示</h4>
+    <div class="form-field-full">
+      <label for="input5">账户:</label>
+      <div class="input input-full" id="input5">
+        <input type="text" class="input-field" placeholder="请输入账户">
+      </div>
+    </div>
+
+    <div class="form-field-full">
+      <label for="input6">密码:</label>
+      <div class="input input-full" id="input6">
+        <input type="password" class="input-field" placeholder="请输入密码">
+      </div>
+    </div>
+
   </section>
 </div>
-
-<script>
-  var timeoutId;
-  var toastEl = document.getElementById('toastEl');
-  document.getElementById('toastBtn').addEventListener('click', function () {
-    toastEl.classList.add('enter');
-    toastEl.classList.remove('leave');
-    clearTimeout(timeoutId);
-
-    toastEl.firstElementChild.innerHTML = '轻轻的，我来了';
-    timeoutId = setTimeout(function () {
-      toastEl.firstElementChild.innerHTML = '轻轻的，我走了';
-      toastEl.classList.remove('enter');
-      toastEl.classList.add('leave');
-    }, 3000);
-  }, false);
-</script>
 
 
 

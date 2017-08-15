@@ -11,7 +11,7 @@
 
 <title>
   
-  Toast 组件 &middot; Perfect
+  Nav Bar 组件 &middot; Perfect
   
 </title>
 
@@ -157,7 +157,7 @@
             
             <li class="menu-item">
               <a href="/components/toast/"
-                 class="menu-title active">Toast 组件</a>
+                 class="menu-title ">Toast 组件</a>
             </li>
             
             
@@ -199,7 +199,7 @@
             
             <li class="menu-item">
               <a href="/components/navbar/"
-                 class="menu-title ">Navbar 组件</a>
+                 class="menu-title active">Navbar 组件</a>
             </li>
             
             
@@ -222,34 +222,98 @@
     </aside>
 
     <main class="drawer-main navbar-fixed-adjust">
-      <div class="component-wrap">
-  <section class="component-container">
-    <h3> Toast </h3>
-    <button class="btn btn-raised" id="toastBtn">显示 Toast</button>
-    <div class="toast" id="toastEl">
-      <div class="toast-content">轻轻的，我来了</div>
-    </div>
-  </section>
-</div>
+      <nav class="navbar navbar-expand-sm">
+  <a class="navbar-brand" href="#">Perfect</a>
+  <button class="navbar-toggler" type="button" data-component="navbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="nav-link active" href="#">首页</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#">活动页</a>
+      </li>
+      <li>
+        <a class="nav-link disabled" href="#">禁止 Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<hr>
+<nav class="navbar navbar-expand-sm navbar-primary">
+  <a class="navbar-brand" href="#">Perfect</a>
+  <button class="navbar-toggler" type="button" data-component="navbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="nav-link active" href="#">首页</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#">活动页</a>
+      </li>
+      <li>
+        <a class="nav-link disabled" href="#">禁止 Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<hr>
+<nav class="navbar navbar-expand-sm navbar-accent">
+  <a class="navbar-brand" href="#">Perfect</a>
+  <button class="navbar-toggler" type="button" data-component="navbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="nav-link active" href="#">首页</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#">活动页</a>
+      </li>
+      <li>
+        <a class="nav-link disabled" href="#">禁止 Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<hr>
+
+<nav class="navbar navbar-expand-sm navbar-primary">
+  <a class="navbar-brand" href="#">navbar 动画效果</a>
+  <button class="navbar-toggler" type="button" data-component="navbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="ripple ripple-primary nav-link active" href="#">首页</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link" href="#">活动页</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link disabled" href="#">禁止 Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <script>
-  var timeoutId;
-  var toastEl = document.getElementById('toastEl');
-  document.getElementById('toastBtn').addEventListener('click', function () {
-    toastEl.classList.add('enter');
-    toastEl.classList.remove('leave');
-    clearTimeout(timeoutId);
-
-    toastEl.firstElementChild.innerHTML = '轻轻的，我来了';
-    timeoutId = setTimeout(function () {
-      toastEl.firstElementChild.innerHTML = '轻轻的，我走了';
-      toastEl.classList.remove('enter');
-      toastEl.classList.add('leave');
-    }, 3000);
-  }, false);
+  $(function () {
+    $('[data-component="navbar"]').click(function (e) {
+      $(e.currentTarget).parent().find('.navbar-collapse').toggleClass('show');
+    });
+  });
 </script>
-
-
 
     </main>
 
