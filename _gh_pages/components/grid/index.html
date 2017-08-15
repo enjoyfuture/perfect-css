@@ -11,7 +11,7 @@
 
 <title>
   
-  Toast 组件 &middot; Perfect
+  Grid 布局 &middot; Perfect
   
 </title>
 
@@ -94,7 +94,7 @@
             
             <li class="menu-item">
               <a href="/components/grid/"
-                 class="menu-title ">Grid 布局</a>
+                 class="menu-title active">Grid 布局</a>
             </li>
             
             
@@ -157,7 +157,7 @@
             
             <li class="menu-item">
               <a href="/components/toast/"
-                 class="menu-title active">Toast 组件</a>
+                 class="menu-title ">Toast 组件</a>
             </li>
             
             
@@ -222,32 +222,69 @@
     </aside>
 
     <main class="drawer-main navbar-fixed-adjust">
-      <div class="component-wrap">
-  <section class="component-container">
-    <h3> Toast </h3>
-    <button class="btn btn-raised" id="toastBtn">显示 Toast</button>
-    <div class="toast" id="toastEl">
-      <div class="toast-content">轻轻的，我来了</div>
-    </div>
-  </section>
+      <style>
+  .grid-demo {
+    padding: 0 1rem;
+  }
+
+  .grid-demo .col,
+  .grid-demo [class*="col-"] {
+    padding: .5rem;
+    border: 1px solid rgba(0, 0, 0, .12);
+    background: #e0f2f1;
+    text-align: center;
+  }
+</style>
+
+<div class="grid-demo">
+  <h4>等宽</h4>
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+
+  <h4>等宽、多行</h4>
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="w-100"></div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+
+  <h4>不固定宽度</h4>
+  <div class="row">
+    <div class="col-24">col-24</div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-1">col-1</div>
+    <div class="col-3">col-3</div>
+    <div class="col-5">col-5</div>
+    <div class="col-7">col-7</div>
+    <div class="col-4">col-4</div>
+    <div class="col-4">col-4</div>
+  </div>
+
+  <h4>offset</h4>
+  <div class="row">
+    <div class="offset-4 col-5">col-5</div>
+    <div class="col-7">col-7</div>
+    <div class="col-4">col-4</div>
+    <div class="col-4">col-4</div>
+  </div>
+
+  <h4>order</h4>
+  <div class="row">
+    <div class="order-4 col">order-4 位置由1变为4</div>
+    <div class="col">位置由2变为1</div>
+    <div class="order-2 col">order-2 位置由3变为2</div>
+    <div class="order-3 col">order-3 位置由4变为3</div>
+  </div>
+
 </div>
-
-<script>
-  var timeoutId;
-  var toastEl = document.getElementById('toastEl');
-  document.getElementById('toastBtn').addEventListener('click', function () {
-    toastEl.classList.add('enter');
-    toastEl.classList.remove('leave');
-    clearTimeout(timeoutId);
-
-    toastEl.firstElementChild.innerHTML = '轻轻的，我来了';
-    timeoutId = setTimeout(function () {
-      toastEl.firstElementChild.innerHTML = '轻轻的，我走了';
-      toastEl.classList.remove('enter');
-      toastEl.classList.add('leave');
-    }, 3000);
-  }, false);
-</script>
 
 
 

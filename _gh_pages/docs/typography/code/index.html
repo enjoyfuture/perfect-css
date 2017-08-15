@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
-<head>
-  <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="keywords" content="CSS3 Perfect">
@@ -21,28 +21,55 @@
 
 <!-- Perfect CSS -->
 <link href="/assets/css/perfect.css" rel="stylesheet">
+<!-- docs CSS -->
 <link href="/assets/css/docs.css" rel="stylesheet">
 
-</head>
-<body class="doc1-top-fixed">
 
-<header class="doc1-header-wrapper">
-  <button class="doc1-menu-btn">
-    <i class="icon doc1-menu-icn"></i>
-  </button>
-  <div class="doc1-header-title">
-    基础样式-代码
+  </head>
+  <body>
+
+    <header class="navbar navbar-fixed navbar-expand navbar-primary">
+  
+  <span class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer"></span>
+  
+
+  <a class="navbar-brand" href="/">
+    <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
+  </a>
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/">首页</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link active" href="/docs/getting-started/introduction/">文档</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/components/ripple/">组件</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+      </li>
+    </ul>
   </div>
 </header>
 
-<div class="doc1-main">
-  <div class="doc1-side">
-    <div class="doc1-side-wrapper">
-      <div class="doc1-logo-wrapper">
-        <i class="doc1-logo"></i>
-      </div>
-      <nav class="doc1-menu-nav">
-        
+    <!--把 jquery 单独引入到页面最上面-->
+<script src="/assets/js/vendor/jquery.min.js"></script>
+
+
+    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+      <nav class="drawer-nav">
+        <nav class="drawer-content">
+          
+
+
 
 
 <ul class="menu">
@@ -52,7 +79,7 @@
 
   
   
-  <li>
+  <li class="menu-item">
     <a href="/docs/getting-started/introduction/" 
        class="menu-title menu-header ">Perfect 之旅</a>
     <ul class="menu" style="display: none;">
@@ -60,79 +87,79 @@
       
 
       
-      <li><a href="/docs/getting-started/introduction/"
+      <li class="menu-item"><a href="/docs/getting-started/introduction/"
              class="menu-title ">介绍</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/download/"
+      <li class="menu-item"><a href="/docs/getting-started/download/"
              class="menu-title ">下载</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/best-practices/"
+      <li class="menu-item"><a href="/docs/getting-started/best-practices/"
              class="menu-title ">最佳实践</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/css-module/"
+      <li class="menu-item"><a href="/docs/getting-started/css-module/"
              class="menu-title ">CSS 模块化支持</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/javascript/"
+      <li class="menu-item"><a href="/docs/getting-started/javascript/"
              class="menu-title ">JavaScript 组件</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/theme/"
+      <li class="menu-item"><a href="/docs/getting-started/theme/"
              class="menu-title ">自定义主题</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/color-swatches/"
+      <li class="menu-item"><a href="/docs/getting-started/color-swatches/"
              class="menu-title ">七色卡</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/compatibility/"
+      <li class="menu-item"><a href="/docs/getting-started/compatibility/"
              class="menu-title ">兼容性</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/build/"
+      <li class="menu-item"><a href="/docs/getting-started/build/"
              class="menu-title ">开发构建</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/changelog/"
+      <li class="menu-item"><a href="/docs/getting-started/changelog/"
              class="menu-title ">历史版本</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/issue/"
+      <li class="menu-item"><a href="/docs/getting-started/issue/"
              class="menu-title ">问题和建议</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/develop-guide/"
+      <li class="menu-item"><a href="/docs/getting-started/develop-guide/"
              class="menu-title ">Perfect 开发指南</a></li>
       
       
 
       
-      <li><a href="/docs/getting-started/browser-bug/"
+      <li class="menu-item"><a href="/docs/getting-started/browser-bug/"
              class="menu-title ">浏览器 bug</a></li>
       
     </ul>
@@ -143,7 +170,7 @@
 
   
   
-  <li>
+  <li class="menu-item">
     <a href="/docs/setup/global-styles/" 
        class="menu-title menu-header ">Perfect 设置</a>
     <ul class="menu" style="display: none;">
@@ -151,37 +178,37 @@
       
 
       
-      <li><a href="/docs/setup/global-styles/"
+      <li class="menu-item"><a href="/docs/setup/global-styles/"
              class="menu-title ">全局样式</a></li>
       
       
 
       
-      <li><a href="/docs/setup/options/"
+      <li class="menu-item"><a href="/docs/setup/options/"
              class="menu-title ">配置项</a></li>
       
       
 
       
-      <li><a href="/docs/setup/sass/"
+      <li class="menu-item"><a href="/docs/setup/sass/"
              class="menu-title ">Sass</a></li>
       
       
 
       
-      <li><a href="/docs/setup/javascript/"
+      <li class="menu-item"><a href="/docs/setup/javascript/"
              class="menu-title ">JavaScript</a></li>
       
       
 
       
-      <li><a href="/docs/setup/flex/"
+      <li class="menu-item"><a href="/docs/setup/flex/"
              class="menu-title ">Flex</a></li>
       
       
 
       
-      <li><a href="/docs/setup/media-queries/"
+      <li class="menu-item"><a href="/docs/setup/media-queries/"
              class="menu-title ">媒体查询</a></li>
       
     </ul>
@@ -192,7 +219,7 @@
 
   
   
-  <li>
+  <li class="menu-item">
     <a href="/docs/layout/container/" 
        class="menu-title menu-header ">布局</a>
     <ul class="menu" style="display: none;">
@@ -200,19 +227,19 @@
       
 
       
-      <li><a href="/docs/layout/container/"
+      <li class="menu-item"><a href="/docs/layout/container/"
              class="menu-title ">容器</a></li>
       
       
 
       
-      <li><a href="/docs/layout/grid/"
+      <li class="menu-item"><a href="/docs/layout/grid/"
              class="menu-title ">Grid</a></li>
       
       
 
       
-      <li><a href="/docs/layout/responsive/"
+      <li class="menu-item"><a href="/docs/layout/responsive/"
              class="menu-title ">响应式布局</a></li>
       
     </ul>
@@ -223,7 +250,7 @@
 
   
   
-  <li>
+  <li class="menu-item">
     <a href="/docs/typography/typography/" 
        class="menu-title menu-header ">排版</a>
     <ul class="menu" style="display: none;">
@@ -231,25 +258,25 @@
       
 
       
-      <li><a href="/docs/typography/typography/"
+      <li class="menu-item"><a href="/docs/typography/typography/"
              class="menu-title ">段落</a></li>
       
       
 
       
-      <li><a href="/docs/typography/color/"
+      <li class="menu-item"><a href="/docs/typography/color/"
              class="menu-title ">颜色</a></li>
       
       
 
       
-      <li><a href="/docs/typography/code/"
+      <li class="menu-item"><a href="/docs/typography/code/"
              class="menu-title ">代码</a></li>
       
       
 
       
-      <li><a href="/docs/typography/table/"
+      <li class="menu-item"><a href="/docs/typography/table/"
              class="menu-title ">表格</a></li>
       
     </ul>
@@ -260,7 +287,7 @@
 
   
   
-  <li>
+  <li class="menu-item">
     <a href="/docs/navigation/nav/" 
        class="menu-title menu-header ">导航类样式</a>
     <ul class="menu" style="display: none;">
@@ -268,25 +295,25 @@
       
 
       
-      <li><a href="/docs/navigation/nav/"
+      <li class="menu-item"><a href="/docs/navigation/nav/"
              class="menu-title ">导航</a></li>
       
       
 
       
-      <li><a href="/docs/navigation/navbar/"
+      <li class="menu-item"><a href="/docs/navigation/navbar/"
              class="menu-title ">导航栏</a></li>
       
       
 
       
-      <li><a href="/docs/navigation/menu/"
+      <li class="menu-item"><a href="/docs/navigation/menu/"
              class="menu-title ">菜单</a></li>
       
       
 
       
-      <li><a href="/docs/navigation/pagination/"
+      <li class="menu-item"><a href="/docs/navigation/pagination/"
              class="menu-title ">分页</a></li>
       
     </ul>
@@ -297,7 +324,7 @@
 
   
   
-  <li>
+  <li class="menu-item">
     <a href="/docs/container/form/" 
        class="menu-title menu-header ">容器类样式</a>
     <ul class="menu" style="display: none;">
@@ -305,37 +332,37 @@
       
 
       
-      <li><a href="/docs/container/form/"
+      <li class="menu-item"><a href="/docs/container/form/"
              class="menu-title ">Form 表单</a></li>
       
       
 
       
-      <li><a href="/docs/container/panel/"
+      <li class="menu-item"><a href="/docs/container/panel/"
              class="menu-title ">Panel 组件</a></li>
       
       
 
       
-      <li><a href="/docs/container/tab/"
+      <li class="menu-item"><a href="/docs/container/tab/"
              class="menu-title ">Tab Panel 组件</a></li>
       
       
 
       
-      <li><a href="/docs/container/card/"
+      <li class="menu-item"><a href="/docs/container/card/"
              class="menu-title ">Card 组件</a></li>
       
       
 
       
-      <li><a href="/docs/container/list/"
+      <li class="menu-item"><a href="/docs/container/list/"
              class="menu-title ">List Panel 组件</a></li>
       
       
 
       
-      <li><a href="/docs/container/dialog/"
+      <li class="menu-item"><a href="/docs/container/dialog/"
              class="menu-title ">对话框窗口</a></li>
       
     </ul>
@@ -346,7 +373,7 @@
 
   
   
-  <li>
+  <li class="menu-item">
     <a href="/docs/components/button/" 
        class="menu-title menu-header ">组件类样式</a>
     <ul class="menu" style="display: none;">
@@ -354,55 +381,55 @@
       
 
       
-      <li><a href="/docs/components/button/"
+      <li class="menu-item"><a href="/docs/components/button/"
              class="menu-title ">Button 按钮</a></li>
       
       
 
       
-      <li><a href="/docs/components/input/"
+      <li class="menu-item"><a href="/docs/components/input/"
              class="menu-title ">Input 组件</a></li>
       
       
 
       
-      <li><a href="/docs/components/dropdown/"
+      <li class="menu-item"><a href="/docs/components/dropdown/"
              class="menu-title ">DropDown 组件</a></li>
       
       
 
       
-      <li><a href="/docs/components/progress/"
+      <li class="menu-item"><a href="/docs/components/progress/"
              class="menu-title ">Progress 组件</a></li>
       
       
 
       
-      <li><a href="/docs/components/alert/"
+      <li class="menu-item"><a href="/docs/components/alert/"
              class="menu-title ">Alert 组件</a></li>
       
       
 
       
-      <li><a href="/docs/components/crumb/"
+      <li class="menu-item"><a href="/docs/components/crumb/"
              class="menu-title ">面包屑</a></li>
       
       
 
       
-      <li><a href="/docs/components/tooltip/"
+      <li class="menu-item"><a href="/docs/components/tooltip/"
              class="menu-title ">Tooltip 组件</a></li>
       
       
 
       
-      <li><a href="/docs/components/popover/"
+      <li class="menu-item"><a href="/docs/components/popover/"
              class="menu-title ">Popover 组件</a></li>
       
       
 
       
-      <li><a href="/docs/components/image/"
+      <li class="menu-item"><a href="/docs/components/image/"
              class="menu-title ">Image 组件</a></li>
       
     </ul>
@@ -413,7 +440,7 @@
 
   
   
-  <li>
+  <li class="menu-item">
     <a href="/docs/utils/float/" 
        class="menu-title menu-header ">工具类样式</a>
     <ul class="menu" style="display: none;">
@@ -421,43 +448,43 @@
       
 
       
-      <li><a href="/docs/utils/float/"
+      <li class="menu-item"><a href="/docs/utils/float/"
              class="menu-title ">浮动</a></li>
       
       
 
       
-      <li><a href="/docs/utils/position/"
+      <li class="menu-item"><a href="/docs/utils/position/"
              class="menu-title ">定位</a></li>
       
       
 
       
-      <li><a href="/docs/utils/color/"
+      <li class="menu-item"><a href="/docs/utils/color/"
              class="menu-title ">颜色</a></li>
       
       
 
       
-      <li><a href="/docs/utils/flex/"
+      <li class="menu-item"><a href="/docs/utils/flex/"
              class="menu-title ">Flex</a></li>
       
       
 
       
-      <li><a href="/docs/utils/spacing/"
+      <li class="menu-item"><a href="/docs/utils/spacing/"
              class="menu-title ">间距</a></li>
       
       
 
       
-      <li><a href="/docs/utils/border/"
+      <li class="menu-item"><a href="/docs/utils/border/"
              class="menu-title ">边框</a></li>
       
       
 
       
-      <li><a href="/docs/utils/align/"
+      <li class="menu-item"><a href="/docs/utils/align/"
              class="menu-title ">文本对齐</a></li>
       
     </ul>
@@ -468,7 +495,7 @@
 
   
   
-  <li>
+  <li class="menu-item">
     <a href="/docs/tag-property/tag/" 
        class="menu-title menu-header ">Html 标签和样式属性</a>
     <ul class="menu" style="display: none;">
@@ -476,13 +503,13 @@
       
 
       
-      <li><a href="/docs/tag-property/tag/"
+      <li class="menu-item"><a href="/docs/tag-property/tag/"
              class="menu-title ">Html 标签</a></li>
       
       
 
       
-      <li><a href="/docs/tag-property/property/"
+      <li class="menu-item"><a href="/docs/tag-property/property/"
              class="menu-title ">样式属性</a></li>
       
     </ul>
@@ -493,7 +520,7 @@
 
   
   
-  <li>
+  <li class="menu-item">
     <a href="/docs/plugins/plugin1/" 
        class="menu-title menu-header ">插件</a>
     <ul class="menu" style="display: none;">
@@ -501,7 +528,7 @@
       
 
       
-      <li><a href="/docs/plugins/plugin1/"
+      <li class="menu-item"><a href="/docs/plugins/plugin1/"
              class="menu-title ">插件1</a></li>
       
     </ul>
@@ -512,7 +539,7 @@
 
   
   
-  <li>
+  <li class="menu-item">
     <a 
        class="menu-title menu-header ">辅助样式库</a>
     <ul class="menu" style="display: none;">
@@ -520,7 +547,7 @@
       
 
       
-      <li><a href="http://www.iconfont.cn/"
+      <li class="menu-item"><a href="http://www.iconfont.cn/"
              target="_blank"class="menu-title ">阿里图标库</a></li>
       
     </ul>
@@ -528,23 +555,41 @@
   
 </ul>
 
+<script>
+  $(function () {
+    $('.menu').on('click', '.menu-header', function (e) {
+      e.preventDefault();
+      // 隐藏其他打开的菜单
+      $('.menu .menu').slideUp('slow');
+      var $el = $(e.currentTarget);
+      var $nextEl = $el.next();
+      if ($nextEl.is(':visible')) {
+        $nextEl.slideUp('slow');
+      } else {
+        $nextEl.slideDown('slow');
+      }
+    });
 
+  });
+</script>
+
+        </nav>
       </nav>
-    </div>
-  </div>
+    </aside>
 
-  <div class="doc1-content-wrapper">
-    <div class="doc1-content">
-      <p>通过定制代码样式来友好的展现编程代码，让用户清晰的查看代码，结合高亮代码插件， 呈现给用户的是可读性强、易于使用的代码格式。</p>
-      <div class="doc-content-header">
-        <a href="https://github.com/perfect-ui/perfect/edit/master/docs/docs/typography/code.md" target="_blank">编辑该页面</a>
-        <a href="https://github.com/perfect-ui/perfect/issues/new?title=问题或建议(基础样式-代码)" target="_blank">问题和建议</a>
-      </div>
-      <hr/>
-      
-      <div class="row no-gutters">
-        <div class="doc-content col-24 col-lg-19 col-md-17">
-          <p>代码样式对应源文件：<a href="https://github.com/perfect-ui/perfect/scss/core/base-styles/code.scss" target="_blank">/scss/core/base-styles/code.scss</a></p>
+    <main class="drawer-main navbar-fixed-adjust">
+      <div class="doc-main">
+        
+        <div class="row no-gutters">
+          <div class="doc-content col-24 col-xl-19 col-lg-18 col-md-17 p-r-3">
+            <p>通过定制代码样式来友好的展现编程代码，让用户清晰的查看代码，结合高亮代码插件， 呈现给用户的是可读性强、易于使用的代码格式。</p>
+            <div class="doc-content-header">
+              <a href="https://github.com/joy-web/perfect-css/edit/master/docs/docs/typography/code.md" target="_blank">编辑该页面</a>
+              <a href="https://github.com/joy-web/perfect-css/issues/new?title=问题或建议(基础样式-代码)" target="_blank">问题和建议</a>
+            </div>
+            <hr/>
+
+            <p>代码样式对应源文件：<a href="https://github.com/joy-web/perfect-css/scss/core/base-styles/code.scss" target="_blank">/scss/core/base-styles/code.scss</a></p>
 
 <p>CSS 中用来处理代码的 html 标签主要有 <code class="highlighter-rouge">code</code>  <code class="highlighter-rouge">pre</code> <code class="highlighter-rouge">var</code> <code class="highlighter-rouge">kbd</code> <code class="highlighter-rouge">samp</code></p>
 
@@ -558,7 +603,8 @@
 该滚动条高度设置为 <code class="highlighter-rouge">300px</code>。例子中添加了样式 <code class="highlighter-rouge">.pre-scroll</code>，会出现垂直滚动条，我们如果去掉该样式后，垂直滚动条
 会消失。</p>
 
-<div class="doc-example" data-example-id="">
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
 <pre class="pre-scroll" id="preScroll">
   <code>&lt;p&gt;代码第一行内容&lt;/p&gt;
   &lt;p&gt;代码第二行内容&lt;/p&gt;
@@ -580,7 +626,8 @@
   </code>
 </pre>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">"pre-scroll"</span> <span class="na">id=</span><span class="s">"preScroll"</span><span class="nt">&gt;</span>
+<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>
+<div class="highlight doc-example-highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">"pre-scroll"</span> <span class="na">id=</span><span class="s">"preScroll"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>代码第一行内容<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
   <span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>代码第二行内容<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
   <span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>代码第三行内容<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
@@ -600,6 +647,7 @@
   }
   <span class="nt">&lt;/code&gt;</span>
 <span class="nt">&lt;/pre&gt;</span></code></pre></div>
+</div>
 
 <h2>
 <a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>代码行内元素 <code class="highlighter-rouge">code</code>
@@ -607,10 +655,13 @@
 
 <p>用来处理行内元素，可以使用 <code class="highlighter-rouge">code</code> ，注意代码中的内容尖括号需要转义处理</p>
 
-<div class="doc-example" data-example-id="">
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
 html <code>&lt;span&gt;</code> 是一个行内元素，这里 &lt;span&gt; 用 code 包裹后显示效果为 <code>&lt;span&gt;</code>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html">html <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> 是一个行内元素，这里 <span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span> 用 code 包裹后显示效果为 <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span></code></pre></div>
+<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>
+<div class="highlight doc-example-highlight"><pre><code class="language-html" data-lang="html">html <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> 是一个行内元素，这里 <span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span> 用 code 包裹后显示效果为 <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span></code></pre></div>
+</div>
 
 <h2>
 <a id="toc-3" class="menu-anchor" data-target="toc-3" aria-hidden="true"></a>键盘字母元素 <code class="highlighter-rouge">kbd</code>
@@ -618,14 +669,17 @@ html <code>&lt;span&gt;</code> 是一个行内元素，这里 &lt;span&gt; 用 c
 
 <p>可以用 <code class="highlighter-rouge">kbd</code> 元素来包裹指令、快捷键等。</p>
 
-<div class="doc-example" data-example-id="">
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
 在 Mac 终端中，我们可以用 <kbd>ls -a</kbd> 来查看当前目录下所有文件和文件夹（包括隐藏的文件）。<br>
 我们按下快捷键 <kbd>command + c</kbd> 复制选中的内容。<br>
 kbd 也可以嵌套使用，嵌套中的内层，字体会加粗显示。例如：<kbd><kbd>command</kbd> + <kbd>a</kbd></kbd>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html">在 Mac 终端中，我们可以用 <span class="nt">&lt;kbd&gt;</span>ls -a<span class="nt">&lt;/kbd&gt;</span> 来查看当前目录下所有文件和文件夹（包括隐藏的文件）。<span class="nt">&lt;br/&gt;</span>
+<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>
+<div class="highlight doc-example-highlight"><pre><code class="language-html" data-lang="html">在 Mac 终端中，我们可以用 <span class="nt">&lt;kbd&gt;</span>ls -a<span class="nt">&lt;/kbd&gt;</span> 来查看当前目录下所有文件和文件夹（包括隐藏的文件）。<span class="nt">&lt;br/&gt;</span>
 我们按下快捷键 <span class="nt">&lt;kbd&gt;</span>command + c<span class="nt">&lt;/kbd&gt;</span> 复制选中的内容。<span class="nt">&lt;br/&gt;</span>
 kbd 也可以嵌套使用，嵌套中的内层，字体会加粗显示。例如：<span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>command<span class="nt">&lt;/kbd&gt;</span> + <span class="nt">&lt;kbd&gt;</span>a<span class="nt">&lt;/kbd&gt;&lt;/kbd&gt;</span></code></pre></div>
+</div>
 
 <h2>
 <a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>输出元素 <code class="highlighter-rouge">samp</code>
@@ -637,14 +691,17 @@ kbd 也可以嵌套使用，嵌套中的内层，字体会加粗显示。例如�
 
 <p>更多信息查看这里 <a href="http://html.com/tags/samp/">http://html.com/tags/samp/</a></p>
 
-<div class="doc-example" data-example-id="">
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
 <samp>计算机示例程序输出，这里发生了一个非常严重的错误：连接数据库出错</samp> <br>
 字符组合 <samp>ae</samp> 被转义后，可以变成 æ 连字字符。
 在 HTML 中，用于 <code>ae</code> 连字的转义写法是 <code>æ</code>，浏览器会将它转换成相应的 <code>æ</code> 连字字符来显示。
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;samp&gt;</span>计算机示例程序输出，这里发生了一个非常严重的错误：连接数据库出错<span class="nt">&lt;/samp&gt;</span> <span class="nt">&lt;br/&gt;</span>
+<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>
+<div class="highlight doc-example-highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;samp&gt;</span>计算机示例程序输出，这里发生了一个非常严重的错误：连接数据库出错<span class="nt">&lt;/samp&gt;</span> <span class="nt">&lt;br/&gt;</span>
 字符组合 <span class="nt">&lt;samp&gt;</span>ae<span class="nt">&lt;/samp&gt;</span> 被转义后，可以变成 <span class="ni">&amp;aelig;</span> 连字字符。
 在 HTML 中，用于 <span class="nt">&lt;code&gt;</span>ae<span class="nt">&lt;/code&gt;</span> 连字的转义写法是 <span class="nt">&lt;code&gt;</span><span class="ni">&amp;aelig;</span><span class="nt">&lt;/code&gt;</span>，浏览器会将它转换成相应的 <span class="nt">&lt;code&gt;</span>æ<span class="nt">&lt;/code&gt;</span> 连字字符来显示。</code></pre></div>
+</div>
 
 <h2>
 <a id="toc-5" class="menu-anchor" data-target="toc-5" aria-hidden="true"></a>变量 <code class="highlighter-rouge">var</code>
@@ -652,15 +709,18 @@ kbd 也可以嵌套使用，嵌套中的内层，字体会加粗显示。例如�
 
 <p>在程序代码中，可以用 var 来包裹变量</p>
 
-<div class="doc-example" data-example-id="">
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
 let <var>sum</var> = <var>num1</var> + <var>num2</var> * 3;
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html">let <span class="nt">&lt;var&gt;</span>sum<span class="nt">&lt;/var&gt;</span> = <span class="nt">&lt;var&gt;</span>num1<span class="nt">&lt;/var&gt;</span> + <span class="nt">&lt;var&gt;</span>num2<span class="nt">&lt;/var&gt;</span> * 3;</code></pre></div>
+<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>
+<div class="highlight doc-example-highlight"><pre><code class="language-html" data-lang="html">let <span class="nt">&lt;var&gt;</span>sum<span class="nt">&lt;/var&gt;</span> = <span class="nt">&lt;var&gt;</span>num1<span class="nt">&lt;/var&gt;</span> + <span class="nt">&lt;var&gt;</span>num2<span class="nt">&lt;/var&gt;</span> * 3;</code></pre></div>
+</div>
 
 
-        </div>
-        <div class="col-24 col-lg-5 col-md-7">
-          <div class="doc-catalogue-panel">
+          </div>
+          <div class="col-24 col-xl-5 col-lg-6 col-md-7">
+            <div class="doc-catalogue-panel">
 <ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
   <li>
     <a class="menu-title" href="#" data-menu="toc-1">代码块级元素 pre</a>
@@ -679,18 +739,13 @@ let <var>sum</var> = <var>num1</var> + <var>num2</var> * 3;
   </li>
 </ul>
 </div>
+          </div>
         </div>
+        
       </div>
-      
-    </div>
-    <footer>底部区域</footer>
-  </div>
-</div>
+    </main>
 
-<div class="doc1-mask-modal"></div>
-
-<script src="/assets/js/vendor/jquery.min.js"></script>
-<script src="/assets/js/vendor/clipboard.min.js"></script>
+    <script src="/assets/js/vendor/clipboard.min.js"></script>
 <script src="/assets/js/perfect.js"></script>
 <script src="/assets/js/util.js"></script>
 <script src="/assets/js/scrollSpy.js"></script>
@@ -740,7 +795,7 @@ let <var>sum</var> = <var>num1</var> + <var>num2</var> * 3;
 <script>
   $(function () {
     // 为代码添加复制按钮
-    $('.highlight').each(function () {
+    $('.highlight:not(.doc-example-highlight)').each(function () {
       var btnHtml = '<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>'
       $(this).before(btnHtml);
     });
@@ -773,29 +828,43 @@ let <var>sum</var> = <var>num1</var> + <var>num2</var> * 3;
 
 </script>
 
-<script>
+
+    <script>
   $(function () {
-    $('.doc1-menu-nav').on('click', '.menu-header', function (e) {
-      e.preventDefault();
-      var $el = $(e.currentTarget);
-      var $nextEl = $el.next();
-      if ($nextEl.is(':visible')) {
-        $nextEl.slideUp('slow');
+    var $drawer = $('#drawer');
+    $drawer[0].addEventListener('transitionend', () => {
+      $drawer.removeClass('drawer-animating');
+    });
+
+    $('#toggleDrawer').click(function (e) {
+      const clientWidth = document.documentElement.clientWidth;
+      if(clientWidth < 1440){
+        $drawer.toggleClass('drawer-open');
+        $('body').toggleClass('drawer-scroll-lock');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-close');
       } else {
-        $nextEl.slideDown('slow');
+        // 当超过1440px 时，利用该样式，隐藏显示处理
+        $drawer.toggleClass('drawer-close');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-open');
       }
     });
 
-    $('.doc1-menu-btn').click(function () {
-      $('.doc1-side').addClass('doc1-side-drawer-visible');
-      $('.doc1-mask-modal').addClass('visible');
+    $('#drawer').click(function () {
+      $drawer.removeClass('drawer-open');
+      $('body').removeClass('drawer-scroll-lock');
+      $drawer.addClass('drawer-animating');
     });
 
-    $('.doc1-mask-modal').click(function () {
-      $('.doc1-side').removeClass('doc1-side-drawer-visible');
-      $('.doc1-mask-modal').removeClass('visible');
+    $('.drawer-content').click(function (e) {
+      e.stopPropagation();
     });
   });
 </script>
-</body>
+
+
+  </body>
 </html>
