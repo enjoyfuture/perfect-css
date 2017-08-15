@@ -1,6 +1,6 @@
 {
   "name": "perfect-css",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "author": {
     "name": "Linder Wang",
     "email": "linder0209@126.com",
@@ -11,7 +11,16 @@
     "css",
     "perfect"
   ],
-  "scripts": {},
+  "main": "css/perfect.css",
+  "files": [
+    "css",
+    "scss"
+  ],
+  "scripts": {
+    "clean": "rimraf build/**",
+    "publish:config": "node publish-config.js",
+    "prepublishOnly": "gulp publish && npm run publish:config && cd build"
+  },
   "dependencies": {
     "clipboard": "^1.7.1",
     "jquery": "^3.2.1"

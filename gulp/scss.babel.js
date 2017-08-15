@@ -7,7 +7,7 @@ import functions from '../scss/base/js-function/Math';
 
 const $ = gulpLoadPlugins();
 
-const scssOption = {
+export const scssOption = {
   outputStyle: 'expanded', // 不压缩，设为 compressed 表示压缩
   precision: 15, // 设置小数精度
   includePaths: ['.'],
@@ -29,7 +29,7 @@ const scssOption = {
 const browsers = ['Chrome >= 43', 'Firefox >= 38', 'Edge >= 12',
   'Explorer >= 10', 'Android >= 4.4', 'iOS >= 9', 'Safari >= 9', 'Opera >= 30'];
 
-const postcssPlugins = [
+export const postcssPlugins = [
   autoprefixer({browsers}),
   flexbugs
 ];
@@ -51,7 +51,7 @@ gulp.task('scss', ['scss-lint'], () => {
 
 // 编译 docs scss
 gulp.task('scss-docs', ['scss-lint'], () => {
-  return gulp.src(['scss/perfect.scss', 'docs/assets/scss/component.scss'])
+  return gulp.src(['scss/perfect.scss', 'docs/assets/scss/*.scss'])
     .pipe($.sourcemaps.init())
     .pipe($.sass(scssOption).on('error', $.sass.logError))
     .pipe($.postcss(postcssPlugins))

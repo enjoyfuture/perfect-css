@@ -3,6 +3,8 @@
   It can bring you perfect experience and the newest css technology.
   It is a CSS framework in the future.
 
+**_Note: The Project is developing. In looking forward_**
+
 ## Documentation
 
 The Perfect docs use the Jekyll to generator.
