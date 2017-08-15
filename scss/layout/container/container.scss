@@ -1,6 +1,7 @@
 // 容器 style
-@import "../../base/variables/variable";
-@import "../../base/mixins/mixin";
+@import "../../base/variables/options";
+@import "../../base/mixins/clearfix";
+@import "../../responsive/mixin";
 @import "mixin";
 
 // 设置响应式容器宽度

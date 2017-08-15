@@ -3,17 +3,19 @@
 $drawer-transition-close-time: .195s;
 $drawer-transition-open-time: .225s;
 $drawer-main-padding-left-time: .225s;
-$drawer-transition-close: animation-leave(transform, $drawer-transition-close-time);
-$drawer-transition-open: animation-enter(transform, $drawer-transition-open-time);
+$drawer-transition-close: animation-leave(transform, $drawer-transition-close-time),
+animation-leave(background, $drawer-transition-close-time);
+$drawer-transition-open: animation-enter(transform, $drawer-transition-open-time),
+animation-enter(background, $drawer-transition-open-time);
 $drawer-main-padding-left: animation-enter(padding-left, $drawer-main-padding-left-time);
 
 // 根据不同的设备宽度，定义 drawer 宽度
 $drawer-breakpoints-width: (
   xs: 200px,
-  sm: 240px,
-  md: 280px,
-  lg: 320px,
-  xl: 360px,
+  sm: 220px,
+  md: 240px,
+  lg: 260px,
+  xl: 280px,
 );
 
 $drawer-toggle-font-size: 1rem !default;

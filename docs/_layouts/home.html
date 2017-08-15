@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cmn-Hans">
   <head>
-    {% include header.html %}
+    {% include head.html %}
   </head>
   <body>
-    {% include nav-home.html %}
-
-    {{ content }}
+    {% include header.html %}
+    <div class="navbar-fixed-adjust">
+      {{ content }}
+    </div>
 
     {% include footer.html %}
   </body>

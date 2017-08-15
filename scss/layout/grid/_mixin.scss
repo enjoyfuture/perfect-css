@@ -1,5 +1,8 @@
 /// Grid mixin
 
+@import "../../base/variables/options";
+@import "../../responsive/variable";
+
 // 设置 row 样式
 // 我们采用 flex 布局来实现
 @mixin make-row($gutter: $grid-gutter-width) {
@@ -16,10 +19,13 @@
 
 // 设置列样式
 @mixin make-col($size, $columns: $grid-columns) {
-  width: percentage($size / $columns);
+  flex: 0 0 percentage($size / $columns);
+  // 设置最大宽度可以确保内容不会溢出，只有 IE10+ 和 Firefox 需要这样设置
+  // 而 Chrome 和 Safari 不需要设置
+  max-width: percentage($size / $columns);
 }
 
-// offset 是指偏移，用 margin-left 设置其偏移量，而 pull 和 push 是指定位位置，用 left 和 right 来设置
+// offset 是指偏移，用 margin-left 设置其偏移量
 @mixin make-col-offset($size, $columns: $grid-columns) {
   margin-left: percentage($size / $columns);
 }
@@ -62,6 +68,7 @@
         .col#{$infix}-auto {
           flex: 0 0 auto;
           width: auto;
+          max-width: none;
         }
 
         @for $i from 1 through $columns {
@@ -105,6 +112,13 @@
     .col-auto {
       flex: 0 0 auto;
       width: auto;
+      max-width: none;
+    }
+
+    @for $i from 1 through $columns {
+      .col-#{$i} {
+        @include make-col($i, $columns);
+      }
     }
 
     // 重新排列 col 位置
@@ -114,8 +128,9 @@
       }
     }
 
+    // 设置 offset ，从 0 到 $columns - 1
     @for $i from 0 through ($columns - 1) {
-      @if not ($i == 0) {
+      @if not ($i == 0) { // 对于有响应式前缀，并且是第0个，则或略，例如 .offset-xs-0
         .offset-#{$i} {
           @include make-col-offset($i, $columns)
         }

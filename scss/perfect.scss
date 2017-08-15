@@ -5,8 +5,9 @@
  */
 
 // 变量、mixin 和函数
-@import "base/variables/variable";
-@import "base/mixins/mixin";
+@import "base/variables";
+@import "base/mixins";
+@import "base/functions";
 
 // theme
 @import "theme/theme";
@@ -38,6 +39,7 @@
 @import "components/select/select";
 
 // 组件
+@import "components/menu/menu";
 @import "components/list/list";
 @import "components/navbar/navbar";
 @import "components/drawer/drawer";

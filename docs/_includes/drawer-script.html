@@ -1,0 +1,35 @@
+<script>
+  $(function () {
+    var $drawer = $('#drawer');
+    $drawer[0].addEventListener('transitionend', () => {
+      $drawer.removeClass('drawer-animating');
+    });
+
+    $('#toggleDrawer').click(function (e) {
+      const clientWidth = document.documentElement.clientWidth;
+      if(clientWidth < 1440){
+        $drawer.toggleClass('drawer-open');
+        $('body').toggleClass('drawer-scroll-lock');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-close');
+      } else {
+        // 当超过1440px 时，利用该样式，隐藏显示处理
+        $drawer.toggleClass('drawer-close');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-open');
+      }
+    });
+
+    $('#drawer').click(function () {
+      $drawer.removeClass('drawer-open');
+      $('body').removeClass('drawer-scroll-lock');
+      $drawer.addClass('drawer-animating');
+    });
+
+    $('.drawer-content').click(function (e) {
+      e.stopPropagation();
+    });
+  });
+</script>

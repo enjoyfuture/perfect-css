@@ -1,3 +1,6 @@
+// 目录和内容
+@import "../../../scss/responsive/mixin";
+
 .doc-catalogue-header {
   position: relative;
   &::before {
@@ -10,7 +13,12 @@
 }
 
 .doc-catalogue {
-  //margin-top: .5rem;
+  margin-left: 1rem;
+
+  &.doc-catalogue-header {
+    margin-left: .5rem;
+  }
+
   .menu-title {
     position: relative;
     width: 230px;
@@ -36,12 +44,11 @@
 
 .doc-catalogue-panel {
   margin-top: 50px;
-  margin-left: 20px;
 }
 
-.doc-content-header {
-  > a {
-    margin: 0 .5rem;
+@include media-breakpoint-down(sm) {
+  .doc-catalogue-panel {
+    display: none !important;
   }
 }
 

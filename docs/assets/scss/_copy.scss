@@ -1,4 +1,5 @@
 // copy 到剪贴板样式
+@import "../../../scss/theme/mixin";
 
 .doc-copy {
   position: relative;
@@ -11,11 +12,13 @@
   padding: .3rem .7rem;
   border: 0;
   color: #fff;
-  //background: $doc-primary;
   cursor: pointer;
   outline: none;
+
+  @include theme-prop(background, primary);
+
   &:hover {
-    //background: darken($doc-primary, 10%);
+    @include theme-prop(background, primary-dark);
   }
 }
 

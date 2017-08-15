@@ -57,13 +57,19 @@ eos
           render_rouge(code)
         end
 
-        rendered_output = example(code) + add_code_tag(output)
+        # 用 <div class="doc-example"></div> 包裹例子
+        rendered_output = "<div class=\"doc-example\">\n" + example(code) + copy() + add_code_tag(output) + "\n</div>"
         prefix + rendered_output + suffix
       end
 
-      # 用 <div class="doc-example"></div> 包裹例子
+      # 用 <div class="doc-example-render"></div> 包裹例子渲染结果
       def example(output)
-        "<div class=\"doc-example\" data-example-id=\"#{@options[:id]}\">\n#{output}\n</div>"
+        "<div class=\"doc-example-render\" data-example-id=\"#{@options[:id]}\">\n#{output}\n</div>"
+      end
+
+      # 复制按钮
+      def copy()
+        "<div class=\"doc-copy\"><button class=\"doc-copy-btn\" title=\"复制到剪贴板\">复制</button></div>"
       end
 
       # 加入高量化代码 highlight
@@ -93,7 +99,7 @@ eos
         code = remove_holderjs(code)
         code = remove_example_classes(code)
         code = formatter.format(lexer.lex(code))
-        "<div class=\"highlight\"><pre>#{code}</pre></div>"
+        "<div class=\"highlight doc-example-highlight\"><pre>#{code}</pre></div>"
       end
 
     end

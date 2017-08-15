@@ -1,35 +1,18 @@
 // 页面底部样式
+
+@import "../../../scss/theme/variable";
+
 .footer-assist {
-  padding-top: 7.5rem;
+  // 此处的数值等于 footer 的高度 + 预留的间距
+  padding-top: 4.5rem;
 }
 
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-}
-
-.footer-links {
   padding: 1rem 0;
-  border-bottom: 1px solid darken(#193c5a, 10%);
-  background-color: #193c5a;
-  background-image: linear-gradient(to bottom, #1f496e 0, #193c5a 100%);
-}
-
-.footer-copyright {
-  margin: .5rem 0;
-  color: #818a91;
-  background-color: #fff;
-}
-
-.links-item {
-  > a {
-    display: inline-block;
-    margin-right: 1rem;
-    color: #fff;
-    &:hover, &:focus {
-      color: #fff;
-    }
-  }
+  border-top: 1px solid $grey-300;
+  color: map-get(map-get($theme-text-colors, dark), secondary);
 }
 

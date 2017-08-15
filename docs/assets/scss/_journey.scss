@@ -1,0 +1,47 @@
+// 首页开启之旅
+@import "../../../scss/layout/grid/variable";
+@import "../../../scss/responsive/mixin";
+
+.doc-journey {
+  position: relative;
+  padding: 2rem ($grid-gutter-width / 2);
+
+  h1 {
+    line-height: 1;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-size: 1.125rem;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    h1 {
+      font-size: 3rem;
+    }
+
+    .btn {
+      padding: 0.875rem 2rem;
+      border-radius: 5px;
+      font-size: 1.125rem;
+
+      &:first-child {
+        margin-right: 2rem;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .btn {
+      width: 40%;
+    }
+  }
+}

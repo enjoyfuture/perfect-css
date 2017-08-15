@@ -1,84 +1,55 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
-<head>
-  {% include header.html %}
-</head>
-<body class="doc1-top-fixed">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
 
-<header class="doc1-header-wrapper">
-  <button class="doc1-menu-btn">
-    <i class="icon doc1-menu-icn"></i>
-  </button>
-  <div class="doc1-header-title">
-    {{ page.title }}
-  </div>
-</header>
+    {% include header.html %}
+    {% include jquery.html %}
 
-<div class="doc1-main">
-  <div class="doc1-side">
-    <div class="doc1-side-wrapper">
-      <div class="doc1-logo-wrapper">
-        <i class="doc1-logo"></i>
-      </div>
-      <nav class="doc1-menu-nav">
-        {% include nav-menus.html %}
+    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+      <nav class="drawer-nav">
+        <nav class="drawer-content">
+          {% include nav-menus.html %}
+        </nav>
       </nav>
-    </div>
-  </div>
+    </aside>
 
-  <div class="doc1-content-wrapper">
-    <div class="doc1-content">
-      <p>{{ page.description }}</p>
-      <div class="doc-content-header">
-        <a href="{{site.repo}}/edit/master/docs/{{page.path}}" target="_blank">编辑该页面</a>
-        <a href="{{site.repo}}/issues/new?title=问题或建议({{ page.title }})" target="_blank">问题和建议</a>
-      </div>
-      <hr/>
-      {% if page.toc %}
-      <div class="row no-gutters">
-        <div class="doc-content col-24 col-lg-19 col-md-17">
+    <main class="drawer-main navbar-fixed-adjust">
+      <div class="doc-main">
+        {% if page.toc %}
+        <div class="row no-gutters">
+          <div class="doc-content col-24 col-xl-19 col-lg-18 col-md-17 p-r-3">
+            <p>{{ page.description }}</p>
+            <div class="doc-content-header">
+              <a href="{{site.repo}}/edit/master/docs/{{page.path}}" target="_blank">编辑该页面</a>
+              <a href="{{site.repo}}/issues/new?title=问题或建议({{ page.title }})" target="_blank">问题和建议</a>
+            </div>
+            <hr/>
+
+            {{ content | toc_content }}
+          </div>
+          <div class="col-24 col-xl-5 col-lg-6 col-md-7">
+            {{ content | toc_catalogue }}
+          </div>
+        </div>
+        {% else %}
+        <div class="doc-content">
+          <p>{{ page.description }}</p>
+          <div class="doc-content-header">
+            <a href="{{site.repo}}/edit/master/docs/{{page.path}}" target="_blank">编辑该页面</a>
+            <a href="{{site.repo}}/issues/new?title=问题或建议({{ page.title }})" target="_blank">问题和建议</a>
+          </div>
+          <hr/>
           {{ content | toc_content }}
         </div>
-        <div class="col-24 col-lg-5 col-md-7">
-          {{ content | toc_catalogue }}
-        </div>
+        {% endif %}
       </div>
-      {% else %}
-      <div class="doc-content">
-        {{ content | toc_content }}
-      </div>
-      {% endif %}
-    </div>
-    <footer>底部区域</footer>
-  </div>
-</div>
+    </main>
 
-<div class="doc1-mask-modal"></div>
+    {% include javascript.html %}
+    {% include drawer-script.html %}
 
-{% include javascript.html %}
-<script>
-  $(function () {
-    $('.doc1-menu-nav').on('click', '.menu-header', function (e) {
-      e.preventDefault();
-      var $el = $(e.currentTarget);
-      var $nextEl = $el.next();
-      if ($nextEl.is(':visible')) {
-        $nextEl.slideUp('slow');
-      } else {
-        $nextEl.slideDown('slow');
-      }
-    });
-
-    $('.doc1-menu-btn').click(function () {
-      $('.doc1-side').addClass('doc1-side-drawer-visible');
-      $('.doc1-mask-modal').addClass('visible');
-    });
-
-    $('.doc1-mask-modal').click(function () {
-      $('.doc1-side').removeClass('doc1-side-drawer-visible');
-      $('.doc1-mask-modal').removeClass('visible');
-    });
-  });
-</script>
-</body>
+  </body>
 </html>

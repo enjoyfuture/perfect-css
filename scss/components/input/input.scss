@@ -1,12 +1,9 @@
 // input style
-
+@import "../../base/variables/options";
+@import "../../base/mixins/box-shadow";
 @import "../../animation/variable";
 @import "../../ripple/mixin";
-@import "../../theme/variable";
 @import "../../theme/mixin";
-@import "../../normalize/variable";
-@import "../../base/variables/variable";
-@import "../../base/mixins/mixin";
 @import "../../shadow/mixin";
 @import "./variable";
 @import "./function";

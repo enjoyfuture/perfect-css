@@ -1,107 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="keywords" content="CSS3 Perfect">
-  <meta name="description"
-        content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
-  <meta name="author" content="Linder Wang">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    {% include header.html %}
+    {% include jquery.html %}
 
-  <title>
-    {{ page.title }} &middot; {{ site.title }}
-  </title>
+    {% if page.drawer %}
+    {{ content }}
+    {% else %}
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" href="{{ site.baseurl }}/favicon.png">
-  <link rel="icon" href="{{ site.baseurl }}/favicon.ico">
+    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+      <nav class="drawer-nav">
+        <nav class="drawer-content">
+          <!--待归类，最后整理 TODO-->
+          <ul class="menu">
+            {% assign pageLastPath = page.url | split: '/' | last %}
 
-  <!-- Perfect CSS -->
-  <link href="{{ site.baseurl }}/assets/css/perfect.css" rel="stylesheet">
+            {% for group in site.data.component %}
+            {% assign active = nil %}
+            {% if pageLastPath == group.file %}
+            {% assign active = 'active' %}
+            {% endif %}
+            <li class="menu-item">
+              <a href="/components/{{ group.file }}/"
+                 class="menu-title {{ active }}">{{ group.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </nav>
+    </aside>
 
-  <!-- Component CSS -->
-  <link href="{{ site.baseurl }}/assets/css/component.css" rel="stylesheet">
-</head>
-<body>
-<script src="{{ site.baseurl }}/assets/js/vendor/jquery.min.js"></script>
+    <main class="drawer-main navbar-fixed-adjust">
+      {{ content }}
+    </main>
 
-{% if page.drawer %}
-{{ content }}
-{% else %}
+    {% include drawer-script.html %}
 
-<header class="navbar navbar-fixed navbar-expand navbar-primary drawer-navbar-spacer">
-  <span class="drawer-toggle" id="toggleDrawer"></span>
-  <div class="navbar-collapse">
-    <ul class="navbar-nav">
-      <li class="nav-link active">
-        Perfect 组件 - {{ page.title }}
-      </li>
-    </ul>
-  </div>
-</header>
-
-<aside id="drawer" class="drawer">
-  <nav class="drawer-nav">
-    <nav class="drawer-content">
-      <ul class="list">
-        <li class="list-item"><a href="/components/ripple/">Ripple 效果</a></li>
-        <li class="list-item"><a href="/components/shadow/">Shadow 效果</a></li>
-
-        <li class="list-item"><a href="/components/grid/">Grid 布局</a></li>
-
-        <li class="list-item"><a href="/components/input/">Input 组件</a></li>
-        <li class="list-item"><a href="/components/select/">Select 组件</a></li>
-        <li class="list-item"><a href="/components/radio/">Radio 组件</a></li>
-        <li class="list-item"><a href="/components/checkbox/">Checkbox 组件</a></li>
-        <li class="list-item"><a href="/components/button/">Button 组件</a></li>
-        <li class="list-item"><a href="/components/form/">Form 组件</a></li>
-
-        <li class="list-item"><a href="/components/table/">Table 组件</a></li>
-        <li class="list-item"><a href="/components/menu/">Menu 组件</a></li>
-        <li class="list-item"><a href="/components/toast/">Toast 组件</a></li>
-        <li class="list-item"><a href="/components/tooltip/">Tooltip 组件</a></li>
-        <li class="list-item"><a href="/components/image/">Image 组件</a></li>
-        <li class="list-item"><a href="/components/tab/">Tab 组件</a></li>
-        <li class="list-item"><a href="/components/dialog/">Dialog 组件</a></li>
-        <li class="list-item"><a href="/components/list/">List 组件</a></li>
-        <li class="list-item"><a href="/components/navbar/">Navbar 组件</a></li>
-        <li class="list-item"><a href="/components/drawer/">Drawer 组件</a></li>
-        <li class="list-item"><a href="/components/drawer-permanent/">Drawer 2组件</a></li>
-      </ul>
-    </nav>
-  </nav>
-</aside>
-
-<main class="drawer-main navbar-fixed-adjust">
-  {{ content }}
-</main>
-
-<script>
-  $(function () {
-    var $drawer = $('#drawer');
-    $drawer[0].addEventListener('transitionend', () => {
-      $drawer.removeClass('drawer-animating');
-    });
-
-    $('#toggleDrawer').click(function (e) {
-      $drawer.toggleClass('drawer-open');
-      $('body').toggleClass('drawer-scroll-lock');
-      $drawer.addClass('drawer-animating');
-    });
-
-    $('#drawer').click(function () {
-      $drawer.removeClass('drawer-open');
-      $('body').removeClass('drawer-scroll-lock');
-      $drawer.addClass('drawer-animating');
-    });
-
-    $('.drawer-content').click(function (e) {
-      e.stopPropagation();
-    });
-  });
-</script>
-
-{% endif %}
-</body>
+    {% endif %}
+  </body>
 </html>

@@ -53,7 +53,7 @@ $font-family-monospace: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New
 
 // 字体大小，基于 rem ，根字体不在设置，使用浏览器默认字体 16px
 $font-size-base: .875rem !default; // 设置在 body 上，默认字体为 14px
-// 设置除去 h1~h6 和 display 后的字体
+$font-size: 1rem; // 16px;
 $font-size-lg: 1.25rem !default; // 20px
 $font-size-sm: .875rem !default; // 14px
 $font-size-xs: .75rem !default; // 12px 一般浏览器支持的最小字体
@@ -62,8 +62,4 @@ $line-height-base: 1.5 !default;
 
 // dt font
 $dt-font-weight: $font-weight-bold !default;
-
-// Link
-$link-decoration: none !default;
-$link-hover-decoration: underline !default;
 

@@ -9,17 +9,13 @@ toc: true
 ---
 
 ## 如何使用 Perfect
-首先你需要下载 Perfect，Perfect 提供了 npm 下载和 bower 下载
+首先你需要下载 Perfect
 
 ```bash
-npm install perfect --save
+npm install perfect-css --save
 ```
 
-```bash
-bower install perfect --save
-```
-
-当然如果你想下载更详细的代码可以从 github [下载](https://github.com/enjoyfuture/perfect)。
+当然如果你想下载更详细的代码可以从 github [下载](https://github.com/joy-web/perfect-css)。
 
 ### 通过 link 标签直接引入
 
@@ -41,9 +37,9 @@ require('perfect/perfect.min.css');
 ```
 也可以根据需要部分导入 css 样式或 sass 样式
 ```javascript
-import from 'perfect/dist/css/buttons.css';
+import from 'perfect/css/components/button/button.css';
 // 或者
-import from etc;
+import from 'perfect/scss/components/button/button.css';
 ```
 
 import classNames from 'classnames/bind';

@@ -1,9 +1,10 @@
 // 导航栏
-@import "../../base/variables/variable";
+@import "../../base/mixins/hover";
 @import "../../theme/mixin";
 @import "../../responsive/mixin";
 @import "../../animation/mixin";
 @import "../../shadow/mixin";
+@import "../../ripple/mixin";
 @import "variable";
 
 // 导航容器
@@ -26,10 +27,10 @@
 // Navbar brand
 // 该导航用来设置 brand, project, or site 的名字，另一个就是当设备变小后，只显示该名称
 .navbar-brand {
-  display: inline-block;
+  display: inline-flex;
   padding-top: $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
-  margin-right: $navbar-padding-x;
+  margin-right: $navbar-brand-margin-right;
   font-size: $navbar-font-size;
   line-height: inherit;
   white-space: nowrap;
@@ -102,24 +103,30 @@
   padding-left: 0;
   margin-bottom: 0;
   margin-left: 0;
+  font-size: $navbar-font-size;
   list-style: none;
 
   .nav-link {
-    padding-left: .5rem;
-    padding-right: .5rem;
+    display: inline-flex;
+    padding: 1rem 1.25rem;
+    margin-right: .25rem;
+    border-bottom: 2px solid transparent;
     cursor: pointer;
     @include theme-prop(color, text-secondary-on-light);
 
     @include hover-focus {
       text-decoration: none;
       @include theme-prop(color, text-primary-on-light);
+      @include theme-prop(border-bottom-color, text-secondary-on-light);
     }
 
     &.active {
       @include theme-prop(color, text-primary-on-light);
+      @include theme-prop(border-bottom-color, text-primary-on-light);
     }
 
     &.disabled {
+      border-bottom-color: transparent;
       cursor: default;
       @include theme-prop(color, text-disabled-on-light);
     }
@@ -200,16 +207,27 @@
         @include hover-focus {
           text-decoration: none;
           @include theme-prop(color, text-primary-on-dark);
+          @include theme-prop(border-bottom-color, text-secondary-on-dark);
         }
 
         &.active {
           @include theme-prop(color, text-primary-on-dark);
+          @include theme-prop(border-bottom-color, text-primary-on-dark);
         }
 
         &.disabled {
+          border-bottom-color: transparent;
           cursor: default;
           @include theme-prop(color, text-disabled-on-dark);
         }
+      }
+    }
+    // ripple 效果
+    .nav-link.ripple {
+      &::before,
+      &::after {
+        // ripple 主题样式
+        @include ripple-theme((theme-style: text-primary-on-#{$style}, opacity: .16));
       }
     }
   }

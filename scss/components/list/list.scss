@@ -1,9 +1,9 @@
 // 列表
 // 可用在 ul ol div 等标签上
 
+@import "../../base/variables/border";
+@import "../../base/mixins/hover";
 @import "../../theme/mixin";
-@import "../../base/variables/variable";
-@import "../../base/mixins/mixin";
 @import "variable";
 
 // 基础样式

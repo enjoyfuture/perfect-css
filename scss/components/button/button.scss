@@ -3,7 +3,7 @@
 @import "../../animation/function";
 @import "../../theme/mixin";
 @import "../../ripple/mixin";
-@import "../../normalize/variable";
+@import "../../base/variables/font";
 @import "variable";
 
 .btn {
@@ -11,15 +11,14 @@
   position:                relative;
   box-sizing:              border-box;
   display:                 inline-block;
-  min-width:               64px;
-  height:                  36px;
-  padding:                 0 16px;
+  min-width:               4rem;
+  padding:                 .75rem 1rem;
   border:                  0;
   border-radius:           2px;
   overflow:                hidden;
   font-size:               14px;
   font-weight:             500;
-  line-height:             36px;
+  line-height:             1.25;
   background:              transparent;
   text-align:              center;
   text-decoration:         none;
@@ -38,6 +37,11 @@
     @include ripple-bg((pseudo: "::before"));
     @include ripple-bg((pseudo: "::after"));
     -webkit-tap-highlight-color: rgba(#000, .18);
+  }
+
+  // 对于 a 标签的处理
+  &:hover {
+    text-decoration: none;
   }
 
   &:focus,
@@ -104,7 +108,8 @@
       // 用白色透明色处理动画波纹效果
       &::before,
       &::after {
-        background-color: rgba(#fff, .2);
+        // ripple 主题样式
+        @include ripple-theme((theme-style: text-primary-on-#{$style}, opacity: .16));
       }
     }
   }

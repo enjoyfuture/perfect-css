@@ -4,6 +4,7 @@
 @import "../grid/variable";
 
 @mixin make-container($gutter: $grid-gutter-width) {
+  box-sizing: border-box;
   padding-left: ($gutter / 2);
   padding-right: ($gutter / 2);
   margin-left: auto;

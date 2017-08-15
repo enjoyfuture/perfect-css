@@ -1,8 +1,12 @@
 // Navbar variable
+@import "../../base/variables/font";
+@import "../../base/variables/spacing";
 
-$navbar-height: 3rem !default;
+$navbar-height: 4rem !default;
 $navbar-padding-x: $spacer !default;
 $navbar-brand-padding-y: .25rem !default;
-$navbar-font-size: 1rem !default;
+$navbar-brand-margin-right: .5rem !default;
+$navbar-font-size: $font-size !default;
+
 $navbar-toggler-padding-x: .75rem !default;
 $navbar-toggler-padding-y: .25rem !default;

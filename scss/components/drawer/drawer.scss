@@ -20,11 +20,11 @@ $drawer-width: 240px;
 .drawer {
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
   z-index: 5; // todo
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
   overflow: hidden;
   pointer-events: none;
   // contain 属性允许开发者声明当前元素和它的内容尽可能的独立于其他部分的 Dom 树。这会让浏览器在重新计算布局、样式、绘图或它们的组合的时候，仅仅在有限的 Dom 区域中，并不是整个页面。这个属性常用在包含大量独立的 widgets 小部件的页面，这个 contain 属性可以防止某个小部件的 CSS 规则改变页面上的其他东西。
@@ -49,16 +49,17 @@ $drawer-width: 240px;
 
   // 用来显示导航菜单或列表等
   &-nav {
-    @include theme-prop(background, background);
-    @include shadow(16);
-    // 动画
-    @include drawer-slide;
     position: absolute;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     touch-action: none;
+
+    @include shadow(16);
+    // 动画
+    @include drawer-slide;
 
     // 根据不同的设备设置 drawer nav 宽度
     @each $breakpoint in map-keys($responsive-breakpoints) {
@@ -79,6 +80,8 @@ $drawer-width: 240px;
   &-content {
     box-sizing: border-box;
     flex-grow: 1;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
     margin: 0;
     overflow-x: hidden;
     overflow-y: auto;
@@ -101,17 +104,21 @@ $drawer-width: 240px;
     }
   }
 
-  // drawer 打开时
-  &-open {
-    pointer-events: auto;
+  // drawer 打开时，宽度小于 1440px 起作用
+  // @media screen and (max-width: 1439px)
+  @include media-breakpoint-down(lg) {
+    &-open {
+      pointer-events: auto;
 
-    &::before {
-      opacity: 1;
-      opacity: var(--drawer-opacity, 1);
-    }
+      &::before {
+        opacity: 1;
+        opacity: var(--drawer-opacity, 1);
+      }
 
-    .drawer-nav {
-      @include drawer-slide-open;
+      .drawer-nav {
+        @include theme-prop(background, background);
+        @include drawer-slide-open;
+      }
     }
   }
 
@@ -127,6 +134,7 @@ $drawer-width: 240px;
     width: 1.2em;
     height: 1em;
     padding: $drawer-toggle-padding-y $drawer-toggle-padding-x;
+    margin-right: 1rem;
     border-top: .15em solid currentColor;
     border-bottom: .15em solid currentColor;
     font-size: $drawer-toggle-font-size;
@@ -176,6 +184,10 @@ $drawer-width: 240px;
       transition: $drawer-transition-open;
     }
 
+    &-content {
+      @include theme-prop(background, background);
+    }
+
     // 切换按钮隐藏
     &-toggle:not(.drawer-permanent-toggle) {
       display: none;
@@ -189,11 +201,17 @@ $drawer-width: 240px;
     &-navbar-spacer {
       padding-left: $width;
     }
+
+    // 调整 margin-top 给 navbar 留出阴影空间
+    &.navbar-fixed-adjust .drawer-nav {
+      padding-bottom: .4rem;
+      margin-top: .4rem;
+    }
   }
 }
 
 @include media-breakpoint-up(xl) {
-  $width: map-get($drawer-breakpoints-width, lg);
+  $width: map-get($drawer-breakpoints-width, xl);
 
   .drawer {
     // 修改其宽度与导航宽度一致
@@ -211,7 +229,9 @@ $drawer-width: 240px;
 
 }
 
-// 如果设备宽度超过 1440px 时，还可以通过切换隐藏导航菜单，则需要加上该样式
+
+
+// 如果设备宽度超过 1440px 时，还可以通过切换隐藏导航菜单，则需要加上样式 drawer-permanent
 @include media-breakpoint-up(lg) {
   $width: map-get($drawer-breakpoints-width, lg);
 

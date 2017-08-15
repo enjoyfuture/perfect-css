@@ -1,20 +1,23 @@
+@import "../../../scss/base/mixins/clearfix";
+@import "../../../scss/theme/variable";
+
 // 例子样式
-.doc-example {
+.doc-example-render {
   position: relative;
   padding: 1rem;
-  margin: 1rem (-$grid-gutter-width / 2);
-  border: solid #f7f7f9;
-  border-width: 2px 0 0;
+  margin: 1rem .5rem;
+  border: solid $theme-primary;
+  border-width: 1px 0 0;
   @include clearfix();
 }
 
 @media (min-width: 640px) {
-  .doc-example {
+  .doc-example-render {
     padding: 1.5rem;
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
-    border-width: .3rem .3rem 0;
+    border-width: 1px 1px 0;
   }
 }
 
@@ -23,8 +26,8 @@
   .container-fluid,
   .container {
     padding: 20px;
-    color: darken($purple, 20%);
-    background-color: lighten($purple, 48%);
+    color: darken(#9c27b0, 20%);
+    background-color: lighten(#9c27b0, 48%);
     text-align: center;
   }
   .container-equal-height {
@@ -44,7 +47,7 @@
     }
     .container-equal-height-nav {
       width: 100px;
-      background-color: lighten($purple, 48%);
+      background-color: lighten(#9c27b0, 48%);
     }
     .container-equal-height-main {
       background-color: #f4f4f4;
@@ -52,7 +55,7 @@
   }
   .container-fluid-float {
     .container-fluid-float-cell {
-      background-color: lighten($purple, 48%);
+      background-color: lighten(#9c27b0, 48%);
     }
     .container-fluid-float-full {
       background-color: #f4f4f4;
@@ -66,11 +69,11 @@
     }
   }
   .container-square-box {
-    background-color: lighten($purple, 48%);
+    background-color: lighten(#9c27b0, 48%);
   }
   .exp-square .inline-block {
     width: 200px;
     margin-right: 20px;
   }
-  
+
 }

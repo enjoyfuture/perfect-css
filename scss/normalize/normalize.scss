@@ -1,7 +1,8 @@
 @import "../theme/mixin";
-@import "../base/mixins/mixin";
+@import "../base/mixins";
+@import "../base/variables/font";
+@import "../base/variables/link";
 @import "normalize-css";
-@import "variable";
 
 // 规范化样式
 // 在 normalize.css 的基础上重新定义样式
@@ -55,14 +56,14 @@ main {
 
 // 重置 margin-top margin-bottom
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 1rem;
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 
-// 重置段落 p 元素
+// 重置
 // 用 rem 设置 margin-top margin-bottom
 p {
-  margin-top: 1rem;
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 
