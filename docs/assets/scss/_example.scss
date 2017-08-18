@@ -1,5 +1,6 @@
 @import "../../../scss/base/mixins/clearfix";
 @import "../../../scss/theme/variable";
+@import "../../../scss/theme/color_palette";
 
 // 例子样式
 .doc-example-render {
@@ -30,50 +31,40 @@
     background-color: lighten(#9c27b0, 48%);
     text-align: center;
   }
-  .container-equal-height {
-    &.exp1 {
-      width: 500px;
-      padding-left: 100px;
-      .container-equal-height-nav {
-        margin-left: -100px;
-      }
-    }
-    &.exp2 {
-      width: 500px;
-      padding-right: 100px;
-      .container-equal-height-nav {
-        margin-right: -100px;
-      }
-    }
-    .container-equal-height-nav {
-      width: 100px;
-      background-color: lighten(#9c27b0, 48%);
-    }
-    .container-equal-height-main {
-      background-color: #f4f4f4;
-    }
-  }
-  .container-fluid-float {
-    .container-fluid-float-cell {
-      background-color: lighten(#9c27b0, 48%);
-    }
-    .container-fluid-float-full {
-      background-color: #f4f4f4;
-    }
-    &.exp1>div { padding: 10px;}
-    &.exp2 {
-      .container-fluid-float-cell { padding: 10px;}
-      .container-fluid-float-full .container-fluid-float-full {
-        padding: 10px;
-      }
-    }
-  }
-  .container-square-box {
-    background-color: lighten(#9c27b0, 48%);
-  }
-  .exp-square .inline-block {
-    width: 200px;
-    margin-right: 20px;
-  }
+}
 
+// 栅格例子样式
+.doc-example-row {
+  .row + .row {
+    margin-top: 1rem;
+  }
+  // 嵌套的样式
+  .row .row {
+    border: 1px solid;
+  }
+  [class*="col"] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    background: $light-blue-300;
+    text-align: center;
+
+    &:nth-of-type(2n) {
+      background: $blue-500;
+    }
+  }
+}
+
+.doc-example-row-flex-cols .row {
+  min-height: 5rem;
+  background: $light-blue-50;
+}
+
+.doc-example-row-gutters {
+  .no-gutters {
+    margin-top: 1rem;
+  }
+  [class^="col"] > div {
+    background: $purple-300;
+  }
 }

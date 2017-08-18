@@ -25,11 +25,6 @@
   max-width: percentage($size / $columns);
 }
 
-// offset 是指偏移，用 margin-left 设置其偏移量
-@mixin make-col-offset($size, $columns: $grid-columns) {
-  margin-left: percentage($size / $columns);
-}
-
 // 定义生成 gird framework mixin
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $responsive-breakpoints) {
   // 定义列公共样式，通过占位符选择器
@@ -83,15 +78,6 @@
             order: $i;
           }
         }
-
-        // 设置 offset ，从 0 到 $columns - 1
-        @for $i from 0 through ($columns - 1) {
-          @if not ($infix == "" and $i == 0) { // 对于有响应式前缀，并且是第0个，则或略，例如 .offset-xs-0
-            .offset#{$infix}-#{$i} {
-              @include make-col-offset($i, $columns)
-            }
-          }
-        }
       }
     }
   } @else { // 如果不是响应式的情况
@@ -125,15 +111,6 @@
     @for $i from 1 through $columns {
       .order-#{$i} {
         order: $i;
-      }
-    }
-
-    // 设置 offset ，从 0 到 $columns - 1
-    @for $i from 0 through ($columns - 1) {
-      @if not ($i == 0) { // 对于有响应式前缀，并且是第0个，则或略，例如 .offset-xs-0
-        .offset-#{$i} {
-          @include make-col-offset($i, $columns)
-        }
       }
     }
   }

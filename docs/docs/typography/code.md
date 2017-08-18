@@ -3,7 +3,7 @@ layout: docs
 title: 基础样式-代码
 description: 通过定制代码样式来友好的展现编程代码，让用户清晰的查看代码，结合高亮代码插件，
              呈现给用户的是可读性强、易于使用的代码格式。
-group: base-styles
+group: typography
 toc: true
 ---
 

@@ -19,8 +19,8 @@
 .doc-content {
   border-right: 1px solid $grey-200;
 
-  > h2:not(:first-child) {
-    margin-top: 3rem;
+  > h2 {
+    margin-top: 2rem;
   }
   > h3 {
     margin-top: 1.5rem;
