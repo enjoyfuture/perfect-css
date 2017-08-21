@@ -1,4 +1,6 @@
 // List 变量
+@import "../../theme/variable";
+@import "../../base/variables/border";
 
 $list-margin-top: .75rem !default;
 $list-item-padding-y: .75rem !default;
@@ -8,12 +10,17 @@ $list-item-padding-x: 1rem !default;
 $list-dense-font-size: .75rem !default;
 $list-dense-item-padding-y: .5625rem !default;
 
+// hover
+$list-item-hover-bg: $grey-color-50 !default;
+$list-item-active-bg: $grey-color-200 !default;
+
 // border
 $list-border-width: $border-width !default;
+$list-border-color: $grey-color-300 !default;
 
-// detail
-$list-item-detail-size: 1.5rem !default;
-$list-item-detail-margin: .5rem !default;
+// icon
+$list-item-icon-size: 1.5rem !default;
+$list-item-icon-margin: 1rem !default;
 
 // avatar
 $list-item-avatar-size: 2.5rem !default;
@@ -26,7 +33,7 @@ $list-item-text-line-height: 1.5 !default;
 
 // divider
 $list-divider-inset-left: $list-item-padding-x !default;
-$list-divider-inset-detail-left: $list-item-padding-x + $list-item-detail-size + $list-item-detail-margin !default;
+$list-divider-inset-icon-left: $list-item-padding-x + $list-item-icon-size + $list-item-icon-margin !default;
 $list-divider-inset-avatar-left: $list-item-padding-x + $list-item-avatar-size + $list-item-avatar-margin !default;
 
 // list group
@@ -41,3 +48,6 @@ $list-border-spacing: .625rem !default;
 // right text
 $list-item-text-right-margin-right: .5rem !default;
 $list-item-text-right-font-size: .875rem !default;
+
+// list divider
+$list-divider-border-color: $grey-color-300 !default;
