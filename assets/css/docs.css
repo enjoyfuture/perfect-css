@@ -23,16 +23,6 @@
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-/*
-// 透明色
-$transparent: rgba(0, 0, 0, 0);
-$full-black: rgba(0, 0, 0, 1);
-$dark-black: rgba(0, 0, 0, .87);
-$med-black: rgba(0, 0, 0, .65);
-$light-black: rgba(0, 0, 0, .54);
-$lighter-black: rgba(0, 0, 0, .38);
-$min-black: rgba(0, 0, 0, .26);
-$faint-black: rgba(0, 0, 0, .12);*/
 html {
   position: relative;
 }
@@ -43,7 +33,7 @@ html, body {
 }
 
 body {
-  background-color: #fafafa;
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .doc-journey {
@@ -94,18 +84,8 @@ body {
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-/*
-// 透明色
-$transparent: rgba(0, 0, 0, 0);
-$full-black: rgba(0, 0, 0, 1);
-$dark-black: rgba(0, 0, 0, .87);
-$med-black: rgba(0, 0, 0, .65);
-$light-black: rgba(0, 0, 0, .54);
-$lighter-black: rgba(0, 0, 0, .38);
-$min-black: rgba(0, 0, 0, .26);
-$faint-black: rgba(0, 0, 0, .12);*/
 .drawer-content {
-  background: #fafafa;
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .doc-main {
@@ -118,11 +98,11 @@ $faint-black: rgba(0, 0, 0, .12);*/
 }
 
 .doc-content {
-  border-right: 1px solid #eeeeee;
+  border-right: 1px solid rgba(0, 0, 0, 0.065);
 }
 
-.doc-content > h2:not(:first-child) {
-  margin-top: 3rem;
+.doc-content > h2 {
+  margin-top: 2rem;
 }
 
 .doc-content > h3 {
@@ -344,16 +324,6 @@ $faint-black: rgba(0, 0, 0, .12);*/
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-/*
-// 透明色
-$transparent: rgba(0, 0, 0, 0);
-$full-black: rgba(0, 0, 0, 1);
-$dark-black: rgba(0, 0, 0, .87);
-$med-black: rgba(0, 0, 0, .65);
-$light-black: rgba(0, 0, 0, .54);
-$lighter-black: rgba(0, 0, 0, .38);
-$min-black: rgba(0, 0, 0, .26);
-$faint-black: rgba(0, 0, 0, .12);*/
 /**
  * Applies the correct theme color style to the specified property.
  * $property is typically color or background-color, but can be any CSS property that accepts color values.
@@ -389,16 +359,6 @@ $faint-black: rgba(0, 0, 0, .12);*/
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-/*
-// 透明色
-$transparent: rgba(0, 0, 0, 0);
-$full-black: rgba(0, 0, 0, 1);
-$dark-black: rgba(0, 0, 0, .87);
-$med-black: rgba(0, 0, 0, .65);
-$light-black: rgba(0, 0, 0, .54);
-$lighter-black: rgba(0, 0, 0, .38);
-$min-black: rgba(0, 0, 0, .26);
-$faint-black: rgba(0, 0, 0, .12);*/
 .doc-example-render {
   position: relative;
   padding: 1rem;
@@ -431,60 +391,37 @@ $faint-black: rgba(0, 0, 0, .12);*/
   text-align: center;
 }
 
-.doc-example-container .container-equal-height.exp1 {
-  width: 500px;
-  padding-left: 100px;
+.doc-example-row .row + .row {
+  margin-top: 1rem;
 }
 
-.doc-example-container .container-equal-height.exp1 .container-equal-height-nav {
-  margin-left: -100px;
+.doc-example-row .row .row {
+  border: 1px solid;
 }
 
-.doc-example-container .container-equal-height.exp2 {
-  width: 500px;
-  padding-right: 100px;
+.doc-example-row [class*="col"] {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #fff;
+  background: #4fc3f7;
+  text-align: center;
 }
 
-.doc-example-container .container-equal-height.exp2 .container-equal-height-nav {
-  margin-right: -100px;
+.doc-example-row [class*="col"]:nth-of-type(2n) {
+  background: #2196f3;
 }
 
-.doc-example-container .container-equal-height .container-equal-height-nav {
-  width: 100px;
-  background-color: #f1d6f6;
+.doc-example-row-flex-cols .row {
+  min-height: 5rem;
+  background: #e1f5fe;
 }
 
-.doc-example-container .container-equal-height .container-equal-height-main {
-  background-color: #f4f4f4;
+.doc-example-row-gutters .no-gutters {
+  margin-top: 1rem;
 }
 
-.doc-example-container .container-fluid-float .container-fluid-float-cell {
-  background-color: #f1d6f6;
-}
-
-.doc-example-container .container-fluid-float .container-fluid-float-full {
-  background-color: #f4f4f4;
-}
-
-.doc-example-container .container-fluid-float.exp1 > div {
-  padding: 10px;
-}
-
-.doc-example-container .container-fluid-float.exp2 .container-fluid-float-cell {
-  padding: 10px;
-}
-
-.doc-example-container .container-fluid-float.exp2 .container-fluid-float-full .container-fluid-float-full {
-  padding: 10px;
-}
-
-.doc-example-container .container-square-box {
-  background-color: #f1d6f6;
-}
-
-.doc-example-container .exp-square .inline-block {
-  width: 200px;
-  margin-right: 20px;
+.doc-example-row-gutters [class^="col"] > div {
+  background: #ba68c8;
 }
 
 .highlight table td {
@@ -767,16 +704,6 @@ $faint-black: rgba(0, 0, 0, .12);*/
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-/*
-// 透明色
-$transparent: rgba(0, 0, 0, 0);
-$full-black: rgba(0, 0, 0, 1);
-$dark-black: rgba(0, 0, 0, .87);
-$med-black: rgba(0, 0, 0, .65);
-$light-black: rgba(0, 0, 0, .54);
-$lighter-black: rgba(0, 0, 0, .38);
-$min-black: rgba(0, 0, 0, .26);
-$faint-black: rgba(0, 0, 0, .12);*/
 .highlight {
   padding: 1rem;
   margin: 1rem .5rem;
@@ -814,16 +741,6 @@ $faint-black: rgba(0, 0, 0, .12);*/
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-/*
-// 透明色
-$transparent: rgba(0, 0, 0, 0);
-$full-black: rgba(0, 0, 0, 1);
-$dark-black: rgba(0, 0, 0, .87);
-$med-black: rgba(0, 0, 0, .65);
-$light-black: rgba(0, 0, 0, .54);
-$lighter-black: rgba(0, 0, 0, .38);
-$min-black: rgba(0, 0, 0, .26);
-$faint-black: rgba(0, 0, 0, .12);*/
 .footer-assist {
   padding-top: 4.5rem;
 }
