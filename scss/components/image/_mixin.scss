@@ -1,0 +1,10 @@
+// Image Mixins
+
+// 自适应图片
+@mixin img-fluid {
+  display: inline-block;
+  // 相对于父元素最大 100%，防止超过父元素
+  max-width: 100%;
+  // 设置高度为 auto，会根据宽度来自适应高度，用户也可以动态的设置元素的高度和宽度
+  height: auto;
+}

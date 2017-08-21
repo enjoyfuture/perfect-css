@@ -1,0 +1,59 @@
+
+@import "../../base/variables/spacing";
+@import "./variable";
+
+@import "../../theme/mixin";
+@import "../../base/mixins/border-radius";
+@import "../../shadow/mixin";
+@import "../../animation/mixin";
+@import "./mixin";
+
+// 自适应图片
+.img-fluid {
+  @include img-fluid;
+}
+
+// Image thumbnails 缩略图
+.img-thumbnail {
+  padding: $thumbnail-padding;
+  border: $thumbnail-border-width solid $thumbnail-border-color;
+
+  @include theme-prop(background-color, text-primary-on-dark);
+
+  @include border-radius($thumbnail-border-radius);
+  @include animation-transition(all, 200ms, ease-in-out);
+  @include shadow(4);
+
+  // 确保 100%宽度
+  @include img-fluid;
+}
+
+//
+// Figures
+// 人物
+//
+
+.figure {
+  display: inline-block;
+}
+
+.figure-img {
+  margin-bottom: ($spacer / 2);
+  line-height: 1;
+}
+
+.figure-caption {
+  font-size: $figure-caption-font-size;
+  @include theme-prop(background-color, text-secondary-on-dark);
+  text-align: center;
+}
+
+// 圆角图片
+.img-rounded {
+  border-radius: $thumbnail-border-radius;
+}
+
+// 圆形图片
+.img-circle {
+  border-radius: 50%;
+}

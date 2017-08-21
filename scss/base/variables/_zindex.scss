@@ -1,3 +1,10 @@
-//自定义组件的 zIndex 级别，避免改变这些值
-$zindex-fixed:              1030 !default;
-$zindex-sticky:             1030 !default;
+
+//定义组件的 zIndex 级别，通常不用修改这些值
+$zindex-navbar: 1000 !default;
+$zindex-select: 1000 !default;
+$zindex-fixed: 1030 !default;
+$zindex-sticky: 1030 !default;
+$zindex-dialog-backdrop: 1040 !default;
+$zindex-dialog: 1050 !default;
+$zindex-popover: 1060 !default;
+$zindex-tooltip: 1070 !default;

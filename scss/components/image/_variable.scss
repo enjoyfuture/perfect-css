@@ -1,0 +1,13 @@
+// Image thumbnails 缩略图
+@import "../../base/variables/border";
+@import "../../theme/variable";
+
+$thumbnail-padding: .25rem !default;
+
+$thumbnail-border-width: $border-width !default;
+$thumbnail-border-color: $grey-color-300 !default;
+$thumbnail-border-radius: $border-radius !default;
+
+// Figures 人物
+$figure-caption-font-size: 90% !default;
+

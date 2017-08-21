@@ -1,4 +1,11 @@
 // tab style
+
+@import "./variable";
+@import "../../theme/variable";
+
+@import "../../theme/mixin";
+// @import "./mixin";
+
 // 对于不支持 flex 的浏览器，可以采用 display table 来处理
 .tab-bar {
   position: relative;
@@ -35,7 +42,6 @@
   font-size: $tab-font-size;
   font-weight: $tab-font-weight;
   line-height: $tab-line-height;
-  color: $tab-color;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -44,19 +50,21 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 
+  @include theme-prop(color, text-secondary-on-light);
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    @include theme-prop(color, text-primary-on-light);
+  }
+
   &:hover {
-    color: $tab-hover-color;
     text-decoration: none;
   }
 
   &:focus {
-    color: $tab-hover-color;
     outline: 0;
-  }
-
-  &:active,
-  &.active {
-    color: $tab-active-color;
   }
 
   &::after {
@@ -67,7 +75,7 @@
     display: none;
     width: calc(100% - #{$tab-active-width-subtract});
     height: $tab-active-border;
-    background-color: $tab-active-border-color;
+    @include theme-prop(background-color, text-primary-on-light);
     pointer-events: none;
   }
 
@@ -108,9 +116,16 @@
   font-weight: $tab-font-weight-sm;;
 }
 
-// 自定义主题Tab
-@each $color, $value in $theme {
-  .tab-#{$color} {
-    @include tab-theme($value, $value);
-  }
-}
+// 自定义主题 Tab  todo
+//@each $color, $value in ('primary', 'secondary') {
+//  .tab-#{$color} {
+//    @include tab-theme($value, $value);
+//  }
+//}
+
+// 自定义主题 Tab
+//@each $color, $value in $theme-assist-colors {
+//  .tab-#{$color} {
+//    @include tab-theme($value, $value);
+//  }
+//}

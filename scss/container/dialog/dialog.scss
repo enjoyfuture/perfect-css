@@ -1,4 +1,9 @@
 // 对话框样式
+
+@import "./variable";
+
+@import "../../shadow/mixin";
+
 .dialog {
   position: fixed;
   top: 0;
@@ -27,9 +32,9 @@
   width: calc(100% - #{$dialog-panel-margin-x});
   border-radius: 2px;
   background-color: #fff;
-  box-shadow: $dialog-panel-box-shadow;
   opacity: 0;
   transform: $dialog-panel-transform;
+  @include shadow(23);
 }
 
 .dialog-header {
@@ -52,10 +57,10 @@
   font-size: $dialog-body-font-size;
   font-weight: $dialog-body-font-weight;
   line-height: $dialog-body-line-height;
-  color: $dialog-body-color;
-  letter-spacing: .04em;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+
+  @include theme-prop(color, text-secondary-on-light);
 }
 
 .dialog-scrollable {

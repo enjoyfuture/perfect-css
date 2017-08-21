@@ -1,0 +1,21 @@
+// 定义 tab 主题
+@mixin tab-theme($active-color, $border, $hover-color, $color) {
+
+  .tab {
+    color: $color;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $hover-color;
+    }
+
+    &.active {
+      color: $active-color;
+    }
+
+    &::after {
+      background-color: $border;
+    }
+  }
+}
