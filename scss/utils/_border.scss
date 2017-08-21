@@ -2,29 +2,29 @@
 // Border
 //
 
-@import "../theme/variable";
+@import "../base/variables/border";
 
 .border {
-  border: 1px solid $grey-200 !important;
+  border: 1px solid $border-color !important;
 }
 
 .border-top {
   margin-top: -1px;
-  border-top: 1px solid $grey-200 !important;
+  border-top: 1px solid $border-color !important;
 }
 .border-bottom {
   margin-bottom: -1px;
-  border-bottom: 1px solid $grey-200 !important;
+  border-bottom: 1px solid $border-color !important;
 }
 
 .border-left {
   margin-left: -1px;
-  border-left: 1px solid $grey-200 !important;
+  border-left: 1px solid $border-color !important;
 }
 
 .border-right {
   margin-right: -1px;
-  border-right: 1px solid $grey-200 !important;
+  border-right: 1px solid $border-color !important;
 }
 
 .border-0 {

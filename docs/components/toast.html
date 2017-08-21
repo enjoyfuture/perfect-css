@@ -16,16 +16,18 @@ title: Toast 组件
 <script>
   var timeoutId;
   var toastEl = document.getElementById('toastEl');
+  toastEl.addEventListener('transitionend', () => {
+    toastEl.classList.remove('leave');
+  });
+
   document.getElementById('toastBtn').addEventListener('click', function () {
     toastEl.classList.add('enter');
-    toastEl.classList.remove('leave');
     clearTimeout(timeoutId);
 
     toastEl.firstElementChild.innerHTML = '轻轻的，我来了';
     timeoutId = setTimeout(function () {
       toastEl.firstElementChild.innerHTML = '轻轻的，我走了';
       toastEl.classList.remove('enter');
-      toastEl.classList.add('leave');
     }, 3000);
   }, false);
 </script>

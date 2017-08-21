@@ -1,5 +1,8 @@
 // border variable
 
+@import "../../theme/variable";
+
+$border-color: $grey-color-200 !default;
 $border-width: 1px !default;
 $border-radius: .25rem !default;
 $border-radius-lg: .3rem !default;

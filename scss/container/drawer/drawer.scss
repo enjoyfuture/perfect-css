@@ -4,8 +4,8 @@
 @import "../../theme/mixin";
 @import "../../shadow/mixin";
 @import "../../responsive/mixin";
-@import "./variable";
-@import "./mixin";
+@import "variable";
+@import "mixin";
 
 // 抽屉，主要用在页面布局展示，一般页面的布局为上中下，中间区域又分为左右侧，一侧为菜单，另一侧为内容主区域
 // .drawer 就是为了处理菜单和主区域全屏显示/非全屏显示的切换，通过加入 .drawer 可以实现菜单的显示和隐藏

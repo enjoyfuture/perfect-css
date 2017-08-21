@@ -24,11 +24,28 @@
 // typography 排版样式
 @import "typography/typography";
 
-
 // layout 布局
 @import "layout/box/box";
 @import "layout/container/container";
 @import "layout/grid/grid";
+
+// navigation 导航样式
+//@import "navigation/crumb/crumb";
+@import "navigation/menu/menu";
+@import "navigation/navbar/navbar";
+//@import "navigation/tabs/tabs";
+//@import "navigation/tree/tree";
+
+// container 容器样式
+//@import "container/accordion/accordion";
+//@import "container/callout/callout";
+//@import "container/card/card";
+//@import "container/carousel/carousel";
+//@import "container/dialog/dialog";
+@import "container/drawer/drawer";
+//@import "container/list/list";
+//@import "container/panel/panel";
+@import "container/table/table";
 
 // 表单组件
 @import "components/form-field/form-field";
@@ -38,11 +55,8 @@
 @import "components/radio/radio";
 @import "components/select/select";
 
-// 组件
-@import "components/menu/menu";
-@import "components/list/list";
-@import "components/navbar/navbar";
-@import "components/drawer/drawer";
+// 其他组件
+@import "components/toast/toast";
 
 // 工具类 classes
 @import "utils/utils";

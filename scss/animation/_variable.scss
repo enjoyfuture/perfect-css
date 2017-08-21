@@ -4,3 +4,11 @@ $animation-ease-out: cubic-bezier(0, 0, .2, 1) !default; // 减速 deceleration
 $animation-ease-in-out: cubic-bezier(.4, 0, .2, 1) !default; // 先迅速加速，再缓慢减速 standard
 $animation-ease-in: cubic-bezier(.4, 0, 1, 1) !default; // 加速 acceleration
 $animation-sharp: cubic-bezier(.4, 0, .6, 1) !default; // 极速的变化 sharp
+
+// 动画函数
+$animation-timing-function: (
+  ease-out: $animation-ease-out,
+  ease-in-out: $animation-ease-in-out,
+  ease-in: $animation-ease-in-out,
+  sharp: $animation-ease-in-out
+);

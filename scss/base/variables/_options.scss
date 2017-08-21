@@ -1,13 +1,14 @@
 // Options
 // 可以通过设为 true 或 false 来开启或关闭相关功能
 
-//是否使用响应式布局
+// 是否使用响应式布局
 $enable-responsive: true !default;
 //是否使用圆角
 $enable-rounded: true !default;
-//是否开启阴影效果
-$enable-shadows: false !default;
-//是否开启 transition 动画
-$enable-transitions: true !default;
-//是否开启 gradients 渐变
-$enable-gradients: false !default;
+// 是否开启阴影效果，对于部分组件使用了阴影效果，
+// 用户也可以直接使用 shadow 中定义的阴影样式来为一些元素添加阴影效果
+$enable-shadows: true !default;
+// 是否使用透明色来处理颜色色彩
+$enable-transparent: true !default;
+// 是否开启打印样式
+$enable-print-styles: false !default;

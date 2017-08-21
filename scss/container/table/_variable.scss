@@ -1,0 +1,15 @@
+// Tables variable
+//
+@import "../../base/variables/border";
+@import "../../theme/variable";
+
+$table-cell-padding: .75rem !default;
+$table-sm-cell-padding: .3rem !default;
+
+$table-bg: transparent !default;
+$table-bg-accent: $grey-color-100 !default;
+$table-hover-bg: $grey-color-100 !default;
+$table-active-bg: $table-hover-bg !default;
+
+$table-border-width: $border-width !default;
+$table-border-color: $border-color !default;

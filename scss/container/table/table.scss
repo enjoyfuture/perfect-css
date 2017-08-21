@@ -1,0 +1,122 @@
+// Table style
+//
+
+@import "../../base/variables/spacing";
+@import "./variable";
+
+@import "../../theme/mixin";
+@import "../../responsive/mixin";
+@import "./mixin";
+
+// Table 重置样式
+table {
+  border-collapse: collapse; // 防止出现双边框
+}
+
+caption {
+  padding-top: $table-cell-padding;
+  padding-bottom: $table-cell-padding;
+  text-align: left;
+  caption-side: bottom;
+  @include theme-prop(color, text-secondary-on-primary);
+}
+
+th {
+  text-align: inherit;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $spacer;
+  background-color: $table-bg;
+
+  th,
+  td {
+    padding: $table-cell-padding;
+    border-top: $table-border-width solid $table-border-color;
+    vertical-align: top;
+  }
+
+  thead th {
+    border-bottom: ($table-border-width * 2) solid $table-border-color;
+    vertical-align: bottom;
+  }
+
+  tbody + tbody {
+    border-top: ($table-border-width * 2) solid $table-border-color;
+  }
+
+  .table {
+    background-color: $white;
+  }
+}
+
+
+.table-sm {
+  th,
+  td {
+    padding: $table-sm-cell-padding;
+  }
+}
+
+
+
+// 加上 border
+.table-bordered {
+  border: $table-border-width solid $table-border-color;
+
+  th,
+  td {
+    border: $table-border-width solid $table-border-color;
+  }
+
+  thead {
+    th,
+    td {
+      border-bottom-width: (2 * $table-border-width);
+    }
+  }
+}
+
+
+// 行交替显示对比颜色
+.table-striped {
+  tbody tr:nth-of-type(odd) {
+    background-color: $table-bg-accent;
+  }
+}
+
+// hover 样式
+.table-hover {
+  tbody tr:hover {
+    background-color: $table-hover-bg;
+  }
+}
+
+
+// Table 主题
+//@each $color, $value in $theme-colors {
+//  @include table-row-variant($color, theme-color-level($color, -9));
+//}
+//
+//@include table-row-variant(active, $table-active-bg);
+
+
+// 黑色主题背景待 TODO
+
+// 响应式 tables
+// 对于小屏幕的 table 需要添加该样式，使显示更美观
+.table-responsive {
+  @include media-breakpoint-down(md) {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    // 防止出现双 border
+    &.table-bordered {
+      border: 0;
+    }
+  }
+}

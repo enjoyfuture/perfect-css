@@ -2,7 +2,7 @@
 
 // 重置背景颜色
 .drawer-content {
-  background: $grey-50;
+  background: $grey-color-50;
 }
 
 .doc-main {
@@ -17,7 +17,7 @@
 }
 
 .doc-content {
-  border-right: 1px solid $grey-200;
+  border-right: 1px solid $grey-color-200;
 
   > h2 {
     margin-top: 2rem;

@@ -1,9 +1,10 @@
 // button style
 @import "../../animation/variable";
+@import "../../animation/mixin";
 @import "../../animation/function";
 @import "../../theme/mixin";
 @import "../../ripple/mixin";
-@import "../../base/variables/font";
+@import "../../shadow/mixin";
 @import "variable";
 
 .btn {
@@ -11,14 +12,14 @@
   position:                relative;
   box-sizing:              border-box;
   display:                 inline-block;
-  min-width:               4rem;
-  padding:                 .75rem 1rem;
+  min-width:               $btn-min-width;
+  padding:                 $btn-padding-y  $btn-padding-x;
   border:                  0;
-  border-radius:           2px;
+  border-radius:           $btn-border-radius;
   overflow:                hidden;
-  font-size:               14px;
+  font-size:               $btn-font-size;
   font-weight:             500;
-  line-height:             1.25;
+  line-height:             $btn-line-height;
   background:              transparent;
   text-align:              center;
   text-decoration:         none;
@@ -36,7 +37,7 @@
     @include ripple-base;
     @include ripple-bg((pseudo: "::before"));
     @include ripple-bg((pseudo: "::after"));
-    -webkit-tap-highlight-color: rgba(#000, .18);
+    -webkit-tap-highlight-color: $grey-color-300;
   }
 
   // 对于 a 标签的处理
@@ -64,27 +65,23 @@
   }
 }
 
-// outline TODO
-.btn-outline {
-  border: 1px solid rgba(#000, .78);
-}
-
 // 浮雕的，凸起样式
 .btn-raised {
-  box-shadow:  $btn-box-shadow;
-  transition:  box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+  @include animation-transition(box-shadow, 280ms, ease-in-out);
   will-change: box-shadow;
 
+  @include shadow(2);
+
   &:active {
-    box-shadow: $btn-active-box-shadow;
+    @include shadow(2);
   }
 
   // disabled
   fieldset:disabled &,
   &:disabled,
   &.disabled {
-    background-color: rgba(0, 0, 0, .12);
-    box-shadow:       0 0 0 0 rgba(0, 0, 0, .2), 0 0 0 0 rgba(0, 0, 0, .14), 0 0 0 0 rgba(0, 0, 0, .12);
+    background-color: $grey-color-300;
+    @include shadow(0);
   }
 }
 
@@ -140,4 +137,9 @@
       }
     }
   }
+}
+
+// outline TODO
+.btn-outline {
+  border: 1px solid rgba(#000, .78);
 }
