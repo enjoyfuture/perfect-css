@@ -493,7 +493,7 @@ $container-max-widths: (
 
 ## 开启关闭响应式布局
 我们可以通过设置 Scss 变量 [$enable-responsive]({{site.repo}}/tree/master/scss/base/variables/_options.scss) 来开启或关闭响应式布局，默认是开启。在不需要响应式布局的情况下，可以关闭。
-关闭后，我们使用 `col` `col-1` 等即可创建栅格系统。需要注意的时，要配合 class `container`来使用，并自定义
+关闭后，我们使用 `col` `col-2` 等即可创建栅格系统。需要注意的时，要配合 class `container`来使用，并自定义
 父容器的宽度。
 
 
