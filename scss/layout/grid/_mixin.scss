@@ -2,6 +2,7 @@
 
 @import "../../base/variables/options";
 @import "../../responsive/variable";
+@import "./variable";
 
 // 设置 row 样式
 // 我们采用 flex 布局来实现
@@ -25,6 +26,63 @@
   max-width: percentage($size / $columns);
 }
 
+// 定义列偏移 mixin，用 margin-left 设置其偏移量
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  margin-left: percentage($size / $columns);
+}
+
+// 响应式和非响应式封装成公共的样式
+// 相等宽度对应的样式
+@mixin make-grid-columns-equal-width ($columns, $infix: '') {
+  // 设置所有响应式的列样式，从 1 到 $columns
+  @for $i from 1 through $columns {
+    .col#{$infix}-#{$i} {
+      @extend %grid-column;
+    }
+  }
+  .col#{$infix} ,
+  .col#{$infix}-auto {
+    @extend %grid-column;
+  }
+}
+
+// 多个格子对应的样式
+@mixin make-grid-columns-percentage ($columns, $infix: '') {
+  // 基于 Flexbox 设置相等宽度的列，例如 .col-md 等
+  .col#{$infix} {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+  .col#{$infix}-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+  }
+
+  @for $i from 1 through $columns {
+    .col#{$infix}-#{$i} {
+      @include make-col($i, $columns);
+    }
+  }
+
+  // 重新排列 col 位置
+  @for $i from 1 through $columns {
+    .order#{$infix}-#{$i} {
+      order: $i;
+    }
+  }
+
+  // 设置 offset ，从 0 到 $columns - 1
+  @for $i from 0 through ($columns - 1) {
+    @if not ($infix == "" and $i == 0) { // 对于有响应式前缀，并且是第0个，则或略，例如 .offset-xs-0
+      .offset#{$infix}-#{$i} {
+        @include make-col-offset($i, $columns)
+      }
+    }
+  }
+}
+
 // 定义生成 gird framework mixin
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $responsive-breakpoints) {
   // 定义列公共样式，通过占位符选择器
@@ -36,82 +94,18 @@
     padding-right: ($gutter / 2);
   }
 
-  // fixme 响应式和非响应式布局待合并
   @if $enable-responsive {
     @each $breakpoint in map-keys($breakpoints) {
       // 返回前缀，比如：-md
       $infix: breakpoint-infix($breakpoint, $breakpoints);
 
-      // 设置所有响应式的列样式，从 1 到 $columns
-      @for $i from 1 through $columns {
-        .col#{$infix}-#{$i} {
-          @extend %grid-column;
-        }
-      }
-      .col#{$infix} ,
-      .col#{$infix}-auto {
-        @extend %grid-column;
-      }
-
+      @include make-grid-columns-equal-width($columns, $infix);
       @include media-breakpoint-up($breakpoint, $breakpoints) {
-        // 基于 Flexbox 设置相等宽度的列，例如 .col-md 等
-        .col#{$infix} {
-          flex-basis: 0;
-          flex-grow: 1;
-          max-width: 100%;
-        }
-        .col#{$infix}-auto {
-          flex: 0 0 auto;
-          width: auto;
-          max-width: none;
-        }
-
-        @for $i from 1 through $columns {
-          .col#{$infix}-#{$i} {
-            @include make-col($i, $columns);
-          }
-        }
-
-        // 重新排列 col 位置
-        @for $i from 1 through $columns {
-          .order#{$infix}-#{$i} {
-            order: $i;
-          }
-        }
+        @include make-grid-columns-percentage($columns, $infix);
       }
     }
   } @else { // 如果不是响应式的情况
-    @for $i from 1 through $columns {
-      .col-#{$i} {
-        @extend %grid-column;
-      }
-    }
-    .col,
-    .col-auto {
-      @extend %grid-column;
-    }
-    .col {
-      flex-basis: 0;
-      flex-grow: 1;
-      max-width: 100%;
-    }
-    .col-auto {
-      flex: 0 0 auto;
-      width: auto;
-      max-width: none;
-    }
-
-    @for $i from 1 through $columns {
-      .col-#{$i} {
-        @include make-col($i, $columns);
-      }
-    }
-
-    // 重新排列 col 位置
-    @for $i from 1 through $columns {
-      .order-#{$i} {
-        order: $i;
-      }
-    }
+    @include make-grid-columns-equal-width($columns);
+    @include make-grid-columns-percentage($columns);
   }
 }

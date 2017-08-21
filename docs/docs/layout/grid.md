@@ -352,9 +352,11 @@ toc: true
 </div> 
 
 ## 重新排序
-我们可以使用 flex order 或 margin auto 来对列排序
+我们可以使用 flex `order-*` 、`offset-*` 或 [margin utilities]({{ site.baseurl }}/docs/utilities/spacing/) 来调整列显示位置，
+使用 `order-*` 直接改变列位置，使用 `offset-*` 或 margin auto 通过设置 margin-left 或 margin-right 来偏移列，
+变相的达到调整位置的目的
 
-### flex 排序
+### flex order 排序
 使用 `.order-*` 来调整列位置，可以调整到 1 ~ 24，比如 `order-4` `order-md-4` 等
 
 <div class="doc-example-row">
@@ -365,6 +367,26 @@ toc: true
     <div class="col">位置由2变为1</div>
     <div class="order-2 col">order-2 位置由3变为2</div>
     <div class="order-3 col">order-3 位置由4变为3</div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+### offset 调整位置
+使用 `.offset-*` 来调整列位置，比如 `offset-md-7`，实际上是增加了 margin-left 值，使列移动到 `col-md-7` 的位置上。
+
+<div class="doc-example-row">
+{% example html%}
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">col-md-7</div>
+    <div class="col-md-7 offset-md-7">col-md-7 offset-md-7，向右移动了7格</div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-9">col-md-8 offset-md-9，向右移动了9格</div>
+  </div>
+  <div class="row">    
+    <div class="col-md-10 offset-md-10">col-md-10 offset-md-10，向右移动了10格</div>
   </div>
 </div>
 {% endexample %}
@@ -469,5 +491,9 @@ $container-max-widths: (
 ```
 修改后需要重新编译生成 css 代码，也可以通过自定义主题来在线设置，保存并下载生成的 css 文件。TODO 待完成
 
+## 开启关闭响应式布局
+我们可以通过设置 Scss 变量 [$enable-responsive]({{site.repo}}/tree/master/scss/base/variables/_options.scss) 来开启或关闭响应式布局，默认是开启。在不需要响应式布局的情况下，可以关闭。
+关闭后，我们使用 `col` `col-1` 等即可创建栅格系统。需要注意的时，要配合 class `container`来使用，并自定义
+父容器的宽度。
 
 

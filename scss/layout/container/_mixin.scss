@@ -5,7 +5,6 @@
 
 @mixin make-container($gutter: $grid-gutter-width) {
   box-sizing: border-box;
-  width: 100%;
   padding-left: ($gutter / 2);
   padding-right: ($gutter / 2);
   margin-left: auto;
