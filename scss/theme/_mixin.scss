@@ -12,11 +12,7 @@
 // $style 应该是 $theme-property-values 中某个 key
 // 该 mixin 主要用来设置主题颜色值，并且设置了主题 css 变量值
 // 用户通过修改 css 变量值可以动态的修改整个主题值，比如在 body 上修改 css 变量值
-@mixin theme-prop($property, $style, $important: false) {
-  @if not map-has-key($theme-property-values, $style) {
-    @error "无效的主题属性值，#{$style} 必须是以下的某一 key #{map-keys($theme-property-values)}";
-  }
-
+@mixin theme-color-prop($property, $style, $important) {
   @if $important {
     #{$property}: map-get($theme-property-values, $style) !important;
     #{$property}: var(--theme-#{$style}, map-get($theme-property-values, $style)) !important;
@@ -26,8 +22,68 @@
   }
 }
 
-// 辅助颜色 mixin
-@mixin theme-assist($property, $style, $color, $opacity: 1) {
+// 用来设置主题色对应的色调值，浅色还是深色
+// $style 应该是 $theme-tone-property-values 中某个 key
+@mixin theme-tone-prop($property, $style, $important) {
+  @if $important {
+    #{$property}: map-get($theme-tone-property-values, $style) !important;
+    #{$property}: var(--theme-#{$style}, map-get($theme-tone-property-values, $style)) !important;
+  } @else {
+    #{$property}: map-get($theme-tone-property-values, $style);
+    #{$property}: var(--theme-#{$style}, map-get($theme-tone-property-values, $style));
+  }
+}
+
+// 糅合 theme-color-prop 和 theme-tone-prop
+@mixin theme-prop($property, $style, $important: false) {
+  $color: map-get($theme-property-values, $style);
+  @if ($color) {
+    @include theme-color-prop($property, $style, $important);
+  } @else {
+    $color: map-get($theme-tone-property-values, $style);
+    @if ($color) {
+      @include theme-tone-prop($property, $style, $important);
+    } @else {
+      @error "无效的主题属性值，#{$style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-tone-property-values)}";
+    }
+  }
+}
+
+// 通过设置前后景来定制主题，该 mixin 只处理简单的 color 和 background-color ，对于更复制的需要组件单独定义
+// $style 指 $theme-property-values 或 $theme-assist-colors 中属性值
+// $fore true指前景，false 指背景，默认 true
+@mixin theme($style, $fore: true) {
+  $themes: $theme-property-values;
+  $themes: map-merge($theme-assist-colors, $themes);
+  $color: map-get($themes, $style);
+
+  @if ($color == null) {
+    @error "无效的主题属性值，#{$style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-assist-colors)}";
+  }
+
+  // 色调，判断是深色还是浅色
+  $tone: theme-light-or-dark($color);
+
+  @if ($fore) {
+    color: $color;
+    color: var(--theme-#{$style}, $color);
+
+    background-color: map-get($theme-tone-property-values, text-primary-on-secondary-#{$tone});
+    background-color: var(--theme-#{$style}, map-get($theme-tone-property-values, text-primary-on-secondary-#{$tone}));
+  } @else {
+    color: map-get($theme-tone-property-values, text-primary-on-secondary-#{$tone});
+    color: var(--theme-#{$style}, map-get($theme-tone-property-values, text-primary-on-secondary-#{$tone}));
+
+    background-color: $color;
+    background-color: var(--theme-#{$style}, $color);
+  }
+}
+
+// 设置辅助颜色 mixin
+// 根据给定的 $style ($theme-assist-colors 中的 key) 和 $opacity 设置颜色
+@mixin theme-assist($property, $style, $opacity: 1) {
+  $color: map-get($theme-assist-colors, $style);
+
   @if ($property == "backgroud-color") {
     // 变量 --theme-#{$style} 在 theme.scss 中定义
     $css-var: var(--theme-#{$style}, $color);
@@ -43,6 +99,8 @@
     #{$property}: rgba($color, $opacity);
   }
 
+  // 因为不支持以下写法，所以只处理 $opacity == 1 的情况
+  // #{$property}: rgba(var(--theme-#{$style}, $color), $opacity);
   @if ($opacity == 1) {
     #{$property}: var(--theme-#{$style}, $color);
   }

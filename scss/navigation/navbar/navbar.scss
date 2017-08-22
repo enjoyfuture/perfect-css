@@ -185,7 +185,7 @@
 }
 
 // 定义主题样式
-@each $style in ("primary", "accent") {
+@each $style in ("primary", "secondary") {
   .navbar-#{$style} {
     @include theme-prop(background-color, #{$style});
 

@@ -36,7 +36,7 @@
 @include ripple-unbounded();
 
 // 定义主题样式
-@each $style in ("primary", "accent") {
+@each $style in ("primary", "secondary") {
   .ripple-#{$style} {
     &::before,
     &::after {
@@ -49,11 +49,13 @@
 }
 
 // 辅助颜色对应 ripple
-@each $theme, $color in $theme-assist-colors {
+@each $theme in $theme-assist {
+  $color: map-get($theme-assist-colors, $theme);
+
   .ripple-#{$theme} {
     &::before,
     &::after {
-      @include theme-assist(background-color, $theme, $color, .16);
+      @include theme-assist(background-color, #{$theme}-light, .16);
     }
   }
 }

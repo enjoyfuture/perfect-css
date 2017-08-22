@@ -153,7 +153,7 @@
 }
 
 // 定义主题样式
-@each $style in ("primary", "accent") {
+@each $style in ("primary", "secondary") {
   .checkbox-#{$style} {
     .checkbox-mark-outer {
       @include theme-prop(border-color, #{$style}-light);
@@ -179,14 +179,16 @@
 }
 
 // 辅助颜色对应 checkbox
-@each $theme, $color in $theme-assist-colors {
+@each $theme in $theme-assist {
+  $color: map-get($theme-assist-colors, $theme);
+
   .checkbox-#{$theme} {
     .checkbox-mark-outer {
-      @include theme-assist(border-color, #{$theme}-light, map-get($theme-assist-colors, #{$theme}));
+      @include theme-assist(border-color, #{$theme}-light);
     }
 
     .checkbox-mark-inner {
-      @include theme-assist(background-color, #{$theme}-light, map-get($theme-assist-colors, #{$theme}));
+      @include theme-assist(background-color, #{$theme}-light);
 
       &::after {
         $color-tone: theme-light-or-dark($color);
@@ -199,7 +201,7 @@
     .checkbox-native-control:indeterminate {
       + .checkbox-background {
         .checkbox-mark-inner {
-          @include theme-assist(background-color, $theme, $color);
+          @include theme-assist(background-color, $theme);
         }
       }
     }

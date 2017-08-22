@@ -127,7 +127,7 @@
 }
 
 // 定义主题样式
-@each $style in ("primary", "accent") {
+@each $style in ("primary", "secondary") {
   .radio-#{$style} {
     .radio-circle-outer {
       @include theme-prop(border-color, #{$style}-light);
@@ -152,23 +152,25 @@
 }
 
 // 辅助颜色对应 radio
-@each $theme, $color in $theme-assist-colors {
+@each $theme in $theme-assist {
+  $color: map-get($theme-assist-colors, $theme);
+
   .radio-#{$theme} {
     .radio-circle-outer {
-      @include theme-assist(border-color, #{$theme}-light, map-get($theme-assist-colors, #{$theme}));
+      @include theme-assist(border-color, #{$theme}-light);
     }
 
     .radio-circle-inner {
-      @include theme-assist(background-color, #{$theme}-light, map-get($theme-assist-colors, #{$theme}));
+      @include theme-assist(background-color, #{$theme}-light);
     }
 
     .radio-native-control:checked {
       + .radio-background {
         .radio-circle-outer {
-          @include theme-assist(border-color, $theme, $color);
+          @include theme-assist(border-color, $theme);
         }
         .radio-circle-inner {
-          @include theme-assist(background-color, $theme, $color);
+          @include theme-assist(background-color, $theme);
         }
       }
     }

@@ -86,7 +86,7 @@
 }
 
 // 定义主题样式
-@each $style in ("primary", "accent") {
+@each $style in ("primary", "secondary") {
   .btn-#{$style} {
     @include theme-prop(color, #{$style});
 
@@ -113,9 +113,11 @@
 }
 
 // 辅助颜色
-@each $theme, $color in $theme-assist-colors {
+@each $theme in $theme-assist {
+  $color: map-get($theme-assist-colors, $theme);
+
   .btn-#{$theme} {
-    @include theme-assist(color, $theme, $color);
+    @include theme-assist(color, $theme);
 
     &::before,
     &::after {
@@ -128,7 +130,7 @@
       $color-tone: theme-light-or-dark($color);
       // 判断是用浅色还是深色
       color: map-get(map-get($theme-text-colors, $color-tone), primary);
-      @include theme-assist(background-color, $theme, $color);
+      @include theme-assist(background-color, $theme);
 
       // 用白色透明色处理动画波纹效果
       &::before,

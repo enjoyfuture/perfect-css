@@ -1,0 +1,22 @@
+
+@import "../../theme/variable";
+
+@import "../../theme/mixin";
+@import "../../base/mixins/hover";
+
+@mixin badge-theme($foreground, $background) {
+  @if not map-has-key($theme-property-values, $style) {
+
+  } @else {
+    @include theme-prop(color, $style);
+    @include theme-prop(background-color, $style);
+  }
+
+  // 对于 link 标签
+  &[href] {
+    @include hover-focus {
+      text-decoration: none;
+      @include theme-prop(background-color, $style);
+    }
+  }
+}

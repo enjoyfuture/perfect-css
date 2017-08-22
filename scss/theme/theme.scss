@@ -10,46 +10,38 @@
     #{--theme-#{$style}}: map-get($theme-property-values, $style);
   }
 
+  @each $style in map-keys($theme-tone-property-values) {
+    // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
+    // https://github.com/sasstools/sass-lint/issues/877
+    #{--theme-#{$style}}: map-get($theme-tone-property-values, $style);
+  }
+
   // 辅助颜色
   @each $theme, $color in $theme-assist-colors {
     // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
     // https://github.com/sasstools/sass-lint/issues/877
     #{--theme-#{$theme}}: $color;
   }
+}
 
-  // 辅助颜色浅色透明态
-  @each $theme, $color in $theme-assist-colors-light {
-    // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
-    // https://github.com/sasstools/sass-lint/issues/877
-    #{--theme-#{$theme}-light}: $color;
+// 设置 primary 和 secondary 以及浅色和深色背景颜色值
+// .theme-primary-bg {background-color: #2196f3; background-color: var(--theme-primary, #2196f3);}
+@each $style in map-keys($theme-property-values) {
+  @if $style == "background" {
+    // 背景色，用在背景上
+    // .theme-background {background-color: #fff; background-color: var(--theme-background, #fff);}
+    .theme-background {
+      @include theme-prop(background-color, background, true);
+    }
+  } @else {
+    .theme-#{$style}-bg {
+      @include theme-prop(background-color, $style, true);
+    }
   }
 }
 
-// 背景色，用在背景上
-// .theme-background {background-color: #fff; background-color: var(--theme-background, #fff);}
-.theme-background {
-  @include theme-prop(background-color, background);
-}
-
-// 设置 primary 和 accent 背景颜色值
-// .theme-primary {background-color: #2196f3; background-color: var(--theme-primary, #2196f3);}
-@each $style in ("primary", "accent") {
-  .theme-#{$style}-bg {
-    @include theme-prop(background-color, $style, true);
-  }
-}
-
-// 辅助颜色背景色
-// .theme-success-bg {background-color: #4caf50; background-color: var(--theme-success, #4caf50);}
-@each $theme, $color in $theme-assist-colors {
-  .theme-#{$theme}-bg {
-    background-color: $color;
-    background-color: var(--theme-#{$theme}, $color);
-  }
-}
-
-// 通过添加该样式值，改变文本主题颜色值
-// .theme-text-primary-on-primary {color: #2196f3; color: var(--theme-text-primary-on-primary, #2196f3);}
+// 通过添加该样式值，改变文本主题颜色值，对于主题色调($theme-tone-property-values)，不单独设置
+// .theme-primary {color: #2196f3; color: var(--theme-primary, #2196f3);}
 @each $style in map-keys($theme-property-values) {
   @if $style != "background" {
     .theme-#{$style} {
@@ -58,12 +50,21 @@
   }
 }
 
-// 辅助颜色前景色
-// .theme-text-success {color: #4caf50; color: var(--theme-success, #4caf50);}
+// 辅助颜色背景色
+// .theme-success-bg {background-color: #4caf50; background-color: var(--theme-success, #4caf50);}
 @each $theme, $color in $theme-assist-colors {
-  .theme-text-#{$theme} {
-    color: $color;
-    color: var(--theme-#{$theme}, $color);
+  .theme-#{$theme}-bg {
+    background-color: $color !important;
+    background-color: var(--theme-#{$theme}, $color) !important;
+  }
+}
+
+// 辅助颜色前景色
+// .theme-success {color: #4caf50; color: var(--theme-success, #4caf50);}
+@each $theme, $color in $theme-assist-colors {
+  .theme-#{$theme} {
+    color: $color !important;
+    color: var(--theme-#{$theme}, $color) !important;
   }
 }
 

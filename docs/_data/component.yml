@@ -38,4 +38,5 @@
   file: drawer
 - title: Drawer 组件2
   file: drawer-permanent
-
+- title: 标记组件
+  file: badge

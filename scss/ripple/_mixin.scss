@@ -6,7 +6,7 @@
 
 // ripple 基本样式
 @mixin ripple-base() {
-  will-change:                 transform, opacity;
+  will-change: transform, opacity;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   // :focus 指获取焦点时，可以通过 tab 键切换或鼠标点击触发该伪类，而 :active 指鼠标点击或键盘按下时触发
@@ -16,7 +16,7 @@
     &:hover::before,
     &:active::before,
     &:active::after {
-      opacity:             .6;
+      opacity: .6;
       transition-duration: 85ms;
     }
   }
@@ -41,15 +41,15 @@
 @mixin ripple-bg-base($config) {
   $radius: map-get($config, radius);
   @include ripple-theme($config);
-  position:       absolute;
-  top:            calc(50% - #{$radius});
-  left:           calc(50% - #{$radius});
-  width:          $radius * 2;
-  height:         $radius * 2;
-  border-radius:  50%;
+  position: absolute;
+  top: calc(50% - #{$radius});
+  left: calc(50% - #{$radius});
+  width: $radius * 2;
+  height: $radius * 2;
+  border-radius: 50%;
   pointer-events: none;
-  opacity:        0;
-  transition:     opacity 250ms linear;
+  opacity: 0;
+  transition: opacity 250ms linear;
 }
 
 // 设置 ripple 主题
@@ -67,6 +67,9 @@
   // FIXME $theme-style 待处理，看是否需要该变量
   @if ($theme-style) {
     $theme-value: map-get($theme-property-values, $theme-style);
+    @if ($theme-value == null) {
+      $theme-value: map-get($theme-tone-property-values, $theme-style);
+    }
     $css-var: $theme-value;
     $css-var: var(--theme-#{$theme-style}, $theme-value);
     background-color: rgba($theme-value, $opacity);
@@ -91,20 +94,20 @@
 // 设置 ripple 基本变量，这些变量会根据调用的组件大小和位置，动态的修改其值
 // 需要借助 JavaScript 来实现
 @mixin ripple-impact() {
-  #{--ripple-width}:           0;
-  #{--ripple-height}:          0;
-  #{--ripple-size}:            0;
-  #{--ripple-left}:            0;
-  #{--ripple-top}:             0;
-  #{--ripple-scale}:           1;
-  #{--ripple-translate-end}:   0;
+  #{--ripple-width}: 0;
+  #{--ripple-height}: 0;
+  #{--ripple-size}: 0;
+  #{--ripple-left}: 0;
+  #{--ripple-top}: 0;
+  #{--ripple-scale}: 1;
+  #{--ripple-translate-end}: 0;
   #{--ripple-translate-start}: 0;
 
   // 当 :active 时，显示背景
   // 当 :focus 时，添加该样式 ripple-impact-focused
   &.ripple-impact-focused::after,
   &:active::after {
-    opacity:             .6;
+    opacity: .6;
     transition-duration: 85ms;
   }
 }
@@ -115,13 +118,13 @@
   $radius: map-get($config, radius);
 
   &#{$pseudo} {
-    top:              0;
-    left:             0;
-    width:            $radius;
-    width:            var(--ripple-size, $radius);
-    height:           $radius;
-    height:           var(--ripple-size, $radius);
-    transform:        scale(0);
+    top: 0;
+    left: 0;
+    width: $radius;
+    width: var(--ripple-size, $radius);
+    height: $radius;
+    height: var(--ripple-size, $radius);
+    transform: scale(0);
     transform-origin: center center;
   }
 
@@ -148,12 +151,12 @@
     overflow: visible;
 
     &::after {
-      top:    calc(50% - #{$radius / 2});
-      top:    var(--ripple-top, calc(50% - #{$radius / 2}));
-      left:   calc(50% - #{$radius / 2});
-      left:   var(--ripple-left, calc(50% - #{$radius / 2}));
-      width:  $radius;
-      width:  var(--ripple-size, $radius);
+      top: calc(50% - #{$radius / 2});
+      top: var(--ripple-top, calc(50% - #{$radius / 2}));
+      left: calc(50% - #{$radius / 2});
+      left: var(--ripple-left, calc(50% - #{$radius / 2}));
+      width: $radius;
+      width: var(--ripple-size, $radius);
       height: $radius;
       height: var(--ripple-size, $radius);
     }
@@ -165,8 +168,8 @@
       transform: scale(var(--ripple-scale, 0));
     }
     &.ripple-unbounded::before {
-      top:  0;
-      top:  var(--ripple-top, 0);
+      top: 0;
+      top: var(--ripple-top, 0);
       left: 0;
       left: var(--ripple-left, 0);
     }
