@@ -68,3 +68,12 @@
   }
 }
 
+// 灰色文本前景-背景颜色值
+@each $theme, $color in $greys {
+  .theme-grey-#{$theme} {
+    color: $color !important;
+  }
+  .theme-grey-bg-#{$theme} {
+    background-color: $color !important;
+  }
+}

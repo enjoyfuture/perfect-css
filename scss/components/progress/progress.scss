@@ -1,0 +1,52 @@
+// 进度条
+
+@import "../../base/variables/font";
+
+.progress {
+  box-sizing: border-box;
+  width: 100%;
+  height: 4px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, .3);
+
+  &-inner {
+    position: relative;
+    height: 4px;
+    border-radius: 8px;
+    background-color: #fff;
+    &::after {
+      content: attr(data-value); // 用来取进度值，数值
+      position: absolute;
+      top: -20px;
+      right: -15px;
+      font-size: $font-size-xs;
+      color: #fff;
+    }
+  }
+}
+
+// 带点的进度条
+.progress-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 3px;
+  background-color: #eee;
+
+  &-dot {
+    position: relative;
+    top: -.4rem;
+    box-sizing: border-box;
+    width: .875rem;
+    height: .875rem;
+    border: .25rem solid #eee;
+    border-radius: 100%;
+    background-color: #fff;
+
+    &.active {
+      border-color: #f5d0d1;
+      background-color: #cf121b;
+    }
+  }
+}

@@ -85,6 +85,12 @@
   }
 }
 
+// 100% 边框
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
 // 定义主题样式
 @each $style in ("primary", "secondary") {
   .btn-#{$style} {

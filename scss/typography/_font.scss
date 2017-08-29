@@ -14,3 +14,28 @@
   font-size: $font-size-xs !important;
 }
 
+// 字体粗细
+.font-weight-lighter {
+  font-weight: $font-weight-lighter !important;
+}
+
+.font-weight-normal {
+  font-weight: $font-weight-normal !important;
+}
+
+.font-weight-bold {
+  font-weight: $font-weight-bold !important;
+}
+
+.font-weight-bolder {
+  font-weight: $font-weight-bolder !important;
+}
+
+// 数字表示字体粗细
+@for $i from 1 through 9 {
+  $infix: $i * 100;
+  .font-weight-#{$infix} {
+    font-weight: $infix !important;
+  }
+}
+

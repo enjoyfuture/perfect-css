@@ -1,0 +1,7 @@
+@function sum($z) {
+  @if $z == 1 {
+    @return $z;
+  } @else {
+    @return $z + sum($z - 1);
+  }
+}

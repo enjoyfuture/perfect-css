@@ -40,7 +40,7 @@
 //@import "container/accordion/accordion";
 //@import "container/callout/callout";
 //@import "container/card/card";
-//@import "container/carousel/carousel";
+@import "container/carousel/carousel";
 @import "container/dialog/dialog";
 @import "container/drawer/drawer";
 @import "container/list/list";
@@ -58,8 +58,12 @@
 // 其他组件
 //@import "components/badge/badge";
 @import "components/image/image";
+@import "components/progress/progress";
 @import "components/toast/toast";
 @import "components/tooltip/tooltip";
+
+// 纯 css 图标
+@import "icon-pure-css/icon-pure-css";
 
 // 工具类 classes
 @import "utils/utils";

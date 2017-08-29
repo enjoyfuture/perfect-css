@@ -1,0 +1,19 @@
+// 轮播图变量
+
+@import "../../theme/variable";
+
+$carousel-control-color: $white !default;
+$carousel-control-width: 15% !default;
+$carousel-control-opacity: .5 !default;
+
+$carousel-dots-width: 30px !default;
+$carousel-dots-height: 3px !default;
+$carousel-dots-spacer: 3px !default;
+$carousel-dots-active-bg: $white !default;
+
+$carousel-caption-width: 70% !default;
+$carousel-caption-color: $white !default;
+
+$carousel-control-icon-width: 20px !default;
+
+$carousel-transition: transform .6s ease !default;

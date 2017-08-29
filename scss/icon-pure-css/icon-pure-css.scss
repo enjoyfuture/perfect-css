@@ -1,0 +1,78 @@
+// 纯的 css 图标
+// 默认图标大小为 24px * 24px 加上 .icon-pure-* 可设置不同大小的图标
+
+@import "./variable";
+
+[class*="icon-pure-"] {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  font-style: normal;
+  text-indent: -9999px;
+  vertical-align: middle;
+}
+
+// 定义多种大小的图标
+@each $key, $value in $icon-size  {
+  .icon-pure-#{$key} {
+    width: $value;
+    height: $value;
+  }
+}
+
+// 实心箭头
+[class*="icon-pure-arrow-"] {
+  content: '';
+  width: 0;
+  height: 0;
+  border: inset $arrow-size;
+}
+
+.icon-pure-arrow-up {
+  border-color: transparent transparent $icon-color;
+  border-top-width: 0;
+  border-bottom-style: solid;
+}
+
+.icon-pure-arrow-down {
+  border-color: $icon-color transparent transparent;
+  border-top-style: solid;
+  border-bottom-width: 0;
+}
+
+.icon-pure-arrow-left {
+  border-color: transparent $icon-color transparent transparent;
+  border-left-width: 0;
+  border-right-style: solid;
+}
+
+.icon-pure-arrow-right {
+  border-color: transparent transparent transparent $icon-color;
+  border-left-style: solid;
+  border-right-width: 0;
+}
+
+
+// 空心箭头
+.icon-pure-caret-right {
+
+  &::before, &::after {
+    position: absolute;
+    bottom: 0;
+    right: 2px;
+    width: 14px;
+    height: 2px;
+    margin: auto 0;
+    box-shadow: inset 0 0 0 32px;
+    transform-origin: right;
+  }
+  &::before {
+    top: 2px;
+    transform: rotate(45deg);
+  }
+  &::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+}

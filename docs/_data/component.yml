@@ -40,3 +40,5 @@
   file: drawer-permanent
 - title: 标记组件
   file: badge
+- title: 轮播图组件
+  file: carousel

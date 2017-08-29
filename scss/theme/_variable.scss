@@ -149,7 +149,6 @@ $theme-assist-colors: (
   error-dark: #d32f2f, // $red-700
 ) !default;
 
-
 // 常用灰色颜色，提供了黑色透明度和灰色本身颜色两种方案，根据配置项 $enable-transparent 来选择其中一种方案
 // 默认使用黑色透明度，可以通过修改 base/variables/_options.scss 中变量 $enable-transparent 来选择不同的方案
 

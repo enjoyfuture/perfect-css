@@ -32,6 +32,7 @@
     padding: $toast-padding-y $toast-padding-x;
     border-radius: $toast-border-radius;
     color: $white;
+    opacity: 0;
 
     @include theme-prop(background-color, text-primary-on-light);
   }
