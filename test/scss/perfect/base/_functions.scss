@@ -4,9 +4,9 @@
 
 @include test-module('Perfect Function') {
   @include test('测试 @function rgba-to-rgb($color, $background) 返回的结果是否正确') {
-    $color: rgba(0, 0, 0, .65);
+    $color: rgba(207, 18, 27, .2);
     $background: #ffffff;
-    $expect: #595959;
+    $expect: #f5d0d1;
     @debug rgba-to-rgb($color, $background);
     @include assert-equal(
         rgba-to-rgb($color, $background),
