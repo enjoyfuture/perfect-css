@@ -34,12 +34,17 @@
     color: $white;
     opacity: 0;
 
+    @include animation-transition(opacity, $toast-transition-duration-leave, ease-out);
+
     @include theme-prop(background-color, text-primary-on-light);
   }
 
   &.enter {
     opacity: 1;
     transition-duration: $toast-transition-duration-enter;
+    .toast-content {
+      opacity: 1;
+    }
   }
 }
 

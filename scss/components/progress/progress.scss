@@ -18,7 +18,7 @@
       content: attr(data-value); // 用来取进度值，数值
       position: absolute;
       top: -20px;
-      right: -15px;
+      right: 0;
       font-size: $font-size-xs;
       color: #fff;
     }
