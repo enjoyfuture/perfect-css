@@ -1,7 +1,7 @@
 @import "../theme/variable";
 
 // 定义几种图标大小
-$icon-size: (
+$icons-size: (
   xl: 32px,
   lg: 28px,
   md: 24px,
@@ -9,6 +9,7 @@ $icon-size: (
   xs: 16px
 ) !default;
 
-$icon-color: map-get($theme-text-colors, secondary) !default;
-$icon-active-color: map-get($theme-text-colors, primary) !default;
-$arrow-size: 0.5rem;
+$icon-size: 20px;
+
+$icon-color: map-get($greys, 600) !default;
+$icon-active-color: map-get($greys, 900) !default;

@@ -1,0 +1,12 @@
+// 定义一些通用的样式
+
+// 居中
+@mixin icon-center-middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  // box-shadow: inset 0 0 0 2px;
+  // 除了可以使用 currentColor ，还可以使用 box-shadow: inset 0 0 0 2px;
+  background-color: currentColor;
+  transform: translate(-50%, -50%);
+}

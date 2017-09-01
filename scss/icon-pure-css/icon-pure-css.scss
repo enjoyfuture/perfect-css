@@ -1,20 +1,40 @@
 // 纯的 css 图标
-// 默认图标大小为 24px * 24px 加上 .icon-pure-* 可设置不同大小的图标
-
+// 默认图标大小为 20px * 20px 加上 .icon-pure-* 可设置不同大小的图标
 @import "./variable";
+@import "./mixin";
 
 [class*="icon-pure-"] {
   position: relative;
+  box-sizing: border-box;
   display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: $icon-size;
+  height: $icon-size;
   font-style: normal;
+  color: $icon-color;
   text-indent: -9999px;
   vertical-align: middle;
+
+  &::before,
+  &::after {
+    content: '';
+    pointer-events: none;
+  }
+
+  &:hover,
+  &.active {
+    color: $icon-active-color;
+  }
+
+  &[data-circle] {
+    width: $icon-size * 1.5;
+    height: $icon-size * 1.5;
+    border: 2px solid;
+    border-radius: 50%;
+  }
 }
 
 // 定义多种大小的图标
-@each $key, $value in $icon-size  {
+@each $key, $value in $icon-size {
   .icon-pure-#{$key} {
     width: $value;
     height: $value;
@@ -26,45 +46,43 @@
   content: '';
   width: 0;
   height: 0;
-  border: inset $arrow-size;
+  border: inset $icon-size / 2;
 }
 
 .icon-pure-arrow-up {
-  border-color: transparent transparent $icon-color;
+  border-color: transparent transparent currentColor;
   border-top-width: 0;
   border-bottom-style: solid;
 }
 
 .icon-pure-arrow-down {
-  border-color: $icon-color transparent transparent;
+  border-color: currentColor transparent transparent;
   border-top-style: solid;
   border-bottom-width: 0;
 }
 
 .icon-pure-arrow-left {
-  border-color: transparent $icon-color transparent transparent;
+  border-color: transparent currentColor transparent transparent;
   border-left-width: 0;
   border-right-style: solid;
 }
 
 .icon-pure-arrow-right {
-  border-color: transparent transparent transparent $icon-color;
+  border-color: transparent transparent transparent currentColor;
   border-left-style: solid;
   border-right-width: 0;
 }
 
-
 // 空心箭头
 .icon-pure-caret-right {
-
   &::before, &::after {
     position: absolute;
     bottom: 0;
-    right: 2px;
-    width: 14px;
+    right: 4px;
+    width: $icon-size / 2 * 1.4142135623730951 - 2px;
     height: 2px;
     margin: auto 0;
-    box-shadow: inset 0 0 0 32px;
+    box-shadow: inset 0 0 0 4px;
     transform-origin: right;
   }
   &::before {
@@ -74,5 +92,74 @@
   &::after {
     top: 0;
     transform: rotate(-45deg);
+  }
+}
+
+.icon-pure-caret-up {
+  @extend .icon-pure-caret-right;
+  transform: rotate(-90deg);
+}
+
+.icon-pure-caret-down {
+  @extend .icon-pure-caret-right;
+  transform: rotate(90deg);
+}
+
+.icon-pure-caret-left {
+  @extend .icon-pure-caret-right;
+  transform: rotate(180deg);
+}
+
+// 加减图标
+.icon-pure-minus {
+  &::before {
+    @include icon-center-middle;
+    width: $icon-size;
+    height: 2px;
+  }
+}
+
+.icon-pure-plus {
+  @extend .icon-pure-minus;
+
+  &::after {
+    @include icon-center-middle;
+    width: 2px;
+    height: $icon-size;
+  }
+}
+
+// 勾选
+.icon-pure-check {
+  transform: rotate(-45deg);
+
+  &::before {
+    @include icon-center-middle;
+    width: $icon-size;
+    height: 2px;
+  }
+
+  &::after {
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: $icon-size / 2;
+    background: currentColor;
+  }
+
+  &[data-circle] {
+
+    &::before {
+      top: 55%;
+      left: 55%;
+      width: $icon-size * .75;
+    }
+
+    &::after {
+      top: $icon-size * .33333333;
+      left: $icon-size * .3;
+      width: 2px;
+      height: $icon-size / 2 * .75;
+    }
   }
 }

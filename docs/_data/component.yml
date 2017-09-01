@@ -42,3 +42,5 @@
   file: badge
 - title: 轮播图组件
   file: carousel
+- title: 纯 css 图标
+  file: icon-pure-css
