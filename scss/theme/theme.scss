@@ -1,5 +1,4 @@
 // 定义主题 css 变量
-
 @import "./mixin";
 
 // 用 css 定义各种主题变量值
@@ -10,10 +9,13 @@
     #{--theme-#{$style}}: map-get($theme-property-values, $style);
   }
 
-  @each $style in map-keys($theme-tone-property-values) {
-    // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
-    // https://github.com/sasstools/sass-lint/issues/877
-    #{--theme-#{$style}}: map-get($theme-tone-property-values, $style);
+  // 浅色和深色变量
+  @each $theme, $dark-light in $theme-text-colors {
+    @each $style, $value in $dark-light {
+      // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
+      // https://github.com/sasstools/sass-lint/issues/877
+      #{--theme-#{$theme}-#{$style}}: $value;
+    }
   }
 
   // 辅助颜色

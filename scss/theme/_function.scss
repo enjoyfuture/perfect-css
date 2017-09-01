@@ -59,3 +59,38 @@
     @return "light";
   }
 }
+
+// 根据 $theme-tone-property-values 中的 key 计算对应的变量名
+// 比如 text-primary-on-primary 对应的变量名为 --theme-#{$theme-primary-tone}-primary
+
+@function theme-tone-var($theme-tone-property) {
+  $text-index: str-index($theme-tone-property, 'text-');
+  $on-index: str-index($theme-tone-property, '-on-');
+  $text-next-str: str-slice($theme-tone-property, $text-index + 5, $on-index - 1);
+  $on-next-str: str-slice($theme-tone-property, $on-index + 4);
+  $tone-light-or-dark: null;
+
+  // 这里 scss 不支持形如 js 取变量的方式，故需要处理多个判断
+  @if ($on-next-str == 'light') {
+    $tone-light-or-dark: dark;
+  } @else if ($on-next-str == 'dark') {
+    $tone-light-or-dark: light;
+  } @else if ($on-next-str == 'primary') {
+    $tone-light-or-dark: $theme-primary-tone;
+  } @else if ($on-next-str == 'primary-light') {
+    $tone-light-or-dark: $theme-primary-light-tone;
+  } @else if ($on-next-str == 'primary-dark') {
+    $tone-light-or-dark: $theme-primary-dark-tone;
+  } @else if ($on-next-str == 'secondary') {
+    $tone-light-or-dark: $theme-secondary-tone;
+  } @else if ($on-next-str == 'secondary-light') {
+    $tone-light-or-dark: $theme-secondary-light-tone;
+  } @else if ($on-next-str == 'secondary-dark') {
+    $tone-light-or-dark: $theme-secondary-dark-tone;
+  } @else if ($on-next-str == 'background') {
+    $tone-light-or-dark: $theme-background-tone;
+  }
+
+  @return #{$tone-light-or-dark}-#{$text-next-str};
+}
+

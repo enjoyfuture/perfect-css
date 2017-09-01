@@ -136,11 +136,11 @@ $theme-assist-colors: (
   warning: #ff9800, // $orange-500
   error: #f44336, // $red-500
 
-  // 辅助颜色浅色透明态
-  success-light: rgba(#4caf50, .54),
-  info-light: rgba(#00bcd4, .54),
-  warning-light: rgba(#ff9800, .54),
-  error-light: rgba(#f44336, .54),
+  // 辅助颜色浅色
+  success-light: #a5d6a7, // $green-200
+  info-light: #80deea, // $cyan-200
+  warning-light: #ffe082, // $amber-200
+  error-light: #ef9a9a, // $red-200:
 
   // 辅助颜色深色
   success-dark: #388e3c, // $green-700

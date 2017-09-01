@@ -7,7 +7,7 @@
     $color: rgba(207, 18, 27, .2);
     $background: #ffffff;
     $expect: #f5d0d1;
-    @debug rgba-to-rgb($color, $background);
+    //  @debug rgba-to-rgb($color, $background);
     @include assert-equal(
         rgba-to-rgb($color, $background),
         $expect,
@@ -18,7 +18,7 @@
   @include test('测试 rgb-to-rgba($color) 返回的结果是否正确') {
     $color: #595959;
     $expect: rgba(0, 0, 0, 0.65);
-    @debug rgb-to-rgba($color);
+    // @debug rgb-to-rgba($color);
     @include assert-equal(
         rgb-to-rgba($color),
         $expect,
@@ -29,7 +29,7 @@
   @include test('递归测试 sum') {
     $z: 5;
     $expect: 15;
-    @debug sum($z);
+    // @debug sum($z);
     @include assert-equal(
         sum($z),
         $expect

@@ -15,7 +15,7 @@
       @include expect {
         .text {
           color: #ffffff;
-          color: var(--theme-text-primary-on-primary, #ffffff);
+          color: var(--theme-light-primary, #ffffff);
           background-color: #2196f3;
           background-color: var(--theme-primary, #2196f3);
         }

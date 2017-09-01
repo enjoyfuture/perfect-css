@@ -1,5 +1,6 @@
 // theme mixin
 @import "./variable";
+@import "./function";
 
 /**
  * Applies the correct theme color style to the specified property.
@@ -25,12 +26,14 @@
 // 用来设置主题色对应的色调值，浅色还是深色
 // $style 应该是 $theme-tone-property-values 中某个 key
 @mixin theme-tone-prop($property, $style, $important) {
+  // 根据 $style 返回变量，主要是 light 或 dark 变量
+  $theme-var: theme-tone-var($style);
   @if $important {
     #{$property}: map-get($theme-tone-property-values, $style) !important;
-    #{$property}: var(--theme-#{$style}, map-get($theme-tone-property-values, $style)) !important;
+    #{$property}: var(--theme-#{$theme-var}, map-get($theme-tone-property-values, $style)) !important;
   } @else {
     #{$property}: map-get($theme-tone-property-values, $style);
-    #{$property}: var(--theme-#{$style}, map-get($theme-tone-property-values, $style));
+    #{$property}: var(--theme-#{$theme-var}, map-get($theme-tone-property-values, $style));
   }
 }
 
