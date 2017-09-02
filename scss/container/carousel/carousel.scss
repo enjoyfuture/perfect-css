@@ -18,6 +18,8 @@
   position: relative;
   display: flex;
   width: 100%;
+  // 动画
+  @include animation-transition(transform, .6s ease-in);
 }
 
 .carousel-item {
@@ -25,8 +27,6 @@
   align-items: center;
   width: 100%;
   flex-shrink: 0;
-  // 动画
-  @include animation-transition(transform, .6s ease-in);
 }
 
 .carousel-dots {
@@ -51,7 +51,10 @@
     margin-right: $carousel-dots-spacer;
     background-color: rgba($carousel-dots-active-bg, .5);
     text-indent: -999px;
+    // 动画
+    @include animation-transition(all, .6s ease-in);
 
+    // 添加 before 和 after ，增加区域，方便点击操作
     &::before {
       content: "";
       position: absolute;
