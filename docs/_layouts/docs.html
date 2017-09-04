@@ -20,7 +20,7 @@
       <div class="doc-main">
         {% if page.toc %}
         <div class="row no-gutters">
-          <div class="doc-content col-24 col-xl-19 col-lg-18 col-md-17 p-r-3">
+          <div class="doc-content col-24 col-xl-20 col-lg-19 p-r-3">
             <p>{{ page.description }}</p>
             <div class="doc-content-header">
               <a href="{{site.repo}}/edit/master/docs/{{page.path}}" target="_blank">编辑该页面</a>
@@ -30,7 +30,7 @@
 
             {{ content | toc_content }}
           </div>
-          <div class="col-24 col-xl-5 col-lg-6 col-md-7">
+          <div class="col-24 col-xl-4 col-lg-5">
             {{ content | toc_catalogue }}
           </div>
         </div>

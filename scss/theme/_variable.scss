@@ -129,7 +129,7 @@ $theme-tone-property-values: (
 // 主要用来区分文本颜色和背景，以及表单样式（比如校验失败和成功的颜色）等
 $theme-assist: ("success", "info", "warning", "error") !default;
 
-//具体颜色值
+// 具体颜色值
 $theme-assist-colors: (
   success: #4caf50, // $green-500
   info: #00bcd4, // $cyan-500

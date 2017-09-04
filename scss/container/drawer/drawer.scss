@@ -10,9 +10,9 @@
 // 抽屉，主要用在页面布局展示，一般页面的布局为上中下，中间区域又分为左右侧，一侧为菜单，另一侧为内容主区域
 // .drawer 就是为了处理菜单和主区域全屏显示/非全屏显示的切换，通过加入 .drawer 可以实现菜单的显示和隐藏
 // 设计原则：
-// 1. 当屏幕宽度超过 1440px 时，默认页面中的所有元素可见，此时可以点击头部菜单图标，隐藏或显示菜单栏，
+// 1. 当屏幕宽度超过 1200px 时，默认页面中的所有元素可见，此时可以点击头部菜单图标，隐藏或显示菜单栏，
 // 布局上，当菜单栏显示时，会使主区域宽度变小，反之充满整个屏幕。
-// 2. 当屏幕宽度小于 1440px 时，默认页面中菜单隐藏，当点击头部菜单图标时，隐藏或显示菜单栏，
+// 2. 当屏幕宽度小于 1200px 时，默认页面中菜单隐藏，当点击头部菜单图标时，隐藏或显示菜单栏，
 // 布局上，当菜单栏显示时，采用蒙板效果，把主区域盖住，同时在页面上面弹出菜单栏
 
 $drawer-width: 240px;
@@ -104,8 +104,8 @@ $drawer-width: 240px;
     }
   }
 
-  // drawer 打开时，宽度小于 1440px 起作用
-  // @media screen and (max-width: 1439px)
+  // drawer 打开时，宽度小于 1200px 起作用
+  // @media screen and (max-width: 1199px)
   @include media-breakpoint-down(lg) {
     &-open {
       pointer-events: auto;
@@ -153,8 +153,8 @@ $drawer-width: 240px;
   }
 }
 
-// drawer 打开时，页面禁止滚动，只有设备宽度小于 1440px 才起作用
-// @media screen and (max-width: 1439px)
+// drawer 打开时，页面禁止滚动，只有设备宽度小于 1200px 才起作用
+// @media screen and (max-width: 1199px)
 @include media-breakpoint-down(lg) {
   .drawer-scroll-lock {
     height: 100vh;
@@ -167,8 +167,8 @@ $drawer-width: 240px;
   transition: $drawer-transition-close;
 }
 
-// 当设备宽度超过 1440px 时，drawer nav 默认显示
-// @media screen and (min-width: 1440px)
+// 当设备宽度超过 1200px 时，drawer nav 默认显示
+// @media screen and (min-width: 1199px)
 @include media-breakpoint-up(lg) {
   $width: map-get($drawer-breakpoints-width, lg);
 
@@ -229,9 +229,7 @@ $drawer-width: 240px;
 
 }
 
-
-
-// 如果设备宽度超过 1440px 时，还可以通过切换隐藏导航菜单，则需要加上样式 drawer-permanent
+// 如果设备宽度超过 1200px 时，还可以通过切换隐藏导航菜单，则需要加上样式 drawer-permanent
 @include media-breakpoint-up(lg) {
   $width: map-get($drawer-breakpoints-width, lg);
 

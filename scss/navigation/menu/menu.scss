@@ -19,6 +19,10 @@ ul.menu, ol.menu {
   }
 }*/
 
+.menu {
+  margin-left: .5rem;
+}
+
 .menu-title {
   display: block;
   padding: .3rem .5rem;
@@ -81,7 +85,6 @@ ul.menu, ol.menu {
   > .menu-item, > li {
     > a::before {
       content: counter(catalogue1, decimal) ". ";
-      margin-right: .5rem;
       font-weight: bold;
       counter-increment: catalogue1;
     }

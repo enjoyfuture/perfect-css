@@ -7,22 +7,19 @@
     content: '目录';
     position: absolute;
     top: -25px;
-    padding-left: 1rem;
+    padding-left: .5rem;
     color: #999;
   }
 }
 
 .doc-catalogue {
-  margin-left: 1rem;
-
   &.doc-catalogue-header {
     margin-left: .5rem;
   }
 
   .menu-title {
     position: relative;
-    width: 230px;
-    padding-left: 1rem;
+    min-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

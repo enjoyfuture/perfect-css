@@ -11,11 +11,11 @@ $drawer-main-padding-left: animation-enter(padding-left, $drawer-main-padding-le
 
 // 根据不同的设备宽度，定义 drawer 宽度
 $drawer-breakpoints-width: (
-  xs: 200px,
-  sm: 220px,
-  md: 240px,
-  lg: 260px,
-  xl: 280px,
+  xs: 160px,
+  sm: 180px,
+  md: 200px,
+  lg: 220px,
+  xl: 240px,
 );
 
 $drawer-toggle-font-size: 1rem !default;

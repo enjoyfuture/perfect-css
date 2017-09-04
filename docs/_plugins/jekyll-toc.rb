@@ -57,7 +57,7 @@ module Jekyll
           end
 
           html << %Q{  <li>\n}
-          html << %Q{    <a class="menu-title" href="#" data-menu="#{prefix}#{i + 1}">#{node[:text]}</a>\n}
+          html << %Q{    <a class="menu-title" href="#" title="#{node[:text]}" data-menu="#{prefix}#{i + 1}">#{node[:text]}</a>\n}
           if node[:children] && node[:children].length > 0
             subHtml = generateTocCatalogueHtml(node[:children], "#{prefix}#{i + 1}-", anchor, false);
             html << subHtml
