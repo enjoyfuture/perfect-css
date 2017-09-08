@@ -1,3 +1,10 @@
+
+// 自定义主题
+@import "theme";
+
+// 主 CSS 样式
+@import "../../../scss/perfect";
+
 // 定义 docs 样式
 // 样式以前缀 .doc-开头来书写
 
@@ -12,6 +19,9 @@
 
 // 文档样式
 @import "document";
+
+// 左侧菜单
+@import "menu";
 
 // 目录样式
 @import "catalogue";

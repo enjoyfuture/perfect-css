@@ -16,31 +16,6 @@
       extend: true,
       plugins: CatalogueSpy,
     });
-    // 窗口滑动到某一位置时，修改目录定位位置
-    $(window).on('scroll', function (event) {
-      var top = window.scrollY;
-      var clientHeight = document.documentElement.clientHeight;
-      var scrollHeight = document.documentElement.scrollHeight;
-      var contentTop = $('.doc-content').offset().top;
-
-      if (top > scrollHeight - clientHeight) {
-        $('.doc-catalogue-panel').css({
-          position: 'absolute',
-          top: top + 'px'
-        });
-      } else if (top + 52 > contentTop) {
-        $('.doc-catalogue-panel').css({
-          position: 'fixed',
-          top: '50px'
-        });
-      } else {
-        $('.doc-catalogue-panel').css({
-          position: 'static',
-        });
-      }
-    });
-
-    $(window).trigger('scroll');
   });
 </script>
 {% endif %}

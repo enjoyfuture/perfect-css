@@ -7,7 +7,7 @@
 // sass 中只能精确到 15 位，即 precision 最大为15
 @function coefficient($rgb) {
   $rgb: $rgb / 255;
-  @return if($rgb < 0.03928, $rgb / 12.92, pow(($rgb + 0.055) / 1.055, 2.4));
+  @return if($rgb < .03928, $rgb / 12.92, pow(($rgb + .055) / 1.055, 2.4));
 }
 
 // 计算色彩的相对亮度

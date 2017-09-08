@@ -1,5 +1,6 @@
 // 纯的 css 图标
-// 默认图标大小为 20px * 20px 加上 .icon-pure-* 可设置不同大小的图标
+// 默认图标大小为 20px * 20px ，用户可以通过自定义图标宽度和高度来改变其大小，
+// 或者直接使用 transform: scale(.5); 来缩小或扩大
 @import "./variable";
 @import "./mixin";
 
@@ -30,14 +31,6 @@
     height: $icon-size * 1.5;
     border: 2px solid;
     border-radius: 50%;
-  }
-}
-
-// 定义多种大小的图标
-@each $key, $value in $icon-size {
-  .icon-pure-#{$key} {
-    width: $value;
-    height: $value;
   }
 }
 
@@ -159,7 +152,7 @@
       top: $icon-size * .33333333;
       left: $icon-size * .3;
       width: 2px;
-      height: $icon-size / 2 * .75;
+      height: $icon-size / 2 * .8;
     }
   }
 }

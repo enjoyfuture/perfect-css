@@ -1,15 +1,38 @@
 // 目录和内容
 @import "../../../scss/responsive/mixin";
+@import "../../../scss/theme/mixin";
+@import "../../../scss/animation/mixin";
 
-.doc-catalogue-header {
-  position: relative;
-  &::before {
-    content: '目录';
-    position: absolute;
-    top: -25px;
-    padding-left: .5rem;
-    color: #999;
+.doc-catalogue-menu:hover {
+  .doc-catalogue-panel {
+    transform: translate(0, 0);
   }
+}
+
+.doc-catalogue-panel {
+  position: fixed;
+  top: 64px;
+  right: 0;
+  z-index: 1000;
+  padding-top: .5rem;
+  border-left: 1px solid;
+  overflow: hidden;
+  background-color: #fff;
+  transform: translate(200%, 0);
+  @include theme-prop(border-left-color, primary);
+  @include animation-transition(transform);
+}
+
+.doc-catalogue-icon {
+  position: fixed;
+  top: 4.5rem;
+  right: .5rem;
+  z-index: 1000;
+  padding: .5rem 1rem;
+  border: 1px solid;
+  cursor: pointer;
+  @include theme-prop(border-color, primary);
+  @include theme-prop(background-color, text-primary-on-dark);
 }
 
 .doc-catalogue {
@@ -36,16 +59,6 @@
     &.active::after {
       border-left: 2px solid #193c5a;
     }
-  }
-}
-
-.doc-catalogue-panel {
-  margin-top: 50px;
-}
-
-@include media-breakpoint-down(sm) {
-  .doc-catalogue-panel {
-    display: none !important;
   }
 }
 

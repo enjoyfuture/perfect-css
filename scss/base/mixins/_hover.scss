@@ -2,6 +2,7 @@
   &:hover { @content }
 }
 
+// sass-lint:disable brace-style
 @mixin hover-focus {
   &:focus,
   &:hover {

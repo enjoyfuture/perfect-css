@@ -8,17 +8,20 @@
 .doc-main {
   min-height: 500px;
   padding: 1.5rem 1rem;
+
+  p, li {
+    line-height: 2;
+  }
 }
 
 .doc-content-header {
-  > a {
+  padding-right: 4rem;
+  a {
     margin: 0 .5rem;
   }
 }
 
 .doc-content {
-  border-right: 1px solid $grey-color-200;
-
   > h2 {
     margin-top: 2rem;
   }

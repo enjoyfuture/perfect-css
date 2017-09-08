@@ -1,4 +1,3 @@
-
 @import "./variable";
 
 // box shadow 属性值
@@ -11,10 +10,9 @@
     @error "$z-value must be between 0 and 24";
   }
 
-  box-shadow:
-    #{"#{map-get($shadow-umbra-map, $z-value)} #{$shadow-umbra-color}"},
-    #{"#{map-get($shadow-penumbra-map, $z-value)} #{$shadow-penumbra-color}"},
-    #{map-get($shadow-ambient-map, $z-value)} $shadow-ambient-color;
+  box-shadow: #{map-get($shadow-umbra-map, $z-value)} #{$shadow-umbra-color},
+  #{map-get($shadow-penumbra-map, $z-value)} #{$shadow-penumbra-color},
+  #{map-get($shadow-ambient-map, $z-value)} $shadow-ambient-color;
 }
 
 // 动画规则

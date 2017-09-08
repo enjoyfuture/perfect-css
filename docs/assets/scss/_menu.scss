@@ -1,5 +1,34 @@
+@import "../../../scss/theme/variable";
+
 .doc-menu {
-  background-color: #fafafa;
+  &.menu, .menu {
+    margin-left: 0;
+  }
+  .menu-title {
+    padding: .5rem 1rem;
+  }
+
+  .menu-sub-title {
+    &:hover {
+      color: var(--theme-primary);
+    }
+
+    &.active {
+      $bg-color: #90caf9;
+      $opacity: .3;
+      $css-var: var(--theme-primary-light, $bg-color);
+
+      color: var(--theme-primary);
+      background-color: rgba($bg-color, $opacity);
+
+      // 可以动态的设置颜色透明度，属于 CSS 4 color 范畴，目前浏览器支持的不是很好
+      // 可以用 rgba 来代替，但只能静态设置，不可以随着颜色和透明度的变化动态设置
+      // https://drafts.csswg.org/css-color/#modifying-colors
+      @supports (background-color: color(green a(10%))) {
+        background-color: color(#{$css-var} a(#{percentage($opacity)}));
+      }
+    }
+  }
 }
 
 .product-teaser {
@@ -45,7 +74,7 @@
   }
 
   // 6. Brother selectors
-  + .main  {
+  + .main {
     font-size: 1.2em;
   }
 

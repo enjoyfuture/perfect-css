@@ -19,7 +19,7 @@
   display: flex;
   width: 100%;
   // 动画
-  @include animation-transition(transform, .6s ease-in);
+  @include animation-transition(transform, .3s, ease-in);
 }
 
 .carousel-item {
@@ -38,6 +38,7 @@
   display: flex;
   justify-content: center;
   padding-left: 0;
+  margin-bottom: 0;
   margin-left: $carousel-control-width;
   margin-right: $carousel-control-width;
   list-style: none;
@@ -52,7 +53,7 @@
     background-color: rgba($carousel-dots-active-bg, .5);
     text-indent: -999px;
     // 动画
-    @include animation-transition(all, .6s ease-in);
+    @include animation-transition(all, .6s, ease-in);
 
     // 添加 before 和 after ，增加区域，方便点击操作
     &::before {

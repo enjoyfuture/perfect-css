@@ -3,8 +3,8 @@
 @import "../../theme/mixin";
 @import "../../animation/mixin";
 @import "../../theme/variable";
+@import "../../animation/variable";
 @import "./variable";
-
 
 .toast {
   position: fixed;
@@ -41,9 +41,12 @@
 
   &.enter {
     opacity: 1;
+    transition-timing-function: $animation-ease-in-out;
     transition-duration: $toast-transition-duration-enter;
     .toast-content {
       opacity: 1;
+      transition-timing-function: $animation-ease-in-out;
+      transition-duration: $toast-transition-duration-enter;
     }
   }
 }

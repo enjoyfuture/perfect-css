@@ -42,6 +42,13 @@
       file: flex
     - title: 媒体查询
       file: media-queries
+- title: 主题
+  file: theme
+  pages:
+    - title: 主题设计理念
+      file: design-concept
+    - title: 自定义主题
+      file: custom-theme
 - title: 布局
   file: layout
   pages:

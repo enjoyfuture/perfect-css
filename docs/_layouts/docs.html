@@ -19,20 +19,22 @@
     <main class="drawer-main navbar-fixed-adjust">
       <div class="doc-main">
         {% if page.toc %}
-        <div class="row no-gutters">
-          <div class="doc-content col-24 col-xl-20 col-lg-19 p-r-3">
+        <div class="doc-content">
+          <div class="doc-content-header">
+            <!-- TODO 此处待换成图标-->
+            <div class="doc-catalogue-menu">
+              <div class="doc-catalogue-icon">目录</div>
+              {{ content | toc_catalogue }}
+            </div>
             <p>{{ page.description }}</p>
-            <div class="doc-content-header">
+            <div>
               <a href="{{site.repo}}/edit/master/docs/{{page.path}}" target="_blank">编辑该页面</a>
               <a href="{{site.repo}}/issues/new?title=问题或建议({{ page.title }})" target="_blank">问题和建议</a>
             </div>
-            <hr/>
+          </div>
+          <hr/>
 
-            {{ content | toc_content }}
-          </div>
-          <div class="col-24 col-xl-4 col-lg-5">
-            {{ content | toc_catalogue }}
-          </div>
+          {{ content | toc_content }}
         </div>
         {% else %}
         <div class="doc-content">

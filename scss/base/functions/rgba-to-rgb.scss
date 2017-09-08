@@ -16,6 +16,7 @@
   $min: min($red, $green, $blue);
   $alpha: (255 - $min) / 255;
 
+  // sass-lint:disable indentation
   // alpha 保留两位有效数字
   @return rgba(
       ($red - $min) / $alpha,

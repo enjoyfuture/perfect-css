@@ -37,7 +37,6 @@
     @include ripple-base;
     @include ripple-bg((pseudo: "::before"));
     @include ripple-bg((pseudo: "::after"));
-    -webkit-tap-highlight-color: $grey-color-300;
   }
 
   // 对于 a 标签的处理

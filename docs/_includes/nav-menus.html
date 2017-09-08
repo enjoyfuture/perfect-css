@@ -3,7 +3,7 @@
 {% assign pageLastPath = pagePath | last %}
 {% assign prefix = 'docs' %}
 
-<ul class="menu">
+<ul class="menu doc-menu">
   {% for group in site.data.menu %}
   {% assign firstPage = group.pages | first %}
   {% assign link = firstPage.file %}
@@ -14,16 +14,20 @@
   {% endif %}
   <li class="menu-item">
     <a {% if group.file %}href="/{{ prefix }}/{{ group.file }}/{{ link }}{% if link %}/{% endif %}" {% endif %}
-       class="menu-title menu-header {{ active }}">{{ group.title }}</a>
+       class="menu-title menu-header {{ active }}" style="padding-left: 1rem;">{{ group.title }}</a>
     <ul class="menu"{% if page.group != group.file %} style="display: none;"{% endif %}>
       {% for doc in group.pages %}
       {% assign active = nil %}
 
       {% if page.group == group.file and doc.file == pageLastPath %}
-      {% assign active = 'active' %}
+      {% assign active = ' active' %}
       {% endif %}
-      <li class="menu-item"><a href="{% if doc.file %}/{{ prefix }}/{{ group.file }}/{{ doc.file }}/{% else %}{{ doc.url }}{% endif %}"
-             {% if doc.url %}target="_blank"{% endif %}class="menu-title {{ active }}">{{ doc.title }}</a></li>
+
+      {% assign padding = 2 %}
+
+      <li class="menu-item">
+        <a href="{% if doc.file %}/{{ prefix }}/{{ group.file }}/{{ doc.file }}/{% else %}{{ doc.url }}{% endif %}"
+             {% if doc.url %}target="_blank"{% endif %}class="menu-title menu-sub-title{{ active }}" style="padding-left: 2rem;">{{ doc.title }}</a></li>
       {% endfor %}
     </ul>
   </li>

@@ -14,14 +14,13 @@
     height: 4px;
     border-radius: 8px;
     background-color: #fff;
-    &::after {
-      content: attr(data-value); // 用来取进度值，数值
-      position: absolute;
-      top: -20px;
-      right: 0;
-      font-size: $font-size-xs;
-      color: #fff;
-    }
+  }
+
+  &-inner-text {
+    position: absolute;
+    top: -20px;
+    font-size: $font-size-xs;
+    color: #fff;
   }
 }
 
