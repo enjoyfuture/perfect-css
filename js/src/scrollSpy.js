@@ -102,7 +102,7 @@ const ScrollSpy = ((perfect) => {
       }
 
       // 显示菜单
-      doc.querySelector(menu).style.display = 'block';
+      // doc.querySelector(menu).style.display = 'block';
       if (immedLoad) {
         this.refresh();
         this.process();

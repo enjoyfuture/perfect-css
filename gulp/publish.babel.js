@@ -29,7 +29,7 @@ gulp.task('publish-build', ['prepublish'], () => {
   return gulp.src(['build/scss/**/*.scss'])
     .pipe($.sourcemaps.init())
     .pipe($.sass(scssOption).on('error', $.sass.logError))
-    .pipe($.postcss(postcssPlugins))
+    .pipe($.postcss(postcssPlugins()))
     .pipe($.sourcemaps.write('../css-maps'))
     .pipe(gulp.dest('build/css'));
 });

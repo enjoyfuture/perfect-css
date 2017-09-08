@@ -45,7 +45,7 @@ rules:
     - 1
     - convention: zero
   brace-style: # 大括号风格
-    - 0
+    - 1
     - allow-single-line: true
   class-name-format:  # 样式命名规范，以下设置采用小写字母和连接字符 - https://github.com/sasstools/sass-lint/blob/master/docs/rules/class-name-format.md
     - 1
@@ -84,10 +84,10 @@ rules:
     - 1
     - convention: hyphenatedlowercase
   indentation: # 缩进
-    - 0
+    - 1
     - size: 2
   leading-zero: # 对于小数值，前面是否加0，比如 0.1rem  .1rem，默认为下面的设置，即使用后者
-    - 0
+    - 1
     - include: false
   max-file-line-count: # 每个文件最大行数
     - 1

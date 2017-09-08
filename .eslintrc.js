@@ -139,9 +139,6 @@ module.exports = {
     "wrap-iife": [2, "any"], // 立即执行函数是里面包裹还是外面包裹，默认是外面包裹，即 outside
     "yoda": 2, // 不允许使用 yoda 条件表达式，常量值在前的比较表达式，比如： if(1 === a){ }
 
-    // Strict Mode
-    "strict": 0,
-
     // Variables
     "init-declarations": 0, // 声明变量的时候赋值，还是在其他地方赋值，我们可以关闭该规则
     "no-catch-shadow": 2, // 在IE8或更早的浏览器中，在catch语句中引入的变量 e 会调用全局已定义的变量 e
@@ -193,6 +190,7 @@ module.exports = {
     "func-style": [0, "declaration", {  // 是声明式的函数，还是定义变量式的函数，我们采用声明式，但箭头函数允许变量式
       "allowArrowFunctions": true
     }],
+    "function-paren-newline": [0, "multiline"], // 函数参数书写格式，是否要换行
     "id-blacklist": 2, // 指定一些黑名单变量，这些变量不能出现在代码中，比如 "id-blacklist": [2, "data", "err", "e", "cb", "callback"],
     "id-length": 0, // 定义变量名或属性名的最小最大长度
     "id-match": 2, // 规范变量名或属性名的命名规范
@@ -215,7 +213,7 @@ module.exports = {
     "max-params": [2, 8], // 限定函数参数最大个数
     "max-statements": [2, 80, {"ignoreTopLevelFunctions": true}], // 在一个函数中限定声明表达式最多个数,内部函数会或略
     "max-statements-per-line": [2, {"max": 2}], // 每行最大表达式
-    "multiline-ternary": [2, "always-multiline"], // 三元表达式，是否需要多行书写
+    "multiline-ternary": 0, // 三元表达式，是否需要多行书写
     "new-cap": 0, // 构造函数首字母应该大写
     "new-parens": 2, // 实例化构造函数时，需要加入()，即使没有参数值，所以比如 new Person 是不允许的
     "newline-per-chained-call": 0,
@@ -279,8 +277,8 @@ module.exports = {
     "wrap-regex": 2, // 字面正则表达式需要用括号括起来
 
     // es6
-    "arrow-body-style": [0, "always"],// 箭头函数是否需要加上{}
-    "arrow-parens": 0,// 对于箭头函数，需要添加括号，比如(a) => {}; 而不应该简写为 a => {};
+    "arrow-body-style": [0, "as-needed"],// 箭头函数是否需要加上{}
+    "arrow-parens": [0],// 对于箭头函数，需要添加括号，比如(a) => {}; 而不应该简写为 a => {};
     "arrow-spacing": 2,//箭头函数中，箭头运算符前后需要添加空白
     "constructor-super": 2,//父类构造函数不应该调用 super() ，但派生类必须要调用 super()
     "generator-star-spacing": 2,//generator functions 中 * 前应该添加空白，后面不应该有空白

@@ -1,6 +1,12 @@
 import perfect from '../perfect';
 import util from '../util';
+
 const {isWheel} = util;
+
+const win = window;
+const doc = document;
+const docEl = doc.documentElement;
+const resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize';
 
 const CatalogueSpy = ((perfect) => {
   const doc = document;
@@ -18,7 +24,7 @@ const CatalogueSpy = ((perfect) => {
 
       let {menuHeight} = this.config;
       if (!menuHeight) {
-        menuHeight = 400; // todo ，取浏览器可视化高度，待实现
+        menuHeight = document.documentElement.clientHeight - 64;
         this.config.menuHeight = menuHeight;
       }
 
@@ -26,7 +32,15 @@ const CatalogueSpy = ((perfect) => {
       $menuPanel.style.transform = 'translateY(0)';
       $menuPanel.style.maxHeight = `${menuHeight}px`;
       this.$menuPanel = $menuPanel;
+
+      win.addEventListener(resizeEvt, this.adjustMenuHeight, false);
     }
+
+    // 调整菜单最大高度
+    adjustMenuHeight = () => {
+      const menuHeight = doc.documentElement.clientHeight - 64;
+      this.$menuPanel.style.maxHeight = `${menuHeight}px`;
+    };
 
     mount() {
       // fixme 待改进，改成 scrollSpy 触发该事件，参考 web-guide 项目
@@ -112,6 +126,7 @@ const CatalogueSpy = ((perfect) => {
 
     unmount() {
       console.info('待补充');
+      win.removeEventListener(resizeEvt, this.adjustMenuHeight, false);
     }
 
   }

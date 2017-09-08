@@ -41,7 +41,6 @@
 * [Material Design](https://material.io/)
 * [animate.css](https://daneden.github.io/animate.css/)
 * [muse-ui](http://www.muse-ui.org/)
-* [purecss](https://purecss.io/)
 * [Loaders.css](https://connoratherton.com/loaders)
 * [Pure.css](http://purecss.io/)
 * [Uikit](http://getuikit.com/index.html)
