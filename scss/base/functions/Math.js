@@ -1,5 +1,15 @@
 const {types} = require('node-sass');
 
+/**
+ * 转换成 css 时，需要设置 options 属性 functions
+ * import functions from '../scss/base/function/Math';
+ scssOption = {
+  // 如果通过 node-sass 命令，可以直接写参数 `--functions scss/base/Math.js` 来让 sass 执行 js
+  // https://www.npmjs.com/package/node-sass#example
+  functions
+};
+ */
+
 module.exports = {
   // pow 函数，实现 x 的 y 次方幂
   'pow($x, $y)': (x, y) => {

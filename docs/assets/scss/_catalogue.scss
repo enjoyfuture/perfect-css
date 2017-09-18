@@ -15,11 +15,13 @@
   right: 0;
   z-index: 1000;
   padding-top: .5rem;
-  border-left: 1px solid;
+  border: 1px solid;
   overflow: hidden;
   background-color: #fff;
   transform: translate(200%, 0);
-  @include theme-prop(border-left-color, primary);
+
+  @include theme-prop(border-color, primary-light);
+
   @include animation-transition(transform);
 }
 
@@ -36,10 +38,6 @@
 }
 
 .doc-catalogue {
-  &.doc-catalogue-header {
-    margin-left: .5rem;
-  }
-
   .menu-title {
     position: relative;
     min-width: 200px;
@@ -54,10 +52,11 @@
       top: 25%;
       bottom: 20%;
       left: 0;
-      border-left: 1px solid #193c5a;
+      border-left: 1px solid;
+      @include theme-prop(border-left-color, primary-dark);
     }
     &.active::after {
-      border-left: 2px solid #193c5a;
+      border-left-width: 2px;
     }
   }
 }

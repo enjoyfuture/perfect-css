@@ -11,7 +11,7 @@
     new ScrollSpy(document.body, {
       menu: '.doc-catalogue-panel',
       container: '.doc-content',
-      offset: 50,
+      offset: 64,
       anchor: false,
       extend: true,
       plugins: CatalogueSpy,
@@ -52,6 +52,16 @@
       //.attr('title', 'Copy to clipboard')
       //.tooltip('_fixTitle')
     });
+
+    // 定时切换主题
+    var themes = ['theme-red', 'theme-pink', 'theme-purple', 'theme-deep-purple',
+      'theme-indigo', 'theme-blue', 'theme-light-blue', 'theme-cyan', 'theme-teal',
+      'theme-green', 'theme-light-green', 'theme-lime', 'theme-yellow', 'theme-amber',
+      'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
+    setInterval(function () {
+      var r = Math.floor(Math.random() * 16);
+      $('body').removeClass().addClass(themes[r]);
+    }, 50000);
   });
 
 </script>

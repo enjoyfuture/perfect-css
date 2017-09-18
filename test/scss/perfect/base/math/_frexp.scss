@@ -1,0 +1,24 @@
+@import "../../../../../scss/base/functions/math/frexp";
+
+// 使用 test-module 描述测试某一模块，test 描述测试具体的功能点
+
+@include test-module('Perfect Function') {
+  @include test('测试 @function frexp ($x) 返回的结果是否正确') {
+    $x: 25;
+    $expect: .78125, 5;
+    @include assert-equal(
+      frexp($x),
+      $expect
+    );
+  }
+
+  @include test('测试 @function frexp ($x) 返回的结果是否正确') {
+    $x: .12234;
+    $expect: .97872, -3;
+    @include assert-equal(
+      frexp($x),
+      $expect
+    );
+  }
+}
+

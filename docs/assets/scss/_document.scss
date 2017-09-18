@@ -17,7 +17,11 @@
 .doc-content-header {
   padding-right: 4rem;
   a {
-    margin: 0 .5rem;
+    margin-right: 1rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 
@@ -34,23 +38,23 @@
   width: 80%;
 
   tr:nth-of-type(odd) {
-    background: #f9f9f9;
+    background: $grey-color-100;
   }
   th {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $grey-color-300;
   }
 
   th,
   td {
     padding: .5rem 1.5rem;
-    border-top: 1px solid #ddd;
-    border-left: 1px solid #ddd;
+    border-top: 1px solid $grey-color-300;
+    border-left: 1px solid $grey-color-300;
 
     &:last-child {
-      border-right: 1px solid #ddd;
+      border-right: 1px solid $grey-color-300;
     }
   }
   tr:last-child > td {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $grey-color-300;
   }
 }

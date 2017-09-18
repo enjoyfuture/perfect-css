@@ -39,13 +39,13 @@
     $('.menu').on('click', '.menu-header', function (e) {
       e.preventDefault();
       // 隐藏其他打开的菜单
-      $('.menu .menu').slideUp('slow');
+      $('.menu .menu').slideUp();
       var $el = $(e.currentTarget);
       var $nextEl = $el.next();
       if ($nextEl.is(':visible')) {
-        $nextEl.slideUp('slow');
+        $nextEl.slideUp();
       } else {
-        $nextEl.slideDown('slow');
+        $nextEl.slideDown();
       }
     });
 

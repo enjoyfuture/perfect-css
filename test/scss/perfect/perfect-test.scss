@@ -4,6 +4,9 @@
 @import "true";
 
 @import 'base/functions';
+@import 'base/math/frexp';
+@import 'base/math/ldexp';
+@import 'base/math/pow';
 @import 'responsive/function';
 @import 'responsive/mixin';
 @import 'theme/function';

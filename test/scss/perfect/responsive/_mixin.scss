@@ -111,7 +111,7 @@
       }
 
       @include expect {
-        @media (min-width: 1023px) and (max-width: 1439px) {
+        @media (min-width: 1023px) and (max-width: 1199px) {
           .test {
             color: #ff0000;
           }
@@ -152,7 +152,7 @@
       }
 
       @include expect {
-        @media (min-width: 1600px) {
+        @media (min-width: 1440px) {
           .test {
             color: #ff0000;
           }
@@ -192,7 +192,7 @@
       }
 
       @include expect {
-        @media (min-width: 1440px) and (max-width: 1599px) {
+        @media (min-width: 1200px) and (max-width: 1439px) {
           .test {
             color: #ff0000;
           }

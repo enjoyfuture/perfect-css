@@ -20,12 +20,12 @@
       <div class="doc-main">
         {% if page.toc %}
         <div class="doc-content">
+          <!-- TODO 此处待换成图标-->
+          <div class="doc-catalogue-menu">
+            <div class="doc-catalogue-icon">目录</div>
+            {{ content | toc_catalogue }}
+          </div>
           <div class="doc-content-header">
-            <!-- TODO 此处待换成图标-->
-            <div class="doc-catalogue-menu">
-              <div class="doc-catalogue-icon">目录</div>
-              {{ content | toc_catalogue }}
-            </div>
             <p>{{ page.description }}</p>
             <div>
               <a href="{{site.repo}}/edit/master/docs/{{page.path}}" target="_blank">编辑该页面</a>

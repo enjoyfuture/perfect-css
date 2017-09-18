@@ -330,7 +330,8 @@ const ScrollSpy = ((perfect) => {
      * @returns {boolean|*}
      */
     process() {
-      const scrollTop = this.getScrollTop() + this.config.offset;
+      // 需要加 1 微调
+      const scrollTop = this.getScrollTop() + this.config.offset + 1;
       const scrollHeight = this.getScrollHeight();
       const maxScroll = this.config.offset
         + scrollHeight

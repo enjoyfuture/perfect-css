@@ -1,5 +1,7 @@
 // 定义主题相关 function
 
+@import "../base/functions/math/pow";
+
 // 颜色色彩系数
 // 例如 _coefficient(0) => 0   _coefficient(1) => .000303526983549
 // _coefficient(2) => .000607053967098  _coefficient(3) => .000910580950647

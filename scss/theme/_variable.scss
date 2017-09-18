@@ -9,12 +9,12 @@ $theme-secondary: #e040fb !default; // 次颜色，也叫强调(accent)颜色，
 $theme-background: #fff !default; // 背景颜色，默认白色
 
 // 主题颜色浅色
-$theme-primary-light: #90caf9 !default; // 取 $blue-200
-$theme-secondary-light: #ce93d8 !default; // 取 $purple-200
+$theme-primary-light: #bbdefb !default; // 取 $blue-100
+$theme-secondary-light: #e1bee7 !default; // 取 $purple-100
 
 // 主题颜色深色
 $theme-primary-dark: #1976d2 !default; // 取 $blue-700
-$theme-secondary-dark: #d500f9 !default; // 取 $purple-a-400
+$theme-secondary-dark: #aa00ff !default; // 取 $purple-a-700
 
 // 色调，是用浅色还是深色 light or dark
 $theme-primary-tone: theme-light-or-dark($theme-primary);
@@ -55,13 +55,13 @@ $theme-property-values: (
   background: $theme-background,
 
   // 主题颜色浅色
-  primary-light: $theme-primary-light, // 取 $blue-200
-  secondary-light: $theme-secondary-light, // 取 $purple-200
+  primary-light: $theme-primary-light,
+  secondary-light: $theme-secondary-light,
 
   // 主题颜色深色
-  primary-dark: $theme-primary-dark, // 取 $blue-700
-  secondary-dark: $theme-secondary-dark, // 取 $purple-a-400
-);
+  primary-dark: $theme-primary-dark,
+  secondary-dark: $theme-secondary-dark,
+) !default;
 
 // 主题色调属性值，根据主题颜色计算是用浅色还是深色
 $theme-tone-property-values: (
@@ -122,7 +122,7 @@ $theme-tone-property-values: (
   text-secondary-on-dark: map-get(map-get($theme-text-colors, light), secondary),
   text-hint-on-dark: map-get(map-get($theme-text-colors, light), hint),
   text-disabled-on-dark: map-get(map-get($theme-text-colors, light), disabled)
-);
+) !default;
 
 // 基于 material design ，定义主题颜色，强调颜色(次颜色)和背景颜色三种颜色，用在所有 CSS 组件上，
 // 另外又定义了成功 success 、信息 info、警告 warning 、错误 error 四种辅助颜色，这四种颜色主要用在背景，文本，按钮等上
@@ -137,10 +137,10 @@ $theme-assist-colors: (
   error: #f44336, // $red-500
 
   // 辅助颜色浅色
-  success-light: #a5d6a7, // $green-200
-  info-light: #80deea, // $cyan-200
-  warning-light: #ffe082, // $amber-200
-  error-light: #ef9a9a, // $red-200:
+  success-light: #c8e6c9, // $green-100
+  info-light: #b2ebf2, // $cyan-100
+  warning-light: #ffe0b2, // $orange-100
+  error-light: #ffcdd2, // $red-100:
 
   // 辅助颜色深色
   success-dark: #388e3c, // $green-700
@@ -185,13 +185,13 @@ $white: #ffffff !default;
 $black: #000000 !default;
 $transparent: rgba(0, 0, 0, 0) !default; // 透明色
 
-$grey-color-50: if($enable-transparent, map-get($greys-transparent, 50), map-get($greys, 50));
-$grey-color-100: if($enable-transparent, map-get($greys-transparent, 100), map-get($greys, 100));
-$grey-color-200: if($enable-transparent, map-get($greys-transparent, 200), map-get($greys, 200));
-$grey-color-300: if($enable-transparent, map-get($greys-transparent, 300), map-get($greys, 300));
-$grey-color-400: if($enable-transparent, map-get($greys-transparent, 400), map-get($greys, 400));
-$grey-color-500: if($enable-transparent, map-get($greys-transparent, 500), map-get($greys, 500));
-$grey-color-600: if($enable-transparent, map-get($greys-transparent, 600), map-get($greys, 600));
-$grey-color-700: if($enable-transparent, map-get($greys-transparent, 700), map-get($greys, 700));
-$grey-color-800: if($enable-transparent, map-get($greys-transparent, 800), map-get($greys, 800));
-$grey-color-900: if($enable-transparent, map-get($greys-transparent, 900), map-get($greys, 900));
+$grey-color-50: if($enable-transparent, map-get($greys-transparent, 50), map-get($greys, 50)) !default;
+$grey-color-100: if($enable-transparent, map-get($greys-transparent, 100), map-get($greys, 100)) !default;
+$grey-color-200: if($enable-transparent, map-get($greys-transparent, 200), map-get($greys, 200)) !default;
+$grey-color-300: if($enable-transparent, map-get($greys-transparent, 300), map-get($greys, 300)) !default;
+$grey-color-400: if($enable-transparent, map-get($greys-transparent, 400), map-get($greys, 400)) !default;
+$grey-color-500: if($enable-transparent, map-get($greys-transparent, 500), map-get($greys, 500)) !default;
+$grey-color-600: if($enable-transparent, map-get($greys-transparent, 600), map-get($greys, 600)) !default;
+$grey-color-700: if($enable-transparent, map-get($greys-transparent, 700), map-get($greys, 700)) !default;
+$grey-color-800: if($enable-transparent, map-get($greys-transparent, 800), map-get($greys, 800)) !default;
+$grey-color-900: if($enable-transparent, map-get($greys-transparent, 900), map-get($greys, 900)) !default;

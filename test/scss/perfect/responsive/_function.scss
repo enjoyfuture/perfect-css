@@ -21,7 +21,7 @@
 
   @include test('测试 @function breakpoint-min 返回的结果是否正确') {
     $result: [breakpoint-min(xs), breakpoint-min(sm), breakpoint-min(md), breakpoint-min(lg), breakpoint-min(xl)];
-    $expect: [null, 600px, 1024px, 1440px, 1600px];
+    $expect: [null, 600px, 1024px, 1200px, 1440px];
     @include assert-equal(
         $result,
         $expect,
@@ -31,7 +31,7 @@
 
   @include test('测试 @function breakpoint-max 返回的结果是否正确') {
     $result: [breakpoint-max(xs), breakpoint-max(sm), breakpoint-max(md), breakpoint-max(lg), breakpoint-max(xl)];
-    $expect: [599px, 1023px, 1439px, 1599px, null];
+    $expect: [599px, 1023px, 1199px, 1439px, null];
     @include assert-equal(
         $result,
         $expect,

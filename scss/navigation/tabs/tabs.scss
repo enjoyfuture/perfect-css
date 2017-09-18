@@ -52,21 +52,6 @@
 
   @include theme-prop(color, text-secondary-on-light);
 
-  &:hover,
-  &:focus,
-  &:active,
-  &.active {
-    @include theme-prop(color, text-primary-on-light);
-  }
-
-  &:hover {
-    text-decoration: none;
-  }
-
-  &:focus {
-    outline: 0;
-  }
-
   &::after {
     content: "";
     position: absolute;
@@ -75,16 +60,26 @@
     display: none;
     width: calc(100% - #{$tab-active-width-subtract});
     height: $tab-active-border;
-    @include theme-prop(background-color, text-primary-on-light);
+    background-color: transparent;
     pointer-events: none;
   }
 
-  // 获取焦点，鼠标经过或者当前为活动节点时，显示底部边框
-  &:focus::after,
-  &:hover::after,
-  &:active::after,
-  &.active::after {
-    display: block;
+  &.active {
+    @include theme-prop(color, text-primary-on-light);
+
+    // 获取焦点，鼠标经过或者当前为活动节点时，显示底部边框
+    &::after {
+      display: block;
+      @include theme-prop(background-color, text-primary-on-light);
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
   }
 
   &:focus::after,

@@ -1,0 +1,26 @@
+@import "../../../../../scss/base/functions/math/ldexp";
+
+// 使用 test-module 描述测试某一模块，test 描述测试具体的功能点
+
+@include test-module('Perfect Function') {
+  @include test('测试 @function ldexp ($x, $exp) 返回的结果是否正确') {
+    $x: 25;
+    $exp: 33;
+    $expect: 214748364800;
+    @include assert-equal(
+      ldexp($x, $exp),
+      $expect
+    );
+  }
+
+  @include test('测试 @function ldexp ($x, $exp) 返回的结果是否正确') {
+    $x: .12234;
+    $exp: .45;
+    $expect: .12234;
+    @include assert-equal(
+      ldexp($x, $exp),
+      $expect
+    );
+  }
+}
+

@@ -1,6 +1,5 @@
 const path = require('path');
 const sassTrue = require('sass-true');
-const functions = require('../../scss/base/js-function/Math');
 
 // 待测试的文件
 // const officialTest = path.join(__dirname, 'official-demo', 'test.scss');
@@ -11,6 +10,5 @@ const functions = require('../../scss/base/js-function/Math');
 const perfectTest = path.join(__dirname, 'perfect', 'perfect-test.scss');
 sassTrue.runSass({
   file: perfectTest,
-  functions,
   precision: 15
 }, describe, it);

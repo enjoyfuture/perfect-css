@@ -1,0 +1,27 @@
+@import "../../../../../scss/base/functions/math/pow";
+
+// 使用 test-module 描述测试某一模块，test 描述测试具体的功能点
+
+@include test-module('Perfect Function') {
+  @include test('测试 @function pow ($base, $exp) 返回的结果是否正确') {
+    $base: 4;
+    $exp: 2;
+    $expect: 16;
+
+    @include assert-equal(
+      pow($base, $exp),
+      $expect
+    );
+  }
+
+  @include test('测试 @function pow ($base, $exp)  返回的结果是否正确') {
+    $base: (50 / 255 + .055) / 1.055;
+    $exp: 2.4;
+    $expect: .03189603307301153;
+    @include assert-equal(
+      pow($base, $exp),
+      $expect
+    );
+  }
+}
+
