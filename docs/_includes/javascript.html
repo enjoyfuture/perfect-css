@@ -16,6 +16,35 @@
       extend: true,
       plugins: CatalogueSpy,
     });
+
+    // 窗口滑动到某一位置时，修改目录定位位置
+    var $cataloguePanel = $('.doc-catalogue-menu-right .doc-catalogue-panel');
+    $(window).on('scroll', function (event) {
+      if ($cataloguePanel.is(':visible')) {
+        var top = window.scrollY;
+        var clientHeight = document.documentElement.clientHeight;
+        var scrollHeight = document.documentElement.scrollHeight;
+        var contentTop = $('.doc-content').offset().top;
+
+        if (top > scrollHeight - clientHeight) {
+          $cataloguePanel.css({
+            position: 'absolute',
+            top: top + 'px'
+          });
+        } else if (top + 64 > contentTop) {
+          $cataloguePanel.css({
+            position: 'fixed',
+            top: '64px'
+          });
+        } else {
+          $cataloguePanel.css({
+            position: 'static',
+          });
+        }
+      }
+    });
+
+    $(window).trigger('scroll');
   });
 </script>
 {% endif %}
@@ -24,21 +53,21 @@
   $(function () {
     // 为代码添加复制按钮
     $('.highlight:not(.doc-example-highlight)').each(function () {
-      var btnHtml = '<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>'
+      var btnHtml = '<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>';
       $(this).before(btnHtml);
     });
 
     // 复制到剪贴板
     var clipboard = new Clipboard('.doc-copy-btn', {
       target: function (trigger) {
-        return trigger.parentNode.nextElementSibling
+        return trigger.parentNode.nextElementSibling;
       }
     });
 
     clipboard.on('success', function (e) {
       //$(e.trigger)
       //  .attr('title', 'Copied!')
-      e.clearSelection()
+      e.clearSelection();
     });
 
     clipboard.on('error', function (e) {

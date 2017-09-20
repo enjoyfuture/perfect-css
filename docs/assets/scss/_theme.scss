@@ -112,9 +112,9 @@
 }
 
 .theme-lime {
-  #{--theme-primary}: $lime-500;
-  #{--theme-primary-dark}: $light-green-700;
-  #{--theme-primary-light}: $light-green-100;
+  #{--theme-primary}: $lime-600;
+  #{--theme-primary-dark}: $lime-700;
+  #{--theme-primary-light}: $lime-100;
 
   #{--theme-secondary}: $pink-a-200;
   #{--theme-secondary-dark}: $pink-a-700;
@@ -123,8 +123,8 @@
 
 // 对比色应该为黑色
 .theme-yellow {
-  #{--theme-primary}: $yellow-500;
-  #{--theme-primary-dark}: $yellow-700;
+  #{--theme-primary}: $yellow-700;
+  #{--theme-primary-dark}: $yellow-800;
   #{--theme-primary-light}: $yellow-100;
 
   #{--theme-secondary}: $red-a-200;
@@ -133,7 +133,7 @@
 }
 
 .theme-amber {
-  #{--theme-primary}: $amber-500;
+  #{--theme-primary}: $amber-600;
   #{--theme-primary-dark}: $amber-700;
   #{--theme-primary-light}: $amber-100;
 
@@ -143,7 +143,7 @@
 }
 
 .theme-orange {
-  #{--theme-primary}: $orange-500;
+  #{--theme-primary}: $orange-600;
   #{--theme-primary-dark}: $orange-700;
   #{--theme-primary-light}: $orange-100;
 
@@ -173,7 +173,7 @@
 }
 
 .theme-grey {
-  #{--theme-primary}: $grey-500;
+  #{--theme-primary}: $grey-600;
   #{--theme-primary-dark}: $grey-700;
   #{--theme-primary-light}: $grey-100;
 

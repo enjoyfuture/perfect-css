@@ -47,7 +47,8 @@ module Jekyll
 
       # 循环遍历生成目录html，
       def generateTocCatalogueHtml(nodes, prefix, anchor, root)
-        html = %Q{<ul class="menu menu-catalogue doc-catalogue">\n}
+        header = root ? " doc-catalogue-header" : ""
+        html = %Q{<ul class="menu menu-catalogue doc-catalogue#{header}">\n}
         i = 0
         nodes.each do |node|
           if anchor

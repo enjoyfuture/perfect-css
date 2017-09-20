@@ -19,9 +19,7 @@
   overflow: hidden;
   background-color: #fff;
   transform: translate(200%, 0);
-
   @include theme-prop(border-color, primary-light);
-
   @include animation-transition(transform);
 }
 
@@ -35,6 +33,42 @@
   cursor: pointer;
   @include theme-prop(border-color, primary);
   @include theme-prop(background-color, text-primary-on-dark);
+}
+
+@media screen and (min-width: 1600px) {
+  .doc-catalogue-menu {
+    display: none;
+  }
+  .doc-content {
+    display: flex;
+  }
+  .doc-content-main {
+    flex: 0 0 79.1666666667%;
+    max-width: 79.1666666667%;
+  }
+
+  .doc-catalogue-menu-right {
+    flex: 0 0 20.8333333333%;
+    max-width: 20.8333333333%;
+    margin-left: 1rem;
+    border-left: 1px solid $grey-color-300;
+  }
+
+  .doc-catalogue-panel {
+    position: static;
+    right: auto;
+    margin-top: 1rem;
+    border: 0;
+    transform: translate(0, 0);
+  }
+
+  .doc-catalogue-header {
+    &::before {
+      content: '目录';
+      padding-left: .5rem;
+      color: #999;
+    }
+  }
 }
 
 .doc-catalogue {
