@@ -1,7 +1,7 @@
 // 目录和内容
-@import "../../../scss/responsive/mixin";
-@import "../../../scss/theme/mixin";
-@import "../../../scss/animation/mixin";
+@import "../../../../scss/responsive/mixin";
+@import "../../../../scss/theme/mixin";
+@import "../../../../scss/animation/mixin";
 
 .doc-catalogue-menu:hover {
   .doc-catalogue-panel {
@@ -28,11 +28,11 @@
   top: 4.5rem;
   right: .5rem;
   z-index: 1000;
-  padding: .5rem 1rem;
-  border: 1px solid;
   cursor: pointer;
-  @include theme-prop(border-color, primary);
-  @include theme-prop(background-color, primary-on-dark);
+
+  .icon-pure-catalogue {
+    @include theme-prop(color, primary);
+  }
 }
 
 .doc-catalogue-menu-right {

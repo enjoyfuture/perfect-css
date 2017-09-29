@@ -1,0 +1,55 @@
+---
+layout: draft
+title: 例子代码
+description: 例子
+---
+
+<section class="doc-example">
+  <div class="doc-example-render" data-example-id="">
+    <p>
+      这是一个段落，段落基于默认的字体、行高和间距来显示，上外边距设为 0，下外边距被设为 1rem，
+      段落中只能包含行内元素，不能包含块级元素。我们可以用标签 <code>strong</code> 设置 <strong>粗体</strong>，
+      用 <code>em</code> 设置 <em>斜体</em>。
+    </p>
+  </div>
+
+  <div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>
+  <div class="highlight doc-example-highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>
+这是一个段落，段落基于默认的字体、行高和间距来显示，上外边距设为 0，下外边距被设为 1rem，
+段落中只能包含行内元素，不能包含块级元素。我们可以用标签 <span class="nt">&lt;code&gt;</span>strong<span class="nt">&lt;/code&gt;</span> 设置 <span class="nt">&lt;strong&gt;</span>粗体<span class="nt">&lt;/strong&gt;</span>，
+用 <span class="nt">&lt;code&gt;</span>em<span class="nt">&lt;/code&gt;</span> 设置 <span class="nt">&lt;em&gt;</span>斜体<span class="nt">&lt;/em&gt;</span>。
+<span class="nt">&lt;/p&gt;</span></code></pre></div>
+</section>
+
+<style>
+  .doc1-example {
+    border: 1px solid #e3f2fd;
+    border-radius: 4px;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    margin: 0 0 16px;
+    transition: all .2s;
+  }
+
+  .doc1-example-render {
+    padding: 1.5rem;
+  }
+
+  .doc1-example-highlight {
+    border-top: 1px dashed #e3f2fd;
+  }
+</style>
+
+<section class="doc1-example">
+  <div class="doc1-example-render">
+    <div class="doc1-example-expand"></div>
+    预览效果
+  </div>
+
+
+  <div class="doc1-example-highlight">
+    <div class="code-box-actions"></div>
+    似懂非懂发
+  </div>
+</section>

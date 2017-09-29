@@ -1,6 +1,8 @@
 <header class="navbar navbar-fixed navbar-expand navbar-primary">
   {% if (page.layout == 'docs' or page.layout == 'component') %}
-  <span class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer"></span>
+  <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
+    <i class="icon-pure-menu"></i>
+  </div>
   {% endif %}
 
   <a class="navbar-brand" href="{{ site.baseurl }}/">

@@ -1,194 +1,194 @@
-@import "../../../scss/theme/color_palette";
+@import "../../../../scss/theme/color_palette";
 
 // 可使用 https://www.materialpalette.com/ 来搭配颜色
 .theme-red {
   #{--theme-primary}: $red-500;
   #{--theme-primary-dark}: $red-700;
-  #{--theme-primary-light}: $red-100;
+  #{--theme-primary-light}: $red-50;
 
   #{--theme-secondary}: $orange-500;
   #{--theme-secondary-dark}: $orange-700;
-  #{--theme-secondary-light}: $orange-100;
+  #{--theme-secondary-light}: $orange-50;
 }
 
 .theme-pink {
   #{--theme-primary}: $pink-500;
   #{--theme-primary-dark}: $pink-700;
-  #{--theme-primary-light}: $pink-100;
+  #{--theme-primary-light}: $pink-50;
 
   #{--theme-secondary}: $cyan-500;
   #{--theme-secondary-dark}: $cyan-700;
-  #{--theme-secondary-light}: $cyan-100;
+  #{--theme-secondary-light}: $cyan-50;
 }
 
 .theme-purple {
   #{--theme-primary}: $purple-500;
   #{--theme-primary-dark}: $purple-700;
-  #{--theme-primary-light}: $purple-100;
+  #{--theme-primary-light}: $purple-50;
 
   #{--theme-secondary}: $green-500;
   #{--theme-secondary-dark}: $green-700;
-  #{--theme-secondary-light}: $green-100;
+  #{--theme-secondary-light}: $green-50;
 }
 
 .theme-deep-purple {
   #{--theme-primary}: $deep-purple-500;
   #{--theme-primary-dark}: $deep-purple-700;
-  #{--theme-primary-light}: $deep-purple-100;
+  #{--theme-primary-light}: $deep-purple-50;
 
   #{--theme-secondary}: $light-green-500;
   #{--theme-secondary-dark}: $light-green-700;
-  #{--theme-secondary-light}: $light-green-100;
+  #{--theme-secondary-light}: $light-green-50;
 }
 
 .theme-indigo {
   #{--theme-primary}: $indigo-500;
   #{--theme-primary-dark}: $indigo-700;
-  #{--theme-primary-light}: $indigo-100;
+  #{--theme-primary-light}: $indigo-50;
 
   #{--theme-secondary}: $pink-a-200;
   #{--theme-secondary-dark}: $pink-a-700;
-  #{--theme-secondary-light}: $pink-100;
+  #{--theme-secondary-light}: $pink-50;
 }
 
 .theme-blue {
   #{--theme-primary}: $blue-500;
   #{--theme-primary-dark}: $blue-700;
-  #{--theme-primary-light}: $blue-100;
+  #{--theme-primary-light}: $blue-50;
 
   #{--theme-secondary}: $purple-a-200;
   #{--theme-secondary-dark}: $purple-a-700;
-  #{--theme-secondary-light}: $purple-100;
+  #{--theme-secondary-light}: $purple-50;
 }
 
 .theme-light-blue {
   #{--theme-primary}: $light-blue-600;
   #{--theme-primary-dark}: $light-blue-700;
-  #{--theme-primary-light}: $light-blue-100;
+  #{--theme-primary-light}: $light-blue-50;
 
   #{--theme-secondary}: $amber-500;
   #{--theme-secondary-dark}: $amber-700;
-  #{--theme-secondary-light}: $amber-100;
+  #{--theme-secondary-light}: $amber-50;
 }
 
 .theme-cyan {
   #{--theme-primary}: $cyan-500;
   #{--theme-primary-dark}: $cyan-700;
-  #{--theme-primary-light}: $cyan-100;
+  #{--theme-primary-light}: $cyan-50;
 
   #{--theme-secondary}: $lime-500;
   #{--theme-secondary-dark}: $lime-700;
-  #{--theme-secondary-light}: $lime-100;
+  #{--theme-secondary-light}: $lime-50;
 }
 
 .theme-teal {
   #{--theme-primary}: $teal-500;
   #{--theme-primary-dark}: $teal-700;
-  #{--theme-primary-light}: $teal-100;
+  #{--theme-primary-light}: $teal-50;
 
   #{--theme-secondary}: $pink-a-200;
   #{--theme-secondary-dark}: $pink-a-700;
-  #{--theme-secondary-light}: $pink-100;
+  #{--theme-secondary-light}: $pink-50;
 }
 
 .theme-green {
   #{--theme-primary}: $green-500;
   #{--theme-primary-dark}: $green-700;
-  #{--theme-primary-light}: $green-100;
+  #{--theme-primary-light}: $green-50;
 
   #{--theme-secondary}: $orange-500;
   #{--theme-secondary-dark}: $orange-700;
-  #{--theme-secondary-light}: $orange-100;
+  #{--theme-secondary-light}: $orange-50;
 }
 
 .theme-light-green {
   #{--theme-primary}: $light-green-500;
   #{--theme-primary-dark}: $light-green-700;
-  #{--theme-primary-light}: $light-green-100;
+  #{--theme-primary-light}: $light-green-50;
 
   #{--theme-secondary}: $lime-500;
   #{--theme-secondary-dark}: $lime-700;
-  #{--theme-secondary-light}: $lime-100;
+  #{--theme-secondary-light}: $lime-50;
 }
 
 .theme-lime {
   #{--theme-primary}: $lime-600;
   #{--theme-primary-dark}: $lime-700;
-  #{--theme-primary-light}: $lime-100;
+  #{--theme-primary-light}: $lime-50;
 
   #{--theme-secondary}: $pink-a-200;
   #{--theme-secondary-dark}: $pink-a-700;
-  #{--theme-secondary-light}: $pink-100;
+  #{--theme-secondary-light}: $pink-50;
 }
 
 // 对比色应该为黑色
 .theme-yellow {
   #{--theme-primary}: $yellow-700;
   #{--theme-primary-dark}: $yellow-800;
-  #{--theme-primary-light}: $yellow-100;
+  #{--theme-primary-light}: $yellow-50;
 
   #{--theme-secondary}: $red-a-200;
   #{--theme-secondary-dark}: $red-a-700;
-  #{--theme-secondary-light}: $red-100;
+  #{--theme-secondary-light}: $red-50;
 }
 
 .theme-amber {
   #{--theme-primary}: $amber-600;
   #{--theme-primary-dark}: $amber-700;
-  #{--theme-primary-light}: $amber-100;
+  #{--theme-primary-light}: $amber-50;
 
   #{--theme-secondary}: $pink-a-200;
   #{--theme-secondary-dark}: $pink-a-700;
-  #{--theme-secondary-light}: $pink-100;
+  #{--theme-secondary-light}: $pink-50;
 }
 
 .theme-orange {
   #{--theme-primary}: $orange-600;
   #{--theme-primary-dark}: $orange-700;
-  #{--theme-primary-light}: $orange-100;
+  #{--theme-primary-light}: $orange-50;
 
   #{--theme-secondary}: $blue-a-200;
   #{--theme-secondary-dark}: $blue-a-700;
-  #{--theme-secondary-light}: $blue-100;
+  #{--theme-secondary-light}: $blue-50;
 }
 
 .theme-deep-orange {
   #{--theme-primary}: $deep-orange-500;
   #{--theme-primary-dark}: $deep-orange-700;
-  #{--theme-primary-light}: $deep-orange-100;
+  #{--theme-primary-light}: $deep-orange-50;
 
   #{--theme-secondary}: $green-500;
   #{--theme-secondary-dark}: $green-700;
-  #{--theme-secondary-light}: $green-100;
+  #{--theme-secondary-light}: $green-50;
 }
 
 .theme-brown {
   #{--theme-primary}: $brown-500;
   #{--theme-primary-dark}: $brown-700;
-  #{--theme-primary-light}: $brown-100;
+  #{--theme-primary-light}: $brown-50;
 
   #{--theme-secondary}: $amber-500;
   #{--theme-secondary-dark}: $amber-700;
-  #{--theme-secondary-light}: $amber-100;
+  #{--theme-secondary-light}: $amber-50;
 }
 
 .theme-grey {
   #{--theme-primary}: $grey-600;
   #{--theme-primary-dark}: $grey-700;
-  #{--theme-primary-light}: $grey-100;
+  #{--theme-primary-light}: $grey-50;
 
   #{--theme-secondary}: $light-blue-500;
   #{--theme-secondary-dark}: $light-blue-700;
-  #{--theme-secondary-light}: $light-blue-100;
+  #{--theme-secondary-light}: $light-blue-50;
 }
 
 .theme-blue-grey {
   #{--theme-primary}: $blue-grey-500;
   #{--theme-primary-dark}: $blue-grey-700;
-  #{--theme-primary-light}: $blue-grey-100;
+  #{--theme-primary-light}: $blue-grey-50;
 
   #{--theme-secondary}: $light-green-500;
   #{--theme-secondary-dark}: $light-green-700;
-  #{--theme-secondary-light}: $light-green-100;
+  #{--theme-secondary-light}: $light-green-50;
 }
 

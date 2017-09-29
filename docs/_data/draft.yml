@@ -2,6 +2,8 @@
   file: classname
 - title: 七色卡
   file: color-swatches
+- title: 例子代码
+  file: example-code
 - title: 草稿文件
   file: index
 - title: 布局

@@ -17,41 +17,40 @@
     </aside>
 
     <main class="drawer-main navbar-fixed-adjust">
+      {% if page.toc %}
       <div class="doc-main">
-        {% if page.toc %}
         <div class="doc-content">
-          <div class="doc-content-main">
-            <div class="doc-catalogue-menu">
-              <!-- TODO 此处待换成图标-->
-              <div class="doc-catalogue-icon">目录</div>
-              {{ content | toc_catalogue }}
+          <div class="doc-catalogue-menu">
+            <div class="doc-catalogue-icon">
+              <i class="icon-pure-catalogue"></i>
             </div>
-            <div class="doc-content-header">
-              <p>{{ page.description }}</p>
-              <div>
-                <a href="{{site.repo}}/edit/master/docs/{{page.path}}" target="_blank">编辑该页面</a>
-                <a href="{{site.repo}}/issues/new?title=问题或建议({{ page.title }})" target="_blank">问题和建议</a>
-              </div>
-            </div>
-            <hr/>
-            {{ content | toc_content }}
-          </div>
-          <div class="doc-catalogue-menu-right">
             {{ content | toc_catalogue }}
           </div>
-        </div>
-        {% else %}
-        <div class="doc-content">
-          <p>{{ page.description }}</p>
           <div class="doc-content-header">
-            <a href="{{site.repo}}/edit/master/docs/{{page.path}}" target="_blank">编辑该页面</a>
-            <a href="{{site.repo}}/issues/new?title=问题或建议({{ page.title }})" target="_blank">问题和建议</a>
+            <p>{{ page.description }}</p>
+            <div>
+              <a href="{{site.repo}}/edit/master/docs/{{page.path}}" target="_blank">编辑该页面</a>
+              <a href="{{site.repo}}/issues/new?title=问题或建议({{ page.title }})" target="_blank">问题和建议</a>
+            </div>
           </div>
           <hr/>
           {{ content | toc_content }}
         </div>
-        {% endif %}
+        <div class="doc-catalogue-menu-right">
+          {{ content | toc_catalogue }}
+        </div>
       </div>
+      {% else %}
+      <div class="doc-main">
+        <p>{{ page.description }}</p>
+        <div class="doc-content-header">
+          <a href="{{site.repo}}/edit/master/docs/{{page.path}}" target="_blank">编辑该页面</a>
+          <a href="{{site.repo}}/issues/new?title=问题或建议({{ page.title }})" target="_blank">问题和建议</a>
+        </div>
+        <hr/>
+        {{ content | toc_content }}
+      </div>
+      {% endif %}
     </main>
 
     {% include javascript.html %}

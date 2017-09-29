@@ -1,6 +1,6 @@
 
 // 自定义主题
-@import "theme";
+@import "docs/theme";
 
 // 主 CSS 样式
 @import "../../../scss/perfect";
@@ -9,34 +9,37 @@
 // 样式以前缀 .doc-开头来书写
 
 // 公共的样式
-@import "main";
+@import "docs/main";
 
 // 首页开启之旅
-@import "journey";
+@import "docs/journey";
 
 // 文档样式
-@import "document";
+@import "docs/document";
+
+// header
+@import "docs/header";
 
 // 左侧菜单
-@import "menu";
+@import "docs/menu";
 
 // 目录样式
-@import "catalogue";
+@import "docs/catalogue";
 
 // copy 样式
-@import "copy";
+@import "docs/copy";
 
 // 例子样式
-@import "example";
+@import "docs/example";
 
 // 代码高亮样式，由 rouge生成
-@import "highlight";
+@import "docs/highlight";
 
 // 自定义代码高亮样式
-@import "highlight-custom";
+@import "docs/highlight-custom";
 
 // 底部样式
-@import "footer";
+@import "docs/footer";
 
 // 调色板
-@import "color-palette";
+@import "docs/color-palette";
