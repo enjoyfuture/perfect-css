@@ -1,0 +1,22 @@
+// 加减图标
+
+@import "./variable";
+@import "./mixin";
+
+.icon-pure-minus {
+  &::before {
+    @include icon-center-middle;
+    width: $icon-size;
+    height: 2px;
+  }
+}
+
+.icon-pure-plus {
+  @extend .icon-pure-minus;
+
+  &::after {
+    @include icon-center-middle;
+    width: 2px;
+    height: $icon-size;
+  }
+}

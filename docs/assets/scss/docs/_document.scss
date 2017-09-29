@@ -2,16 +2,7 @@
 
 // 重置背景颜色
 .drawer-content {
-  background: $grey-color-50;
-}
-
-.doc-main {
-  min-height: 500px;
-  padding: 1.5rem 1rem;
-
-  p, li {
-    line-height: 2;
-  }
+  overflow: hidden;
 }
 
 .doc-content-header {
@@ -25,12 +16,17 @@
   }
 }
 
-.doc-content {
-  > h2 {
-    margin-top: 2rem;
+.doc-main {
+  min-height: 500px;
+  padding: 1.5rem 1rem;
+
+  p, li {
+    line-height: 2;
   }
-  > h3 {
-    margin-top: 1.5rem;
+
+  h2, h3 {
+    margin-top: 2rem;
+    font-weight: 400;
   }
 }
 

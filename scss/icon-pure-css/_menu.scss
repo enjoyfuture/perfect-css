@@ -1,0 +1,16 @@
+// 菜单
+
+@import "./variable";
+@import "./mixin";
+
+.icon-pure-menu {
+  $shadow-y-offset: $icon-size * .3;
+  width: $icon-size;
+  height: $icon-size * .1;
+  box-shadow: inset 0 0 0 $icon-size, 0 -#{$shadow-y-offset}, 0 #{$shadow-y-offset};
+
+  &::before,
+  &::after {
+    content: normal;
+  }
+}

@@ -32,22 +32,27 @@
   border: 1px solid;
   cursor: pointer;
   @include theme-prop(border-color, primary);
-  @include theme-prop(background-color, text-primary-on-dark);
+  @include theme-prop(background-color, primary-on-dark);
+}
+
+.doc-catalogue-menu-right {
+  display: none;
 }
 
 @media screen and (min-width: 1600px) {
   .doc-catalogue-menu {
     display: none;
   }
-  .doc-content {
+  .doc-main {
     display: flex;
   }
-  .doc-content-main {
+  .doc-content {
     flex: 0 0 79.1666666667%;
     max-width: 79.1666666667%;
   }
 
   .doc-catalogue-menu-right {
+    display: block;
     flex: 0 0 20.8333333333%;
     max-width: 20.8333333333%;
     margin-left: 1rem;

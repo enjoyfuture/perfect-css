@@ -1,0 +1,43 @@
+// 复制图标
+@import "./variable";
+@import "./mixin";
+
+$copy-border: $icon-size * .1;
+
+.icon-pure-copy {
+  box-sizing: content-box;
+  width: $icon-size;
+  height: $icon-size * 1.4;
+  border: $copy-border solid;
+  border-radius: 0 0 0 $icon-size * .5;
+
+  &::before {
+    position: absolute;
+    bottom: -$icon-size * 0.15;
+    left: -$icon-size * 0.15;
+    width: 0;
+    height: 0;
+    border-width: $icon-size / 4;
+    border-style: solid;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: $copy-border;
+  }
+
+  &::after {
+    width: $copy-border;
+    height: $copy-border;
+    box-shadow: 2px 0 0 0, 4px 0 0 0, 6px 0 0 0, -2px 0px 0 0, -4px 0 0 0, -6px 0 0 0, // 中间线
+                0 6px 0 0, 2px 6px 0 0, 4px 6px 0 0, 6px 6px 0 0, -2px 6px 0 0, -4px 6px 0 0, -6px 6px 0 0, // 下侧线
+                0 -6px 0 0, 2px -6px 0 0, 4px -6px 0 0, 6px -6px 0 0, -2px -6px 0 0, -4px -6px 0 0, -6px -6px 0 0, // 上侧线
+                -6px -16px 0 0, -4px -16px 0 0, -2px -16px 0 0, 0 -16px 0 0, 2px -16px 0 0, 4px -16px 0 0, 6px -16px 0 0, 8px -16px 0 0, 10px -16px 0 0, 12px -16px 0 0, 14px -16px 0 0, //顶部
+                -6px -14px 0 0, //顶部闭合
+                14px 12px 0 0, 13px 12px 0 0, //右侧闭合
+                16px -16px 0 0, 16px -14px 0 0, 16px -12px 0 0, 16px -10px 0 0, 16px -8px 0 0, 16px -6px 0 0, 16px -4px 0 0, 16px -2px 0 0, 16px 0 0 0, 16px 2px 0 0, 16px 4px 0 0, 16px 6px 0 0, 16px 8px 0 0, 16px 10px 0 0, 16px 12px 0 0; // 右侧
+
+    //box-shadow: inset 0 0 0 32px, 0 -5px 0 0, 0 5px 0 0, 0 -21px 0 0, 10px -21px 0 0;
+
+    @include icon-center-middle;
+    top: 40%;
+  }
+}

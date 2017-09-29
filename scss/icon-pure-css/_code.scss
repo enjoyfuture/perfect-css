@@ -1,0 +1,70 @@
+// 代码图标
+@import "./variable";
+@import "./mixin";
+
+$code-border: $icon-size * .1;
+$code-size: $icon-size * .5;
+
+// 第一种实现方式
+//.icon-pure-code {
+//  display: inline-flex;
+//  align-items: center;
+//
+//  &::before,
+//  &::after {
+//    position: absolute;
+//    width: $code-size;
+//    height: $code-size;
+//    transform: rotate(-45deg);
+//  }
+//
+//  &::before {
+//    border-top: $code-border solid currentColor;
+//    border-left: $code-border solid currentColor;
+//  }
+//
+//  &::after {
+//    left: $icon-size * .7;
+//    border-bottom: $code-border solid currentColor;
+//    border-right: $code-border solid currentColor;
+//  }
+//}
+
+// 第二种实现方式
+.icon-pure-code {
+  box-sizing: content-box;
+  width: $code-size;
+  height: $code-size;
+  border-top: $code-border solid currentColor;
+  border-left: $code-border solid currentColor;
+  transform: rotate(-45deg);
+
+  &::before {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: $code-size;
+    height: $code-size;
+    border-bottom: $code-border solid currentColor;
+    border-right: $code-border solid currentColor;
+  }
+
+  &::after {
+    content: normal;
+  }
+}
+
+.icon-pure-code-expand {
+  @extend .icon-pure-code;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -$icon-size * .05;
+    left: $icon-size * .4;
+    width: $icon-size * .1;
+    height: $icon-size;
+    background-color: currentColor;
+    transform: rotate(65deg);
+  }
+}

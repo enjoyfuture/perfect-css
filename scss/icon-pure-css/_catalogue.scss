@@ -1,0 +1,22 @@
+// 目录或列表
+
+@import "./variable";
+@import "./mixin";
+
+.icon-pure-catalogue {
+  $shadow-y-offset: $icon-size * .4;
+  $catalogue-size: $icon-size * .2;
+
+  width: $catalogue-size;
+  height: $catalogue-size;
+  margin: $icon-size * .8 $icon-size * 1.3 $icon-size * .8  $shadow-y-offset;
+  box-shadow: inset 0 0 0 $icon-size, 0 -#{$shadow-y-offset} 0 0, 0 #{$shadow-y-offset} 0 0;
+
+  &::before {
+    position: absolute;
+    left: $shadow-y-offset;
+    width: $icon-size - $catalogue-size;
+    height: $catalogue-size;
+    box-shadow: inset 0 0 0 $icon-size, 0 -#{$shadow-y-offset} 0 0, 0 #{$shadow-y-offset} 0 0;
+  }
+}

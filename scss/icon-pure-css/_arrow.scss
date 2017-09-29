@@ -1,0 +1,40 @@
+// 实心箭头
+
+@import "./variable";
+@import "./mixin";
+
+[class*="icon-pure-arrow-"] {
+  content: '';
+  width: 0;
+  height: 0;
+  border: $icon-size / 2 solid;
+
+  &::before,
+  &::after {
+    content: normal;
+  }
+}
+
+.icon-pure-arrow-up {
+  border-color: transparent transparent currentColor;
+  border-top-width: 0;
+  border-bottom-style: solid;
+}
+
+.icon-pure-arrow-down {
+  border-color: currentColor transparent transparent;
+  border-top-style: solid;
+  border-bottom-width: 0;
+}
+
+.icon-pure-arrow-left {
+  border-color: transparent currentColor transparent transparent;
+  border-left-width: 0;
+  border-right-style: solid;
+}
+
+.icon-pure-arrow-right {
+  border-color: transparent transparent transparent currentColor;
+  border-left-style: solid;
+  border-right-width: 0;
+}

@@ -1,0 +1,27 @@
+// 铅笔，可用来作为编辑图标使用
+
+@import "./variable";
+@import "./mixin";
+
+.icon-pure-pencil {
+  width: $icon-size * .3;
+  background-color: currentColor;
+  transform: rotate(45deg) scale(0.8);
+
+  &::before {
+    position: absolute;
+    top: -$icon-size * .3;
+    width: $icon-size * .3;
+    height: $icon-size * .25;
+    border-radius: 2px;
+    background-color: currentColor;
+  }
+
+  &::after {
+    position: absolute;
+    top: $icon-size + 1px;
+    border-width: $icon-size * .4  $icon-size * .15;
+    border-style: solid;
+    border-color: currentColor transparent transparent;
+  }
+}

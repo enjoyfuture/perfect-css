@@ -1,0 +1,20 @@
+// 问题与建议
+
+@import "./variable";
+@import "./mixin";
+
+.icon-pure-questions {
+  width: $icon-size * 1.5;
+  height: $icon-size * 1.5;
+  border: 2px solid;
+  border-radius: 50%;
+
+  &::before {
+    content: '?';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -$icon-size * 0.1;
+    font-size: $icon-size;
+  }
+}

@@ -1,0 +1,38 @@
+// 勾选
+
+@import "./variable";
+@import "./mixin";
+
+.icon-pure-check {
+  transform: rotate(-45deg);
+
+  &::before {
+    @include icon-center-middle;
+    width: $icon-size;
+    height: 2px;
+  }
+
+  &::after {
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: $icon-size / 2;
+    background: currentColor;
+  }
+
+  &[data-circle] {
+
+    &::before {
+      top: 55%;
+      left: 55%;
+      width: $icon-size * .75;
+    }
+
+    &::after {
+      top: $icon-size * .33333333;
+      left: $icon-size * .3;
+      width: 2px;
+      height: $icon-size / 2 * .8;
+    }
+  }
+}
