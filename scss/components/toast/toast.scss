@@ -36,7 +36,7 @@
 
     @include animation-transition(opacity, $toast-transition-duration-leave, ease-out);
 
-    @include theme-prop(background-color, text-primary-on-light);
+    @include theme-prop(background-color, primary-on-light);
   }
 
   &.enter {

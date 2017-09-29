@@ -18,7 +18,7 @@
   padding: $thumbnail-padding;
   border: $thumbnail-border-width solid $thumbnail-border-color;
 
-  @include theme-prop(background-color, text-primary-on-dark);
+  @include theme-prop(background-color, primary-on-dark);
 
   @include border-radius($thumbnail-border-radius);
   @include animation-transition(all, 200ms, ease-in-out);
@@ -44,7 +44,7 @@
 
 .figure-caption {
   font-size: $figure-caption-font-size;
-  @include theme-prop(background-color, text-secondary-on-dark);
+  @include theme-prop(background-color, secondary-on-dark);
   text-align: center;
 }
 

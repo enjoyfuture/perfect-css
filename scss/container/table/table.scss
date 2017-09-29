@@ -18,7 +18,7 @@ caption {
   padding-bottom: $table-cell-padding;
   text-align: left;
   caption-side: bottom;
-  @include theme-prop(color, text-secondary-on-primary);
+  @include theme-prop(color, secondary-on-primary);
 }
 
 th {

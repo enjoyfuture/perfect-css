@@ -45,7 +45,7 @@
       margin-left: -($tooltip-arrow-width - 2);
       border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
 
-      @include theme-prop(border-top-color, text-primary-on-light);
+      @include theme-prop(border-top-color, primary-on-light);
     }
   }
 
@@ -60,7 +60,7 @@
       content: "";
       margin-top: -($tooltip-arrow-width - 2);
       border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
-      @include theme-prop(border-right-color, text-primary-on-light);
+      @include theme-prop(border-right-color, primary-on-light);
     }
   }
 
@@ -75,7 +75,7 @@
       content: "";
       margin-left: -($tooltip-arrow-width - 2);
       border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
-      @include theme-prop(border-bottom-color, text-primary-on-light);
+      @include theme-prop(border-bottom-color, primary-on-light);
     }
   }
 
@@ -91,7 +91,7 @@
       right: 0;
       margin-top: -($tooltip-arrow-width - 2);
       border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
-      @include theme-prop(border-left-color, text-primary-on-light);
+      @include theme-prop(border-left-color, primary-on-light);
     }
   }
   &.tooltip-auto {
@@ -123,6 +123,6 @@
   text-align: center;
   @include border-radius($border-radius);
 
-  @include theme-prop(color, text-primary-on-dark);
-  @include theme-prop(background-color, text-primary-on-light);
+  @include theme-prop(color, primary-on-dark);
+  @include theme-prop(background-color, primary-on-light);
 }

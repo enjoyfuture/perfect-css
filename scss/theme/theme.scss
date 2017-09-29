@@ -42,7 +42,7 @@
   }
 }
 
-// 通过添加该样式值，改变文本主题颜色值，对于主题色调($theme-tone-property-values)，不单独设置
+// 通过添加该样式值，改变文本主题前景颜色值，对于主题色调($theme-tone-property-values)，不单独设置
 // .theme-primary {color: #2196f3; color: var(--theme-primary, #2196f3);}
 @each $style in map-keys($theme-property-values) {
   @if $style != "background" {

@@ -28,23 +28,23 @@ ul.menu, ol.menu {
   padding: .3rem .5rem;
   font-weight: 400;
   text-decoration: none;
-  @include theme-prop(color, text-secondary-on-light);
+  @include theme-prop(color, secondary-on-light);
 
   &:hover, &:focus {
     @include hover-focus {
       text-decoration: none;
-      @include theme-prop(color, text-primary-on-light);
+      @include theme-prop(color, primary-on-light);
     }
   }
 
   &.active {
-    @include theme-prop(color, text-primary-on-light);
+    @include theme-prop(color, primary-on-light);
   }
 
 }
 
 .menu-header {
-  @include theme-prop(color, text-primary-on-light);
+  @include theme-prop(color, primary-on-light);
 }
 
 // 下拉菜单，如果采用 li 来书写菜单，则直接定义 li 样式即可

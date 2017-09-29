@@ -29,7 +29,7 @@
   }
 
   &-circle-outer {
-    @include theme-prop(border-color, text-secondary-on-light);
+    @include theme-prop(border-color, secondary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -43,7 +43,7 @@
   }
 
   &-circle-inner {
-    @include theme-prop(background-color, text-secondary-on-light);
+    @include theme-prop(background-color, secondary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -93,11 +93,11 @@
 .radio-native-control:checked {
   + .radio-background {
     .radio-circle-outer {
-      @include theme-prop(border-color, text-primary-on-light);
+      @include theme-prop(border-color, primary-on-light);
     }
 
     .radio-circle-inner {
-      @include theme-prop(background-color, text-primary-on-light);
+      @include theme-prop(background-color, primary-on-light);
       transform:  scale(.5);
       transition: radio-enter(transform), radio-enter(background-color);
     }

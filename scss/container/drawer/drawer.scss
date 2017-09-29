@@ -127,29 +127,12 @@ $drawer-width: 240px;
     will-change: padding-left;
   }
 
-  // todo 这里应换成 iconfont
+  // 内层还需要加入图标等额外的样式，比如 .icon-pure-menu
+  // <div class="drawer-toggle"><i class="icon-pure-menu"></i></div>
   &-toggle {
-    position: relative;
-    display: inline-block;
-    width: 1.2em;
-    height: 1em;
-    padding: $drawer-toggle-padding-y $drawer-toggle-padding-x;
+    padding: 1rem 1.25rem 1rem 0;
     margin-right: 1rem;
-    border-top: .15em solid currentColor;
-    border-bottom: .15em solid currentColor;
-    font-size: $drawer-toggle-font-size;
-    line-height: 1;
-    color: #fff;
     cursor: pointer;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: .27em;
-      left: 0;
-      right: 0;
-      border-top: .15em solid currentColor;
-    }
   }
 }
 

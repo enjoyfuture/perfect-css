@@ -34,11 +34,11 @@
   font-size: $navbar-font-size;
   line-height: inherit;
   white-space: nowrap;
-  @include theme-prop(color, text-primary-on-light);
+  @include theme-prop(color, primary-on-light);
 
   @include hover-focus {
     text-decoration: none;
-    @include theme-prop(color, text-primary-on-light);
+    @include theme-prop(color, primary-on-light);
   }
 }
 
@@ -112,23 +112,23 @@
     margin-right: .25rem;
     border-bottom: 2px solid transparent;
     cursor: pointer;
-    @include theme-prop(color, text-secondary-on-light);
+    @include theme-prop(color, secondary-on-light);
 
     @include hover-focus {
       text-decoration: none;
-      @include theme-prop(color, text-primary-on-light);
-      @include theme-prop(border-bottom-color, text-secondary-on-light);
+      @include theme-prop(color, primary-on-light);
+      @include theme-prop(border-bottom-color, secondary-on-light);
     }
 
     &.active {
-      @include theme-prop(color, text-primary-on-light);
-      @include theme-prop(border-bottom-color, text-primary-on-light);
+      @include theme-prop(color, primary-on-light);
+      @include theme-prop(border-bottom-color, primary-on-light);
     }
 
     &.disabled {
       border-bottom-color: transparent;
       cursor: default;
-      @include theme-prop(color, text-disabled-on-light);
+      @include theme-prop(color, disabled-on-light);
     }
   }
 }
@@ -190,35 +190,35 @@
     @include theme-prop(background-color, #{$style});
 
     .navbar-toggler {
-      @include theme-prop(color, text-primary-on-dark);
+      @include theme-prop(color, primary-on-dark);
     }
 
     .navbar-brand {
-      @include theme-prop(color, text-primary-on-dark);
+      @include theme-prop(color, primary-on-dark);
       @include hover-focus {
-        @include theme-prop(color, text-primary-on-dark);
+        @include theme-prop(color, primary-on-dark);
       }
     }
 
     .navbar-nav {
       .nav-link {
-        @include theme-prop(color, text-secondary-on-dark);
+        @include theme-prop(color, secondary-on-dark);
 
         @include hover-focus {
           text-decoration: none;
-          @include theme-prop(color, text-primary-on-dark);
-          @include theme-prop(border-bottom-color, text-secondary-on-dark);
+          @include theme-prop(color, primary-on-dark);
+          @include theme-prop(border-bottom-color, secondary-on-dark);
         }
 
         &.active {
-          @include theme-prop(color, text-primary-on-dark);
-          @include theme-prop(border-bottom-color, text-primary-on-dark);
+          @include theme-prop(color, primary-on-dark);
+          @include theme-prop(border-bottom-color, primary-on-dark);
         }
 
         &.disabled {
           border-bottom-color: transparent;
           cursor: default;
-          @include theme-prop(color, text-disabled-on-dark);
+          @include theme-prop(color, disabled-on-dark);
         }
       }
     }
@@ -227,7 +227,7 @@
       &::before,
       &::after {
         // ripple 主题样式
-        @include ripple-theme((theme-style: text-primary-on-#{$style}, opacity: .16));
+        @include ripple-theme((theme-style: primary-on-#{$style}, opacity: .16));
       }
     }
   }

@@ -8,7 +8,7 @@
 @import "variable";
 
 .btn {
-  @include theme-prop(color, text-primary-on-light);
+  @include theme-prop(color, primary-on-light);
   position:                relative;
   box-sizing:              border-box;
   display:                 inline-block;
@@ -105,13 +105,13 @@
 
     &.btn-raised {
       // 前背景对比色差
-      @include theme-prop(color, text-primary-on-#{$style});
+      @include theme-prop(color, primary-on-#{$style});
       @include theme-prop(background-color, #{$style});
       // 用白色透明色处理动画波纹效果
       &::before,
       &::after {
         // ripple 主题样式
-        @include ripple-theme((theme-style: text-primary-on-#{$style}, opacity: .16));
+        @include ripple-theme((theme-style: primary-on-#{$style}, opacity: .16));
       }
     }
   }

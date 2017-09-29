@@ -14,7 +14,7 @@
 }
 
 .input-field {
-  @include theme-prop(color, text-primary-on-light);
+  @include theme-prop(color, primary-on-light);
   padding: $input-padding-y $input-padding-x;
   border: 1px solid $input-border-color;
   font-size: $input-font-size;
@@ -33,7 +33,7 @@
 
   // Placeholder
   &::placeholder {
-    @include theme-prop(color, text-hint-on-light);
+    @include theme-prop(color, hint-on-light);
     opacity: 1;
     transition: input-transition(color);
   }
@@ -46,13 +46,13 @@
 
 
   &:focus::placeholder {
-    @include theme-prop(color, text-secondary-on-light);
+    @include theme-prop(color, secondary-on-light);
   }
 
   // Disabled
   &:disabled,
   &[readonly] {
-    @include theme-prop(color, text-disabled-on-light);
+    @include theme-prop(color, disabled-on-light);
     pointer-events: none;
   }
 
@@ -82,7 +82,7 @@
 }
 
 .input-label {
-  @include theme-prop(color, text-hint-on-light);
+  @include theme-prop(color, hint-on-light);
 
   position: absolute;
   bottom: $input-label-bottom;
@@ -109,6 +109,6 @@
     cursor: auto;
     transform: translateY(-100%) scale(.9, .9);
 
-    @include theme-prop(color, text-primary-on-light);
+    @include theme-prop(color, primary-on-light);
   }
 }

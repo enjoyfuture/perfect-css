@@ -63,12 +63,11 @@
 }
 
 // 根据 $theme-tone-property-values 中的 key 计算对应的变量名
-// 比如 text-primary-on-primary 对应的变量名为 --theme-#{$theme-primary-tone}-primary
+// 比如 primary-on-primary 对应的变量名为 --theme-#{$theme-primary-tone}-primary
 
 @function theme-tone-var($theme-tone-property) {
-  $text-index: str-index($theme-tone-property, 'text-');
   $on-index: str-index($theme-tone-property, '-on-');
-  $text-next-str: str-slice($theme-tone-property, $text-index + 5, $on-index - 1);
+  $on-prev-str: str-slice($theme-tone-property, 0, $on-index - 1);
   $on-next-str: str-slice($theme-tone-property, $on-index + 4);
   $tone-light-or-dark: null;
 
@@ -93,6 +92,6 @@
     $tone-light-or-dark: $theme-background-tone;
   }
 
-  @return #{$tone-light-or-dark}-#{$text-next-str};
+  @return #{$tone-light-or-dark}-#{$on-prev-str};
 }
 

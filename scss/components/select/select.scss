@@ -13,7 +13,7 @@ $arrow-spacer: 1.5rem;
   position: relative;
   display: inline-block;
   cursor: pointer;
-  @include theme-prop(color, text-primary-on-light);
+  @include theme-prop(color, primary-on-light);
 
   // 箭头
   &::after {
@@ -24,7 +24,7 @@ $arrow-spacer: 1.5rem;
     border-width: $arrow-size $arrow-size 0;
     border-style: solid;
     border-color: transparent;
-    @include theme-prop(border-top-color, text-secondary-on-light);
+    @include theme-prop(border-top-color, secondary-on-light);
   }
 
   &:focus {
@@ -62,7 +62,7 @@ $arrow-spacer: 1.5rem;
 
   // 为 select 设置 focus 样式
   &:focus {
-    @include theme-prop(border-bottom-color, text-primary-on-light);
+    @include theme-prop(border-bottom-color, primary-on-light);
     background-color: rgba(0, 0, 0, .06);
     outline: none;
   }
@@ -108,7 +108,7 @@ $arrow-spacer: 1.5rem;
   position: relative;
   padding: .25rem .5rem;
   cursor: pointer;
-  @include theme-prop(color, text-secondary-on-light);
+  @include theme-prop(color, secondary-on-light);
 
   &::before {
     content: "";
@@ -124,7 +124,7 @@ $arrow-spacer: 1.5rem;
 
   // 选中的
   &[aria-selected="true"] {
-    @include theme-prop(color, text-primary-on-light);
+    @include theme-prop(color, primary-on-light);
   }
 
   &:focus {
@@ -141,7 +141,7 @@ $arrow-spacer: 1.5rem;
 
   // disabled
   &[aria-disabled="true"] {
-    @include theme-prop(color, text-disabled-on-light);
+    @include theme-prop(color, disabled-on-light);
     cursor: default;
 
     &::before {
@@ -169,9 +169,9 @@ $arrow-spacer: 1.5rem;
 // disabled 状态
 .select-disabled {
   cursor: default;
-  @include theme-prop(color, text-disabled-on-light);
+  @include theme-prop(color, disabled-on-light);
   &::after {
-    @include theme-prop(border-top-color, text-disabled-on-light);
+    @include theme-prop(border-top-color, disabled-on-light);
   }
   select:disabled {
     pointer-events: none;
@@ -188,13 +188,13 @@ $arrow-spacer: 1.5rem;
   outline: none;
   appearance: none;
 
-  @include theme-prop(border-color, text-hint-on-light);
+  @include theme-prop(border-color, hint-on-light);
 
   .option-group {
     padding: 0 0 0 1rem;
     margin: 1rem 0 0;
     font-weight: normal;
-    @include theme-prop(color, text-hint-on-light);
+    @include theme-prop(color, hint-on-light);
 
     &:last-child {
       margin-bottom: 1rem;
@@ -214,7 +214,7 @@ $arrow-spacer: 1.5rem;
     align-items: center;
     padding: .5rem 1rem;
 
-    @include theme-prop(color, text-primary-on-light);
+    @include theme-prop(color, primary-on-light);
     cursor: pointer;
 
     &:first-child {
@@ -225,7 +225,7 @@ $arrow-spacer: 1.5rem;
     }
 
     &:disabled {
-      @include theme-prop(color, text-disabled-on-light);
+      @include theme-prop(color, disabled-on-light);
       cursor: default;
     }
 

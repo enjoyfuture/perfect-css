@@ -28,7 +28,7 @@
   }
 
   &-mark-outer {
-    @include theme-prop(border-color, text-secondary-on-light);
+    @include theme-prop(border-color, secondary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -43,7 +43,7 @@
 
   // 勾选后的样式
   &-mark-inner {
-    @include theme-prop(background-color, text-secondary-on-light);
+    @include theme-prop(background-color, secondary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -113,7 +113,7 @@
     }
 
     .checkbox-mark-inner {
-      @include theme-prop(background-color, text-primary-on-light);
+      @include theme-prop(background-color, primary-on-light);
       transform:  scale(1);
       transition: checkbox-enter(transform), checkbox-enter(background-color);
     }
@@ -163,7 +163,7 @@
       @include theme-prop(background-color, #{$style}-light);
 
       &::after {
-        @include theme-prop(border-color, text-primary-on-#{$style});
+        @include theme-prop(border-color, primary-on-#{$style});
       }
     }
 

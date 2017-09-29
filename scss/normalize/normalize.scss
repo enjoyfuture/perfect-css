@@ -31,8 +31,8 @@ body {
   font-size: $font-size-base;
   font-weight: $font-weight-base;
   line-height: $line-height-base;
-  @include theme-prop(color, text-primary-on-light); // 1 前景对应  rgba(0, 0, 0, .87),
-  @include theme-prop(background-color, text-primary-on-dark); // 1 背景对应 #fff
+  @include theme-prop(color, primary-on-light); // 1 前景对应  rgba(0, 0, 0, .87),
+  @include theme-prop(background-color, primary-on-dark); // 1 背景对应 #fff
 }
 
 // normalize.scss 中设置了一部分，这里再补上几个，让 IE 9- 正确的显示

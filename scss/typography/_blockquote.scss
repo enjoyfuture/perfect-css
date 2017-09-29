@@ -6,14 +6,14 @@
   margin-bottom: $spacer;
   border-left-width: $blockquote-border-width;
   border-left-style: solid ;
-  @include theme-prop(border-left-color, text-hint-on-light);
+  @include theme-prop(border-left-color, hint-on-light);
   font-size: $blockquote-font-size;
 }
 
 .blockquote-footer {
   display: block;
   font-size: 80%; // back to default font-size
-  @include theme-prop(color, text-secondary-on-light);
+  @include theme-prop(color, secondary-on-light);
 
   &::before {
     content: "\2014 \00A0";
@@ -27,7 +27,7 @@
   border-left: 0;
   border-right-width: $blockquote-border-width;
   border-right-style: solid ;
-  @include theme-prop(border-right-color, text-hint-on-light);
+  @include theme-prop(border-right-color, hint-on-light);
   text-align: right;
 
   .blockquote-footer {

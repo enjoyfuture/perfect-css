@@ -24,6 +24,9 @@
 // typography 排版样式
 @import "typography/typography";
 
+// 纯 css 图标
+@import "icon-pure-css/icon-pure-css";
+
 // layout 布局
 @import "layout/box/box";
 @import "layout/container/container";
@@ -61,9 +64,6 @@
 @import "components/progress/progress";
 @import "components/toast/toast";
 @import "components/tooltip/tooltip";
-
-// 纯 css 图标
-@import "icon-pure-css/icon-pure-css";
 
 // 工具类 classes
 @import "utils/utils";

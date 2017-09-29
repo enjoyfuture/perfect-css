@@ -50,7 +50,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 
-  @include theme-prop(color, text-secondary-on-light);
+  @include theme-prop(color, secondary-on-light);
 
   &::after {
     content: "";
@@ -65,12 +65,12 @@
   }
 
   &.active {
-    @include theme-prop(color, text-primary-on-light);
+    @include theme-prop(color, primary-on-light);
 
     // 获取焦点，鼠标经过或者当前为活动节点时，显示底部边框
     &::after {
       display: block;
-      @include theme-prop(background-color, text-primary-on-light);
+      @include theme-prop(background-color, primary-on-light);
     }
   }
 
