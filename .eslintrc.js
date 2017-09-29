@@ -313,8 +313,6 @@ module.exports = {
     "template-curly-spacing": [2, "never"], // 模板表达式中 {} 前后是否需要空格
     "yield-star-spacing": [2, {"before": true, "after": false}], // yield * 号前后是否需要空格
 
-    // eslint-plugin-flowtype rule ，待补充
-
     // eslint-plugin-ava rule
     "ava/assertion-arguments": "error",
     "ava/max-asserts": ["off", 5],
@@ -356,17 +354,12 @@ module.exports = {
   "globals": { // 定义全局的变量
   },
   "extends": [ // 推荐使用默认配置好的
-    "eslint:recommended",
-    "plugin:flowtype/recommended"
+    "eslint:recommended"
   ],
   "plugins": [ // 定义第三方插件
-    "flowtype",
     "ava"
   ],
   "settings": {
-    "flowtype": {
-      "onlyFilesWithFlowAnnotation": false
-    }
   },
   "root": true // 设置他后，子的js文件找到该 eslint配置文件后，则不再向上查找其他eslint配置文件
 };
