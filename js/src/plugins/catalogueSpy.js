@@ -51,6 +51,11 @@ class _CatalogueSpy {
       const {step} = this.config;
       this.maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
 
+      if (prevent && this.maxOffset > 0) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
       // 判断鼠标滑轮向上还是向下滑动
       let upDown;
       const {detail, wheelDelta} = event;
@@ -73,11 +78,6 @@ class _CatalogueSpy {
 
       let y = reg.exec(transform);
       y = y ? parseFloat(y[1], 10) : 0;
-
-      if (prevent && this.maxOffset > 0) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
 
       if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === this.maxOffset)) {
         return;
@@ -105,20 +105,22 @@ class _CatalogueSpy {
     // Fixme 注意这里还需计算 $menuPanel.parentElement padding 和 border 的值，待处理
     const menuRect = $menuPanel.parentElement.getBoundingClientRect();
     const currentTarget = doc.querySelectorAll(lastSelector.join(','));
-    Array.prototype.forEach.call(currentTarget, (el) => {
-      let rect = el.getBoundingClientRect();
-      while (rect.top < menuRect.top || rect.bottom > menuRect.bottom) { // 向上移动
-        const {transform} = $menuPanel.style;
-        let y = reg.exec(transform);
-        y = y ? parseFloat(y[1], 10) : 0;
-        if (rect.top < menuRect.top) {
-          $menuPanel.style.transform = `translateY(${Math.min(y + step, 0)}px)`;
-        } else {
-          $menuPanel.style.transform = `translateY(${Math.max(y - step, -maxOffset)}px)`;
+    if (currentTarget) {
+      Array.prototype.forEach.call(currentTarget, (el) => {
+        let rect = el.getBoundingClientRect();
+        while (rect.top > 0 && rect.bottom > 0 && (rect.top < menuRect.top || rect.bottom > menuRect.bottom)) { // 向上移动
+          const {transform} = $menuPanel.style;
+          let y = reg.exec(transform);
+          y = y ? parseFloat(y[1], 10) : 0;
+          if (rect.top < menuRect.top) {
+            $menuPanel.style.transform = `translateY(${Math.min(y + step, 0)}px)`;
+          } else {
+            $menuPanel.style.transform = `translateY(${Math.max(y - step, -maxOffset)}px)`;
+          }
+          rect = el.getBoundingClientRect();
         }
-        rect = el.getBoundingClientRect();
-      }
-    });
+      });
+    }
   };
 
   unmount() {
