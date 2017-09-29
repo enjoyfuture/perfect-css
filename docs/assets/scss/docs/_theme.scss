@@ -4,191 +4,343 @@
 .theme-red {
   #{--theme-primary}: $red-500;
   #{--theme-primary-dark}: $red-700;
-  #{--theme-primary-light}: $red-50;
+  #{--theme-primary-darker}: $red-800;
+  #{--theme-primary-darkest}: $red-900;
+  #{--theme-primary-light}: $red-300;
+  #{--theme-primary-lighter}: $red-100;
+  #{--theme-primary-lightest}: $red-50;
 
   #{--theme-secondary}: $orange-500;
   #{--theme-secondary-dark}: $orange-700;
-  #{--theme-secondary-light}: $orange-50;
+  #{--theme-secondary-darker}: $orange-800;
+  #{--theme-secondary-darkest}: $orange-900;
+  #{--theme-secondary-light}: $orange-300;
+  #{--theme-secondary-lighter}: $orange-100;
+  #{--theme-secondary-lightest}: $orange-50;
 }
 
 .theme-pink {
   #{--theme-primary}: $pink-500;
   #{--theme-primary-dark}: $pink-700;
-  #{--theme-primary-light}: $pink-50;
+  #{--theme-primary-darker}: $pink-800;
+  #{--theme-primary-darkest}: $pink-900;
+  #{--theme-primary-light}: $pink-300;
+  #{--theme-primary-lighter}: $pink-100;
+  #{--theme-primary-lightest}: $pink-50;
 
   #{--theme-secondary}: $cyan-500;
   #{--theme-secondary-dark}: $cyan-700;
-  #{--theme-secondary-light}: $cyan-50;
+  #{--theme-secondary-darker}: $cyan-800;
+  #{--theme-secondary-darkest}: $cyan-900;
+  #{--theme-secondary-light}: $cyan-300;
+  #{--theme-secondary-lighter}: $cyan-100;
+  #{--theme-secondary-lightest}: $cyan-50;
 }
 
 .theme-purple {
   #{--theme-primary}: $purple-500;
   #{--theme-primary-dark}: $purple-700;
-  #{--theme-primary-light}: $purple-50;
+  #{--theme-primary-darker}: $purple-800;
+  #{--theme-primary-darkest}: $purple-900;
+  #{--theme-primary-light}: $purple-300;
+  #{--theme-primary-lighter}: $purple-100;
+  #{--theme-primary-lightest}: $purple-50;
 
   #{--theme-secondary}: $green-500;
   #{--theme-secondary-dark}: $green-700;
-  #{--theme-secondary-light}: $green-50;
+  #{--theme-secondary-darker}: $green-800;
+  #{--theme-secondary-darkest}: $green-900;
+  #{--theme-secondary-light}: $green-300;
+  #{--theme-secondary-lighter}: $green-100;
+  #{--theme-secondary-lightest}: $green-50;
 }
 
 .theme-deep-purple {
   #{--theme-primary}: $deep-purple-500;
   #{--theme-primary-dark}: $deep-purple-700;
-  #{--theme-primary-light}: $deep-purple-50;
+  #{--theme-primary-darker}: $deep-purple-800;
+  #{--theme-primary-darkest}: $deep-purple-900;
+  #{--theme-primary-light}: $deep-purple-300;
+  #{--theme-primary-lighter}: $deep-purple-100;
+  #{--theme-primary-lightest}: $deep-purple-50;
 
   #{--theme-secondary}: $light-green-500;
   #{--theme-secondary-dark}: $light-green-700;
-  #{--theme-secondary-light}: $light-green-50;
+  #{--theme-secondary-darker}: $light-green-800;
+  #{--theme-secondary-darkest}: $light-green-900;
+  #{--theme-secondary-light}: $light-green-300;
+  #{--theme-secondary-lighter}: $light-green-100;
+  #{--theme-secondary-lightest}: $light-green-50;
 }
 
 .theme-indigo {
   #{--theme-primary}: $indigo-500;
   #{--theme-primary-dark}: $indigo-700;
-  #{--theme-primary-light}: $indigo-50;
+  #{--theme-primary-darker}: $indigo-800;
+  #{--theme-primary-darkest}: $indigo-900;
+  #{--theme-primary-light}: $indigo-300;
+  #{--theme-primary-lighter}: $indigo-100;
+  #{--theme-primary-lightest}: $indigo-50;
 
   #{--theme-secondary}: $pink-a-200;
   #{--theme-secondary-dark}: $pink-a-700;
-  #{--theme-secondary-light}: $pink-50;
+  #{--theme-secondary-darker}: $pink-800;
+  #{--theme-secondary-darkest}: $pink-900;
+  #{--theme-secondary-light}: $pink-300;
+  #{--theme-secondary-lighter}: $pink-100;
+  #{--theme-secondary-lightest}: $pink-50;
 }
 
 .theme-blue {
   #{--theme-primary}: $blue-500;
   #{--theme-primary-dark}: $blue-700;
-  #{--theme-primary-light}: $blue-50;
+  #{--theme-primary-darker}: $blue-800;
+  #{--theme-primary-darkest}: $blue-900;
+  #{--theme-primary-light}: $blue-300;
+  #{--theme-primary-lighter}: $blue-100;
+  #{--theme-primary-lightest}: $blue-50;
 
   #{--theme-secondary}: $purple-a-200;
   #{--theme-secondary-dark}: $purple-a-700;
-  #{--theme-secondary-light}: $purple-50;
+  #{--theme-secondary-darker}: $purple-800;
+  #{--theme-secondary-darkest}: $purple-900;
+  #{--theme-secondary-light}: $purple-300;
+  #{--theme-secondary-lighter}: $purple-100;
+  #{--theme-secondary-lightest}: $purple-50;
 }
 
 .theme-light-blue {
   #{--theme-primary}: $light-blue-600;
   #{--theme-primary-dark}: $light-blue-700;
-  #{--theme-primary-light}: $light-blue-50;
+  #{--theme-primary-darker}: $light-blue-800;
+  #{--theme-primary-darkest}: $light-blue-900;
+  #{--theme-primary-light}: $light-blue-300;
+  #{--theme-primary-lighter}: $light-blue-100;
+  #{--theme-primary-lightest}: $light-blue-50;
 
   #{--theme-secondary}: $amber-500;
   #{--theme-secondary-dark}: $amber-700;
-  #{--theme-secondary-light}: $amber-50;
+  #{--theme-secondary-darker}: $amber-800;
+  #{--theme-secondary-darkest}: $amber-900;
+  #{--theme-secondary-light}: $amber-300;
+  #{--theme-secondary-lighter}: $amber-100;
+  #{--theme-secondary-lightest}: $amber-50;
 }
 
 .theme-cyan {
   #{--theme-primary}: $cyan-500;
   #{--theme-primary-dark}: $cyan-700;
-  #{--theme-primary-light}: $cyan-50;
+  #{--theme-primary-darker}: $cyan-800;
+  #{--theme-primary-darkest}: $cyan-900;
+  #{--theme-primary-light}: $cyan-300;
+  #{--theme-primary-lighter}: $cyan-100;
+  #{--theme-primary-lightest}: $cyan-50;
 
   #{--theme-secondary}: $lime-500;
   #{--theme-secondary-dark}: $lime-700;
-  #{--theme-secondary-light}: $lime-50;
+  #{--theme-secondary-darker}: $lime-800;
+  #{--theme-secondary-darkest}: $lime-900;
+  #{--theme-secondary-light}: $lime-300;
+  #{--theme-secondary-lighter}: $lime-100;
+  #{--theme-secondary-lightest}: $lime-50;
 }
 
 .theme-teal {
   #{--theme-primary}: $teal-500;
   #{--theme-primary-dark}: $teal-700;
-  #{--theme-primary-light}: $teal-50;
+  #{--theme-primary-darker}: $teal-800;
+  #{--theme-primary-darkest}: $teal-900;
+  #{--theme-primary-light}: $teal-300;
+  #{--theme-primary-lighter}: $teal-100;
+  #{--theme-primary-lightest}: $teal-50;
 
   #{--theme-secondary}: $pink-a-200;
   #{--theme-secondary-dark}: $pink-a-700;
-  #{--theme-secondary-light}: $pink-50;
+  #{--theme-secondary-darker}: $pink-800;
+  #{--theme-secondary-darkest}: $pink-900;
+  #{--theme-secondary-light}: $pink-300;
+  #{--theme-secondary-lighter}: $pink-100;
+  #{--theme-secondary-lightest}: $pink-50;
 }
 
 .theme-green {
   #{--theme-primary}: $green-500;
   #{--theme-primary-dark}: $green-700;
-  #{--theme-primary-light}: $green-50;
+  #{--theme-primary-darker}: $green-800;
+  #{--theme-primary-darkest}: $green-900;
+  #{--theme-primary-light}: $green-300;
+  #{--theme-primary-lighter}: $green-100;
+  #{--theme-primary-lightest}: $green-50;
 
   #{--theme-secondary}: $orange-500;
   #{--theme-secondary-dark}: $orange-700;
-  #{--theme-secondary-light}: $orange-50;
+  #{--theme-secondary-darker}: $orange-800;
+  #{--theme-secondary-darkest}: $orange-900;
+  #{--theme-secondary-light}: $orange-300;
+  #{--theme-secondary-lighter}: $orange-100;
+  #{--theme-secondary-lightest}: $orange-50;
 }
 
 .theme-light-green {
   #{--theme-primary}: $light-green-500;
   #{--theme-primary-dark}: $light-green-700;
+  #{--theme-primary-darker}: $light-green-800;
+  #{--theme-primary-darkest}: $light-green-900;
   #{--theme-primary-light}: $light-green-50;
+  #{--theme-primary-lighter}: $light-green-100;
+  #{--theme-primary-lightest}: $light-green-50;
 
   #{--theme-secondary}: $lime-500;
   #{--theme-secondary-dark}: $lime-700;
-  #{--theme-secondary-light}: $lime-50;
+  #{--theme-secondary-darker}: $lime-800;
+  #{--theme-secondary-darkest}: $lime-900;
+  #{--theme-secondary-light}: $lime-300;
+  #{--theme-secondary-lighter}: $lime-100;
+  #{--theme-secondary-lightest}: $lime-50;
 }
 
 .theme-lime {
   #{--theme-primary}: $lime-600;
   #{--theme-primary-dark}: $lime-700;
-  #{--theme-primary-light}: $lime-50;
+  #{--theme-primary-darker}: $lime-800;
+  #{--theme-primary-darkest}: $lime-900;
+  #{--theme-primary-light}: $lime-300;
+  #{--theme-primary-lighter}: $lime-100;
+  #{--theme-primary-lightest}: $lime-50;
 
   #{--theme-secondary}: $pink-a-200;
   #{--theme-secondary-dark}: $pink-a-700;
-  #{--theme-secondary-light}: $pink-50;
+  #{--theme-secondary-darker}: $pink-800;
+  #{--theme-secondary-darkest}: $pink-900;
+  #{--theme-secondary-light}: $pink-300;
+  #{--theme-secondary-lighter}: $pink-100;
+  #{--theme-secondary-lightest}: $pink-50;
 }
 
 // 对比色应该为黑色
 .theme-yellow {
   #{--theme-primary}: $yellow-700;
   #{--theme-primary-dark}: $yellow-800;
-  #{--theme-primary-light}: $yellow-50;
+  #{--theme-primary-darker}: $yellow-900;
+  #{--theme-primary-darkest}: $yellow-900;
+  #{--theme-primary-light}: $yellow-300;
+  #{--theme-primary-lighter}: $yellow-100;
+  #{--theme-primary-lightest}: $yellow-50;
 
   #{--theme-secondary}: $red-a-200;
   #{--theme-secondary-dark}: $red-a-700;
-  #{--theme-secondary-light}: $red-50;
+  #{--theme-secondary-darker}: $red-800;
+  #{--theme-secondary-darkest}: $red-900;
+  #{--theme-secondary-light}: $red-300;
+  #{--theme-secondary-lighter}: $red-100;
+  #{--theme-secondary-lightest}: $red-50;
 }
 
 .theme-amber {
   #{--theme-primary}: $amber-600;
   #{--theme-primary-dark}: $amber-700;
-  #{--theme-primary-light}: $amber-50;
+  #{--theme-primary-darker}: $amber-800;
+  #{--theme-primary-darkest}: $amber-900;
+  #{--theme-primary-light}: $amber-300;
+  #{--theme-primary-lighter}: $amber-100;
+  #{--theme-primary-lightest}: $amber-50;
 
   #{--theme-secondary}: $pink-a-200;
   #{--theme-secondary-dark}: $pink-a-700;
-  #{--theme-secondary-light}: $pink-50;
+  #{--theme-secondary-darker}: $pink-800;
+  #{--theme-secondary-darkest}: $pink-900;
+  #{--theme-secondary-light}: $pink-300;
+  #{--theme-secondary-lighter}: $pink-100;
+  #{--theme-secondary-lightest}: $pink-50;
 }
 
 .theme-orange {
   #{--theme-primary}: $orange-600;
   #{--theme-primary-dark}: $orange-700;
-  #{--theme-primary-light}: $orange-50;
+  #{--theme-primary-darker}: $orange-800;
+  #{--theme-primary-darkest}: $orange-900;
+  #{--theme-primary-light}: $orange-300;
+  #{--theme-primary-lighter}: $orange-100;
+  #{--theme-primary-lightest}: $orange-50;
 
   #{--theme-secondary}: $blue-a-200;
   #{--theme-secondary-dark}: $blue-a-700;
-  #{--theme-secondary-light}: $blue-50;
+  #{--theme-secondary-darker}: $blue-800;
+  #{--theme-secondary-darkest}: $blue-900;
+  #{--theme-secondary-light}: $blue-300;
+  #{--theme-secondary-lighter}: $blue-100;
+  #{--theme-secondary-lightest}: $blue-50;
 }
 
 .theme-deep-orange {
   #{--theme-primary}: $deep-orange-500;
   #{--theme-primary-dark}: $deep-orange-700;
-  #{--theme-primary-light}: $deep-orange-50;
+  #{--theme-primary-darker}: $deep-orange-800;
+  #{--theme-primary-darkest}: $deep-orange-900;
+  #{--theme-primary-light}: $deep-orange-300;
+  #{--theme-primary-lighter}: $deep-orange-100;
+  #{--theme-primary-lightest}: $deep-orange-50;
 
   #{--theme-secondary}: $green-500;
   #{--theme-secondary-dark}: $green-700;
-  #{--theme-secondary-light}: $green-50;
+  #{--theme-secondary-darker}: $green-800;
+  #{--theme-secondary-darkest}: $green-900;
+  #{--theme-secondary-light}: $green-300;
+  #{--theme-secondary-lighter}: $green-100;
+  #{--theme-secondary-lightest}: $green-50;
 }
 
 .theme-brown {
   #{--theme-primary}: $brown-500;
   #{--theme-primary-dark}: $brown-700;
-  #{--theme-primary-light}: $brown-50;
+  #{--theme-primary-darker}: $brown-800;
+  #{--theme-primary-darkest}: $brown-900;
+  #{--theme-primary-light}: $brown-300;
+  #{--theme-primary-lighter}: $brown-100;
+  #{--theme-primary-lightest}: $brown-50;
 
   #{--theme-secondary}: $amber-500;
   #{--theme-secondary-dark}: $amber-700;
-  #{--theme-secondary-light}: $amber-50;
+  #{--theme-secondary-darker}: $amber-800;
+  #{--theme-secondary-darkest}: $amber-900;
+  #{--theme-secondary-light}: $amber-300;
+  #{--theme-secondary-lighter}: $amber-100;
+  #{--theme-secondary-lightest}: $amber-50;
 }
 
 .theme-grey {
   #{--theme-primary}: $grey-600;
   #{--theme-primary-dark}: $grey-700;
-  #{--theme-primary-light}: $grey-50;
+  #{--theme-primary-darker}: $grey-800;
+  #{--theme-primary-darkest}: $grey-900;
+  #{--theme-primary-light}: $grey-300;
+  #{--theme-primary-lighter}: $grey-100;
+  #{--theme-primary-lightest}: $grey-50;
 
   #{--theme-secondary}: $light-blue-500;
   #{--theme-secondary-dark}: $light-blue-700;
-  #{--theme-secondary-light}: $light-blue-50;
+  #{--theme-secondary-darker}: $light-blue-800;
+  #{--theme-secondary-darkest}: $light-blue-900;
+  #{--theme-secondary-light}: $light-blue-300;
+  #{--theme-secondary-lighter}: $light-blue-100;
+  #{--theme-secondary-lightest}: $light-blue-50;
 }
 
 .theme-blue-grey {
   #{--theme-primary}: $blue-grey-500;
   #{--theme-primary-dark}: $blue-grey-700;
-  #{--theme-primary-light}: $blue-grey-50;
+  #{--theme-primary-darker}: $blue-grey-800;
+  #{--theme-primary-darkest}: $blue-grey-900;
+  #{--theme-primary-light}: $blue-grey-300;
+  #{--theme-primary-lighter}: $blue-grey-100;
+  #{--theme-primary-lightest}: $blue-grey-50;
 
   #{--theme-secondary}: $light-green-500;
   #{--theme-secondary-dark}: $light-green-700;
-  #{--theme-secondary-light}: $light-green-50;
+  #{--theme-secondary-darker}: $light-green-800;
+  #{--theme-secondary-darkest}: $light-green-900;
+  #{--theme-secondary-light}: $light-green-300;
+  #{--theme-secondary-lighter}: $light-green-100;
+  #{--theme-secondary-lightest}: $light-green-50;
 }
 
