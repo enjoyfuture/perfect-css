@@ -51,36 +51,57 @@
 
 <script>
   $(function () {
+    // 展开代码
+    $('.doc-example-expand [data-code-icon]').click(function () {
+      var $el = $(this);
+      var $icon = $el.children();
+      var $code = $el.parent().next();
+      var $tooltip = $el.next().find('.tooltip-inner');
+      if ($icon.hasClass('icon-pure-code')) {
+        $icon.removeClass('icon-pure-code');
+        $icon.addClass('icon-pure-code-expand');
+        $tooltip.text('隐藏 Code');
+        $code.fadeIn();
+      } else {
+        $icon.removeClass('icon-pure-code-expand');
+        $icon.addClass('icon-pure-code');
+        $tooltip.text('显示 Code');
+        $code.fadeOut();
+      }
+    });
+
     // 为代码添加复制按钮
     $('.highlight:not(.doc-example-highlight)').each(function () {
-      var btnHtml = '<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>';
-      $(this).before(btnHtml);
+      var copyCodeIconHtml = '<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>\n' +
+        '    <div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">复制代码</div></div>';
+      $(this).before(copyCodeIconHtml);
     });
 
     // 复制到剪贴板
-    var clipboard = new Clipboard('.doc-copy-btn', {
+    var clipboard = new Clipboard('.doc-code-copy', {
       target: function (trigger) {
-        return trigger.parentNode.nextElementSibling;
+        return trigger.nextElementSibling.nextElementSibling;
       }
     });
 
     clipboard.on('success', function (e) {
-      //$(e.trigger)
-      //  .attr('title', 'Copied!')
+      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
+      $tooltip.text('复制成功');
       e.clearSelection();
     });
 
-    clipboard.on('error', function (e) {
-      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
-      var fallbackMsg = 'Press ' + modifierKey + 'C to copy';
-
-      //$(e.trigger)
-      //.attr('title', fallbackMsg)
-      //.tooltip('_fixTitle')
-      //.tooltip('show')
-      //.attr('title', 'Copy to clipboard')
-      //.tooltip('_fixTitle')
+    $('.doc-code-copy').mouseleave(function () {
+      var $tooltip = $(this).next().find('.tooltip-inner');
+      $tooltip.text('复制代码');
     });
+
+//    clipboard.on('error', function (e) {
+//      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
+//      var fallbackMsg = '请使用快捷键 ' + modifierKey + 'C 来复制';
+//      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
+//      $tooltip.text('复制成功');
+//      e.clearSelection();
+//    });
 
     // 定时切换主题
     var themes = ['theme-red', 'theme-pink', 'theme-purple', 'theme-deep-purple',

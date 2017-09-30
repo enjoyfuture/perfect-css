@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
-<head>
-  {% include head.html %}
-</head>
-<body>
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    {% include jquery.html %}
+    {% include nav-home.html %}
 
-{% include nav-home.html %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-24 col-lg-4 col-md-6 doc-menu">
+          {% include nav-draft.html %}
+        </div>
+        <div class="col-24 col-lg-20 col-md-18 doc-main">
+          <h1>{{ page.title }}</h1>
+          <p>{{ page.description }}</p>
+          <hr/>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-24 col-lg-4 col-md-6 doc-menu">
-      {% include nav-draft.html %}
+          {{ content }}
+
+        </div>
+      </div>
     </div>
-    <div class="col-24 col-lg-20 col-md-18 doc-main">
-      <h1>{{ page.title }}</h1>
-      <p>{{ page.description }}</p>
-      <hr/>
 
-      {{ content }}
-
-    </div>
-  </div>
-</div>
-
-{% include footer.html %}
-</body>
+    {% include footer.html %}
+  </body>
 </html>

@@ -1,70 +1,163 @@
 @import "../../../../scss/base/mixins/clearfix";
 @import "../../../../scss/theme/variable";
-@import "../../../../scss/theme/color_palette";
+@import "../../../../scss/theme/mixin";
+@import "../../../../scss/animation/mixin";
 
 // 例子样式
-.doc-example-render {
+.doc-example {
   position: relative;
-  padding: 1rem;
-  margin: 1rem .5rem;
-  border: solid $theme-primary;
-  border-width: 1px 0 0;
-  @include clearfix();
+  margin-bottom: 1rem;
+  border: 1px solid;
+  @include theme-prop(border-color, secondary-lighter);
+  border-radius: 4px;
+  transition: all .2s;
 }
 
-@media (min-width: 640px) {
-  .doc-example-render {
-    padding: 1.5rem;
+.doc-example-render {
+  padding: 1rem 1rem 0;
+
+  p:last-of-type {
     margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
-    border-width: 1px 1px 0;
   }
 }
 
-// 容器例子样式
-.doc-example-container {
-  .container-fluid,
-  .container {
-    padding: 20px;
-    color: darken(#9c27b0, 20%);
-    background-color: lighten(#9c27b0, 48%);
-    text-align: center;
-  }
+.doc-example-expand {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin: .5rem 2rem;
 }
 
-// 栅格例子样式
-.doc-example-row {
-  .row + .row {
-    margin-top: 1rem;
-  }
-  // 嵌套的样式
-  .row .row {
-    border: 1px solid;
-  }
-  [class*="col"] {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: #fff;
-    background: $light-blue-300;
-    text-align: center;
+.icon-pure-code,
+.icon-pure-code-expand {
+  transform: rotate(-45deg) scale(.8);
+  @include theme-prop(color, secondary-lighter);
+}
 
-    &:nth-of-type(2n) {
-      background: $blue-500;
+.doc-code-icon {
+  width: 2.5rem;
+  cursor: pointer;
+
+  &:hover {
+    .icon-pure-code,
+    .icon-pure-code-expand {
+      @include theme-prop(color, secondary);
+    }
+
+    & + .tooltip {
+      top: -3rem;
+      right: -.8rem;
+      display: block;
+      opacity: .8;
     }
   }
 }
 
-.doc-example-row-flex-cols .row {
-  min-height: 5rem;
-  background: $light-blue-50;
+.doc-example-highlight.highlight {
+  display: none;
+  border: 0;
+  border-top: 1px dashed;
+  @include theme-prop(border-top-color, secondary-lighter);
+  @include animation-transition(display);
 }
 
-.doc-example-row-gutters {
-  .no-gutters {
-    margin-top: 1rem;
+.doc-code-copy {
+  position: absolute;
+  top: 1rem;
+  right: 3rem;
+  display: none;
+
+  .icon-pure-copy {
+    cursor: pointer;
+    transform: scale(.6);
+    @include theme-prop(color, secondary-lighter);
   }
-  [class^="col"] > div {
-    background: $purple-300;
+
+  &:hover {
+    .icon-pure-copy {
+      @include theme-prop(color, secondary);
+    }
+
+    & + .tooltip {
+      top: -2rem;
+      right: 1.5rem;
+      display: block;
+      opacity: .8;
+    }
   }
 }
+
+.doc-example-highlight {
+  position: relative;
+  &:hover .doc-code-copy {
+    display: block;
+  }
+}
+
+
+//// 例子样式
+//.doc-example-render {
+//  position: relative;
+//  padding: 1rem;
+//  margin: 1rem .5rem;
+//  border: solid $theme-primary;
+//  border-width: 1px 0 0;
+//  @include clearfix();
+//}
+//
+//@media (min-width: 640px) {
+//  .doc-example-render {
+//    padding: 1.5rem;
+//    margin-bottom: 0;
+//    margin-left: 0;
+//    margin-right: 0;
+//    border-width: 1px 1px 0;
+//  }
+//}
+//
+//// 容器例子样式
+//.doc-example-container {
+//  .container-fluid,
+//  .container {
+//    padding: 20px;
+//    color: darken(#9c27b0, 20%);
+//    background-color: lighten(#9c27b0, 48%);
+//    text-align: center;
+//  }
+//}
+//
+//// 栅格例子样式
+//.doc-example-row {
+//  .row + .row {
+//    margin-top: 1rem;
+//  }
+//  // 嵌套的样式
+//  .row .row {
+//    border: 1px solid;
+//  }
+//  [class*="col"] {
+//    padding-top: 10px;
+//    padding-bottom: 10px;
+//    color: #fff;
+//    background: $light-blue-300;
+//    text-align: center;
+//
+//    &:nth-of-type(2n) {
+//      background: $blue-500;
+//    }
+//  }
+//}
+//
+//.doc-example-row-flex-cols .row {
+//  min-height: 5rem;
+//  background: $light-blue-50;
+//}
+//
+//.doc-example-row-gutters {
+//  .no-gutters {
+//    margin-top: 1rem;
+//  }
+//  [class^="col"] > div {
+//    background: $purple-300;
+//  }
+//}

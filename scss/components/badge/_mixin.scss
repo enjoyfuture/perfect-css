@@ -6,7 +6,7 @@
 
 @mixin badge-theme($foreground, $background) {
   @if not map-has-key($theme-property-values, $style) {
-
+    @include theme-prop(color, $style);
   } @else {
     @include theme-prop(color, $style);
     @include theme-prop(background-color, $style);

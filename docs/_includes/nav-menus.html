@@ -75,7 +75,7 @@
 
     $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
       const {scrollHeight, clientHeight} = $menuPanel;
-      const step = 30;
+      const step = 20;
       const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
 
       // 判断鼠标滑轮向上还是向下滑动

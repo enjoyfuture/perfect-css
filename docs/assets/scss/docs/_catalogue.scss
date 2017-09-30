@@ -15,11 +15,12 @@
   right: 0;
   z-index: 1000;
   padding-top: .5rem;
-  border: 1px solid;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
   overflow: hidden;
   background-color: #fff;
   transform: translate(200%, 0);
-  @include theme-prop(border-color, primary-light);
+  @include theme-prop(border-color, secondary-lightest);
   @include animation-transition(transform);
 }
 
@@ -28,10 +29,11 @@
   top: 4.5rem;
   right: .5rem;
   z-index: 1000;
+  @include theme-prop(background-color, hint-on-dark);
   cursor: pointer;
 
   .icon-pure-catalogue {
-    @include theme-prop(color, primary);
+    @include theme-prop(color, secondary);
   }
 }
 
@@ -92,7 +94,7 @@
       bottom: 20%;
       left: 0;
       border-left: 1px solid;
-      @include theme-prop(border-left-color, primary-dark);
+      @include theme-prop(border-left-color, secondary);
     }
     &.active::after {
       border-left-width: 2px;

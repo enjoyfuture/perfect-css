@@ -58,7 +58,7 @@ eos
         end
 
         # 用 <div class="doc-example"></div> 包裹例子
-        rendered_output = "<div class=\"doc-example\">\n" + example(code) + copy() + add_code_tag(output) + "\n</div>"
+        rendered_output = "<div class=\"doc-example\">\n" + example(code) + expand_code() + add_code_tag(output) + "\n</div>"
         prefix + rendered_output + suffix
       end
 
@@ -67,9 +67,12 @@ eos
         "<div class=\"doc-example-render\" data-example-id=\"#{@options[:id]}\">\n#{output}\n</div>"
       end
 
-      # 复制按钮
-      def copy()
-        "<div class=\"doc-copy\"><button class=\"doc-copy-btn\" title=\"复制到剪贴板\">复制</button></div>"
+      # 展开折叠
+      def expand_code()
+        html = %Q{<div class="doc-example-expand">\n}
+        html << %Q{<div class="doc-code-icon" data-code-icon><i class="icon-pure-code"></i></div>\n}
+        html << %Q{<div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">显示 Code</div></div></div>\n}
+        html
       end
 
       # 加入高量化代码 highlight
@@ -91,7 +94,7 @@ eos
         code = code.gsub(/\ class=""/, "")
       end
 
-      # 利用插件 rouge 高亮话代码
+      # 利用插件 rouge 高亮代码，并加入复制功能
       def render_rouge(code)
         require 'rouge'
         formatter = Rouge::Formatters::HTML.new(line_numbers: @options[:linenos], wrap: false)
@@ -99,7 +102,12 @@ eos
         code = remove_holderjs(code)
         code = remove_example_classes(code)
         code = formatter.format(lexer.lex(code))
-        "<div class=\"highlight doc-example-highlight\"><pre>#{code}</pre></div>"
+
+        html = %Q{<div class="highlight doc-example-highlight">\n}
+        html << %Q{<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>\n}
+        html << %Q{<div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">复制代码</div></div>\n}
+        html << %Q{<pre>#{code}</pre></div>}
+        html
       end
 
     end

@@ -12,7 +12,7 @@
 .tooltip {
   position: absolute;
   z-index: $zindex-tooltip;
-  display: block;
+  display: none;
   margin: $tooltip-margin;
   // tooltip 可在任意元素中使用，这样有可能会被这些目标元素文本样式所影响
   // 这里重置文本相关样式

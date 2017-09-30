@@ -12,7 +12,7 @@ const reg = /translateY\(([-\w]+)\)/;
 class _CatalogueSpy {
   static defaultConfig = {
     menuHeight: null, // 设置菜单高度，如果不设置，则取当前浏览器可视高度
-    step: 10, // 滚动鼠标，菜单滑动步长
+    step: 30, // 滚动鼠标，菜单滑动步长
   };
 
   constructor(scrollSpy, config = {}) {

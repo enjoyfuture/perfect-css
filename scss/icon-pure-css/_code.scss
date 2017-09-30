@@ -32,9 +32,8 @@ $code-size: $icon-size * .5;
 
 // 第二种实现方式
 .icon-pure-code {
-  box-sizing: content-box;
-  width: $code-size;
-  height: $code-size;
+  width: $icon-size * .6;
+  height: $icon-size * .6;
   border-top: $code-border solid currentColor;
   border-left: $code-border solid currentColor;
   transform: rotate(-45deg);
