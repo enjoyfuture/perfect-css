@@ -41,6 +41,20 @@
   display: none;
 }
 
+.doc-content {
+  > h1 {
+    font-size: 1.75rem;
+  }
+
+  > h2 {
+    font-size: 1.5rem;
+  }
+
+  > h3 {
+    font-size: 1.25rem;
+  }
+}
+
 @media screen and (min-width: 1600px) {
   .doc-catalogue-menu {
     display: none;

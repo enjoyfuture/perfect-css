@@ -15,6 +15,7 @@
     }
 
     &.active {
+      border-right: 3px solid;
       @include theme-prop(color, primary-darker);
       @include theme-prop(background-color, primary-lightest);
 

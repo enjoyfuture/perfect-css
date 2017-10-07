@@ -3,6 +3,7 @@
 
 // 用 css 定义各种主题变量值
 :root {
+  // 主题变量
   @each $style in map-keys($theme-property-values) {
     // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
     // https://github.com/sasstools/sass-lint/issues/877

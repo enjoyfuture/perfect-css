@@ -11,7 +11,7 @@ $theme-background: #fff !default; // 背景颜色，默认白色
 
 // 主题颜色浅色
 $theme-primary-light: #64b5f6 !default; // 取 $blue-300
-$theme-secondary-light: #ba68c8 !default; // 取 $purple-300
+$theme-secondary-light: #ea80fc !default; // 取 $purple-a-100
 
 // 主题颜色更浅色
 $theme-primary-lighter: #bbdefb !default; // 取 $blue-100
@@ -23,44 +23,45 @@ $theme-secondary-lightest: #f3e5f5 !default; // 取 $purple-50
 
 // 主题颜色深色
 $theme-primary-dark: #1976d2 !default; // 取 $blue-700
-$theme-secondary-dark: #aa00ff !default; // 取 $purple-a-700
+$theme-secondary-dark: #d500f9 !default; // 取 $purple-a-400
 
 // 主题颜色更深色
 $theme-primary-darker: #1565c0 !default; // 取 $blue-800
-$theme-secondary-darker: #6a1b9a !default; // 取 $purple-800
+$theme-secondary-darker: #aa00ff !default; // 取 $purple-a-700
 
 // 主题颜色最深色
 $theme-primary-darkest: #0d47a1 !default; // 取 $blue-900
 $theme-secondary-darkest: #4a148c !default; // 取 $purple-900
 
-// 色调，是用浅色还是深色 light or dark
+// 浅色或深色色调，给出基本颜色的对比色调， light or dark
 $theme-primary-tone: theme-light-or-dark($theme-primary);
 $theme-secondary-tone: theme-light-or-dark($theme-secondary);
 
-// 浅色色调
+// 主题颜色浅色对比色调
 $theme-primary-light-tone: theme-light-or-dark($theme-primary-light);
 $theme-secondary-light-tone: theme-light-or-dark($theme-secondary-light);
 
-// 更浅色色调
+// 主题颜色更浅色对比色调
 $theme-primary-lighter-tone: theme-light-or-dark($theme-primary-lighter);
 $theme-secondary-lighter-tone: theme-light-or-dark($theme-secondary-lighter);
 
-// 最浅色色调
+// 主题颜色最浅色对比色调
 $theme-primary-lightest-tone: theme-light-or-dark($theme-primary-lightest);
 $theme-secondary-lightest-tone: theme-light-or-dark($theme-secondary-lightest);
 
-// 深色色调
+// 主题颜色深色对比色调
 $theme-primary-dark-tone: theme-light-or-dark($theme-primary-dark);
 $theme-secondary-dark-tone: theme-light-or-dark($theme-secondary-dark);
 
-// 更深色色调
+// 主题颜色更深色对比色调
 $theme-primary-darker-tone: theme-light-or-dark($theme-primary-darker);
 $theme-secondary-darker-tone: theme-light-or-dark($theme-secondary-darker);
 
-// 最深色色调
+// 主题颜色最深色对比色调
 $theme-primary-darkest-tone: theme-light-or-dark($theme-primary-darkest);
 $theme-secondary-darkest-tone: theme-light-or-dark($theme-secondary-darkest);
 
+// 背景色对比色调
 $theme-background-tone: theme-light-or-dark($theme-background);
 
 // 定义文本默认颜色，默认颜色深色用黑色，浅色用白色
@@ -112,121 +113,120 @@ $theme-property-values: (
   secondary-darkest: $theme-secondary-darkest,
 ) !default;
 
-// 主题色调属性值，根据主题颜色计算是用浅色还是深色
+// 主题基本颜色对比色调值集合，根据主题基本颜色计算出对应的对比色调值，浅色还是深色色调值
 $theme-tone-property-values: (
   // 可以用在 background-color border-color 或 color 等可以设置颜色的属性上
   // 当 map-get($theme-text-colors, $theme-primary-tone) 返回 light 时，对应浅色值
   // 当 map-get($theme-text-colors, $theme-primary-tone) 返回 dark 时，对应深色值
 
-  // 用在 $theme-primary 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-primary 上的 primary secondary hint 和 disabled 对比色调
   primary-on-primary: map-get(map-get($theme-text-colors, $theme-primary-tone), primary),
   secondary-on-primary: map-get(map-get($theme-text-colors, $theme-primary-tone), secondary),
   hint-on-primary: map-get(map-get($theme-text-colors, $theme-primary-tone), hint),
   disabled-on-primary: map-get(map-get($theme-text-colors, $theme-primary-tone), disabled),
 
-  // 用在 $theme-primary-light 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-primary-light 上的 primary secondary hint 和 disabled 对比色调
   primary-on-primary-light: map-get(map-get($theme-text-colors, $theme-primary-light-tone), primary),
   secondary-on-primary-light: map-get(map-get($theme-text-colors, $theme-primary-light-tone), secondary),
   hint-on-primary-light: map-get(map-get($theme-text-colors, $theme-primary-light-tone), hint),
   disabled-on-primary-light: map-get(map-get($theme-text-colors, $theme-primary-light-tone), disabled),
 
-  // 用在 $theme-primary-lighter 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-primary-lighter 上的 primary secondary hint 和 disabled 对比色调
   primary-on-primary-lighter: map-get(map-get($theme-text-colors, $theme-primary-lighter-tone), primary),
   secondary-on-primary-lighter: map-get(map-get($theme-text-colors, $theme-primary-lighter-tone), secondary),
   hint-on-primary-lighter: map-get(map-get($theme-text-colors, $theme-primary-lighter-tone), hint),
   disabled-on-primary-lighter: map-get(map-get($theme-text-colors, $theme-primary-lighter-tone), disabled),
 
-  // 用在 $theme-primary-lightest 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-primary-lightest 上的 primary secondary hint 和 disabled 对比色调
   primary-on-primary-lightest: map-get(map-get($theme-text-colors, $theme-primary-lightest-tone), primary),
   secondary-on-primary-lightest: map-get(map-get($theme-text-colors, $theme-primary-lightest-tone), secondary),
   hint-on-primary-lightest: map-get(map-get($theme-text-colors, $theme-primary-lightest-tone), hint),
   disabled-on-primary-lightest: map-get(map-get($theme-text-colors, $theme-primary-lightest-tone), disabled),
 
-  // 用在 $theme-primary-dark 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-primary-dark 上的 primary secondary hint 和 disabled 对比色调
   primary-on-primary-dark: map-get(map-get($theme-text-colors, $theme-primary-dark-tone), primary),
   secondary-on-primary-dark: map-get(map-get($theme-text-colors, $theme-primary-dark-tone), secondary),
   hint-on-primary-dark: map-get(map-get($theme-text-colors, $theme-primary-dark-tone), hint),
   disabled-on-primary-dark: map-get(map-get($theme-text-colors, $theme-primary-dark-tone), disabled),
 
-  // 用在 $theme-primary-darker 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-primary-darker 上的 primary secondary hint 和 disabled 对比色调
   primary-on-primary-darker: map-get(map-get($theme-text-colors, $theme-primary-darker-tone), primary),
   secondary-on-primary-darker: map-get(map-get($theme-text-colors, $theme-primary-darker-tone), secondary),
   hint-on-primary-darker: map-get(map-get($theme-text-colors, $theme-primary-darker-tone), hint),
   disabled-on-primary-darker: map-get(map-get($theme-text-colors, $theme-primary-darker-tone), disabled),
 
-  // 用在 $theme-primary-darkest 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-primary-darkest 上的 primary secondary hint 和 disabled 对比色调
   primary-on-primary-darkest: map-get(map-get($theme-text-colors, $theme-primary-darkest-tone), primary),
   secondary-on-primary-darkest: map-get(map-get($theme-text-colors, $theme-primary-darkest-tone), secondary),
   hint-on-primary-darkest: map-get(map-get($theme-text-colors, $theme-primary-darkest-tone), hint),
   disabled-on-primary-darkest: map-get(map-get($theme-text-colors, $theme-primary-darkest-tone), disabled),
 
-  // 用在 $theme-secondary 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-secondary 上的 primary secondary hint 和 disabled 对比色调
   primary-on-secondary: map-get(map-get($theme-text-colors, $theme-secondary-tone), primary),
   secondary-on-secondary: map-get(map-get($theme-text-colors, $theme-secondary-tone), secondary),
   hint-on-secondary: map-get(map-get($theme-text-colors, $theme-secondary-tone), hint),
   disabled-on-secondary: map-get(map-get($theme-text-colors, $theme-secondary-tone), disabled),
 
-  // 用在 $theme-secondary-light 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-secondary-light 上的 primary secondary hint 和 disabled 对比色调
   primary-on-secondary-light: map-get(map-get($theme-text-colors, $theme-secondary-light-tone), primary),
   secondary-on-secondary-light: map-get(map-get($theme-text-colors, $theme-secondary-light-tone), secondary),
   hint-on-secondary-light: map-get(map-get($theme-text-colors, $theme-secondary-light-tone), hint),
   disabled-on-secondary-light: map-get(map-get($theme-text-colors, $theme-secondary-light-tone), disabled),
 
-  // 用在 $theme-secondary-lighter 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-secondary-lighter 上的 primary secondary hint 和 disabled 对比色调
   primary-on-secondary-lighter: map-get(map-get($theme-text-colors, $theme-secondary-lighter-tone), primary),
   secondary-on-secondary-lighter: map-get(map-get($theme-text-colors, $theme-secondary-lighter-tone), secondary),
   hint-on-secondary-lighter: map-get(map-get($theme-text-colors, $theme-secondary-lighter-tone), hint),
   disabled-on-secondary-lighter: map-get(map-get($theme-text-colors, $theme-secondary-lighter-tone), disabled),
 
-  // 用在 $theme-secondary-lightest 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-secondary-lightest 上的 primary secondary hint 和 disabled 对比色调
   primary-on-secondary-lightest: map-get(map-get($theme-text-colors, $theme-secondary-lightest-tone), primary),
   secondary-on-secondary-lightest: map-get(map-get($theme-text-colors, $theme-secondary-lightest-tone), secondary),
   hint-on-secondary-lightest: map-get(map-get($theme-text-colors, $theme-secondary-lightest-tone), hint),
   disabled-on-secondary-lightest: map-get(map-get($theme-text-colors, $theme-secondary-lightest-tone), disabled),
 
-  // 用在 $theme-secondary-dark 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-secondary-dark 上的 primary secondary hint 和 disabled 对比色调
   primary-on-secondary-dark: map-get(map-get($theme-text-colors, $theme-secondary-dark-tone), primary),
   secondary-on-secondary-dark: map-get(map-get($theme-text-colors, $theme-secondary-dark-tone), secondary),
   hint-on-secondary-dark: map-get(map-get($theme-text-colors, $theme-secondary-dark-tone), hint),
   disabled-on-secondary-dark: map-get(map-get($theme-text-colors, $theme-secondary-dark-tone), disabled),
 
-  // 用在 $theme-secondary-darker 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-secondary-darker 上的 primary secondary hint 和 disabled 对比色调
   primary-on-secondary-darker: map-get(map-get($theme-text-colors, $theme-secondary-darker-tone), primary),
   secondary-on-secondary-darker: map-get(map-get($theme-text-colors, $theme-secondary-darker-tone), secondary),
   hint-on-secondary-darker: map-get(map-get($theme-text-colors, $theme-secondary-darker-tone), hint),
   disabled-on-secondary-darker: map-get(map-get($theme-text-colors, $theme-secondary-darker-tone), disabled),
 
-  // 用在 $theme-secondary-darkest 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-secondary-darkest 上的 primary secondary hint 和 disabled 对比色调
   primary-on-secondary-darkest: map-get(map-get($theme-text-colors, $theme-secondary-darkest-tone), primary),
   secondary-on-secondary-darkest: map-get(map-get($theme-text-colors, $theme-secondary-darkest-tone), secondary),
   hint-on-secondary-darkest: map-get(map-get($theme-text-colors, $theme-secondary-darkest-tone), hint),
   disabled-on-secondary-darkest: map-get(map-get($theme-text-colors, $theme-secondary-darkest-tone), disabled),
 
-  // 用在 $theme-background 上的 primary secondary hint 和 disabled 对比颜色
+  // 用在 $theme-background 上的 primary secondary hint 和 disabled 对比色调
   primary-on-background: map-get(map-get($theme-text-colors, $theme-background-tone), primary),
   secondary-on-background: map-get(map-get($theme-text-colors, $theme-background-tone), secondary),
   hint-on-background: map-get(map-get($theme-text-colors, $theme-background-tone), hint),
   disabled-on-background: map-get(map-get($theme-text-colors, $theme-background-tone), disabled),
 
-  // 用在浅色主题上的 primary secondary hint 和 disabled 对比颜色，浅色主题用深色对比色
+  // 用在浅色主题上的 primary secondary hint 和 disabled 对比色调，浅色主题用深色对比色调
   primary-on-light: map-get(map-get($theme-text-colors, dark), primary),
   secondary-on-light: map-get(map-get($theme-text-colors, dark), secondary),
   hint-on-light: map-get(map-get($theme-text-colors, dark), hint),
   disabled-on-light: map-get(map-get($theme-text-colors, dark), disabled),
 
-  // 用在深色主题上的 primary secondary hint 和 disabled 对比颜色，深色主题用浅色对比色
+  // 用在深色主题上的 primary secondary hint 和 disabled 对比颜色，深色主题用浅色对比色调
   primary-on-dark: map-get(map-get($theme-text-colors, light), primary),
   secondary-on-dark: map-get(map-get($theme-text-colors, light), secondary),
   hint-on-dark: map-get(map-get($theme-text-colors, light), hint),
   disabled-on-dark: map-get(map-get($theme-text-colors, light), disabled)
 ) !default;
 
-// 基于 material design ，定义主题颜色，强调颜色(次颜色)和背景颜色三种颜色，用在所有 CSS 组件上，
-// 另外又定义了成功 success 、信息 info、警告 warning 、错误 error 四种辅助颜色，这四种颜色主要用在背景，文本，按钮等上
-// 主要用来区分文本颜色和背景，以及表单样式（比如校验失败和成功的颜色）等
+// 除了三种基本颜色外，又定义了成功 success 、信息 info、警告 warning 、错误 error 四种辅助颜色，
+// 这四种颜色主要用在背景，文本，按钮等上，用来区分文本颜色和背景，以及表单样式（比如校验失败和成功的颜色）等
 $theme-assist: ("success", "info", "warning", "error") !default;
 
-// 具体颜色值
+// 辅助颜色值
 $theme-assist-colors: (
   success: #4caf50, // $green-500
   info: #00bcd4, // $cyan-500
@@ -237,7 +237,7 @@ $theme-assist-colors: (
   success-light: #c8e6c9, // $green-100
   info-light: #b2ebf2, // $cyan-100
   warning-light: #ffe0b2, // $orange-100
-  error-light: #ffcdd2, // $red-100:
+  error-light: #ffcdd2, // $red-100
 
   // 辅助颜色深色
   success-dark: #388e3c, // $green-700
@@ -277,7 +277,7 @@ $greys-transparent: (
   900: rgba(0, 0, 0, .87) // 相当于 #212121
 ) !default;
 
-// 定义常用几种灰度颜色值
+// 白色、黑色和透明色
 $white: #ffffff !default;
 $black: #000000 !default;
 $transparent: rgba(0, 0, 0, 0) !default; // 透明色

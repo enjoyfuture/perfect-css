@@ -2,11 +2,11 @@
 
 @import "../base/functions/math/pow";
 
-// 颜色色彩系数
-// 例如 _coefficient(0) => 0   _coefficient(1) => .000303526983549
-// _coefficient(2) => .000607053967098  _coefficient(3) => .000910580950647
-
 // sass 中只能精确到 15 位，即 precision 最大为15
+
+// 颜色色彩系数
+// 例如 coefficient(0) => 0   coefficient(1) => .000303526983549
+// coefficient(2) => .000607053967098  coefficient(3) => .000910580950647
 @function coefficient($rgb) {
   $rgb: $rgb / 255;
   @return if($rgb < .03928, $rgb / 12.92, pow(($rgb + .055) / 1.055, 2.4));
@@ -36,7 +36,6 @@
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-
 @function theme-contrast-ratio($back, $front) {
   $back-luminance: theme-luminance($back) + .05;
   $fore-luminance: theme-luminance($front) + .05;
@@ -44,7 +43,7 @@
   @return max($back-luminance, $fore-luminance) / min($back-luminance, $fore-luminance);
 }
 
-// 根据给定的颜色来判断在文本上是使用深色还是浅色
+// 根据给定的颜色来判断对比色调在文本上是使用深色还是浅色
 // 如果$color是浅色，则返回深色 dark，否则为浅色 light
 @function theme-light-or-dark($color) {
   // 最小对比度设为 3.1
@@ -62,9 +61,9 @@
   }
 }
 
-// 根据 $theme-tone-property-values 中的 key 计算对应的变量名
+// 根据 $theme-tone-property-values 中的 key 计算对应的 CSS 变量名
 // 比如 primary-on-primary 对应的变量名为 --theme-#{$theme-primary-tone}-primary
-
+// --theme-light-primary
 @function theme-tone-var($theme-tone-property) {
   $on-index: str-index($theme-tone-property, '-on-');
   $on-prev-str: str-slice($theme-tone-property, 0, $on-index - 1);
