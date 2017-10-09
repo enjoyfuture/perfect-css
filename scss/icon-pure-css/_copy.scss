@@ -10,6 +10,7 @@ $copy-border: $icon-size * .1;
   height: $icon-size * 1.4;
   border: $copy-border solid;
   border-radius: 0 0 0 $icon-size * .5;
+  transform: scale(.8);
 
   &::before {
     position: absolute;
@@ -36,6 +37,5 @@ $copy-border: $icon-size * .1;
     -6px -14px 0 0, //顶部闭合
     14px 12px 0 0, 13px 12px 0 0, //右侧闭合
     16px -16px 0 0, 16px -14px 0 0, 16px -12px 0 0, 16px -10px 0 0, 16px -8px 0 0, 16px -6px 0 0, 16px -4px 0 0, 16px -2px 0 0, 16px 0 0 0, 16px 2px 0 0, 16px 4px 0 0, 16px 6px 0 0, 16px 8px 0 0, 16px 10px 0 0, 16px 12px 0 0; // 右侧
-
   }
 }

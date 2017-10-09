@@ -16,6 +16,7 @@
   &::before,
   &::after {
     content: '';
+    display: inline-block;
     pointer-events: none;
   }
 
