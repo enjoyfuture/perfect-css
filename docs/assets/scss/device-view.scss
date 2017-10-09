@@ -1,3 +1,6 @@
+// 主 CSS 样式
+@import "../../../scss/perfect";
+
 body {
   padding: 0;
   margin: 0;
@@ -14,18 +17,17 @@ device-resizer {
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
-  color: #444;
-  background: #f9f9f9;
+  color: $grey-color-800;
+  background: $grey-color-50;
 }
 
 .device-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 12px 20px;
+  padding: .5rem 1.25rem;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+  background: $white;
 }
 
 .device-brand {
@@ -43,19 +45,19 @@ device-resizer {
 
 .brand-name {
   display: inline-block;
-  height: 36px;
-  margin-left: 12px;
-  font-size: 16px;
+  height: 2.25rem;
+  margin-left: .75rem;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 36px;
+  line-height: 2.25rem;
 }
 
 .device-url-container {
   display: flex;
   flex-direction: row;
   width: 400px;
-  height: 24px;
-  padding: 6px;
+  height: 1.5rem;
+  padding: .375rem;
   border-radius: 2px;
   background: #eee;
   cursor: pointer;
@@ -63,14 +65,17 @@ device-resizer {
 }
 
 .device-url-icon {
-  color: #424242;
+  [class*="icon-pure-"] {
+    color: $grey-color-900;
+    transform: scale(.8);
+  }
 }
 
 .device-url-input {
   width: 100%;
-  padding-left: 12px;
+  padding-left: 1rem;
   border: 0;
-  font-size: 14px;
+  font-size: .875rem;
   background: inherit;
   outline: 0;
 }
@@ -82,25 +87,21 @@ device-resizer {
 }
 
 .device-icon {
-  width: 24px;
-  height: 24px;
   margin: 6px 12px;
-  color: rgba(0, 0, 0, .4);
-  fill: currentColor;
-
-  &.active {
-    color: rgba(0, 0, 0, .8);
+  cursor: pointer;
+  [class*="icon-pure-"] {
+    transform: scale(.9);
   }
 }
 
 .device-selector-wrapper {
   position: relative;
-  height: 15px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  height: 1rem;
+  border-top: 1px solid $grey-color-300;
+  border-bottom: 1px solid $grey-color-300;
   font-weight: 500;
-  color: #212121;
-  background: #fff;
+  color: $grey-color-900;
+  background: $white;
   white-space: nowrap;
 }
 
@@ -115,29 +116,27 @@ device-resizer {
   left: 0;
   right: 0;
   box-sizing: border-box;
-  height: 15px;
+  height: 1rem;
   margin-left: auto;
   margin-right: auto;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  font-size: 10px;
+  border-left: 1px solid $grey-color-300;
+  border-right: 1px solid $grey-color-300;
+  font-size: .75rem;
   font-weight: 500;
-  line-height: 16px;
+  line-height: 1rem;
   color: #fff;
   cursor: pointer;
 
   &:focus,
-  &:hover {
-    background: #eee;
+  &:hover,
+  &.active {
+    background: $grey-color-200;
   }
 
-  &.active {
-    background: #eee;
-  }
   > .size {
     margin-left: 4px;
     margin-right: 4px;
-    color: rgba(0, 0, 0, .54);
+    color: $grey-color-600;
   }
   > .left {
     float: left;
@@ -155,7 +154,7 @@ device-resizer {
   margin-left: -100px;
   font-size: 12px;
   font-weight: 500;
-  line-height: 15px;
+  line-height: 1rem;
   color: #212121;
   text-align: center;
   pointer-events: none;
