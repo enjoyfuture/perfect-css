@@ -32,10 +32,9 @@ gulp jekyll
 
 Note: If you exec the command the first, You should exec the following command
 
-1. Make sure you have installed the ruby. And we use the brew to manage ruby.
+1. Make sure you have installed the ruby. And we use the rvm to manage ruby.
   ```
-    brew update 
-    brew upgrade
+    rvm install 2.4.2 # 或者最新ruby版本  
     gem update 
     # or 
     sudo gem update
