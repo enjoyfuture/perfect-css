@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="CSS3 Perfect">
+<meta name="description"
+      content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+<meta name="author" content="Linder Wang">
+
+<title>
+  
+  Radio 组件 &middot; Perfect
+  
+</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" href="/favicon.ico">
+
+<!-- Perfect CSS -->
+<link href="/assets/css/perfect.css" rel="stylesheet">
+<!-- 页面 CSS -->
+<link href="/assets/css/components.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <header class="navbar navbar-fixed navbar-expand navbar-primary">
+  
+  <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
+    <i class="icon-pure-menu"></i>
+  </div>
+  
+
+  <a class="navbar-brand" href="/">
+    <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
+  </a>
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/">首页</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/docs/getting-started/introduction/">文档</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link active" href="/components/">组件</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+    <!--把 jquery 单独引入到页面最上面-->
+<script src="/assets/js/vendor/jquery.min.js"></script>
+
+
+    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+      <nav class="drawer-nav">
+        <nav class="drawer-content">
+          
+
+
+
+
+
+
+
+<ul class="menu perfect-menu">
+
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/base/ripple/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">功能性组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/base/ripple/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Ripple 效果</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/base/shadow/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Shadow 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/navigation/menu/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">导航类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/menu/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">菜单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/tab/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tab 标签</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/container/carousel/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">容器类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/carousel/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Carousel 轮播图组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/dialog/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">对话框窗口</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/drawer/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">抽屉组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/form/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Form 表单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/list/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">List 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/table/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Table 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/elements/badge/" 
+       class="menu-title menu-header active" style="padding-left: 1rem;">元素类组件</a>
+    <ul class="menu">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/badge/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 标记刻章组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/button/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Button 按钮</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/checkbox/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/image/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/input/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Input 输入框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/radio/"
+             class="menu-title menu-sub-title active" style="padding-left: 2rem;">Radio 单选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/select/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Select 下拉选择框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/toast/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Toast 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/tooltip/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tooltip 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/icons/icon-pure-css/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">图标</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/icons/icon-pure-css/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">纯 css 图标</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/utils/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">工具类样式</a>
+    <ul class="menu" style="display: none;">
+      
+    </ul>
+  </li>
+  
+</ul>
+
+<script>
+  $(function () {
+    // 菜单超过一屏可以滚动查看
+    var $menuPanel = $('.drawer-content')[0];
+    var $menu = $('.drawer-content > .perfect-menu')[0];
+
+    $menu.addEventListener('transitionend', function () {
+      $menu.style.transition = 'unset';
+    });
+    $('.menu').on('click', '.menu-header', function (e) {
+      e.preventDefault();
+      // 隐藏其他打开的菜单
+      $('.menu .menu').slideUp();
+      var $el = $(e.currentTarget);
+      var $nextEl = $el.next();
+      if ($nextEl.is(':visible')) {
+        $nextEl.slideUp();
+      } else {
+        $nextEl.slideDown(true, function () {
+          var menuPanelTop = $menuPanel.getBoundingClientRect().top;
+          var menuTop = $menu.getBoundingClientRect().top;
+          var currentElTop = e.currentTarget.getBoundingClientRect().top;
+          if (currentElTop < menuPanelTop) {
+            $menu.style.transform = `translateY(${menuTop - currentElTop}px)`;
+            $menu.style.transition = 'transform 200ms ease-in-out';
+          }
+        });
+      }
+    });
+
+    const isWheel = (() => {
+      const ua = navigator.userAgent;
+      if (/gecko/i.test(ua) && !(/webkit/i.test(ua)) && (/firefox/i.test(ua))) { // Firefox
+        return false;
+      }
+      return true;
+    })();
+    const reg = /translateY\(([-\w]+)\)/;
+
+    $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
+      const {scrollHeight, clientHeight} = $menuPanel;
+      const step = 20;
+      const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+
+      // 判断鼠标滑轮向上还是向下滑动
+      let upDown;
+      const {detail, wheelDelta} = event;
+      if (detail) {
+        if (detail < 0) { // up
+          upDown = 'up';
+        } else if (detail > 0) { // down
+          upDown = 'down';
+        }
+      } else if (wheelDelta) { //
+        if (wheelDelta > 0) { // up
+          upDown = 'up';
+        }
+        if (wheelDelta < 0) { // down
+          upDown = 'down';
+        }
+      }
+
+      const {transform} = $menu.style;
+
+      let y = reg.exec(transform);
+      y = y ? parseFloat(y[1], 10) : 0;
+
+      if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === maxOffset)) {
+        return;
+      }
+
+      if (maxOffset > 0) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      if (upDown === 'up' && y < 0) {
+        $menu.style.transform = `translateY(${Math.min(y + step, 0)}px)`;
+      } else if (upDown === 'down' && Math.abs(y) < maxOffset) {
+        $menu.style.transform = `translateY(${Math.max(y - step, -maxOffset)}px)`;
+      }
+    }, false);
+
+  });
+</script>
+
+        </nav>
+      </nav>
+    </aside>
+
+    <main class="drawer-main navbar-fixed-adjust">
+      <section class="component-wrap">
+        <div class="component-wrap">
+  <section>
+    <h2>Radio </h2>
+    <section class="component-container">
+      <h3>纯 CSS基本样式</h3>
+      <div class="radio">
+        <input class="radio-native-control" type="radio" name="radio1">
+        <div class="radio-background">
+          <div class="radio-circle-outer"></div>
+          <div class="radio-circle-inner"></div>
+        </div>
+      </div>
+      <div class="radio">
+        <input class="radio-native-control" type="radio" name="radio1">
+        <div class="radio-background">
+          <div class="radio-circle-outer"></div>
+          <div class="radio-circle-inner"></div>
+        </div>
+      </div>
+    </section>
+    <section class="component-container">
+      <h3>纯 CSS 带波纹样式</h3>
+      <div class="radio ripple">
+        <input class="radio-native-control" type="radio" name="radio2">
+        <div class="radio-background">
+          <div class="radio-circle-outer"></div>
+          <div class="radio-circle-inner"></div>
+        </div>
+      </div>
+      <div class="radio ripple">
+        <input class="radio-native-control" type="radio" name="radio2">
+        <div class="radio-background">
+          <div class="radio-circle-outer"></div>
+          <div class="radio-circle-inner"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="component-container">
+      <h3>JavaScript 动效</h3>
+      <div class="radio ripple ripple-impact ripple-unbounded">
+        <input class="radio-native-control" type="radio" name="radio3">
+        <div class="radio-background">
+          <div class="radio-circle-outer"></div>
+          <div class="radio-circle-inner"></div>
+        </div>
+      </div>
+      <div class="radio ripple ripple-impact ripple-unbounded">
+        <input class="radio-native-control" type="radio" name="radio3">
+        <div class="radio-background">
+          <div class="radio-circle-outer"></div>
+          <div class="radio-circle-inner"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="component-container">
+      <h3>disabled 效果</h3>
+      <div class="radio radio-disabled">
+        <input class="radio-native-control" type="radio" disabled>
+        <div class="radio-background">
+          <div class="radio-circle-outer"></div>
+          <div class="radio-circle-inner"></div>
+        </div>
+      </div>
+      <div class="radio ripple radio-disabled">
+        <input class="radio-native-control" type="radio" checked disabled>
+        <div class="radio-background">
+          <div class="radio-circle-outer"></div>
+          <div class="radio-circle-inner"></div>
+        </div>
+      </div>
+      <div class="radio ripple ripple-impact ripple-unbounded radio-disabled">
+        <input class="radio-native-control" type="radio" disabled>
+        <div class="radio-background">
+          <div class="radio-circle-outer"></div>
+          <div class="radio-circle-inner"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3>主题样式</h3>
+      <h4>Primary</h4>
+      <section class="component-container">
+        <div class="radio radio-primary">
+          <input class="radio-native-control" type="radio" name="primary">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-primary ripple ripple-primary">
+          <input class="radio-native-control" type="radio" name="primary">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-primary ripple ripple-impact ripple-primary ripple-unbounded">
+          <input class="radio-native-control" type="radio" name="primary">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+      </section>
+
+      <h4>Accent</h4>
+      <section class="component-container">
+        <div class="radio radio-accent">
+          <input class="radio-native-control" type="radio" name="accent">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-accent ripple ripple-accent">
+          <input class="radio-native-control" type="radio" name="accent">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-accent ripple ripple-impact ripple-accent ripple-unbounded">
+          <input class="radio-native-control" type="radio" name="accent">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <section>
+      <h3>辅助颜色样式</h3>
+      <h4>Success</h4>
+      <section class="component-container">
+        <div class="radio radio-success">
+          <input class="radio-native-control" type="radio" name="success">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-success ripple ripple-success">
+          <input class="radio-native-control" type="radio" name="success">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-success ripple ripple-impact ripple-success ripple-unbounded">
+          <input class="radio-native-control" type="radio" name="success">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+      </section>
+
+      <h4>Info</h4>
+      <section class="component-container">
+        <div class="radio radio-info">
+          <input class="radio-native-control" type="radio" name="info">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-info ripple ripple-info">
+          <input class="radio-native-control" type="radio" name="info">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-info ripple ripple-impact ripple-info ripple-unbounded">
+          <input class="radio-native-control" type="radio" name="info">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+      </section>
+
+      <h4>Warning</h4>
+      <section class="component-container">
+        <div class="radio radio-warning">
+          <input class="radio-native-control" type="radio" name="warning">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-warning ripple ripple-warning">
+          <input class="radio-native-control" type="radio" name="warning">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-warning ripple ripple-impact ripple-warning ripple-unbounded">
+          <input class="radio-native-control" type="radio" name="warning">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+      </section>
+
+      <h4>Error</h4>
+      <section class="component-container">
+        <div class="radio radio-error">
+          <input class="radio-native-control" type="radio" name="error">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-error ripple ripple-error">
+          <input class="radio-native-control" type="radio" name="error">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-error ripple ripple-impact ripple-error ripple-unbounded">
+          <input class="radio-native-control" type="radio" name="error">
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+      </section>
+
+      <h4>Disabled</h4>
+      <section class="component-container">
+        <div class="radio radio-info radio-disabled">
+          <input class="radio-native-control" type="radio" disabled>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-error radio-disabled ripple ripple-error">
+          <input class="radio-native-control" type="radio" disabled checked>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-success radio-disabled ripple ripple-impact ripple-error ripple-unbounded">
+          <input class="radio-native-control" type="radio" disabled checked>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </section>
+</div>
+<script>
+  $(function () {
+
+    /**
+     * 计算事件坐标
+     * @param {!Event} ev
+     * @param {!{x: number, y: number}} pageOffset
+     * @param {!ClientRect} clientRect
+     * @return {!{x: number, y: number}}
+     */
+    function getNormalizedEventCoords(ev, clientRect) {
+      const x = window.pageXOffset;
+      const y = window.pageYOffset;
+      const documentX = x + clientRect.left;
+      const documentY = y + clientRect.top;
+
+      let normalizedX;
+      let normalizedY;
+      // Determine touch point relative to the ripple container.
+      if (ev.type === 'touchstart') {
+        normalizedX = ev.changedTouches[0].pageX - documentX;
+        normalizedY = ev.changedTouches[0].pageY - documentY;
+      } else {
+        normalizedX = ev.pageX - documentX;
+        normalizedY = ev.pageY - documentY;
+      }
+
+      return {x: normalizedX, y: normalizedY};
+    }
+
+    // 返回其大小
+    function getCssVariableValue($el) {
+      // 动态的修改 css variable
+      const width = $el.outerWidth();
+      const height = $el.outerHeight();
+
+      const maxDim = Math.max(width, height);
+      const diameter = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+
+      // 60%
+      const size = maxDim * 0.6;
+      // 直径多加 10
+      const radius = diameter + 10;
+
+      const scale = radius / size;
+
+      return {
+        width,
+        height,
+        size,
+        scale
+      };
+    }
+
+
+    function setCssVariable($el, {width, height, size, scale}) {
+      $el[0].style.setProperty('--ripple-width', width + 'px');
+      $el[0].style.setProperty('--ripple-height', height + 'px');
+      $el[0].style.setProperty('--ripple-size', size + 'px');
+      $el[0].style.setProperty('--ripple-scale', scale);
+
+      if ($el.hasClass('ripple-unbounded')) {
+        const left = Math.round((width / 2) - (size / 2));
+        const top = Math.round((height / 2) - (size / 2));
+
+        $el[0].style.setProperty('--ripple-left', `${left}px`);
+        $el[0].style.setProperty('--ripple-top', `${top}px`);
+      }
+    }
+
+    $('.ripple-impact').mousedown((e) => {
+      const $el = $(e.currentTarget);
+
+      const value = getCssVariableValue($el);
+
+      setCssVariable($el, value);
+
+      // 如果是 unbounded
+      if (!$el.hasClass('ripple-unbounded')) {
+        const {width, height, size} = value;
+
+        const clientRect = $el[0].getBoundingClientRect();
+        let startPoint = getNormalizedEventCoords(e, clientRect);
+
+        startPoint = {
+          x: startPoint.x - (size / 2),
+          y: startPoint.y - (size / 2),
+        };
+
+        const endPoint = {
+          x: (width / 2) - (size / 2),
+          y: (height / 2) - (size / 2),
+        };
+
+        const translateStart = `${startPoint.x}px, ${startPoint.y}px`;
+        const translateEnd = `${endPoint.x}px, ${endPoint.y}px`;
+
+        $el[0].style.setProperty('--ripple-translate-start', translateStart);
+        $el[0].style.setProperty('--ripple-translate-end', translateEnd);
+      }
+
+      $el.addClass('ripple-impact-active');
+
+    });
+
+    $('.ripple-impact').on('mouseup', (e) => {
+      const $el = $(e.currentTarget);
+      // 延迟260ms 执行
+      setTimeout(() => {
+        $el.removeClass('ripple-impact-active ripple-impact-focused');
+      }, 260);
+    });
+
+    $('.ripple-impact input').on('focus', (e) => {
+      const $el = $(e.currentTarget).parent();
+      $el.addClass('ripple-impact-focused');
+    });
+
+    $('.ripple-impact input').on('blur', (e) => {
+      const $el = $(e.currentTarget).parent();
+      $el.removeClass('ripple-impact-focused');
+    });
+
+
+    // 初始化ripple-impact css variable
+    $('.ripple-impact').each(function (index, el) {
+      const $el = $(el);
+      const value = getCssVariableValue($el);
+      setCssVariable($el, value);
+    });
+
+  });
+</script>
+
+      </section>
+    </main>
+
+    <script>
+  $(function () {
+    var $drawer = $('#drawer');
+    $drawer[0].addEventListener('transitionend', () => {
+      $drawer.removeClass('drawer-animating');
+    });
+
+    $('#toggleDrawer').click(function (e) {
+      const clientWidth = document.documentElement.clientWidth;
+      if(clientWidth < 1200){
+        $drawer.toggleClass('drawer-open');
+        $('body').toggleClass('drawer-scroll-lock');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-close');
+      } else {
+        // 当超过1440px 时，利用该样式，隐藏显示处理
+        $drawer.toggleClass('drawer-close');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-open');
+      }
+    });
+
+    $('#drawer').click(function () {
+      $drawer.removeClass('drawer-open');
+      $('body').removeClass('drawer-scroll-lock');
+      $drawer.addClass('drawer-animating');
+    });
+
+    $('.drawer-content').click(function (e) {
+      e.stopPropagation();
+    });
+  });
+</script>
+
+    <script>
+  $(function () {
+    // 定时切换主题，TODO 为了调试方便，暂先改为10秒，等上线前改为 1分钟
+    var themes = ['theme-red', 'theme-pink', 'theme-purple', 'theme-deep-purple',
+      'theme-indigo', 'theme-blue', 'theme-light-blue', 'theme-cyan', 'theme-teal',
+      'theme-green', 'theme-light-green', 'theme-lime', 'theme-yellow', 'theme-amber',
+      'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
+    setInterval(function () {
+      var r = Math.floor(Math.random() * 16);
+      $('body').removeClass().addClass(themes[r]);
+    }, 10000);
+  })
+</script>
+
+  </body>
+</html>

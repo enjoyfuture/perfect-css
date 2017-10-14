@@ -21,18 +21,17 @@
 
 <!-- Perfect CSS -->
 <link href="/assets/css/perfect.css" rel="stylesheet">
-<!-- docs CSS -->
-<link href="/assets/css/docs.css" rel="stylesheet">
-
-<!-- Component CSS -->
-<link href="/assets/css/component.css" rel="stylesheet">
-
+<!-- 页面 CSS -->
+<link href="/assets/css/components.css" rel="stylesheet">
 
   </head>
   <body>
+
     <header class="navbar navbar-fixed navbar-expand navbar-primary">
   
-  <span class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer"></span>
+  <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
+    <i class="icon-pure-menu"></i>
+  </div>
   
 
   <a class="navbar-brand" href="/">
@@ -47,7 +46,7 @@
         <a class="ripple ripple-primary nav-link " href="/docs/getting-started/introduction/">文档</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link active" href="/components/ripple/">组件</a>
+        <a class="ripple ripple-primary nav-link active" href="/components/">组件</a>
       </li>
       <li>
         <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
@@ -66,170 +65,393 @@
 <script src="/assets/js/vendor/jquery.min.js"></script>
 
 
-    
-
     <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
       <nav class="drawer-nav">
         <nav class="drawer-content">
-          <!--待归类，最后整理 TODO-->
-          <ul class="menu">
-            
+          
 
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/ripple/"
-                 class="menu-title ">Ripple 效果</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/shadow/"
-                 class="menu-title ">Shadow 效果</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/grid/"
-                 class="menu-title ">Grid 布局</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/input/"
-                 class="menu-title ">Input 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/select/"
-                 class="menu-title ">Select 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/radio/"
-                 class="menu-title ">Radio 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/checkbox/"
-                 class="menu-title ">Checkbox 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/button/"
-                 class="menu-title ">Button 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/form/"
-                 class="menu-title ">Form 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/table/"
-                 class="menu-title ">Table 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/menu/"
-                 class="menu-title ">Menu 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/toast/"
-                 class="menu-title ">Toast 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/tooltip/"
-                 class="menu-title ">Tooltip 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/image/"
-                 class="menu-title ">Image 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/tab/"
-                 class="menu-title ">Tab 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/dialog/"
-                 class="menu-title ">Dialog 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/list/"
-                 class="menu-title ">List 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/navbar/"
-                 class="menu-title active">Navbar 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/drawer/"
-                 class="menu-title ">Drawer 组件</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/drawer-permanent/"
-                 class="menu-title ">Drawer 组件2</a>
-            </li>
-            
-            
-            
-            <li class="menu-item">
-              <a href="/components/badge/"
-                 class="menu-title ">标记组件</a>
-            </li>
-            
-          </ul>
+
+
+
+
+
+
+<ul class="menu perfect-menu">
+
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/base/ripple/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">功能性组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/base/ripple/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Ripple 效果</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/base/shadow/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Shadow 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/navigation/menu/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">导航类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/menu/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">菜单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/tab/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tab 标签</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/container/carousel/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">容器类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/carousel/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Carousel 轮播图组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/dialog/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">对话框窗口</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/drawer/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">抽屉组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/form/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Form 表单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/list/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">List 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/table/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Table 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/elements/badge/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">元素类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/badge/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 标记刻章组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/button/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Button 按钮</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/checkbox/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/image/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/input/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Input 输入框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/radio/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Radio 单选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/select/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Select 下拉选择框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/toast/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Toast 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/tooltip/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tooltip 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/icons/icon-pure-css/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">图标</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/icons/icon-pure-css/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">纯 css 图标</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/utils/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">工具类样式</a>
+    <ul class="menu" style="display: none;">
+      
+    </ul>
+  </li>
+  
+</ul>
+
+<script>
+  $(function () {
+    // 菜单超过一屏可以滚动查看
+    var $menuPanel = $('.drawer-content')[0];
+    var $menu = $('.drawer-content > .perfect-menu')[0];
+
+    $menu.addEventListener('transitionend', function () {
+      $menu.style.transition = 'unset';
+    });
+    $('.menu').on('click', '.menu-header', function (e) {
+      e.preventDefault();
+      // 隐藏其他打开的菜单
+      $('.menu .menu').slideUp();
+      var $el = $(e.currentTarget);
+      var $nextEl = $el.next();
+      if ($nextEl.is(':visible')) {
+        $nextEl.slideUp();
+      } else {
+        $nextEl.slideDown(true, function () {
+          var menuPanelTop = $menuPanel.getBoundingClientRect().top;
+          var menuTop = $menu.getBoundingClientRect().top;
+          var currentElTop = e.currentTarget.getBoundingClientRect().top;
+          if (currentElTop < menuPanelTop) {
+            $menu.style.transform = `translateY(${menuTop - currentElTop}px)`;
+            $menu.style.transition = 'transform 200ms ease-in-out';
+          }
+        });
+      }
+    });
+
+    const isWheel = (() => {
+      const ua = navigator.userAgent;
+      if (/gecko/i.test(ua) && !(/webkit/i.test(ua)) && (/firefox/i.test(ua))) { // Firefox
+        return false;
+      }
+      return true;
+    })();
+    const reg = /translateY\(([-\w]+)\)/;
+
+    $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
+      const {scrollHeight, clientHeight} = $menuPanel;
+      const step = 20;
+      const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+
+      // 判断鼠标滑轮向上还是向下滑动
+      let upDown;
+      const {detail, wheelDelta} = event;
+      if (detail) {
+        if (detail < 0) { // up
+          upDown = 'up';
+        } else if (detail > 0) { // down
+          upDown = 'down';
+        }
+      } else if (wheelDelta) { //
+        if (wheelDelta > 0) { // up
+          upDown = 'up';
+        }
+        if (wheelDelta < 0) { // down
+          upDown = 'down';
+        }
+      }
+
+      const {transform} = $menu.style;
+
+      let y = reg.exec(transform);
+      y = y ? parseFloat(y[1], 10) : 0;
+
+      if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === maxOffset)) {
+        return;
+      }
+
+      if (maxOffset > 0) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      if (upDown === 'up' && y < 0) {
+        $menu.style.transform = `translateY(${Math.min(y + step, 0)}px)`;
+      } else if (upDown === 'down' && Math.abs(y) < maxOffset) {
+        $menu.style.transform = `translateY(${Math.max(y - step, -maxOffset)}px)`;
+      }
+    }, false);
+
+  });
+</script>
+
         </nav>
       </nav>
     </aside>
 
     <main class="drawer-main navbar-fixed-adjust">
-      <nav class="navbar navbar-expand-sm">
+      <section class="component-wrap">
+        <nav class="navbar navbar-expand-sm">
   <a class="navbar-brand" href="#">Perfect</a>
   <button class="navbar-toggler" type="button" data-component="navbar">
     <span class="navbar-toggler-icon"></span>
@@ -322,6 +544,7 @@
   });
 </script>
 
+      </section>
     </main>
 
     <script>
@@ -333,7 +556,7 @@
 
     $('#toggleDrawer').click(function (e) {
       const clientWidth = document.documentElement.clientWidth;
-      if(clientWidth < 1440){
+      if(clientWidth < 1200){
         $drawer.toggleClass('drawer-open');
         $('body').toggleClass('drawer-scroll-lock');
         $drawer.addClass('drawer-animating');
@@ -360,7 +583,19 @@
   });
 </script>
 
+    <script>
+  $(function () {
+    // 定时切换主题，TODO 为了调试方便，暂先改为10秒，等上线前改为 1分钟
+    var themes = ['theme-red', 'theme-pink', 'theme-purple', 'theme-deep-purple',
+      'theme-indigo', 'theme-blue', 'theme-light-blue', 'theme-cyan', 'theme-teal',
+      'theme-green', 'theme-light-green', 'theme-lime', 'theme-yellow', 'theme-amber',
+      'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
+    setInterval(function () {
+      var r = Math.floor(Math.random() * 16);
+      $('body').removeClass().addClass(themes[r]);
+    }, 10000);
+  })
+</script>
 
-    
   </body>
 </html>
