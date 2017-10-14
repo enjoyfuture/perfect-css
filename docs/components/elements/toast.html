@@ -1,0 +1,33 @@
+---
+layout: components
+title: Toast 组件
+group: elements
+---
+
+<div class="component-wrap">
+  <section class="component-container">
+    <h3> Toast </h3>
+    <button class="btn btn-raised" id="toastBtn">显示 Toast</button>
+    <div class="toast" id="toastEl">
+      <div class="toast-content">轻轻的，我来了</div>
+    </div>
+  </section>
+</div>
+
+<script>
+  var timeoutId;
+  var toastEl = document.getElementById('toastEl');
+
+  document.getElementById('toastBtn').addEventListener('click', function () {
+    toastEl.classList.add('enter');
+    clearTimeout(timeoutId);
+
+    toastEl.firstElementChild.innerHTML = '轻轻的，我来了';
+    timeoutId = setTimeout(function () {
+      toastEl.firstElementChild.innerHTML = '挥挥手，我走了';
+      toastEl.classList.remove('enter');
+    }, 3000);
+  }, false);
+</script>
+
+

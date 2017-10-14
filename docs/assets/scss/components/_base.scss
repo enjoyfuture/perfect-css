@@ -1,0 +1,81 @@
+@import "../../../../scss/theme/variable";
+@import "../../../../scss/shadow/mixin";
+@import "../../../../scss/theme/mixin";
+
+// ripple
+.ripple-demo {
+  .ripple {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    padding: 1rem;
+    cursor: pointer;
+    user-select: none;
+    @include shadow(5);
+  }
+
+  button.ripple {
+    display: inline-block;
+    border: 0;
+    background: none;
+    appearance: none;
+  }
+
+  .ripple-unbounded {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: none;
+  }
+
+  .ripple-unbounded:not(.ripple-impact)::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .d-flex .ripple {
+    margin-right: 2rem;
+  }
+
+  // 用 css 变量改变背景
+  .ripple-custom1.ripple-bg {
+    #{--ripple-bg-color}: rgba(0, 0, 0, .2);
+  }
+
+  .ripple-custom2.ripple-bg {
+    #{--ripple-bg-color}: rgba(3, 185, 244, .2);
+  }
+}
+
+// shadow
+.shadow-wrap {
+
+  [class*="shadow"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    margin: 0 40px 60px;
+    border-radius: 3px;
+    color: $grey-color-500;
+    background: $white;
+  }
+}
+
+.shadow-custom {
+  @for $z-value from 0 through 24 {
+    .shadow-#{$z-value} {
+      @include theme-prop(color, primary);
+      @include shadow($z-value, $shadow-umbra-color: var(--theme-primary-lighter),
+        $shadow-penumbra-color: var(--theme-primary-lighter),
+        $shadow-ambient-color: var(--theme-primary-lightest)
+      );
+    }
+  }
+}

@@ -1,5 +1,5 @@
 <header class="navbar navbar-fixed navbar-expand navbar-primary">
-  {% if (page.layout == 'docs' or page.layout == 'component') %}
+  {% if (page.layout == 'docs' or page.layout == 'components') %}
   <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
     <i class="icon-pure-menu"></i>
   </div>
@@ -17,13 +17,13 @@
         <a class="ripple ripple-primary nav-link {% if page.layout == 'docs' %}active{% endif %}" href="{{ site.baseurl }}/docs/getting-started/introduction/">文档</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link {% if page.layout == 'component' %}active{% endif %}" href="{{ site.baseurl }}/components/ripple/">组件</a>
+        <a class="ripple ripple-primary nav-link {% if page.layout == 'components' %}active{% endif %}" href="{{ site.baseurl }}/components/">组件</a>
       </li>
       <li>
         <a class="ripple ripple-primary nav-link {% if page.layout == 'examples' %}active{% endif %}" href="{{ site.baseurl }}/examples/">例子</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link {% if page.layout == 'theme' %}active{% endif %}" href="{{ site.baseurl }}/themes/">主题</a>
+        <a class="ripple ripple-primary nav-link {% if page.layout == 'themes' %}active{% endif %}" href="{{ site.baseurl }}/themes/">主题</a>
       </li>
       <li>
         <a class="ripple ripple-primary nav-link {% if page.layout == 'development' %}active{% endif %}" href="{{ site.baseurl }}/development/">开发</a>

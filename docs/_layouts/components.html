@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+
+    {% include header.html %}
+    {% include jquery.html %}
+
+    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+      <nav class="drawer-nav">
+        <nav class="drawer-content">
+          {% include nav-menus.html %}
+        </nav>
+      </nav>
+    </aside>
+
+    <main class="drawer-main navbar-fixed-adjust">
+      <section class="component-wrap">
+        {{ content }}
+      </section>
+    </main>
+
+    {% include drawer-script.html %}
+    {% include switch-theme.html %}
+  </body>
+</html>

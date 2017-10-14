@@ -18,22 +18,7 @@
 <link rel="apple-touch-icon" href="{{ site.baseurl }}/favicon.png">
 <link rel="icon" href="{{ site.baseurl }}/favicon.ico">
 
-{% if page.layout == 'docs' %}
-<!-- docs CSS -->
-<link href="{{ site.baseurl }}/assets/css/docs.css" rel="stylesheet">
-{% endif %}
-
-{% if page.layout == 'component' %}
-<!-- Component CSS -->
-<link href="{{ site.baseurl }}/assets/css/component.css" rel="stylesheet">
-{% endif %}
-
-{% if page.layout == 'device-view' %}
-<!-- Device View CSS -->
-<link href="{{ site.baseurl }}/assets/css/device-view.css" rel="stylesheet">
-{% endif %}
-
-{% if page.layout == 'draft' %}
-<!-- draft CSS -->
-<link href="{{ site.baseurl }}/assets/css/docs.css" rel="stylesheet">
-{% endif %}
+<!-- Perfect CSS -->
+<link href="{{ site.baseurl }}/assets/css/perfect.css" rel="stylesheet">
+<!-- 页面 CSS -->
+<link href="{{ site.baseurl }}/assets/css/{{ page.layout }}.css" rel="stylesheet">

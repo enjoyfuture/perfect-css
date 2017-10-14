@@ -1,8 +1,8 @@
 // ripple mixin 波纹 涟漪
 @import "../animation/variable";
 @import "../theme/variable";
-@import "keyframe";
-@import "function";
+@import "./keyframe";
+@import "./function";
 
 // ripple 基本样式
 @mixin ripple-base() {
@@ -50,12 +50,6 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 250ms linear;
-}
-
-// 设置 ripple 主题
-@mixin ripple-theme($config) {
-  $config: map-merge(ripple-default-config(), $config);
-  @include ripple-backgroud-color($config);
 }
 
 // 设置 ripple 颜色
@@ -137,6 +131,12 @@
   &.ripple-impact-inactive#{$pseudo} {
     animation: 300ms ripple-radius-out forwards, 83ms ripple-opacity-out forwards;
   }
+}
+
+// 设置 ripple 主题
+@mixin ripple-theme($config) {
+  $config: map-merge(ripple-default-config(), $config);
+  @include ripple-backgroud-color($config);
 }
 
 // 无界限的波纹效果

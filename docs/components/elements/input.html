@@ -1,0 +1,135 @@
+---
+layout: components
+title: Input 组件
+group: elements
+---
+
+<div class="component-wrap">
+  <section>
+    <h3> 四边带边框 Inputs </h3>
+    <section class="component-container">
+      <div class="input">
+        <input type="text" class="input-field" placeholder="输入框"/>
+      </div>
+      <div class="input">
+        <input type="text" class="input-field" readonly placeholder="Readonly"/>
+      </div>
+      <div class="input">
+        <input type="text" class="input-field" disabled placeholder="Disabled"/>
+      </div>
+    </section>
+
+    <section class="component-container">
+      <h4>input 放在 label 中</h4>
+      <div class="input">
+        <label>姓名: <input type="text" class="input-field" placeholder="输入框"/></label>
+      </div>
+    </section>
+
+    <section class="component-container">
+      <h4>input 跟 label 同级</h4>
+      <div class="input">
+        <label for="input1">姓名:</label>
+        <input type="text" class="input-field" id="input1" placeholder="Name">
+      </div>
+    </section>
+    <div class="text-field">
+
+    </div>
+
+    <h3> 底部边框 </h3>
+    <section class="component-container">
+      <div class="input">
+        <input type="text" class="input-field input-flat" placeholder="请输入你的名字"/>
+      </div>
+    </section>
+    <section class="component-container">
+      <div class="input">
+        <label>
+          姓名
+          <input type="text" class="input-field input-flat" placeholder="请输入你的名字"/>
+        </label>
+      </div>
+    </section>
+
+    <h3> 宽度为 100% 的 input </h3>
+    <section class="component-container">
+      <div class="input input-full">
+        <input type="text" class="input-field" placeholder="输入框"/>
+      </div>
+    </section>
+
+    <section class="component-container">
+      <div class="input input-full">
+        <input type="text" class="input-field input-flat" placeholder="输入框"/>
+      </div>
+
+    </section>
+
+    <h3> 点击input时提示文字缩小上移，并改变颜色为高亮色 </h3>
+    <section class="component-container">
+      <div class="input input-float-above">
+        <input type="text" class="input-field" id="input-field1" value="Tom">
+        <label for="input-field1" class="input-label">用户名</label>
+      </div>
+    </section>
+
+    <section class="component-container">
+      <div class="input input-float-above input-full">
+        <input type="text" class="input-field" id="input-field2">
+        <label for="input-field2" class="input-label">用户名</label>
+      </div>
+    </section>
+
+    <section class="component-container">
+      <div class="input input-float-above input-full">
+        <input type="text" class="input-field input-field-invalid" id="input-field3" value="无效的值">
+        <label for="input-field3" class="input-label">用户名</label>
+      </div>
+    </section>
+
+    <h3> 输入框中带按钮 </h3>
+    <section class="component-container">
+      <div class="input input-float-above input-full">
+        <input type="text" class="input-field" id="input-field4" value="18734565432">
+        <label for="input-field3" class="input-label">新手机号</label>
+      </div>
+      <div class="row">
+        <div class="col-18">
+          <input type="text" class="input-field input-flat">
+        </div>
+        <div class="col-6"><a href="">获取验证码</a></div>
+      </div>
+    </section>
+
+    <h3> textarea </h3>
+    <section class="component-container">
+      <div class="input">
+        <textarea class="input-field"></textarea>
+      </div>
+    </section>
+  </section>
+
+</div>
+
+<script>
+  $(function () {
+    $('.input-float-above .input-field').blur(function (e) {
+      var val = $(e.currentTarget).val();
+      if (val) {
+        $(e.currentTarget).addClass('input-field-focused');
+      } else {
+        $(e.currentTarget).removeClass('input-field-focused');
+      }
+    });
+
+    $('.input-float-above .input-field').each(function(index, item){
+      if ($(item).val()) {
+        $(item).addClass('input-field-focused');
+      } else {
+        $(item).removeClass('input-field-focused');
+      }
+    });
+  });
+</script>
+

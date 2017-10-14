@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="CSS3 Perfect">
+<meta name="description"
+      content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+<meta name="author" content="Linder Wang">
+
+<title>
+  
+  List 组件 &middot; Perfect
+  
+</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" href="/favicon.ico">
+
+<!-- Perfect CSS -->
+<link href="/assets/css/perfect.css" rel="stylesheet">
+<!-- 页面 CSS -->
+<link href="/assets/css/components.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <header class="navbar navbar-fixed navbar-expand navbar-primary">
+  
+  <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
+    <i class="icon-pure-menu"></i>
+  </div>
+  
+
+  <a class="navbar-brand" href="/">
+    <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
+  </a>
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/">首页</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/docs/getting-started/introduction/">文档</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link active" href="/components/">组件</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+    <!--把 jquery 单独引入到页面最上面-->
+<script src="/assets/js/vendor/jquery.min.js"></script>
+
+
+    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+      <nav class="drawer-nav">
+        <nav class="drawer-content">
+          
+
+
+
+
+
+
+
+<ul class="menu perfect-menu">
+
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/base/ripple/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">功能性组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/base/ripple/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Ripple 效果</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/base/shadow/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Shadow 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/navigation/menu/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">导航类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/menu/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">菜单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/tab/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tab 标签</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/container/carousel/" 
+       class="menu-title menu-header active" style="padding-left: 1rem;">容器类组件</a>
+    <ul class="menu">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/carousel/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Carousel 轮播图组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/dialog/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">对话框窗口</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/drawer/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">抽屉组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/form/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Form 表单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/list/"
+             class="menu-title menu-sub-title active" style="padding-left: 2rem;">List 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/table/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Table 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/elements/badge/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">元素类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/badge/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 标记刻章组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/button/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Button 按钮</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/checkbox/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/image/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/input/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Input 输入框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/radio/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Radio 单选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/select/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Select 下拉选择框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/toast/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Toast 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/tooltip/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tooltip 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/icons/icon-pure-css/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">图标</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/icons/icon-pure-css/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">纯 css 图标</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/utils/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">工具类样式</a>
+    <ul class="menu" style="display: none;">
+      
+    </ul>
+  </li>
+  
+</ul>
+
+<script>
+  $(function () {
+    // 菜单超过一屏可以滚动查看
+    var $menuPanel = $('.drawer-content')[0];
+    var $menu = $('.drawer-content > .perfect-menu')[0];
+
+    $menu.addEventListener('transitionend', function () {
+      $menu.style.transition = 'unset';
+    });
+    $('.menu').on('click', '.menu-header', function (e) {
+      e.preventDefault();
+      // 隐藏其他打开的菜单
+      $('.menu .menu').slideUp();
+      var $el = $(e.currentTarget);
+      var $nextEl = $el.next();
+      if ($nextEl.is(':visible')) {
+        $nextEl.slideUp();
+      } else {
+        $nextEl.slideDown(true, function () {
+          var menuPanelTop = $menuPanel.getBoundingClientRect().top;
+          var menuTop = $menu.getBoundingClientRect().top;
+          var currentElTop = e.currentTarget.getBoundingClientRect().top;
+          if (currentElTop < menuPanelTop) {
+            $menu.style.transform = `translateY(${menuTop - currentElTop}px)`;
+            $menu.style.transition = 'transform 200ms ease-in-out';
+          }
+        });
+      }
+    });
+
+    const isWheel = (() => {
+      const ua = navigator.userAgent;
+      if (/gecko/i.test(ua) && !(/webkit/i.test(ua)) && (/firefox/i.test(ua))) { // Firefox
+        return false;
+      }
+      return true;
+    })();
+    const reg = /translateY\(([-\w]+)\)/;
+
+    $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
+      const {scrollHeight, clientHeight} = $menuPanel;
+      const step = 20;
+      const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+
+      // 判断鼠标滑轮向上还是向下滑动
+      let upDown;
+      const {detail, wheelDelta} = event;
+      if (detail) {
+        if (detail < 0) { // up
+          upDown = 'up';
+        } else if (detail > 0) { // down
+          upDown = 'down';
+        }
+      } else if (wheelDelta) { //
+        if (wheelDelta > 0) { // up
+          upDown = 'up';
+        }
+        if (wheelDelta < 0) { // down
+          upDown = 'down';
+        }
+      }
+
+      const {transform} = $menu.style;
+
+      let y = reg.exec(transform);
+      y = y ? parseFloat(y[1], 10) : 0;
+
+      if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === maxOffset)) {
+        return;
+      }
+
+      if (maxOffset > 0) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      if (upDown === 'up' && y < 0) {
+        $menu.style.transform = `translateY(${Math.min(y + step, 0)}px)`;
+      } else if (upDown === 'down' && Math.abs(y) < maxOffset) {
+        $menu.style.transform = `translateY(${Math.max(y - step, -maxOffset)}px)`;
+      }
+    }, false);
+
+  });
+</script>
+
+        </nav>
+      </nav>
+    </aside>
+
+    <main class="drawer-main navbar-fixed-adjust">
+      <section class="component-wrap">
+        <style>
+  .arrow {
+    position: relative;
+  }
+
+  .arrow:after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    right: 0;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid #bdbdbd;
+    border-right: 2px solid #bdbdbd;
+    transform: rotate(45deg);
+  }
+</style>
+
+<div class="component-wrap">
+  <p class="m-3">
+    说明：以下例子中，为了演示更直观些，额外的设置了左右外边距 1rem，最大宽度设为 720px，即 max-width: 720px;
+    同时设置了 1px 的边框，这些额外的样式不包含在基础 css 中。
+    为了更好的演示效果，当屏幕缩小到 720px 后，会去掉左右外边距、边框以及 max-width 的限制。
+  </p>
+
+  <section>
+    <h2>单行列表</h2>
+    <section class="component-list">
+      <h3>单行文本</h3>
+      <ul class="list">
+        <li class="list-item">List 组件 - 单行文本</li>
+        <li class="list-item active">List 组件 - 单行文本(active)</li>
+        <li class="list-item disabled">List 组件 - 单行文本(disabled)</li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>单行文本-紧凑的</h3>
+      <ul class="list list-dense">
+        <li class="list-item">List 组件 - 单行文本</li>
+        <li class="list-item active">List 组件 - 单行文本(active)</li>
+        <li class="list-item disabled">List 组件 - 单行文本(disabled)</li>
+      </ul>
+    </section>
+  </section>
+
+  <section>
+    <h2>Links 或者 Buttons</h2>
+    <section class="component-list">
+      <h3>Links，使用样式 list-item-action</h3>
+      <div class="list">
+        <a class="list-item list-item-action" href="#">List 组件 - Links</a>
+        <a class="list-item list-item-action active" href="#">List 组件 - Links(active)</a>
+        <a class="list-item list-item-action disabled" href="#">List 组件 - Links(disabled)</a>
+      </div>
+    </section>
+
+    <section class="component-list">
+      <h3>Buttons，使用样式 list-item-action</h3>
+      <div class="list">
+        <button type="button" class="list-item list-item-action">List 组件 - Buttons</button>
+        <button type="button" class="list-item list-item-action active">List 组件 - Buttons(active)
+        </button>
+        <button type="button" class="list-item list-item-action" disabled>List 组件 -
+          Buttons(disabled)
+        </button>
+      </div>
+    </section>
+  </section>
+
+  <section>
+    <h2>带边框的 List 组件</h2>
+    <section class="component-list">
+      <h3>内外边框</h3>
+      <ul class="list list-border">
+        <li class="list-item">List 组件 - 内外边框</li>
+        <li class="list-item">List 组件 - 内外边框</li>
+        <li class="list-item">List 组件 - 内外边框</li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>内边框</h3>
+      <ul class="list list-border-inner">
+        <li class="list-item">List 组件 - 内边框</li>
+        <li class="list-item">List 组件 - 内边框</li>
+        <li class="list-item">List 组件 - 内边框</li>
+      </ul>
+    </section>
+  </section>
+
+  <section>
+    <h2>有间距的 List 组件</h2>
+    <section class="component-list" style="background-color: #f5f5f5;">
+      <ul class="list list-spacing">
+        <li class="list-item">List 组件 - 中间有间距</li>
+        <li class="list-item">List 组件 - 中间有间距</li>
+        <li class="list-item">List 组件 - 中间有间距</li>
+      </ul>
+    </section>
+
+  </section>
+
+  <section>
+    <h2>行首行尾设置图标</h2>
+    <p class="m-x-3">说明：这里我们用一个灰色的背景作为演示例子，实际项目中使用具体的图标替换</p>
+    <section class="component-list">
+      <h3>行首图标</h3>
+      <ul class="list">
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 行首图标
+        </li>
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 行首图标
+        </li>
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 行首图标
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>行尾图标</h3>
+      <ul class="list">
+        <li class="list-item">List 组件 - 行尾图标<span class="list-item-icon-end grey-bg"></span></li>
+        <li class="list-item">List 组件 - 行尾图标<span class="list-item-icon-end grey-bg"></span></li>
+        <li class="list-item">List 组件 - 行尾图标<span class="list-item-icon-end grey-bg"></span></li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>行首图标（紧凑的）</h3>
+      <ul class="list list-dense">
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 行首图标
+        </li>
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 行首图标
+        </li>
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 行首图标
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>行尾图标（紧凑的）</h3>
+      <ul class="list list-dense">
+        <li class="list-item">List 组件 - 行尾图标<span class="list-item-icon-end grey-bg"></span></li>
+        <li class="list-item">List 组件 - 行尾图标<span class="list-item-icon-end grey-bg"></span></li>
+        <li class="list-item">List 组件 - 行尾图标<span class="list-item-icon-end grey-bg"></span></li>
+      </ul>
+    </section>
+  </section>
+
+  <section>
+    <h2>头像</h2>
+    <section class="component-list">
+      <ul class="list">
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 头像</li>
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 头像</li>
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 头像</li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>头像 + 行尾图标</h3>
+      <ul class="list">
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 头像+行尾图标<span
+          class="list-item-icon-end grey-bg"></span></li>
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 头像+行尾图标<span
+          class="list-item-icon-end grey-bg"></span></li>
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 头像+行尾图标<span
+          class="list-item-icon-end grey-bg"></span></li>
+      </ul>
+    </section>
+  </section>
+
+  <section>
+    <h2>文本居中</h2>
+    <section class="component-list">
+      <ul class="list">
+        <li class="list-item">
+          <span class="list-item-text-center">List 组件 - 文本居中</span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-text-center">List 组件 - 文本居中</span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-text-center">List 组件 - 文本居中</span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+      </ul>
+    </section>
+
+  </section>
+
+  <section>
+    <h2>行首行尾都有文字</h2>
+    <section class="component-list">
+      <h3>只有文字</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right">List 组件 - 行尾文本</span>
+        </li>
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-primary">List 组件 - 行尾文本</span>
+        </li>
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-success">List 组件 - 行尾文本</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>行首行尾文字+行尾图标</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right">List 组件 - 行尾文本</span>
+          <span class="list-item-icon-end arrow"></span>
+        </li>
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-primary">List 组件 - 行尾文本</span>
+          <span class="list-item-icon-end arrow"></span>
+        </li>
+        <li class="list-item">
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-success">List 组件 - 行尾文本</span>
+          <span class="list-item-icon-end arrow"></span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>行首图标 + 行首行尾文字+行尾图标</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span class="list-item-icon-start grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right">List 组件 - 行尾文本</span>
+          <span class="list-item-icon-end arrow"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-icon-start grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-primary">List 组件 - 行尾文本</span>
+          <span class="list-item-icon-end arrow"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-icon-start grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-success">List 组件 - 行尾文本</span>
+          <span class="list-item-icon-end arrow"></span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>头像 + 行首行尾文字+行尾图标</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right">List 组件 - 行尾文本</span>
+          <span class="list-item-icon-end arrow"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-primary">List 组件 - 行尾文本</span>
+          <span class="list-item-icon-end arrow"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span>List 组件 - 行首文本</span>
+          <span class="list-item-text-right text-success">List 组件 - 行尾文本</span>
+          <span class="list-item-icon-end arrow"></span>
+        </li>
+      </ul>
+    </section>
+
+  </section>
+
+
+  <section>
+    <h2>两行列表</h2>
+    <section class="component-list">
+      <h3>只有文本</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>只有文本（紧凑的）</h3>
+      <ul class="list list-dense">
+        <li class="list-item">
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>头像 + 文本</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>文本 + 行尾图标</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>头像 + 文本 + 行尾图标</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>头像 + 文本 + 行尾文本 + 行尾图标</h3>
+      <ul class="list">
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-text-right">行尾文本</span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-text-right">行尾文本</span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+        <li class="list-item">
+          <span class="list-item-avatar grey-bg"></span>
+          <span class="list-item-text">
+            List 组件 - 两行列表
+            <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+          </span>
+          <span class="list-item-text-right">行尾文本</span>
+          <span class="list-item-icon-end grey-bg"></span>
+        </li>
+      </ul>
+    </section>
+  </section>
+
+  <section>
+    <h2>列表分隔线</h2>
+    <section class="component-list">
+      <h3>100% 宽度</h3>
+      <ul class="list">
+        <li class="list-item">List 组件 - 小节 1</li>
+        <li class="list-item">List 组件 - 小节 1</li>
+        <li class="list-item">List 组件 - 小节 1</li>
+        <li class="list-divider"></li>
+        <li class="list-item">List 组件 - 小节 2</li>
+        <li class="list-item">List 组件 - 小节 2</li>
+        <li class="list-item">List 组件 - 小节 2</li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>inset </h3>
+      <ul class="list">
+        <li class="list-item">List 组件 - 小节 1</li>
+        <li class="list-item">List 组件 - 小节 1</li>
+        <li class="list-item">List 组件 - 小节 1</li>
+        <li class="list-divider list-divider-inset"></li>
+        <li class="list-item">List 组件 - 小节 2</li>
+        <li class="list-item">List 组件 - 小节 2</li>
+        <li class="list-item">List 组件 - 小节 2</li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>inset icon</h3>
+      <ul class="list">
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 小节 1
+        </li>
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 小节 1
+        </li>
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 小节 1
+        </li>
+        <li class="list-divider list-divider-inset-icon"></li>
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 小节 2
+        </li>
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 小节 2
+        </li>
+        <li class="list-item"><span class="list-item-icon-start grey-bg"></span>List 组件 - 小节 2
+        </li>
+      </ul>
+    </section>
+
+    <section class="component-list">
+      <h3>inset 头像(avatar)</h3>
+      <ul class="list">
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 1</li>
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 1</li>
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 1</li>
+        <li class="list-divider list-divider-inset-avatar"></li>
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 2</li>
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 2</li>
+        <li class="list-item"><span class="list-item-avatar grey-bg"></span>List 组件 - 小节 2</li>
+      </ul>
+    </section>
+
+  </section>
+
+  <section>
+    <h2>列表组</h2>
+    <section class="component-list">
+      <h3>只有文本</h3>
+      <div class="list-group">
+        <h3 class="list-group-header">列表 1</h3>
+        <ul class="list">
+          <li class="list-item">List 组件 - 列表 1</li>
+          <li class="list-item">List 组件 - 列表 1</li>
+          <li class="list-item">List 组件 - 列表 1</li>
+        </ul>
+        <hr class="list-divider"/>
+        <h3 class="list-group-header">列表 2</h3>
+        <ul class="list">
+          <li class="list-item">List 组件 - 列表 2</li>
+          <li class="list-item">List 组件 - 列表 2</li>
+          <li class="list-item">List 组件 - 列表 2</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="component-list">
+      <h3>头像 + 文本 + 行尾图标 列表组</h3>
+      <div class="list-group">
+        <h3 class="list-group-header">列表 1</h3>
+        <ul class="list">
+          <li class="list-item">
+            <span class="list-item-avatar grey-bg"></span>
+            <span class="list-item-text">
+              List 组件 - 列表 1
+              <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+            </span>
+            <span class="list-item-icon-end grey-bg"></span>
+          </li>
+          <li class="list-item">
+            <span class="list-item-avatar grey-bg"></span>
+            <span class="list-item-text">
+              List 组件 - 列表 1
+              <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+            </span>
+            <span class="list-item-icon-end grey-bg"></span>
+          </li>
+          <li class="list-item">
+            <span class="list-item-avatar grey-bg"></span>
+            <span class="list-item-text">
+              List 组件 - 列表 1
+              <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+            </span>
+            <span class="list-item-icon-end grey-bg"></span>
+          </li>
+        </ul>
+        <hr class="list-divider list-divider-inset"/>
+        <h3 class="list-group-header">列表 2</h3>
+        <ul class="list">
+          <li class="list-item">
+            <span class="list-item-avatar grey-bg"></span>
+            <span class="list-item-text">
+              List 组件 - 列表 2
+              <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+            </span>
+            <span class="list-item-icon-end grey-bg"></span>
+          </li>
+          <li class="list-item">
+            <span class="list-item-avatar grey-bg"></span>
+            <span class="list-item-text">
+              List 组件 - 列表 2
+              <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+            </span>
+            <span class="list-item-icon-end grey-bg"></span>
+          </li>
+          <li class="list-item">
+            <span class="list-item-avatar grey-bg"></span>
+            <span class="list-item-text">
+              List 组件 - 列表 2
+              <span class="list-item-text-secondary">List 组件 - 次要内容</span>
+            </span>
+            <span class="list-item-icon-end grey-bg"></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </section>
+
+  <section>
+    <h2>自定义列表内容</h2>
+    <section class="component-list">
+      <div class="list list-border-inner">
+        <a href="#" class="list-item list-item-action flex-column align-items-start active">
+          <div class="d-flex w-100 justify-content-between">
+            <h4 class="m-y-1">放飞梦想</h4>
+            <small>100 年</small>
+          </div>
+          <p class="m-y-2">发挥你的创意想象力，挥挥手，毫无保留的留下一切吧，让心爱你的人来见证伟大奇迹的出现吧。</p>
+          <small>体验未来</small>
+        </a>
+        <a href="#" class="list-item list-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h4 class="m-y-1">放飞梦想</h4>
+            <small>100 年</small>
+          </div>
+          <p class="m-y-2">发挥你的创意想象力，挥挥手，毫无保留的留下一切吧，让心爱你的人来见证伟大奇迹的出现吧。</p>
+          <small>体验未来</small>
+        </a>
+        <a href="#" class="list-item list-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h4 class="m-y-1">放飞梦想</h4>
+            <small>100 年</small>
+          </div>
+          <p class="m-y-2">发挥你的创意想象力，挥挥手，毫无保留的留下一切吧，让心爱你的人来见证伟大奇迹的出现吧。</p>
+          <small>体验未来</small>
+        </a>
+      </div>
+    </section>
+  </section>
+</div>
+
+
+
+      </section>
+    </main>
+
+    <script>
+  $(function () {
+    var $drawer = $('#drawer');
+    $drawer[0].addEventListener('transitionend', () => {
+      $drawer.removeClass('drawer-animating');
+    });
+
+    $('#toggleDrawer').click(function (e) {
+      const clientWidth = document.documentElement.clientWidth;
+      if(clientWidth < 1200){
+        $drawer.toggleClass('drawer-open');
+        $('body').toggleClass('drawer-scroll-lock');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-close');
+      } else {
+        // 当超过1440px 时，利用该样式，隐藏显示处理
+        $drawer.toggleClass('drawer-close');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-open');
+      }
+    });
+
+    $('#drawer').click(function () {
+      $drawer.removeClass('drawer-open');
+      $('body').removeClass('drawer-scroll-lock');
+      $drawer.addClass('drawer-animating');
+    });
+
+    $('.drawer-content').click(function (e) {
+      e.stopPropagation();
+    });
+  });
+</script>
+
+    <script>
+  $(function () {
+    // 定时切换主题，TODO 为了调试方便，暂先改为10秒，等上线前改为 1分钟
+    var themes = ['theme-red', 'theme-pink', 'theme-purple', 'theme-deep-purple',
+      'theme-indigo', 'theme-blue', 'theme-light-blue', 'theme-cyan', 'theme-teal',
+      'theme-green', 'theme-light-green', 'theme-lime', 'theme-yellow', 'theme-amber',
+      'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
+    setInterval(function () {
+      var r = Math.floor(Math.random() * 16);
+      $('body').removeClass().addClass(themes[r]);
+    }, 10000);
+  })
+</script>
+
+  </body>
+</html>

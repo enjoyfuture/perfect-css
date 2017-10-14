@@ -36,12 +36,13 @@
 @include ripple-unbounded();
 
 // 定义主题样式
+// todo 待处理
+// 由于 css module level 4 目前浏览器还不支持，所以不能动态的通过 css 变量值设置透明颜色值
+// 可以提供几个透明颜色的主题值
 @each $style in ("primary", "secondary") {
   .ripple-#{$style} {
     &::before,
     &::after {
-      // 主题样式
-      @include theme-prop(background-color, #{$style});
       // ripple 主题样式
       @include ripple-theme((theme-style: #{$style}, opacity: .16));
     }
@@ -55,7 +56,7 @@
   .ripple-#{$theme} {
     &::before,
     &::after {
-      @include theme-assist(background-color, #{$theme}-light, .16);
+      @include theme-assist(background-color, #{$theme}, .16);
     }
   }
 }

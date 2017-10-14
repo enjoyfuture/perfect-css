@@ -1,0 +1,59 @@
+
+// header
+@import "common/header";
+
+// 底部样式
+@import "common/footer";
+
+// 左侧菜单
+@import "common/menu";
+
+// 基础样式
+@import "components/main";
+
+// 功能性样式
+@import "components/base";
+
+.component-list {
+  max-width: 720px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  + .component-list {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .component-wrap {
+    margin: 0;
+
+    section {
+      padding: 1.5rem 0;
+    }
+  }
+  .component-list {
+    max-width: none;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+
+    + .component-list {
+      margin-top: 0;
+    }
+  }
+}
+
+// 灰色小图标例子
+.grey-bg {
+  background: rgba(0, 0, 0, .26);
+}
+
+// button demo style
+.component-container {
+  .btn {
+    margin: 1rem;
+  }
+
+  > .menu {
+    width: 400px;
+    border: 1px solid rgba(0, 0, 0, .26);
+  }
+}

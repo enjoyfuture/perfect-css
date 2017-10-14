@@ -7,7 +7,7 @@
   <title>Scrollspy Test</title>
   <style>
 
-    .doc-menu .menu-title {
+    .perfect-menu .menu-title {
       position: relative;
       padding-left: 10px;
       border-left: 2px solid transparent;
@@ -17,7 +17,7 @@
       width: 230px;
     }
 
-    .doc-menu .menu-title:hover::after {
+    .perfect-menu .menu-title:hover::after {
       content: '';
       position: absolute;
       top: 25%;
@@ -26,7 +26,7 @@
       border-left: 1px solid #193c5a;
     }
 
-    .doc-menu .menu-title.active::after {
+    .perfect-menu .menu-title.active::after {
       content: '';
       position: absolute;
       top: 25%;
@@ -223,13 +223,13 @@
     </div>
   </div>
   <div class="doc-catalogue">
-    <ul class="menu menu-catalogue doc-menu">
+    <ul class="menu menu-catalogue perfect-menu">
       <li><a class="menu-title" data-target="menu-1" href="#">目录1</a></li>
       <li><a class="menu-title" data-target="menu-2" href="#">目录2</a>
-        <ul class="menu menu-catalogue doc-menu">
+        <ul class="menu menu-catalogue perfect-menu">
           <li><a class="menu-title" data-target="menu-2-1" href="#">目录2-1</a></li>
           <li><a class="menu-title" data-target="menu-2-2" href="#">目录2-2</a>
-            <ul class="menu menu-catalogue doc-menu">
+            <ul class="menu menu-catalogue perfect-menu">
               <li><a class="menu-title" data-target="menu-2-2-1" href="#">目录2-2-1</a></li>
               <li><a class="menu-title" data-target="menu-2-2-2" href="#">目录2-2-2</a></li>
             </ul>
@@ -239,14 +239,14 @@
       </li>
       <li><a class="menu-title" data-target="menu-3" href="#">目录3</a></li>
       <li><a class="menu-title" data-target="menu-4" href="#">目录4</a>
-        <ul class="menu menu-catalogue doc-menu">
+        <ul class="menu menu-catalogue perfect-menu">
           <li><a class="menu-title" data-target="menu-4-1" href="#">目录4-1</a>
-            <ul class="menu menu-catalogue doc-menu">
+            <ul class="menu menu-catalogue perfect-menu">
               <li><a class="menu-title" data-target="menu-4-1-1" href="#">目录4-1-1</a>
-                <ul class="menu menu-catalogue doc-menu">
+                <ul class="menu menu-catalogue perfect-menu">
                   <li><a class="menu-title" data-target="menu-4-1-1-1" href="#">目录4-1-1-1</a></li>
                   <li><a class="menu-title" data-target="menu-4-1-1-2" href="#">目录4-1-1-2</a>
-                    <ul class="menu menu-catalogue doc-menu">
+                    <ul class="menu menu-catalogue perfect-menu">
                       <li><a class="menu-title" data-target="menu-4-1-1-2-1" href="#">目录4-1-1-2-1</a></li>
                       <li><a class="menu-title" data-target="menu-4-1-1-2-2" href="#">目录4-1-1-2-2</a></li>
                       <li><a class="menu-title" data-target="menu-4-1-1-2-3" href="#">目录4-1-1-2-3</a></li>
@@ -280,7 +280,7 @@
     anchor: false,
     extend: true,
     plugins: CatalogueSpy,
-    menuCls: 'doc-menu',
+    menuCls: 'perfect-menu',
   });
 </script>
 </body>

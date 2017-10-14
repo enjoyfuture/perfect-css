@@ -1,0 +1,53 @@
+@import "../../../../scss/theme/variable";
+@import "../../../../scss/theme/mixin";
+@import "../../../../scss/shadow/mixin";
+
+// 基础样式
+.component-wrap {
+  padding: 1.5rem;
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    font-size: 1.125rem;
+  }
+
+  h1, h2, h3, h4 {
+    margin-top: 2rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    &::before {
+      content: "";
+      display: inline-block;
+      width: .5rem;
+      height: .5rem;
+      margin-top: -.25rem;
+      margin-right: .5rem;
+      vertical-align: middle;
+      @include theme-prop(background, primary);
+      @include shadow(6, $shadow-umbra-color: var(--theme-primary-lighter),
+        $shadow-penumbra-color: var(--theme-primary-lighter),
+        $shadow-ambient-color: var(--theme-primary-lightest)
+      );
+    }
+  }
+}
+
+.icon-circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: $grey-color-700;
+}
+

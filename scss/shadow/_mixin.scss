@@ -1,7 +1,11 @@
 @import "./variable";
+@import "./function";
 
-// box shadow 属性值
-@mixin shadow($z-value) {
+// box shadow 属性值，支持修改颜色值
+@mixin shadow($z-value, $shadow-umbra-color: $shadow-umbra-color,
+  $shadow-penumbra-color: $shadow-penumbra-color,
+  $shadow-ambient-color: $shadow-ambient-color) {
+
   @if type-of($z-value) != number or not unitless($z-value) {
     @error "$z-value 必须是无单位数值";
   }
@@ -13,17 +17,6 @@
   box-shadow: #{map-get($shadow-umbra-map, $z-value)} #{$shadow-umbra-color},
   #{map-get($shadow-penumbra-map, $z-value)} #{$shadow-penumbra-color},
   #{map-get($shadow-ambient-map, $z-value)} $shadow-ambient-color;
-}
-
-// 动画规则
-//  .foo {
-//      transition: shadow-transition-rule(), opacity 100ms ease;
-//      will-change: box-shadow, opacity;
-//  }
-@function shadow-transition-rule(
-  $duration: $shadow-transition-duration,
-  $easing: $shadow-transition-timing-function) {
-  @return box-shadow #{$duration} #{$easing};
 }
 
 // 动画效果

@@ -1,0 +1,12 @@
+@import "./variable";
+
+// 动画规则
+//  .foo {
+//      transition: shadow-transition-rule(), opacity 100ms ease;
+//      will-change: box-shadow, opacity;
+//  }
+@function shadow-transition-rule(
+  $duration: $shadow-transition-duration,
+  $easing: $shadow-transition-timing-function) {
+  @return box-shadow #{$duration} #{$easing};
+}

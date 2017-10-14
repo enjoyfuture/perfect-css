@@ -51,19 +51,19 @@
 @import "container/table/table";
 
 // 表单组件
-@import "components/form-field/form-field";
-@import "components/button/button";
-@import "components/checkbox/checkbox";
-@import "components/input/input";
-@import "components/radio/radio";
-@import "components/select/select";
+@import "elements/form-field/form-field";
+@import "elements/button/button";
+@import "elements/checkbox/checkbox";
+@import "elements/input/input";
+@import "elements/radio/radio";
+@import "elements/select/select";
 
 // 其他组件
 //@import "components/badge/badge";
-@import "components/image/image";
-@import "components/progress/progress";
-@import "components/toast/toast";
-@import "components/tooltip/tooltip";
+@import "elements/image/image";
+@import "elements/progress/progress";
+@import "elements/toast/toast";
+@import "elements/tooltip/tooltip";
 
 // 工具类 classes
 @import "utils/utils";

@@ -1,10 +1,20 @@
 {% assign pagePath = page.url | split: '/' %}
 {% assign pagePathSize = pagePath | size %}
 {% assign pageLastPath = pagePath | last %}
-{% assign prefix = 'docs' %}
 
-<ul class="menu doc-menu">
-  {% for group in site.data.menu %}
+{% assign prefix = nil %}
+{% assign dataMenu = nil %}
+{% if page.layout == 'docs' %}
+{% assign prefix = 'docs' %}
+{% assign dataMenu = site.data.docs-menu%}
+{% else if page.layout == 'components' %}
+{% assign prefix = 'components' %}
+{% assign dataMenu = site.data.components-menu %}
+{% endif %}
+
+<ul class="menu perfect-menu">
+
+  {% for group in dataMenu %}
   {% assign firstPage = group.pages | first %}
   {% assign link = firstPage.file %}
 
@@ -26,8 +36,8 @@
       {% assign padding = 2 %}
 
       <li class="menu-item">
-        <a href="{% if doc.file %}/{{ prefix }}/{{ group.file }}/{{ doc.file }}/{% else %}{{ doc.url }}{% endif %}"
-             {% if doc.url %}target="_blank"{% endif %}class="menu-title menu-sub-title{{ active }}" style="padding-left: 2rem;">{{ doc.title }}</a></li>
+        <a href="/{{ prefix }}/{{ group.file }}/{{ doc.file }}/"
+             class="menu-title menu-sub-title{{ active }}" style="padding-left: 2rem;">{{ doc.title }}</a></li>
       {% endfor %}
     </ul>
   </li>
@@ -38,7 +48,7 @@
   $(function () {
     // 菜单超过一屏可以滚动查看
     var $menuPanel = $('.drawer-content')[0];
-    var $menu = $('.drawer-content > .doc-menu')[0];
+    var $menu = $('.drawer-content > .perfect-menu')[0];
 
     $menu.addEventListener('transitionend', function () {
       $menu.style.transition = 'unset';

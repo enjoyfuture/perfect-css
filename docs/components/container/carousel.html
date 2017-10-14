@@ -1,0 +1,46 @@
+---
+layout: components
+title: 轮播图组件
+group: container
+---
+
+<div class="component-wrap">
+  <section>
+    <h2> Badge </h2>
+    <h3> 基本 Badge </h3>
+    <div style="width:800px;">
+      <div id="carouselDemo" class="carousel">
+        <ol class="carousel-indicators">
+          <li class="active" data-slide-to="0"></li>
+          <li data-slide-to="1"></li>
+          <li data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-panel">
+          <div class="carousel-list">
+            <div class="carousel-item active theme-info-light-bg" style="height: 500px;">
+              <div style="width: 90%;height: 400px;background: rgba(0,0,0,.65);color:#fff;margin: 0 auto;">1</div>
+            </div>
+            <div class="carousel-item theme-success-light-bg">
+              <div style="width: 90%;height: 400px;background: rgba(0,0,0,.65);color:#fff;margin: 0 auto;">2</div>
+            </div>
+            <div class="carousel-item theme-primary-light-bg">
+              <div style="width: 90%;height: 400px;background: rgba(0,0,0,.65);color:#fff;margin: 0 auto;">3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  $(function () {
+    var carouselDemo = $('#carouselDemo');
+    var carouselList = carouselDemo.find('.carousel-list')[0];
+    var y = 300;
+    setInterval(function () {
+      //carouselList.style.transform = `translate3d(0, ${y}px, 0)`;
+      //y += 300;
+    }, 2000);
+  });
+</script>
