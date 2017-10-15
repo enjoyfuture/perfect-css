@@ -25,6 +25,7 @@
   }
 
   p {
+    margin-top: 1rem;
     margin-bottom: 1rem;
   }
 
@@ -60,5 +61,12 @@
   tr:last-child > td {
     border-bottom: 1px solid;
     @include theme-prop(border-color, secondary-lighter);
+  }
+}
+
+// 调整宽度
+.doc-table-adjust {
+  tr > th:first-of-type {
+    min-width: 200px;
   }
 }

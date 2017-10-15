@@ -1,6 +1,8 @@
 - title: 功能性组件
   file: base
   pages:
+    - title: theme 主题
+      file: theme
     - title: Ripple 效果
       file: ripple
     - title: Shadow 组件

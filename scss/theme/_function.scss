@@ -1,6 +1,6 @@
 // 定义主题相关 function
-
 @import "../base/functions/math/pow";
+@import "../base/functions/rgba-to-rgb";
 
 // sass 中只能精确到 15 位，即 precision 最大为15
 
@@ -46,6 +46,11 @@
 // 根据给定的颜色来判断对比色调在文本上是使用深色还是浅色
 // 如果$color是浅色，则返回深色 dark，否则为浅色 light
 @function theme-light-or-dark($color) {
+  //$alpha: alpha($color);
+  //// 如果是透明色，需要先转换为对应的不透明色
+  //@if ($alpha < 1) {
+  //  $color: rgba-to-rgb($color, $background: rgb(red($color), green($color), blue($color)));
+  //}
   // 最小对比度设为 3.1
   $minimum-contrast: 3.1;
   $light-contrast: theme-contrast-ratio($color, #fff);

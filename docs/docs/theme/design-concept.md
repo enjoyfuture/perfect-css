@@ -36,7 +36,7 @@ Perfect CSS 定义了三种基本颜色和四种辅助颜色，三种基本颜�
 
 例子中给出了主题对应的 Mixin 和 Function 的用法，以及主题预设的 CSS 样式（前景和背景色 classes）。
 
-[例子]()
+[例子]({{site.baseurl}}/components/base/theme/){:target="_blank"}
 
 # 主题 Sass 变量
 主题 Sass 变量包括基本颜色变量、色调变量、辅助颜色变量和灰度颜色变量。
@@ -82,9 +82,16 @@ $theme-primary-darkest: #0d47a1 !default; // 取 $blue-900
 $theme-secondary-darkest: #4a148c !default; // 取 $purple-900
 ```
 
-上面定义的三种基本颜色值以及对应的 12 种浅色和深色颜色值作为数组放到变量 `$theme-property-values` 中
+为了方便用 CSS 变量设置透明的背景色，并且变量值修改后，对应的透明背景色也改变，主题基本颜色中又提供了透明色变量。
+其中波纹（ripple）组件中就用到了该变量值。
+如果浏览器支持了 CSS module，我们可以动态的修改 color 值，直接使用 $theme-primary 加透明参数值即可，只是目前浏览器还不支持。
+关于 [CSS Color Level 4](https://www.w3.org/TR/2016/WD-css-color-4-20160705/) 提供了大量关于 Color 的处理，只是好多还没有实现，未来这些功能都实现后，CSS Color 的处理将变得更方便，更灵活，期待中......
+$theme-primary-alpha: rgba($theme-primary, .16) !default;
+$theme-secondary-alpha: rgba($theme-secondary, .16) !default;
 
-CSS 主题颜色属性 | 说明
+上面定义的三种基本颜色值、对应的 6 种浅色值、6 种深色值和 2 种透明色值作为数组放到变量 `$theme-property-values` 中
+
+CSS 主题颜色（$theme-property-values）属性 | 说明
 --- | ---
 primary | 主题主颜色
 secondary | 主题次颜色
@@ -101,6 +108,8 @@ primary-darker | 主题主颜色更深色
 secondary-darker | 主题次颜色更深色
 primary-darkest | 主题主颜色最深色
 secondary-darkest | 主题次颜色最深色
+primary-alpha | 主题主颜色透明色
+secondary-alpha | 主题次颜色透明色
 {: .doc-table}
 
 ### 基本颜色对比色调判断值（深色或浅色）
@@ -138,6 +147,10 @@ $theme-secondary-darker-tone: theme-light-or-dark($theme-secondary-darker);
 // 主题颜色最深色对比色调
 $theme-primary-darkest-tone: theme-light-or-dark($theme-primary-darkest);
 $theme-secondary-darkest-tone: theme-light-or-dark($theme-secondary-darkest);
+
+// 主题颜色透明色对比色调
+$theme-primary-alpha-tone: theme-light-or-dark($theme-primary-alpha);
+$theme-secondary-alpha-tone: theme-light-or-dark($theme-secondary-alpha);
 
 // 背景色对比色调
 $theme-background-tone: theme-light-or-dark($theme-background);
@@ -208,6 +221,11 @@ secondary-on-primary-darkest | 用在 $theme-primary-darkest 上的 secondary �
 hint-on-primary-darkest | 用在 $theme-primary-darkest 上的 hint 对比色调
 disabled-on-primary-darkest  | 用在 $theme-primary-darkest 上的 disabled 对比色调 
  | 
+primary-on-primary-alpha | 用在 $theme-primary-alpha 上的 primary 对比色调
+secondary-on-primary-alpha | 用在 $theme-primary-alpha 上的 secondary 对比色调
+hint-on-primary-alpha | 用在 $theme-primary-alpha 上的 hint 对比色调
+disabled-on-primary-alpha | 用在 $theme-primary-alpha 上的 disabled 对比色调
+ | 
 primary-on-secondary | 用在 $theme-secondary 上的 primary 对比色调
 secondary-on-secondary | 用在 $theme-secondary 上的 secondary 对比色调
 hint-on-secondary | 用在 $theme-secondary 上的 hint 对比色调
@@ -238,6 +256,11 @@ primary-on-secondary-darkest | 用在 $theme-secondary-darkest 上的 primary �
 secondary-on-secondary-darkest | 用在 $theme-secondary-darkest 上的 secondary 对比色调
 hint-on-secondary-darkest | 用在 $theme-secondary-darkest 上的 hint 对比色调
 disabled-on-secondary-darkest  | 用在 $theme-secondary-darkest 上的 disabled 对比色调
+ | 
+primary-on-secondary-alpha | 用在 $theme-secondary-alpha 上的 primary 对比色调
+secondary-on-secondary-alpha | 用在 $theme-secondary-alpha 上的 secondary 对比色调
+hint-on-secondary-alpha | 用在 $theme-secondary-alpha 上的 hint 对比色调
+disabled-on-secondary-alpha | 用在 $theme-secondary-alpha 上的 disabled 对比色调
  | 
 primary-on-background | 用在 $theme-background 上的 primary 对比色调
 secondary-on-background | 用在 $theme-background 上的 secondary 对比色调
@@ -324,7 +347,10 @@ theme-tone-prop($property, $style, $important) | 用来设置主题色对应的�
 theme-prop($property, $style, $important: false) | 糅合 theme-color-prop 和 theme-tone-prop
 theme($style, $fore: true) | 通过设置前后景来定制主题，该 mixin 只处理简单的 color 和 background-color ，对于更复制的需要组件单独定义。$style 指 $theme-property-values 或 $theme-assist-colors 中属性值，$fore true 指前景，false 指背景，默认 true
 theme-assist($property, $style, $opacity: 1) | 设置辅助颜色，根据给定的 $style ($theme-assist-colors 中的 key) 和 $opacity 来设置颜色
-{: .doc-table}
+theme-classes($tone: false) | 设置主题对应的背景和前景颜色 class，如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可
+theme-assist-classes($tone: false) | 设置辅助颜色对应的背景和前景颜色 class，如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可
+theme-grey-classes($tone: false) | 设置灰度颜色对应的背景和前景颜色 class，如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可
+{: .doc-table .doc-table-adjust}
 
 # 主题 CSS 变量
 主题样式中采用了最新的 CSS 变量，这样可以很方便的通过修改 CSS 变量值来改变主题，不过对于低版本的浏览器不兼容 CSS 变量。CSS 变量结合 Mixin `theme-color-prop` 和 `theme-tone-prop` 来设置颜色值。
@@ -347,6 +373,8 @@ CSS 变量名 | 含义
 --theme-secondary-darker | 主题次颜色更深色
 --theme-primary-darkest | 主题主颜色最深色
 --theme-secondary-darkest | 主题次颜色最深色
+--theme-primary-alpha | 主题主颜色透明色
+--theme-secondary-alpha | 主题次颜色透明色
  | 
 --theme-dark-primary | 主题对比色调深色主色
 --theme-dark-secondary | 主题对比色调深色次色
@@ -369,6 +397,10 @@ CSS 变量名 | 含义
 --theme-info-dark | 辅助颜色-信息深色
 --theme-warning-dark | 辅助颜色-警告深色
 --theme-error-dark | 辅助颜色-错误深色
+--theme-success-alpha | 辅助颜色-成功透明色
+--theme-info-alpha | 辅助颜色-信息透明色
+--theme-warning-alpha | 辅助颜色-警告透明色
+--theme-error-alpha | 辅助颜色-错误透明色
 {: .doc-table}
 
 # 主题 CSS Classes
@@ -376,6 +408,8 @@ CSS 变量名 | 含义
 所提供的 CSS Classes Property 值设置为 `!important`，优先级最高，从而能覆盖其他样式设置的主题颜色值
 
 ## 主题背景 CSS Classes
+
+[实例]({{site.baseurl}}/components/base/theme/#anchor-1-1-1){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---
@@ -394,9 +428,13 @@ CSS Classes名 | 含义
 .theme-secondary-darker-bg | 主题次颜色更深色背景色
 .theme-primary-darkest-bg | 主题主颜色最深色背景色
 .theme-secondary-darkest-bg | 主题次颜色最深色背景色
+.theme-primary-alpha-bg | 主题主颜色透明色背景色
+.theme-secondary-alpha-bg | 主题次颜色透明色背景色
 {: .doc-table}
 
 ## 主题前景 CSS Classes
+
+[实例]({{site.baseurl}}/components/base/theme/#anchor-1-1-2){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---
@@ -413,10 +451,14 @@ CSS Classes名 | 含义
 .theme-primary-darker | 主题主颜色更深色前景色
 .theme-secondary-darker | 主题次颜色更深色前景色
 .theme-primary-darkest | 主题主颜色最深色前景色
-.theme-secondary-darkest | 主题次颜色最深色前景色 
+.theme-secondary-darkest | 主题次颜色最深色前景色
+.theme-primary-alpha | 主题主颜色透明色前景色
+.theme-secondary-alpha | 主题次颜色透明色前景色
 {: .doc-table}
 
 ## 辅助颜色背景 CSS Classes
+
+[实例]({{site.baseurl}}/components/base/theme/#anchor-1-2-1){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---
@@ -431,10 +473,16 @@ CSS Classes名 | 含义
 .theme-success-dark-bg | 辅助颜色-成功深色背景色
 .theme-info-dark-bg | 辅助颜色-信息深色背景色
 .theme-warning-dark-bg | 辅助颜色-警告深色背景色
-.theme-error-dark-bg | 辅助颜色-错误深色背景色 
+.theme-error-dark-bg | 辅助颜色-错误深色背景色
+.theme-success-alpha-bg | 辅助颜色-成功透明色背景色
+.theme-info-alpha-bg | 辅助颜色-信息透明色背景色
+.theme-warning-alpha-bg | 辅助颜色-警告透明色背景色
+.theme-error-alpha-bg | 辅助颜色-错误透明色背景色
 {: .doc-table}
 
 ## 辅助颜色前景 CSS Classes
+
+[实例]({{site.baseurl}}/components/base/theme/#anchor-1-2-2){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---
@@ -450,36 +498,45 @@ CSS Classes名 | 含义
 .theme-info-dark | 辅助颜色-信息深色前景色
 .theme-warning-dark | 辅助颜色-警告深色前景色
 .theme-error-dark | 辅助颜色-错误深色前景色
+.theme-success-alpha | 辅助颜色-成功透明色前景色
+.theme-info-alpha | 辅助颜色-信息透明色前景色
+.theme-warning-alpha | 辅助颜色-警告透明色前景色
+.theme-error-alpha | 辅助颜色-错误透明色前景色
 {: .doc-table}
 
-## 灰色文本前景 CSS Classes
+## 灰度颜色背景 CSS Classes
+
+[实例]({{site.baseurl}}/components/base/theme/#anchor-1-3-1){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---
-.theme-grey-50 | 灰色文本前景颜色值 50
-.theme-grey-100 | 灰色文本前景颜色值 100
-.theme-grey-200 | 灰色文本前景颜色值 200
-.theme-grey-300 | 灰色文本前景颜色值 300
-.theme-grey-400 | 灰色文本前景颜色值 400
-.theme-grey-500 | 灰色文本前景颜色值 500
-.theme-grey-600 | 灰色文本前景颜色值 600
-.theme-grey-700 | 灰色文本前景颜色值 700
-.theme-grey-800 | 灰色文本前景颜色值 800
-.theme-grey-900 | 灰色文本前景颜色值 900
+.theme-grey-bg-50 | 灰度颜色背景颜色值 50
+.theme-grey-bg-100 | 灰度颜色背景颜色值 100
+.theme-grey-bg-200 | 灰度颜色背景颜色值 200
+.theme-grey-bg-300 | 灰度颜色背景颜色值 300
+.theme-grey-bg-400 | 灰度颜色背景颜色值 400
+.theme-grey-bg-500 | 灰度颜色背景颜色值 500
+.theme-grey-bg-600 | 灰度颜色背景颜色值 600
+.theme-grey-bg-700 | 灰度颜色背景颜色值 700
+.theme-grey-bg-800 | 灰度颜色背景颜色值 800
+.theme-grey-bg-900 | 灰度颜色背景颜色值 900
 {: .doc-table}
 
-## 灰色文本背景 CSS Classes
+## 灰度颜色前景 CSS Classes
+
+[实例]({{site.baseurl}}/components/base/theme/#anchor-1-3-2){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---
-.theme-grey-bg-50 | 灰色文本背景颜色值 50
-.theme-grey-bg-100 | 灰色文本背景颜色值 100
-.theme-grey-bg-200 | 灰色文本背景颜色值 200
-.theme-grey-bg-300 | 灰色文本背景颜色值 300
-.theme-grey-bg-400 | 灰色文本背景颜色值 400
-.theme-grey-bg-500 | 灰色文本背景颜色值 500
-.theme-grey-bg-600 | 灰色文本背景颜色值 600
-.theme-grey-bg-700 | 灰色文本背景颜色值 700
-.theme-grey-bg-800 | 灰色文本背景颜色值 800
-.theme-grey-bg-900 | 灰色文本背景颜色值 900
+.theme-grey-50 | 灰度颜色前景颜色值 50
+.theme-grey-100 | 灰度颜色前景颜色值 100
+.theme-grey-200 | 灰度颜色前景颜色值 200
+.theme-grey-300 | 灰度颜色前景颜色值 300
+.theme-grey-400 | 灰度颜色前景颜色值 400
+.theme-grey-500 | 灰度颜色前景颜色值 500
+.theme-grey-600 | 灰度颜色前景颜色值 600
+.theme-grey-700 | 灰度颜色前景颜色值 700
+.theme-grey-800 | 灰度颜色前景颜色值 800
+.theme-grey-900 | 灰度颜色前景颜色值 900
 {: .doc-table}
+

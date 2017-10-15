@@ -33,6 +33,13 @@ $theme-secondary-darker: #aa00ff !default; // 取 $purple-a-700
 $theme-primary-darkest: #0d47a1 !default; // 取 $blue-900
 $theme-secondary-darkest: #4a148c !default; // 取 $purple-900
 
+// 主题颜色透明色，有的地方需要设置透明的背景色，这时可以使用该变量，比如波纹组件中
+// 如果浏览器支持了 CSS module，我们可以动态的修改 color 值，直接使用 $theme-primary 加透明参数值即可，只是目前浏览器还不支持。
+// 关于 CSS Color Level 4 提供了大量关于 Color 的处理，只是好多还没有实现，未来这些功能都实现后，CSS Color 的处理将变得更方便，更灵活，期待中......
+// https://www.w3.org/TR/2016/WD-css-color-4-20160705/
+$theme-primary-alpha: rgba($theme-primary, .16) !default;
+$theme-secondary-alpha: rgba($theme-secondary, .16) !default;
+
 // 浅色或深色色调，给出基本颜色的对比色调， light or dark
 $theme-primary-tone: theme-light-or-dark($theme-primary);
 $theme-secondary-tone: theme-light-or-dark($theme-secondary);
@@ -60,6 +67,10 @@ $theme-secondary-darker-tone: theme-light-or-dark($theme-secondary-darker);
 // 主题颜色最深色对比色调
 $theme-primary-darkest-tone: theme-light-or-dark($theme-primary-darkest);
 $theme-secondary-darkest-tone: theme-light-or-dark($theme-secondary-darkest);
+
+// 主题颜色透明色对比色调
+$theme-primary-alpha-tone: theme-light-or-dark($theme-primary-alpha);
+$theme-secondary-alpha-tone: theme-light-or-dark($theme-secondary-alpha);
 
 // 背景色对比色调
 $theme-background-tone: theme-light-or-dark($theme-background);
@@ -111,6 +122,11 @@ $theme-property-values: (
   // 主题颜色最深色
   primary-darkest: $theme-primary-darkest,
   secondary-darkest: $theme-secondary-darkest,
+
+  // 主题颜色透明色
+  primary-alpha: $theme-primary-alpha,
+  secondary-alpha: $theme-secondary-alpha,
+
 ) !default;
 
 // 主题基本颜色对比色调值集合，根据主题基本颜色计算出对应的对比色调值，浅色还是深色色调值
@@ -161,6 +177,12 @@ $theme-tone-property-values: (
   hint-on-primary-darkest: map-get(map-get($theme-text-colors, $theme-primary-darkest-tone), hint),
   disabled-on-primary-darkest: map-get(map-get($theme-text-colors, $theme-primary-darkest-tone), disabled),
 
+  // 用在主题颜色主颜色透明色 $theme-primary-alpha 上的 primary secondary hint 和 disabled 对比颜色，深色主题用浅色对比色调
+  primary-on-primary-alpha: map-get(map-get($theme-text-colors, $theme-primary-alpha-tone), primary),
+  secondary-on-primary-alpha: map-get(map-get($theme-text-colors, $theme-primary-alpha-tone), secondary),
+  hint-on-primary-alpha: map-get(map-get($theme-text-colors, $theme-primary-alpha-tone), hint),
+  disabled-on-primary-alpha: map-get(map-get($theme-text-colors, $theme-primary-alpha-tone), disabled),
+
   // 用在 $theme-secondary 上的 primary secondary hint 和 disabled 对比色调
   primary-on-secondary: map-get(map-get($theme-text-colors, $theme-secondary-tone), primary),
   secondary-on-secondary: map-get(map-get($theme-text-colors, $theme-secondary-tone), secondary),
@@ -203,6 +225,12 @@ $theme-tone-property-values: (
   hint-on-secondary-darkest: map-get(map-get($theme-text-colors, $theme-secondary-darkest-tone), hint),
   disabled-on-secondary-darkest: map-get(map-get($theme-text-colors, $theme-secondary-darkest-tone), disabled),
 
+  // 用在主题颜色次颜色透明色 $theme-secondary-alpha 上的 primary secondary hint 和 disabled 对比颜色，深色主题用浅色对比色调
+  primary-on-secondary-alpha: map-get(map-get($theme-text-colors, $theme-secondary-alpha-tone), primary),
+  secondary-on-secondary-alpha: map-get(map-get($theme-text-colors, $theme-secondary-alpha-tone), secondary),
+  hint-on-secondary-alpha: map-get(map-get($theme-text-colors, $theme-secondary-alpha-tone), hint),
+  disabled-on-secondary-alpha: map-get(map-get($theme-text-colors, $theme-secondary-alpha-tone), disabled),
+
   // 用在 $theme-background 上的 primary secondary hint 和 disabled 对比色调
   primary-on-background: map-get(map-get($theme-text-colors, $theme-background-tone), primary),
   secondary-on-background: map-get(map-get($theme-text-colors, $theme-background-tone), secondary),
@@ -219,7 +247,7 @@ $theme-tone-property-values: (
   primary-on-dark: map-get(map-get($theme-text-colors, light), primary),
   secondary-on-dark: map-get(map-get($theme-text-colors, light), secondary),
   hint-on-dark: map-get(map-get($theme-text-colors, light), hint),
-  disabled-on-dark: map-get(map-get($theme-text-colors, light), disabled)
+  disabled-on-dark: map-get(map-get($theme-text-colors, light), disabled),
 ) !default;
 
 // 除了三种基本颜色外，又定义了成功 success 、信息 info、警告 warning 、错误 error 四种辅助颜色，
@@ -244,6 +272,12 @@ $theme-assist-colors: (
   info-dark: #0097a7, // $cyan-700
   warning-dark: #f57c00, // $orange-700
   error-dark: #d32f2f, // $red-700
+
+  // 辅助颜色透明色
+  success-alpha: rgba(#4caf50, .16),
+  info-alpha: rgba(#00bcd4, .16),
+  warning-alpha: rgba(#ff9800, .16),
+  error-alpha: rgba(#f44336, .16),
 ) !default;
 
 // 常用灰色颜色，提供了黑色透明度和灰色本身颜色两种方案，根据配置项 $enable-transparent 来选择其中一种方案

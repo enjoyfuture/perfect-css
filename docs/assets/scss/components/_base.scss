@@ -2,6 +2,25 @@
 @import "../../../../scss/shadow/mixin";
 @import "../../../../scss/theme/mixin";
 
+// theme
+.theme-demo {
+  [class*="theme"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    padding: 0 .5rem;
+    margin: 0 1.5rem 2rem;
+    border-radius: 3px;
+    @include shadow(5);
+  }
+
+  @include theme-classes($tone: true);
+  @include theme-assist-classes($tone: true);
+  @include theme-grey-classes($tone: true);
+}
+
 // ripple
 .ripple-demo {
   .ripple {
