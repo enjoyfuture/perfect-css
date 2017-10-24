@@ -1,25 +1,7 @@
 @import "../../../../scss/theme/variable";
 @import "../../../../scss/shadow/mixin";
+@import "../../../../scss/shadow/function";
 @import "../../../../scss/theme/mixin";
-
-// theme
-.theme-demo {
-  [class*="theme"] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 100px;
-    padding: 0 .5rem;
-    margin: 0 1.5rem 2rem;
-    border-radius: 3px;
-    @include shadow(5);
-  }
-
-  @include theme-classes($tone: true);
-  @include theme-assist-classes($tone: true);
-  @include theme-grey-classes($tone: true);
-}
 
 // ripple
 .ripple-demo {
@@ -91,10 +73,38 @@
   @for $z-value from 0 through 24 {
     .shadow-#{$z-value} {
       @include theme-prop(color, primary);
-      @include shadow($z-value, $shadow-umbra-color: var(--theme-primary-lighter),
-        $shadow-penumbra-color: var(--theme-primary-lighter),
-        $shadow-ambient-color: var(--theme-primary-lightest)
+      @include shadow($z-value, $umbra-color: var(--theme-primary-lighter),
+        $penumbra-color: var(--theme-primary-lighter),
+        $ambient-color: var(--theme-primary-lighter)
       );
     }
   }
+}
+
+.shadow-animation {
+  @include shadow-transition;
+}
+
+.shadow-transition2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 100px;
+  margin: 0 40px 60px;
+  border-radius: 3px;
+  transition: shadow-transition-rule(), opacity $shadow-transition-duration $shadow-transition-timing-function;
+  will-change: box-shadow, opacity;
+
+  @include theme-prop(background-color, secondary-lightest);
+  @include shadow(15);
+}
+
+.shadow-custom-animation {
+  opacity: .5;
+
+  @include shadow(15, $umbra-color: var(--theme-primary-lighter),
+    $penumbra-color: var(--theme-primary-lighter),
+    $ambient-color: var(--theme-primary-lighter)
+  );
 }

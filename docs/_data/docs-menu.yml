@@ -69,6 +69,13 @@
       file: code
     - title: 表格
       file: table
+- title: 基础组件
+  file: base
+  pages:
+    - title: 波纹效果 Ripple
+      file: ripple
+    - title: 阴影效果 Shadow
+      file: shadow
 - title: 导航类组件
   file: navigation
   pages:
@@ -106,8 +113,6 @@
       file: dropdown
     - title: Progress 组件
       file: progress
-    - title: Alert 组件
-      file: alert
     - title: 面包屑
       file: crumb
     - title: Tooltip 组件

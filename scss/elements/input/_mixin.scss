@@ -1,0 +1,43 @@
+
+// Input 大小 mixin
+@mixin input-size($font-size, $input-padding-x, $input-padding-y,
+  $input-icon-top, $scale, $input-icon-above-top) {
+  font-size: $font-size;
+
+  .input-field {
+    padding: $input-padding-y $input-padding-x;
+  }
+
+  .input-label {
+    bottom: $input-padding-y;
+  }
+
+  .input-icon {
+    top: $input-icon-top;
+    transform: scale($scale);
+  }
+
+  &.input-float-above {
+    margin-top: $input-padding-y * 2;
+    .input-icon {
+      top: 0;
+    }
+    .input-field {
+      padding-top: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &.input-icon-start {
+    .input-field {
+      padding-left: 2.5rem;
+    }
+  }
+
+  &.input-icon-end {
+    .input-field {
+      padding-right: 2.5rem;
+    }
+  }
+}

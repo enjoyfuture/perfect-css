@@ -215,14 +215,18 @@ module Jekyll
     def toc_content(html)
       return html unless page['toc']
 
-      ::Jekyll::TableOfContents::Parser.new(html).toc_content_anchor
+      # 为 table 每列设置平均宽度
+      parseHtml = ::Jekyll::ContentsTable::Parser.new(html).adjust_table_width
+      ::Jekyll::TableOfContents::Parser.new(parseHtml).toc_content_anchor
     end
 
     # toc 内容加目录，需要在页面中设置 toc
     def toc(html)
       return html unless page['toc']
 
-      ::Jekyll::TableOfContents::Parser.new(html).toc
+      # 为 table 每列设置平均宽度
+      parseHtml = ::Jekyll::ContentsTable::Parser.new(html).adjust_table_width
+      ::Jekyll::TableOfContents::Parser.new(parseHtml).toc
     end
 
     private

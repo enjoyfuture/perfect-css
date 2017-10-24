@@ -18,7 +18,7 @@
 
 .doc-main {
   min-height: 500px;
-  padding: 1.5rem 1rem;
+  padding: 0 1rem;
 
   p, li {
     line-height: 2;
@@ -61,12 +61,5 @@
   tr:last-child > td {
     border-bottom: 1px solid;
     @include theme-prop(border-color, secondary-lighter);
-  }
-}
-
-// 调整宽度
-.doc-table-adjust {
-  tr > th:first-of-type {
-    min-width: 200px;
   }
 }

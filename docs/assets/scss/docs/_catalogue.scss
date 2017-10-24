@@ -42,6 +42,9 @@
 }
 
 .doc-content {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
   > h1 {
     font-size: 1.75rem;
   }
@@ -119,125 +122,3 @@
     }
   }
 }
-
-// 内容目录大纲编号 start
-.doc-content {
-  counter-reset: outline1;
-  h1, h2, h3, h4, h5, h6 {
-    &::before {
-      margin-right: .5rem;
-    }
-  }
-}
-
-// 如果大纲第一级别是 h1
-.doc-content > h1 {
-  counter-reset: outline2;
-  &::before {
-    content: counter(outline1, decimal) ". ";
-    counter-increment: outline1;
-  }
-  ~ h2 {
-    counter-reset: outline3;
-  }
-  ~ h2::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) ".";
-    counter-increment: outline2;
-  }
-  ~ h2 ~ h3 {
-    counter-reset: outline4;
-  }
-  ~ h2 ~ h3::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) "." counter(outline3, decimal) ".";
-    counter-increment: outline3;
-  }
-
-  ~ h2 ~ h3 ~ h4 {
-    counter-reset: outline5;
-  }
-
-  ~ h2 ~ h3 ~ h4::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) "." counter(outline3, decimal) "." counter(outline4, decimal) ".";
-    counter-increment: outline4;
-  }
-
-  ~ h2 ~ h3 ~ h4 ~ h5 {
-    counter-reset: outline6;
-  }
-
-  ~ h2 ~ h3 ~ h4 ~ h5::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) "." counter(outline3, decimal) "." counter(outline4, decimal) "." counter(outline5, decimal) ".";
-    counter-increment: outline5;
-  }
-
-  ~ h2 ~ h3 ~ h4 ~ h5 ~ h6::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) "." counter(outline3, decimal) "." counter(outline4, decimal) "." counter(outline5, decimal) "." counter(outline6, decimal) ".";
-    counter-increment: outline6;
-  }
-}
-
-// 如果大纲第一级别是 h2
-.doc-content > h2 {
-  counter-reset: outline2;
-  &::before {
-    content: counter(outline1, decimal) ".";
-    counter-increment: outline1;
-  }
-  ~ h3 {
-    counter-reset: outline3;
-  }
-  ~ h3::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) ".";
-    counter-increment: outline2;
-  }
-  ~ h3 ~ h4 {
-    counter-reset: outline4;
-  }
-  ~ h3 ~ h4::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) "." counter(outline3, decimal) ".";
-    counter-increment: outline3;
-  }
-
-  ~ h3 ~ h4 ~ h5 {
-    counter-reset: outline5;
-  }
-  ~ h3 ~ h4 ~ h5::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) "." counter(outline3, decimal) "." counter(outline4, decimal) ".";
-    counter-increment: outline4;
-  }
-
-  ~ h3 ~ h4 ~ h5 ~ h6::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) "." counter(outline3, decimal) "." counter(outline4, decimal) "." counter(outline5, decimal) ".";
-    counter-increment: outline5;
-  }
-}
-
-// 如果大纲第一级别是 h3（h4以后的不再考虑）
-.doc-content > h3 {
-  counter-reset: outline2;
-  &::before {
-    content: counter(outline1, decimal) ".";
-    counter-increment: outline1;
-  }
-  ~ h4 {
-    counter-reset: outline3;
-  }
-  ~ h4::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) ".";
-    counter-increment: outline2;
-  }
-  ~ h4 ~ h5 {
-    counter-reset: outline4;
-  }
-  ~ h4 ~ h5::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) "." counter(outline3, decimal) ".";
-    counter-increment: outline3;
-  }
-
-  ~ h4 ~ h5 ~ h6::before {
-    content: counter(outline1, decimal) "." counter(outline2, decimal) "." counter(outline3, decimal) "." counter(outline4, decimal) ".";
-    counter-increment: outline4;
-  }
-}
-
-// 内容目录大纲编号 end

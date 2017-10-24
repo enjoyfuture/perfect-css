@@ -1,11 +1,24 @@
-- title: 功能性组件
+- title: 主题 theme
+  file: theme
+  pages:
+    - title: 主题 Classes
+      file: classes
+- title: 布局 layout
+  file: layout
+  pages:
+    - title: 栅格 Grid
+      file: grid
+- title: 排版 typography
+  file: typography
+  pages:
+    - title: 段落 paragraph
+      file: paragraph
+- title: 基础组件
   file: base
   pages:
-    - title: theme 主题
-      file: theme
-    - title: Ripple 效果
+    - title: 波纹效果 Ripple
       file: ripple
-    - title: Shadow 组件
+    - title: 阴影效果 Shadow
       file: shadow
 - title: 导航类组件
   file: navigation

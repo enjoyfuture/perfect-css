@@ -30,28 +30,93 @@
     }
   }
 
+  h1, h2 {
+    margin-top: 3rem;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    &::before {
+    position: relative;
+    padding-left: 1rem;
+
+    &::after {
       content: "";
+      position: absolute;
+      top: calc(50% - .25rem);
+      left: 0;
       display: inline-block;
       width: .5rem;
       height: .5rem;
-      margin-top: -.25rem;
-      margin-right: .5rem;
       vertical-align: middle;
       @include theme-prop(background, primary);
-      @include shadow(6, $shadow-umbra-color: var(--theme-primary-lighter),
-        $shadow-penumbra-color: var(--theme-primary-lighter),
-        $shadow-ambient-color: var(--theme-primary-lightest)
+      @include shadow(6, $umbra-color: var(--theme-primary-lighter),
+        $penumbra-color: var(--theme-primary-lighter),
+        $ambient-color: var(--theme-primary-lightest)
       );
     }
   }
 }
 
+.component-container {
+  padding: 1rem 0;
+  margin: 0 1rem;
+  border-bottom: 1px dashed;
+  @include theme-prop(border-bottom-color, primary-lighter);
+}
+
+// 组件间距
+.component-spacing {
+  > div {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}
+
+.component-vertical-spacing {
+  > div {
+    margin-bottom: 1rem;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.component-list {
+  max-width: 720px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  + .component-list {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .component-wrap {
+    padding: 0;
+  }
+
+  .component-list {
+    max-width: none;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+
+    + .component-list {
+      margin-top: 0;
+    }
+  }
+}
+
+// 圆形图标
 .icon-circle {
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
   background: $grey-color-700;
+}
+
+// 灰色小图标
+.icon-grey {
+  background: $grey-color-400;
 }
 

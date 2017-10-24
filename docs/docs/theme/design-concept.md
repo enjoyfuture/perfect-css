@@ -36,10 +36,15 @@ Perfect CSS 定义了三种基本颜色和四种辅助颜色，三种基本颜�
 
 例子中给出了主题对应的 Mixin 和 Function 的用法，以及主题预设的 CSS 样式（前景和背景色 classes）。
 
-[例子]({{site.baseurl}}/components/base/theme/){:target="_blank"}
+[例子]({{site.baseurl}}/components/theme/classes/){:target="_blank"}
 
 # 主题 Sass 变量
 主题 Sass 变量包括基本颜色变量、色调变量、辅助颜色变量和灰度颜色变量。
+
+首先给出颜色透明度变量
+```scss
+$alpha: .16 !default;
+```
 
 ## 基本颜色
 Perfect CSS 定义了三种基本颜色值，分别为主色、次色（对比色）以及背景色，对应的变量为 
@@ -86,8 +91,11 @@ $theme-secondary-darkest: #4a148c !default; // 取 $purple-900
 其中波纹（ripple）组件中就用到了该变量值。
 如果浏览器支持了 CSS module，我们可以动态的修改 color 值，直接使用 $theme-primary 加透明参数值即可，只是目前浏览器还不支持。
 关于 [CSS Color Level 4](https://www.w3.org/TR/2016/WD-css-color-4-20160705/) 提供了大量关于 Color 的处理，只是好多还没有实现，未来这些功能都实现后，CSS Color 的处理将变得更方便，更灵活，期待中......
-$theme-primary-alpha: rgba($theme-primary, .16) !default;
-$theme-secondary-alpha: rgba($theme-secondary, .16) !default;
+
+```scss
+$theme-primary-alpha: rgba($theme-primary, $alpha) !default;
+$theme-secondary-alpha: rgba($theme-secondary, $alpha) !default;
+```
 
 上面定义的三种基本颜色值、对应的 6 种浅色值、6 种深色值和 2 种透明色值作为数组放到变量 `$theme-property-values` 中
 
@@ -350,7 +358,7 @@ theme-assist($property, $style, $opacity: 1) | 设置辅助颜色，根据给定
 theme-classes($tone: false) | 设置主题对应的背景和前景颜色 class，如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可
 theme-assist-classes($tone: false) | 设置辅助颜色对应的背景和前景颜色 class，如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可
 theme-grey-classes($tone: false) | 设置灰度颜色对应的背景和前景颜色 class，如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可
-{: .doc-table .doc-table-adjust}
+{: .doc-table}
 
 # 主题 CSS 变量
 主题样式中采用了最新的 CSS 变量，这样可以很方便的通过修改 CSS 变量值来改变主题，不过对于低版本的浏览器不兼容 CSS 变量。CSS 变量结合 Mixin `theme-color-prop` 和 `theme-tone-prop` 来设置颜色值。
@@ -409,7 +417,7 @@ CSS 变量名 | 含义
 
 ## 主题背景 CSS Classes
 
-[实例]({{site.baseurl}}/components/base/theme/#anchor-1-1-1){:target="_blank"}
+[实例]({{site.baseurl}}/components/theme/classes/#anchor-1-1-1){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---
@@ -434,7 +442,7 @@ CSS Classes名 | 含义
 
 ## 主题前景 CSS Classes
 
-[实例]({{site.baseurl}}/components/base/theme/#anchor-1-1-2){:target="_blank"}
+[实例]({{site.baseurl}}/components/theme/classes/#anchor-1-1-2){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---
@@ -458,7 +466,7 @@ CSS Classes名 | 含义
 
 ## 辅助颜色背景 CSS Classes
 
-[实例]({{site.baseurl}}/components/base/theme/#anchor-1-2-1){:target="_blank"}
+[实例]({{site.baseurl}}/components/theme/classes/#anchor-1-2-1){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---
@@ -482,7 +490,7 @@ CSS Classes名 | 含义
 
 ## 辅助颜色前景 CSS Classes
 
-[实例]({{site.baseurl}}/components/base/theme/#anchor-1-2-2){:target="_blank"}
+[实例]({{site.baseurl}}/components/theme/classes/#anchor-1-2-2){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---
@@ -506,7 +514,7 @@ CSS Classes名 | 含义
 
 ## 灰度颜色背景 CSS Classes
 
-[实例]({{site.baseurl}}/components/base/theme/#anchor-1-3-1){:target="_blank"}
+[实例]({{site.baseurl}}/components/theme/classes/#anchor-1-3-1){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---
@@ -524,7 +532,7 @@ CSS Classes名 | 含义
 
 ## 灰度颜色前景 CSS Classes
 
-[实例]({{site.baseurl}}/components/base/theme/#anchor-1-3-2){:target="_blank"}
+[实例]({{site.baseurl}}/components/theme/classes/#anchor-1-3-2){:target="_blank"}
 
 CSS Classes名 | 含义
 --- | ---

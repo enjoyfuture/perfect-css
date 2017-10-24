@@ -3,6 +3,9 @@
 @import "../base/variables/options";
 @import "./function";
 
+// 定义颜色透明度
+$alpha: .08 !default;
+
 // 主题颜色，换肤一般改变这三个基本颜色即可
 // 这三种基本颜色主题，会用在所有 CSS 组件上，
 $theme-primary: #2196f3 !default; // 主颜色，使用蓝色 $blue-500 #2196f3
@@ -37,8 +40,8 @@ $theme-secondary-darkest: #4a148c !default; // 取 $purple-900
 // 如果浏览器支持了 CSS module，我们可以动态的修改 color 值，直接使用 $theme-primary 加透明参数值即可，只是目前浏览器还不支持。
 // 关于 CSS Color Level 4 提供了大量关于 Color 的处理，只是好多还没有实现，未来这些功能都实现后，CSS Color 的处理将变得更方便，更灵活，期待中......
 // https://www.w3.org/TR/2016/WD-css-color-4-20160705/
-$theme-primary-alpha: rgba($theme-primary, .16) !default;
-$theme-secondary-alpha: rgba($theme-secondary, .16) !default;
+$theme-primary-alpha: rgba($theme-primary, $alpha) !default;
+$theme-secondary-alpha: rgba($theme-secondary, $alpha) !default;
 
 // 浅色或深色色调，给出基本颜色的对比色调， light or dark
 $theme-primary-tone: theme-light-or-dark($theme-primary);
@@ -274,10 +277,10 @@ $theme-assist-colors: (
   error-dark: #d32f2f, // $red-700
 
   // 辅助颜色透明色
-  success-alpha: rgba(#4caf50, .16),
-  info-alpha: rgba(#00bcd4, .16),
-  warning-alpha: rgba(#ff9800, .16),
-  error-alpha: rgba(#f44336, .16),
+  success-alpha: rgba(#4caf50, $alpha),
+  info-alpha: rgba(#00bcd4, $alpha),
+  warning-alpha: rgba(#ff9800, $alpha),
+  error-alpha: rgba(#f44336, $alpha),
 ) !default;
 
 // 常用灰色颜色，提供了黑色透明度和灰色本身颜色两种方案，根据配置项 $enable-transparent 来选择其中一种方案
