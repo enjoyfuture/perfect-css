@@ -35,52 +35,52 @@
   }
 
   @include test('测试 @function theme-tone-var($theme-tone-property)') {
-    @include assert-equal(theme-tone-var($theme-tone-property: text-primary-on-primary), #{$theme-primary-tone}-primary);
-    @include assert-equal(theme-tone-var($theme-tone-property: text-secondary-on-primary), #{$theme-primary-tone}-secondary);
-    @include assert-equal(theme-tone-var($theme-tone-property: text-hint-on-primary), #{$theme-primary-tone}-hint);
-    @include assert-equal(theme-tone-var($theme-tone-property: text-disabled-on-primary), #{$theme-primary-tone}-disabled);
+    @include assert-equal(theme-tone-var($theme-tone-property: primary-on-primary), #{$theme-primary-tone}-primary);
+    @include assert-equal(theme-tone-var($theme-tone-property: secondary-on-primary), #{$theme-primary-tone}-secondary);
+    @include assert-equal(theme-tone-var($theme-tone-property: hint-on-primary), #{$theme-primary-tone}-hint);
+    @include assert-equal(theme-tone-var($theme-tone-property: disabled-on-primary), #{$theme-primary-tone}-disabled);
 
-    @include assert-equal(theme-tone-var($theme-tone-property: text-primary-on-primary-light), #{$theme-primary-light-tone}-primary);
-    @include assert-equal(theme-tone-var($theme-tone-property: text-secondary-on-primary-light), #{$theme-primary-light-tone}-secondary);
-    @include assert-equal(theme-tone-var($theme-tone-property: text-hint-on-primary-light), #{$theme-primary-light-tone}-hint);
-    @include assert-equal(theme-tone-var($theme-tone-property: text-disabled-on-primary-light), #{$theme-primary-light-tone}-disabled);
+    @include assert-equal(theme-tone-var($theme-tone-property: primary-on-primary-light), #{$theme-primary-light-tone}-primary);
+    @include assert-equal(theme-tone-var($theme-tone-property: secondary-on-primary-light), #{$theme-primary-light-tone}-secondary);
+    @include assert-equal(theme-tone-var($theme-tone-property: hint-on-primary-light), #{$theme-primary-light-tone}-hint);
+    @include assert-equal(theme-tone-var($theme-tone-property: disabled-on-primary-light), #{$theme-primary-light-tone}-disabled);
 
-    @include assert-equal(theme-tone-var(text-primary-on-primary-dark), #{$theme-primary-dark-tone}-primary);
-    @include assert-equal(theme-tone-var(text-secondary-on-primary-dark), #{$theme-primary-dark-tone}-secondary);
-    @include assert-equal(theme-tone-var(text-hint-on-primary-dark), #{$theme-primary-dark-tone}-hint);
-    @include assert-equal(theme-tone-var(text-disabled-on-primary-dark), #{$theme-primary-dark-tone}-disabled);
+    @include assert-equal(theme-tone-var(primary-on-primary-dark), #{$theme-primary-dark-tone}-primary);
+    @include assert-equal(theme-tone-var(secondary-on-primary-dark), #{$theme-primary-dark-tone}-secondary);
+    @include assert-equal(theme-tone-var(hint-on-primary-dark), #{$theme-primary-dark-tone}-hint);
+    @include assert-equal(theme-tone-var(disabled-on-primary-dark), #{$theme-primary-dark-tone}-disabled);
 
-    @include assert-equal(theme-tone-var(text-primary-on-secondary), #{$theme-secondary-tone}-primary);
-    @include assert-equal(theme-tone-var(text-secondary-on-secondary), #{$theme-secondary-tone}-secondary);
-    @include assert-equal(theme-tone-var(text-hint-on-secondary), #{$theme-secondary-tone}-hint);
-    @include assert-equal(theme-tone-var(text-disabled-on-secondary), #{$theme-secondary-tone}-disabled);
-
-
-    @include assert-equal(theme-tone-var(text-primary-on-secondary-light), #{$theme-secondary-light-tone}-primary);
-    @include assert-equal(theme-tone-var(text-secondary-on-secondary-light), #{$theme-secondary-light-tone}-secondary);
-    @include assert-equal(theme-tone-var(text-hint-on-secondary-light), #{$theme-secondary-light-tone}-hint);
-    @include assert-equal(theme-tone-var(text-disabled-on-secondary-light), #{$theme-secondary-light-tone}-disabled);
-
-    @include assert-equal(theme-tone-var(text-primary-on-secondary-dark), #{$theme-secondary-dark-tone}-primary);
-    @include assert-equal(theme-tone-var(text-secondary-on-secondary-dark), #{$theme-secondary-dark-tone}-secondary);
-    @include assert-equal(theme-tone-var(text-hint-on-secondary-dark), #{$theme-secondary-dark-tone}-hint);
-    @include assert-equal(theme-tone-var(text-disabled-on-secondary-dark), #{$theme-secondary-dark-tone}-disabled);
-
-    @include assert-equal(theme-tone-var(text-primary-on-background), #{$theme-background-tone}-primary);
-    @include assert-equal(theme-tone-var(text-secondary-on-background), #{$theme-background-tone}-secondary);
-    @include assert-equal(theme-tone-var(text-hint-on-background), #{$theme-background-tone}-hint);
-    @include assert-equal(theme-tone-var(text-disabled-on-background), #{$theme-background-tone}-disabled);
-
-    @include assert-equal(theme-tone-var(text-primary-on-light), dark-primary);
-    @include assert-equal(theme-tone-var(text-secondary-on-light), dark-secondary);
-    @include assert-equal(theme-tone-var(text-hint-on-light), dark-hint);
-    @include assert-equal(theme-tone-var(text-disabled-on-light), dark-disabled);
+    @include assert-equal(theme-tone-var(primary-on-secondary), #{$theme-secondary-tone}-primary);
+    @include assert-equal(theme-tone-var(secondary-on-secondary), #{$theme-secondary-tone}-secondary);
+    @include assert-equal(theme-tone-var(hint-on-secondary), #{$theme-secondary-tone}-hint);
+    @include assert-equal(theme-tone-var(disabled-on-secondary), #{$theme-secondary-tone}-disabled);
 
 
-    @include assert-equal(theme-tone-var(text-primary-on-dark), light-primary);
-    @include assert-equal(theme-tone-var(text-secondary-on-dark), light-secondary);
-    @include assert-equal(theme-tone-var(text-hint-on-dark), light-hint);
-    @include assert-equal(theme-tone-var(text-disabled-on-dark), light-disabled);
+    @include assert-equal(theme-tone-var(primary-on-secondary-light), #{$theme-secondary-light-tone}-primary);
+    @include assert-equal(theme-tone-var(secondary-on-secondary-light), #{$theme-secondary-light-tone}-secondary);
+    @include assert-equal(theme-tone-var(hint-on-secondary-light), #{$theme-secondary-light-tone}-hint);
+    @include assert-equal(theme-tone-var(disabled-on-secondary-light), #{$theme-secondary-light-tone}-disabled);
+
+    @include assert-equal(theme-tone-var(primary-on-secondary-dark), #{$theme-secondary-dark-tone}-primary);
+    @include assert-equal(theme-tone-var(secondary-on-secondary-dark), #{$theme-secondary-dark-tone}-secondary);
+    @include assert-equal(theme-tone-var(hint-on-secondary-dark), #{$theme-secondary-dark-tone}-hint);
+    @include assert-equal(theme-tone-var(disabled-on-secondary-dark), #{$theme-secondary-dark-tone}-disabled);
+
+    @include assert-equal(theme-tone-var(primary-on-background), #{$theme-background-tone}-primary);
+    @include assert-equal(theme-tone-var(secondary-on-background), #{$theme-background-tone}-secondary);
+    @include assert-equal(theme-tone-var(hint-on-background), #{$theme-background-tone}-hint);
+    @include assert-equal(theme-tone-var(disabled-on-background), #{$theme-background-tone}-disabled);
+
+    @include assert-equal(theme-tone-var(primary-on-light), dark-primary);
+    @include assert-equal(theme-tone-var(secondary-on-light), dark-secondary);
+    @include assert-equal(theme-tone-var(hint-on-light), dark-hint);
+    @include assert-equal(theme-tone-var(disabled-on-light), dark-disabled);
+
+
+    @include assert-equal(theme-tone-var(primary-on-dark), light-primary);
+    @include assert-equal(theme-tone-var(secondary-on-dark), light-secondary);
+    @include assert-equal(theme-tone-var(hint-on-dark), light-hint);
+    @include assert-equal(theme-tone-var(disabled-on-dark), light-disabled);
 
   }
 }
