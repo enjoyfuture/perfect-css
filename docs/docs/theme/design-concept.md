@@ -352,7 +352,7 @@ Mixin名 | 功能
 --- | ---
 theme-color-prop($property, $style, $important) | 给属性 $property 设置颜色 $style 值，属性 $property 一般用在 color background-color border-color 等，也可用在任何可以设置颜色值的属性上，$style 应该是 $theme-property-values 中某个 key，该 mixin 主要用来设置主题颜色值，并且设置了主题 CSS 变量值，用户通过修改 CSS 变量值可以动态的修改整个主题值，比如在 body 上修改 css 变量值
 theme-tone-prop($property, $style, $important) | 用来设置主题色对应的对比色调值，浅色或是深色，$style 应该是 $theme-tone-property-values 中某个 key，该 mixin 除了设置了对比色调值，还设置了对应的 CSS 变量值，同样可以通过修改 CSS 变量值来修改对应的对比色调值
-theme-prop($property, $style, $important: false) | 糅合 theme-color-prop 和 theme-tone-prop
+theme-prop($property, $style, $important: false) | 糅合 theme-color-prop 和 theme-tone-prop，如果 $style 是颜色值，则直接设置颜色
 theme($style, $fore: true) | 通过设置前后景来定制主题，该 mixin 只处理简单的 color 和 background-color ，对于更复制的需要组件单独定义。$style 指 $theme-property-values 或 $theme-assist-colors 中属性值，$fore true 指前景，false 指背景，默认 true
 theme-assist($property, $style, $opacity: 1) | 设置辅助颜色，根据给定的 $style ($theme-assist-colors 中的 key) 和 $opacity 来设置颜色
 theme-classes($tone: false) | 设置主题对应的背景和前景颜色 class，如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可

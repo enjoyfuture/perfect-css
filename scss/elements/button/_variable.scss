@@ -1,5 +1,4 @@
 // Buttons variable
-
 @import "../../base/variables/font";
 
 $btn-min-width: 4rem !default;
@@ -9,3 +8,16 @@ $btn-border-radius: 2px !default;
 $btn-line-height: 1.25 !default;
 $btn-font-size: $font-size-base !default;
 $btn-font-weight: $font-weight-normal !default;
+
+// 定义 button ripple 背景颜色透明度
+$btn-unfilled-ripple-opacity: .16;
+$btn-filled-ripple-opacity: .32;
+
+// btn 大小
+$btn-padding-x-lg: 1.25rem !default;
+$btn-padding-y-lg: 1rem !default;
+$btn-border-radius-lg: 4px !default;
+
+$btn-padding-x-sm: .75rem !default;
+$btn-padding-y-sm: .5rem !default;
+$btn-border-radius-sm: 2px !default;

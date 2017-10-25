@@ -39,16 +39,25 @@
 }
 
 // 糅合 theme-color-prop 和 theme-tone-prop
+// 如果 $style 是颜色值，则直接设置颜色
 @mixin theme-prop($property, $style, $important: false) {
-  $color: map-get($theme-property-values, $style);
-  @if ($color) {
-    @include theme-color-prop($property, $style, $important);
-  } @else {
-    $color: map-get($theme-tone-property-values, $style);
-    @if ($color) {
-      @include theme-tone-prop($property, $style, $important);
+  @if type-of($style) == "color" {
+    @if $important {
+      #{$property}: $style !important;
     } @else {
-      @error "无效的主题属性值，#{$style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-tone-property-values)}";
+      #{$property}: $style;
+    }
+  } @else {
+    $color: map-get($theme-property-values, $style);
+    @if ($color) {
+      @include theme-color-prop($property, $style, $important);
+    } @else {
+      $color: map-get($theme-tone-property-values, $style);
+      @if ($color) {
+        @include theme-tone-prop($property, $style, $important);
+      } @else {
+        @error "无效的主题属性值，#{$style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-tone-property-values)}";
+      }
     }
   }
 }
@@ -84,27 +93,38 @@
 // 设置辅助颜色 mixin
 // 根据给定的 $style ($theme-assist-colors 中的 key) 和 $opacity 设置颜色
 @mixin theme-assist($property, $style, $opacity: 1) {
-  $color: map-get($theme-assist-colors, $style);
-
-  @if ($property == "backgroud-color" and $opacity != 1) {
-    // 变量 --theme-#{$style} 在 theme.scss 中定义
-    $css-var: var(--theme-#{$style}, $color);
-    background-color: rgba($color, $opacity);
-
-    // 可以动态的设置颜色透明度，属于 CSS 4 color 范畴，目前浏览器支持的不是很好
-    // 可以用 rgba 来代替，但只能静态设置，不可以随着颜色和透明度的变化动态设置
-    // https://drafts.csswg.org/css-color/#modifying-colors
-    @supports (background-color: color(green a(10%))) {
-      background-color: color(#{$css-var} a(#{percentage($opacity)}));
-    }
+  @if type-of($style) == "color" {
+    #{$property}: $style;
   } @else {
-    #{$property}: rgba($color, $opacity);
-  }
+    $color: map-get($theme-assist-colors, $style);
 
-  // 因为不支持以下写法，所以只处理 $opacity == 1 的情况
-  // #{$property}: rgba(var(--theme-#{$style}, $color), $opacity);
-  @if ($opacity == 1) {
-    #{$property}: var(--theme-#{$style}, $color);
+    @if ($property == "backgroud-color" and $opacity != 1) {
+      // 变量 --theme-#{$style} 在 theme.scss 中定义
+      $css-var: var(--theme-#{$style}, $color);
+      background-color: rgba($color, $opacity);
+
+      // 可以动态的设置颜色透明度，属于 CSS 4 color 范畴，目前浏览器支持的不是很好
+      // 可以用 rgba 来代替，但只能静态设置，不可以随着颜色和透明度的变化动态设置
+      // https://drafts.csswg.org/css-color/#modifying-colors
+      @supports (background-color: color(green a(10%))) {
+        background-color: color(#{$css-var} a(#{percentage($opacity)}));
+      }
+    } @else {
+      // 也可以使用 alpha($color); 区别是 function alpha 也可以处理 the proprietary Microsoft `alpha(opacity=20)
+      // 而 function opacity 只支持颜色值，如果不是颜色值则报错
+      $alpha: opacity($color);
+      @if ($alpha != 1) {
+        #{$property}: $color;
+      } @else {
+        #{$property}: rgba($color, $opacity);
+      }
+    }
+
+    // 因为不支持以下写法，所以只处理 $opacity == 1 的情况
+    // #{$property}: rgba(var(--theme-#{$style}, $color), $opacity);
+    @if ($opacity == 1) {
+      #{$property}: var(--theme-#{$style}, $color);
+    }
   }
 }
 

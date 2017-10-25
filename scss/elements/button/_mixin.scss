@@ -1,0 +1,72 @@
+@import "../../theme/mixin";
+@import "../../ripple/mixin";
+@import "../../shadow/mixin";
+
+// 设置前景
+@mixin button-front($color, $assist: false) {
+  @if ($assist) {
+    @include theme-assist(color, $color);
+
+    // 对于 a 标签的处理
+    &:hover {
+      @include theme-assist(color, $color);
+    }
+  } @else {
+    @include theme-prop(color, $color);
+
+    // 对于 a 标签的处理
+    &:hover {
+      @include theme-prop(color, $color);
+    }
+  }
+}
+
+// 设置背景
+@mixin button-back($background-color, $assist: false) {
+  @if ($assist) {
+    @include theme-assist(background-color, $background-color);
+  } @else {
+    @include theme-prop(background-color, $background-color);
+  }
+}
+
+// 设置 ripple 样式，主要是伪类 ::before 和 ::after
+@mixin button-ripple($config) {
+  &::before,
+  &::after {
+    @include ripple-theme($config);
+  }
+}
+
+// 设置 button shadow 效果
+@mixin button-shadow() {
+  @include shadow(2);
+  @include shadow-transition;
+
+  &:hover,
+  &:focus {
+    @include shadow(4);
+  }
+
+  &:active {
+    @include shadow(8);
+  }
+}
+
+// 设置 button disabled
+@mixin button-disabled($style) {
+  // disabled
+  fieldset:disabled &,
+  &:disabled,
+  &.disabled {
+    @include theme-prop(color, disabled-on-light);
+    @include theme-prop(background-color, $style);
+  }
+}
+
+// 设置按钮大小
+@mixin btn-size($btn-font-size, $btn-padding-x, $btn-padding-y, $btn-border-radius) {
+  padding: $btn-padding-y $btn-padding-x;
+  border-radius: $btn-border-radius;
+  font-size: $btn-font-size;
+}

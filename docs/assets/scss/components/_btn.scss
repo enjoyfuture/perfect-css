@@ -1,0 +1,22 @@
+@import "../../../../scss/theme/variable";
+@import "../../../../scss/theme/mixin";
+@import "../../../../scss/elements/button/mixin";
+
+// 自定义按钮
+.btn.btn-customer {
+  display: block;
+  width: 30%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+
+  // 设置前景色
+  @include theme-prop(color, #fff);
+  // 设置背景色
+  @include theme-prop(background-color, #00e676);
+  // 设置 ripple
+  @include button-ripple((opacity: .16));
+  // disabled
+  @include button-disabled($grey-color-300);
+}

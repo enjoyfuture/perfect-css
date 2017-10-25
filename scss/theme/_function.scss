@@ -7,6 +7,9 @@
 // 颜色色彩系数
 // 例如 coefficient(0) => 0   coefficient(1) => .000303526983549
 // coefficient(2) => .000607053967098  coefficient(3) => .000910580950647
+// 如果不用第三方 pow 函数求解，也可以使用提前用 JavaScript 计算好的数组
+// 比如 $mdc-theme-linear-channel-values: 0 .0003035269835488375 .000607053967097675 .0009105809506465125;
+// 注意 sass 中的数组下标是从 1 开始
 @function coefficient($rgb) {
   $rgb: $rgb / 255;
   @return if($rgb < .03928, $rgb / 12.92, pow(($rgb + .055) / 1.055, 2.4));
@@ -23,6 +26,7 @@
 // }
 // 该定义已封装为函数 coefficient
 @function theme-luminance($color) {
+  // 注意这里不需要加 1
   $red: red($color);
   $green: green($color);
   $blue: blue($color);

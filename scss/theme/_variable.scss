@@ -4,7 +4,7 @@
 @import "./function";
 
 // 定义颜色透明度
-$alpha: .08 !default;
+$alpha: .16 !default;
 
 // 主题颜色，换肤一般改变这三个基本颜色即可
 // 这三种基本颜色主题，会用在所有 CSS 组件上，
@@ -259,10 +259,11 @@ $theme-assist: ("success", "info", "warning", "error") !default;
 
 // 辅助颜色值
 $theme-assist-colors: (
-  success: #4caf50, // $green-500
-  info: #00bcd4, // $cyan-500
-  warning: #ff9800, // $orange-500
-  error: #f44336, // $red-500
+  success: #43a047, // $green-600
+  info: #0097a7, // $cyan-700
+  warning: #fb8c00, // $orange-600
+  error: #f44336, //$red-500
+
 
   // 辅助颜色浅色
   success-light: #c8e6c9, // $green-100
@@ -271,10 +272,10 @@ $theme-assist-colors: (
   error-light: #ffcdd2, // $red-100
 
   // 辅助颜色深色
-  success-dark: #388e3c, // $green-700
-  info-dark: #0097a7, // $cyan-700
-  warning-dark: #f57c00, // $orange-700
-  error-dark: #d32f2f, // $red-700
+  success-dark: #2e7d32, // $green-800
+  info-dark: #00838f, // $cyan-800
+  warning-dark: #ef6c00, // $orange-800
+  error-dark: #c62828, // $red-800
 
   // 辅助颜色透明色
   success-alpha: rgba(#4caf50, $alpha),

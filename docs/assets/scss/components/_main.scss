@@ -65,19 +65,19 @@
 
 // 组件间距
 .component-spacing {
-  > div {
+  > div, button, a {
     margin-bottom: 1rem;
-    margin-left: 1rem;
-    &:first-of-type {
-      margin-left: 0;
+    margin-right: 1rem;
+    &:last-child {
+      margin-right: 0;
     }
   }
 }
 
 .component-vertical-spacing {
-  > div {
+  > div, button, a {
     margin-bottom: 1rem;
-    &:last-of-type {
+    &:last-child {
       margin-bottom: 0;
     }
   }

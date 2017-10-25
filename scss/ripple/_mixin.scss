@@ -5,7 +5,7 @@
 @import "./function";
 
 // ripple 基本样式
-@mixin ripple-base() {
+@mixin ripple-base($opacity: .6) {
   will-change: transform, opacity;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
@@ -14,27 +14,55 @@
   &:not(.ripple-impact) {
     &:focus::before,
     &:hover::before,
-    &:active::before,
     &:active::after {
-      opacity: .6;
+      opacity: $opacity;
       transition-duration: 85ms;
     }
   }
 }
 
-// 处理 ripple 背景
-@mixin ripple-bg($config: ()) {
-  $config: map-merge(ripple-default-config(), $config);
-  $pseudo: map-get($config, pseudo);
+// 设置 ripple 颜色
+@mixin ripple-backgroud-color($config) {
+  $background-color: map-get($config, background-color);
+  $opacity: map-get($config, opacity);
+  $theme-style: map-get($config, theme-style);
 
-  @if ($pseudo) {
-    &#{$pseudo} {
-      content: "";
-      @include ripple-bg-base($config);
+  // FIXME $theme-style 待处理，看是否需要该变量
+  @if ($theme-style) {
+    $theme-value: map-get($theme-property-values, $theme-style);
+    // 从色调中取值
+    @if ($theme-value == null) {
+      $theme-value: map-get($theme-tone-property-values, $theme-style);
+    }
+    // 从辅助颜色中取值
+    @if ($theme-value == null) {
+      $theme-value: map-get($theme-assist-colors, $theme-style);
+    }
+
+    $css-var: $theme-value;
+    $css-var: var(--theme-#{$theme-style}, $theme-value);
+    background-color: rgba($theme-value, $opacity);
+    // 使用 css 变量
+    @if ($opacity == 1 or $opacity == null) {
+      background-color: $css-var;
+    }
+
+    // 可以动态的设置颜色透明度，属于 CSS 4 color 范畴，目前浏览器支持的不是很好
+    // 可以用 rgba 来代替，但只能静态设置，不可以随着颜色和透明度的变化动态设置
+    // https://drafts.csswg.org/css-color/#modifying-colors
+    @supports (background-color: color(green a(10%))) {
+      background-color: color(#{$css-var} a(#{percentage($opacity)}));
     }
   } @else {
-    @include ripple-bg-base($config);
+    background-color: rgba($background-color, $opacity);
   }
+
+}
+
+// 设置 ripple 主题
+@mixin ripple-theme($config) {
+  $config: map-merge(ripple-default-config(), $config);
+  @include ripple-backgroud-color($config);
 }
 
 // ripple bg 基础设置
@@ -52,32 +80,19 @@
   transition: opacity 250ms linear;
 }
 
-// 设置 ripple 颜色
-@mixin ripple-backgroud-color($config) {
-  $background-color: map-get($config, background-color);
-  $opacity: map-get($config, opacity);
-  $theme-style: map-get($config, theme-style);
+// 处理 ripple 背景
+@mixin ripple-bg($config: ()) {
+  $config: map-merge(ripple-default-config(), $config);
+  $pseudo: map-get($config, pseudo);
 
-  // FIXME $theme-style 待处理，看是否需要该变量
-  @if ($theme-style) {
-    $theme-value: map-get($theme-property-values, $theme-style);
-    @if ($theme-value == null) {
-      $theme-value: map-get($theme-tone-property-values, $theme-style);
-    }
-    $css-var: $theme-value;
-    $css-var: var(--theme-#{$theme-style}, $theme-value);
-    background-color: rgba($theme-value, $opacity);
-
-    // 可以动态的设置颜色透明度，属于 CSS 4 color 范畴，目前浏览器支持的不是很好
-    // 可以用 rgba 来代替，但只能静态设置，不可以随着颜色和透明度的变化动态设置
-    // https://drafts.csswg.org/css-color/#modifying-colors
-    @supports (background-color: color(green a(10%))) {
-      background-color: color(#{$css-var} a(#{percentage($opacity)}));
+  @if ($pseudo) {
+    &#{$pseudo} {
+      content: "";
+      @include ripple-bg-base($config);
     }
   } @else {
-    background-color: rgba($background-color, $opacity);
+    @include ripple-bg-base($config);
   }
-
 }
 
 // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
@@ -131,12 +146,6 @@
   &.ripple-impact-inactive#{$pseudo} {
     animation: 300ms ripple-radius-out forwards, 83ms ripple-opacity-out forwards;
   }
-}
-
-// 设置 ripple 主题
-@mixin ripple-theme($config) {
-  $config: map-merge(ripple-default-config(), $config);
-  @include ripple-backgroud-color($config);
 }
 
 // 无界限的波纹效果
