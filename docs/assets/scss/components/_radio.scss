@@ -1,0 +1,12 @@
+@import "../../../../scss/theme/variable";
+@import "../../../../scss/theme/mixin";
+@import "../../../../scss/elements/radio/mixin";
+
+// 自定义按钮
+.radio-customer {
+  @include radio-theme($theme: #9c27b0, $opacity: .32);
+}
+
+.radio-customer-lg {
+  @include radio-size($radio-outline-size: 60px, $radio-size: 40px);
+}

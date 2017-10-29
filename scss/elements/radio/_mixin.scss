@@ -1,0 +1,113 @@
+@import "../../theme/mixin";
+@import "../../ripple/mixin";
+@import "./variable";
+
+@mixin radio-size($radio-outline-size: $radio-outline-size, $radio-size: $radio-size) {
+  // radio 渲染百分比
+  $radio-pct: percentage($radio-size / $radio-outline-size);
+
+  width:   $radio-outline-size;
+  height:  $radio-outline-size;
+  padding: ($radio-outline-size - $radio-size) / 2;
+
+  .radio-background {
+    left:   ($radio-outline-size - $radio-size) / 2;
+    width:  $radio-pct;
+    height: $radio-pct;
+  }
+}
+
+// 定义主题 mixin，也可以通过此 mixin 自定义主题，只需传 $theme 颜色值即可
+@mixin radio-theme($theme, $opacity: .16, $assist: false) {
+  .radio-circle-outer {
+    @if type-of($theme) == "color" {
+      @include theme-prop(border-color, rgba($theme, $opacity));
+    } @else {
+      @if ($assist) {
+        @include theme-assist(border-color, #{$theme}-light);
+      } @else {
+        @include theme-prop(border-color, #{$theme}-light);
+      }
+    }
+  }
+
+  .radio-circle-inner {
+    @if type-of($theme) == "color" {
+      @include theme-prop(background-color, rgba($theme, $opacity));
+    } @else {
+      @if ($assist) {
+        @include theme-assist(background-color, #{$theme}-light);
+      } @else {
+        @include theme-prop(background-color, #{$theme}-light);
+      }
+    }
+  }
+
+  .radio-native-control {
+    // 获取焦点时
+    &:focus {
+      + .radio-background {
+        .radio-circle-outer {
+          @if ($assist) {
+            @include theme-assist(border-color, $theme);
+          } @else {
+            @include theme-prop(border-color, $theme);
+          }
+        }
+      }
+    }
+
+    &:checked {
+      + .radio-background {
+        .radio-circle-outer {
+          @if ($assist) {
+            @include theme-assist(border-color, $theme);
+          } @else {
+            @include theme-prop(border-color, $theme);
+          }
+        }
+
+        .radio-circle-inner {
+          @if ($assist) {
+            @include theme-assist(background-color, $theme);
+          } @else {
+            @include theme-prop(background-color, $theme);
+          }
+        }
+      }
+    }
+  }
+
+  // 波纹效果时 ripple
+  &.radio-ripple {
+    .radio-background {
+      &::before {
+        @if type-of($theme) == "color" {
+          @include theme-prop(background-color, rgba($theme, $opacity));
+        } @else {
+          @if ($assist) {
+            @include theme-assist(background-color, #{$theme}-light);
+          } @else {
+            @include theme-prop(background-color, #{$theme}-light);
+          }
+        }
+      }
+    }
+
+    // 获取焦点时
+    .radio-native-control:focus {
+      + .radio-background::before {
+        opacity: $opacity;
+      }
+    }
+  }
+
+  // 波纹动效时
+  &.ripple-impact {
+    @if (type-of($theme) == color) {
+      @include ripple-pseudo-theme ((background-color: rgba($theme, $opacity / 2)));
+    } @else {
+      @include ripple-pseudo-theme ((theme-style: #{$theme}-alpha, opacity: 1));
+    }
+  }
+}

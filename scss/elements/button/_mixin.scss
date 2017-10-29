@@ -32,10 +32,7 @@
 
 // 设置 ripple 样式，主要是伪类 ::before 和 ::after
 @mixin button-ripple($config) {
-  &::before,
-  &::after {
-    @include ripple-theme($config);
-  }
+  @include ripple-pseudo-theme($config);
 }
 
 // 设置 button shadow 效果

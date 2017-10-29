@@ -27,7 +27,6 @@
   $opacity: map-get($config, opacity);
   $theme-style: map-get($config, theme-style);
 
-  // FIXME $theme-style 待处理，看是否需要该变量
   @if ($theme-style) {
     $theme-value: map-get($theme-property-values, $theme-style);
     // 从色调中取值
@@ -37,6 +36,10 @@
     // 从辅助颜色中取值
     @if ($theme-value == null) {
       $theme-value: map-get($theme-assist-colors, $theme-style);
+    }
+
+    @if($theme-value == null) {
+      @error "无效的主题属性值，#{$theme-style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-tone-property-values)}, #{map-keys($theme-assist-colors)} ";
     }
 
     $css-var: $theme-value;
@@ -63,6 +66,14 @@
 @mixin ripple-theme($config) {
   $config: map-merge(ripple-default-config(), $config);
   @include ripple-backgroud-color($config);
+}
+
+// 为伪类设置 ripple 主题
+@mixin ripple-pseudo-theme($config) {
+  &::before,
+  &::after {
+    @include ripple-theme($config);
+  }
 }
 
 // ripple bg 基础设置
@@ -184,3 +195,5 @@
     }
   }
 }
+
+//

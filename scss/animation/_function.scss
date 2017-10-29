@@ -2,12 +2,12 @@
 
 @import "./variable";
 
-// 进入
+// 进入时，缓慢进入
 @function animation-enter($name, $duration, $delay: 0ms) {
   @return $name $duration $delay $animation-ease-out;
 }
 
-// 离开
+// 离开时，加速离开
 @function animation-leave($name, $duration, $delay: 0ms) {
   @return $name $duration $delay $animation-ease-in;
 }

@@ -73,11 +73,11 @@
 .btn-raised,
 .btn-unshadow {
   @include button-front($color: primary-on-dark);
-  @include button-back($background-color: primary-on-light);
+  @include button-back($background-color: hint-on-light);
 
-  &.btn {
-    @include button-ripple((background-color: #fff, opacity: $btn-filled-ripple-opacity));
-  }
+  //&.btn {
+  //  @include button-ripple((background-color: #fff, opacity: $btn-filled-ripple-opacity));
+  //}
 
   // disabled
   @include button-disabled($grey-color-300);

@@ -7,7 +7,7 @@ group: elements
 <div>
   <div class="form-field">
     <div class="checkbox checkbox-primary">
-      <input class="checkbox-native-control" type="checkbox" id="disabledState">
+      <input class="checkbox-native-control" type="checkbox" id="disabledState" />
       <div class="checkbox-background">
         <div class="checkbox-mark-outer"></div>
         <div class="checkbox-mark-inner"></div>
@@ -190,7 +190,6 @@ group: elements
     /**
      * 计算事件坐标
      * @param {!Event} ev
-     * @param {!{x: number, y: number}} pageOffset
      * @param {!ClientRect} clientRect
      * @return {!{x: number, y: number}}
      */
@@ -254,7 +253,9 @@ group: elements
       }
     }
 
-    $('.ripple-impact').mousedown((e) => {
+    const $rippleImpact = $('.ripple-impact');
+
+    $rippleImpact.mousedown((e) => {
       const $el = $(e.currentTarget);
 
       const value = getCssVariableValue($el);
@@ -289,7 +290,7 @@ group: elements
 
     });
 
-    $('.ripple-impact').on('mouseup', (e) => {
+    $rippleImpact.on('mouseup', (e) => {
       const $el = $(e.currentTarget);
       // 延迟260ms 执行
       setTimeout(() => {
@@ -300,16 +301,14 @@ group: elements
     $('.ripple-impact input').on('focus', (e) => {
       const $el = $(e.currentTarget).parent();
       $el.addClass('ripple-impact-focused');
-    });
-
-    $('.ripple-impact input').on('blur', (e) => {
+    }).on('blur', (e) => {
       const $el = $(e.currentTarget).parent();
       $el.removeClass('ripple-impact-focused');
     });
 
 
     // 初始化ripple-impact css variable
-    $('.ripple-impact').each(function (index, el) {
+    $rippleImpact.each(function (index, el) {
       const $el = $(el);
       const value = getCssVariableValue($el);
       setCssVariable($el, value);
@@ -317,11 +316,11 @@ group: elements
 
     // Disabled
     $('#disabledState').change(function () {
-      var $el = $(this);
-      var checked = $el.prop('checked');
+      const $el = $(this);
+      const checked = $el.prop('checked');
 
       $('.btn').each(function(index, el) {
-        var tagName = el.tagName;
+        const tagName = el.tagName;
         if(tagName.toLowerCase() === 'button') {
           $(el).prop('disabled', checked);
         } else {

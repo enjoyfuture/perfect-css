@@ -45,20 +45,20 @@
 - title: 元素类组件
   file: elements
   pages:
-    - title: Badge 标记刻章组件
-      file: badge
     - title: Button 按钮
       file: button
-    - title: Checkbox 复选框
-      file: checkbox
-    - title: Image 组件
-      file: image
     - title: Input 输入框
       file: input
     - title: Radio 单选框
       file: radio
+    - title: Checkbox 复选框
+      file: checkbox
     - title: Select 下拉选择框
       file: select
+    - title: Image 组件
+      file: image
+    - title: Badge 标记刻章组件
+      file: badge
     - title: Toast 组件
       file: toast
     - title: Tooltip 组件

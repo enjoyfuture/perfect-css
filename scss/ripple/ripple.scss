@@ -36,25 +36,16 @@
 @include ripple-unbounded();
 
 // 定义主题样式
-@each $style in ("primary", "secondary") {
-  .ripple-#{$style} {
-    &::before,
-    &::after {
-      // ripple 主题样式
-      @include theme-prop (background-color, #{$style}-alpha);
-    }
+@each $theme in ("primary", "secondary") {
+  .ripple-#{$theme} {
+    @include ripple-pseudo-theme ((theme-style: #{$theme}-alpha, opacity: 1));
   }
 }
 
 // 辅助颜色对应 ripple
 @each $theme in $theme-assist {
-  $color: map-get($theme-assist-colors, $theme);
-
   .ripple-#{$theme} {
-    &::before,
-    &::after {
-      @include theme-assist(background-color, #{$theme}-alpha);
-    }
+    @include ripple-pseudo-theme ((theme-style: #{$theme}-alpha, opacity: 1));
   }
 }
 

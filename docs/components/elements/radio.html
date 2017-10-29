@@ -4,278 +4,362 @@ title: Radio 组件
 group: elements
 ---
 
-
-<div class="component-wrap">
-  <section>
-    <h2>Radio </h2>
-    <section class="component-container">
-      <h3>纯 CSS基本样式</h3>
-      <div class="radio">
-        <input class="radio-native-control" type="radio" name="radio1">
-        <div class="radio-background">
-          <div class="radio-circle-outer"></div>
-          <div class="radio-circle-inner"></div>
-        </div>
+<div>
+  <div class="form-field">
+    <div class="checkbox checkbox-primary">
+      <input class="checkbox-native-control" type="checkbox" id="disabledState"/>
+      <div class="checkbox-background">
+        <div class="checkbox-mark-outer"></div>
+        <div class="checkbox-mark-inner"></div>
       </div>
-      <div class="radio">
-        <input class="radio-native-control" type="radio" name="radio1">
-        <div class="radio-background">
-          <div class="radio-circle-outer"></div>
-          <div class="radio-circle-inner"></div>
-        </div>
-      </div>
-    </section>
-    <section class="component-container">
-      <h3>纯 CSS 带波纹样式</h3>
-      <div class="radio ripple">
-        <input class="radio-native-control" type="radio" name="radio2">
-        <div class="radio-background">
-          <div class="radio-circle-outer"></div>
-          <div class="radio-circle-inner"></div>
-        </div>
-      </div>
-      <div class="radio ripple">
-        <input class="radio-native-control" type="radio" name="radio2">
-        <div class="radio-background">
-          <div class="radio-circle-outer"></div>
-          <div class="radio-circle-inner"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="component-container">
-      <h3>JavaScript 动效</h3>
-      <div class="radio ripple ripple-impact ripple-unbounded">
-        <input class="radio-native-control" type="radio" name="radio3">
-        <div class="radio-background">
-          <div class="radio-circle-outer"></div>
-          <div class="radio-circle-inner"></div>
-        </div>
-      </div>
-      <div class="radio ripple ripple-impact ripple-unbounded">
-        <input class="radio-native-control" type="radio" name="radio3">
-        <div class="radio-background">
-          <div class="radio-circle-outer"></div>
-          <div class="radio-circle-inner"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="component-container">
-      <h3>disabled 效果</h3>
-      <div class="radio radio-disabled">
-        <input class="radio-native-control" type="radio" disabled>
-        <div class="radio-background">
-          <div class="radio-circle-outer"></div>
-          <div class="radio-circle-inner"></div>
-        </div>
-      </div>
-      <div class="radio ripple radio-disabled">
-        <input class="radio-native-control" type="radio" checked disabled>
-        <div class="radio-background">
-          <div class="radio-circle-outer"></div>
-          <div class="radio-circle-inner"></div>
-        </div>
-      </div>
-      <div class="radio ripple ripple-impact ripple-unbounded radio-disabled">
-        <input class="radio-native-control" type="radio" disabled>
-        <div class="radio-background">
-          <div class="radio-circle-outer"></div>
-          <div class="radio-circle-inner"></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h3>主题样式</h3>
-      <h4>Primary</h4>
-      <section class="component-container">
-        <div class="radio radio-primary">
-          <input class="radio-native-control" type="radio" name="primary">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-primary ripple ripple-primary">
-          <input class="radio-native-control" type="radio" name="primary">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-primary ripple ripple-impact ripple-primary ripple-unbounded">
-          <input class="radio-native-control" type="radio" name="primary">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-      </section>
-
-      <h4>Accent</h4>
-      <section class="component-container">
-        <div class="radio radio-accent">
-          <input class="radio-native-control" type="radio" name="accent">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-accent ripple ripple-accent">
-          <input class="radio-native-control" type="radio" name="accent">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-accent ripple ripple-impact ripple-accent ripple-unbounded">
-          <input class="radio-native-control" type="radio" name="accent">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-      </section>
-
-    </section>
-
-    <section>
-      <h3>辅助颜色样式</h3>
-      <h4>Success</h4>
-      <section class="component-container">
-        <div class="radio radio-success">
-          <input class="radio-native-control" type="radio" name="success">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-success ripple ripple-success">
-          <input class="radio-native-control" type="radio" name="success">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-success ripple ripple-impact ripple-success ripple-unbounded">
-          <input class="radio-native-control" type="radio" name="success">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-      </section>
-
-      <h4>Info</h4>
-      <section class="component-container">
-        <div class="radio radio-info">
-          <input class="radio-native-control" type="radio" name="info">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-info ripple ripple-info">
-          <input class="radio-native-control" type="radio" name="info">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-info ripple ripple-impact ripple-info ripple-unbounded">
-          <input class="radio-native-control" type="radio" name="info">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-      </section>
-
-      <h4>Warning</h4>
-      <section class="component-container">
-        <div class="radio radio-warning">
-          <input class="radio-native-control" type="radio" name="warning">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-warning ripple ripple-warning">
-          <input class="radio-native-control" type="radio" name="warning">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-warning ripple ripple-impact ripple-warning ripple-unbounded">
-          <input class="radio-native-control" type="radio" name="warning">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-      </section>
-
-      <h4>Error</h4>
-      <section class="component-container">
-        <div class="radio radio-error">
-          <input class="radio-native-control" type="radio" name="error">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-error ripple ripple-error">
-          <input class="radio-native-control" type="radio" name="error">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-error ripple ripple-impact ripple-error ripple-unbounded">
-          <input class="radio-native-control" type="radio" name="error">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-      </section>
-
-      <h4>Disabled</h4>
-      <section class="component-container">
-        <div class="radio radio-info radio-disabled">
-          <input class="radio-native-control" type="radio" disabled>
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-error radio-disabled ripple ripple-error">
-          <input class="radio-native-control" type="radio" disabled checked>
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <div class="radio radio-success radio-disabled ripple ripple-impact ripple-error ripple-unbounded">
-          <input class="radio-native-control" type="radio" disabled checked>
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-      </section>
-    </section>
-  </section>
+    </div>
+    <label>Disabled</label>
+  </div>
 </div>
+
+<h2 class="m-t-3">纯 CSS 样式</h2>
+
+<h3>基本样式</h3>
+
+<section class="component-container component-spacing">
+  <div class="form-field">
+    <div class="radio">
+      <input class="radio-native-control" type="radio" name="radio_base" id="radio_base1">
+      <div class="radio-background">
+        <div class="radio-circle-outer"></div>
+        <div class="radio-circle-inner"></div>
+      </div>
+    </div>
+    <label for="radio_base1">基本样式 1</label>
+  </div>
+
+  <div class="form-field">
+    <div class="radio">
+      <input class="radio-native-control" type="radio" name="radio_base" id="radio_base2">
+      <div class="radio-background">
+        <div class="radio-circle-outer"></div>
+        <div class="radio-circle-inner"></div>
+      </div>
+    </div>
+    <label for="radio_base2">基本样式 2</label>
+  </div>
+</section>
+
+<h3>带波纹样式</h3>
+<section class="component-container component-spacing">
+  <div class="form-field">
+    <div class="radio radio-ripple">
+      <input class="radio-native-control" type="radio" name="radio_ripple" id="radio_ripple1">
+      <div class="radio-background">
+        <div class="radio-circle-outer"></div>
+        <div class="radio-circle-inner"></div>
+      </div>
+    </div>
+    <label for="radio_ripple1">带波纹样式 1</label>
+  </div>
+
+  <div class="form-field">
+    <div class="radio radio-ripple">
+      <input class="radio-native-control" type="radio" name="radio_ripple" id="radio_ripple2">
+      <div class="radio-background">
+        <div class="radio-circle-outer"></div>
+        <div class="radio-circle-inner"></div>
+      </div>
+    </div>
+    <label for="radio_ripple2">带波纹样式 2</label>
+  </div>
+</section>
+
+<h2>JavaScript 波纹动效</h2>
+<section class="component-container component-spacing">
+  <div class="form-field">
+    <div class="radio ripple ripple-impact ripple-unbounded">
+      <input class="radio-native-control" type="radio" name="radio_ripple_impact" id="radio_ripple_impact1">
+      <div class="radio-background">
+        <div class="radio-circle-outer"></div>
+        <div class="radio-circle-inner"></div>
+      </div>
+    </div>
+    <label for="radio_ripple_impact1">波纹动效 1</label>
+  </div>
+
+  <div class="form-field">
+    <div class="radio ripple ripple-impact ripple-unbounded">
+      <input class="radio-native-control" type="radio" name="radio_ripple_impact" id="radio_ripple_impact2">
+      <div class="radio-background">
+        <div class="radio-circle-outer"></div>
+        <div class="radio-circle-inner"></div>
+      </div>
+    </div>
+    <label for="radio_ripple_impact2">波纹动效 2</label>
+  </div>
+</section>
+
+<h2>Radio 主题</h2>
+<h3>主颜色</h3>
+<h4>Primary</h4>
+<section class="component-container component-spacing">
+  <div class="radio radio-primary">
+    <input class="radio-native-control" type="radio" name="primary">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+
+  <div class="radio radio-ripple radio-primary">
+    <input class="radio-native-control" type="radio" name="primary">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-primary ripple ripple-impact ripple-unbounded">
+    <input class="radio-native-control" type="radio" name="primary">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Secondary</h4>
+<section class="component-container component-spacing">
+  <div class="radio radio-secondary">
+    <input class="radio-native-control" type="radio" name="secondary">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-ripple radio-secondary">
+    <input class="radio-native-control" type="radio" name="secondary">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-secondary ripple ripple-impact ripple-unbounded">
+    <input class="radio-native-control" type="radio" name="secondary">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+</section>
+
+
+<h3>辅助颜色</h3>
+<h4>Success</h4>
+<section class="component-container component-spacing">
+  <div class="radio radio-success">
+    <input class="radio-native-control" type="radio" name="success">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-ripple radio-success">
+    <input class="radio-native-control" type="radio" name="success">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-success ripple ripple-impact ripple-unbounded">
+    <input class="radio-native-control" type="radio" name="success">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Info</h4>
+<section class="component-container component-spacing">
+  <div class="radio radio-info">
+    <input class="radio-native-control" type="radio" name="info">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-ripple radio-info">
+    <input class="radio-native-control" type="radio" name="info">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-info ripple ripple-impact ripple-unbounded">
+    <input class="radio-native-control" type="radio" name="info">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Warning</h4>
+<section class="component-container component-spacing">
+  <div class="radio radio-warning">
+    <input class="radio-native-control" type="radio" name="warning">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-ripple radio-warning">
+    <input class="radio-native-control" type="radio" name="warning">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-warning ripple ripple-impact ripple-unbounded">
+    <input class="radio-native-control" type="radio" name="warning">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Error</h4>
+<section class="component-container component-spacing">
+  <div class="radio radio-error">
+    <input class="radio-native-control" type="radio" name="error">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-ripple radio-error">
+    <input class="radio-native-control" type="radio" name="error">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-error ripple ripple-impact ripple-unbounded">
+    <input class="radio-native-control" type="radio" name="error">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h2>Radio 大小</h2>
+
+<h3>Button 变大</h3>
+<section class="component-container component-spacing">
+  <div class="radio radio-lg">
+    <input class="radio-native-control" type="radio" name="radio_lg">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-lg radio-ripple">
+    <input class="radio-native-control" type="radio" name="radio_lg">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-lg ripple ripple-impact ripple-unbounded">
+    <input class="radio-native-control" type="radio" name="radio_lg">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h3>Button 变小</h3>
+<section class="component-container component-spacing">
+  <div class="radio radio-sm">
+    <input class="radio-native-control" type="radio" name="radio_sm">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-sm radio-ripple">
+    <input class="radio-native-control" type="radio" name="radio_sm">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-sm ripple ripple-impact ripple-unbounded">
+    <input class="radio-native-control" type="radio" name="radio_sm">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h2>Radio 定制化</h2>
+
+<h3>颜色</h3>
+<section class="component-container component-spacing">
+  <div class="radio radio-customer">
+    <input class="radio-native-control" type="radio" name="radio_customer">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-ripple radio-customer">
+    <input class="radio-native-control" type="radio" name="radio_customer">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-customer ripple ripple-impact ripple-unbounded">
+    <input class="radio-native-control" type="radio" name="radio_customer">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h3>大小</h3>
+<section class="component-container component-spacing">
+  <div class="radio radio-customer radio-customer-lg">
+    <input class="radio-native-control" type="radio" name="radio-customer-lg">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-ripple radio-customer radio-customer-lg">
+    <input class="radio-native-control" type="radio" name="radio-customer-lg">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+  <div class="radio radio-customer radio-customer-lg ripple ripple-impact ripple-unbounded">
+    <input class="radio-native-control" type="radio" name="radio-customer-lg">
+    <div class="radio-background">
+      <div class="radio-circle-outer"></div>
+      <div class="radio-circle-inner"></div>
+    </div>
+  </div>
+</section>
+
 <script>
   $(function () {
 
     /**
      * 计算事件坐标
      * @param {!Event} ev
-     * @param {!{x: number, y: number}} pageOffset
      * @param {!ClientRect} clientRect
      * @return {!{x: number, y: number}}
      */
@@ -319,7 +403,7 @@ group: elements
         width,
         height,
         size,
-        scale
+        scale,
       };
     }
 
@@ -339,7 +423,9 @@ group: elements
       }
     }
 
-    $('.ripple-impact').mousedown((e) => {
+    const $rippleImpact = $('.ripple-impact');
+
+    $rippleImpact.mousedown((e) => {
       const $el = $(e.currentTarget);
 
       const value = getCssVariableValue($el);
@@ -374,7 +460,7 @@ group: elements
 
     });
 
-    $('.ripple-impact').on('mouseup', (e) => {
+    $rippleImpact.on('mouseup', (e) => {
       const $el = $(e.currentTarget);
       // 延迟260ms 执行
       setTimeout(() => {
@@ -385,20 +471,31 @@ group: elements
     $('.ripple-impact input').on('focus', (e) => {
       const $el = $(e.currentTarget).parent();
       $el.addClass('ripple-impact-focused');
-    });
-
-    $('.ripple-impact input').on('blur', (e) => {
+    }).on('blur', (e) => {
       const $el = $(e.currentTarget).parent();
       $el.removeClass('ripple-impact-focused');
     });
 
 
     // 初始化ripple-impact css variable
-    $('.ripple-impact').each(function (index, el) {
+    $rippleImpact.each(function (index, el) {
       const $el = $(el);
       const value = getCssVariableValue($el);
       setCssVariable($el, value);
     });
 
+    // Disabled
+    $('#disabledState').change(function () {
+      const $el = $(this);
+      const checked = $el.prop('checked');
+
+      $('.radio').each(function (index, el) {
+        if (checked) {
+          $(el).addClass('radio-disabled').find('.radio-native-control').prop('disabled', true);
+        } else {
+          $(el).removeClass('radio-disabled').find('.radio-native-control').prop('disabled', false);
+        }
+      });
+    });
   });
 </script>

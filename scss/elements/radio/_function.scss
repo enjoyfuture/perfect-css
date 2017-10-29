@@ -1,3 +1,6 @@
+@import "../../animation/function";
+@import "./variable";
+
 @function radio-enter($name) {
   @return animation-enter($name, $radio-transition-duration);
 }
