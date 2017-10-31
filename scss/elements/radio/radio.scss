@@ -40,6 +40,7 @@
     transition:    radio-leave(border-color);
   }
 
+  // 勾选后的样式
   &-circle-inner {
     position:      absolute;
     top:           0;
@@ -152,15 +153,6 @@
 
     .radio-circle-inner {
       background-color: rgba(#000, .26);
-    }
-  }
-}
-
-// 获取焦点时
-.radio-native-control:focus {
-  + .radio-background {
-    .radio-circle-outer {
-      @include theme-prop(border-color, primary-on-light);
     }
   }
 }
