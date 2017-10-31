@@ -1,17 +1,14 @@
-// checkbox style
+// checkbox 组件
+@import "../../ripple/mixin";
 @import "../../theme/mixin";
-
-@import "./variables";
 @import "./function";
+@import "./mixin";
 
 // 基本样式
 .checkbox {
   position:      relative;
   box-sizing:    border-box;
   display:       inline-block;
-  width:         $checkbox-outline-size;
-  height:        $checkbox-outline-size;
-  padding:       ($checkbox-outline-size - $checkbox-size) / 2;
   border-radius: 50%;
   cursor:        pointer;
   will-change:   opacity, transform, border-color, background-color, color;
@@ -19,31 +16,32 @@
   // checkbox 形状
   &-background {
     position:       absolute;
-    left:           ($checkbox-outline-size - $checkbox-size) / 2;
     box-sizing:     border-box;
     display:        inline-block;
-    width:          $checkbox-pct;
-    height:         $checkbox-pct;
     pointer-events: none;
+    // 动画
+    transition:     checkbox-leave(opacity), checkbox-leave(transform);
   }
 
+  // 定义 checkbox 的大小封装成 mixin，方便定制化处理
+  @include checkbox-size();
+
   &-mark-outer {
-    @include theme-prop(border-color, secondary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
     box-sizing:    border-box;
     width:         100%;
     height:        100%;
-    border-width:  2px;
-    border-style:  solid;
+    border:        2px solid;
+    @include theme-prop(border-color, secondary-on-light);
     border-radius: 2px;
+    // 动画
     transition:    checkbox-leave(border-color);
   }
 
   // 勾选后的样式
   &-mark-inner {
-    @include theme-prop(background-color, secondary-on-light);
     position:      absolute;
     top:           0;
     left:          0;
@@ -52,19 +50,23 @@
     height:        100%;
     border-radius: 2px;
     transform:     scale(0, 0);
-    transition:    checkbox-leave(transform), checkbox-leave(background-color);
+    @include theme-prop(background-color, secondary-on-light);
 
+    // 勾选样式
     &::after {
       content:       "";
       position:      absolute;
-      top:           3px;
-      left:          2px;
+      top:           18%;
+      left:          15%;
       box-sizing:    border-box;
-      width:         80%;
+      width:         70%;
       height:        40%;
       border-bottom: 2px solid #fff;
       border-left:   2px solid #fff;
+      opacity:       0;
       transform:     rotate(-45deg);
+      // 动画
+      transition:    checkbox-leave(opacity), checkbox-leave(transform);
     }
   }
 
@@ -79,10 +81,19 @@
     margin:   0;
     cursor:   inherit;
     opacity:  0;
+
+    // 获取焦点时
+    &:focus {
+      + .checkbox-background {
+        .checkbox-mark-outer {
+          @include theme-prop(border-color, primary-on-light);
+        }
+      }
+    }
   }
 }
 
-// checked 和 disabled 动画效果
+// checked 、 disabled 和 indeterminate 动画效果
 .checkbox-native-control:checked,
 .checkbox-native-control:disabled,
 .checkbox-native-control:indeterminate {
@@ -94,16 +105,15 @@
     }
 
     .checkbox-mark-inner {
-      transition: checkbox-enter(transform), checkbox-enter(background-color);
+      &::after {
+        // 动画
+        transition: checkbox-enter(opacity), checkbox-enter(transform);
+      }
     }
   }
 }
 
-.checkbox-disabled {
-  pointer-events: none;
-  cursor:         default;
-}
-
+// 选中或部分选中样式
 .checkbox-native-control:checked,
 .checkbox-native-control:indeterminate {
   + .checkbox-background {
@@ -114,10 +124,58 @@
 
     .checkbox-mark-inner {
       @include theme-prop(background-color, primary-on-light);
-      transform:  scale(1);
-      transition: checkbox-enter(transform), checkbox-enter(background-color);
+      transform: scale(1);
+      &::after {
+        opacity: 1;
+      }
     }
   }
+}
+
+// 部分选中样式
+.checkbox-native-control:indeterminate {
+  + .checkbox-background {
+
+    .checkbox-mark-inner::after {
+      border-left: 0;
+      transform:   rotate(0);
+    }
+  }
+}
+
+// 波纹效果时 ripple
+.checkbox-ripple {
+  .checkbox-background {
+    &::before {
+      content:        "";
+      position:       absolute;
+      top:            0;
+      left:           0;
+      width:          100%;
+      height:         100%;
+      border-radius:  50%;
+      @include theme-prop(background-color, primary-on-light);
+      pointer-events: none;
+      opacity:        0;
+      transform:      scale(0, 0);
+      transition:     checkbox-leave(opacity), checkbox-leave(transform);
+    }
+  }
+
+  // 获取焦点时
+  .checkbox-native-control:focus {
+    + .checkbox-background::before {
+      opacity:    .16;
+      transform:  scale(2, 2);
+      transition: checkbox-enter(opacity), checkbox-enter(transform);
+    }
+  }
+}
+
+// disabled 样式
+.checkbox-disabled {
+  pointer-events: none;
+  cursor:         default;
 }
 
 .checkbox-native-control:disabled {
@@ -134,91 +192,25 @@
   }
 }
 
-.checkbox-native-control:indeterminate {
-  + .checkbox-background {
-
-    .checkbox-mark-inner::after {
-      border-left: 0;
-      transform:   rotate(0);
-    }
-  }
-}
-
-.checkbox-native-control:focus {
-  + .checkbox-background::before {
-    opacity:    .26;
-    transform:  scale(2, 2);
-    transition: checkbox-enter(opacity), checkbox-enter(transform);
-  }
-}
-
 // 定义主题样式
-@each $style in ("primary", "secondary") {
-  .checkbox-#{$style} {
-    .checkbox-mark-outer {
-      @include theme-prop(border-color, #{$style}-light);
-    }
-
-    .checkbox-mark-inner {
-      @include theme-prop(background-color, #{$style}-light);
-
-      &::after {
-        @include theme-prop(border-color, primary-on-#{$style});
-      }
-    }
-
-    .checkbox-native-control:checked,
-    .checkbox-native-control:indeterminate {
-      + .checkbox-background {
-        .checkbox-mark-inner {
-          @include theme-prop(background-color, #{$style});
-        }
-      }
-    }
+@each $theme in ("primary", "secondary") {
+  .checkbox-#{$theme} {
+    @include checkbox-theme($theme);
   }
 }
 
 // 辅助颜色对应 checkbox
 @each $theme in $theme-assist {
-  $color: map-get($theme-assist-colors, $theme);
-
   .checkbox-#{$theme} {
-    .checkbox-mark-outer {
-      @include theme-assist(border-color, #{$theme}-light);
-    }
-
-    .checkbox-mark-inner {
-      @include theme-assist(background-color, #{$theme}-light);
-
-      &::after {
-        $color-tone: theme-light-or-dark($color);
-        // 判断是用浅色还是深色
-        border-color: map-get(map-get($theme-text-colors, $color-tone), primary);
-      }
-    }
-
-    .checkbox-native-control:checked,
-    .checkbox-native-control:indeterminate {
-      + .checkbox-background {
-        .checkbox-mark-inner {
-          @include theme-assist(background-color, $theme);
-        }
-      }
-    }
-
-    .checkbox-native-control:disabled {
-      + .checkbox-background {
-        .checkbox-mark-outer {
-          border-color: rgba($color, .26);
-        }
-
-        .checkbox-mark-inner {
-          background-color: rgba($color, .26);
-          &::after {
-            opacity: .46;
-          }
-        }
-      }
-    }
+    @include checkbox-theme($theme, $opacity: .64, $assist: true);
   }
+}
+
+// Sizing
+.checkbox-lg {
+  @include checkbox-size($checkbox-outline-size: $checkbox-outline-size-lg, $checkbox-size: $checkbox-size-lg);
+}
+
+.checkbox-sm {
+  @include checkbox-size($checkbox-outline-size: $checkbox-outline-size-sm, $checkbox-size: $checkbox-size-sm);
 }

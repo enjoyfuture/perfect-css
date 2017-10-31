@@ -1,0 +1,12 @@
+@import "../../../../scss/theme/variable";
+@import "../../../../scss/theme/mixin";
+@import "../../../../scss/elements/checkbox/mixin";
+
+// 自定义按钮
+.checkbox-customer {
+  @include checkbox-theme($theme: #e91e63, $opacity: .32);
+}
+
+.checkbox-customer-lg {
+  @include checkbox-size($checkbox-outline-size: 60px, $checkbox-size: 40px);
+}
