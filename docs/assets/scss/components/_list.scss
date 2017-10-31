@@ -1,0 +1,26 @@
+// list wrap
+
+@import "../../../../scss/theme/variable";
+@import "../../../../scss/theme/mixin";
+
+.list-wrap {
+  max-width: 720px;
+  padding: .5rem 1rem;
+  border: 1px dashed;
+  @include theme-prop(border-color, primary-light);
+  + .list-wrap {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .list-wrap {
+    max-width: none;
+    border-width: 0 0 1px;
+
+    + .list-wrap {
+      margin-top: 0;
+    }
+  }
+}
+
