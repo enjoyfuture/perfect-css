@@ -1,0 +1,35 @@
+---
+layout: default
+title: Dialog 对话框-标题+正文+大按钮
+---
+
+<div class="p-5 text-center" id="btn_wrap">
+  <button class="btn btn-raised btn-primary">打开对话框</button>
+</div>
+
+<div class="dialog">
+  <div class="dialog-panel">
+    <footer class="dialog-footer">
+      <button type="button" class="btn btn-full text-left">编辑</button>
+      <button type="button" class="btn btn-full theme-error theme-grey-bg-200 text-left">删除</button>
+      <button type="button" class="btn btn-full text-left">删除</button>
+    </footer>
+  </div>
+  <div class="dialog-backdrop"></div>
+</div>
+
+<script>
+  $(function () {
+    $('.btn').click(function (e) {
+      $('.dialog').addClass('dialog-open');
+      $('body').addClass('dialog-scroll-lock');
+      $('#btn_wrap').hide();
+    });
+
+    $('.dialog .btn, .dialog .dialog-close, .dialog-backdrop').click(function () {
+      $('.dialog').removeClass('dialog-open');
+      $('body').removeClass('dialog-scroll-lock');
+      $('#btn_wrap').show();
+    });
+  });
+</script>

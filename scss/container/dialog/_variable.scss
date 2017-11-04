@@ -3,20 +3,17 @@
 
 $dialog-backdrop-bg: $grey-color-400 !default;
 $dialog-panel-margin-x: 2rem !default;
-$dialog-panel-transform: translateY(150px) scale(.8) !default;
 
-$dialog-header-padding: 1.5rem !default;
-$dialog-header-margin-bottom: 1.5rem !default;
-$dialog-header-text-align: left !default;
+$dialog-header-padding: 1rem !default;
+$dialog-header-margin-bottom: 1rem !default;
 $dialog-header-font-size: 1.25rem !default;
 $dialog-header-font-weight: 400 !default;
 $dialog-header-line-height: 1.5 !default;
 
-$dialog-body-padding: 1.5rem !default;
+$dialog-body-padding: 1rem !default;
+$dialog-body-margin-top: .75rem !default;
 $dialog-body-font-size: .875rem !default;
 $dialog-body-font-weight: 400 !default;
 $dialog-body-line-height: 1.25rem !default;
 
-$dialog-footer-padding-top: 1.5rem !default;
-$dialog-footer-padding-bottom: 1.5rem !default;
-$dialog-footer-padding-x: 2rem !default;
+$dialog-footer-padding: 1rem !default;

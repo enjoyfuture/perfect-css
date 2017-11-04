@@ -1,0 +1,9 @@
+@import "../../../../scss/theme/mixin";
+
+.iframe-dialog {
+  width: 320px;
+  height: 400px;
+  border: 1px dotted;
+  @include theme-prop(border-color, primary);
+}
+

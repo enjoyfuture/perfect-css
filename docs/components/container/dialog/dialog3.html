@@ -1,0 +1,41 @@
+---
+layout: default
+title: Dialog 对话框-标题+正文+大按钮
+---
+
+<div class="p-5 text-center" id="btn_wrap">
+  <button class="btn btn-raised btn-primary">打开对话框</button>
+</div>
+
+<div class="dialog">
+  <div class="dialog-panel">
+    <header class="dialog-header">
+      <h3 class="dialog-header-title text-center">
+        我是只有标题的样式文案，只有标题哦也
+      </h3>
+    </header>
+    <footer class="dialog-footer">
+      <div class="list-divider"></div>
+      <button type="button" class="btn btn-lg btn-full btn-error">立即开通</button>
+      <div class="list-divider"></div>
+      <button type="button" class="btn btn-lg btn-full">以后再说</button>
+    </footer>
+  </div>
+  <div class="dialog-backdrop"></div>
+</div>
+
+<script>
+  $(function () {
+    $('.btn').click(function (e) {
+      $('.dialog').addClass('dialog-open');
+      $('body').addClass('dialog-scroll-lock');
+      $('#btn_wrap').hide();
+    });
+
+    $('.dialog .btn, .dialog .dialog-close, .dialog-backdrop').click(function () {
+      $('.dialog').removeClass('dialog-open');
+      $('body').removeClass('dialog-scroll-lock');
+      $('#btn_wrap').show();
+    });
+  });
+</script>
