@@ -26,13 +26,13 @@
     - title: 菜单
       file: menu
     - title: Tab 标签
-      file: tab
+      file: tabs
 - title: 容器类组件
   file: container
   pages:
     - title: Carousel 轮播图组件
       file: carousel
-    - title: 对话框窗口
+    - title: 对话框窗口(Dialog)
       file: dialog
     - title: 抽屉组件
       file: drawer

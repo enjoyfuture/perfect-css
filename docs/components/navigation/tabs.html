@@ -4,101 +4,98 @@ title: Tab 组件
 group: navigation
 ---
 
-<style>
-  .component-wrap {
-    width: 800px;
-  }
+<h2>基本用法</h2>
 
-</style>
+<h3>左对齐 </h3>
+<section class="component-container">
+  <nav class="tab-bar tab-bar-left">
+    <a class="tab active" href="#one">标签1</a>
+    <a class="tab" href="#two">标签2</a>
+    <a class="tab" href="#three">标签3</a>
+  </nav>
+</section>
 
-<div class="component-wrap">
-  <h2>Tab </h2>
-  <section>
-    <h3 class="m-t-5">左对齐 </h3>
-    <section class="component-container" style="background: #e3f2fd;">
-      <nav class="tab-bar tab-bar-left">
-        <a class="tab active" href="#one">标签1</a>
-        <a class="tab" href="#two">标签2</a>
-        <a class="tab" href="#three">标签3</a>
-      </nav>
-    </section>
+<h3>居中 </h3>
+<section class="component-container">
+  <nav class="tab-bar tab-bar-center">
+    <a class="tab active" href="#one">标签1</a>
+    <a class="tab" href="#two">标签2</a>
+    <a class="tab" href="#three">标签3</a>
+  </nav>
+</section>
 
-    <h3 class="m-t-5">居中 </h3>
-    <section class="component-container" style="background: #e8eaf6;">
-      <nav class="tab-bar tab-bar-center">
-        <a class="tab active" href="#one">标签1</a>
-        <a class="tab" href="#two">标签2</a>
-        <a class="tab" href="#three">标签3</a>
-      </nav>
-    </section>
+<h3>右对齐 </h3>
+<section class="component-container">
+  <nav class="tab-bar tab-bar-right">
+    <a class="tab active" href="#one">标签1</a>
+    <a class="tab" href="#two">标签2</a>
+    <a class="tab" href="#three">标签3</a>
+  </nav>
+</section>
 
-    <h3 class="m-t-5">右对齐 </h3>
-    <section class="component-container" style="background: #f1f8e9;">
-      <nav class="tab-bar tab-bar-right">
-        <a class="tab active" href="#one">标签1</a>
-        <a class="tab" href="#two">标签2</a>
-        <a class="tab" href="#three">标签3</a>
-      </nav>
-    </section>
+<h3>平铺占满整个容器</h3>
+<section class="component-container">
+  <nav class="tab-bar tab-bar-between">
+    <a class="tab active" href="#one">标签1</a>
+    <a class="tab" href="#two">标签2</a>
+    <a class="tab" href="#three">标签3</a>
+    <a class="tab" href="#four">标签4</a>
+  </nav>
+</section>
 
-    <h3 class="m-t-5">平铺占满整个容器 </h3>
-    <section class="component-container" style="background: #f9fbe7;">
-      <nav class="tab-bar tab-bar-between">
-        <a class="tab active" href="#one">标签1</a>
-        <a class="tab" href="#two">标签2</a>
-        <a class="tab" href="#three">标签3</a>
-        <a class="tab" href="#four">标签4</a>
-      </nav>
-    </section>
+<h3>Tab Ripple 动画效果 </h3>
+<section class="component-container">
+  <nav class="tab-bar tab-ripple tab-bar-between">
+    <a class="tab active" href="#one">标签1</a>
+    <a class="tab" href="#two">标签2</a>
+    <a class="tab" href="#three">标签3</a>
+    <a class="tab" href="#four">标签4</a>
+    <a class="tab" href="#four">标签5</a>
+  </nav>
+</section>
 
-    <h3 class="m-t-5">字体小一点 tab，适合更多 tab 时 </h3>
-    <section class="component-container" style="background: #e0f7fa;">
-      <nav class="tab-bar tab-bar-sm tab-bar-between">
-        <a class="tab active" href="#one">标签1</a>
-        <a class="tab" href="#two">标签2</a>
-        <a class="tab" href="#three">标签3</a>
-        <a class="tab" href="#four">标签4</a>
-        <a class="tab" href="#four">标签5</a>
-        <a class="tab" href="#four">标签6</a>
-      </nav>
-    </section>
+<h2>可滚动切换的 Tab (Tab Scroller)</h2>
 
-    <h3 class="m-t-5">Tab 动画效果 </h3>
-    <section class="component-container" style="background: #ffebee;">
-      <nav class="tab-bar tab-ripple tab-bar-between">
-        <a class="tab active" href="#one">标签1</a>
-        <a class="tab" href="#two">标签2</a>
-        <a class="tab" href="#three">标签3</a>
-        <a class="tab" href="#four">标签4</a>
-        <a class="tab" href="#four">标签5</a>
-      </nav>
-    </section>
+<h3>基本用法</h3>
 
+<h3>左右两侧渐变效果</h3>
 
-    <h3 class="m-t-5">primary tab  </h3>
-    <section class="component-container" style="background: #fce4ec;">
-      <nav class="tab-bar tab-primary tab-ripple tab-bar-between">
-        <a class="tab active" href="#one">标签1</a>
-        <a class="tab" href="#two">标签2</a>
-        <a class="tab" href="#three">标签3</a>
-        <a class="tab" href="#four">标签4</a>
-        <a class="tab" href="#four">标签5</a>
-      </nav>
-    </section>
+<h2>图标 Tab 标签</h2>
 
+<h2>Tab 大小</h2>
+<h3>字体小一点 tab，适合更多 tab 时 </h3>
+<section class="component-container">
+  <nav class="tab-bar tab-bar-sm tab-bar-between">
+    <a class="tab active" href="#one">标签1</a>
+    <a class="tab" href="#two">标签2</a>
+    <a class="tab" href="#three">标签3</a>
+    <a class="tab" href="#four">标签4</a>
+    <a class="tab" href="#four">标签5</a>
+    <a class="tab" href="#four">标签6</a>
+  </nav>
+</section>
 
-    <h2 class="m-t-5">Tab Scroller 待补充 </h2>
-    <section class="component-container">
-    </section>
+<h2>主题</h2>
+<h3>primary</h3>
+<section class="component-container">
+  <nav class="tab-bar tab-primary tab-ripple tab-bar-between">
+    <a class="tab active" href="#one">标签1</a>
+    <a class="tab" href="#two">标签2</a>
+    <a class="tab" href="#three">标签3</a>
+    <a class="tab" href="#four">标签4</a>
+    <a class="tab" href="#four">标签5</a>
+  </nav>
+</section>
 
-  </section>
-
-</div>
+<h2>自定义 Tab 标签</h2>
 
 <script>
   $(function () {
     $('.tab-bar').on('click', '.tab', function (e) {
-      $(e.currentTarget).addClass('active').siblings().removeClass('active');
+      const $el = $(e.currentTarget);
+      $el.addClass('tab-animation-enter');
+      $el.addClass('active');
+      //$(e.currentTarget).addClass('active').siblings().removeClass('active');
     });
   });
 </script>

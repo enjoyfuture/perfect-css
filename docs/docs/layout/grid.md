@@ -372,6 +372,25 @@ toc: true
 {% endexample %}
 </div>
 
+我们也可以使用 `.order-first` 快速改变元素位置到首行或首列
+<div class="doc-example-row">
+{% example html%}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      第一个元素，位置改变
+    </div>
+    <div class="col">
+      第二个元素，位置改变
+    </div>
+    <div class="col order-first">
+      位置由3变成1
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
 ### offset 调整位置
 使用 `.offset-*` 来调整列位置，比如 `offset-md-7`，实际上是增加了 margin-left 值，使列移动到 `col-md-7` 的位置上。
 

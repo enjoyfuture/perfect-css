@@ -247,13 +247,13 @@ todo 可以补充一下菜单列表或目录结构，支持六级目录
 
 ### 去掉列表样式
 
-设置 `list-style: none;` 来去掉列表默认样式
+添加 class 样式 `.li-unstyled` 来去掉列表默认样式
 
 {% example html%}
-<ol class="list-unstyled">
+<ol class="li-unstyled">
   <li>蔬菜</li>
   <li>水果
-    <ol class="list-unstyled">
+    <ol class="li-unstyled">
       <li>百香果</li>
       <li>芒果</li>
       <li>香蕉</li>
@@ -268,13 +268,13 @@ todo 可以补充一下菜单列表或目录结构，支持六级目录
 
 ### 内联列表
 
-内联列表会把内容显示在一行中，可以使用class `.list-inline` 和 `list-inline-item`
+内联列表会把内容显示在一行中，可以使用class `.li-inline` 和 `li-inline-item`
 
 {% example html%}
-<ul class="list-inline">
-  <li class="list-inline-item">进去</li>
-  <li class="list-inline-item">出来</li>
-  <li class="list-inline-item">离开</li>
+<ul class="li-inline">
+  <li class="li-inline-item">进去</li>
+  <li class="li-inline-item">出来</li>
+  <li class="li-inline-item">离开</li>
 </ul>
 {% endexample %}
 

@@ -5,12 +5,19 @@
 
 // 例子样式
 .doc-example {
-  position: relative;
+  position:      relative;
   margin-bottom: 1rem;
-  border: 1px solid;
+  border:        1px solid;
   @include theme-prop(border-color, secondary-lighter);
   border-radius: 4px;
-  transition: all .2s;
+  transition:    all .2s;
+
+  &:hover {
+    .icon-pure-code,
+    .icon-pure-code-expand {
+      @include theme-prop(color, secondary);
+    }
+  }
 }
 
 .doc-example-render {
@@ -22,10 +29,10 @@
 }
 
 .doc-example-expand {
-  position: relative;
-  display: flex;
+  position:        relative;
+  display:         flex;
   justify-content: flex-end;
-  margin: .5rem 2rem;
+  margin:          .5rem 2rem;
 }
 
 .icon-pure-code,
@@ -35,7 +42,7 @@
 }
 
 .doc-code-icon {
-  width: 2.5rem;
+  width:  2.5rem;
   cursor: pointer;
 
   &:hover {
@@ -45,8 +52,8 @@
     }
 
     & + .tooltip {
-      top: -3rem;
-      right: -.8rem;
+      top:     -3rem;
+      right:   -.8rem;
       display: block;
       opacity: .8;
     }
@@ -54,8 +61,8 @@
 }
 
 .doc-example-highlight.highlight {
-  display: none;
-  border: 0;
+  display:    none;
+  border:     0;
   border-top: 1px dashed;
   @include theme-prop(border-top-color, secondary-lighter);
   @include animation-transition(display);
@@ -63,12 +70,12 @@
 
 .doc-code-copy {
   position: absolute;
-  top: 1rem;
-  right: 3rem;
-  display: none;
+  top:      1rem;
+  right:    3rem;
+  display:  none;
 
   .icon-pure-copy {
-    cursor: pointer;
+    cursor:    pointer;
     transform: scale(.6);
     @include theme-prop(color, secondary-lighter);
   }
@@ -79,8 +86,8 @@
     }
 
     & + .tooltip {
-      top: -2rem;
-      right: 1.5rem;
+      top:     -2rem;
+      right:   1.5rem;
       display: block;
       opacity: .8;
     }
@@ -91,9 +98,47 @@
   position: relative;
   &:hover .doc-code-copy {
     display: block;
+    .icon-pure-copy {
+      @include theme-prop(color, secondary);
+    }
   }
 }
 
+// 栅格例子样式
+.doc-example-row {
+  .row + .row {
+    margin-top: 1rem;
+  }
+  // 嵌套的样式
+  .row .row {
+    border: 1px solid;
+  }
+  [class*="col"] {
+    padding-top:    .5rem;
+    padding-bottom: .5rem;
+    color:          #fff;
+    @include theme-prop(background-color, primary-light);
+    text-align:     center;
+
+    &:nth-of-type(2n) {
+      @include theme-prop(background-color, primary);
+    }
+  }
+}
+
+.doc-example-row-flex-cols .row {
+  min-height: 5rem;
+  @include theme-prop(background-color, primary-lightest);
+}
+
+.doc-example-row-gutters {
+  .no-gutters {
+    margin-top: 1rem;
+  }
+  [class^="col"] > div {
+    @include theme-prop(background-color, secondary-light);
+  }
+}
 
 //// 例子样式
 //.doc-example-render {
@@ -126,38 +171,4 @@
 //  }
 //}
 //
-//// 栅格例子样式
-//.doc-example-row {
-//  .row + .row {
-//    margin-top: 1rem;
-//  }
-//  // 嵌套的样式
-//  .row .row {
-//    border: 1px solid;
-//  }
-//  [class*="col"] {
-//    padding-top: 10px;
-//    padding-bottom: 10px;
-//    color: #fff;
-//    background: $light-blue-300;
-//    text-align: center;
-//
-//    &:nth-of-type(2n) {
-//      background: $blue-500;
-//    }
-//  }
-//}
-//
-//.doc-example-row-flex-cols .row {
-//  min-height: 5rem;
-//  background: $light-blue-50;
-//}
-//
-//.doc-example-row-gutters {
-//  .no-gutters {
-//    margin-top: 1rem;
-//  }
-//  [class^="col"] > div {
-//    background: $purple-300;
-//  }
-//}
+

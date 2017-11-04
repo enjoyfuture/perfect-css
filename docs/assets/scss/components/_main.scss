@@ -48,9 +48,10 @@
       height:         .5rem;
       vertical-align: middle;
       @include theme-prop(background, primary);
-      @include shadow(6, $umbra-color: var(--theme-primary-lighter),
-                      $penumbra-color: var(--theme-primary-lighter),
-                      $ambient-color: var(--theme-primary-lightest)
+      @include shadow(6,
+        $umbra-color: var(--theme-primary-lighter),
+        $penumbra-color: var(--theme-primary-lighter),
+        $ambient-color: var(--theme-primary-lightest)
       );
     }
   }

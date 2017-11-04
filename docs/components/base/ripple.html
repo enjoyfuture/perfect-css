@@ -4,130 +4,140 @@ title: Ripple 效果
 group: base
 ---
 
-<div class="ripple-demo">
-  <h2>Ripple 波纹效果</h2>
+<h2>纯 CSS Ripple</h2>
 
-  <h3>有界限的纯 CSS Ripple</h3>
+<h3>有界限的、切断的 Ripple</h3>
+<section class="ripple-demo">
   <div class="ripple" tabindex="0">
     纯 CSS 波纹效果
   </div>
+</section>
 
-  <h3>有界的动效</h3>
+<h3>没有被切断的、完整的 Ripple</h3>
+<section class="ripple-demo">
+  <div class="ripple ripple-unbounded" tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+</section>
+
+<h2>Ripple 动效</h2>
+
+<h3>有界限的、切断的动效</h3>
+<section class="ripple-demo">
   <div class="ripple ripple-impact" tabindex="0">
     点击看效果，结合 JavaScript 动态设置其 CSS 变量
   </div>
+</section>
 
-  <h3>无界的纯 CSS Ripple</h3>
-  <div class="ripple ripple-unbounded"
-       tabindex="0">
+<h3>没有被切断的、完整的动效</h3>
+<section class="ripple-demo">
+  <div class="ripple ripple-impact ripple-unbounded" tabindex="0">
     <div class="icon-circle"></div>
   </div>
+</section>
 
-  <h3>无界的动效</h3>
-  <div class="ripple ripple-impact ripple-unbounded"
-       tabindex="0">
-    <div class="icon-circle"></div>
-  </div>
-
-  <h3>取消当前活动态</h3>
+<h3>取消当前活动态</h3>
+<section class="ripple-demo">
   <div class="ripple ripple-impact ripple-impact-active inactive-demo"
        tabindex="0" style="--ripple-translate-start: 0; --ripple-translate-end: 50px;">
     点击看效果，结合 JavaScript 动态设置其 CSS 变量
   </div>
+</section>
 
-  <h3>自定义背景</h3>
-  <div class="d-flex">
-    <div class="ripple ripple-bg ripple-custom1" tabindex="0">
-      自定义背景1
-    </div>
-    <div class="ripple ripple-bg ripple-custom2" tabindex="0">
-      自定义背景2
-    </div>
-    <div class="ripple ripple-impact ripple-bg ripple-custom2" tabindex="0">
-      自定义背景2-动画效果
-    </div>
-  </div>
+<h2>Ripple 主题</h2>
+<h3>主颜色</h3>
 
-  <h3>主题样式</h3>
-  <h4>纯 CSS </h4>
-  <div class="d-flex align-items-center">
-    <div class="ripple ripple-primary" tabindex="0">
-      Primary
-    </div>
-    <div class="ripple ripple-secondary" tabindex="0">
-      Secondary
-    </div>
-    <div class="ripple ripple-unbounded ripple-primary"
-         tabindex="0">
-      <div class="icon-circle"></div>
-    </div>
-    <div class="ripple ripple-unbounded ripple-secondary"
-         tabindex="0">
-      <div class="icon-circle"></div>
-    </div>
+<h4>纯 CSS </h4>
+<section class="d-flex align-items-center ripple-demo">
+  <div class="ripple ripple-primary" tabindex="0">
+    Primary
   </div>
+  <div class="ripple ripple-secondary" tabindex="0">
+    Secondary
+  </div>
+  <div class="ripple ripple-unbounded ripple-primary"
+       tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+  <div class="ripple ripple-unbounded ripple-secondary"
+       tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+</section>
 
-  <h4>动效 </h4>
-  <div class="d-flex align-items-center">
-    <div class="ripple ripple-primary ripple-impact" tabindex="0">
-      Primary
-    </div>
-    <div class="ripple ripple-secondary ripple-impact" tabindex="0">
-      Secondary
-    </div>
-    <div class="ripple ripple-unbounded ripple-primary ripple-impact"
-         tabindex="0">
-      <div class="icon-circle"></div>
-    </div>
-    <div class="ripple ripple-unbounded ripple-secondary ripple-impact"
-         tabindex="0">
-      <div class="icon-circle"></div>
-    </div>
+<h4>动效</h4>
+<section class="d-flex align-items-center ripple-demo">
+  <div class="ripple ripple-primary ripple-impact" tabindex="0">
+    Primary
   </div>
+  <div class="ripple ripple-secondary ripple-impact" tabindex="0">
+    Secondary
+  </div>
+  <div class="ripple ripple-unbounded ripple-primary ripple-impact"
+       tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+  <div class="ripple ripple-unbounded ripple-secondary ripple-impact"
+       tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+</section>
 
-  <h3>辅助样式</h3>
-  <h4>纯 CSS </h4>
-  <div class="d-flex">
-    <div class="ripple ripple-success" tabindex="0">
-      成功
-    </div>
-    <div class="ripple ripple-info" tabindex="0">
-      信息
-    </div>
-    <div class="ripple ripple-warning" tabindex="0">
-      警告
-    </div>
-    <div class="ripple ripple-error" tabindex="0">
-      错误
-    </div>
+<h3>辅助样式</h3>
+<h4>纯 CSS </h4>
+<section class="d-flex ripple-demo">
+  <div class="ripple ripple-success" tabindex="0">
+    成功
   </div>
+  <div class="ripple ripple-info" tabindex="0">
+    信息
+  </div>
+  <div class="ripple ripple-warning" tabindex="0">
+    警告
+  </div>
+  <div class="ripple ripple-error" tabindex="0">
+    错误
+  </div>
+</section>
 
-  <h4>动效 </h4>
-  <div class="d-flex">
-    <div class="ripple ripple-success ripple-impact" tabindex="0">
-      成功
-    </div>
-    <div class="ripple ripple-info ripple-impact" tabindex="0">
-      信息
-    </div>
-    <div class="ripple ripple-warning ripple-impact" tabindex="0">
-      警告
-    </div>
-    <div class="ripple ripple-error ripple-impact" tabindex="0">
-      错误
-    </div>
+<h4>动效 </h4>
+<section class="d-flex ripple-demo">
+  <div class="ripple ripple-success ripple-impact" tabindex="0">
+    成功
   </div>
+  <div class="ripple ripple-info ripple-impact" tabindex="0">
+    信息
+  </div>
+  <div class="ripple ripple-warning ripple-impact" tabindex="0">
+    警告
+  </div>
+  <div class="ripple ripple-error ripple-impact" tabindex="0">
+    错误
+  </div>
+</section>
 
-  <h3>用在 button 标签上</h3>
-  <div class="d-flex">
-    <button type="button" class="ripple">
-      button
-    </button>
-    <button type="button" class="ripple ripple-impact">
-      impact button
-    </button>
+<h2>自定义背景</h2>
+<section class="d-flex ripple-demo">
+  <div class="ripple ripple-custom1" tabindex="0">
+    自定义背景1
   </div>
-</div>
+  <div class="ripple ripple-custom2" tabindex="0">
+    自定义背景2
+  </div>
+  <div class="ripple ripple-impact ripple-custom2" tabindex="0">
+    自定义背景2-动画效果
+  </div>
+</section>
+
+<h2>用在 button 标签上</h2>
+<section class="d-flex ripple-demo">
+  <button type="button" class="ripple">
+    button
+  </button>
+  <button type="button" class="ripple ripple-impact">
+    impact button
+  </button>
+</section>
 
 <script>
   $(function () {
@@ -135,7 +145,6 @@ group: base
     /**
      * 计算事件坐标
      * @param {!Event} ev
-     * @param {!{x: number, y: number}} pageOffset
      * @param {!ClientRect} clientRect
      * @return {!{x: number, y: number}}
      */
@@ -179,7 +188,7 @@ group: base
         width,
         height,
         size,
-        scale
+        scale,
       };
     }
 
@@ -198,7 +207,7 @@ group: base
       }
     }
 
-    var $ripple = $('.ripple-impact:not(.inactive-demo)');
+    const $ripple = $('.ripple-impact:not(.inactive-demo)');
     $ripple.mousedown((e) => {
       const $el = $(e.currentTarget);
 
