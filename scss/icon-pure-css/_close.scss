@@ -1,0 +1,22 @@
+// 加减图标
+@import "./variable";
+@import "./mixin";
+
+// 关闭图标
+.icon-pure-close {
+  &::before {
+    position:         absolute;
+    top:              $icon-size / 2;
+    left:             0;
+    width:            $icon-size;
+    height:           1px;
+    background-color: currentColor;
+    transform:        rotate(-45deg);
+  }
+
+  &::after {
+    @extend .icon-pure-close::before;
+    transform: rotate(45deg);
+  }
+}
+

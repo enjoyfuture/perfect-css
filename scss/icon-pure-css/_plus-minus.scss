@@ -3,6 +3,7 @@
 @import "./variable";
 @import "./mixin";
 
+// 减
 .icon-pure-minus {
   &::before {
     @include icon-center-middle;
@@ -11,6 +12,7 @@
   }
 }
 
+// 加
 .icon-pure-plus {
   @extend .icon-pure-minus;
 

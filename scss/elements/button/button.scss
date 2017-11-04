@@ -168,6 +168,7 @@
 
 // Sizing
 .btn-lg {
+  font-weight: 400;
   @include btn-size($font-size-lg, $btn-padding-x-lg, $btn-padding-y-lg, $btn-border-radius-lg);
 }
 

@@ -1,3 +1,20 @@
+@import "./variable";
+
+// 定义 tab 大小
+@mixin tab-size($padding-x: $tab-padding-x, $padding-y: $tab-padding-y,
+  $font-size: $tab-font-size, $font-weight: $tab-font-weight,
+  $line-height: $tab-line-height, $active-width-subtract: $tab-active-width-subtract, $active-border: $tab-active-border) {
+  padding:     $padding-x $padding-y;
+  font-size:   $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+
+  &::after {
+    width: calc(100% - #{$active-width-subtract});
+    height: $active-border;
+  }
+}
+
 // 定义 tab 主题
 @mixin tab-theme($active-color, $border, $hover-color, $color) {
 

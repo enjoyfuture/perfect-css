@@ -4,9 +4,10 @@
 @import "../../theme/variable";
 
 @import "../../theme/mixin";
-// @import "./mixin";
+@import "./mixin";
+@import "../../animation/function";
 
-// 对于不支持 flex 的浏览器，可以采用 display table 来处理
+// tabs 基本样式由 .tab-bar 和 .tab 组成
 .tab-bar {
   position: relative;
   display: flex;
@@ -37,11 +38,7 @@
 .tab {
   position: relative;
   display: inline-block;
-  padding: $tab-padding-x $tab-padding-y;
   overflow: hidden;
-  font-size: $tab-font-size;
-  font-weight: $tab-font-weight;
-  line-height: $tab-line-height;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -57,39 +54,47 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    display: none;
-    width: calc(100% - #{$tab-active-width-subtract});
-    height: $tab-active-border;
     background-color: transparent;
     pointer-events: none;
   }
 
+  @include tab-size();
+
   &.active {
     @include theme-prop(color, primary-on-light);
 
-    // 获取焦点，鼠标经过或者当前为活动节点时，显示底部边框
+    // 当前为活动节点时，显示底部边框
     &::after {
-      display: block;
       @include theme-prop(background-color, primary-on-light);
+      transform: translateX(0);
     }
   }
 
   &:hover {
+    // a 标签
     text-decoration: none;
+    @include theme-prop(color, primary-on-light);
   }
 
   &:focus {
     outline: 0;
   }
 
-  &:focus::after,
-  &:hover::after {
-    opacity: .38;
+  // 动画
+  // 选中 Tab 时先添加该动画样式，再加 .active 待动画结束后删除 .tab-animation-enter
+  &-animation-enter {
+    &::after {
+      transform: translateX(-100%);
+      transform-origin: left;
+      transition: animation-leave-sharp(transform, $tab-transition-duration);
+    }
   }
 
-  &.active::after,
-  &:active::after {
-    opacity: .87;
+  // 离开
+  &-animation-enter {
+    &::after {
+      transition: animation-enter(transform, $tab-transition-duration);
+    }
   }
 }
 

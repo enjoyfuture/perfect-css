@@ -4,24 +4,32 @@
   position: absolute !important;
 }
 
-.pos-abs-top {
+.pos-top {
   position: absolute !important;
-  top: 0;
+  top:      0;
 }
 
-.pos-abs-bottom {
+.pos-bottom {
   position: absolute !important;
-  bottom: 0;
+  bottom:   0;
 }
 
-.pos-abs-left {
+.pos-left {
   position: absolute !important;
-  left: 0;
+  left:     0;
 }
 
-.pos-abs-right {
+.pos-right {
   position: absolute !important;
-  right: 0;
+  right:    0;
+}
+
+// 水平垂直居中
+.pos-center {
+  position:  absolute !important;
+  top:       50%;
+  left:      50%;
+  transform: translate(-50%, -50%);
 }
 
 .pos-rel {
@@ -38,24 +46,24 @@
 
 .fixed-top {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: $zindex-fixed;
+  top:      0;
+  left:     0;
+  right:    0;
+  z-index:  $zindex-fixed;
 }
 
 .fixed-bottom {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: $zindex-fixed;
+  bottom:   0;
+  left:     0;
+  right:    0;
+  z-index:  $zindex-fixed;
 }
 
 .sticky-top {
   @supports (position: sticky) {
     position: sticky;
-    top: 0;
-    z-index: $zindex-sticky;
+    top:      0;
+    z-index:  $zindex-sticky;
   }
 }
