@@ -1,72 +1,70 @@
 // tab style
-
 @import "./variable";
 @import "../../theme/variable";
-
 @import "../../theme/mixin";
 @import "./mixin";
 @import "../../animation/function";
 
 // tabs 基本样式由 .tab-bar 和 .tab 组成
 .tab-bar {
-  position: relative;
-  display: flex;
+  position:       relative;
+  display:        flex;
   flex-direction: row;
-  text-transform: uppercase;
-}
 
-.tab-bar-left {
-  justify-content: flex-start;
-}
-
-.tab-bar-center {
-  justify-content: center;
-}
-
-.tab-bar-right {
-  justify-content: flex-end;
-}
-
-.tab-bar-between {
-  justify-content: space-between;
-
-  .tab {
-    flex: 1;
+  &-left {
+    justify-content: flex-start;
   }
-}
 
-.tab {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  text-align: center;
-  text-decoration: none;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  &-center {
+    justify-content: center;
+  }
 
-  @include theme-prop(color, secondary-on-light);
+  &-right {
+    justify-content: flex-end;
+  }
 
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: transparent;
-    pointer-events: none;
+  &-between {
+    justify-content: space-between;
+
+    .tab {
+      flex: 1;
+    }
   }
 
   @include tab-size();
+}
+
+.tab {
+  position:                relative;
+  display:                 inline-block;
+  overflow:                hidden;
+  text-align:              center;
+  text-decoration:         none;
+  white-space:             nowrap;
+  vertical-align:          middle;
+  cursor:                  pointer;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing:  antialiased;
+  @include theme-prop(color, secondary-on-light);
+
+  &::after {
+    content:        "";
+    position:       absolute;
+    bottom:         0;
+    @include theme-prop(background-color, primary-on-light);
+    pointer-events: none;
+    transform:      scale(0);
+    transition:     animation-leave-sharp(transform, $tab-transition-duration);
+    will-change:    transform;
+  }
 
   &.active {
     @include theme-prop(color, primary-on-light);
 
     // 当前为活动节点时，显示底部边框
     &::after {
-      @include theme-prop(background-color, primary-on-light);
-      transform: translateX(0);
+      transform:  scale(1);
+      transition: animation-enter(transform, $tab-transition-duration);
     }
   }
 
@@ -77,55 +75,57 @@
   }
 
   &:focus {
-    outline: 0;
+    @include theme-prop(outline-color, secondary-on-light);
   }
 
-  // 动画
-  // 选中 Tab 时先添加该动画样式，再加 .active 待动画结束后删除 .tab-animation-enter
-  &-animation-enter {
-    &::after {
-      transform: translateX(-100%);
-      transform-origin: left;
-      transition: animation-leave-sharp(transform, $tab-transition-duration);
-    }
+  // disabled
+  &.disabled {
+    pointer-events: none;
+    cursor:         default;
+    @include theme-prop(color, disabled-on-light);
   }
 
-  // 离开
-  &-animation-enter {
-    &::after {
-      transition: animation-enter(transform, $tab-transition-duration);
-    }
+}
+
+// Tab 底部线条平滑的移动
+.tab-bar-smooth {
+  .tab::after {
+    content: normal;
+  }
+
+  &-line {
+    position:         absolute;
+    bottom:           0;
+    left:             0;
+    height:           2px;
+    visibility:       hidden;
+    transform-origin: left top;
+    transition:       animation-enter(transform, $tab-transition-duration);
+    will-change:      transform;
+    @include theme-prop(background-color, primary-on-light);
   }
 }
 
-// 动画效果 涟漪效果 TODO 动画效果结合 js 实现增强版 待实现
-.tab-ripple .tab {
+// Tab 大小
+.tab-bar-lg {
+  @include tab-size($padding-x: $tab-padding-x-lg, $padding-y: $tab-padding-y-lg, $font-size: $tab-font-size-lg);
+}
 
-  &::after {
-    transform: scale(0);
-  }
-  &.active::after {
-    transform: scale(1);
-    transition: transform 240ms 0ms cubic-bezier(.5, -.5, 1, 1);
+.tab-bar-sm {
+  @include tab-size($padding-x: $tab-padding-x-sm, $padding-y: $tab-padding-y-sm, $font-size: $tab-font-size-sm);
+}
+
+// Tab 主题
+@each $theme in ("primary", "secondary") {
+  .tab-bar-#{$theme} {
+    @include tab-theme($theme);
   }
 }
 
-// 小字体 tab
-.tab-bar-sm .tab {
-  font-size: $tab-font-size-sm;
-  font-weight: $tab-font-weight-sm;
+// 辅助颜色对应 radio
+// Fixme 没选中颜色有点发淡，待后续处理
+@each $theme in $theme-assist {
+  .tab-bar-#{$theme} {
+    @include tab-theme($theme, $assist: true);
+  }
 }
-
-// 自定义主题 Tab  todo
-//@each $color, $value in ('primary', 'secondary') {
-//  .tab-#{$color} {
-//    @include tab-theme($value, $value);
-//  }
-//}
-
-// 自定义主题 Tab
-//@each $color, $value in $theme-assist-colors {
-//  .tab-#{$color} {
-//    @include tab-theme($value, $value);
-//  }
-//}

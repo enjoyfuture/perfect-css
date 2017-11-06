@@ -1,38 +1,82 @@
+@import "../../theme/mixin";
 @import "./variable";
 
 // 定义 tab 大小
 @mixin tab-size($padding-x: $tab-padding-x, $padding-y: $tab-padding-y,
   $font-size: $tab-font-size, $font-weight: $tab-font-weight,
   $line-height: $tab-line-height, $active-width-subtract: $tab-active-width-subtract, $active-border: $tab-active-border) {
-  padding:     $padding-x $padding-y;
-  font-size:   $font-size;
-  font-weight: $font-weight;
-  line-height: $line-height;
 
-  &::after {
-    width: calc(100% - #{$active-width-subtract});
-    height: $active-border;
+  .tab {
+    padding:     $padding-x $padding-y;
+    font-size:   $font-size;
+    font-weight: $font-weight;
+    line-height: $line-height;
+
+    &::after {
+      // 保持居中显示
+      left:   $active-width-subtract / 2;
+      width:  calc(100% - #{$active-width-subtract});
+      height: $active-border;
+    }
   }
 }
 
 // 定义 tab 主题
-@mixin tab-theme($active-color, $border, $hover-color, $color) {
-
+@mixin tab-theme($theme, $opacity: .54, $assist: false) {
   .tab {
-    color: $color;
-
-    &:hover,
-    &:focus,
-    &:active {
-      color: $hover-color;
-    }
-
-    &.active {
-      color: $active-color;
+    @if type-of($theme) == "color" {
+      @include theme-prop(color, rgba($theme, $opacity));
+    } @else {
+      @if ($assist) {
+        @include theme-assist(color, #{$theme}-light);
+      } @else {
+        @include theme-prop(color, #{$theme}-light);
+      }
     }
 
     &::after {
-      background-color: $border;
+      @if ($assist) {
+        @include theme-assist(background-color, $theme);
+      } @else {
+        @include theme-prop(background-color, $theme);
+      }
+    }
+
+    &.active,
+    &:hover {
+      @if ($assist) {
+        @include theme-assist(color, $theme);
+      } @else {
+        @include theme-prop(color, $theme);
+      }
+    }
+
+    &:focus {
+      @if type-of($theme) == "color" {
+        @include theme-prop(outline-color, rgba($theme, $opacity));
+      } @else {
+        @if ($assist) {
+          @include theme-assist(outline-color, #{$theme}-light);
+        } @else {
+          @include theme-prop(outline-color, #{$theme}-light);
+        }
+      }
+    }
+
+    // disabled
+    &.disabled {
+      @include theme-prop(color, disabled-on-light);
+    }
+  }
+
+  // Tab 底部线条平滑的移动
+  &.tab-bar-smooth {
+    .tab-bar-smooth-line {
+      @if ($assist) {
+        @include theme-assist(background-color, $theme);
+      } @else {
+        @include theme-prop(background-color, $theme);
+      }
     }
   }
 }

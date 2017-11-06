@@ -1,0 +1,7 @@
+@import "../../../../scss/navigation/tabs/mixin";
+
+// 自定义 Tab
+.tab-bar-customer {
+  @include tab-size($padding-x: 2rem, $padding-y: 3rem, $font-size: 1.25rem);
+  @include tab-theme($theme: #9c27b0);
+}

@@ -7,11 +7,17 @@ $tab-font-weight: 400 !default;
 $tab-line-height: 1.5rem !default;
 
 // active 和鼠标经过，边框减少宽度
-$tab-active-width-subtract: 4px !default;
+$tab-active-width-subtract: 16px !default;
 $tab-active-border: 2px !default;
 
 // 动画持续时间
-$tab-transition-duration: 1200ms !default;
+$tab-transition-duration: 240ms !default;
 
+// Tab 大小
+$tab-padding-x-lg: 1rem !default;
+$tab-padding-y-lg: 2rem !default;
+$tab-font-size-lg: 1.125rem !default;
+
+$tab-padding-x-sm: .5rem !default;
+$tab-padding-y-sm: 1rem !default;
 $tab-font-size-sm: .875rem !default;
-$tab-font-weight-sm: 500 !default;
