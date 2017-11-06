@@ -22,7 +22,7 @@
 }
 
 // 定义 tab 主题
-@mixin tab-theme($theme, $opacity: .54, $assist: false) {
+@mixin tab-theme($theme, $opacity: .65, $assist: false) {
   .tab {
     @if type-of($theme) == "color" {
       @include theme-prop(color, rgba($theme, $opacity));

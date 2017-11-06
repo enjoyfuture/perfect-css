@@ -1,0 +1,63 @@
+// 可以左右滑动的 tab bar
+
+$mdc-tab-bar-scroller-indicator-width: 48px;
+@import "./variable";
+@import "../../theme/mixin";
+@import "../../animation/function";
+
+// tab-bar 外层 scroller
+.tab-bar-scroller {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  background-color: inherit;
+
+  // 可滑动的区域
+  &-frame {
+    position: relative;
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    overflow: hidden;
+
+    .tab-bar {
+      transition: animation-enter(transform, $tab-transition-duration);
+      will-change: transform;
+    }
+  }
+
+  // 左右滑动指示器
+  &-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $mdc-tab-bar-scroller-indicator-width;
+    cursor: pointer;
+    visibility: hidden;
+    @include theme-prop(color, secondary-on-light);
+
+    &:hover {
+      @include theme-prop(color, primary-on-light);
+    }
+
+    &-inner {
+      color: inherit;
+      text-decoration: inherit;
+      cursor: inherit;
+
+      &:focus {
+        outline-color: inherit;
+      }
+      &:hover {
+        color: inherit;
+      }
+    }
+
+    // 显示
+    &-enabled {
+      visibility: visible;
+    }
+  }
+}
