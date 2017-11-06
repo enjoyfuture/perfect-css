@@ -2,7 +2,7 @@
 @import "../../../../scss/theme/mixin";
 @import "../../../../scss/elements/checkbox/mixin";
 
-// 自定义按钮
+// 自定义 Checkbox
 .checkbox-customer {
   @include checkbox-theme($theme: #e91e63, $opacity: .32);
 }

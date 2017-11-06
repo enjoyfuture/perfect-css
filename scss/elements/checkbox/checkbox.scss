@@ -201,17 +201,19 @@
   @include checkbox-size($checkbox-size: $checkbox-size-circle);
 }
 
-// 定义主题样式
-@each $theme in ("primary", "secondary") {
-  .checkbox-#{$theme} {
-    @include checkbox-theme($theme);
+@if ($enable-custom-theme and $enable-custom-theme-for-checkbox) {
+  // 定义主题样式
+  @each $theme in ("primary", "secondary") {
+    .checkbox-#{$theme} {
+      @include checkbox-theme($theme);
+    }
   }
-}
 
-// 辅助颜色对应 checkbox
-@each $theme in $theme-assist {
-  .checkbox-#{$theme} {
-    @include checkbox-theme($theme, $opacity: .64, $assist: true);
+  // 辅助颜色对应 checkbox
+  @each $theme in $theme-assist {
+    .checkbox-#{$theme} {
+      @include checkbox-theme($theme, $opacity: .64, $assist: true);
+    }
   }
 }
 

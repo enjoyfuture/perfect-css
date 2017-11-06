@@ -21,3 +21,6 @@ $tab-font-size-lg: 1.125rem !default;
 $tab-padding-x-sm: .5rem !default;
 $tab-padding-y-sm: 1rem !default;
 $tab-font-size-sm: .875rem !default;
+
+// 是否开启定制主题，包括主颜色和辅助颜色，默认关闭，需要的话可开启
+$enable-custom-theme-for-tab: false !default;

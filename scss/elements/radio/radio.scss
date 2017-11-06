@@ -158,16 +158,19 @@
 }
 
 // 定义主题样式
-@each $theme in ("primary", "secondary") {
-  .radio-#{$theme} {
-    @include radio-theme($theme);
+@if ($enable-custom-theme and $enable-custom-theme-for-radio) {
+  // 主颜色
+  @each $theme in ("primary", "secondary") {
+    .radio-#{$theme} {
+      @include radio-theme($theme);
+    }
   }
-}
 
-// 辅助颜色对应 radio
-@each $theme in $theme-assist {
-  .radio-#{$theme} {
-    @include radio-theme($theme, $opacity: .64, $assist: true);
+  // 辅助颜色对应 radio
+  @each $theme in $theme-assist {
+    .radio-#{$theme} {
+      @include radio-theme($theme, $opacity: .64, $assist: true);
+    }
   }
 }
 

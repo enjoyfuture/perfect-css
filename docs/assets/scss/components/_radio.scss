@@ -2,7 +2,7 @@
 @import "../../../../scss/theme/mixin";
 @import "../../../../scss/elements/radio/mixin";
 
-// 自定义按钮
+// 自定义Radio
 .radio-customer {
   @include radio-theme($theme: #9c27b0, $opacity: .32);
 }

@@ -66,7 +66,7 @@
 
 // 组件间距
 .component-spacing {
-  > div, button, a {
+  >div, >button, >a {
     margin-bottom: 1rem;
     margin-right:  1rem;
     &:last-child {
@@ -76,7 +76,7 @@
 }
 
 .component-vertical-spacing {
-  > div, button, a {
+  >div, >button, >a, >nav {
     margin-bottom: 1rem;
     &:last-child {
       margin-bottom: 0;

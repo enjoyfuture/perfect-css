@@ -13,3 +13,5 @@ $radio-size-sm: 15px !default;
 // 动画持续时间
 $radio-transition-duration: 120ms !default;
 
+// 是否开启定制主题，包括主颜色和辅助颜色，默认关闭，需要的话可开启
+$enable-custom-theme-for-radio: false !default;

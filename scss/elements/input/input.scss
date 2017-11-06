@@ -216,31 +216,31 @@
     $input-icon-top-sm, .75, -.5rem);
 }
 
-// Theme
-
 // 定义主题样式
-@each $style in ("primary", "secondary") {
-  .input-#{$style} {
-    .input-field {
-      @include theme-prop(border-color, #{$style}-lighter);
+@if ($enable-custom-theme and $enable-custom-theme-for-input) {
+  // 主颜色
+  @each $style in ("primary", "secondary") {
+    .input-#{$style} {
+      .input-field {
+        @include theme-prop(border-color, #{$style}-lighter);
 
-      &:focus {
-        @include theme-prop(border-color, #{$style});
+        &:focus {
+          @include theme-prop(border-color, #{$style});
+        }
       }
     }
   }
-}
 
-// 辅助颜色
-// 辅助颜色对应 radio
-@each $theme in $theme-assist {
-  $color: map-get($theme-assist-colors, $theme);
-  .input-#{$theme} {
-    .input-field {
-      @include theme-assist(border-color, #{$theme}-light);
+  // 辅助颜色对应 input
+  @each $theme in $theme-assist {
+    $color: map-get($theme-assist-colors, $theme);
+    .input-#{$theme} {
+      .input-field {
+        @include theme-assist(border-color, #{$theme}-light);
 
-      &:focus {
-        @include theme-assist(border-color, #{$theme});
+        &:focus {
+          @include theme-assist(border-color, #{$theme});
+        }
       }
     }
   }

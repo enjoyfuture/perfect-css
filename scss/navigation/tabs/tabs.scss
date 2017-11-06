@@ -116,16 +116,20 @@
 }
 
 // Tab 主题
-@each $theme in ("primary", "secondary") {
-  .tab-bar-#{$theme} {
-    @include tab-theme($theme);
+@if ($enable-custom-theme and $enable-custom-theme-for-tab) {
+  // 主颜色
+  @each $theme in ("primary", "secondary") {
+    .tab-bar-#{$theme} {
+      @include tab-theme($theme);
+    }
+  }
+
+  // 辅助颜色对应 radio
+  // Fixme 没选中颜色有点发淡，待后续处理
+  @each $theme in $theme-assist {
+    .tab-bar-#{$theme} {
+      @include tab-theme($theme, $assist: true);
+    }
   }
 }
 
-// 辅助颜色对应 radio
-// Fixme 没选中颜色有点发淡，待后续处理
-@each $theme in $theme-assist {
-  .tab-bar-#{$theme} {
-    @include tab-theme($theme, $assist: true);
-  }
-}

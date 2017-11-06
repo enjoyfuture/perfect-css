@@ -2,8 +2,8 @@
 // 可以通过设为 true 或 false 来开启或关闭相关功能
 
 // 是否使用响应式布局
-$enable-responsive: true !default;
-//是否使用圆角
+$enable-responsive: false !default;
+// 是否使用圆角
 $enable-rounded: true !default;
 // 是否开启阴影效果，对于部分组件使用了阴影效果，
 // 用户也可以直接使用 shadow 中定义的阴影样式来为一些元素添加阴影效果
@@ -12,3 +12,10 @@ $enable-shadows: true !default;
 $enable-transparent: true !default;
 // 是否开启打印样式
 $enable-print-styles: false !default;
+// 是否定制主题，包括主颜色和辅助颜色，默认关闭，需要的话可开启
+// 定制主题会生成多余的主题类样式，如果嫌生成的 CSS 文件太大，可以关闭
+// 如果引入 sass 来动态编译，我们也可以调用组件中封装好的主题 mixin
+// 该变量为全局控制主题开关，在各自的组件中又定义了自己的主题开关变量，格式为
+// $enable-custom-theme-for-xxx: false !default; xxx 表示对应的组件名称
+$enable-custom-theme: false !default;
+

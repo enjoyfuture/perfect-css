@@ -1,7 +1,8 @@
 // ripple style
 @import "../animation/function";
 @import "../theme/mixin";
-@import "mixin";
+@import "./mixin";
+@import "./variable";
 
 .ripple {
   position: relative;
@@ -24,18 +25,22 @@
 @include ripple-unbounded();
 
 // 定义主题样式
-@each $theme in ("primary", "secondary") {
-  .ripple-#{$theme} {
-    @include ripple-pseudo-theme ((theme-style: #{$theme}-alpha, opacity: 1));
+@if ($enable-custom-theme and $enable-custom-theme-for-ripple) {
+  // 主颜色
+  @each $theme in ("primary", "secondary") {
+    .ripple-#{$theme} {
+      @include ripple-pseudo-theme ((theme-style: #{$theme}-alpha, opacity: 1));
+    }
+  }
+
+  // 辅助颜色对应 ripple
+  @each $theme in $theme-assist {
+    .ripple-#{$theme} {
+      @include ripple-pseudo-theme ((theme-style: #{$theme}-alpha, opacity: 1));
+    }
   }
 }
 
-// 辅助颜色对应 ripple
-@each $theme in $theme-assist {
-  .ripple-#{$theme} {
-    @include ripple-pseudo-theme ((theme-style: #{$theme}-alpha, opacity: 1));
-  }
-}
 
 
 

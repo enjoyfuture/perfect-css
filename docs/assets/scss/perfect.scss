@@ -1,5 +1,16 @@
 // 主 CSS 样式
 @import "../../../scss/perfect";
 
+// 覆盖 Perfect 变量
+// 是否使用响应式布局，开启
+$enable-responsive: true;
+// 是否定制主题，开启
+$enable-custom-theme: true;
+$enable-custom-theme-for-btn: true;
+$enable-custom-theme-for-checkbox: true;
+$enable-custom-theme-for-input: true;
+$enable-custom-theme-for-radio: true;
+$enable-custom-theme-for-tab: true;
+$enable-custom-theme-for-ripple: true;
 // 自定义主题
 @import "common/theme";
