@@ -1,5 +1,6 @@
 // Buttons variable
 @import "../../base/variables/font";
+@import "../../theme/variable";
 
 $btn-min-width: 4rem !default;
 $btn-padding-x: 1rem !default;
@@ -17,10 +18,15 @@ $btn-filled-ripple-opacity: .32;
 $btn-padding-x-lg: 1.25rem !default;
 $btn-padding-y-lg: 1rem !default;
 $btn-border-radius-lg: 4px !default;
+$btn-line-height-lg: 1 !default;
 
 $btn-padding-x-sm: .75rem !default;
 $btn-padding-y-sm: .5rem !default;
 $btn-border-radius-sm: 2px !default;
+$btn-line-height-sm: 1.25 !default;
+
+// disabled 状态
+$btn-bg-disabled: map-get($greys, 300) !default;
 
 // 是否开启定制主题，包括主颜色和辅助颜色，默认关闭，需要的话可开启
 $enable-custom-theme-for-btn: false !default;

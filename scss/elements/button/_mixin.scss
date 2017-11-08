@@ -62,8 +62,9 @@
 }
 
 // 设置按钮大小
-@mixin btn-size($btn-font-size, $btn-padding-x, $btn-padding-y, $btn-border-radius) {
+@mixin btn-size($btn-font-size, $btn-padding-x, $btn-padding-y, $btn-border-radius, $btn-line-height) {
   padding: $btn-padding-y $btn-padding-x;
   border-radius: $btn-border-radius;
   font-size: $btn-font-size;
+  line-height: $btn-line-height;
 }

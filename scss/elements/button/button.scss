@@ -79,7 +79,7 @@
   //}
 
   // disabled
-  @include button-disabled($grey-color-300);
+  @include button-disabled($btn-bg-disabled);
 }
 
 // 浮雕的，凸起样式
@@ -120,7 +120,7 @@
         @include button-ripple((opacity: $btn-filled-ripple-opacity));
 
         // disabled
-        @include button-disabled($grey-color-300);
+        @include button-disabled($btn-bg-disabled);
       }
     }
   }
@@ -155,24 +155,25 @@
         @include button-ripple((opacity: $btn-filled-ripple-opacity));
 
         // disabled
-        @include button-disabled($grey-color-300);
+        @include button-disabled($btn-bg-disabled);
       }
     }
   }
 }
 
-// 100% 宽度
-.btn-full {
-  display: block;
-  width:   100%;
-}
-
 // Sizing
 .btn-lg {
   font-weight: 400;
-  @include btn-size($font-size-lg, $btn-padding-x-lg, $btn-padding-y-lg, $btn-border-radius-lg);
+  @include btn-size($font-size-lg, $btn-padding-x-lg, $btn-padding-y-lg, $btn-border-radius-lg, $btn-line-height-lg);
 }
 
 .btn-sm {
-  @include btn-size($font-size-xs, $btn-padding-x-sm, $btn-padding-y-sm, $btn-border-radius-sm);
+  @include btn-size($font-size-xs, $btn-padding-x-sm, $btn-padding-y-sm, $btn-border-radius-sm, $btn-line-height-sm);
+}
+
+// 100% 宽度， 去掉圆角
+.btn-full {
+  display: block;
+  width:   100%;
+  border-radius: 0;
 }
