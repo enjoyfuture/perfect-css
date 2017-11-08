@@ -55,7 +55,7 @@
         <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
     </ul>
   </div>
@@ -430,6 +430,39 @@
   
   
   <li class="menu-item">
+    <a href="/docs/base/ripple/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">基础组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/ripple/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">波纹效果 Ripple</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/shadow/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">阴影效果 Shadow</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
     <a href="/docs/navigation/nav/" 
        class="menu-title menu-header " style="padding-left: 1rem;">导航类组件</a>
     <ul class="menu" style="display: none;">
@@ -599,16 +632,6 @@
       <li class="menu-item">
         <a href="/docs/elements/progress/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 组件</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/docs/elements/alert/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Alert 组件</a></li>
       
       
 
@@ -887,7 +910,7 @@
     <main class="drawer-main navbar-fixed-adjust">
       
       <div class="doc-main">
-        <div class="doc-content">
+        <div class="doc-content catalogue-counter">
           <div class="doc-catalogue-menu">
             <div class="doc-catalogue-icon">
               <i class="icon-pure-catalogue"></i>
@@ -969,10 +992,10 @@
     <a class="menu-title" href="#" title="辅助颜色前景 CSS Classes" data-menu="toc-7-4">辅助颜色前景 CSS Classes</a>
   </li>
   <li>
-    <a class="menu-title" href="#" title="灰色文本前景 CSS Classes" data-menu="toc-7-5">灰色文本前景 CSS Classes</a>
+    <a class="menu-title" href="#" title="灰度颜色背景 CSS Classes" data-menu="toc-7-5">灰度颜色背景 CSS Classes</a>
   </li>
   <li>
-    <a class="menu-title" href="#" title="灰色文本背景 CSS Classes" data-menu="toc-7-6">灰色文本背景 CSS Classes</a>
+    <a class="menu-title" href="#" title="灰度颜色前景 CSS Classes" data-menu="toc-7-6">灰度颜色前景 CSS Classes</a>
   </li>
 </ul>
   </li>
@@ -1024,11 +1047,15 @@
 
 <p>例子中给出了主题对应的 Mixin 和 Function 的用法，以及主题预设的 CSS 样式（前景和背景色 classes）。</p>
 
-<p><a href="">例子</a></p>
+<p><a href="/components/theme/classes/" target="_blank">例子</a></p>
 
 <h1>
 <a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>主题 Sass 变量</h1>
 <p>主题 Sass 变量包括基本颜色变量、色调变量、辅助颜色变量和灰度颜色变量。</p>
+
+<p>首先给出颜色透明度变量</p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$alpha</span><span class="p">:</span> <span class="mi">.16</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+</code></pre></div></div>
 
 <h2>
 <a id="toc-4-1" class="menu-anchor" data-target="toc-4-1" aria-hidden="true"></a>基本颜色</h2>
@@ -1071,13 +1098,22 @@
 </span><span class="nv">$theme-secondary-darkest</span><span class="p">:</span> <span class="mh">#4a148c</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span> <span class="c1">// 取 $purple-900
 </span></code></pre></div></div>
 
-<p>上面定义的三种基本颜色值以及对应的 12 种浅色和深色颜色值作为数组放到变量 <code class="highlighter-rouge">$theme-property-values</code> 中</p>
+<p>为了方便用 CSS 变量设置透明的背景色，并且变量值修改后，对应的透明背景色也改变，主题基本颜色中又提供了透明色变量。
+其中波纹（ripple）组件中就用到了该变量值。
+如果浏览器支持了 CSS module，我们可以动态的修改 color 值，直接使用 $theme-primary 加透明参数值即可，只是目前浏览器还不支持。
+关于 <a href="https://www.w3.org/TR/2016/WD-css-color-4-20160705/">CSS Color Level 4</a> 提供了大量关于 Color 的处理，只是好多还没有实现，未来这些功能都实现后，CSS Color 的处理将变得更方便，更灵活，期待中……</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$theme-primary-alpha</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$theme-primary</span><span class="o">,</span> <span class="nv">$alpha</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$theme-secondary-alpha</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$theme-secondary</span><span class="o">,</span> <span class="nv">$alpha</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>上面定义的三种基本颜色值、对应的 6 种浅色值、6 种深色值和 2 种透明色值作为数组放到变量 <code class="highlighter-rouge">$theme-property-values</code> 中</p>
 
 <table class="doc-table">
   <thead>
     <tr>
-      <th>CSS 主题颜色属性</th>
-      <th>说明</th>
+      <th style="width: 50%">CSS 主题颜色（$theme-property-values）属性</th>
+      <th style="width: 50%">说明</th>
     </tr>
   </thead>
   <tbody>
@@ -1141,6 +1177,14 @@
       <td>secondary-darkest</td>
       <td>主题次颜色最深色</td>
     </tr>
+    <tr>
+      <td>primary-alpha</td>
+      <td>主题主颜色透明色</td>
+    </tr>
+    <tr>
+      <td>secondary-alpha</td>
+      <td>主题次颜色透明色</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1179,6 +1223,10 @@
 <span class="c1">// 主题颜色最深色对比色调
 </span><span class="nv">$theme-primary-darkest-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-primary-darkest</span><span class="p">);</span>
 <span class="nv">$theme-secondary-darkest-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-secondary-darkest</span><span class="p">);</span>
+
+<span class="c1">// 主题颜色透明色对比色调
+</span><span class="nv">$theme-primary-alpha-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-primary-alpha</span><span class="p">);</span>
+<span class="nv">$theme-secondary-alpha-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-secondary-alpha</span><span class="p">);</span>
 
 <span class="c1">// 背景色对比色调
 </span><span class="nv">$theme-background-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-background</span><span class="p">);</span>
@@ -1224,8 +1272,8 @@
 <table class="doc-table">
   <thead>
     <tr>
-      <th>CSS 主题颜色对比色调属性</th>
-      <th>说明</th>
+      <th style="width: 50%">CSS 主题颜色对比色调属性</th>
+      <th style="width: 50%">说明</th>
     </tr>
   </thead>
   <tbody>
@@ -1348,6 +1396,26 @@
     <tr>
       <td>disabled-on-primary-darkest</td>
       <td>用在 $theme-primary-darkest 上的 disabled 对比色调</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>primary-on-primary-alpha</td>
+      <td>用在 $theme-primary-alpha 上的 primary 对比色调</td>
+    </tr>
+    <tr>
+      <td>secondary-on-primary-alpha</td>
+      <td>用在 $theme-primary-alpha 上的 secondary 对比色调</td>
+    </tr>
+    <tr>
+      <td>hint-on-primary-alpha</td>
+      <td>用在 $theme-primary-alpha 上的 hint 对比色调</td>
+    </tr>
+    <tr>
+      <td>disabled-on-primary-alpha</td>
+      <td>用在 $theme-primary-alpha 上的 disabled 对比色调</td>
     </tr>
     <tr>
       <td> </td>
@@ -1478,6 +1546,26 @@
       <td> </td>
     </tr>
     <tr>
+      <td>primary-on-secondary-alpha</td>
+      <td>用在 $theme-secondary-alpha 上的 primary 对比色调</td>
+    </tr>
+    <tr>
+      <td>secondary-on-secondary-alpha</td>
+      <td>用在 $theme-secondary-alpha 上的 secondary 对比色调</td>
+    </tr>
+    <tr>
+      <td>hint-on-secondary-alpha</td>
+      <td>用在 $theme-secondary-alpha 上的 hint 对比色调</td>
+    </tr>
+    <tr>
+      <td>disabled-on-secondary-alpha</td>
+      <td>用在 $theme-secondary-alpha 上的 disabled 对比色调</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
       <td>primary-on-background</td>
       <td>用在 $theme-background 上的 primary 对比色调</td>
     </tr>
@@ -1546,8 +1634,8 @@
 <table class="doc-table">
   <thead>
     <tr>
-      <th>CSS 辅助颜色</th>
-      <th>说明</th>
+      <th style="width: 50%">CSS 辅助颜色</th>
+      <th style="width: 50%">说明</th>
     </tr>
   </thead>
   <tbody>
@@ -1610,9 +1698,9 @@
 <table class="doc-table">
   <thead>
     <tr>
-      <th>CSS 灰色颜色变量名</th>
-      <th>黑色透明度</th>
-      <th>灰色 rgb 值</th>
+      <th style="width: 33%">CSS 灰色颜色变量名</th>
+      <th style="width: 33%">黑色透明度</th>
+      <th style="width: 33%">灰色 rgb 值</th>
     </tr>
   </thead>
   <tbody>
@@ -1684,8 +1772,8 @@
 <table class="doc-table">
   <thead>
     <tr>
-      <th>函数名</th>
-      <th>功能</th>
+      <th style="width: 50%">函数名</th>
+      <th style="width: 50%">功能</th>
     </tr>
   </thead>
   <tbody>
@@ -1718,8 +1806,8 @@
 <table class="doc-table">
   <thead>
     <tr>
-      <th>Mixin名</th>
-      <th>功能</th>
+      <th style="width: 50%">Mixin名</th>
+      <th style="width: 50%">功能</th>
     </tr>
   </thead>
   <tbody>
@@ -1733,7 +1821,7 @@
     </tr>
     <tr>
       <td>theme-prop($property, $style, $important: false)</td>
-      <td>糅合 theme-color-prop 和 theme-tone-prop</td>
+      <td>糅合 theme-color-prop 和 theme-tone-prop，如果 $style 是颜色值，则直接设置颜色</td>
     </tr>
     <tr>
       <td>theme($style, $fore: true)</td>
@@ -1742,6 +1830,18 @@
     <tr>
       <td>theme-assist($property, $style, $opacity: 1)</td>
       <td>设置辅助颜色，根据给定的 $style ($theme-assist-colors 中的 key) 和 $opacity 来设置颜色</td>
+    </tr>
+    <tr>
+      <td>theme-classes($tone: false)</td>
+      <td>设置主题对应的背景和前景颜色 class，如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可</td>
+    </tr>
+    <tr>
+      <td>theme-assist-classes($tone: false)</td>
+      <td>设置辅助颜色对应的背景和前景颜色 class，如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可</td>
+    </tr>
+    <tr>
+      <td>theme-grey-classes($tone: false)</td>
+      <td>设置灰度颜色对应的背景和前景颜色 class，如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可</td>
     </tr>
   </tbody>
 </table>
@@ -1754,8 +1854,8 @@ Perfect CSS 提供了以下 CSS 变量值</p>
 <table class="doc-table">
   <thead>
     <tr>
-      <th>CSS 变量名</th>
-      <th>含义</th>
+      <th style="width: 50%">CSS 变量名</th>
+      <th style="width: 50%">含义</th>
     </tr>
   </thead>
   <tbody>
@@ -1818,6 +1918,14 @@ Perfect CSS 提供了以下 CSS 变量值</p>
     <tr>
       <td>–theme-secondary-darkest</td>
       <td>主题次颜色最深色</td>
+    </tr>
+    <tr>
+      <td>–theme-primary-alpha</td>
+      <td>主题主颜色透明色</td>
+    </tr>
+    <tr>
+      <td>–theme-secondary-alpha</td>
+      <td>主题次颜色透明色</td>
     </tr>
     <tr>
       <td> </td>
@@ -1907,6 +2015,22 @@ Perfect CSS 提供了以下 CSS 变量值</p>
       <td>–theme-error-dark</td>
       <td>辅助颜色-错误深色</td>
     </tr>
+    <tr>
+      <td>–theme-success-alpha</td>
+      <td>辅助颜色-成功透明色</td>
+    </tr>
+    <tr>
+      <td>–theme-info-alpha</td>
+      <td>辅助颜色-信息透明色</td>
+    </tr>
+    <tr>
+      <td>–theme-warning-alpha</td>
+      <td>辅助颜色-警告透明色</td>
+    </tr>
+    <tr>
+      <td>–theme-error-alpha</td>
+      <td>辅助颜色-错误透明色</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1918,11 +2042,13 @@ Perfect CSS 提供了以下 CSS 变量值</p>
 <h2>
 <a id="toc-7-1" class="menu-anchor" data-target="toc-7-1" aria-hidden="true"></a>主题背景 CSS Classes</h2>
 
+<p><a href="/components/theme/classes/#anchor-1-1-1" target="_blank">实例</a></p>
+
 <table class="doc-table">
   <thead>
     <tr>
-      <th>CSS Classes名</th>
-      <th>含义</th>
+      <th style="width: 50%">CSS Classes名</th>
+      <th style="width: 50%">含义</th>
     </tr>
   </thead>
   <tbody>
@@ -1986,17 +2112,27 @@ Perfect CSS 提供了以下 CSS 变量值</p>
       <td>.theme-secondary-darkest-bg</td>
       <td>主题次颜色最深色背景色</td>
     </tr>
+    <tr>
+      <td>.theme-primary-alpha-bg</td>
+      <td>主题主颜色透明色背景色</td>
+    </tr>
+    <tr>
+      <td>.theme-secondary-alpha-bg</td>
+      <td>主题次颜色透明色背景色</td>
+    </tr>
   </tbody>
 </table>
 
 <h2>
 <a id="toc-7-2" class="menu-anchor" data-target="toc-7-2" aria-hidden="true"></a>主题前景 CSS Classes</h2>
 
+<p><a href="/components/theme/classes/#anchor-1-1-2" target="_blank">实例</a></p>
+
 <table class="doc-table">
   <thead>
     <tr>
-      <th>CSS Classes名</th>
-      <th>含义</th>
+      <th style="width: 50%">CSS Classes名</th>
+      <th style="width: 50%">含义</th>
     </tr>
   </thead>
   <tbody>
@@ -2056,17 +2192,27 @@ Perfect CSS 提供了以下 CSS 变量值</p>
       <td>.theme-secondary-darkest</td>
       <td>主题次颜色最深色前景色</td>
     </tr>
+    <tr>
+      <td>.theme-primary-alpha</td>
+      <td>主题主颜色透明色前景色</td>
+    </tr>
+    <tr>
+      <td>.theme-secondary-alpha</td>
+      <td>主题次颜色透明色前景色</td>
+    </tr>
   </tbody>
 </table>
 
 <h2>
 <a id="toc-7-3" class="menu-anchor" data-target="toc-7-3" aria-hidden="true"></a>辅助颜色背景 CSS Classes</h2>
 
+<p><a href="/components/theme/classes/#anchor-1-2-1" target="_blank">实例</a></p>
+
 <table class="doc-table">
   <thead>
     <tr>
-      <th>CSS Classes名</th>
-      <th>含义</th>
+      <th style="width: 50%">CSS Classes名</th>
+      <th style="width: 50%">含义</th>
     </tr>
   </thead>
   <tbody>
@@ -2118,17 +2264,35 @@ Perfect CSS 提供了以下 CSS 变量值</p>
       <td>.theme-error-dark-bg</td>
       <td>辅助颜色-错误深色背景色</td>
     </tr>
+    <tr>
+      <td>.theme-success-alpha-bg</td>
+      <td>辅助颜色-成功透明色背景色</td>
+    </tr>
+    <tr>
+      <td>.theme-info-alpha-bg</td>
+      <td>辅助颜色-信息透明色背景色</td>
+    </tr>
+    <tr>
+      <td>.theme-warning-alpha-bg</td>
+      <td>辅助颜色-警告透明色背景色</td>
+    </tr>
+    <tr>
+      <td>.theme-error-alpha-bg</td>
+      <td>辅助颜色-错误透明色背景色</td>
+    </tr>
   </tbody>
 </table>
 
 <h2>
 <a id="toc-7-4" class="menu-anchor" data-target="toc-7-4" aria-hidden="true"></a>辅助颜色前景 CSS Classes</h2>
 
+<p><a href="/components/theme/classes/#anchor-1-2-2" target="_blank">实例</a></p>
+
 <table class="doc-table">
   <thead>
     <tr>
-      <th>CSS Classes名</th>
-      <th>含义</th>
+      <th style="width: 50%">CSS Classes名</th>
+      <th style="width: 50%">含义</th>
     </tr>
   </thead>
   <tbody>
@@ -2180,116 +2344,137 @@ Perfect CSS 提供了以下 CSS 变量值</p>
       <td>.theme-error-dark</td>
       <td>辅助颜色-错误深色前景色</td>
     </tr>
-  </tbody>
-</table>
-
-<h2>
-<a id="toc-7-5" class="menu-anchor" data-target="toc-7-5" aria-hidden="true"></a>灰色文本前景 CSS Classes</h2>
-
-<table class="doc-table">
-  <thead>
     <tr>
-      <th>CSS Classes名</th>
-      <th>含义</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>.theme-grey-50</td>
-      <td>灰色文本前景颜色值 50</td>
+      <td>.theme-success-alpha</td>
+      <td>辅助颜色-成功透明色前景色</td>
     </tr>
     <tr>
-      <td>.theme-grey-100</td>
-      <td>灰色文本前景颜色值 100</td>
+      <td>.theme-info-alpha</td>
+      <td>辅助颜色-信息透明色前景色</td>
     </tr>
     <tr>
-      <td>.theme-grey-200</td>
-      <td>灰色文本前景颜色值 200</td>
+      <td>.theme-warning-alpha</td>
+      <td>辅助颜色-警告透明色前景色</td>
     </tr>
     <tr>
-      <td>.theme-grey-300</td>
-      <td>灰色文本前景颜色值 300</td>
-    </tr>
-    <tr>
-      <td>.theme-grey-400</td>
-      <td>灰色文本前景颜色值 400</td>
-    </tr>
-    <tr>
-      <td>.theme-grey-500</td>
-      <td>灰色文本前景颜色值 500</td>
-    </tr>
-    <tr>
-      <td>.theme-grey-600</td>
-      <td>灰色文本前景颜色值 600</td>
-    </tr>
-    <tr>
-      <td>.theme-grey-700</td>
-      <td>灰色文本前景颜色值 700</td>
-    </tr>
-    <tr>
-      <td>.theme-grey-800</td>
-      <td>灰色文本前景颜色值 800</td>
-    </tr>
-    <tr>
-      <td>.theme-grey-900</td>
-      <td>灰色文本前景颜色值 900</td>
+      <td>.theme-error-alpha</td>
+      <td>辅助颜色-错误透明色前景色</td>
     </tr>
   </tbody>
 </table>
 
 <h2>
-<a id="toc-7-6" class="menu-anchor" data-target="toc-7-6" aria-hidden="true"></a>灰色文本背景 CSS Classes</h2>
+<a id="toc-7-5" class="menu-anchor" data-target="toc-7-5" aria-hidden="true"></a>灰度颜色背景 CSS Classes</h2>
+
+<p><a href="/components/theme/classes/#anchor-1-3-1" target="_blank">实例</a></p>
 
 <table class="doc-table">
   <thead>
     <tr>
-      <th>CSS Classes名</th>
-      <th>含义</th>
+      <th style="width: 50%">CSS Classes名</th>
+      <th style="width: 50%">含义</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>.theme-grey-bg-50</td>
-      <td>灰色文本背景颜色值 50</td>
+      <td>灰度颜色背景颜色值 50</td>
     </tr>
     <tr>
       <td>.theme-grey-bg-100</td>
-      <td>灰色文本背景颜色值 100</td>
+      <td>灰度颜色背景颜色值 100</td>
     </tr>
     <tr>
       <td>.theme-grey-bg-200</td>
-      <td>灰色文本背景颜色值 200</td>
+      <td>灰度颜色背景颜色值 200</td>
     </tr>
     <tr>
       <td>.theme-grey-bg-300</td>
-      <td>灰色文本背景颜色值 300</td>
+      <td>灰度颜色背景颜色值 300</td>
     </tr>
     <tr>
       <td>.theme-grey-bg-400</td>
-      <td>灰色文本背景颜色值 400</td>
+      <td>灰度颜色背景颜色值 400</td>
     </tr>
     <tr>
       <td>.theme-grey-bg-500</td>
-      <td>灰色文本背景颜色值 500</td>
+      <td>灰度颜色背景颜色值 500</td>
     </tr>
     <tr>
       <td>.theme-grey-bg-600</td>
-      <td>灰色文本背景颜色值 600</td>
+      <td>灰度颜色背景颜色值 600</td>
     </tr>
     <tr>
       <td>.theme-grey-bg-700</td>
-      <td>灰色文本背景颜色值 700</td>
+      <td>灰度颜色背景颜色值 700</td>
     </tr>
     <tr>
       <td>.theme-grey-bg-800</td>
-      <td>灰色文本背景颜色值 800</td>
+      <td>灰度颜色背景颜色值 800</td>
     </tr>
     <tr>
       <td>.theme-grey-bg-900</td>
-      <td>灰色文本背景颜色值 900</td>
+      <td>灰度颜色背景颜色值 900</td>
     </tr>
   </tbody>
 </table>
+
+<h2>
+<a id="toc-7-6" class="menu-anchor" data-target="toc-7-6" aria-hidden="true"></a>灰度颜色前景 CSS Classes</h2>
+
+<p><a href="/components/theme/classes/#anchor-1-3-2" target="_blank">实例</a></p>
+
+<table class="doc-table">
+  <thead>
+    <tr>
+      <th style="width: 50%">CSS Classes名</th>
+      <th style="width: 50%">含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>.theme-grey-50</td>
+      <td>灰度颜色前景颜色值 50</td>
+    </tr>
+    <tr>
+      <td>.theme-grey-100</td>
+      <td>灰度颜色前景颜色值 100</td>
+    </tr>
+    <tr>
+      <td>.theme-grey-200</td>
+      <td>灰度颜色前景颜色值 200</td>
+    </tr>
+    <tr>
+      <td>.theme-grey-300</td>
+      <td>灰度颜色前景颜色值 300</td>
+    </tr>
+    <tr>
+      <td>.theme-grey-400</td>
+      <td>灰度颜色前景颜色值 400</td>
+    </tr>
+    <tr>
+      <td>.theme-grey-500</td>
+      <td>灰度颜色前景颜色值 500</td>
+    </tr>
+    <tr>
+      <td>.theme-grey-600</td>
+      <td>灰度颜色前景颜色值 600</td>
+    </tr>
+    <tr>
+      <td>.theme-grey-700</td>
+      <td>灰度颜色前景颜色值 700</td>
+    </tr>
+    <tr>
+      <td>.theme-grey-800</td>
+      <td>灰度颜色前景颜色值 800</td>
+    </tr>
+    <tr>
+      <td>.theme-grey-900</td>
+      <td>灰度颜色前景颜色值 900</td>
+    </tr>
+  </tbody>
+</table>
+
 
         </div>
         <div class="doc-catalogue-menu-right">
@@ -2370,10 +2555,10 @@ Perfect CSS 提供了以下 CSS 变量值</p>
     <a class="menu-title" href="#" title="辅助颜色前景 CSS Classes" data-menu="toc-7-4">辅助颜色前景 CSS Classes</a>
   </li>
   <li>
-    <a class="menu-title" href="#" title="灰色文本前景 CSS Classes" data-menu="toc-7-5">灰色文本前景 CSS Classes</a>
+    <a class="menu-title" href="#" title="灰度颜色背景 CSS Classes" data-menu="toc-7-5">灰度颜色背景 CSS Classes</a>
   </li>
   <li>
-    <a class="menu-title" href="#" title="灰色文本背景 CSS Classes" data-menu="toc-7-6">灰色文本背景 CSS Classes</a>
+    <a class="menu-title" href="#" title="灰度颜色前景 CSS Classes" data-menu="toc-7-6">灰度颜色前景 CSS Classes</a>
   </li>
 </ul>
   </li>

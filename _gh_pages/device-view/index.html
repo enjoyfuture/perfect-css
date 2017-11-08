@@ -60,19 +60,19 @@
     <div class="device-list" view="window">
       <device-view device="window">
         <div class="frame-container">
-          <iframe class="frame-device" src="/components/"></iframe>
+          <iframe class="frame-device" src="/"></iframe>
         </div>
       </device-view>
       <device-view device="table" landscape="">
         <div class="frame-container">
           <iframe class="frame-device" sandbox="allow-scripts allow-same-origin"
-                  src="/components/"></iframe>
+                  src="/"></iframe>
         </div>
       </device-view>
       <device-view device="handset">
         <div class="frame-container">
           <iframe class="frame-device" sandbox="allow-scripts allow-same-origin"
-                  src="/components/"></iframe>
+                  src="/"></iframe>
         </div>
       </device-view>
     </div>
@@ -361,7 +361,7 @@
     $(`.device-select .device-icon[name=${device}] i`).addClass('active');
 
     if (!url) {
-      url = location.origin + '/components/';
+      url = location.origin + '/';
     }
 
     $('.device-url-input').val(decodeURIComponent(url));

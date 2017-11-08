@@ -55,7 +55,7 @@
         <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
     </ul>
   </div>
@@ -85,8 +85,77 @@
   
   
   <li class="menu-item">
+    <a href="/components/theme/classes/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">主题 theme</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/theme/classes/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">主题 Classes</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/layout/grid/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">布局 layout</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/layout/grid/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">栅格 Grid</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/typography/paragraph/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">排版 typography</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/typography/paragraph/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">段落 paragraph</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
     <a href="/components/base/ripple/" 
-       class="menu-title menu-header " style="padding-left: 1rem;">功能性组件</a>
+       class="menu-title menu-header " style="padding-left: 1rem;">基础组件</a>
     <ul class="menu" style="display: none;">
       
       
@@ -97,7 +166,7 @@
 
       <li class="menu-item">
         <a href="/components/base/ripple/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Ripple 效果</a></li>
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">波纹效果 Ripple</a></li>
       
       
 
@@ -107,7 +176,7 @@
 
       <li class="menu-item">
         <a href="/components/base/shadow/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Shadow 组件</a></li>
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">阴影效果 Shadow</a></li>
       
     </ul>
   </li>
@@ -139,7 +208,7 @@
       
 
       <li class="menu-item">
-        <a href="/components/navigation/tab/"
+        <a href="/components/navigation/tabs/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Tab 标签</a></li>
       
     </ul>
@@ -173,7 +242,7 @@
 
       <li class="menu-item">
         <a href="/components/container/dialog/"
-             class="menu-title menu-sub-title active" style="padding-left: 2rem;">对话框窗口</a></li>
+             class="menu-title menu-sub-title active" style="padding-left: 2rem;">对话框窗口(Dialog)</a></li>
       
       
 
@@ -224,7 +293,7 @@
   
   
   <li class="menu-item">
-    <a href="/components/elements/badge/" 
+    <a href="/components/elements/button/" 
        class="menu-title menu-header " style="padding-left: 1rem;">元素类组件</a>
     <ul class="menu" style="display: none;">
       
@@ -235,38 +304,8 @@
       
 
       <li class="menu-item">
-        <a href="/components/elements/badge/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 标记刻章组件</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
         <a href="/components/elements/button/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Button 按钮</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/components/elements/checkbox/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/components/elements/image/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 组件</a></li>
       
       
 
@@ -295,8 +334,38 @@
       
 
       <li class="menu-item">
+        <a href="/components/elements/checkbox/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
         <a href="/components/elements/select/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Select 下拉选择框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/image/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/badge/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 标记刻章组件</a></li>
       
       
 
@@ -450,40 +519,189 @@
     </aside>
 
     <main class="drawer-main navbar-fixed-adjust">
-      <section class="component-wrap">
-        <button class="btn btn-primary">打开对话框</button>
-
-<div class="dialog">
-  <div class="dialog-panel" style="width:800px;">
-    <header class="dialog-header">
-      <h2 class="dialog-header-title">
-        对话框标题
-      </h2>
-    </header>
-    <section class="dialog-body">
-      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
-      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
-      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
-      对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
-    </section>
-    <footer class="dialog-footer text-right">
-      <button type="button" class="btn btn-raised m-r-2">取消</button>
-      <button type="button" class="btn text-primary btn-raised">确定</button>
-    </footer>
+      <section class="component-wrap catalogue-counter">
+        <h2>PC 端</h2>
+<h3>基本用法</h3>
+<section class="component-container">
+  <button class="btn btn-raised btn-primary" data-toggle="#baseDialog">打开对话框</button>
+  <div class="dialog" id="baseDialog">
+    <div class="dialog-panel" style="width:800px;">
+      <header class="dialog-header">
+        <h3 class="dialog-header-title text-center">
+          对话框标题
+        </h3>
+        <button class="dialog-close"><i class="icon-pure-close"></i></button>
+      </header>
+      <section class="dialog-body">
+        <div class="dialog-scrollable">
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容对话框内容
+          如果内容不是很多，可以去掉 .dialog-scrollable
+        </div>
+      </section>
+      <footer class="dialog-footer">
+        <button type="button" class="btn btn-raised dialog-button">取消</button>
+        <button type="button" class="btn btn-raised btn-primary dialog-button">确定</button>
+      </footer>
+    </div>
+    <div class="dialog-backdrop"></div>
   </div>
-  <div class="dialog-backdrop"></div>
-</div>
+</section>
+
+<h3>动画</h3>
+<section class="component-container">
+  <button class="btn btn-raised btn-primary" data-toggle="#animationDialog">带动画效果的弹框</button>
+  <div class="dialog dialog-animating" id="animationDialog">
+    <div class="dialog-panel" style="width:500px;">
+      <header class="dialog-header">
+        <h3 class="dialog-header-title">动画弹框</h3>
+        <button class="dialog-close"><i class="icon-pure-close"></i></button>
+      </header>
+      <section class="dialog-body">
+        动画弹框
+      </section>
+      <footer class="dialog-footer">
+        <button type="button" class="btn btn-raised dialog-button">取消</button>
+        <button type="button" class="btn btn-raised btn-primary dialog-button">确定</button>
+      </footer>
+    </div>
+    <div class="dialog-backdrop"></div>
+  </div>
+</section>
+
+<h3>无表头弹框，按钮居中显示</h3>
+<section class="component-container">
+  <button class="btn btn-raised btn-primary" data-animation="true" data-toggle="#noHeaderDialog">确认对话框</button>
+  <div class="dialog" id="noHeaderDialog">
+    <div class="dialog-panel" style="width:300px;">
+      <header class="dialog-header dialog-header-empty"></header>
+      <section class="dialog-body">
+        你确认要删除这条记录吗？
+      </section>
+      <footer class="dialog-footer text-center">
+        <button type="button" class="btn btn-raised dialog-button btn-sm">取消</button>
+        <button type="button" class="btn btn-raised btn-primary dialog-button btn-sm">删除</button>
+      </footer>
+    </div>
+    <div class="dialog-backdrop"></div>
+  </div>
+</section>
+
+<h3>从顶部弹出提示信息</h3>
+<section class="component-container">
+  <button class="btn btn-raised btn-primary" data-animation="true" data-toggle="#aboveDialog">顶部弹出</button>
+  <div class="dialog dialog-animating" id="aboveDialog" data-auto-closing="true">
+    <div class="dialog-panel dialog-panel-inline dialog-popup-top">
+      <section class="dialog-body text-center">
+        Hello World
+      </section>
+    </div>
+    <div class="dialog-backdrop"></div>
+  </div>
+</section>
+
+<h3>从底部弹出提示信息</h3>
+<section class="component-container">
+  <button class="btn btn-raised btn-primary" data-animation="true" data-toggle="#bottomDialog">底部弹出</button>
+  <div class="dialog dialog-animating" id="bottomDialog" data-auto-closing="true">
+    <div class="dialog-panel dialog-panel-inline dialog-popup-bottom">
+      <section class="dialog-body text-center">
+        保存成功
+      </section>
+    </div>
+    <div class="dialog-backdrop"></div>
+  </div>
+</section>
+
+<h2>手机端</h2>
+
+<h3>标题+正文+大按钮</h3>
+<section class="component-container">
+  <div class="row">
+    <div class="col">
+      <iframe src="/components/container/dialog/dialog1/" frameborder="0" class="iframe-dialog"></iframe>
+    </div>
+    <div class="col">
+      <iframe src="/components/container/dialog/dialog2/" frameborder="0" class="iframe-dialog"></iframe>
+    </div>
+    <div class="col">
+      <iframe src="/components/container/dialog/dialog3/" frameborder="0" class="iframe-dialog"></iframe>
+    </div>
+  </div>
+</section>
+
+<h3>标题(图标)+正文+多个按钮</h3>
+<section class="component-container">
+  <div class="row">
+    <div class="col">
+      <iframe src="/components/container/dialog/dialog4/" frameborder="0" class="iframe-dialog"></iframe>
+    </div>
+    <div class="col">
+      <iframe src="/components/container/dialog/dialog5/" frameborder="0" class="iframe-dialog"></iframe>
+    </div>
+    <div class="col">
+      <iframe src="/components/container/dialog/dialog6/" frameborder="0" class="iframe-dialog"></iframe>
+    </div>
+  </div>
+</section>
+
+<h3 class="theme-primary">Android 特殊选择菜单栏</h3>
+<p>分带标题和不太标题两种 每次至少有两个选择条目</p>
+
+<section class="component-container">
+  <div class="row">
+    <div class="col">
+      <iframe src="/components/container/dialog/dialog7/" frameborder="0" class="iframe-dialog"></iframe>
+    </div>
+    <div class="col">
+      <iframe src="/components/container/dialog/dialog8/" frameborder="0" class="iframe-dialog"></iframe>
+    </div>
+    <div class="col">
+      <iframe src="/components/container/dialog/dialog9/" frameborder="0" class="iframe-dialog"></iframe>
+    </div>
+  </div>
+</section>
+
 
 <script>
   $(function () {
-    $('.btn').click(function () {
-      $('.dialog').addClass('dialog-open');
+
+    let timeoutId = null;
+    $('.btn').click(function (e) {
+      clearTimeout(timeoutId);
+
+      const $el = $(e.currentTarget);
+      const targetDialog = $el.data('toggle');
+      const $targetDialog = $(targetDialog);
+      $targetDialog.addClass('dialog-open');
       $('body').addClass('dialog-scroll-lock');
+
+      if ($targetDialog.data('auto-closing')) {
+        timeoutId = setTimeout(() => {
+          $targetDialog.removeClass('dialog-open');
+          $('body').removeClass('dialog-scroll-lock');
+        }, 2000);
+      }
     });
 
-    $('.dialog .btn').click(function () {
+    $('.dialog .btn, .dialog .dialog-close, .dialog-backdrop').click(function () {
       $('.dialog').removeClass('dialog-open');
       $('body').removeClass('dialog-scroll-lock');
+      clearTimeout(timeoutId);
     });
   });
 </script>

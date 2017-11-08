@@ -11,7 +11,7 @@
 
 <title>
   
-  组件类样式-Input 组件 &middot; Perfect
+  元素类组件-Input 组件 &middot; Perfect
   
 </title>
 
@@ -55,7 +55,7 @@
         <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
     </ul>
   </div>
@@ -430,6 +430,39 @@
   
   
   <li class="menu-item">
+    <a href="/docs/base/ripple/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">基础组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/ripple/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">波纹效果 Ripple</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/shadow/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">阴影效果 Shadow</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
     <a href="/docs/navigation/nav/" 
        class="menu-title menu-header " style="padding-left: 1rem;">导航类组件</a>
     <ul class="menu" style="display: none;">
@@ -557,8 +590,8 @@
   
   <li class="menu-item">
     <a href="/docs/elements/button/" 
-       class="menu-title menu-header " style="padding-left: 1rem;">元素类组件</a>
-    <ul class="menu" style="display: none;">
+       class="menu-title menu-header active" style="padding-left: 1rem;">元素类组件</a>
+    <ul class="menu">
       
       
 
@@ -578,7 +611,7 @@
 
       <li class="menu-item">
         <a href="/docs/elements/input/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Input 组件</a></li>
+             class="menu-title menu-sub-title active" style="padding-left: 2rem;">Input 组件</a></li>
       
       
 
@@ -599,16 +632,6 @@
       <li class="menu-item">
         <a href="/docs/elements/progress/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 组件</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/docs/elements/alert/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Alert 组件</a></li>
       
       
 
@@ -887,30 +910,77 @@
     <main class="drawer-main navbar-fixed-adjust">
       
       <div class="doc-main">
-        <div class="doc-content">
+        <div class="doc-content catalogue-counter">
           <div class="doc-catalogue-menu">
             <div class="doc-catalogue-icon">
               <i class="icon-pure-catalogue"></i>
             </div>
             <div class="doc-catalogue-panel">
 <ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
+  <li>
+    <a class="menu-title" href="#" title="Input 组件设计思想" data-menu="toc-1">Input 组件设计思想</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="使用" data-menu="toc-2">使用</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="基本用法" data-menu="toc-2-1">基本用法</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="四边带边框 Inputs" data-menu="toc-2-1-1">四边带边框 Inputs</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
 </ul>
 </div>
           </div>
           <div class="doc-content-header">
-            <p>Input 组件</p>
+            <p>Input 组件提供了一个可视的与用户输入交互的文本输入框，包含 input 和 textarea，结合 label 一起使用。</p>
             <div>
               <a href="https://github.com/joy-web/perfect-css/edit/master/docs/docs/elements/input.md" target="_blank">编辑该页面</a>
-              <a href="https://github.com/joy-web/perfect-css/issues/new?title=问题或建议(组件类样式-Input 组件)" target="_blank">问题和建议</a>
+              <a href="https://github.com/joy-web/perfect-css/issues/new?title=问题或建议(元素类组件-Input 组件)" target="_blank">问题和建议</a>
             </div>
           </div>
           <hr/>
-          <p>Input 组件</p>
+          <h2>
+<a id="toc-1" class="menu-anchor" data-target="toc-1" aria-hidden="true"></a>Input 组件设计思想</h2>
+
+<p>在原生的 <code class="highlighter-rouge">Input</code> 或 <code class="highlighter-rouge">textarea</code> 外包裹了 div，用来呈现 Input 样式。</p>
+
+<h2>
+<a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>使用</h2>
+
+<h3>
+<a id="toc-2-1" class="menu-anchor" data-target="toc-2-1" aria-hidden="true"></a>基本用法</h3>
+
+<h4>
+<a id="toc-2-1-1" class="menu-anchor" data-target="toc-2-1-1" aria-hidden="true"></a>四边带边框 Inputs</h4>
+
+<p>四边带边框 Inputs 跟原生的 Input 表现基本一致</p>
+
 
         </div>
         <div class="doc-catalogue-menu-right">
           <div class="doc-catalogue-panel">
 <ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
+  <li>
+    <a class="menu-title" href="#" title="Input 组件设计思想" data-menu="toc-1">Input 组件设计思想</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="使用" data-menu="toc-2">使用</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="基本用法" data-menu="toc-2-1">基本用法</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="四边带边框 Inputs" data-menu="toc-2-1-1">四边带边框 Inputs</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
 </ul>
 </div>
         </div>
