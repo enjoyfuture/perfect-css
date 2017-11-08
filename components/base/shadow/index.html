@@ -55,7 +55,7 @@
         <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
     </ul>
   </div>
@@ -85,8 +85,77 @@
   
   
   <li class="menu-item">
+    <a href="/components/theme/classes/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">主题 theme</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/theme/classes/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">主题 Classes</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/layout/grid/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">布局 layout</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/layout/grid/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">栅格 Grid</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/typography/paragraph/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">排版 typography</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/typography/paragraph/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">段落 paragraph</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
     <a href="/components/base/ripple/" 
-       class="menu-title menu-header active" style="padding-left: 1rem;">功能性组件</a>
+       class="menu-title menu-header active" style="padding-left: 1rem;">基础组件</a>
     <ul class="menu">
       
       
@@ -97,7 +166,7 @@
 
       <li class="menu-item">
         <a href="/components/base/ripple/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Ripple 效果</a></li>
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">波纹效果 Ripple</a></li>
       
       
 
@@ -107,7 +176,7 @@
 
       <li class="menu-item">
         <a href="/components/base/shadow/"
-             class="menu-title menu-sub-title active" style="padding-left: 2rem;">Shadow 组件</a></li>
+             class="menu-title menu-sub-title active" style="padding-left: 2rem;">阴影效果 Shadow</a></li>
       
     </ul>
   </li>
@@ -139,7 +208,7 @@
       
 
       <li class="menu-item">
-        <a href="/components/navigation/tab/"
+        <a href="/components/navigation/tabs/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Tab 标签</a></li>
       
     </ul>
@@ -173,7 +242,7 @@
 
       <li class="menu-item">
         <a href="/components/container/dialog/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">对话框窗口</a></li>
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">对话框窗口(Dialog)</a></li>
       
       
 
@@ -224,7 +293,7 @@
   
   
   <li class="menu-item">
-    <a href="/components/elements/badge/" 
+    <a href="/components/elements/button/" 
        class="menu-title menu-header " style="padding-left: 1rem;">元素类组件</a>
     <ul class="menu" style="display: none;">
       
@@ -235,38 +304,8 @@
       
 
       <li class="menu-item">
-        <a href="/components/elements/badge/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 标记刻章组件</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
         <a href="/components/elements/button/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Button 按钮</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/components/elements/checkbox/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/components/elements/image/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 组件</a></li>
       
       
 
@@ -295,8 +334,38 @@
       
 
       <li class="menu-item">
+        <a href="/components/elements/checkbox/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
         <a href="/components/elements/select/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Select 下拉选择框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/image/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/badge/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 标记刻章组件</a></li>
       
       
 
@@ -450,76 +519,111 @@
     </aside>
 
     <main class="drawer-main navbar-fixed-adjust">
-      <section class="component-wrap">
+      <section class="component-wrap catalogue-counter">
         <h2> Shadow 阴影效果</h2>
 
 <h3>采用默认颜色的阴影效果</h3>
 
 <section class="d-flex flex-row flex-wrap m-t-5 shadow-wrap">
-  <div class="shadow-0"><span>0px(.shadow-0)</span></div>
-  <div class="shadow-1"><span>1px(.shadow-1)</span></div>
-  <div class="shadow-2"><span>2px(.shadow-2)</span></div>
-  <div class="shadow-3"><span>3px(.shadow-3)</span></div>
+  <div class="shadow-0">0px(.shadow-0)</div>
+  <div class="shadow-1">1px(.shadow-1)</div>
+  <div class="shadow-2">2px(.shadow-2)</div>
+  <div class="shadow-3">3px(.shadow-3)</div>
 
-  <div class="shadow-4"><span>4px(.shadow-4)</span></div>
-  <div class="shadow-5"><span>5px(.shadow-5)</span></div>
-  <div class="shadow-6"><span>6px(.shadow-6)</span></div>
-  <div class="shadow-7"><span>7px(.shadow-7)</span></div>
+  <div class="shadow-4">4px(.shadow-4)</div>
+  <div class="shadow-5">5px(.shadow-5)</div>
+  <div class="shadow-6">6px(.shadow-6)</div>
+  <div class="shadow-7">7px(.shadow-7)</div>
 
-  <div class="shadow-8"><span>8px(.shadow-8)</span></div>
-  <div class="shadow-9"><span>9px(.shadow-9)</span></div>
-  <div class="shadow-10"><span>10px(.shadow-10)</span></div>
-  <div class="shadow-11"><span>11px(.shadow-11)</span></div>
+  <div class="shadow-8">8px(.shadow-8)</div>
+  <div class="shadow-9">9px(.shadow-9)</div>
+  <div class="shadow-10">10px(.shadow-10)</div>
+  <div class="shadow-11">11px(.shadow-11)</div>
 
-  <div class="shadow-12"><span>12px(.shadow-12)</span></div>
-  <div class="shadow-13"><span>13px(.shadow-13)</span></div>
-  <div class="shadow-14"><span>14px(.shadow-14)</span></div>
-  <div class="shadow-15"><span>15px(.shadow-15)</span></div>
+  <div class="shadow-12">12px(.shadow-12)</div>
+  <div class="shadow-13">13px(.shadow-13)</div>
+  <div class="shadow-14">14px(.shadow-14)</div>
+  <div class="shadow-15">15px(.shadow-15)</div>
 
-  <div class="shadow-16"><span>16px(.shadow-16)</span></div>
-  <div class="shadow-17"><span>17px(.shadow-17)</span></div>
-  <div class="shadow-18"><span>8px(.shadow-18)</span></div>
-  <div class="shadow-19"><span>9px(.shadow-19)</span></div>
+  <div class="shadow-16">16px(.shadow-16)</div>
+  <div class="shadow-17">17px(.shadow-17)</div>
+  <div class="shadow-18">8px(.shadow-18)</div>
+  <div class="shadow-19">9px(.shadow-19)</div>
 
-  <div class="shadow-20"><span>20px(.shadow-20)</span></div>
-  <div class="shadow-21"><span>21px(.shadow-21)</span></div>
-  <div class="shadow-22"><span>22px(.shadow-22)</span></div>
-  <div class="shadow-23"><span>23px(.shadow-23)</span></div>
+  <div class="shadow-20">20px(.shadow-20)</div>
+  <div class="shadow-21">21px(.shadow-21)</div>
+  <div class="shadow-22">22px(.shadow-22)</div>
+  <div class="shadow-23">23px(.shadow-23)</div>
 </section>
 
 <h3>自定义颜色阴影效果</h3>
 
 <section class="d-flex flex-row flex-wrap m-t-5 shadow-wrap shadow-custom">
-  <div class="shadow-0"><span>0px(.shadow-0)</span></div>
-  <div class="shadow-1"><span>1px(.shadow-1)</span></div>
-  <div class="shadow-2"><span>2px(.shadow-2)</span></div>
-  <div class="shadow-3"><span>3px(.shadow-3)</span></div>
+  <div class="shadow-0">0px(.shadow-0)</div>
+  <div class="shadow-1">1px(.shadow-1)</div>
+  <div class="shadow-2">2px(.shadow-2)</div>
+  <div class="shadow-3">3px(.shadow-3)</div>
 
-  <div class="shadow-4"><span>4px(.shadow-4)</span></div>
-  <div class="shadow-5"><span>5px(.shadow-5)</span></div>
-  <div class="shadow-6"><span>6px(.shadow-6)</span></div>
-  <div class="shadow-7"><span>7px(.shadow-7)</span></div>
+  <div class="shadow-4">4px(.shadow-4)</div>
+  <div class="shadow-5">5px(.shadow-5)</div>
+  <div class="shadow-6">6px(.shadow-6)</div>
+  <div class="shadow-7">7px(.shadow-7)</div>
 
-  <div class="shadow-8"><span>8px(.shadow-8)</span></div>
-  <div class="shadow-9"><span>9px(.shadow-9)</span></div>
-  <div class="shadow-10"><span>10px(.shadow-10)</span></div>
-  <div class="shadow-11"><span>11px(.shadow-11)</span></div>
+  <div class="shadow-8">8px(.shadow-8)</div>
+  <div class="shadow-9">9px(.shadow-9)</div>
+  <div class="shadow-10">10px(.shadow-10)</div>
+  <div class="shadow-11">11px(.shadow-11)</div>
 
-  <div class="shadow-12"><span>12px(.shadow-12)</span></div>
-  <div class="shadow-13"><span>13px(.shadow-13)</span></div>
-  <div class="shadow-14"><span>14px(.shadow-14)</span></div>
-  <div class="shadow-15"><span>15px(.shadow-15)</span></div>
+  <div class="shadow-12">12px(.shadow-12)</div>
+  <div class="shadow-13">13px(.shadow-13)</div>
+  <div class="shadow-14">14px(.shadow-14)</div>
+  <div class="shadow-15">15px(.shadow-15)</div>
 
-  <div class="shadow-16"><span>16px(.shadow-16)</span></div>
-  <div class="shadow-17"><span>17px(.shadow-17)</span></div>
-  <div class="shadow-18"><span>8px(.shadow-18)</span></div>
-  <div class="shadow-19"><span>9px(.shadow-19)</span></div>
+  <div class="shadow-16">16px(.shadow-16)</div>
+  <div class="shadow-17">17px(.shadow-17)</div>
+  <div class="shadow-18">8px(.shadow-18)</div>
+  <div class="shadow-19">9px(.shadow-19)</div>
 
-  <div class="shadow-20"><span>20px(.shadow-20)</span></div>
-  <div class="shadow-21"><span>21px(.shadow-21)</span></div>
-  <div class="shadow-22"><span>22px(.shadow-22)</span></div>
-  <div class="shadow-23"><span>23px(.shadow-23)</span></div>
+  <div class="shadow-20">20px(.shadow-20)</div>
+  <div class="shadow-21">21px(.shadow-21)</div>
+  <div class="shadow-22">22px(.shadow-22)</div>
+  <div class="shadow-23">23px(.shadow-23)</div>
 </section>
+
+<h3>阴影动画效果</h3>
+<section class="m-t-5 shadow-wrap shadow-custom">
+  <button class="btn btn-raised btn-primary" id="shadow_animation_btn">动画</button>
+  <div class="shadow shadow-transition m-t-3">15px(.shadow-15)</div>
+</section>
+
+<h3>使用 Sass Mixin 自定义动画</h3>
+
+<section class="m-t-5">
+  <button class="btn btn-raised btn-primary" id="shadow_animation_btn2">自定义动画</button>
+  <div class="shadow-transition2 m-t-3">点点上面的按钮看看效果</div>
+</section>
+
+<script>
+  $(function () {
+    $('#shadow_animation_btn').click(function () {
+      var $shadow = $('#shadow_animation_btn').next();
+      if ($shadow.hasClass('shadow-15')) {
+        $shadow.removeClass('shadow-15');
+      } else {
+        $shadow.addClass('shadow-15');
+      }
+    });
+
+    $('#shadow_animation_btn2').click(function () {
+      var $shadow = $('#shadow_animation_btn2').next();
+      if ($shadow.hasClass('shadow-custom-animation')) {
+        $shadow.removeClass('shadow-custom-animation');
+      } else {
+        $shadow.addClass('shadow-custom-animation');
+      }
+    });
+  });
+</script>
 
       </section>
     </main>

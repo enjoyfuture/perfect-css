@@ -11,7 +11,7 @@
 
 <title>
   
-  组件类样式-Alert 组件 &middot; Perfect
+  基础组件-波纹效果 Ripple &middot; Perfect
   
 </title>
 
@@ -55,7 +55,7 @@
         <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
     </ul>
   </div>
@@ -430,6 +430,39 @@
   
   
   <li class="menu-item">
+    <a href="/docs/base/ripple/" 
+       class="menu-title menu-header active" style="padding-left: 1rem;">基础组件</a>
+    <ul class="menu">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/ripple/"
+             class="menu-title menu-sub-title active" style="padding-left: 2rem;">波纹效果 Ripple</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/shadow/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">阴影效果 Shadow</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
     <a href="/docs/navigation/nav/" 
        class="menu-title menu-header " style="padding-left: 1rem;">导航类组件</a>
     <ul class="menu" style="display: none;">
@@ -599,16 +632,6 @@
       <li class="menu-item">
         <a href="/docs/elements/progress/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 组件</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/docs/elements/alert/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Alert 组件</a></li>
       
       
 
@@ -887,30 +910,54 @@
     <main class="drawer-main navbar-fixed-adjust">
       
       <div class="doc-main">
-        <div class="doc-content">
+        <div class="doc-content catalogue-counter">
           <div class="doc-catalogue-menu">
             <div class="doc-catalogue-icon">
               <i class="icon-pure-catalogue"></i>
             </div>
             <div class="doc-catalogue-panel">
 <ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
+  <li>
+    <a class="menu-title" href="#" title="波纹效果设计思想" data-menu="toc-1">波纹效果设计思想</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="使用" data-menu="toc-2">使用</a>
+  </li>
 </ul>
 </div>
           </div>
           <div class="doc-content-header">
-            <p>Alert 组件</p>
+            <p>波纹效果，通过 CSS 和 Javascript 为组件呈现出类似水波纹的效果</p>
             <div>
-              <a href="https://github.com/joy-web/perfect-css/edit/master/docs/docs/elements/alert.md" target="_blank">编辑该页面</a>
-              <a href="https://github.com/joy-web/perfect-css/issues/new?title=问题或建议(组件类样式-Alert 组件)" target="_blank">问题和建议</a>
+              <a href="https://github.com/joy-web/perfect-css/edit/master/docs/docs/base/ripple.md" target="_blank">编辑该页面</a>
+              <a href="https://github.com/joy-web/perfect-css/issues/new?title=问题或建议(基础组件-波纹效果 Ripple)" target="_blank">问题和建议</a>
             </div>
           </div>
           <hr/>
-          <p>Alert 组件</p>
+          <h2>
+<a id="toc-1" class="menu-anchor" data-target="toc-1" aria-hidden="true"></a>波纹效果设计思想</h2>
+
+<p>不需要额外的元素，利用伪类 <code class="highlighter-rouge">::before</code> 和 <code class="highlighter-rouge">::after</code> 以及 Javascript 即可实现波纹效果。</p>
+
+<ul>
+  <li>伪类会给元素设置 ripple 双层背景， <code class="highlighter-rouge">::before</code> 用来产生动画效果，<code class="highlighter-rouge">::after</code> 为动画效果提供渲染背景舞台，</li>
+  <li>设置的双层背景面积是元素的二倍</li>
+</ul>
+
+<h2>
+<a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>使用</h2>
+
 
         </div>
         <div class="doc-catalogue-menu-right">
           <div class="doc-catalogue-panel">
 <ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
+  <li>
+    <a class="menu-title" href="#" title="波纹效果设计思想" data-menu="toc-1">波纹效果设计思想</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="使用" data-menu="toc-2">使用</a>
+  </li>
 </ul>
 </div>
         </div>

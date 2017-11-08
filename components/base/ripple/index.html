@@ -55,7 +55,7 @@
         <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
     </ul>
   </div>
@@ -85,8 +85,77 @@
   
   
   <li class="menu-item">
+    <a href="/components/theme/classes/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">主题 theme</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/theme/classes/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">主题 Classes</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/layout/grid/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">布局 layout</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/layout/grid/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">栅格 Grid</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/typography/paragraph/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">排版 typography</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/typography/paragraph/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">段落 paragraph</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
     <a href="/components/base/ripple/" 
-       class="menu-title menu-header active" style="padding-left: 1rem;">功能性组件</a>
+       class="menu-title menu-header active" style="padding-left: 1rem;">基础组件</a>
     <ul class="menu">
       
       
@@ -97,7 +166,7 @@
 
       <li class="menu-item">
         <a href="/components/base/ripple/"
-             class="menu-title menu-sub-title active" style="padding-left: 2rem;">Ripple 效果</a></li>
+             class="menu-title menu-sub-title active" style="padding-left: 2rem;">波纹效果 Ripple</a></li>
       
       
 
@@ -107,7 +176,7 @@
 
       <li class="menu-item">
         <a href="/components/base/shadow/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Shadow 组件</a></li>
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">阴影效果 Shadow</a></li>
       
     </ul>
   </li>
@@ -139,7 +208,7 @@
       
 
       <li class="menu-item">
-        <a href="/components/navigation/tab/"
+        <a href="/components/navigation/tabs/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Tab 标签</a></li>
       
     </ul>
@@ -173,7 +242,7 @@
 
       <li class="menu-item">
         <a href="/components/container/dialog/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">对话框窗口</a></li>
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">对话框窗口(Dialog)</a></li>
       
       
 
@@ -224,7 +293,7 @@
   
   
   <li class="menu-item">
-    <a href="/components/elements/badge/" 
+    <a href="/components/elements/button/" 
        class="menu-title menu-header " style="padding-left: 1rem;">元素类组件</a>
     <ul class="menu" style="display: none;">
       
@@ -235,38 +304,8 @@
       
 
       <li class="menu-item">
-        <a href="/components/elements/badge/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 标记刻章组件</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
         <a href="/components/elements/button/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Button 按钮</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/components/elements/checkbox/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/components/elements/image/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 组件</a></li>
       
       
 
@@ -295,8 +334,38 @@
       
 
       <li class="menu-item">
+        <a href="/components/elements/checkbox/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
         <a href="/components/elements/select/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Select 下拉选择框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/image/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/badge/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 标记刻章组件</a></li>
       
       
 
@@ -450,131 +519,141 @@
     </aside>
 
     <main class="drawer-main navbar-fixed-adjust">
-      <section class="component-wrap">
-        <div class="ripple-demo">
-  <h2>Ripple 波纹效果</h2>
+      <section class="component-wrap catalogue-counter">
+        <h2>纯 CSS Ripple</h2>
 
-  <h3>有界限的纯 CSS Ripple</h3>
+<h3>有界限的、切断的 Ripple</h3>
+<section class="ripple-demo">
   <div class="ripple" tabindex="0">
     纯 CSS 波纹效果
   </div>
+</section>
 
-  <h3>有界的动效</h3>
+<h3>没有被切断的、完整的 Ripple</h3>
+<section class="ripple-demo">
+  <div class="ripple ripple-unbounded" tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+</section>
+
+<h2>Ripple 动效</h2>
+
+<h3>有界限的、切断的动效</h3>
+<section class="ripple-demo">
   <div class="ripple ripple-impact" tabindex="0">
     点击看效果，结合 JavaScript 动态设置其 CSS 变量
   </div>
+</section>
 
-  <h3>无界的纯 CSS Ripple</h3>
-  <div class="ripple ripple-unbounded"
-       tabindex="0">
+<h3>没有被切断的、完整的动效</h3>
+<section class="ripple-demo">
+  <div class="ripple ripple-impact ripple-unbounded" tabindex="0">
     <div class="icon-circle"></div>
   </div>
+</section>
 
-  <h3>无界的动效</h3>
-  <div class="ripple ripple-impact ripple-unbounded"
-       tabindex="0">
-    <div class="icon-circle"></div>
-  </div>
-
-  <h3>取消当前活动态</h3>
+<h3>取消当前活动态</h3>
+<section class="ripple-demo">
   <div class="ripple ripple-impact ripple-impact-active inactive-demo"
        tabindex="0" style="--ripple-translate-start: 0; --ripple-translate-end: 50px;">
     点击看效果，结合 JavaScript 动态设置其 CSS 变量
   </div>
+</section>
 
-  <h3>自定义背景</h3>
-  <div class="d-flex">
-    <div class="ripple ripple-bg ripple-custom1" tabindex="0">
-      自定义背景1
-    </div>
-    <div class="ripple ripple-bg ripple-custom2" tabindex="0">
-      自定义背景2
-    </div>
-    <div class="ripple ripple-impact ripple-bg ripple-custom2" tabindex="0">
-      自定义背景2-动画效果
-    </div>
-  </div>
+<h2>Ripple 主题</h2>
+<h3>主颜色</h3>
 
-  <h3>主题样式</h3>
-  <h4>纯 CSS </h4>
-  <div class="d-flex align-items-center">
-    <div class="ripple ripple-primary" tabindex="0">
-      Primary
-    </div>
-    <div class="ripple ripple-secondary" tabindex="0">
-      Secondary
-    </div>
-    <div class="ripple ripple-unbounded ripple-primary"
-         tabindex="0">
-      <div class="icon-circle"></div>
-    </div>
-    <div class="ripple ripple-unbounded ripple-secondary"
-         tabindex="0">
-      <div class="icon-circle"></div>
-    </div>
+<h4>纯 CSS </h4>
+<section class="d-flex align-items-center ripple-demo">
+  <div class="ripple ripple-primary" tabindex="0">
+    Primary
   </div>
+  <div class="ripple ripple-secondary" tabindex="0">
+    Secondary
+  </div>
+  <div class="ripple ripple-unbounded ripple-primary"
+       tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+  <div class="ripple ripple-unbounded ripple-secondary"
+       tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+</section>
 
-  <h4>动效 </h4>
-  <div class="d-flex align-items-center">
-    <div class="ripple ripple-primary ripple-impact" tabindex="0">
-      Primary
-    </div>
-    <div class="ripple ripple-secondary ripple-impact" tabindex="0">
-      Secondary
-    </div>
-    <div class="ripple ripple-unbounded ripple-primary ripple-impact"
-         tabindex="0">
-      <div class="icon-circle"></div>
-    </div>
-    <div class="ripple ripple-unbounded ripple-secondary ripple-impact"
-         tabindex="0">
-      <div class="icon-circle"></div>
-    </div>
+<h4>动效</h4>
+<section class="d-flex align-items-center ripple-demo">
+  <div class="ripple ripple-primary ripple-impact" tabindex="0">
+    Primary
   </div>
+  <div class="ripple ripple-secondary ripple-impact" tabindex="0">
+    Secondary
+  </div>
+  <div class="ripple ripple-unbounded ripple-primary ripple-impact"
+       tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+  <div class="ripple ripple-unbounded ripple-secondary ripple-impact"
+       tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+</section>
 
-  <h3>辅助样式</h3>
-  <h4>纯 CSS </h4>
-  <div class="d-flex">
-    <div class="ripple ripple-success" tabindex="0">
-      成功
-    </div>
-    <div class="ripple ripple-info" tabindex="0">
-      信息
-    </div>
-    <div class="ripple ripple-warning" tabindex="0">
-      警告
-    </div>
-    <div class="ripple ripple-error" tabindex="0">
-      错误
-    </div>
+<h3>辅助样式</h3>
+<h4>纯 CSS </h4>
+<section class="d-flex ripple-demo">
+  <div class="ripple ripple-success" tabindex="0">
+    成功
   </div>
+  <div class="ripple ripple-info" tabindex="0">
+    信息
+  </div>
+  <div class="ripple ripple-warning" tabindex="0">
+    警告
+  </div>
+  <div class="ripple ripple-error" tabindex="0">
+    错误
+  </div>
+</section>
 
-  <h4>动效 </h4>
-  <div class="d-flex">
-    <div class="ripple ripple-success ripple-impact" tabindex="0">
-      成功
-    </div>
-    <div class="ripple ripple-info ripple-impact" tabindex="0">
-      信息
-    </div>
-    <div class="ripple ripple-warning ripple-impact" tabindex="0">
-      警告
-    </div>
-    <div class="ripple ripple-error ripple-impact" tabindex="0">
-      错误
-    </div>
+<h4>动效 </h4>
+<section class="d-flex ripple-demo">
+  <div class="ripple ripple-success ripple-impact" tabindex="0">
+    成功
   </div>
+  <div class="ripple ripple-info ripple-impact" tabindex="0">
+    信息
+  </div>
+  <div class="ripple ripple-warning ripple-impact" tabindex="0">
+    警告
+  </div>
+  <div class="ripple ripple-error ripple-impact" tabindex="0">
+    错误
+  </div>
+</section>
 
-  <h3>用在 button 标签上</h3>
-  <div class="d-flex">
-    <button type="button" class="ripple">
-      button
-    </button>
-    <button type="button" class="ripple ripple-impact">
-      impact button
-    </button>
+<h2>自定义背景</h2>
+<section class="d-flex ripple-demo">
+  <div class="ripple ripple-custom1" tabindex="0">
+    自定义背景1
   </div>
-</div>
+  <div class="ripple ripple-custom2" tabindex="0">
+    自定义背景2
+  </div>
+  <div class="ripple ripple-impact ripple-custom2" tabindex="0">
+    自定义背景2-动画效果
+  </div>
+</section>
+
+<h2>用在 button 标签上</h2>
+<section class="d-flex ripple-demo">
+  <button type="button" class="ripple">
+    button
+  </button>
+  <button type="button" class="ripple ripple-impact">
+    impact button
+  </button>
+</section>
 
 <script>
   $(function () {
@@ -582,7 +661,6 @@
     /**
      * 计算事件坐标
      * @param {!Event} ev
-     * @param {!{x: number, y: number}} pageOffset
      * @param {!ClientRect} clientRect
      * @return {!{x: number, y: number}}
      */
@@ -626,7 +704,7 @@
         width,
         height,
         size,
-        scale
+        scale,
       };
     }
 
@@ -645,7 +723,7 @@
       }
     }
 
-    var $ripple = $('.ripple-impact:not(.inactive-demo)');
+    const $ripple = $('.ripple-impact:not(.inactive-demo)');
     $ripple.mousedown((e) => {
       const $el = $(e.currentTarget);
 

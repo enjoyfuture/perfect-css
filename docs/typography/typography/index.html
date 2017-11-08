@@ -55,7 +55,7 @@
         <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
     </ul>
   </div>
@@ -430,6 +430,39 @@
   
   
   <li class="menu-item">
+    <a href="/docs/base/ripple/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">基础组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/ripple/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">波纹效果 Ripple</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/shadow/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">阴影效果 Shadow</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
     <a href="/docs/navigation/nav/" 
        class="menu-title menu-header " style="padding-left: 1rem;">导航类组件</a>
     <ul class="menu" style="display: none;">
@@ -599,16 +632,6 @@
       <li class="menu-item">
         <a href="/docs/elements/progress/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 组件</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/docs/elements/alert/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Alert 组件</a></li>
       
       
 
@@ -887,7 +910,7 @@
     <main class="drawer-main navbar-fixed-adjust">
       
       <div class="doc-main">
-        <div class="doc-content">
+        <div class="doc-content catalogue-counter">
           <div class="doc-catalogue-menu">
             <div class="doc-catalogue-icon">
               <i class="icon-pure-catalogue"></i>
@@ -1678,14 +1701,14 @@ Text utilities</p>
 <h3>
 <a id="toc-7-7-4" class="menu-anchor" data-target="toc-7-7-4" aria-hidden="true"></a>去掉列表样式</h3>
 
-<p>设置 <code class="highlighter-rouge">list-style: none;</code> 来去掉列表默认样式</p>
+<p>添加 class 样式 <code class="highlighter-rouge">.li-unstyled</code> 来去掉列表默认样式</p>
 
 <div class="doc-example">
 <div class="doc-example-render" data-example-id="">
-<ol class="list-unstyled">
+<ol class="li-unstyled">
   <li>蔬菜</li>
   <li>水果
-    <ol class="list-unstyled">
+    <ol class="li-unstyled">
       <li>百香果</li>
       <li>芒果</li>
       <li>香蕉</li>
@@ -1710,10 +1733,10 @@ Text utilities</p>
 <div class="arrow"></div>
 <div class="tooltip-inner">复制代码</div>
 </div>
-<pre><code class="language-html" data-lang="html"><span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"list-unstyled"</span><span class="nt">&gt;</span>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"li-unstyled"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li&gt;</span>蔬菜<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li&gt;</span>水果
-    <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"list-unstyled"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"li-unstyled"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;li&gt;</span>百香果<span class="nt">&lt;/li&gt;</span>
       <span class="nt">&lt;li&gt;</span>芒果<span class="nt">&lt;/li&gt;</span>
       <span class="nt">&lt;li&gt;</span>香蕉<span class="nt">&lt;/li&gt;</span>
@@ -1730,14 +1753,14 @@ Text utilities</p>
 <h3>
 <a id="toc-7-7-5" class="menu-anchor" data-target="toc-7-7-5" aria-hidden="true"></a>内联列表</h3>
 
-<p>内联列表会把内容显示在一行中，可以使用class <code class="highlighter-rouge">.list-inline</code> 和 <code class="highlighter-rouge">list-inline-item</code></p>
+<p>内联列表会把内容显示在一行中，可以使用class <code class="highlighter-rouge">.li-inline</code> 和 <code class="highlighter-rouge">li-inline-item</code></p>
 
 <div class="doc-example">
 <div class="doc-example-render" data-example-id="">
-<ul class="list-inline">
-  <li class="list-inline-item">进去</li>
-  <li class="list-inline-item">出来</li>
-  <li class="list-inline-item">离开</li>
+<ul class="li-inline">
+  <li class="li-inline-item">进去</li>
+  <li class="li-inline-item">出来</li>
+  <li class="li-inline-item">离开</li>
 </ul>
 </div>
 <div class="doc-example-expand">
@@ -1753,10 +1776,10 @@ Text utilities</p>
 <div class="arrow"></div>
 <div class="tooltip-inner">复制代码</div>
 </div>
-<pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-inline"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-inline-item"</span><span class="nt">&gt;</span>进去<span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-inline-item"</span><span class="nt">&gt;</span>出来<span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-inline-item"</span><span class="nt">&gt;</span>离开<span class="nt">&lt;/li&gt;</span>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"li-inline"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"li-inline-item"</span><span class="nt">&gt;</span>进去<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"li-inline-item"</span><span class="nt">&gt;</span>出来<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"li-inline-item"</span><span class="nt">&gt;</span>离开<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span></code></pre>
 </div>
 </div>

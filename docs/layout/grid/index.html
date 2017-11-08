@@ -55,7 +55,7 @@
         <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
     </ul>
   </div>
@@ -430,6 +430,39 @@
   
   
   <li class="menu-item">
+    <a href="/docs/base/ripple/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">基础组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/ripple/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">波纹效果 Ripple</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/shadow/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">阴影效果 Shadow</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
     <a href="/docs/navigation/nav/" 
        class="menu-title menu-header " style="padding-left: 1rem;">导航类组件</a>
     <ul class="menu" style="display: none;">
@@ -599,16 +632,6 @@
       <li class="menu-item">
         <a href="/docs/elements/progress/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 组件</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/docs/elements/alert/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Alert 组件</a></li>
       
       
 
@@ -887,7 +910,7 @@
     <main class="drawer-main navbar-fixed-adjust">
       
       <div class="doc-main">
-        <div class="doc-content">
+        <div class="doc-content catalogue-counter">
           <div class="doc-catalogue-menu">
             <div class="doc-catalogue-icon">
               <i class="icon-pure-catalogue"></i>
@@ -1817,6 +1840,56 @@
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>位置由2变为1<span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"order-2 col"</span><span class="nt">&gt;</span>order-2 位置由3变为2<span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"order-3 col"</span><span class="nt">&gt;</span>order-3 位置由4变为3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<p>我们也可以使用 <code class="highlighter-rouge">.order-first</code> 快速改变元素位置到首行或首列</p>
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col">
+      第一个元素，位置改变
+    </div>
+    <div class="col">
+      第二个元素，位置改变
+    </div>
+    <div class="col order-first">
+      位置由3变成1
+    </div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      第一个元素，位置改变
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      第二个元素，位置改变
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col order-first"</span><span class="nt">&gt;</span>
+      位置由3变成1
+    <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre>
 </div>
