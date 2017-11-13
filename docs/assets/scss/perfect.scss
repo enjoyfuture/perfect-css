@@ -9,6 +9,9 @@ $enable-custom-theme-for-input: true;
 $enable-custom-theme-for-radio: true;
 $enable-custom-theme-for-tab: true;
 $enable-custom-theme-for-ripple: true;
+$enable-custom-theme-for-select: true;
+$enable-custom-theme-for-table: true;
+$enable-custom-theme-for-switch: true;
 
 // 自定义主题
 @import "common/theme";

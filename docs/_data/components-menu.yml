@@ -55,6 +55,8 @@
       file: checkbox
     - title: Select 下拉选择框
       file: select
+    - title: Switch 开关
+      file: switch
     - title: Image 组件
       file: image
     - title: Badge 标记刻章组件

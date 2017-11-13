@@ -4,17 +4,28 @@ title: Select 组件
 group: elements
 ---
 
-<style>
-  .component-container .select {
-    margin-right: 20px;
-  }
-</style>
-<div class="component-wrap">
-  <section class="component-container">
-    <h3> 原生的 Select 标签</h3>
-    <div class="select" style="width: 200px;">
+<div>
+  <div class="form-field">
+    <div class="checkbox checkbox-primary">
+      <input class="checkbox-native-control" type="checkbox" id="disabledState"/>
+      <div class="checkbox-background">
+        <div class="checkbox-mark-outer"></div>
+        <div class="checkbox-mark-inner"></div>
+      </div>
+    </div>
+    <label>Disabled</label>
+  </div>
+</div>
+
+<h2 class="m-t-3">原生的 Select 标签</h2>
+
+<h3>默认样式</h3>
+<section class="component-container">
+  <div class="form-field">
+    <label for="select-native">食物</label>
+    <div class="select" id="select-native">
       <select class="select-inner">
-        <option value="" selected>选择食物</option>
+        <option value="">选择食物</option>
         <option value="grains">面包</option>
         <option value="vegetables" disabled>蔬菜(disabled)</option>
         <option value="fruit">水果水果水果水果水果水果水果</option>
@@ -22,22 +33,56 @@ group: elements
         <option value="meat">肉</option>
       </select>
     </div>
+  </div>
+</section>
 
-    <div class="select select-disabled" style="width: 200px">
-      <select class="select-inner" disabled>
-        <option value="" selected>选择食物</option>
+<h3>扁平的</h3>
+<section class="component-container">
+  <div class="form-field">
+    <label for="select-native-flat">食物</label>
+    <div class="select" id="select-native-flat">
+      <select class="select-inner select-flat">
+        <option value="">选择食物</option>
         <option value="grains">面包</option>
         <option value="vegetables" disabled>蔬菜(disabled)</option>
-        <option value="fruit">水果</option>
+        <option value="fruit">水果水果水果水果水果水果水果</option>
         <option value="milk">牛奶</option>
         <option value="meat">肉</option>
       </select>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="component-container">
-    <h3> 用 div 模拟 Select </h3>
-    <div id="selectEl" class="select" tabindex="0" style="width: 200px;">
+<h3>百分比 select</h3>
+<section class="component-container component-vertical-spacing">
+  <div class="select select-full">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+  <div class="select select-full">
+    <select class="select-inner select-flat">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+</section>
+
+<h2> 用 div 模拟 Select (options 使用 list-menu 来处理，待 TODO)</h2>
+
+<section class="component-container component-spacing">
+  <div class="form-field">
+    <label for="select-native">食物</label>
+    <div id="selectEl" class="select" tabindex="0">
       <div class="select-inner" tabindex="0">
         <span class="select-selected-text">选择食物</span>
         <ul class="select-options">
@@ -62,62 +107,183 @@ group: elements
         </ul>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="select select-disabled" tabindex="0" style="width: 200px;">
-      <div class="select-inner">
-        <span class="select-selected-text">选择食物</span>
-        <ul class="select-options">
-          <li class="select-options-item" tabindex="0">
-            选择食物
-          </li>
-          <li class="select-options-item" tabindex="0">
-            面包
-          </li>
-          <li class="select-options-item disabled" tabindex="0">
-            蔬菜(disabled)
-          </li>
-          <li class="select-options-item" tabindex="0">
-            水果水果水果水果水果水果水果
-          </li>
-          <li class="select-options-item" tabindex="0">
-            牛奶
-          </li>
-          <li class="select-options-item" tabindex="0">
-            肉
-          </li>
-        </ul>
-      </div>
-    </div>
-
-  </section>
-
-  <section>
-    <h2>Select Multiple 多选</h2>
-    <select multiple="" size="8" class="select-multi">
-      <optgroup class="option-group" label="蔬菜">
-        <option class="option-item" checked>土豆</option>
-        <option class="option-item">茄子</option>
-        <option class="option-item" disabled>西红柿</option>
-      </optgroup>
-      <option class="option-divider" disabled></option>
-      <optgroup class="option-group" label="水果">
-        <option class="option-item" disabled>苹果</option>
-        <option class="option-item">百香果</option>
-        <option class="option-item">香蕉</option>
-      </optgroup>
-
-    </select>
-
-    <select multiple="" size="8" class="select-multi">
-      <option class="option-item">苹果</option>
+<h2>Select Multiple 多选</h2>
+<section class="component-container">
+  <select multiple="" size="8" class="select-multi">
+    <optgroup class="option-group" label="蔬菜">
+      <option class="option-item" checked>土豆</option>
+      <option class="option-item">茄子</option>
+      <option class="option-item" disabled>西红柿</option>
+    </optgroup>
+    <option class="option-divider" disabled></option>
+    <optgroup class="option-group" label="水果">
+      <option class="option-item" disabled>苹果</option>
       <option class="option-item">百香果</option>
-      <option class="option-item" disabled>香蕉</option>
-      <option class="option-item">桃子</option>
-      <option class="option-item">哈密瓜</option>
-      <option class="option-item">葡萄</option>
+      <option class="option-item">香蕉</option>
+    </optgroup>
+
+  </select>
+
+  <select multiple="" size="8" class="select-multi">
+    <option class="option-item">苹果</option>
+    <option class="option-item">百香果</option>
+    <option class="option-item" disabled>香蕉</option>
+    <option class="option-item">桃子</option>
+    <option class="option-item">哈密瓜</option>
+    <option class="option-item">葡萄</option>
+  </select>
+</section>
+
+<h2>Select 主题</h2>
+<h3>主颜色</h3>
+
+<h4>Primary</h4>
+<section class="component-container component-spacing">
+  <div class="select select-primary">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
     </select>
-  </section>
-</div>
+  </div>
+  <div class="select select-primary">
+    <select class="select-inner select-flat">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+</section>
+
+<h4>Secondary</h4>
+<section class="component-container component-spacing">
+  <div class="select select-secondary">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+  <div class="select select-secondary">
+    <select class="select-inner select-flat">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+</section>
+
+<h3>辅助颜色</h3>
+<h4>Success</h4>
+<section class="component-container component-spacing">
+  <div class="select select-success">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+  <div class="select select-success">
+    <select class="select-inner select-flat">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+</section>
+
+<h4>Info</h4>
+<section class="component-container component-spacing">
+  <div class="select select-info">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+  <div class="select select-info">
+    <select class="select-inner select-flat">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+</section>
+
+<h4>Warning</h4>
+<section class="component-container component-spacing">
+  <div class="select select-warning">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+  <div class="select select-warning">
+    <select class="select-inner select-flat">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+</section>
+
+<h4>Error</h4>
+<section class="component-container component-spacing">
+  <div class="select select-error">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+  <div class="select select-error">
+    <select class="select-inner select-flat">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+</section>
 
 <script>
   $(function () {
@@ -137,12 +303,26 @@ group: elements
       e.stopPropagation();
 
       var $el = $(e.currentTarget);
-      if($el.attr('aria-disabled') !== 'true') {
+      if ($el.attr('aria-disabled') !== 'true') {
         $('#selectEl .select-selected-text').text($el.text());
         $('#selectEl').removeClass('select-open');
         $('#selectEl .select-inner').focus();
         $el.attr('aria-selected', true).siblings().removeAttr('aria-selected');
       }
+    });
+
+    // Disabled
+    $('#disabledState').change(function () {
+      const $el = $(this);
+      const checked = $el.prop('checked');
+
+      $('.select').each(function (index, el) {
+        if (checked) {
+          $(el).addClass('select-disabled').find('select.select-inner').prop('disabled', true);
+        } else {
+          $(el).removeClass('radio-disabled').find('select.select-inner').prop('disabled', false);
+        }
+      });
     });
   });
 </script>
