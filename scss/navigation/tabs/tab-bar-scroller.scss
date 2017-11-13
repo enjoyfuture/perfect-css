@@ -1,8 +1,8 @@
 // 可以左右滑动的 tab bar
 
-$mdc-tab-bar-scroller-indicator-width: 48px;
 @import "./variable";
 @import "../../theme/mixin";
+@import "../../theme/variable";
 @import "../../animation/function";
 
 // tab-bar 外层 scroller
@@ -26,6 +26,11 @@ $mdc-tab-bar-scroller-indicator-width: 48px;
       transition: animation-enter(transform, $tab-transition-duration);
       will-change: transform;
     }
+
+    // 渐变 fixme 渐变效果待改进
+    &-gradient {
+      background-image: linear-gradient(to right, $grey-color-200 0%, transparent 15%, transparent 85%, $grey-color-200 100%);
+    }
   }
 
   // 左右滑动指示器
@@ -33,7 +38,7 @@ $mdc-tab-bar-scroller-indicator-width: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: $mdc-tab-bar-scroller-indicator-width;
+    width: $tab-bar-scroller-indicator-width;
     cursor: pointer;
     visibility: hidden;
     @include theme-prop(color, secondary-on-light);
@@ -56,7 +61,7 @@ $mdc-tab-bar-scroller-indicator-width: 48px;
     }
 
     // 显示
-    &-enabled {
+    .enabled {
       visibility: visible;
     }
   }
