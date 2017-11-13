@@ -1,0 +1,17 @@
+@import "../../../../scss/theme/mixin";
+
+.menu-demo-label {
+  margin-bottom: .5rem;
+}
+
+.menu-demo-panel {
+  position: relative;
+  height: 240px;
+  padding: 1rem;
+  border: 1px solid;
+  @include theme-prop(border-color, secondary-lighter);
+}
+
+.menu-demo-position {
+  position: absolute;
+}
