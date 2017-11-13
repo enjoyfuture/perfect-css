@@ -3,13 +3,16 @@
 @import "../../base/variables/border";
 @import "../../theme/variable";
 
-$table-cell-padding: .75rem !default;
+$table-cell-padding: .5rem !default;
 $table-sm-cell-padding: .3rem !default;
 
 $table-bg: transparent !default;
-$table-bg-accent: $grey-color-100 !default;
-$table-hover-bg: $grey-color-100 !default;
+$table-bg-striped: $grey-color-50 !default;
+$table-hover-bg: $grey-color-200 !default;
 $table-active-bg: $table-hover-bg !default;
 
 $table-border-width: $border-width !default;
 $table-border-color: $border-color !default;
+
+// 是否开启定制主题，包括主颜色和辅助颜色，默认关闭，需要的话可开启
+$enable-custom-theme-for-table: false !default;

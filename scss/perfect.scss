@@ -9,6 +9,9 @@
 @import "base/mixins";
 @import "base/functions";
 
+// animation
+@import "animation/animation";
+
 // theme
 @import "theme/theme";
 
@@ -35,6 +38,7 @@
 // navigation 导航样式
 //@import "navigation/crumb/crumb";
 @import "navigation/menu/menu";
+@import "navigation/menu/list-menu";
 @import "navigation/navbar/navbar";
 @import "navigation/tabs/tabs";
 @import "navigation/tabs/tab-bar-scroller";
@@ -58,6 +62,7 @@
 @import "elements/input/input";
 @import "elements/radio/radio";
 @import "elements/select/select";
+@import "elements/switch/switch";
 
 // 其他组件
 //@import "components/badge/badge";

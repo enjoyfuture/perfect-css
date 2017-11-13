@@ -1,28 +1,40 @@
 // Tables 主题 mixin
+@import "../../theme/mixin";
 
-@mixin table-theme($state, $background) {
-  // Exact selectors below required to override `.table-striped` and prevent
-  // inheritance to nested tables.
-  .table-#{$state} {
+// 主题分为背景、边框和 hover 三种，以及这三种的组合
+@mixin table-theme($theme) {
+  .table-#{$theme} {
     &,
     > th,
     > td {
-      background-color: $background;
+      @include theme-prop(background-color, $theme);
     }
   }
 
-  .table-hover {
-    $hover-background: darken($background, 5%);
+  //.table-hover {
+  //  $hover-background: darken($background, 5%);
+  //
+  //  .table-#{$state} {
+  //    @include hover {
+  //      background-color: $hover-background;
+  //
+  //      > td,
+  //      > th {
+  //        background-color: $hover-background;
+  //      }
+  //    }
+  //  }
+  //}
 
-    .table-#{$state} {
-      @include hover {
-        background-color: $hover-background;
+  .table-striped-#{$theme} {
+    tbody tr:nth-of-type(odd) {
+      @include theme-prop(background-color, #{$theme}-lightest);
+    }
+  }
 
-        > td,
-        > th {
-          background-color: $hover-background;
-        }
-      }
+  .table-hover-#{$theme} {
+    tbody tr:hover {
+      @include theme-prop(background-color, #{$theme}-alpha);
     }
   }
 }

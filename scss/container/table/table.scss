@@ -16,9 +16,8 @@ table {
 caption {
   padding-top: $table-cell-padding;
   padding-bottom: $table-cell-padding;
-  text-align: left;
-  caption-side: bottom;
-  @include theme-prop(color, secondary-on-primary);
+  text-align: center;
+  @include theme-prop(color, primary-on-light);
 }
 
 th {
@@ -47,6 +46,7 @@ th {
     border-top: ($table-border-width * 2) solid $table-border-color;
   }
 
+  // 设置嵌套的 table
   .table {
     background-color: $white;
   }
@@ -83,7 +83,7 @@ th {
 // 行交替显示对比颜色
 .table-striped {
   tbody tr:nth-of-type(odd) {
-    background-color: $table-bg-accent;
+    background-color: $table-bg-striped;
   }
 }
 
@@ -94,16 +94,18 @@ th {
   }
 }
 
+// 定义主题样式
+@if ($enable-custom-theme and $enable-custom-theme-for-table) {
+  // 主颜色
+  @each $theme in ("primary", "secondary") {
+    @include table-theme($theme);
+  }
 
-// Table 主题
-//@each $color, $value in $theme-colors {
-//  @include table-row-variant($color, theme-color-level($color, -9));
-//}
-//
-//@include table-row-variant(active, $table-active-bg);
-
-
-// 黑色主题背景待 TODO
+  // 辅助颜色对应 radio
+  //@each $theme in $theme-assist {
+  //  @include table-theme($theme);
+  //}
+}
 
 // 响应式 tables
 // 对于小屏幕的 table 需要添加该样式，使显示更美观

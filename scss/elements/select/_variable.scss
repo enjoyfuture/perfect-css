@@ -1,0 +1,13 @@
+// 箭头大小
+$arrow-size: 5px;
+// 箭头与 select 间距
+$arrow-spacer: 1.5rem;
+
+$select-width: 200px;
+$select-padding-x: .75rem !default;
+$select-padding-y: .5rem !default;
+$select-line-height: 1.25 !default;
+$select-border-radius: 2px !default;
+
+// 是否开启定制主题，包括主颜色和辅助颜色，默认关闭，需要的话可开启
+$enable-custom-theme-for-select: false !default;

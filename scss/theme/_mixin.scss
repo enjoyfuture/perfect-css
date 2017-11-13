@@ -56,7 +56,13 @@
       @if ($color) {
         @include theme-tone-prop($property, $style, $important);
       } @else {
-        @error "无效的主题属性值，#{$style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-tone-property-values)}";
+        // 用辅助颜色来设置
+        $color: map-get($theme-assist-colors, $style);
+        @if ($color) {
+          @include theme-assist($property, $style);
+        } @else {
+          @error "无效的主题属性值，#{$style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-tone-property-values)}";
+        }
       }
     }
   }
@@ -132,7 +138,6 @@
 // 如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），
 // 这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可
 @mixin theme-classes($tone: false) {
-
   // 设置 primary 和 secondary 以及浅色和深色背景颜色值
   // .theme-primary-bg {background-color: #2196f3; background-color: var(--theme-primary, #2196f3);}
   @each $style in map-keys($theme-property-values) {
