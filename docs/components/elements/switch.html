@@ -1,0 +1,197 @@
+---
+layout: components
+title: Switch 开关
+group: elements
+---
+
+<div>
+  <div class="form-field">
+    <div class="checkbox checkbox-primary">
+      <input class="checkbox-native-control" type="checkbox" id="disabledState"/>
+      <div class="checkbox-background">
+        <div class="checkbox-mark-outer"></div>
+        <div class="checkbox-mark-inner"></div>
+      </div>
+    </div>
+    <label>Disabled</label>
+  </div>
+</div>
+
+<h2 class="m-t-3">没有聚焦效果的开关</h2>
+<section class="component-container">
+  <div class="switch">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+</section>
+
+<h2>聚焦效果</h2>
+<section class="component-container">
+  <div class="switch switch-focus-ring">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+</section>
+
+<h2>Switch 主题</h2>
+<h3>主颜色</h3>
+<h4>Primary</h4>
+<section class="component-container component-spacing">
+  <div class="switch switch-primary">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+
+  <div class="switch switch-focus-ring switch-primary">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Secondary</h4>
+<section class="component-container component-spacing">
+  <div class="switch switch-secondary">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+
+  <div class="switch switch-focus-ring switch-secondary">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+</section>
+
+<h3>辅助颜色</h3>
+<h4>Success</h4>
+<section class="component-container component-spacing">
+  <div class="switch switch-success">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+
+  <div class="switch switch-focus-ring switch-success">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Info</h4>
+<section class="component-container component-spacing">
+  <div class="switch switch-info">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+
+  <div class="switch switch-focus-ring switch-info">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Warning</h4>
+<section class="component-container component-spacing">
+  <div class="switch switch-warning">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+
+  <div class="switch switch-focus-ring switch-warning">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Error</h4>
+<section class="component-container component-spacing">
+  <div class="switch switch-error">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+
+  <div class="switch switch-focus-ring switch-error">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+</section>
+
+<h2>Switch 定制化</h2>
+
+<h3>颜色</h3>
+<section class="component-container component-spacing">
+  <div class="switch switch-customer-color">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+
+  <div class="switch switch-focus-ring switch-customer-color">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+</section>
+
+<h3>大小</h3>
+<section class="component-container component-spacing">
+  <div class="switch switch-customer-size">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+
+  <div class="switch switch-focus-ring switch-customer-size">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(function () {
+    // Disabled
+    $('#disabledState').change(function () {
+      const $el = $(this);
+      const checked = $el.prop('checked');
+
+      $('.switch-control').each(function (index, el) {
+        if (checked) {
+          $(el).prop('disabled', true);
+        } else {
+          $(el).prop('disabled', false);
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,31 @@
+@import "../../theme/variable";
+
+// switch 整个轮廓大小，默认值为正方形，也可以设为长方形，在自定义 switch 会给出例子
+$switch-focus-ring-width: 48px !default;
+$switch-focus-ring-height: 48px !default;
+// switch 切换按钮直径
+$switch-knob-diameter: 20px !default;
+// switch 切换按钮垂直偏移量
+$switch-knob-vertical-offset: 3px !default;
+
+// 下面的三个变量是根据上面的变量动态计算的，为了更好的理解，文档中会给出图片来说明
+// 轨迹宽度，switch 轮廓宽的一半再加上切换按钮半径
+$switch-track-width: $switch-focus-ring-width / 2 + $switch-knob-diameter / 2 !default;
+// 轨迹高度，切换按钮直径减去上下偏移量
+$switch-track-height: $switch-knob-diameter - $switch-knob-vertical-offset * 2 !default;
+// 切换按钮时，轮廓偏移的位置，以便偏移后在可视区域还可以点击 switch
+$switch-control-active-translate-x: (min($switch-focus-ring-width, $switch-focus-ring-height) - $switch-knob-diameter) / 2 !default;
+// 选中时切换按钮偏移的距离，切换按钮从轨迹的一层移动到另一侧，也可以是 $switch-track-width - $switch-knob-diameter
+$switch-knob-active-translate-x: ($switch-focus-ring-width - $switch-knob-diameter) / 2 !default;
+
+// 默认颜色
+$switch-unchecked-track-color: #000 !default;
+$switch-unchecked-knob-color: map-get($greys, 50) !default; // 切换按钮颜色
+$switch-unchecked-focus-ring-color: map-get($greys, 500) !default; // 轨迹聚焦范围
+$switch-disabled-knob-color: map-get($greys, 400) !default;// disabled
+
+$switch-baseline-theme-color: primary-on-light !default;
+
+// 是否开启定制主题，包括主颜色和辅助颜色，默认关闭，需要的话可开启
+$enable-custom-theme-for-switch: false !default;
+

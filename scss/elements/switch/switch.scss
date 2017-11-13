@@ -1,0 +1,141 @@
+@import "../../shadow/mixin";
+@import "./variable";
+@import "./mixin";
+@import "./function";
+
+// TODO 默认颜色看是否优化，待定
+
+// 开关、切换按钮
+// 实现思想
+//<div class="switch">
+//  <input type="checkbox" class="switch-control">
+//  <div class="switch-track">
+//    <div class="switch-knob"></div>
+//  </div>
+//</div>
+// 最外层为 switch wrapper
+// input checkbox 用来控制选中状态，透明处理，不可见，但可点击，高度和宽度等于 switch 大小，让可点击区域覆盖整个 switch
+// switch-track 定义开关切换运动轨迹，长度要和 switch 保持一致，需要伪类 ::before
+// switch-knob 用来定义开关切换纽扣，伪类 ::before 用来定义聚焦效果
+.switch {
+  position: relative;
+  display:  inline-block;
+
+  // 用来控制开关的 input type="checkbox" 组件
+  &-control {
+    @include switch-control-size;
+    z-index:    2;
+    display:    inline-block;
+    cursor:     pointer;
+    opacity:    0;
+    transition: switch-transition(transform);
+
+    // 选中时
+    &:checked ~ .switch-track {
+      //// Track
+      //&::before {
+      //  opacity: .5;
+      //}
+
+      .switch-knob {
+
+        // Focus indicator
+        //&::before {
+        //  opacity: .15;
+        //}
+      }
+    }
+
+    // disabled
+    &:disabled {
+      cursor: initial;
+
+      ~ .switch-track {
+        // Track
+        &::before {
+          opacity: .12;
+        }
+
+        .switch-knob {
+          background-color: $switch-disabled-knob-color;
+        }
+      }
+    }
+  }
+
+  // Track 当开关切换时，显示的轨迹
+  &-track {
+    position:      relative;
+    display:       block;
+    user-select:   none;
+    outline:       none;
+
+    &::before {
+      content:       "";
+      position:      absolute;
+      top:           0;
+      bottom:        0;
+      left:          0;
+      right:         0;
+      opacity:       .38;
+      transition:    switch-transition(opacity), switch-transition(background-color);
+    }
+
+    @include switch-track-size;
+  }
+
+  &-knob {
+    @include shadow(2);
+    position:      absolute;
+    z-index:       1;
+    display:       block;
+    transform:     translateX(0);
+    transition:    switch-transition(transform), switch-transition(background-color);
+
+    @include switch-knob-size;
+  }
+
+  // 没有选中时背景颜色
+  @include switch-unchecked-bg-color($switch-unchecked-track-color, $switch-unchecked-knob-color, $switch-unchecked-focus-ring-color);
+
+  // 选中时的背景颜色
+  @include switch-checked-bg-color($switch-baseline-theme-color);
+}
+
+// 聚焦效果
+.switch-focus-ring {
+  .switch-knob {
+    &::before {
+      content:       "";
+      opacity:       .2;
+      transform:     scale(0);
+      transition:    switch-transition(transform), switch-transition(background-color);
+      @include switch-focus-ring-size;
+    }
+  }
+  // 获取焦点时
+  .switch-control:focus ~ .switch-track {
+    .switch-knob {
+      &::before {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+// 定义主题样式
+@if ($enable-custom-theme and $enable-custom-theme-for-switch) {
+  // 主颜色
+  @each $theme in ("primary", "secondary") {
+    .switch-#{$theme} {
+      @include switch-theme($theme);
+    }
+  }
+
+  // 辅助颜色对应 switch
+  @each $theme in $theme-assist {
+    .switch-#{$theme} {
+      @include switch-theme($theme);
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@import "../../../../scss/theme/variable";
+@import "../../../../scss/theme/mixin";
+@import "../../../../scss/elements/switch/mixin";
+
+// 自定义Radio
+.switch-customer-color {
+  @include switch-theme($theme: #9c27b0, $unchecked-bg-color: #ba68c8);
+}
+
+.switch-customer-size {
+  @include switch-size($width: 100px, $height: 64px, $diameter: 30px, $offset: 4px);
+}
