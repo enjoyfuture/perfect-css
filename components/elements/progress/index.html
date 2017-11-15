@@ -11,7 +11,7 @@
 
 <title>
   
-  Form 表单组件 &middot; Perfect
+  Progress 进度条 &middot; Perfect
   
 </title>
 
@@ -221,8 +221,8 @@
   
   <li class="menu-item">
     <a href="/components/container/carousel/" 
-       class="menu-title menu-header active" style="padding-left: 1rem;">容器类组件</a>
-    <ul class="menu">
+       class="menu-title menu-header " style="padding-left: 1rem;">容器类组件</a>
+    <ul class="menu" style="display: none;">
       
       
 
@@ -262,7 +262,7 @@
 
       <li class="menu-item">
         <a href="/components/container/form/"
-             class="menu-title menu-sub-title active" style="padding-left: 2rem;">Form 表单</a></li>
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Form 表单</a></li>
       
       
 
@@ -294,8 +294,8 @@
   
   <li class="menu-item">
     <a href="/components/elements/button/" 
-       class="menu-title menu-header " style="padding-left: 1rem;">元素类组件</a>
-    <ul class="menu" style="display: none;">
+       class="menu-title menu-header active" style="padding-left: 1rem;">元素类组件</a>
+    <ul class="menu">
       
       
 
@@ -365,7 +365,7 @@
 
       <li class="menu-item">
         <a href="/components/elements/progress/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 进度条</a></li>
+             class="menu-title menu-sub-title active" style="padding-left: 2rem;">Progress 进度条</a></li>
       
       
 
@@ -540,146 +540,236 @@
 
     <main class="drawer-main navbar-fixed-adjust">
       <section class="component-wrap catalogue-counter">
-        <div class="component-wrap">
-  <section>
-    <h4>label 在左侧</h4>
-    <div class="form-field-group">
-      <div class="form-field">
-        <label for="input1">账户:</label>
-        <div class="input" id="input1">
-          <input type="text" class="input-field" placeholder="请输入账户">
-        </div>
-      </div>
-      <div class="form-field">
-        <label for="input2">密码:</label>
-        <div class="input" id="input2">
-          <input type="password" class="input-field" placeholder="请输入密码">
-        </div>
-      </div>
+        <h2>进度条</h2>
+
+<h3>利用 style 来设置进度</h3>
+<section class="component-container component-vertical-spacing">
+  <div class="progress">
+    <div class="progress-inner"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner" style="width: 25%;"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner" style="width: 50%;"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner" style="width: 75%;"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner" style="width: 100%;"></div>
+  </div>
+</section>
+
+<h3>结合提供的长度工具类来设置进度</h3>
+<section class="component-container component-vertical-spacing">
+  <div class="progress">
+    <div class="progress-inner"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner w-25"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner w-50"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner w-75"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner w-100"></div>
+  </div>
+</section>
+
+<h3>进度条上设置内容</h3>
+<section class="component-container component-vertical-spacing">
+  <div class="progress" style="height: 30px;">
+    <div class="progress-inner w-25">25%</div>
+  </div>
+  <div class="progress" style="height:50px;">
+    <div class="progress-inner w-50">
+      <span>当前进度 50%</span>
+      <span>你还没达标，继续努力</span>
     </div>
+  </div>
+</section>
 
-    <h4>label 位置放在 input 后面，但显示的还在左侧，需要借助于样式 .form-field-left</h4>
-    <div class="form-field-group">
-      <div class="form-field form-field-left">
-        <div class="input" id="input3">
-          <input type="text" class="input-field" placeholder="请输入账户">
-        </div>
-        <label for="input3">账户:</label>
-      </div>
-      <div class="form-field form-field-left">
-        <div class="input" id="input4">
-          <input type="password" class="input-field" placeholder="请输入密码">
-        </div>
-        <label for="input4">密码:</label>
-      </div>
+<h3>自定义高度</h3>
+<section class="component-container component-vertical-spacing">
+  <div class="progress" style="height: 1px;">
+    <div class="progress-inner w-25"></div>
+  </div>
+  <div class="progress" style="height:2px;">
+    <div class="progress-inner w-50"></div>
+  </div>
+</section>
+
+<h2>Progress 主题</h2>
+
+<h3>主颜色</h3>
+<section class="component-container component-vertical-spacing">
+  <div class="progress theme-secondary-alpha-bg">
+    <div class="progress-inner theme-primary-bg" style="width: 20%;"></div>
+  </div>
+  <div class="progress theme-secondary-light-bg">
+    <div class="progress-inner theme-primary-dark-bg" style="width: 40%;"></div>
+  </div>
+  <div class="progress theme-secondary-lighter-bg">
+    <div class="progress-inner theme-primary-darker-bg" style="width: 60%;"></div>
+  </div>
+  <div class="progress theme-secondary-lightest-bg">
+    <div class="progress-inner theme-primary-darkest-bg" style="width: 80%;"></div>
+  </div>
+
+  <div class="progress theme-secondary-alpha-bg">
+    <div class="progress-inner theme-secondary-bg" style="width: 20%;"></div>
+  </div>
+  <div class="progress theme-secondary-lighter-bg">
+    <div class="progress-inner theme-secondary-dark-bg" style="width: 40%;"></div>
+  </div>
+  <div class="progress theme-secondary-lightest-bg">
+    <div class="progress-inner theme-secondary-darker-bg" style="width: 60%;"></div>
+  </div>
+  <div class="progress theme-secondary-light-bg">
+    <div class="progress-inner theme-secondary-darkest-bg" style="width: 80%;"></div>
+  </div>
+</section>
+
+<h3>辅助颜色</h3>
+<section class="component-container component-vertical-spacing">
+  <div class="progress theme-success-alpha-bg">
+    <div class="progress-inner theme-success-bg" style="width: 20%;"></div>
+  </div>
+  <div class="progress theme-info-light-bg">
+    <div class="progress-inner theme-info-dark-bg" style="width: 40%;"></div>
+  </div>
+  <div class="progress theme-error-lighter-bg">
+    <div class="progress-inner theme-error-dark-bg" style="width: 60%;"></div>
+  </div>
+  <div class="progress theme-warning-lighter-bg">
+    <div class="progress-inner theme-warning-dark-bg" style="width: 80%;"></div>
+  </div>
+
+  <div class="progress theme-success-alpha-bg">
+    <div class="progress-inner theme-info-bg" style="width: 20%;"></div>
+  </div>
+  <div class="progress theme-info-light-bg">
+    <div class="progress-inner theme-success-dark-bg" style="width: 40%;"></div>
+  </div>
+  <div class="progress theme-error-lighter-bg">
+    <div class="progress-inner theme-success-dark-bg" style="width: 60%;"></div>
+  </div>
+  <div class="progress theme-warning-lighter-bg">
+    <div class="progress-inner theme-info-dark-bg" style="width: 80%;"></div>
+  </div>
+</section>
+
+<h3>分段显示不同颜色进度条</h3>
+<section class="component-container component-vertical-spacing">
+  <div class="progress theme-success-alpha-bg">
+    <div class="progress-inner theme-primary-bg" style="width: 20%;"></div>
+    <div class="progress-inner theme-secondary-bg" style="width: 30%;"></div>
+    <div class="progress-inner theme-info-bg" style="width: 15%;"></div>
+  </div>
+</section>
+
+<h2>有条纹的进度条</h2>
+
+<h3>不带动画</h3>
+<section class="component-container component-vertical-spacing">
+  <div class="progress">
+    <div class="progress-inner theme-primary-bg progress-inner-striped" style="width: 40%;"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner theme-secondary-bg progress-inner-striped" style="width: 30%;"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner theme-info-bg progress-inner-striped" style="width: 60%;"></div>
+  </div>
+</section>
+
+<h3>动画</h3>
+<section class="component-container component-vertical-spacing">
+  <div class="progress">
+    <div class="progress-inner theme-primary-bg progress-inner-striped progress-inner-animated" style="width: 40%;"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner theme-secondary-bg progress-inner-striped progress-inner-animated" style="width: 30%;"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-inner theme-info-bg progress-inner-striped progress-inner-animated" style="width: 60%;"></div>
+  </div>
+</section>
+
+<h2>渐变进度条（需要抽取出公共的渐变样式，待补充 TODO ）</h2>
+<section class="component-container component-vertical-spacing">
+  <div class="progress">
+    <div class="progress-inner" style="background-image: linear-gradient(to right, #43a047 0%, #fff 100%); width: 100%;"></div>
+  </div>
+</section>
+
+<h2>在进度条上面或下面显示百分比</h2>
+<section class="component-container component-vertical-spacing">
+  <div class="progress">
+    <div class="progress-inner" style="width: 67%;">
+      <div class="progress-inner-text" style="left: 67%">67%</div>
     </div>
+  </div>
+</section>
 
-    <h4>label 在右侧，一般用在 radio 和 checkbox 上</h4>
-    <div class="form-field-group">
-      <div class="form-field">
-        <div class="radio">
-          <input class="radio-native-control" type="radio" name="radio1">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <label>男</label>
 
-        <div class="radio">
-          <input class="radio-native-control" type="radio" name="radio1">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-        <label>女</label>
-      </div>
-      <div class="form-field">
-        <div class="checkbox">
-          <input class="checkbox-native-control" type="checkbox" name="checkbox1">
-          <div class="checkbox-background">
-            <div class="checkbox-mark-outer"></div>
-            <div class="checkbox-mark-inner"></div>
-          </div>
-        </div>
-        <label>CSS</label>
-        <div class="checkbox">
-          <input class="checkbox-native-control" type="checkbox" name="checkbox1">
-          <div class="checkbox-background">
-            <div class="checkbox-mark-outer"></div>
-            <div class="checkbox-mark-inner"></div>
-          </div>
-        </div>
-        <label>JavaScript</label>
-      </div>
+<h2>Switch 定制化</h2>
+
+<h3>颜色</h3>
+<section class="component-container component-spacing">
+  <div class="switch switch-customer-color">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
     </div>
+  </div>
 
-    <h4>label 位置放在 input 前面，但显示的还在右侧，需要借助于样式 .form-field-right</h4>
-    <div>
-      <div class="form-field form-field-right">
-        <label>男</label>
-        <div class="radio radio-info">
-          <input class="radio-native-control" type="radio" name="radio1">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-field form-field-right">
-        <label>女</label>
-        <div class="radio radio-info">
-          <input class="radio-native-control" type="radio" name="radio1">
-          <div class="radio-background">
-            <div class="radio-circle-outer"></div>
-            <div class="radio-circle-inner"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-field form-field-right m-l-4">
-        <label>CSS</label>
-        <div class="checkbox checkbox-warning ripple">
-          <input class="checkbox-native-control" type="checkbox" name="checkbox1">
-          <div class="checkbox-background">
-            <div class="checkbox-mark-outer"></div>
-            <div class="checkbox-mark-inner"></div>
-          </div>
-        </div>
-      </div>
-      <div class="form-field form-field-right">
-        <label>JavaScript</label>
-        <div class="checkbox checkbox-warning">
-          <input class="checkbox-native-control" type="checkbox" name="checkbox1">
-          <div class="checkbox-background">
-            <div class="checkbox-mark-outer"></div>
-            <div class="checkbox-mark-inner"></div>
-          </div>
-        </div>
-      </div>
+  <div class="switch switch-focus-ring switch-customer-color">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
     </div>
+  </div>
+</section>
 
-    <h4>100% 显示</h4>
-    <div class="form-field-full">
-      <label for="input5">账户:</label>
-      <div class="input input-full" id="input5">
-        <input type="text" class="input-field" placeholder="请输入账户">
-      </div>
+<h3>大小</h3>
+<section class="component-container component-spacing">
+  <div class="switch switch-customer-size">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
     </div>
+  </div>
 
-    <div class="form-field-full">
-      <label for="input6">密码:</label>
-      <div class="input input-full" id="input6">
-        <input type="password" class="input-field" placeholder="请输入密码">
-      </div>
+  <div class="switch switch-focus-ring switch-customer-size">
+    <input type="checkbox" class="switch-control">
+    <div class="switch-track">
+      <div class="switch-knob"></div>
     </div>
+  </div>
+</section>
 
-  </section>
-</div>
+<script>
+  $(function () {
+    // Disabled
+    $('#disabledState').change(function () {
+      const $el = $(this);
+      const checked = $el.prop('checked');
 
-
+      $('.switch-control').each(function (index, el) {
+        if (checked) {
+          $(el).prop('disabled', true);
+        } else {
+          $(el).prop('disabled', false);
+        }
+      });
+    });
+  });
+</script>
 
       </section>
     </main>
