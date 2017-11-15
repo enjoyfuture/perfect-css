@@ -57,6 +57,8 @@
       file: select
     - title: Switch 开关
       file: switch
+    - title: Progress 进度条
+      file: progress
     - title: Image 组件
       file: image
     - title: Badge 标记刻章组件
