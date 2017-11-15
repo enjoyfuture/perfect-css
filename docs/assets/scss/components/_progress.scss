@@ -1,0 +1,5 @@
+@import "../../../../scss/elements/progress/mixin";
+// 自定义大小 progress
+.progress-customer {
+  @include progress-size($height: 32px, $radius: 16px, $dot-height: 16px, $dot-size: 32px)
+}

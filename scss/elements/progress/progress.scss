@@ -17,7 +17,7 @@
   background-color: $progress-bg;
 
   &-inner {
-    position: relative;
+    position:        relative;
     display:         flex;
     flex-direction:  column; // 用来设置多行文本
     align-items:     center;
@@ -25,13 +25,6 @@
     @include theme-prop(color, secondary-on-dark);
     @include theme-prop(background-color, secondary-on-light);
     transition:      progress-transition(width);
-  }
-
-  &-inner-text {
-    position:  absolute;
-    top:       -20px;
-    font-size: $font-size-xs;
-    color:     #fff;
   }
 
   // 有条纹的进度条
@@ -51,28 +44,67 @@
   to { background-position: 0 0; }
 }
 
-// 带点的进度条
-.progress-bar {
-  position:         relative;
-  display:          flex;
-  justify-content:  space-between;
-  width:            100%;
-  height:           3px;
-  background-color: #eee;
+// 在进度条上面或下面显示内容
+.progress-text {
+  overflow: visible;
 
-  &-dot {
-    position:         relative;
-    top:              -.4rem;
+  .progress-inner {
+    align-items: flex-end;
+  }
+
+  // 内容
+  &-inner-top,
+  &-inner-bottom {
+    position:  absolute;
+    font-size: $font-size-xs;
+    transform: translateX(50%);
+    @include theme-prop(color, secondary-on-light);
+  }
+
+  &-inner-top {
+    top: -$progress-height * 1.5;
+  }
+
+  &-inner-bottom {
+    top: $progress-height * 1.5;
+  }
+}
+
+// 进度条设为 .progress-text 时，额外提供两个圆角类，根据需要设置
+.progress-radius-left {
+  border-top-left-radius:    $progress-border-radius;
+  border-bottom-left-radius: $progress-border-radius;
+}
+
+.progress-radius-right {
+  border-top-right-radius:    $progress-border-radius;
+  border-bottom-right-radius: $progress-border-radius;
+}
+
+// 带点的进度条
+.progress-dot {
+  position: relative;
+  height:   $progress-dot-height;
+  overflow: visible;
+
+  &-inner {
+    position:         absolute;
+    top:              -$progress-dot-size / 4;
     box-sizing:       border-box;
-    width:            .875rem;
-    height:           .875rem;
-    border:           .25rem solid #eee;
+    width:            $progress-dot-size;
+    height:           $progress-dot-size;
+    border:           $progress-dot-size / 4 solid #eee;
     border-radius:    100%;
     background-color: #fff;
+    transform:        translateX(-$progress-dot-size / 2);
+    transition:       progress-transition(left);
 
     &.active {
-      border-color:     #f5d0d1;
-      background-color: #cf121b;
+      @include theme-prop(border-color, primary-lighter);
+      @include theme-prop(background-color, primary);
     }
   }
 }
+
+// 运动的进度条待实现 todo
+

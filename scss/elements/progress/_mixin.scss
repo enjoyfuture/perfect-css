@@ -1,0 +1,62 @@
+@import "./variable";
+
+// 自定义大小，只定义了大小，自定义主题可以使用主题相关 .class
+@mixin progress-size($height: $progress-height, $radius: $progress-border-radius,
+  $dot-height: $progress-dot-height, $dot-size: $progress-dot-size) {
+  @if ($height != $progress-height) {
+    &.progress {
+      height:        $height;
+      border-radius: $radius;
+    }
+
+    .progress-inner-striped {
+      background-size: $height $height;
+    }
+
+    // 带动画有条纹的进度条
+    .progress-inner-animated {
+      animation: progress-inner-stripes1 $progress-bar-animation-timing;
+    }
+
+    &:root {
+      @keyframes progress-inner-stripes1 {
+        from { background-position: $height 0; }
+        to { background-position: 0 0; }
+      }
+    }
+
+    .progress-inner-top {
+      top: -$height * 1.5;
+    }
+
+    .progress-inner-bottom {
+      top: $height * 1.5;
+    }
+  }
+
+  &:root {
+    .progress-radius-left {
+      border-top-left-radius:    $radius;
+      border-bottom-left-radius: $radius;
+    }
+
+    .progress-radius-right {
+      border-top-right-radius:    $radius;
+      border-bottom-right-radius: $radius;
+    }
+  }
+
+  @if ($dot-height != $progress-dot-height) {
+    &.progress-dot {
+      height: $dot-height;
+
+      .progress-dot-inner {
+        top:       -$dot-size / 4;
+        width:     $dot-size;
+        height:    $dot-size;
+        border:    $dot-size / 4 solid #eee;
+        transform: translateX(-$dot-size / 2);
+      }
+    }
+  }
+}

@@ -74,6 +74,12 @@
   }
 }
 
+.component-bottom-spacing {
+  >div, >button, >a {
+    margin-bottom:  1rem;
+  }
+}
+
 .component-vertical-spacing {
   >div, >button, >a, >nav {
     margin-bottom: 1rem;

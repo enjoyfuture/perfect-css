@@ -171,66 +171,94 @@ group: elements
   </div>
 </section>
 
-<h2>在进度条上面或下面显示百分比</h2>
+<h2>在进度条上面或下面显示内容</h2>
 <section class="component-container component-vertical-spacing">
-  <div class="progress">
-    <div class="progress-inner" style="width: 67%;">
-      <div class="progress-inner-text" style="left: 67%">67%</div>
+  <div class="progress progress-text">
+    <div class="progress-inner progress-radius-left theme-secondary-bg" style="width: 20%;">
+      <div class="progress-text-inner-top">20%</div>
+    </div>
+    <div class="progress-inner theme-primary-dark-bg" style="width: 60%;">
+      <div class="progress-text-inner-top">80%</div>
+    </div>
+    <div class="progress-inner progress-radius-right theme-success-dark-bg" style="width: 20%;">
+      <div class="progress-text-inner-top">100%</div>
+    </div>
+  </div>
+
+  <div class="progress progress-text m-b-4">
+    <div class="progress-inner progress-radius-left theme-secondary-bg" style="width: 10%;">
+      <div class="progress-text-inner-bottom">10%</div>
+    </div>
+    <div class="progress-inner theme-primary-dark-bg" style="width: 50%;">
+      <div class="progress-text-inner-bottom">60%</div>
+    </div>
+    <div class="progress-inner progress-radius-right theme-success-dark-bg" style="width: 40%;">
+      <div class="progress-text-inner-bottom">100%</div>
     </div>
   </div>
 </section>
 
-
-<h2>Switch 定制化</h2>
-
-<h3>颜色</h3>
-<section class="component-container component-spacing">
-  <div class="switch switch-customer-color">
-    <input type="checkbox" class="switch-control">
-    <div class="switch-track">
-      <div class="switch-knob"></div>
-    </div>
+<h2>带点的进度条</h2>
+<section class="component-container component-vertical-spacing">
+  <div class="progress progress-dot">
+    <div class="progress-inner theme-secondary-bg" style="width: 20%;"></div>
+    <div class="progress-inner theme-info-bg" style="width: 50%;"></div>
+    <div class="progress-dot-inner active"></div>
+    <div class="progress-dot-inner" style="left: 20%"></div>
+    <div class="progress-dot-inner active" style="left: 70%"></div>
   </div>
 
-  <div class="switch switch-focus-ring switch-customer-color">
-    <input type="checkbox" class="switch-control">
-    <div class="switch-track">
-      <div class="switch-knob"></div>
+  <div class="progress progress-text progress-dot m-y-4">
+    <div class="progress-inner progress-radius-left theme-secondary-bg" style="width: 10%;">
+      <div class="progress-text-inner-top">10%</div>
     </div>
-  </div>
-</section>
+    <div class="progress-inner theme-primary-dark-bg" style="width: 50%;">
+      <div class="progress-text-inner-top">60%</div>
+    </div>
+    <div class="progress-inner progress-radius-right theme-success-dark-bg" style="width: 40%;">
+      <div class="progress-text-inner-bottom">100%</div>
+    </div>
 
-<h3>大小</h3>
-<section class="component-container component-spacing">
-  <div class="switch switch-customer-size">
-    <input type="checkbox" class="switch-control">
-    <div class="switch-track">
-      <div class="switch-knob"></div>
-    </div>
-  </div>
-
-  <div class="switch switch-focus-ring switch-customer-size">
-    <input type="checkbox" class="switch-control">
-    <div class="switch-track">
-      <div class="switch-knob"></div>
-    </div>
+    <div class="progress-dot-inner active"></div>
+    <div class="progress-dot-inner active" style="left: 10%"></div>
+    <div class="progress-dot-inner active" style="left: 60%"></div>
+    <div class="progress-dot-inner active" style="left: 100%"></div>
   </div>
 </section>
 
-<script>
-  $(function () {
-    // Disabled
-    $('#disabledState').change(function () {
-      const $el = $(this);
-      const checked = $el.prop('checked');
+<h2>Progress 自定义大小</h2>
 
-      $('.switch-control').each(function (index, el) {
-        if (checked) {
-          $(el).prop('disabled', true);
-        } else {
-          $(el).prop('disabled', false);
-        }
-      });
-    });
-  });
-</script>
+<section class="component-container component-vertical-spacing">
+  <div class="progress progress-customer">
+    <div class="progress-inner w-25"></div>
+  </div>
+
+  <div class="progress progress-customer theme-secondary-lighter-bg">
+    <div class="progress-inner theme-secondary-dark-bg" style="width: 40%;"></div>
+  </div>
+
+  <div class="progress progress-customer">
+    <div class="progress-inner theme-secondary-bg progress-inner-striped progress-customer" style="width: 30%;"></div>
+  </div>
+
+  <div class="progress progress-customer">
+    <div class="progress-inner theme-info-bg progress-inner-striped progress-inner-animated progress-customer" style="width: 60%;"></div>
+  </div>
+
+  <div class="progress progress-text progress-customer m-t-4">
+    <div class="progress-inner progress-radius-left theme-secondary-bg" style="width: 20%;">
+      <div class="progress-text-inner-top">20%</div>
+    </div>
+    <div class="progress-inner theme-primary-dark-bg" style="width: 60%;">
+      <div class="progress-text-inner-top">80%</div>
+    </div>
+  </div>
+
+  <div class="progress progress-dot progress-customer">
+    <div class="progress-inner theme-secondary-bg" style="width: 20%;"></div>
+    <div class="progress-inner theme-info-bg" style="width: 50%;"></div>
+    <div class="progress-dot-inner active"></div>
+    <div class="progress-dot-inner" style="left: 20%"></div>
+    <div class="progress-dot-inner active" style="left: 70%"></div>
+  </div>
+</section>

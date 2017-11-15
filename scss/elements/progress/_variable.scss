@@ -4,6 +4,8 @@
 // 进度条相关变量
 $progress-height: 16px !default;
 $progress-bg: $grey-color-200 !default;
-$progress-border-radius: $border-radius !default;
+$progress-border-radius: 4px !default;
 $progress-bar-color: $white !default;
 $progress-bar-animation-timing: 1s linear infinite !default;
+$progress-dot-height: 8px !default;
+$progress-dot-size: 16px !default;
