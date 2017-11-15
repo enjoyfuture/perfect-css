@@ -34,12 +34,11 @@ th {
   td {
     padding: $table-cell-padding;
     border-top: $table-border-width solid $table-border-color;
-    vertical-align: top;
+    vertical-align: middle;
   }
 
   thead th {
     border-bottom: ($table-border-width * 2) solid $table-border-color;
-    vertical-align: bottom;
   }
 
   tbody + tbody {

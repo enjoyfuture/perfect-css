@@ -1,50 +1,77 @@
-// 进度条
-
+// 进度条组件
 @import "../../base/variables/font";
+@import "../../theme/mixin";
+@import "../../animation/mixin";
+@import "../../base/mixins/gradients";
+@import "./variable";
+@import "./function";
 
+// 进度条的实现：由两层结构实现，外层定义总宽度，内层定义进度
 .progress {
-  box-sizing: border-box;
-  width: 100%;
-  height: 4px;
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, .3);
+  box-sizing:       border-box;
+  display:          flex;
+  width:            100%;
+  height:           $progress-height;
+  border-radius:    $progress-border-radius;
+  overflow:         hidden;
+  background-color: $progress-bg;
 
   &-inner {
     position: relative;
-    height: 4px;
-    border-radius: 8px;
-    background-color: #fff;
+    display:         flex;
+    flex-direction:  column; // 用来设置多行文本
+    align-items:     center;
+    justify-content: center;
+    @include theme-prop(color, secondary-on-dark);
+    @include theme-prop(background-color, secondary-on-light);
+    transition:      progress-transition(width);
   }
 
   &-inner-text {
-    position: absolute;
-    top: -20px;
+    position:  absolute;
+    top:       -20px;
     font-size: $font-size-xs;
-    color: #fff;
+    color:     #fff;
   }
+
+  // 有条纹的进度条
+  &-inner-striped {
+    @include gradient-striped();
+    background-size: $progress-height $progress-height;
+  }
+
+  // 带动画有条纹的进度条
+  &-inner-animated {
+    animation: progress-inner-stripes $progress-bar-animation-timing;
+  }
+}
+
+@keyframes progress-inner-stripes {
+  from { background-position: $progress-height 0; }
+  to { background-position: 0 0; }
 }
 
 // 带点的进度条
 .progress-bar {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 3px;
+  position:         relative;
+  display:          flex;
+  justify-content:  space-between;
+  width:            100%;
+  height:           3px;
   background-color: #eee;
 
   &-dot {
-    position: relative;
-    top: -.4rem;
-    box-sizing: border-box;
-    width: .875rem;
-    height: .875rem;
-    border: .25rem solid #eee;
-    border-radius: 100%;
+    position:         relative;
+    top:              -.4rem;
+    box-sizing:       border-box;
+    width:            .875rem;
+    height:           .875rem;
+    border:           .25rem solid #eee;
+    border-radius:    100%;
     background-color: #fff;
 
     &.active {
-      border-color: #f5d0d1;
+      border-color:     #f5d0d1;
       background-color: #cf121b;
     }
   }
