@@ -47,9 +47,8 @@
   @return max($back-luminance, $fore-luminance) / min($back-luminance, $fore-luminance);
 }
 
-// 根据给定的颜色来判断对比色调在文本上是使用深色还是浅色
-// 如果$color是浅色，则返回深色 dark，否则为浅色 light
-@function theme-light-or-dark($color) {
+// 根据给定的颜色来判断色调是浅色还是深色
+@function theme-tone($color) {
   //$alpha: alpha($color);
   //// 如果是透明色，需要先转换为对应的不透明色
   //@if ($alpha < 1) {
@@ -64,42 +63,64 @@
   // 返回 dark，否则 light
 
   @if ($light-contrast < $minimum-contrast) and ($dark-contrast > $light-contrast) {
-    @return "dark";
-  } @else {
     @return "light";
+  } @else {
+    @return "dark";
   }
 }
 
-// 根据 $theme-tone-property-values 中的 key 计算对应的 CSS 变量名
-// 比如 primary-on-primary 对应的变量名为 --theme-#{$theme-primary-tone}-primary
+// 颜色的对比色调，即深颜色对应的对比色调为浅颜色
+// 如果$color是浅色，则返回深色 dark，否则为浅色 light
+@function theme-contrast-tone($color) {
+  @return if(theme-tone($color) == "dark", "light", "dark");
+}
+
+// 根据 $theme-contrast-tone-property-values 中的 key 计算对应的 CSS 变量名
+// 比如 primary-on-primary 对应的变量名为 --theme-#{$theme-primary-contrast-tone}-primary
 // --theme-light-primary
-@function theme-tone-var($theme-tone-property) {
-  $on-index: str-index($theme-tone-property, '-on-');
-  $on-prev-str: str-slice($theme-tone-property, 0, $on-index - 1);
-  $on-next-str: str-slice($theme-tone-property, $on-index + 4);
-  $tone-light-or-dark: null;
+@function theme-contrast-tone-var($theme-contrast-tone-property) {
+  $on-index: str-index($theme-contrast-tone-property, '-on-');
+  $on-prev-str: str-slice($theme-contrast-tone-property, 0, $on-index - 1);
+  $on-next-str: str-slice($theme-contrast-tone-property, $on-index + 4);
+  $contrast-tone: null;
 
   // 这里 scss 不支持形如 js 取变量的方式，故需要处理多个判断
   @if ($on-next-str == 'light') {
-    $tone-light-or-dark: dark;
+    $contrast-tone: dark;
   } @else if ($on-next-str == 'dark') {
-    $tone-light-or-dark: light;
+    $contrast-tone: light;
   } @else if ($on-next-str == 'primary') {
-    $tone-light-or-dark: $theme-primary-tone;
+    $contrast-tone: $theme-primary-contrast-tone;
   } @else if ($on-next-str == 'primary-light') {
-    $tone-light-or-dark: $theme-primary-light-tone;
+    $contrast-tone: $theme-primary-light-contrast-tone;
+  } @else if ($on-next-str == 'primary-lighter') {
+    $contrast-tone: $theme-primary-lighter-contrast-tone;
+  } @else if ($on-next-str == 'primary-lightest') {
+    $contrast-tone: $theme-primary-lightest-contrast-tone;
   } @else if ($on-next-str == 'primary-dark') {
-    $tone-light-or-dark: $theme-primary-dark-tone;
+    $contrast-tone: $theme-primary-dark-contrast-tone;
+  } @else if ($on-next-str == 'primary-darker') {
+    $contrast-tone: $theme-primary-darker-contrast-tone;
+  } @else if ($on-next-str == 'primary-darkest') {
+    $contrast-tone: $theme-primary-darkest-contrast-tone;
   } @else if ($on-next-str == 'secondary') {
-    $tone-light-or-dark: $theme-secondary-tone;
+    $contrast-tone: $theme-secondary-contrast-tone;
   } @else if ($on-next-str == 'secondary-light') {
-    $tone-light-or-dark: $theme-secondary-light-tone;
+    $contrast-tone: $theme-secondary-light-contrast-tone;
+  } @else if ($on-next-str == 'secondary-lighter') {
+    $contrast-tone: $theme-secondary-lighter-contrast-tone;
+  } @else if ($on-next-str == 'secondary-lightest') {
+    $contrast-tone: $theme-secondary-lightest-contrast-tone;
   } @else if ($on-next-str == 'secondary-dark') {
-    $tone-light-or-dark: $theme-secondary-dark-tone;
+    $contrast-tone: $theme-secondary-dark-contrast-tone;
+  } @else if ($on-next-str == 'secondary-darker') {
+    $contrast-tone: $theme-secondary-darker-contrast-tone;
+  } @else if ($on-next-str == 'secondary-darkest') {
+    $contrast-tone: $theme-secondary-darkest-contrast-tone;
   } @else if ($on-next-str == 'background') {
-    $tone-light-or-dark: $theme-background-tone;
+    $contrast-tone: $theme-background-contrast-tone;
   }
 
-  @return #{$tone-light-or-dark}-#{$on-prev-str};
+  @return #{$contrast-tone}-#{$on-prev-str};
 }
 

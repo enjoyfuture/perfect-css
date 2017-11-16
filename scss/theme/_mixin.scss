@@ -24,21 +24,21 @@
 }
 
 // 用来设置主题色对应的对比色调值，浅色还是深色
-// $style 应该是 $theme-tone-property-values 中某个 key
+// $style 应该是 $theme-contrast-tone-property-values 中某个 key
 // 该 mixin 除了设置了对比色调值，还设置了对应的 css 变量值
-@mixin theme-tone-prop($property, $style, $important) {
+@mixin theme-contrast-tone-prop($property, $style, $important) {
   // 根据 $style 返回变量，主要是 light 或 dark 变量
-  $theme-var: theme-tone-var($style);
+  $theme-var: theme-contrast-tone-var($style);
   @if $important {
-    #{$property}: map-get($theme-tone-property-values, $style) !important;
-    #{$property}: var(--theme-#{$theme-var}, map-get($theme-tone-property-values, $style)) !important;
+    #{$property}: map-get($theme-contrast-tone-property-values, $style) !important;
+    #{$property}: var(--theme-#{$theme-var}, map-get($theme-contrast-tone-property-values, $style)) !important;
   } @else {
-    #{$property}: map-get($theme-tone-property-values, $style);
-    #{$property}: var(--theme-#{$theme-var}, map-get($theme-tone-property-values, $style));
+    #{$property}: map-get($theme-contrast-tone-property-values, $style);
+    #{$property}: var(--theme-#{$theme-var}, map-get($theme-contrast-tone-property-values, $style));
   }
 }
 
-// 糅合 theme-color-prop 和 theme-tone-prop
+// 糅合 theme-color-prop 和 theme-contrast-tone-prop
 // 如果 $style 是颜色值，则直接设置颜色
 @mixin theme-prop($property, $style, $important: false) {
   @if type-of($style) == "color" {
@@ -52,16 +52,16 @@
     @if ($color) {
       @include theme-color-prop($property, $style, $important);
     } @else {
-      $color: map-get($theme-tone-property-values, $style);
+      $color: map-get($theme-contrast-tone-property-values, $style);
       @if ($color) {
-        @include theme-tone-prop($property, $style, $important);
+        @include theme-contrast-tone-prop($property, $style, $important);
       } @else {
         // 用辅助颜色来设置
         $color: map-get($theme-assist-colors, $style);
         @if ($color) {
           @include theme-assist($property, $style);
         } @else {
-          @error "无效的主题属性值，#{$style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-tone-property-values)}";
+          @error "无效的主题属性值，#{$style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-contrast-tone-property-values)}";
         }
       }
     }
@@ -81,16 +81,18 @@
   }
 
   // 色调，判断是深色还是浅色
-  $tone: theme-light-or-dark($color);
+  $tone: theme-tone($color);
+  // 对比色调
+  $contrast-tone: theme-contrast-tone($color);
 
   @if ($fore) {
     color: $color;
     color: var(--theme-#{$style}, $color);
-    background-color: map-get($theme-tone-property-values, primary-on-#{$tone});
-    background-color: var(--theme-#{$style}, map-get($theme-tone-property-values, primary-on-#{$tone}));
+    background-color: map-get($theme-contrast-tone-property-values, primary-on-#{$tone});
+    background-color: var(--theme-#{$contrast-tone}-#{$style}, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
   } @else {
-    color: map-get($theme-tone-property-values, primary-on-#{$tone});
-    color: var(--theme-#{$style}, map-get($theme-tone-property-values, primary-on-#{$tone}));
+    color: map-get($theme-contrast-tone-property-values, primary-on-#{$tone});
+    color: var(--theme-#{$contrast-tone}, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
     background-color: $color;
     background-color: var(--theme-#{$style}, $color);
   }
@@ -160,7 +162,7 @@
     }
   }
 
-  // 通过添加该样式值，改变文本主题前景颜色值，对于主题色调($theme-tone-property-values)，不单独设置
+  // 通过添加该样式值，改变文本主题前景颜色值，对于主题色调($theme-contrast-tone-property-values)，不单独设置
   // .theme-primary {color: #2196f3; color: var(--theme-primary, #2196f3);}
   @each $style in map-keys($theme-property-values) {
     @if $style != "background" {
@@ -185,9 +187,9 @@
       background-color: $color !important;
       background-color: var(--theme-#{$theme}, $color) !important;
       @if ($tone) {
-        $light-or-dark: theme-light-or-dark($color);
-        $tone-color: map-get(map-get($theme-text-colors, $light-or-dark), primary);
-        color: $tone-color !important;
+        $contrast-tone: theme-contrast-tone($color);
+        $color: map-get(map-get($theme-text-colors, $contrast-tone), primary);
+        color: $color !important;
       }
     }
   }
@@ -199,9 +201,9 @@
       color: $color !important;
       color: var(--theme-#{$theme}, $color) !important;
       @if ($tone) {
-        $light-or-dark: theme-light-or-dark($color);
-        $tone-color: map-get(map-get($theme-text-colors, $light-or-dark), primary);
-        background-color: $tone-color !important;
+        $contrast-tone: theme-contrast-tone($color);
+        $color: map-get(map-get($theme-text-colors, $contrast-tone), primary);
+        background-color: $color !important;
       }
     }
   }
@@ -216,17 +218,17 @@
     .theme-grey-#{$theme} {
       color: $color !important;
       @if ($tone) {
-        $light-or-dark: theme-light-or-dark($color);
-        $tone-color: map-get(map-get($theme-text-colors, $light-or-dark), primary);
-        background-color: $tone-color !important;
+        $contrast-tone: theme-contrast-tone($color);
+        $color: map-get(map-get($theme-text-colors, $contrast-tone), primary);
+        background-color: $color !important;
       }
     }
     .theme-grey-bg-#{$theme} {
       background-color: $color !important;
       @if ($tone) {
-        $light-or-dark: theme-light-or-dark($color);
-        $tone-color: map-get(map-get($theme-text-colors, $light-or-dark), primary);
-        color: $tone-color !important;
+        $contrast-tone: theme-contrast-tone($color);
+        $color: map-get(map-get($theme-text-colors, $contrast-tone), primary);
+        color: $color !important;
       }
     }
   }

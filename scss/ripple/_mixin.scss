@@ -31,7 +31,7 @@
     $theme-value: map-get($theme-property-values, $theme-style);
     // 从色调中取值
     @if ($theme-value == null) {
-      $theme-value: map-get($theme-tone-property-values, $theme-style);
+      $theme-value: map-get($theme-contrast-tone-property-values, $theme-style);
     }
     // 从辅助颜色中取值
     @if ($theme-value == null) {
@@ -39,7 +39,7 @@
     }
 
     @if($theme-value == null) {
-      @error "无效的主题属性值，#{$theme-style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-tone-property-values)}, #{map-keys($theme-assist-colors)} ";
+      @error "无效的主题属性值，#{$theme-style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-contrast-tone-property-values)}, #{map-keys($theme-assist-colors)} ";
     }
 
     $css-var: $theme-value;

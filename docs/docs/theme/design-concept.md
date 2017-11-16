@@ -129,39 +129,39 @@ Perfect CSS 中每个基本颜色值都给出了对应的对比色调变量，�
 
 ```scss
 // 浅色或深色色调，给出基本颜色的对比色调， light or dark
-$theme-primary-tone: theme-light-or-dark($theme-primary);
-$theme-secondary-tone: theme-light-or-dark($theme-secondary);
+$theme-primary-contrast-tone: theme-contrast-tone($theme-primary);
+$theme-secondary-contrast-tone: theme-contrast-tone($theme-secondary);
 
 // 主题颜色浅色对比色调
-$theme-primary-light-tone: theme-light-or-dark($theme-primary-light);
-$theme-secondary-light-tone: theme-light-or-dark($theme-secondary-light);
+$theme-primary-light-contrast-tone: theme-contrast-tone($theme-primary-light);
+$theme-secondary-light-contrast-tone: theme-contrast-tone($theme-secondary-light);
 
 // 主题颜色更浅色对比色调
-$theme-primary-lighter-tone: theme-light-or-dark($theme-primary-lighter);
-$theme-secondary-lighter-tone: theme-light-or-dark($theme-secondary-lighter);
+$theme-primary-lighter-contrast-tone: theme-contrast-tone($theme-primary-lighter);
+$theme-secondary-lighter-contrast-tone: theme-contrast-tone($theme-secondary-lighter);
 
 // 主题颜色最浅色对比色调
-$theme-primary-lightest-tone: theme-light-or-dark($theme-primary-lightest);
-$theme-secondary-lightest-tone: theme-light-or-dark($theme-secondary-lightest);
+$theme-primary-lightest-contrast-tone: theme-contrast-tone($theme-primary-lightest);
+$theme-secondary-lightest-contrast-tone: theme-contrast-tone($theme-secondary-lightest);
 
 // 主题颜色深色对比色调
-$theme-primary-dark-tone: theme-light-or-dark($theme-primary-dark);
-$theme-secondary-dark-tone: theme-light-or-dark($theme-secondary-dark);
+$theme-primary-dark-contrast-tone: theme-contrast-tone($theme-primary-dark);
+$theme-secondary-dark-contrast-tone: theme-contrast-tone($theme-secondary-dark);
 
 // 主题颜色更深色对比色调
-$theme-primary-darker-tone: theme-light-or-dark($theme-primary-darker);
-$theme-secondary-darker-tone: theme-light-or-dark($theme-secondary-darker);
+$theme-primary-darker-contrast-tone: theme-contrast-tone($theme-primary-darker);
+$theme-secondary-darker-contrast-tone: theme-contrast-tone($theme-secondary-darker);
 
 // 主题颜色最深色对比色调
-$theme-primary-darkest-tone: theme-light-or-dark($theme-primary-darkest);
-$theme-secondary-darkest-tone: theme-light-or-dark($theme-secondary-darkest);
+$theme-primary-darkest-contrast-tone: theme-contrast-tone($theme-primary-darkest);
+$theme-secondary-darkest-contrast-tone: theme-contrast-tone($theme-secondary-darkest);
 
 // 主题颜色透明色对比色调
-$theme-primary-alpha-tone: theme-light-or-dark($theme-primary-alpha);
-$theme-secondary-alpha-tone: theme-light-or-dark($theme-secondary-alpha);
+$theme-primary-alpha-contrast-tone: theme-contrast-tone($theme-primary-alpha);
+$theme-secondary-alpha-contrast-tone: theme-contrast-tone($theme-secondary-alpha);
 
 // 背景色对比色调
-$theme-background-tone: theme-light-or-dark($theme-background);
+$theme-background-contrast-tone: theme-contrast-tone($theme-background);
 ```
 
 ### 深色和浅色色调颜色值
@@ -187,13 +187,13 @@ $theme-text-colors: (
 ### 基本颜色对应的对比色调值
 通过上面的[【基本颜色对比色调判断值（深色或浅色）】](#toc-4-1-2)和[【深色和浅色色调值】](#toc-4-1-3)可以方便的计算出给定基本颜色值对应的对比色调值，比如 `$theme-primary` 默认给定的颜色计算出对比色调应该是 light。下面给出使用方法和例子，
 比如在 CSS 组件中要设置 color 属性值，如果要设置 `$theme-primary` 的对比色调 `hint` 值时，可以按照以下步骤来计算出
-* 首先计算出 `$theme-primary` 的对比色调是深色还是浅色，即 `$theme-primary-tone`
-* 从 `$theme-text-colors` 中取出 `map-get($theme-text-colors, $theme-primary-tone)` 来判断是使用深色还是浅色
-* 再取出 `hint`， `map-get(map-get($theme-text-colors, $theme-primary-tone), hint)`
+* 首先计算出 `$theme-primary` 的对比色调是深色还是浅色，即 `$theme-primary-contrast-tone`
+* 从 `$theme-text-colors` 中取出 `map-get($theme-text-colors, $theme-primary-contrast-tone)` 来判断是使用深色还是浅色
+* 再取出 `hint`， `map-get(map-get($theme-text-colors, $theme-primary-contrast-tone), hint)`
 
 上面三步就可以计算出 `$theme-primary` 最终的对比色调值。
 
-给定的每个基本颜色值计算出的对比色调值作为集合放到变量 `$theme-tone-property-values` 中，
+给定的每个基本颜色值计算出的对比色调值作为集合放到变量 `$theme-contrast-tone-property-values` 中，
 对比色调值从明亮到暗淡依次定义为 `primary` `secondary` `hint` `disabled`。
 
 CSS 主题颜色对比色调属性 | 说明
@@ -342,8 +342,9 @@ $transparent: rgba(0, 0, 0, 0) !default;
 coefficient($rgb) | 颜色色彩系数，例如 coefficient(3) => .000910580950647
 theme-luminance($color) | 计算颜色的亮度值 https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
 theme-contrast-ratio($back, $front) | 计算两种颜色的对比度，一般指前景色和背景色
-theme-light-or-dark($color) | 根据给定的颜色来判断对比色调在文本上是使用深色还是浅色
-theme-tone-var($theme-tone-property) | 根据 $theme-tone-property-values 中的 key 计算对应的 CSS 变量名，比如 primary-on-primary 对应的变量名为 --theme-#{$theme-primary-tone}-primary
+theme-tone($color) | 根据给定的颜色来判断色调是浅色还是深色
+theme-contrast-tone($color) | 根据给定的颜色来判断对比色调是浅色还是深色
+theme-contrast-tone-var($theme-contrast-tone-property) | 根据 $theme-contrast-tone-property-values 中的 key 计算对应的 CSS 变量名，比如 primary-on-primary 对应的变量名为 --theme-#{$theme-primary-contrast-tone}-primary
 {: .doc-table}
 
 ## Mixin
@@ -351,8 +352,8 @@ theme-tone-var($theme-tone-property) | 根据 $theme-tone-property-values 中的
 Mixin名 | 功能
 --- | ---
 theme-color-prop($property, $style, $important) | 给属性 $property 设置颜色 $style 值，属性 $property 一般用在 color background-color border-color 等，也可用在任何可以设置颜色值的属性上，$style 应该是 $theme-property-values 中某个 key，该 mixin 主要用来设置主题颜色值，并且设置了主题 CSS 变量值，用户通过修改 CSS 变量值可以动态的修改整个主题值，比如在 body 上修改 css 变量值
-theme-tone-prop($property, $style, $important) | 用来设置主题色对应的对比色调值，浅色或是深色，$style 应该是 $theme-tone-property-values 中某个 key，该 mixin 除了设置了对比色调值，还设置了对应的 CSS 变量值，同样可以通过修改 CSS 变量值来修改对应的对比色调值
-theme-prop($property, $style, $important: false) | 糅合 theme-color-prop 和 theme-tone-prop，如果 $style 是颜色值，则直接设置颜色
+theme-contrast-tone-prop($property, $style, $important) | 用来设置主题色对应的对比色调值，浅色或是深色，$style 应该是 $theme-contrast-tone-property-values 中某个 key，该 mixin 除了设置了对比色调值，还设置了对应的 CSS 变量值，同样可以通过修改 CSS 变量值来修改对应的对比色调值
+theme-prop($property, $style, $important: false) | 糅合 theme-color-prop 和 theme-contrast-tone-prop，如果 $style 是颜色值，则直接设置颜色
 theme($style, $fore: true) | 通过设置前后景来定制主题，该 mixin 只处理简单的 color 和 background-color ，对于更复制的需要组件单独定义。$style 指 $theme-property-values 或 $theme-assist-colors 中属性值，$fore true 指前景，false 指背景，默认 true
 theme-assist($property, $style, $opacity: 1) | 设置辅助颜色，根据给定的 $style ($theme-assist-colors 中的 key) 和 $opacity 来设置颜色
 theme-classes($tone: false) | 设置主题对应的背景和前景颜色 class，如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可
