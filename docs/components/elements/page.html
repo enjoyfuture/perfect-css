@@ -1,0 +1,160 @@
+---
+layout: components
+title: Page 分页
+group: elements
+---
+
+<h2>只有页码的分页</h2>
+
+<h3>基本页码</h3>
+<section class="component-container">
+  <div class="page">
+    <ul class="page-items">
+      <li class="page-item disabled">上一页</li>
+      <li class="page-item active">1</li>
+      <li class="page-item">2</li>
+      <li class="page-item page-more"></li>
+      <li class="page-item">3</li>
+      <li class="page-item">4</li>
+      <li class="page-item page-more"></li>
+      <li class="page-item">5</li>
+      <li class="page-item">6</li>
+      <li class="page-item">下一页</li>
+    </ul>
+  </div>
+</section>
+
+<h3>左对齐</h3>
+<section class="component-container">
+  <div class="page justify-content-start">
+    <ul class="page-items">
+      <li class="page-item disabled">上一页</li>
+      <li class="page-item active">1</li>
+      <li class="page-item">2</li>
+      <li class="page-item page-more"></li>
+      <li class="page-item">3</li>
+      <li class="page-item">4</li>
+      <li class="page-item page-more"></li>
+      <li class="page-item">5</li>
+      <li class="page-item">6</li>
+      <li class="page-item">下一页</li>
+    </ul>
+  </div>
+</section>
+
+<h3>居中</h3>
+<section class="component-container">
+  <div class="page justify-content-center">
+    <ul class="page-items">
+      <li class="page-item disabled">上一页</li>
+      <li class="page-item active">1</li>
+      <li class="page-item">2</li>
+      <li class="page-item page-more"></li>
+      <li class="page-item">3</li>
+      <li class="page-item">4</li>
+      <li class="page-item page-more"></li>
+      <li class="page-item">5</li>
+      <li class="page-item">6</li>
+      <li class="page-item">下一页</li>
+    </ul>
+  </div>
+</section>
+
+<h3>带箭头的页码</h3>
+<section class="component-container">
+  <div class="page">
+    <ul class="page-items">
+      <li class="page-item page-prev disabled"></li>
+      <li class="page-item active">1</li>
+      <li class="page-item">2</li>
+      <li class="page-item page-more"></li>
+      <li class="page-item">3</li>
+      <li class="page-item">4</li>
+      <li class="page-item page-more"></li>
+      <li class="page-item">5</li>
+      <li class="page-item">6</li>
+      <li class="page-item page-next"></li>
+    </ul>
+  </div>
+</section>
+
+<h3>可前进后退 n 页</h3>
+<section class="component-container">
+  <div class="page">
+    <ul class="page-items">
+      <li class="page-item disabled">上一页</li>
+      <li class="page-item active">1</li>
+      <li class="page-item">2</li>
+      <li class="page-item page-more page-prev" title="后退5页"></li>
+      <li class="page-item">3</li>
+      <li class="page-item">4</li>
+      <li class="page-item page-more page-next" title="前进5页"></li>
+      <li class="page-item">5</li>
+      <li class="page-item">6</li>
+      <li class="page-item">下一页</li>
+    </ul>
+  </div>
+</section>
+
+<h3>a 标签分页</h3>
+<section class="component-container">
+  <div class="page">
+    <div class="page-items">
+      <a class="page-item disabled" href="#">上一页</a>
+      <a class="page-item active" href="#">1</a>
+      <a class="page-item" href="#">2</a>
+      <a class="page-item page-more page-prev" href="#" title="后退5页"></a>
+      <a class="page-item" href="#">3</a>
+      <a class="page-item" href="#">4</a>
+      <a class="page-item page-more page-next" href="#" title="前进5页"></a>
+      <a class="page-item" href="#">5</a>
+      <a class="page-item" href="#">6</a>
+      <a class="page-item" href="#">下一页</a>
+    </div>
+  </div>
+</section>
+
+<h3>带显示记录数和页码总数，以及可以设置每页显示条数，跳转页码控制等</h3>
+<section class="component-container">
+  <div class="page">
+    <ul class="page-items">
+      <li class="page-item disabled">上一页</li>
+      <li class="page-item active">1</li>
+      <li class="page-item">2</li>
+      <li class="page-item page-more"></li>
+      <li class="page-item">3</li>
+      <li class="page-item">4</li>
+      <li class="page-item page-more"></li>
+      <li class="page-item">5</li>
+      <li class="page-item">6</li>
+      <li class="page-item">下一页</li>
+    </ul>
+    <ul class="page-control">
+      <li class="page-control-item">共26页259条记录,</li>
+      <li class="page-control-item">
+        每页
+        <div class="select">
+          <select class="select-inner">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+        条,
+      </li>
+      <li class="page-control-item">
+        转到第
+        <div class="input">
+          <input type="text" class="input-field"/>
+        </div>
+        页
+      </li>
+      <li class="page-control-item">
+        <a href="" class="btn btn-raised btn-primary">确定</a>
+      </li>
+    </ul>
+  </div>
+</section>
+

@@ -1,0 +1,164 @@
+// 分页组件，该组件主要用在 pc 端展示
+@import "../../theme/mixin";
+@import "../../theme/variable";
+@import "../../animation/variable";
+@import "./variable";
+@import "./mixin";
+
+// 由两部分组成，由页码和控制显示每页多少记录组成
+// 默认右对齐，可以通过设置 justify-content 来控制显示位置
+.page {
+  display:         flex;
+  justify-content: flex-end;
+  margin-top:      $page-margin-top;
+
+  &-items {
+    display:     flex;
+    align-items: center;
+    // 重置 ul 样式
+    margin:      0;
+    list-style:  none;
+  }
+
+  &-item {
+    box-sizing:      border-box;
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    min-width:       $page-item-width;
+    height:          $page-item-height;
+    padding:         0 $page-item-padding-x;
+    margin-left:     $page-item-margin-left;
+    border:          1px solid $grey-300;
+    border-radius:   2px;
+    cursor:          pointer;
+    user-select:     none;
+    transition:      border-color 200ms $animation-ease-in-out, color 200ms $animation-ease-in-out;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover {
+      @include theme-prop(color, primary);
+      @include theme-prop(border-color, primary);
+    }
+
+    &.active {
+      @include theme-prop(border-color, primary);
+      @include theme(primary, false);
+    }
+
+    &.disabled {
+      pointer-events: none;
+      cursor:         default;
+      @include theme-prop(color, disabled-on-light);
+    }
+  }
+
+  &-more {
+    position: relative;
+    border:   0;
+    cursor:   default;
+    &::after {
+      content:       "";
+      position:      absolute;
+      width:         4px;
+      height:        4px;
+      border-radius: 50%;
+      box-shadow:    6px 0 0 0, -6px 0 0 0;
+      @include theme-prop(color, secondary-on-light);
+      @include theme-prop(background-color, secondary-on-light);
+    }
+  }
+
+  &-prev,
+  &-next {
+    position: relative;
+    &::before {
+      content:    "";
+      position:   absolute;
+      width:      2px;
+      height:     2px;
+      box-shadow: -4px -8px, -2px -8px, 0 -8px, 2px -8px, 4px -8px, 6px -8px, 8px -8px, // 上面的线
+                  8px -6px, 8px -4px, 8px -2px, 8px 0, 8px 2px, 8px 4px, // 右侧的线
+                  -10px -2px, -8px -2px, -6px -2px, -4px -2px, -2px -2px, 0 -2px, 2px -2px, // 上面的线
+                  2px 0px, 2px 2px, 2px 4px, 2px 6px, 2px 8px, 2px 10px; // 右侧的线
+    }
+  }
+
+  &-prev::before {
+    transform: rotate(-135deg) scale(.5);
+  }
+
+  &-next::before {
+    transform: rotate(45deg) scale(.5);
+  }
+
+  &-control {
+    display:     flex;
+    align-items: center;
+    // 重置 ul 样式
+    margin:      0;
+    list-style:  none;
+  }
+
+  &-control-item {
+    box-sizing:      border-box;
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    min-width:       $page-item-width;
+    height:          $page-item-height;
+    margin-left:     $page-item-margin-left;
+    user-select:     none;
+
+    .select,
+    .input {
+      width: 45px;
+      margin-left: .25rem;
+      margin-right: .25rem;
+    }
+    .select-inner,
+    .input-field {
+      height: 2rem;
+      padding: 0 .5rem 0 .25rem;
+
+      &:hover,
+      &:focus {
+        @include theme-prop(color, primary);
+        @include theme-prop(border-color, primary);
+      }
+    }
+  }
+}
+
+// 对于前进和后退几页
+.page-prev.page-more,
+.page-next.page-more {
+  border: 1px solid $grey-300;
+  cursor: pointer;
+
+  &::before {
+    content: normal;
+  }
+
+  &:hover {
+    @include theme-prop(border-color, primary);
+
+    &::before {
+      content: "";
+    }
+    &::after {
+      content: normal;
+    }
+  }
+}
+
+// 对于 a 标签
+a.page-item {
+  @include theme-prop(color, primary-on-light);
+  &:hover {
+    text-decoration: none;
+  }
+}
