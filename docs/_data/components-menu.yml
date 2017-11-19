@@ -59,6 +59,10 @@
       file: switch
     - title: Progress 进度条
       file: progress
+    - title: Slider 滑块
+      file: slider
+    - title: Page 分页
+      file: page
     - title: Image 组件
       file: image
     - title: Badge 标记刻章组件

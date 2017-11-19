@@ -89,10 +89,10 @@
     color: $color;
     color: var(--theme-#{$style}, $color);
     background-color: map-get($theme-contrast-tone-property-values, primary-on-#{$tone});
-    background-color: var(--theme-#{$contrast-tone}-#{$style}, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
+    background-color: var(--theme-#{$contrast-tone}-primary, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
   } @else {
     color: map-get($theme-contrast-tone-property-values, primary-on-#{$tone});
-    color: var(--theme-#{$contrast-tone}, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
+    color: var(--theme-#{$contrast-tone}-primary, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
     background-color: $color;
     background-color: var(--theme-#{$style}, $color);
   }

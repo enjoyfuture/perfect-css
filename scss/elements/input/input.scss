@@ -9,10 +9,12 @@
 @import "./function";
 @import "./mixin";
 
+// TODO Button input 和 select 待统一 line-height 1.25 height 和 padding 等
 // 定义在 Input 元素外层包裹上
 .input {
   position: relative;
   display: inline-block;
+  width:   $input-width;
   will-change: opacity, transform, color;
 
   // 如果加入 label 则设置间距
@@ -25,6 +27,7 @@
 // 定义在 Input 元素上
 .input-field {
   box-sizing: border-box;
+  width: 100%;
   padding: $input-padding-y $input-padding-x;
   border: 1px solid $grey-color-300; // 需要与 input 一致
   line-height: $input-line-height;

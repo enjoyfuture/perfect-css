@@ -20,6 +20,7 @@
     right:               $arrow-size;
     border:              $arrow-size solid transparent;
     border-bottom-width: 0;
+    pointer-events: none;
     @include theme-prop(border-top-color, secondary-on-light);
   }
 
@@ -57,7 +58,6 @@
   // 为 select 设置 focus 样式
   &:focus {
     @include theme-prop(border-color, primary-on-light);
-    background-color: rgba(0, 0, 0, .06);
     outline:          none;
   }
 }
