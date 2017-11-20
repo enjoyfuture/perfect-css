@@ -1,0 +1,27 @@
+---
+layout: default
+title: Navbar 导航栏例子
+---
+
+<section class="component-container">
+  <nav class="navbar navbar-expand navbar-primary flex-column flex-sm-row">
+    <a class="navbar-brand m-r-0 m-r-sm-2" href="#">Perfect</a>
+    <div class="navbar-scroll">
+      <ul class="navbar-nav">
+        <li><a class="nav-link active" href="#">首页</a></li>
+        <li><a class="nav-link" href="#">文档</a></li>
+        <li><a class="nav-link" href="#">组件</a></li>
+        <li><a class="nav-link" href="#">例子</a></li>
+        <li><a class="nav-link" href="#">主题</a></li>
+      </ul>
+    </div>
+  </nav>
+</section>
+
+<script>
+  $(function () {
+    $('.nav-link').click(function (e) {
+      $(e.currentTarget).addClass('active').parent().siblings().find('.nav-link').removeClass('active');
+    });
+  });
+</script>

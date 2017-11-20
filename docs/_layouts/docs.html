@@ -8,7 +8,7 @@
     {% include header.html %}
     {% include jquery.html %}
 
-    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+    <aside id="drawer" class="drawer drawer-permanent navbar-top-adjust">
       <nav class="drawer-nav">
         <nav class="drawer-content">
           {% include nav-menus.html %}
@@ -16,7 +16,7 @@
       </nav>
     </aside>
 
-    <main class="drawer-main navbar-fixed-adjust">
+    <main class="drawer-main">
       {% if page.toc %}
       <div class="doc-main">
         <div class="doc-content catalogue-counter">

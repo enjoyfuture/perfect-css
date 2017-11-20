@@ -130,12 +130,18 @@ $drawer-width: 240px;
   // 内层还需要加入图标等额外的样式，比如 .icon-pure-menu
   // <div class="drawer-toggle"><i class="icon-pure-menu"></i></div>
   &-toggle {
-    padding: 1rem 1.25rem 1rem 0;
+    padding: .5rem 1rem .5rem 0;
     margin-right: 1rem;
     cursor: pointer;
   }
 }
 
+@include media-breakpoint-down(xs) {
+  .drawer-toggle {
+    position: absolute;
+    left: 1rem;
+  }
+}
 // drawer 打开时，页面禁止滚动，只有设备宽度小于 1200px 才起作用
 // @media screen and (max-width: 1199px)
 @include media-breakpoint-down(lg) {
