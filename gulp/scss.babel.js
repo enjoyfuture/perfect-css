@@ -49,7 +49,7 @@ const getBrowsers = (browser) => {
 export const postcssPlugins = (browser) => {
   const browsers = getBrowsers(browser);
   return [
-    cssnano(),
+    //cssnano(),
     flexbugs(),
     autoprefixer({
       flexbox: 'no-2009',
