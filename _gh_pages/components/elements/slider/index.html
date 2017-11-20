@@ -11,7 +11,7 @@
 
 <title>
   
-  Grid 布局 &middot; Perfect
+  Slider 滑块 &middot; Perfect
   
 </title>
 
@@ -386,7 +386,7 @@
 
       <li class="menu-item">
         <a href="/components/elements/slider/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Slider 滑块</a></li>
+             class="menu-title menu-sub-title active" style="padding-left: 2rem;">Slider 滑块</a></li>
       
       
 
@@ -571,71 +571,41 @@
 
     <main class="drawer-main">
       <section class="component-wrap catalogue-counter">
-        <style>
-  .grid-demo {
-    padding: 0 1rem;
-  }
+        <h2>Slider 滑块</h2>
 
-  .grid-demo .col,
-  .grid-demo [class*="col-"] {
-    padding: .5rem;
-    border: 1px solid rgba(0, 0, 0, .12);
-    background: #e0f2f1;
-    text-align: center;
-  }
-</style>
+<h3>基本滑块</h3>
+<section class="component-container">
+  <div class="slider">
+    <!--滑块轨迹，进度-->
+    <div class="slider-track">
+      <div class="slider-track-inner" style="width: 30%;"></div>
+    </div>
 
-<div class="grid-demo">
-  <h4>等宽</h4>
-  <div class="row">
-    <div class="col">col</div>
-    <div class="col">col</div>
-    <div class="col">col</div>
-    <div class="col">col</div>
+    <!--滑块按钮-->
+    <div class="slider-button" style="transform: translateX(100px) translateX(-50%);">
+      <div class="slider-button-inner"></div>
+    </div>
   </div>
+</section>
 
-  <h4>等宽、多行</h4>
-  <div class="row">
-    <div class="col">col</div>
-    <div class="col">col</div>
-    <div class="w-100"></div>
-    <div class="col">col</div>
-    <div class="col">col</div>
+<h3>基本滑块</h3>
+<section class="component-container">
+  <div class="slider">
+    <!--滑块轨迹，进度-->
+    <div class="slider-track">
+      <div class="slider-track-inner" style="width: 30%;"></div>
+    </div>
+
+    <!--滑块按钮-->
+    <div class="slider-button" style="transform: translateX(100px) translateX(-50%);">
+      <div class="slider-button-inner"></div>
+    </div>
   </div>
+</section>
 
-  <h4>不固定宽度</h4>
-  <div class="row">
-    <div class="col-24">col-24</div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-1">col-1</div>
-    <div class="col-3">col-3</div>
-    <div class="col-5">col-5</div>
-    <div class="col-7">col-7</div>
-    <div class="col-4">col-4</div>
-    <div class="col-4">col-4</div>
-  </div>
+<script>
 
-  <h4>offset</h4>
-  <div class="row">
-    <div class="offset-4 col-5">col-5</div>
-    <div class="col-7">col-7</div>
-    <div class="col-4">col-4</div>
-    <div class="col-4">col-4</div>
-  </div>
-
-  <h4>order</h4>
-  <div class="row">
-    <div class="order-4 col">order-4 位置由1变为4</div>
-    <div class="col">位置由2变为1</div>
-    <div class="order-2 col">order-2 位置由3变为2</div>
-    <div class="order-3 col">order-3 位置由4变为3</div>
-  </div>
-
-</div>
-
-
+</script>
 
       </section>
     </main>

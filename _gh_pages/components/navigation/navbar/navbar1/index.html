@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="CSS3 Perfect">
+  <meta name="description"
+        content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+  <meta name="author" content="Linder Wang">
+
+  <title>
+    Navbar 导航栏例子 &middot; Perfect
+  </title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Perfect CSS -->
+  <link href="/assets/css/perfect.css" rel="stylesheet">
+
+  <!--把 jquery 单独引入到页面最上面-->
+<script src="/assets/js/vendor/jquery.min.js"></script>
+
+</head>
+<body>
+  <section class="component-container">
+  <nav class="navbar navbar-expand-sm navbar-primary navbar-top">
+    <a class="navbar-brand" href="#">Perfect</a>
+    <a class="navbar-toggler" href="#" data-component="navbar">
+      <span class="navbar-toggler-icon"></span>
+    </a>
+
+    <div class="navbar-collapse">
+      <ul class="navbar-nav">
+        <li><a class="nav-link active" href="#">首页</a></li>
+        <li><a class="nav-link" href="#">文档</a></li>
+        <li><a class="nav-link" href="#">组件</a></li>
+        <li><a class="nav-link" href="#">例子</a></li>
+        <li><a class="nav-link" href="#">主题</a></li>
+        <li><a class="nav-link" href="#">设备</a></li>
+        <li><a class="nav-link disabled" href="#">禁止 Disabled</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="navbar-fixed-adjust p-4" style="height: 200px;">
+    这是一个 Navbar 固定在顶部的例子，请你滑动鼠标查看效果
+  </div>
+</section>
+
+<script>
+  $(function () {
+    $('[data-component="navbar"]').click(function (e) {
+      $(e.currentTarget).parent().find('.navbar-collapse').toggleClass('show');
+    });
+
+    $('.nav-link').click(function (e) {
+      $(e.currentTarget).addClass('active').parent().siblings().find('.nav-link').removeClass('active');
+    });
+  });
+</script>
+
+</body>
+</html>
