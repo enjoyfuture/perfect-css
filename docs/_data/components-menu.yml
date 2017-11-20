@@ -23,9 +23,11 @@
 - title: 导航类组件
   file: navigation
   pages:
-    - title: 菜单
+    - title: Navbar 导航栏
+      file: navbar
+    - title: Menu 菜单
       file: menu
-    - title: Tab 标签
+    - title: Tabs 标签
       file: tabs
 - title: 容器类组件
   file: container
