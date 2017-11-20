@@ -27,17 +27,18 @@
   </head>
   <body>
 
-    <header class="navbar navbar-fixed navbar-expand navbar-primary">
+    <header class="navbar navbar-top navbar-expand navbar-primary flex-column flex-sm-row">
   
   <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
     <i class="icon-pure-menu"></i>
   </div>
   
 
-  <a class="navbar-brand" href="/">
+  <a class="navbar-brand m-r-0 m-r-sm-2" href="/">
+
     <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
   </a>
-  <div class="navbar-collapse">
+  <div class="navbar-scroll">
     <ul class="navbar-nav">
       <li>
         <a class="ripple ripple-primary nav-link " href="/">首页</a>
@@ -65,7 +66,7 @@
 <script src="/assets/js/vendor/jquery.min.js"></script>
 
 
-    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+    <aside id="drawer" class="drawer drawer-permanent navbar-top-adjust">
       <nav class="drawer-nav">
         <nav class="drawer-content">
           
@@ -907,7 +908,7 @@
       </nav>
     </aside>
 
-    <main class="drawer-main navbar-fixed-adjust">
+    <main class="drawer-main">
       
       <div class="doc-main">
         <div class="doc-content catalogue-counter">
@@ -1197,39 +1198,39 @@
 <p>Perfect CSS 中每个基本颜色值都给出了对应的对比色调变量，即浅色或深色色调变量，方便在 CSS 组件中调用。</p>
 
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 浅色或深色色调，给出基本颜色的对比色调， light or dark
-</span><span class="nv">$theme-primary-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-primary</span><span class="p">);</span>
-<span class="nv">$theme-secondary-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-secondary</span><span class="p">);</span>
+</span><span class="nv">$theme-primary-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-primary</span><span class="p">);</span>
+<span class="nv">$theme-secondary-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-secondary</span><span class="p">);</span>
 
 <span class="c1">// 主题颜色浅色对比色调
-</span><span class="nv">$theme-primary-light-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-primary-light</span><span class="p">);</span>
-<span class="nv">$theme-secondary-light-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-secondary-light</span><span class="p">);</span>
+</span><span class="nv">$theme-primary-light-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-primary-light</span><span class="p">);</span>
+<span class="nv">$theme-secondary-light-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-secondary-light</span><span class="p">);</span>
 
 <span class="c1">// 主题颜色更浅色对比色调
-</span><span class="nv">$theme-primary-lighter-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-primary-lighter</span><span class="p">);</span>
-<span class="nv">$theme-secondary-lighter-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-secondary-lighter</span><span class="p">);</span>
+</span><span class="nv">$theme-primary-lighter-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-primary-lighter</span><span class="p">);</span>
+<span class="nv">$theme-secondary-lighter-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-secondary-lighter</span><span class="p">);</span>
 
 <span class="c1">// 主题颜色最浅色对比色调
-</span><span class="nv">$theme-primary-lightest-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-primary-lightest</span><span class="p">);</span>
-<span class="nv">$theme-secondary-lightest-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-secondary-lightest</span><span class="p">);</span>
+</span><span class="nv">$theme-primary-lightest-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-primary-lightest</span><span class="p">);</span>
+<span class="nv">$theme-secondary-lightest-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-secondary-lightest</span><span class="p">);</span>
 
 <span class="c1">// 主题颜色深色对比色调
-</span><span class="nv">$theme-primary-dark-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-primary-dark</span><span class="p">);</span>
-<span class="nv">$theme-secondary-dark-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-secondary-dark</span><span class="p">);</span>
+</span><span class="nv">$theme-primary-dark-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-primary-dark</span><span class="p">);</span>
+<span class="nv">$theme-secondary-dark-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-secondary-dark</span><span class="p">);</span>
 
 <span class="c1">// 主题颜色更深色对比色调
-</span><span class="nv">$theme-primary-darker-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-primary-darker</span><span class="p">);</span>
-<span class="nv">$theme-secondary-darker-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-secondary-darker</span><span class="p">);</span>
+</span><span class="nv">$theme-primary-darker-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-primary-darker</span><span class="p">);</span>
+<span class="nv">$theme-secondary-darker-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-secondary-darker</span><span class="p">);</span>
 
 <span class="c1">// 主题颜色最深色对比色调
-</span><span class="nv">$theme-primary-darkest-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-primary-darkest</span><span class="p">);</span>
-<span class="nv">$theme-secondary-darkest-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-secondary-darkest</span><span class="p">);</span>
+</span><span class="nv">$theme-primary-darkest-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-primary-darkest</span><span class="p">);</span>
+<span class="nv">$theme-secondary-darkest-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-secondary-darkest</span><span class="p">);</span>
 
 <span class="c1">// 主题颜色透明色对比色调
-</span><span class="nv">$theme-primary-alpha-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-primary-alpha</span><span class="p">);</span>
-<span class="nv">$theme-secondary-alpha-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-secondary-alpha</span><span class="p">);</span>
+</span><span class="nv">$theme-primary-alpha-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-primary-alpha</span><span class="p">);</span>
+<span class="nv">$theme-secondary-alpha-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-secondary-alpha</span><span class="p">);</span>
 
 <span class="c1">// 背景色对比色调
-</span><span class="nv">$theme-background-tone</span><span class="p">:</span> <span class="nf">theme-light-or-dark</span><span class="p">(</span><span class="nv">$theme-background</span><span class="p">);</span>
+</span><span class="nv">$theme-background-contrast-tone</span><span class="p">:</span> <span class="nf">theme-contrast-tone</span><span class="p">(</span><span class="nv">$theme-background</span><span class="p">);</span>
 </code></pre></div></div>
 
 <h3>
@@ -1257,16 +1258,16 @@
 <p>通过上面的<a href="#toc-4-1-2">【基本颜色对比色调判断值（深色或浅色）】</a>和<a href="#toc-4-1-3">【深色和浅色色调值】</a>可以方便的计算出给定基本颜色值对应的对比色调值，比如 <code class="highlighter-rouge">$theme-primary</code> 默认给定的颜色计算出对比色调应该是 light。下面给出使用方法和例子，
 比如在 CSS 组件中要设置 color 属性值，如果要设置 <code class="highlighter-rouge">$theme-primary</code> 的对比色调 <code class="highlighter-rouge">hint</code> 值时，可以按照以下步骤来计算出</p>
 <ul>
-  <li>首先计算出 <code class="highlighter-rouge">$theme-primary</code> 的对比色调是深色还是浅色，即 <code class="highlighter-rouge">$theme-primary-tone</code>
+  <li>首先计算出 <code class="highlighter-rouge">$theme-primary</code> 的对比色调是深色还是浅色，即 <code class="highlighter-rouge">$theme-primary-contrast-tone</code>
 </li>
-  <li>从 <code class="highlighter-rouge">$theme-text-colors</code> 中取出 <code class="highlighter-rouge">map-get($theme-text-colors, $theme-primary-tone)</code> 来判断是使用深色还是浅色</li>
-  <li>再取出 <code class="highlighter-rouge">hint</code>， <code class="highlighter-rouge">map-get(map-get($theme-text-colors, $theme-primary-tone), hint)</code>
+  <li>从 <code class="highlighter-rouge">$theme-text-colors</code> 中取出 <code class="highlighter-rouge">map-get($theme-text-colors, $theme-primary-contrast-tone)</code> 来判断是使用深色还是浅色</li>
+  <li>再取出 <code class="highlighter-rouge">hint</code>， <code class="highlighter-rouge">map-get(map-get($theme-text-colors, $theme-primary-contrast-tone), hint)</code>
 </li>
 </ul>
 
 <p>上面三步就可以计算出 <code class="highlighter-rouge">$theme-primary</code> 最终的对比色调值。</p>
 
-<p>给定的每个基本颜色值计算出的对比色调值作为集合放到变量 <code class="highlighter-rouge">$theme-tone-property-values</code> 中，
+<p>给定的每个基本颜色值计算出的对比色调值作为集合放到变量 <code class="highlighter-rouge">$theme-contrast-tone-property-values</code> 中，
 对比色调值从明亮到暗淡依次定义为 <code class="highlighter-rouge">primary</code> <code class="highlighter-rouge">secondary</code> <code class="highlighter-rouge">hint</code> <code class="highlighter-rouge">disabled</code>。</p>
 
 <table class="doc-table">
@@ -1790,12 +1791,16 @@
       <td>计算两种颜色的对比度，一般指前景色和背景色</td>
     </tr>
     <tr>
-      <td>theme-light-or-dark($color)</td>
-      <td>根据给定的颜色来判断对比色调在文本上是使用深色还是浅色</td>
+      <td>theme-tone($color)</td>
+      <td>根据给定的颜色来判断色调是浅色还是深色</td>
     </tr>
     <tr>
-      <td>theme-tone-var($theme-tone-property)</td>
-      <td>根据 $theme-tone-property-values 中的 key 计算对应的 CSS 变量名，比如 primary-on-primary 对应的变量名为 –theme-#{$theme-primary-tone}-primary</td>
+      <td>theme-contrast-tone($color)</td>
+      <td>根据给定的颜色来判断对比色调是浅色还是深色</td>
+    </tr>
+    <tr>
+      <td>theme-contrast-tone-var($theme-contrast-tone-property)</td>
+      <td>根据 $theme-contrast-tone-property-values 中的 key 计算对应的 CSS 变量名，比如 primary-on-primary 对应的变量名为 –theme-#{$theme-primary-contrast-tone}-primary</td>
     </tr>
   </tbody>
 </table>
@@ -1816,12 +1821,12 @@
       <td>给属性 $property 设置颜色 $style 值，属性 $property 一般用在 color background-color border-color 等，也可用在任何可以设置颜色值的属性上，$style 应该是 $theme-property-values 中某个 key，该 mixin 主要用来设置主题颜色值，并且设置了主题 CSS 变量值，用户通过修改 CSS 变量值可以动态的修改整个主题值，比如在 body 上修改 css 变量值</td>
     </tr>
     <tr>
-      <td>theme-tone-prop($property, $style, $important)</td>
-      <td>用来设置主题色对应的对比色调值，浅色或是深色，$style 应该是 $theme-tone-property-values 中某个 key，该 mixin 除了设置了对比色调值，还设置了对应的 CSS 变量值，同样可以通过修改 CSS 变量值来修改对应的对比色调值</td>
+      <td>theme-contrast-tone-prop($property, $style, $important)</td>
+      <td>用来设置主题色对应的对比色调值，浅色或是深色，$style 应该是 $theme-contrast-tone-property-values 中某个 key，该 mixin 除了设置了对比色调值，还设置了对应的 CSS 变量值，同样可以通过修改 CSS 变量值来修改对应的对比色调值</td>
     </tr>
     <tr>
       <td>theme-prop($property, $style, $important: false)</td>
-      <td>糅合 theme-color-prop 和 theme-tone-prop，如果 $style 是颜色值，则直接设置颜色</td>
+      <td>糅合 theme-color-prop 和 theme-contrast-tone-prop，如果 $style 是颜色值，则直接设置颜色</td>
     </tr>
     <tr>
       <td>theme($style, $fore: true)</td>

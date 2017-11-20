@@ -27,17 +27,18 @@
   </head>
   <body>
 
-    <header class="navbar navbar-fixed navbar-expand navbar-primary">
+    <header class="navbar navbar-top navbar-expand navbar-primary flex-column flex-sm-row">
   
   <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
     <i class="icon-pure-menu"></i>
   </div>
   
 
-  <a class="navbar-brand" href="/">
+  <a class="navbar-brand m-r-0 m-r-sm-2" href="/">
+
     <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
   </a>
-  <div class="navbar-collapse">
+  <div class="navbar-scroll">
     <ul class="navbar-nav">
       <li>
         <a class="ripple ripple-primary nav-link " href="/">首页</a>
@@ -65,7 +66,7 @@
 <script src="/assets/js/vendor/jquery.min.js"></script>
 
 
-    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+    <aside id="drawer" class="drawer drawer-permanent navbar-top-adjust">
       <nav class="drawer-nav">
         <nav class="drawer-content">
           
@@ -187,7 +188,7 @@
   
   
   <li class="menu-item">
-    <a href="/components/navigation/menu/" 
+    <a href="/components/navigation/navbar/" 
        class="menu-title menu-header " style="padding-left: 1rem;">导航类组件</a>
     <ul class="menu" style="display: none;">
       
@@ -198,8 +199,18 @@
       
 
       <li class="menu-item">
+        <a href="/components/navigation/navbar/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Navbar 导航栏</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
         <a href="/components/navigation/menu/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">菜单</a></li>
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Menu 菜单</a></li>
       
       
 
@@ -209,7 +220,7 @@
 
       <li class="menu-item">
         <a href="/components/navigation/tabs/"
-             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tab 标签</a></li>
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tabs 标签</a></li>
       
     </ul>
   </li>
@@ -366,6 +377,26 @@
       <li class="menu-item">
         <a href="/components/elements/progress/"
              class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 进度条</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/slider/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Slider 滑块</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/page/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Page 分页</a></li>
       
       
 
@@ -538,7 +569,7 @@
       </nav>
     </aside>
 
-    <main class="drawer-main navbar-fixed-adjust">
+    <main class="drawer-main">
       <section class="component-wrap catalogue-counter">
         <header class="navbar navbar-fixed navbar-expand navbar-primary">
   <span class="drawer-toggle drawer-permanent-toggle icon-pure-menu" id="toggleDrawer"></span>
