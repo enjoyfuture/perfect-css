@@ -1,97 +1,105 @@
 ---
 layout: components
-title: Nav Bar 组件
+title: Navbar 导航栏
+group: navigation
 ---
 
-<nav class="navbar navbar-expand-sm">
-  <a class="navbar-brand" href="#">Perfect</a>
-  <button class="navbar-toggler" type="button" data-component="navbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<h2>基本用法</h2>
 
-  <div class="navbar-collapse">
-    <ul class="navbar-nav">
-      <li>
-        <a class="nav-link active" href="#">首页</a>
-      </li>
-      <li>
-        <a class="nav-link" href="#">活动页</a>
-      </li>
-      <li>
-        <a class="nav-link disabled" href="#">禁止 Disabled</a>
-      </li>
-    </ul>
+<h3>浅色导航栏</h3>
+<section class="component-container">
+  <nav class="navbar navbar-expand-sm theme-grey-bg-100">
+    <a class="navbar-brand" href="#">Perfect</a>
+    <button class="navbar-toggler" type="button" data-component="navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse">
+      <ul class="navbar-nav">
+        <li><a class="nav-link active" href="#">首页</a></li>
+        <li><a class="nav-link" href="#">文档</a></li>
+        <li><a class="nav-link" href="#">组件</a></li>
+        <li><a class="nav-link" href="#">例子</a></li>
+        <li><a class="nav-link" href="#">主题</a></li>
+        <li><a class="nav-link" href="#">设备</a></li>
+        <li><a class="nav-link disabled" href="#">禁止 Disabled</a></li>
+      </ul>
+    </div>
+  </nav>
+</section>
+
+<h3>主色导航栏</h3>
+<section class="component-container">
+  <nav class="navbar navbar-expand-sm navbar-primary">
+    <a class="navbar-brand" href="#">Perfect</a>
+    <a class="navbar-toggler" href="#" data-component="navbar">
+      <span class="navbar-toggler-icon"></span>
+    </a>
+
+    <div class="navbar-collapse">
+      <ul class="navbar-nav">
+        <li><a class="nav-link active" href="#">首页</a></li>
+        <li><a class="nav-link" href="#">文档</a></li>
+        <li><a class="nav-link" href="#">组件</a></li>
+        <li><a class="nav-link" href="#">例子</a></li>
+        <li><a class="nav-link" href="#">主题</a></li>
+        <li><a class="nav-link" href="#">设备</a></li>
+        <li><a class="nav-link disabled" href="#">禁止 Disabled</a></li>
+      </ul>
+    </div>
+  </nav>
+</section>
+
+<h3>次色导航栏</h3>
+<section class="component-container">
+  <nav class="navbar navbar-expand-sm navbar-secondary">
+    <a class="navbar-brand" href="#">Perfect</a>
+    <button class="navbar-toggler" type="button" data-component="navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse">
+      <ul class="navbar-nav">
+        <li><a class="nav-link active" href="#">首页</a></li>
+        <li><a class="nav-link" href="#">文档</a></li>
+        <li><a class="nav-link" href="#">组件</a></li>
+        <li><a class="nav-link" href="#">例子</a></li>
+        <li><a class="nav-link" href="#">主题</a></li>
+        <li><a class="nav-link" href="#">设备</a></li>
+        <li><a class="nav-link disabled" href="#">禁止 Disabled</a></li>
+      </ul>
+    </div>
+  </nav>
+</section>
+
+<h2>固定位置</h2>
+<section class="component-container">
+  <iframe src="{{ site.baseurl }}/components/navigation/navbar/navbar1/" frameborder="0" style="width: 100%"></iframe>
+</section>
+
+<h2>屏幕宽度小于 md 时，导航栏上下布局，导航菜单可以左右滑动查看</h2>
+<section class="component-container">
+  <div class="m-b-3">
+    <button class="btn btn-raised btn-primary" id="iframeBtn">改变屏幕宽度</button>
   </div>
-</nav>
-<hr>
-<nav class="navbar navbar-expand-sm navbar-primary">
-  <a class="navbar-brand" href="#">Perfect</a>
-  <button class="navbar-toggler" type="button" data-component="navbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="navbar-collapse">
-    <ul class="navbar-nav">
-      <li>
-        <a class="nav-link active" href="#">首页</a>
-      </li>
-      <li>
-        <a class="nav-link" href="#">活动页</a>
-      </li>
-      <li>
-        <a class="nav-link disabled" href="#">禁止 Disabled</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<hr>
-<nav class="navbar navbar-expand-sm navbar-accent">
-  <a class="navbar-brand" href="#">Perfect</a>
-  <button class="navbar-toggler" type="button" data-component="navbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="navbar-collapse">
-    <ul class="navbar-nav">
-      <li>
-        <a class="nav-link active" href="#">首页</a>
-      </li>
-      <li>
-        <a class="nav-link" href="#">活动页</a>
-      </li>
-      <li>
-        <a class="nav-link disabled" href="#">禁止 Disabled</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<hr>
-
-<nav class="navbar navbar-expand-sm navbar-primary">
-  <a class="navbar-brand" href="#">navbar 动画效果</a>
-  <button class="navbar-toggler" type="button" data-component="navbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="navbar-collapse">
-    <ul class="navbar-nav">
-      <li>
-        <a class="ripple ripple-primary nav-link active" href="#">首页</a>
-      </li>
-      <li>
-        <a class="ripple ripple-primary nav-link" href="#">活动页</a>
-      </li>
-      <li>
-        <a class="ripple ripple-primary nav-link disabled" href="#">禁止 Disabled</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
+  <iframe id="iframe" src="{{ site.baseurl }}/components/navigation/navbar/navbar2/" frameborder="0" style="width: 100%"></iframe>
+</section>
 <script>
   $(function () {
     $('[data-component="navbar"]').click(function (e) {
       $(e.currentTarget).parent().find('.navbar-collapse').toggleClass('show');
+    });
+
+    $('.nav-link').click(function (e) {
+      $(e.currentTarget).addClass('active').parent().siblings().find('.nav-link').removeClass('active');
+    });
+
+    let sm = false;
+    $('#iframeBtn').click(function () {
+      $('#iframe').css({
+        width: sm ? '100%' : '500px',
+      });
+      sm = !sm;
     });
   });
 </script>
