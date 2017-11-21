@@ -1,0 +1,27 @@
+// 面包屑组件
+@import "./variable";
+@import "../../base/variables/border";
+@import "../../base/mixins/border-radius";
+@import "../../theme/mixin";
+
+// 面包屑组件，默认不设置背景，如果需要的话，可以使用主题类样式
+.crumb {
+  display:       flex;
+  flex-wrap:     wrap;
+  padding:       $crumb-padding-y $crumb-padding-x;
+  margin-bottom: $crumb-margin-bottom;
+  font-size:     $crumb-font-size;
+  list-style:    none;
+  @include border-radius($border-radius);
+}
+
+.crumb-item {
+  // 面包屑分隔符默认用 > 来分割
+  + .crumb-item::before {
+    content:       "#{$crumb-divider}";
+    display:       inline-block;
+    padding-left:  $crumb-item-padding;
+    padding-right: $crumb-item-padding;
+    @include theme-prop(color, secondary-on-light);
+  }
+}

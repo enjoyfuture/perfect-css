@@ -25,6 +25,8 @@
   pages:
     - title: Navbar 导航栏
       file: navbar
+    - title: Crumb  面包屑
+      file: crumb
     - title: Menu 菜单
       file: menu
     - title: Tabs 标签

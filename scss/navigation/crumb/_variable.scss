@@ -1,10 +1,9 @@
-// crumbss
+@import "../../theme/variable";
 
-$crumbs-padding-y: .75rem !default;
-$crumbs-padding-x: 1rem !default;
-$crumbs-item-padding: .5rem !default;
+$crumb-padding-y: .75rem !default;
+$crumb-padding-x: 1rem !default;
+$crumb-margin-bottom: 1rem !default;
+$crumb-font-size: 1rem !default;
 
-$crumbs-bg: $gray-lighter !default;
-$crumbs-divider-color: $gray-light !default;
-$crumbs-active-color: $gray-light !default;
-$crumbs-divider: "/" !default;
+$crumb-item-padding: .5rem !default;
+$crumb-divider: ">" !default;

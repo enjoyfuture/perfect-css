@@ -1,0 +1,55 @@
+---
+layout: components
+title: Crumb 面包屑
+group: navigation
+---
+
+<h2>用法</h2>
+
+<h3>默认面包屑</h3>
+<section class="component-container">
+  <ol class="crumb">
+    <li class="crumb-item"><a href="#">首页</a></li>
+    <li class="crumb-item"><a href="#">产品页</a></li>
+    <li class="crumb-item">列表</li>
+  </ol>
+</section>
+
+<h3>面包屑太多时换行显示</h3>
+<section class="component-container">
+  <ol class="crumb" style="max-width: 400px;">
+    <li class="crumb-item"><a href="#">首页</a></li>
+    <li class="crumb-item"><a href="#">产品页</a></li>
+    <li class="crumb-item"><a href="#">面包1</a></li>
+    <li class="crumb-item"><a href="#">面包2</a></li>
+    <li class="crumb-item"><a href="#">面包3</a></li>
+    <li class="crumb-item"><a href="#">面包4</a></li>
+    <li class="crumb-item"><a href="#">面包5</a></li>
+    <li class="crumb-item"><a href="#">面包6</a></li>
+    <li class="crumb-item">列表</li>
+  </ol>
+</section>
+
+<h3>带背景颜色的面包屑</h3>
+<section class="component-container component-vertical-spacing">
+  <ol class="crumb theme-grey-bg-200">
+    <li class="crumb-item"><a href="#">首页</a></li>
+    <li class="crumb-item"><a href="#">产品页</a></li>
+    <li class="crumb-item">列表</li>
+  </ol>
+
+  <div class="crumb theme-primary-lighter-bg">
+    <a class="crumb-item" href="#">首页</a>
+    <a class="crumb-item" href="#">产品页</a>
+    <span class="crumb-item">列表</span>
+  </div>
+</section>
+
+<h3>自定义文字大小和分隔符面包屑</h3>
+<section class="component-container">
+  <ol class="crumb crumb-custom">
+    <li class="crumb-item"><a href="#">首页</a></li>
+    <li class="crumb-item"><a href="#">产品页</a></li>
+    <li class="crumb-item">列表</li>
+  </ol>
+</section>

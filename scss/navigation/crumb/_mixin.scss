@@ -1,0 +1,13 @@
+// 自定义面包屑，只支持自定义字体大小和间隔符
+@mixin crumb-custom($font-size: null, $crumb-divider: null) {
+  @if ($font-size) {
+    font-size: $font-size;
+  }
+  @if ($crumb-divider) {
+    .crumb-item {
+      + .crumb-item::before {
+        content: "#{$crumb-divider}";
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@import "../../../../scss/navigation/crumb/mixin";
+
+.crumb-custom {
+  @include crumb-custom($font-size: 1.25rem, $crumb-divider: '/');
+}
