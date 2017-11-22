@@ -1,5 +1,7 @@
 // select 组件
 @import "../../animation/function";
+@import "../../base/variables/options";
+@import "../../base/variables/form";
 @import "../../animation/variable";
 @import "../../theme/mixin";
 @import "../../shadow/mixin";
@@ -8,7 +10,7 @@
 .select {
   position: relative;
   display:  inline-block;
-  width:    $select-width;
+  width:    $form-input-width;
   cursor:   pointer;
   @include theme-prop(color, primary-on-light);
 
@@ -20,7 +22,7 @@
     right:               $arrow-size;
     border:              $arrow-size solid transparent;
     border-bottom-width: 0;
-    pointer-events: none;
+    pointer-events:      none;
     @include theme-prop(border-top-color, secondary-on-light);
   }
 
@@ -39,16 +41,21 @@
   align-items:             center;
   justify-content:         flex-start;
   width:                   100%;
-  padding:                 $select-padding-y $arrow-spacer $select-padding-y $select-padding-x;
-  border:                  1px solid $grey-color-300; // 需要与 input 输入框一致
-  border-radius:           $select-border-radius;
-  line-height:             $select-line-height;
+  padding:                 $input-padding-y $arrow-spacer $input-padding-y $input-padding-x;
+  border:                  1px solid $input-border-color;
+  line-height:             $input-line-height;
   background:              none;
   cursor:                  pointer;
   transition:              animation-leave(border-bottom-color, 150ms), animation-leave(background-color, 150ms);
   -webkit-font-smoothing:  antialiased; // 抗锯齿效果
   -moz-osx-font-smoothing: grayscale; // 抗锯齿效果
   -webkit-appearance:      none; // 重置 select 样式
+
+  @if $enable-rounded {
+    border-radius: $input-border-radius;
+  } @else {
+    border-radius: 0;
+  }
 
   // 对于 ie 浏览器设置该属性，隐藏掉箭头显示
   &::-ms-expand {
@@ -58,7 +65,7 @@
   // 为 select 设置 focus 样式
   &:focus {
     @include theme-prop(border-color, primary-on-light);
-    outline:          none;
+    outline: none;
   }
 }
 
@@ -233,10 +240,8 @@
 // full width select
 .select-full {
   display: block;
-  width: 100%;
-  .select-inner {
-    width: 100%;
-  }
+  flex:    1;
+  width:   100%;
 }
 
 // 扁平化输入框，即只有一条底边框表单

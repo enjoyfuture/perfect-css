@@ -40,8 +40,6 @@
       file: dialog
     - title: 抽屉组件
       file: drawer
-    - title: Form 表单
-      file: form
     - title: List 组件
       file: list
     - title: Table 组件
@@ -61,10 +59,12 @@
       file: select
     - title: Switch 开关
       file: switch
-    - title: Progress 进度条
-      file: progress
     - title: Slider 滑块
       file: slider
+    - title: Form Field 表单域
+      file: form-field
+    - title: Progress 进度条
+      file: progress
     - title: Page 分页
       file: page
     - title: Image 组件

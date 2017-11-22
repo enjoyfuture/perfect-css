@@ -1,7 +1,8 @@
 // input style
 @import "../../base/variables/options";
-@import "../../base/mixins/box-shadow";
 @import "../../animation/variable";
+@import "../../base/variables/form";
+@import "../../base/mixins/box-shadow";
 @import "../../ripple/mixin";
 @import "../../theme/mixin";
 @import "../../shadow/mixin";
@@ -9,12 +10,11 @@
 @import "./function";
 @import "./mixin";
 
-// TODO Button input 和 select 待统一 line-height 1.25 height 和 padding 等
 // 定义在 Input 元素外层包裹上
 .input {
-  position: relative;
-  display: inline-block;
-  width:   $input-width;
+  position:    relative;
+  display:     inline-block;
+  width:       $form-input-width;
   will-change: opacity, transform, color;
 
   // 如果加入 label 则设置间距
@@ -26,17 +26,16 @@
 
 // 定义在 Input 元素上
 .input-field {
-  box-sizing: border-box;
-  width: 100%;
-  padding: $input-padding-y $input-padding-x;
-  border: 1px solid $grey-color-300; // 需要与 input 一致
-  line-height: $input-line-height;
-  background: none;
-  background-clip: padding-box;
-  -webkit-appearance: none; // 去掉 input 默认的行为和样式表现
-  -webkit-font-smoothing: antialiased; // 抗锯齿效果
+  box-sizing:              border-box;
+  width:                   100%;
+  padding:                 $input-padding-y $input-padding-x;
+  border:                  1px solid $input-border-color;
+  line-height:             $input-line-height;
+  background:              none;
+  background-clip:         padding-box;
+  -webkit-appearance:      none; // 去掉 input 默认的行为和样式表现
+  -webkit-font-smoothing:  antialiased; // 抗锯齿效果
   -moz-osx-font-smoothing: grayscale; // 抗锯齿效果
-  @include theme-prop(color, primary-on-light);
 
   @if $enable-rounded {
     border-radius: $input-border-radius;
@@ -47,14 +46,14 @@
   // Placeholder
   &::placeholder {
     @include theme-prop(color, hint-on-light);
-    opacity: 1;
+    opacity:    1;
     transition: input-transition(opacity);
   }
 
   // 定义 `:focus` 样式
   &:focus {
     border-color: $grey-color-500;
-    outline: none;
+    outline:      none;
 
     // 获取焦点时，隐藏 placeholder
     &::placeholder {
@@ -101,31 +100,31 @@
 
 // 扁平化输入框，即只有一条底边框表单
 .input-flat {
-  padding-left: 0;
+  padding-left:  0;
   padding-right: 0;
-  border-width: 0 0 1px;
+  border-width:  0 0 1px;
   border-radius: 0;
 }
 
 // full width input
 .input-full {
   display: block;
-  flex: 1;
+  flex:    1;
+  width:   100%;
 
   .input-field {
     display: block;
-    width: 100%;
   }
 }
 
 .input-label {
-  position: absolute;
-  bottom: $input-label-bottom;
-  left: 0;
-  pointer-events: none;
-  cursor: text;
+  position:         absolute;
+  bottom:           $input-label-bottom;
+  left:             0;
+  pointer-events:   none;
+  cursor:           text;
   transform-origin: left top;
-  transition: input-transition(transform), input-transition(color), input-transition(font-size);
+  transition:       input-transition(transform), input-transition(color), input-transition(font-size);
   @include theme-prop(color, hint-on-light);
 }
 
@@ -134,10 +133,10 @@
   margin-top: 1.5rem;
 
   .input-field {
-    padding-top: 0;
-    padding-left: 0;
+    padding-top:   0;
+    padding-left:  0;
     padding-right: 0;
-    border-width: 0 0 1px;
+    border-width:  0 0 1px;
     border-radius: 0;
     &::placeholder {
       opacity: 0;
@@ -149,7 +148,7 @@
   .input-field:focus + .input-label,
   .input-field-focused + .input-label,
   .input-field:-webkit-autofill + .input-label {
-    cursor: auto;
+    cursor:    auto;
     transform: translateY(-90%) scale(.8, .8);
     @include theme-prop(color, primary-on-light);
   }
@@ -168,8 +167,8 @@
 // 输入框带图标
 .input-icon {
   position: absolute;
-  top: .5rem;
-  cursor: pointer;
+  top:      .5rem;
+  cursor:   pointer;
 }
 
 .input-icon-start {
@@ -178,7 +177,7 @@
   }
 
   .input-icon {
-    left: .5rem;
+    left:  .5rem;
     right: initial;
   }
 
@@ -193,7 +192,7 @@
   }
 
   .input-icon {
-    left: initial;
+    left:  initial;
     right: .5rem;
   }
 
@@ -211,12 +210,12 @@
 // Sizing
 .input-lg {
   @include input-size($input-font-size-lg, $input-padding-x-lg, $input-padding-y-lg,
-    $input-icon-top-lg, 1.25, 0);
+                        $input-icon-top-lg, 1.25, 0);
 }
 
 .input-sm {
   @include input-size($input-font-size-sm, $input-padding-x-sm, $input-padding-y-sm,
-    $input-icon-top-sm, .75, -.5rem);
+                        $input-icon-top-sm, .75, -.5rem);
 }
 
 // 定义主题样式
