@@ -1,7 +1,7 @@
 // Tables 主题 mixin
 @import "../../theme/mixin";
 
-// 主题分为背景、边框和 hover 三种，以及这三种的组合
+// 主题分为背景、边框、头部和 hover 等，以及组合
 @mixin table-theme($theme) {
   .table-#{$theme} {
     &,
@@ -35,6 +35,13 @@
   .table-hover-#{$theme} {
     tbody tr:hover {
       @include theme-prop(background-color, #{$theme}-alpha);
+    }
+  }
+
+  // 头部主题
+  .table-thead-#{$theme} {
+    thead tr {
+      @include theme($theme, false);
     }
   }
 }

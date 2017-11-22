@@ -1,5 +1,4 @@
 // Table style
-//
 
 @import "../../base/variables/spacing";
 @import "./variable";
@@ -33,11 +32,12 @@ th {
   th,
   td {
     padding: $table-cell-padding;
-    border-top: $table-border-width solid $table-border-color;
+    border-bottom: $table-border-width solid $table-border-color;
     vertical-align: middle;
   }
 
   thead th {
+    border-top: $table-border-width solid $table-border-color;
     border-bottom: ($table-border-width * 2) solid $table-border-color;
   }
 
@@ -100,7 +100,7 @@ th {
     @include table-theme($theme);
   }
 
-  // 辅助颜色对应 radio
+  // 辅助颜色对应
   //@each $theme in $theme-assist {
   //  @include table-theme($theme);
   //}
