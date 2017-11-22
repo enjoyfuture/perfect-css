@@ -1,7 +1,8 @@
 // button style
+@import "../../base/variables/form";
 @import "../../animation/variable";
-@import "../../animation/mixin";
 @import "../../animation/function";
+@import "../../animation/mixin";
 @import "../../theme/mixin";
 @import "../../ripple/mixin";
 @import "./variable";
@@ -12,23 +13,21 @@
   box-sizing:                  border-box;
   display:                     inline-block;
   min-width:                   $btn-min-width;
-  padding:                     $btn-padding-y $btn-padding-x;
-  border:                      0;
-  border-radius:               $btn-border-radius;
+  padding:                     $input-padding-y $btn-padding-x;
+  border:                      1px solid transparent; // 与 .btn-outline 统一
+  border-radius:               $input-border-radius;
   overflow:                    hidden;
-  font-size:                   $btn-font-size;
-  font-weight:                 500;
-  line-height:                 $btn-line-height;
+  font-weight:                 $btn-font-weight;
+  line-height:                 $input-line-height;
   background:                  transparent;
   @include theme-prop(color, primary-on-light);
   text-align:                  center;
   text-decoration:             none;
-  //text-transform: uppercase;
   vertical-align:              middle;
   cursor:                      pointer;
   user-select:                 none;
   outline:                     0;
-  -webkit-appearance: none;
+  -webkit-appearance:          none;
   -moz-osx-font-smoothing:     grayscale;
   -webkit-font-smoothing:      antialiased;
   -webkit-tap-highlight-color: transparent;
@@ -95,8 +94,7 @@
 
 // outline 样式，设置边框
 .btn-outline {
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid;
 }
 
 @if ($enable-custom-theme and $enable-custom-theme-for-btn) {
@@ -172,7 +170,19 @@
 
 // 100% 宽度， 去掉圆角
 .btn-full {
-  display: block;
-  width:   100%;
+  display:       block;
+  width:         100%;
   border-radius: 0;
+}
+
+// btn group
+.btn-group {
+  margin-left:  -$btn-group-margin-x;
+  margin-right: -$btn-group-margin-x;
+
+  > .btn {
+    margin-bottom: $btn-group-margin-x * 2;
+    margin-left:  $btn-group-margin-x;
+    margin-right: $btn-group-margin-x;
+  }
 }

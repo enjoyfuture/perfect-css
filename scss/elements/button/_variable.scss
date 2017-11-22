@@ -2,13 +2,9 @@
 @import "../../base/variables/font";
 @import "../../theme/variable";
 
-$btn-min-width: 4rem !default;
-$btn-padding-x: 1rem !default;
-$btn-padding-y: .625rem !default;
-$btn-border-radius: 2px !default;
-$btn-line-height: 1 !default;
-$btn-font-size: $font-size-base !default;
-$btn-font-weight: $font-weight-normal !default;
+$btn-min-width: 4rem !default; // 即两个字的宽度
+$btn-padding-x: 1.25rem !default;
+$btn-font-weight: 500 !default;
 
 // 定义 button ripple 背景颜色透明度
 $btn-unfilled-ripple-opacity: .16;
@@ -27,6 +23,8 @@ $btn-line-height-sm: 1.25 !default;
 
 // disabled 状态
 $btn-bg-disabled: map-get($greys, 300) !default;
+
+$btn-group-margin-x: .5rem !default;
 
 // 是否开启定制主题，包括主颜色和辅助颜色，默认关闭，需要的话可开启
 $enable-custom-theme-for-btn: false !default;
