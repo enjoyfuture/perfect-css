@@ -1,0 +1,14 @@
+
+.drawer-toggle .icon-pure-menu {
+  color: rgba(255, 255, 255, 0.7);
+  color: var(--theme-light-secondary, rgba(255, 255, 255, 0.7));
+}
+
+.icon-pure-menu:hover .icon-pure-menu {
+  color: #ffffff;
+  color: var(--theme-light-primary, #ffffff);
+}
+
+.content-main {
+  padding: .5rem 1rem;
+}
