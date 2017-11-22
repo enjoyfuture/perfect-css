@@ -1,20 +1,15 @@
 // checkbox 变量
-@import "../../base/variables/form";
-@import "../../base/variables/font";
 
-// checkbox 轮廓大小，跟 input 和 select 高度统一，字体 * 行高 + 上下 padding + 上下边框
-$checkbox-outline-size: $font-size-base * $input-line-height + $input-padding-y * 2 + .125rem !default;
-
-// 需要去掉2px
-$checkbox-size: $checkbox-outline-size / 2 - .125rem !default;
-$checkbox-size-circle: $checkbox-outline-size / 2 !default;
+$checkbox-outline-size: 40px !default; // checkbox 轮廓大小
+$checkbox-size: 18px !default;
+$checkbox-size-circle: 20px !default;
 
 // sizing
-$checkbox-outline-size-lg: $checkbox-outline-size * 1.5 !default;
-$checkbox-size-lg: $checkbox-size * 1.5 !default;
+$checkbox-outline-size-lg: 60px !default;
+$checkbox-size-lg: 26px !default;
 
-$checkbox-outline-size-sm: $checkbox-outline-size * .875 !default;
-$checkbox-size-sm: $checkbox-size * .875 !default;
+$checkbox-outline-size-sm: 30px !default;
+$checkbox-size-sm: 14px !default;
 
 // 动画持续时间
 $checkbox-transition-duration: 120ms !default;
