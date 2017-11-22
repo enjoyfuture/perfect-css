@@ -1,0 +1,6 @@
+@import "./variables/font";
+// 用 css 定义变量值
+:root {
+  // 根字体大小
+  #{--font-size-base}: $font-size-base;
+}
