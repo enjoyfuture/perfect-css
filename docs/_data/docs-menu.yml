@@ -1,32 +1,22 @@
 - title: Perfect 之旅
-  file: getting-started
+  file: perfect-tour
   pages:
-    - title: 介绍
-      file: introduction
-    - title: 下载
-      file: download
+    - title: 快速上手
+      file: getting-started
     - title: 最佳实践
       file: best-practices
-    - title: CSS 模块化支持
-      file: css-module
-    - title: JavaScript 组件
-      file: javascript
-    - title: 自定义主题
-      file: theme
-    - title: 七色卡
-      file: color-swatches
+    - title: 组件一览
+      file: component-list
     - title: 兼容性
       file: compatibility
     - title: 开发构建
       file: build
-    - title: 历史版本
+    - title: 更新日志
       file: changelog
-    - title: 问题和建议
-      file: issue
-    - title: Perfect 开发指南
-      file: develop-guide
-    - title: 浏览器 bug
-      file: browser-bug
+    - title: 感谢
+      file: thanks
+    - title: 赞助
+      file: sponsor
 - title: Perfect 设置
   file: setup
   pages:
