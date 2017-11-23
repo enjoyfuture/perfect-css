@@ -88,6 +88,12 @@ address {
   line-height: inherit;
 }
 
+// 重置 list-style-position 为内层显示
+ol,
+ul {
+  list-style-position: inside;
+}
+
 ol,
 ul,
 dl {
