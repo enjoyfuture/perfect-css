@@ -37,7 +37,7 @@
 
 .icon-pure-code,
 .icon-pure-code-expand {
-  transform: rotate(-45deg) scale(.8);
+  transform: rotate(-45deg) scale(.6);
   @include theme-prop(color, secondary-lighter);
 }
 
@@ -76,7 +76,7 @@
 
   .icon-pure-copy {
     cursor:    pointer;
-    transform: scale(.6);
+    transform: scale(.4);
     @include theme-prop(color, secondary-lighter);
   }
 
