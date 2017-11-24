@@ -93,7 +93,7 @@
 
   .doc-catalogue-header {
     &::before {
-      content: '目录';
+      content: "目录";
       padding-left: .5rem;
       color: #999;
     }
@@ -110,7 +110,7 @@
 
     &:hover::after,
     &.active::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 25%;
       bottom: 20%;

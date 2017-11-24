@@ -79,45 +79,45 @@
 // 比如 primary-on-primary 对应的变量名为 --theme-#{$theme-primary-contrast-tone}-primary
 // --theme-light-primary
 @function theme-contrast-tone-var($theme-contrast-tone-property) {
-  $on-index: str-index($theme-contrast-tone-property, '-on-');
+  $on-index: str-index($theme-contrast-tone-property, "-on-");
   $on-prev-str: str-slice($theme-contrast-tone-property, 0, $on-index - 1);
   $on-next-str: str-slice($theme-contrast-tone-property, $on-index + 4);
   $contrast-tone: null;
 
   // 这里 scss 不支持形如 js 取变量的方式，故需要处理多个判断
-  @if ($on-next-str == 'light') {
+  @if ($on-next-str == "light") {
     $contrast-tone: dark;
-  } @else if ($on-next-str == 'dark') {
+  } @else if ($on-next-str == "dark") {
     $contrast-tone: light;
-  } @else if ($on-next-str == 'primary') {
+  } @else if ($on-next-str == "primary") {
     $contrast-tone: $theme-primary-contrast-tone;
-  } @else if ($on-next-str == 'primary-light') {
+  } @else if ($on-next-str == "primary-light") {
     $contrast-tone: $theme-primary-light-contrast-tone;
-  } @else if ($on-next-str == 'primary-lighter') {
+  } @else if ($on-next-str == "primary-lighter") {
     $contrast-tone: $theme-primary-lighter-contrast-tone;
-  } @else if ($on-next-str == 'primary-lightest') {
+  } @else if ($on-next-str == "primary-lightest") {
     $contrast-tone: $theme-primary-lightest-contrast-tone;
-  } @else if ($on-next-str == 'primary-dark') {
+  } @else if ($on-next-str == "primary-dark") {
     $contrast-tone: $theme-primary-dark-contrast-tone;
-  } @else if ($on-next-str == 'primary-darker') {
+  } @else if ($on-next-str == "primary-darker") {
     $contrast-tone: $theme-primary-darker-contrast-tone;
-  } @else if ($on-next-str == 'primary-darkest') {
+  } @else if ($on-next-str == "primary-darkest") {
     $contrast-tone: $theme-primary-darkest-contrast-tone;
-  } @else if ($on-next-str == 'secondary') {
+  } @else if ($on-next-str == "secondary") {
     $contrast-tone: $theme-secondary-contrast-tone;
-  } @else if ($on-next-str == 'secondary-light') {
+  } @else if ($on-next-str == "secondary-light") {
     $contrast-tone: $theme-secondary-light-contrast-tone;
-  } @else if ($on-next-str == 'secondary-lighter') {
+  } @else if ($on-next-str == "secondary-lighter") {
     $contrast-tone: $theme-secondary-lighter-contrast-tone;
-  } @else if ($on-next-str == 'secondary-lightest') {
+  } @else if ($on-next-str == "secondary-lightest") {
     $contrast-tone: $theme-secondary-lightest-contrast-tone;
-  } @else if ($on-next-str == 'secondary-dark') {
+  } @else if ($on-next-str == "secondary-dark") {
     $contrast-tone: $theme-secondary-dark-contrast-tone;
-  } @else if ($on-next-str == 'secondary-darker') {
+  } @else if ($on-next-str == "secondary-darker") {
     $contrast-tone: $theme-secondary-darker-contrast-tone;
-  } @else if ($on-next-str == 'secondary-darkest') {
+  } @else if ($on-next-str == "secondary-darkest") {
     $contrast-tone: $theme-secondary-darkest-contrast-tone;
-  } @else if ($on-next-str == 'background') {
+  } @else if ($on-next-str == "background") {
     $contrast-tone: $theme-background-contrast-tone;
   }
 

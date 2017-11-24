@@ -4,7 +4,7 @@
 @import "./mixin";
 
 [class*="icon-pure-arrow-"] {
-  content: '';
+  content: "";
   width: 0;
   height: 0;
   border: $icon-size / 2 solid;

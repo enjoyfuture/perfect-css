@@ -57,7 +57,7 @@ $code-size: $icon-size * .5;
   @extend .icon-pure-code;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -$icon-size * .05;
     left: $icon-size * .4;

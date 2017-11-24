@@ -33,7 +33,7 @@
 
 // 响应式和非响应式封装成公共的样式
 // 相等宽度对应的样式
-@mixin make-grid-columns-equal-width($columns, $infix: '') {
+@mixin make-grid-columns-equal-width($columns, $infix: "") {
   // 设置所有响应式的列样式，从 1 到 $columns
   @for $i from 1 through $columns {
     .col#{$infix}-#{$i} {
@@ -47,7 +47,7 @@
 }
 
 // 多个格子对应的样式
-@mixin make-grid-columns-percentage($columns, $infix: '') {
+@mixin make-grid-columns-percentage($columns, $infix: "") {
   // 基于 Flexbox 设置相等宽度的列，例如 .col-md 等
   .col#{$infix} {
     flex-basis: 0;

@@ -4,7 +4,7 @@
 @import "../responsive/variable";
 @import "../responsive/mixin";
 
-@mixin set-spacing($infix: '') {
+@mixin set-spacing($infix: "") {
   @each $prop, $abbrev in (margin: m, padding: p) {
     @each $size, $length in $spacers {
 
