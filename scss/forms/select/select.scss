@@ -1,0 +1,284 @@
+// select 组件
+@import "../../animation/function";
+@import "../../base/variables/options";
+@import "../../base/variables/form";
+@import "../../animation/variable";
+@import "../../theme/mixin";
+@import "../../shadow/mixin";
+@import "variable";
+
+.select {
+  position: relative;
+  display:  inline-block;
+  width:    $form-input-width;
+  cursor:   pointer;
+  @include theme-prop(color, primary-on-light);
+
+  // 箭头
+  &::after {
+    content:             "";
+    position:            absolute;
+    top:                 calc(50% - #{$arrow-size} / 2);
+    right:               $arrow-size;
+    border:              $arrow-size solid transparent;
+    border-bottom-width: 0;
+    pointer-events:      none;
+    @include theme-prop(border-top-color, secondary-on-light);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// 可以用在原生的 select 标签上
+// 也可用在模拟的标签上，比如 div
+// 设置的高度，圆角，边框颜色要与 input 保持一致
+.select-inner {
+  position:                relative;
+  box-sizing:              border-box;
+  display:                 inline-flex;
+  align-items:             center;
+  justify-content:         flex-start;
+  width:                   100%;
+  padding:                 $input-padding-y $arrow-spacer $input-padding-y $input-padding-x;
+  border:                  1px solid $input-border-color;
+  line-height:             $input-line-height;
+  background:              none;
+  cursor:                  pointer;
+  transition:              animation-leave(border-bottom-color, 150ms), animation-leave(background-color, 150ms);
+  -webkit-font-smoothing:  antialiased; // 抗锯齿效果
+  -moz-osx-font-smoothing: grayscale; // 抗锯齿效果
+  -webkit-appearance:      none; // 重置 select 样式
+
+  @if $enable-rounded {
+    border-radius: $input-border-radius;
+  } @else {
+    border-radius: 0;
+  }
+
+  // 对于 ie 浏览器设置该属性，隐藏掉箭头显示
+  &::-ms-expand {
+    display: none;
+  }
+
+  // 为 select 设置 focus 样式
+  &:focus {
+    @include theme-prop(border-color, primary-on-light);
+    outline: none;
+  }
+}
+
+// 以下样式为 模拟 select TODO, 待结合 list-menu 和 js 处理
+// 已经选择的文本值
+.select-selected-text {
+  overflow:    hidden;
+  white-space: nowrap;
+  transition:  animation-leave(opacity, 125ms), animation-leave(transform, 125ms);
+}
+
+// 下拉列表项
+.select-options {
+  position:         absolute;
+  top:              0;
+  left:             0;
+  z-index:          4; // todo
+  box-sizing:       border-box;
+  min-width:        calc(100% - #{$arrow-size});
+  max-width:        calc(100vw - 64px);
+  padding:          .4rem 0;
+  margin:           0;
+  border-radius:    2px;
+  overflow-y:       scroll;
+  background:       #fff;
+  white-space:      nowrap;
+  list-style:       none;
+  pointer-events:   none;
+  outline:          none;
+  opacity:          0;
+  transform:        scale(0, 0);
+  transform-origin: top center;
+  // sass-lint:disable indentation
+  transition:       animation-leave(opacity, 150ms),
+                    animation-leave(transform, 150ms);
+  will-change:      transform, opacity;
+  @include shadow(2);
+}
+
+.select-options-item {
+  position: relative;
+  padding:  .25rem .5rem;
+  cursor:   pointer;
+  @include theme-prop(color, secondary-on-light);
+
+  &::before {
+    content:    "";
+    position:   absolute;
+    top:        0;
+    left:       0;
+    width:      100%;
+    height:     100%;
+    background: currentColor;
+    opacity:    0;
+    transition: opacity 120ms $animation-ease-out;
+  }
+
+  // 选中的
+  &[aria-selected="true"] {
+    @include theme-prop(color, primary-on-light);
+  }
+
+  &:focus {
+    outline: none;
+
+    &::before {
+      opacity: .12;
+    }
+  }
+
+  &:active::before {
+    opacity: .18;
+  }
+
+  // disabled
+  &[aria-disabled="true"] {
+    @include theme-prop(color, disabled-on-light);
+    cursor: default;
+
+    &::before {
+      opacity: 0;
+    }
+  }
+}
+
+// 弹出 select options
+.select-open {
+  .select-selected-text {
+    opacity:    0;
+    transform:  translateY(8px);
+    // sass-lint:disable indentation
+    transition: animation-enter(opacity, 125ms, 125ms),
+                animation-enter(transform, 125ms, 125ms);
+  }
+  .select-options {
+    pointer-events: auto;
+    opacity:        1;
+    transform:      scale(1, 1);
+    will-change:    opacity;
+  }
+}
+
+// disabled 状态
+.select-disabled {
+  cursor: default;
+  @include theme-prop(color, disabled-on-light);
+  &::after {
+    @include theme-prop(border-top-color, disabled-on-light);
+  }
+  select:disabled {
+    pointer-events: none;
+    cursor:         default;
+    user-select:    none;
+  }
+}
+
+// select 多选
+.select-multi {
+  width:              250px;
+  padding:            0;
+  border:             1px solid;
+  outline:            none;
+  -webkit-appearance: none;
+  @include theme-prop(border-color, hint-on-light);
+
+  .option-group {
+    padding:     0 0 0 1rem;
+    margin:      1rem 0 0;
+    font-weight: normal;
+    @include theme-prop(color, hint-on-light);
+
+    &:last-child {
+      margin-bottom: 1rem;
+    }
+
+    .option-divider {
+      margin-left: -1rem;
+    }
+
+    .option-item {
+      margin: 0 0 0 -1rem;
+    }
+  }
+
+  .option-item {
+    display:     flex;
+    align-items: center;
+    padding:     .5rem 1rem;
+    @include theme-prop(color, primary-on-light);
+    cursor:      pointer;
+
+    &:first-child {
+      margin-top: .75rem;
+    }
+    &:last-child {
+      margin-bottom: .5rem;
+    }
+
+    &:disabled {
+      @include theme-prop(color, disabled-on-light);
+      cursor: default;
+    }
+
+  }
+
+  .option-divider {
+    padding-top:   .25rem;
+    margin-bottom: .5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    font-size:     0;
+  }
+}
+
+// full width select
+.select-full {
+  display: block;
+  flex:    1;
+  width:   100%;
+}
+
+// 扁平化输入框，即只有一条底边框表单
+.select-flat {
+  padding-left:  0;
+  border-width:  0 0 1px;
+  border-radius: 0;
+}
+
+// 定义主题样式
+@if ($enable-custom-theme and $enable-custom-theme-for-select) {
+  // 主颜色
+  @each $style in ("primary", "secondary") {
+    .select-#{$style} {
+      .select-inner {
+        @include theme-prop(border-color, #{$style}-lighter);
+
+        &:focus {
+          @include theme-prop(border-color, #{$style});
+        }
+      }
+    }
+  }
+
+  // 辅助颜色对应 input
+  @each $theme in $theme-assist {
+    $color: map-get($theme-assist-colors, $theme);
+    .select-#{$theme} {
+      .select-inner {
+        @include theme-assist(border-color, #{$theme}-light);
+
+        &:focus {
+          @include theme-assist(border-color, #{$theme});
+        }
+      }
+    }
+  }
+}

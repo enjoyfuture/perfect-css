@@ -10,70 +10,79 @@
 @import "base/functions";
 @import "base/base";
 
-// animation
-@import "animation/animation";
-
-// theme
+// Theme 主题
 @import "theme/theme";
 
-// ripple 波纹效果
-@import "ripple/ripple";
-
-// shadow 效果
-@import "shadow/shadow";
-
-// normalize
+// Normalize 重置样式
 @import "normalize/normalize";
 
-// typography 排版样式
+// Animation 动画
+@import "animation/animation";
+
+// Ripple 波纹效果
+@import "ripple/ripple";
+
+// Shadow 阴影效果
+@import "shadow/shadow";
+
+// Typography 排版
 @import "typography/typography";
 
-// 纯 css 图标
-@import "icon-pure-css/icon-pure-css";
-
-// layout 布局
-@import "layout/box/box";
-@import "layout/container/container";
-@import "layout/grid/grid";
-
-// navigation 导航样式
-@import "navigation/crumb/crumb";
-@import "navigation/menu/menu";
-@import "navigation/menu/list-menu";
-@import "navigation/navbar/navbar";
-@import "navigation/tabs/tabs";
-@import "navigation/tabs/tab-bar-scroller";
-//@import "navigation/tree/tree";
-
-// container 容器样式
-//@import "container/accordion/accordion";
-//@import "container/callout/callout";
-//@import "container/card/card";
-@import "container/carousel/carousel";
-@import "container/dialog/dialog";
-@import "container/drawer/drawer";
-@import "container/list/list";
-//@import "container/panel/panel";
-@import "container/table/table";
+// Layout 布局
+@import "layout/box/box"; // Box 盒子布局
+@import "layout/drawer/drawer"; // Drawer 抽屉布局
+@import "layout/container/container"; // Container 容器
+@import "layout/grid/grid"; // Grid 栅格
 
 // 表单组件
-@import "elements/form-field/form-field";
-@import "elements/button/button";
-@import "elements/checkbox/checkbox";
-@import "elements/input/input";
-@import "elements/radio/radio";
-@import "elements/select/select";
-@import "elements/switch/switch";
+@import "forms/input/input"; // Input 输入框
+@import "forms/select/select"; // Select 下拉选择框
+@import "forms/dropdown/dropdown"; // Dropdown 下拉菜单
+@import "forms/radio/radio"; // Radio 单选框
+@import "forms/checkbox/checkbox"; // Checkbox 复选框
+@import "forms/upload/upload"; // Upload 文件上传
+@import "forms/switch/switch"; // Switch 开关
+@import "forms/slider/slider"; // Slider 滑块
+@import "forms/button/button"; // Button 按钮
+@import "forms/form-field/form-field"; // Form Field 表单域
 
-// 其他组件
-//@import "components/badge/badge";
-@import "elements/image/image";
-@import "elements/progress/progress";
-@import "elements/toast/toast";
-@import "elements/tooltip/tooltip";
-@import "elements/page/page";
-@import "elements/slider/slider";
+// 元素组件
+@import "elements/menu/menu"; // Menu 菜单
+@import "elements/menu/list-menu"; // List Menu 列表菜单
+@import "elements/tree/tree"; // Tree 树形组件
+@import "elements/page/page"; // Page 分页
+@import "elements/loading/loading"; // Loading 加载
+@import "elements/toast/toast"; // Toast 吐司提示
+@import "elements/tooltip/tooltip"; // Tooltip 提示
+@import "elements/image/image"; // Image 图像
+@import "elements/callout/callout"; // Callout 引线式标注
+@import "elements/progress/progress"; // Progress 进度条
+@import "elements/tag/tag"; // Tag 标签
+@import "elements/badge/badge"; // Badge 角标
+@import "elements/back-top/back-top"; // Back Top 返回顶部
+@import "elements/date-picker/date-picker"; // Date Picker 日期选择器
+@import "elements/color-picker/color-picker"; // Color Picker 颜色选择器
+@import "elements/timeline/timeline"; // Timeline 时间轴
+
+// navigation 导航样式
+@import "navigation/crumb/crumb"; // Crumb 面包屑
+@import "navigation/navbar/navbar"; // Navbar 导航栏
+@import "navigation/steps/steps"; // Steps 步骤条
+@import "navigation/tabs/tabs"; // Tabs 标签页
+@import "navigation/tabs/tab-bar-scroller"; // 可滑动的 Tabs 标签页
+
+// container 容器样式
+@import "container/list/list"; // List 列表
+@import "container/table/table"; // Table 表格
+@import "container/card/card"; // Card 卡片
+@import "container/panel/panel"; // Panel 面板
+@import "container/dialog/dialog"; // Dialog 对话框
+@import "container/accordion/accordion"; // Accordion 手风琴
+@import "container/carousel/carousel"; // Carousel 轮播图
 
 // 工具类 classes
 @import "utils/utils";
+
+// 纯 css 图标
+@import "icon-pure-css/icon-pure-css";
 

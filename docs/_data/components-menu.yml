@@ -1,84 +1,142 @@
-- title: 主题 theme
+- title: theme 主题
   file: theme
   pages:
     - title: 主题 Classes
       file: classes
-- title: 布局 layout
-  file: layout
-  pages:
-    - title: 栅格 Grid
-      file: grid
-- title: 排版 typography
-  file: typography
-  pages:
-    - title: 段落 paragraph
-      file: paragraph
-- title: 基础组件
+- title: 基础
   file: base
   pages:
-    - title: 波纹效果 Ripple
+    - title: Normalize 重置样式
+      file: normalize
+    - title: Animation 动画
+      file: animation
+    - title: Ripple 波纹效果
       file: ripple
-    - title: 阴影效果 Shadow
+    - title: Shadow 阴影效果
       file: shadow
-- title: 导航类组件
-  file: navigation
+- title: Typography 排版
+  file: typography
   pages:
-    - title: Navbar 导航栏
-      file: navbar
-    - title: Crumb  面包屑
-      file: crumb
-    - title: Menu 菜单
-      file: menu
-    - title: Tabs 标签
-      file: tabs
-- title: 容器类组件
-  file: container
+    - title: Paragraph 段落
+      file: paragraph
+    - title: Code 代码
+      file: code
+- title: Layout 布局
+  file: layout
   pages:
-    - title: Carousel 轮播图组件
-      file: carousel
-    - title: 对话框窗口(Dialog)
-      file: dialog
-    - title: 抽屉组件
+    - title: Box 盒子布局
+      file: box
+    - title: Drawer 抽屉布局
       file: drawer
-    - title: List 组件
-      file: list
-    - title: Table 组件
-      file: table
-- title: 元素类组件
-  file: elements
+    - title: Container 容器
+      file: container
+    - title: Grid 栅格
+      file: grid
+    - title: Responsive 响应式
+      file: responsive
+- title: 表单组件
+  file: forms
   pages:
-    - title: Button 按钮
-      file: button
     - title: Input 输入框
       file: input
+    - title: Select 下拉选择框
+      file: select
+    - title: Dropdown 下拉菜单
+      file: dropdown
     - title: Radio 单选框
       file: radio
     - title: Checkbox 复选框
       file: checkbox
-    - title: Select 下拉选择框
-      file: select
+    - title: Upload 文件上传
+      file: upload
     - title: Switch 开关
       file: switch
     - title: Slider 滑块
       file: slider
+    - title: Button 按钮
+      file: button
     - title: Form Field 表单域
       file: form-field
-    - title: Progress 进度条
-      file: progress
+- title: 元素组件
+  file: elements
+  pages:
+    - title: Menu 菜单
+      file: menu
+    - title: List Menu 列表菜单
+      file: list-menu
+    - title: Tree 树形组件
+      file: tree
     - title: Page 分页
       file: page
-    - title: Image 组件
-      file: image
-    - title: Badge 标记刻章组件
-      file: badge
-    - title: Toast 组件
+    - title: Loading 加载
+      file: loading
+    - title: Toast 吐司提示
       file: toast
-    - title: Tooltip 组件
+    - title: Tooltip 提示
       file: tooltip
+    - title: Image 图像
+      file: image
+    - title: Callout 引线式标注
+      file: callout
+    - title: Progress 进度条
+      file: progress
+    - title: Tag 标签
+      file: tag
+    - title: Badge 角标
+      file: badge
+    - title: Back Top 返回顶部
+      file: back-top
+    - title: Date Picker 日期选择器
+      file: date-picker
+    - title: Color Picker 颜色选择器
+      file: color-picker
+    - title: Timeline 时间轴
+      file: timeline
+- title: 导航组件
+  file: navigation
+  pages:
+    - title: Crumb 面包屑
+      file: crumb
+    - title: Navbar 导航栏
+      file: navbar
+    - title: Steps 步骤条
+      file: steps
+    - title: Tabs 标签页
+      file: tabs
+- title: 容器组件
+  file: container
+  pages:
+    - title: List 列表
+      file: list
+    - title: Table 表格
+      file: table
+    - title: Card 卡片
+      file: card
+    - title: Panel 面板
+      file: panel
+    - title: Dialog 对话框
+      file: dialog
+    - title: Accordion 手风琴
+      file: accordion
+    - title: Carousel 轮播图
+      file: carousel
+- title: 工具样式
+  file: utils
+  pages:
+    - title: Float 浮动
+      file: float
+    - title: Position 定位
+      file: position
+    - title: Flex 弹性布局
+      file: flex
+    - title: 间距
+      file: spacing
+    - title: 边框
+      file: border
+    - title: 文本对齐
+      file: align
 - title: 图标
   file: icons
   pages:
     - title: 纯 css 图标
       file: icon-pure-css
-- title: 工具类样式
-  file: utils

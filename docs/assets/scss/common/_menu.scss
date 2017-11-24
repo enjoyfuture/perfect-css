@@ -7,6 +7,14 @@
   }
   .menu-title {
     padding: .5rem 1rem;
+
+    &:hover {
+      @include theme-prop(color, primary-light);
+    }
+
+    &.active {
+      @include theme-prop(color, primary);
+    }
   }
 
   .menu-sub-title {

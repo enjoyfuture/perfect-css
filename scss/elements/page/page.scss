@@ -80,10 +80,11 @@
       position:   absolute;
       width:      2px;
       height:     2px;
+      // sass-lint:disable indentation
       box-shadow: -4px -8px, -2px -8px, 0 -8px, 2px -8px, 4px -8px, 6px -8px, 8px -8px, // 上面的线
                   8px -6px, 8px -4px, 8px -2px, 8px 0, 8px 2px, 8px 4px, // 右侧的线
                   -10px -2px, -8px -2px, -6px -2px, -4px -2px, -2px -2px, 0 -2px, 2px -2px, // 上面的线
-                  2px 0px, 2px 2px, 2px 4px, 2px 6px, 2px 8px, 2px 10px; // 右侧的线
+                  2px 0, 2px 2px, 2px 4px, 2px 6px, 2px 8px, 2px 10px; // 右侧的线
     }
   }
 

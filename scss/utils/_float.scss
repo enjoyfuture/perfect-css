@@ -1,4 +1,7 @@
-// 水平方向
+.clearfix {
+  @include clearfix();
+}
+
 .float-left {
   float: left !important;
 }

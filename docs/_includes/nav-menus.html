@@ -25,7 +25,7 @@
   <li class="menu-item">
     <a {% if group.file %}href="/{{ prefix }}/{{ group.file }}/{{ link }}{% if link %}/{% endif %}" {% endif %}
        class="menu-title menu-header {{ active }}" style="padding-left: 1rem;">{{ group.title }}</a>
-    <ul class="menu"{% if page.group != group.file %} style="display: none;"{% endif %}>
+    <ul class="menu" {% if page.group !=group.file %} style="display: none;" {% endif %}>
       {% for doc in group.pages %}
       {% assign active = nil %}
 
@@ -37,7 +37,7 @@
 
       <li class="menu-item">
         <a href="/{{ prefix }}/{{ group.file }}/{{ doc.file }}/"
-             class="menu-title menu-sub-title{{ active }}" style="padding-left: 2rem;">{{ doc.title }}</a></li>
+           class="menu-title menu-sub-title{{ active }}" style="padding-left: 2rem;">{{ doc.title }}</a></li>
       {% endfor %}
     </ul>
   </li>
@@ -81,11 +81,12 @@
       }
       return true;
     })();
+
     const reg = /translateY\(([-\w]+)\)/;
 
+    // Fixme 需要处理触摸滚动限制回弹效果
     $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
       const {scrollHeight, clientHeight} = $menuPanel;
-      const step = 20;
       const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
 
       // 判断鼠标滑轮向上还是向下滑动
@@ -105,6 +106,10 @@
           upDown = 'down';
         }
       }
+
+      const speed = Math.abs(detail || wheelDelta);
+      // 在 mac 系统下 如果 (speed % 120) === 0 是鼠标滑动，否则是触摸滑动
+      const step = (speed % 120) === 0 ? 0.2 * speed : 5;
 
       const {transform} = $menu.style;
 

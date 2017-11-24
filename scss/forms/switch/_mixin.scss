@@ -1,0 +1,146 @@
+@import "variable";
+@import "../../theme/mixin";
+
+// 没有选中时，背景颜色
+@mixin switch-unchecked-bg-color($track-bg-color, $knob-bg-color, $focus-ring-bg-color) {
+  .switch-control:enabled:not(:checked) ~ .switch-track::before {
+    @include theme-prop(background-color, $track-bg-color);
+  }
+  .switch-control:enabled:not(:checked) ~ .switch-track .switch-knob {
+    @include theme-prop(background-color, $knob-bg-color);
+  }
+
+  .switch-control:enabled:not(:checked) ~ .switch-track .switch-knob::before {
+    @include theme-prop(background-color, $focus-ring-bg-color);
+  }
+}
+
+// 选中时，背景颜色
+@mixin switch-checked-bg-color($bg-color) {
+  .switch-control:enabled:checked:not(:disabled) ~ .switch-track::before {
+    @include theme-prop(background-color, $bg-color);
+  }
+  .switch-control:enabled:checked:not(:disabled) ~ .switch-track .switch-knob {
+    @include theme-prop(background-color, $bg-color);
+  }
+
+  .switch-control:enabled:checked:not(:disabled) ~ .switch-track .switch-knob::before {
+    @include theme-prop(background-color, $bg-color);
+  }
+}
+
+// switch 轮廓大小位置
+@mixin switch-control-size($switch-focus-ring-width: $switch-focus-ring-width,
+  $switch-focus-ring-height: $switch-focus-ring-height, $switch-knob-diameter: $switch-knob-diameter,
+  $switch-track-width: $switch-track-width, $switch-knob-vertical-offset: $switch-knob-vertical-offset,
+  $switch-control-active-translate-x: $switch-control-active-translate-x,
+  $switch-knob-active-translate-x: $switch-knob-active-translate-x) {
+
+  $offset-top: -($switch-focus-ring-height - $switch-knob-diameter) / 2;
+  $offset-left: -($switch-focus-ring-width - $switch-knob-diameter) / 2;
+  $switch-diameter: min($switch-focus-ring-width, $switch-focus-ring-height);
+
+  position:   absolute;
+  top:        max($offset-top, $offset-left);
+  left:       max($offset-top, $offset-left);
+  width:      ($switch-diameter - $switch-knob-diameter) / 2 + $switch-track-width;
+  height:     min($switch-focus-ring-width, $switch-focus-ring-height);
+  margin-top: -$switch-knob-vertical-offset;
+
+  &:checked {
+    transform: translateX($switch-control-active-translate-x);
+  }
+
+  &:checked ~ .switch-track {
+    .switch-knob {
+      transform: translateX($switch-knob-active-translate-x);
+    }
+  }
+}
+
+// switch 轨迹大小
+@mixin switch-track-size($width: $switch-track-width, $height: $switch-track-height) {
+  width:         $width;
+  height:        $height;
+  border-radius: $height / 2;
+
+  &::before {
+    border-radius: $height / 2;
+  }
+}
+
+// switch 切换按钮大小
+@mixin switch-knob-size($diameter: $switch-knob-diameter, $height: $switch-track-height, $offset: $switch-knob-vertical-offset) {
+  top:           -$offset;
+  left:          0;
+  width:         $diameter;
+  height:        $diameter;
+  border-radius: $diameter / 2;
+
+  &::before {
+    border-radius: $height / 2;
+  }
+}
+
+// switch 聚焦大小
+@mixin switch-focus-ring-size($width: $switch-focus-ring-width, $height: $switch-focus-ring-height,
+  $diameter: $switch-knob-diameter) {
+
+  $offset-top: -($height - $diameter) / 2;
+  $offset-left: -($width - $diameter) / 2;
+
+  position:      absolute;
+  top:           max($offset-top, $offset-left);
+  left:          max($offset-top, $offset-left);
+  width:         min($width, $height);
+  height:        min($width, $height);
+  border-radius: $width / 2;
+}
+
+// 自定义大小，把定义大小的地方统一抽到该方法里
+@mixin switch-size($width: $switch-focus-ring-width, $height: $switch-focus-ring-height,
+  $diameter: $switch-knob-diameter, $offset: $switch-knob-vertical-offset) {
+
+  // 重新赋值，覆盖 !default 定义的值
+  $switch-focus-ring-width: $width;
+  $switch-focus-ring-height: $height;
+  $switch-knob-diameter: $diameter;
+  $switch-knob-vertical-offset: $offset;
+
+  $switch-track-width: $switch-focus-ring-width / 2 + $switch-knob-diameter / 2;
+  $switch-track-height: $switch-knob-diameter - $switch-knob-vertical-offset * 2;
+  $switch-control-active-translate-x: (min($switch-focus-ring-width, $switch-focus-ring-height) - $switch-knob-diameter) / 2;
+  $switch-knob-active-translate-x: ($switch-focus-ring-width - $switch-knob-diameter) / 2;
+
+  .switch-control {
+    @include switch-control-size($switch-focus-ring-width: $switch-focus-ring-width,
+      $switch-focus-ring-height: $switch-focus-ring-height, $switch-knob-diameter: $switch-knob-diameter,
+      $switch-track-width: $switch-track-width, $switch-knob-vertical-offset: $switch-knob-vertical-offset,
+      $switch-control-active-translate-x: $switch-control-active-translate-x,
+      $switch-knob-active-translate-x: $switch-knob-active-translate-x);
+  }
+
+  .switch-track {
+    @include switch-track-size($width: $switch-track-width, $height: $switch-track-height);
+  }
+
+  .switch-knob {
+    @include switch-knob-size($diameter: $switch-knob-diameter, $height: $switch-track-height, $offset: $switch-knob-vertical-offset);
+  }
+
+  // 聚焦效果
+  &.switch-focus-ring {
+    .switch-knob {
+      &::before {
+        @include switch-focus-ring-size($width: $switch-focus-ring-width, $height: $switch-focus-ring-height, $diameter: $switch-knob-diameter);
+      }
+    }
+  }
+}
+
+// 定义主题
+@mixin switch-theme($theme, $unchecked-bg-color: null) {
+  $bg-color: if($unchecked-bg-color, $unchecked-bg-color, #{$theme}-light);
+  @include switch-unchecked-bg-color($bg-color, $bg-color, $bg-color);
+  @include switch-checked-bg-color($theme);
+}

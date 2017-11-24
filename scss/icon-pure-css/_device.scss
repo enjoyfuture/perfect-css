@@ -65,7 +65,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-image: radial-gradient(4px 10px, transparent 0, transparent 4px, currentColor 5px, currentColor 6px, transparent 7px);
+  background-image: radial-gradient(4px 10px at center, transparent 0, transparent 4px, currentColor 5px, currentColor 6px, transparent 7px);
   box-shadow: inset 0 0 0 2px;
 
   &::before {
@@ -73,13 +73,13 @@
     bottom: 0;
     width: 24px;
     height: 24px;
-    background-image: radial-gradient(4px 8px, transparent 0, transparent 4px, currentColor 5px, currentColor 6px, transparent 7px);
+    background-image: radial-gradient(4px 8px at center, transparent 0, transparent 4px, currentColor 5px, currentColor 6px, transparent 7px);
     transform: rotate(90deg);
   }
   &:hover,
   &.active {
     &::before {
-      background-image: radial-gradient(4px 8px, transparent 0, transparent 4px, $icon-active-color 5px, $icon-active-color 6px, transparent 7px);
+      background-image: radial-gradient(4px 8px at center, transparent 0, transparent 4px, $icon-active-color 5px, $icon-active-color 6px, transparent 7px);
     }
   }
 }
