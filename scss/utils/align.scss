@@ -16,26 +16,27 @@
 }
 
 // 垂直方向
-.vertical-baseline { // Browser default
+.text-baseline { // Browser default
   vertical-align: baseline !important;
 }
 
-.vertical-top {
+.text-top {
   vertical-align: top !important;
 }
 
-.vertical-middle {
+.text-middle {
   vertical-align: middle !important;
 }
 
-.vertical-bottom {
+.text-bottom {
   vertical-align: bottom !important;
 }
 
-.vertical-text-bottom {
+.text-text-top {
+  vertical-align: text-top !important;
+}
+
+.text-text-bottom {
   vertical-align: text-bottom !important;
 }
 
-.vertical-text-top {
-  vertical-align: text-top !important;
-}

@@ -50,6 +50,7 @@
   }
 }
 
+// 当开启响应式时
 @if ($enable-responsive) {
   @each $breakpoint in map-keys($responsive-breakpoints) {
     @include media-breakpoint-up($breakpoint) {

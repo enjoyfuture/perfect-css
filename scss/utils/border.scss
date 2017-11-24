@@ -31,10 +31,6 @@
   border-top: 0 !important;
 }
 
-.border-right-0 {
-  border-right: 0 !important;
-}
-
 .border-bottom-0 {
   border-bottom: 0 !important;
 }
@@ -43,17 +39,26 @@
   border-left: 0 !important;
 }
 
+.border-right-0 {
+  border-right: 0 !important;
+}
+
 // Border 颜色
 @each $theme, $color in $theme-property-values {
   .border-#{$theme} {
-    border-color: $color !important;
+    @include theme-prop(border-color, $color, true);
   }
 }
 
 @each $theme, $color in $theme-assist-colors {
   .border-#{$theme} {
-    border-color: $color !important;
+    @include theme-prop(border-color, $color, true);
   }
+}
+
+// 透明色
+.border-transparent {
+  border-color: transparent !important;
 }
 
 // Border 圆角，分为标准，大和小
@@ -73,11 +78,6 @@
     border-top-right-radius: $radius !important;
   }
 
-  .radius-right#{$suffix} {
-    border-top-right-radius:    $radius !important;
-    border-bottom-right-radius: $radius !important;
-  }
-
   .radius-bottom#{$suffix} {
     border-bottom-left-radius:  $radius !important;
     border-bottom-right-radius: $radius !important;
@@ -86,6 +86,11 @@
   .radius-left#{$suffix} {
     border-top-left-radius:    $radius !important;
     border-bottom-left-radius: $radius !important;
+  }
+
+  .radius-right#{$suffix} {
+    border-top-right-radius:    $radius !important;
+    border-bottom-right-radius: $radius !important;
   }
 }
 

@@ -1,0 +1,11 @@
+// 隐藏文字内容，在元素需要被图片背景替换时
+// http://nicolasgallagher.com/another-css-image-replacement-technique/
+@mixin text-hide() {
+  border:           0;
+  // sass-lint:disable space-around-operator
+  // https://stackoverflow.com/questions/20640976/what-does-a-stand-for-in-font-0-0-a
+  font:             0/0 a;
+  color:            transparent;
+  background-color: transparent;
+  text-shadow:      none;
+}

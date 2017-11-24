@@ -1,8 +1,7 @@
-//
-// Text style
-//
+// 文本样式
 
 @import "../base/mixins/text-ellipsis";
+@import "../base/mixins/text-hide";
 
 // 单行截取
 .text-ellipsis {
@@ -34,5 +33,11 @@
 // 首字母大写
 .text-capitalize {
   text-transform: capitalize !important;
+}
+
+// 隐藏文字内容，在元素需要被图片背景替换时
+// http://nicolasgallagher.com/another-css-image-replacement-technique/
+.text-hide {
+  @include text-hide;
 }
 

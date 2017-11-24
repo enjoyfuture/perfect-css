@@ -1,0 +1,34 @@
+@import "../../../../scss/theme/variable";
+@import "../../../../scss/theme/mixin";
+
+// border
+.border-panel {
+  display:         flex;
+  align-items:     center;
+
+  [class*="border"],
+  [class*="radius"] {
+    box-sizing:       border-box;
+    display:          inline-flex;
+    align-items:      center;
+    justify-content:  center;
+    width:            100px;
+    height:           100px;
+    padding:          .5rem;
+    margin-left:      .5rem;
+    margin-right:     .5rem;
+    background-color: $grey-color-50;
+    text-align:       center;
+  }
+
+  [class*="radius"] {
+    @include theme-prop(background-color, primary-alpha);
+  }
+}
+
+.border-panel-0 {
+  [class*="border"] {
+    border: 1px solid $theme-primary;
+    @include theme-prop(border-color, $theme-primary);
+  }
+}

@@ -1,6 +1,4 @@
-//
 // 工具类样式，定义 display 样式
-//
 
 @mixin display-cls() {
   .d-none { display: none !important; }
@@ -15,9 +13,7 @@
 
 @include display-cls();
 
-//
 // 定义打印相关 display style
-//
 
 .d-print-block {
   display: none !important;

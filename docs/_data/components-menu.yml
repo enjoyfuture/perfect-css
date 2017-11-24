@@ -123,18 +123,18 @@
 - title: 工具样式
   file: utils
   pages:
-    - title: Float 浮动
-      file: float
-    - title: Position 定位
-      file: position
+    - title: Align 文本对齐方式
+      file: align
+    - title: Border 边框和圆角
+      file: border
     - title: Flex 弹性布局
       file: flex
-    - title: 间距
+    - title: Sizing 元素大小
+      file: sizing
+    - title: Spacing 间距
       file: spacing
-    - title: 边框
-      file: border
-    - title: 文本对齐
-      file: align
+    - title: Text 文本修饰
+      file: text
 - title: 图标
   file: icons
   pages:

@@ -32,7 +32,7 @@
     .align-items#{$infix}-baseline { align-items: baseline !important; }
     .align-items#{$infix}-stretch  { align-items: stretch !important; }
 
-    //
+    // 设置 flex 某一个子元素水平对齐方式
     .align-content#{$infix}-start   { align-content: flex-start !important; }
     .align-content#{$infix}-end     { align-content: flex-end !important; }
     .align-content#{$infix}-center  { align-content: center !important; }
@@ -40,7 +40,7 @@
     .align-content#{$infix}-around  { align-content: space-around !important; }
     .align-content#{$infix}-stretch { align-content: stretch !important; }
 
-    // 设置 flex 某一个子元素对齐方式
+    // 设置 flex 某一个子元素垂直对齐方式
     .align-self#{$infix}-auto     { align-self: auto !important; }
     .align-self#{$infix}-start    { align-self: flex-start !important; }
     .align-self#{$infix}-end      { align-self: flex-end !important; }

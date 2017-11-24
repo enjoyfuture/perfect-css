@@ -1,0 +1,40 @@
+// 定位
+@import "../base/variables/zindex";
+
+$positions: static, relative, absolute, fixed, sticky;
+
+@each $position in $positions {
+  .position-#{$position} { position: $position !important; }
+}
+
+// 利用定位实现水平垂直居中
+.position-center {
+  position:  absolute;
+  top:       50%;
+  left:      50%;
+  transform: translate(-50%, -50%);
+}
+
+.fixed-top {
+  position: fixed;
+  top:      0;
+  left:     0;
+  right:    0;
+  z-index:  $zindex-fixed;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom:   0;
+  left:     0;
+  right:    0;
+  z-index:  $zindex-fixed;
+}
+
+.sticky-top {
+  @supports (position: sticky) {
+    position: sticky;
+    top:      0;
+    z-index:  $zindex-sticky;
+  }
+}

@@ -81,7 +81,15 @@
 @import "container/carousel/carousel"; // Carousel 轮播图
 
 // 工具类 classes
-@import "utils/utils";
+@import "utils/align"; // 文本对齐方式
+@import "utils/border"; // 边框和圆角
+@import "utils/display"; // display 相关属性值样式
+@import "utils/flex"; // 弹性布局样式
+@import "utils/float"; // 浮层和清空浮层
+@import "utils/position"; // 定位
+@import "utils/sizing"; // 元素大小
+@import "utils/spacing"; // 间距
+@import "utils/text"; // 文本修饰
 
 // 纯 css 图标
 @import "icon-pure-css/icon-pure-css";
