@@ -2274,6 +2274,24 @@ mark,
   background-color: #fffde7;
 }
 
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
 .font {
   font-size: 1rem !important;
 }
@@ -2304,6 +2322,10 @@ mark,
 
 .font-weight-bolder {
   font-weight: bolder !important;
+}
+
+.font-italic {
+  font-style: italic !important;
 }
 
 .font-weight-100 {
@@ -2345,7 +2367,7 @@ mark,
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: inherit;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.1;
   color: inherit;
 }

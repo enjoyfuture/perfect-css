@@ -22,9 +22,9 @@
       <li>
         <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
       </li>
-      <li>
-        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
-      </li>
+      <!--<li>-->
+        <!--<a class="ripple ripple-primary nav-link " href="/themes/">主题</a>-->
+      <!--</li>-->
       <li>
         <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
@@ -81,7 +81,8 @@
   <div class="row m-l-3 doc-main">
     <div class="doc-content catalogue-counter col-24 col-lg-19 col-md-17">
       <h2>
-<a id="toc-1" class="menu-anchor" data-target="toc-1" aria-hidden="true"></a>说明</h2>
+<div class="anchor-header" id="toc-1"></div>说明<a class="anchor-link" href="#toc-1" data-target="toc-1" aria-hidden="true">#</a>
+</h2>
 <p>首先我们必须遵循黄金法则(Golden Rule):
 <strong>不管有多少人参与，一定要确保每一行代码都像是同一个人编写的</strong>
 (<strong>Every line of code should appear to be written by a single person, no matter the number of contributors</strong>)。
@@ -100,7 +101,8 @@
 </ul>
 
 <h2>
-<a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>CSS 命名规范</h2>
+<div class="anchor-header" id="toc-2"></div>CSS 命名规范<a class="anchor-link" href="#toc-2" data-target="toc-2" aria-hidden="true">#</a>
+</h2>
 
 <ol>
   <li>文件名使用英文小写，多个单词时，中间用中划线 (-) 连接，比如：<code class="highlighter-rouge">common.scss</code> <code class="highlighter-rouge">button-groups.scss</code> 等</li>
@@ -310,12 +312,14 @@
 </table>
 
 <h2>
-<a id="toc-3" class="menu-anchor" data-target="toc-3" aria-hidden="true"></a>CSS 书写规范</h2>
+<div class="anchor-header" id="toc-3"></div>CSS 书写规范<a class="anchor-link" href="#toc-3" data-target="toc-3" aria-hidden="true">#</a>
+</h2>
 
 <p>以下会列出部分书写规范，更多的规范，我们会使用 sass-lint 来限制，webStorm 中有对应的插件，开启 sass-lint 实时检测</p>
 
 <h3>
-<a id="toc-3-1" class="menu-anchor" data-target="toc-3-1" aria-hidden="true"></a>语法和排版</h3>
+<div class="anchor-header" id="toc-3-1"></div>语法和排版<a class="anchor-link" href="#toc-3-1" data-target="toc-3-1" aria-hidden="true">#</a>
+</h3>
 
 <ol>
   <li>使用两个空格来代替制表符（tab）作为缩进，— 这是保证代码在各种环境下显示一致的唯一方式</li>
@@ -357,7 +361,8 @@
 </ol>
 
 <h3>
-<a id="toc-3-2" class="menu-anchor" data-target="toc-3-2" aria-hidden="true"></a>属性声明顺序</h3>
+<div class="anchor-header" id="toc-3-2"></div>属性声明顺序<a class="anchor-link" href="#toc-3-2" data-target="toc-3-2" aria-hidden="true">#</a>
+</h3>
 
 <p>相关的属性声明应当归为一组，并按照下面的顺序书写</p>
 
@@ -376,7 +381,8 @@
 <p>具体每一个属性书写顺序请参考 <a href="%E9%93%BE%E6%8E%A5%E5%BE%85%E8%A1%A5%E5%85%85">sass-lint.yml</a></p>
 
 <h3>
-<a id="toc-3-3" class="menu-anchor" data-target="toc-3-3" aria-hidden="true"></a>scss 嵌套顺序</h3>
+<div class="anchor-header" id="toc-3-3"></div>scss 嵌套顺序<a class="anchor-link" href="#toc-3-3" data-target="toc-3-3" aria-hidden="true">#</a>
+</h3>
 
 <ol>
   <li>当前选择器的样式属性</li>
@@ -449,7 +455,8 @@
 </code></pre></div></div>
 
 <h3>
-<a id="toc-3-4" class="menu-anchor" data-target="toc-3-4" aria-hidden="true"></a>简写形式的属性声明</h3>
+<div class="anchor-header" id="toc-3-4"></div>简写形式的属性声明<a class="anchor-link" href="#toc-3-4" data-target="toc-3-4" aria-hidden="true">#</a>
+</h3>
 
 <p>在需要显式地设置属性值的情况下，应当尽量<code class="highlighter-rouge">限制</code>使用简写形式的属性声明，常见的滥用简写属性声明的情况如下</p>
 <ul>
@@ -484,11 +491,13 @@
 </code></pre></div></div>
 
 <h3>
-<a id="toc-3-5" class="menu-anchor" data-target="toc-3-5" aria-hidden="true"></a>超链接书写顺序</h3>
+<div class="anchor-header" id="toc-3-5"></div>超链接书写顺序<a class="anchor-link" href="#toc-3-5" data-target="toc-3-5" aria-hidden="true">#</a>
+</h3>
 <p>链接的样式请严格按照如下顺序添加： a:link -&gt; a:visited -&gt; a:hover -&gt; a:active</p>
 
 <h3>
-<a id="toc-3-6" class="menu-anchor" data-target="toc-3-6" aria-hidden="true"></a>选择器书写格式</h3>
+<div class="anchor-header" id="toc-3-6"></div>选择器书写格式<a class="anchor-link" href="#toc-3-6" data-target="toc-3-6" aria-hidden="true">#</a>
+</h3>
 
 <ul>
   <li>避免使用多个属性选择器（例如，[class^=”…”]），这会降低浏览器的性能</li>
@@ -514,7 +523,8 @@
 </ul>
 
 <h2>
-<a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>注释</h2>
+<div class="anchor-header" id="toc-4"></div>注释<a class="anchor-link" href="#toc-4" data-target="toc-4" aria-hidden="true">#</a>
+</h2>
 
 <p>请确保代码是描述性的、注释良好并且易于他人理解的。好的代码注释能够传达样式上下文关系和代码要实现的目的。</p>
 
@@ -536,17 +546,20 @@
 而多行注释一般写在页面的头部，说明该样式文件是干什么的，怎么用等信息</p>
 
 <h2>
-<a id="toc-5" class="menu-anchor" data-target="toc-5" aria-hidden="true"></a>文件大小</h2>
+<div class="anchor-header" id="toc-5"></div>文件大小<a class="anchor-link" href="#toc-5" data-target="toc-5" aria-hidden="true">#</a>
+</h2>
 
 <p>单个CSS文件应避免过大，原则上不超过500行，可以按模块或组件拆成粒度更小的文件。</p>
 
 <h2>
-<a id="toc-6" class="menu-anchor" data-target="toc-6" aria-hidden="true"></a>预编译器 Sass</h2>
+<div class="anchor-header" id="toc-6"></div>预编译器 Sass<a class="anchor-link" href="#toc-6" data-target="toc-6" aria-hidden="true">#</a>
+</h2>
 
 <p>待补充</p>
 
 <h2>
-<a id="toc-7" class="menu-anchor" data-target="toc-7" aria-hidden="true"></a>sass-lint 代码检测工具</h2>
+<div class="anchor-header" id="toc-7"></div>sass-lint 代码检测工具<a class="anchor-link" href="#toc-7" data-target="toc-7" aria-hidden="true">#</a>
+</h2>
 
 <p>需要安装 sass-lint</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install <span class="nt">--save-dev</span> sass-lint
@@ -556,7 +569,8 @@
 <p>对于 WebStorm，需要安装插件<a href="https://github.com/idok/sass-lint-plugin">sass-lint-plugin</a></p>
 
 <h2>
-<a id="toc-8" class="menu-anchor" data-target="toc-8" aria-hidden="true"></a>scss 代码文件结构以及 CSS 模块化</h2>
+<div class="anchor-header" id="toc-8"></div>scss 代码文件结构以及 CSS 模块化<a class="anchor-link" href="#toc-8" data-target="toc-8" aria-hidden="true">#</a>
+</h2>
 
 <p>scss 目录下包含</p>
 
@@ -683,7 +697,8 @@
 </code></pre></div></div>
 
 <h2>
-<a id="toc-9" class="menu-anchor" data-target="toc-9" aria-hidden="true"></a>docs 文件结构</h2>
+<div class="anchor-header" id="toc-9"></div>docs 文件结构<a class="anchor-link" href="#toc-9" data-target="toc-9" aria-hidden="true">#</a>
+</h2>
 
 
     </div>

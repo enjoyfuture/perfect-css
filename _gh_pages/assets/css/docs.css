@@ -224,6 +224,33 @@
   counter-increment: outline4;
 }
 
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+/**
+ * Applies the correct theme color style to the specified property.
+ * $property is typically color or background-color, but can be any CSS property that accepts color values.
+ * $style should be one of the map keys in $theme-property-values (_variables.scss).
+ */
+.anchor-link {
+  font-weight: 400;
+  color: #64b5f6;
+  color: var(--theme-primary-light, #64b5f6);
+  -webkit-transition: color 0.16s cubic-bezier(0, 0, 0.2, 1), opacity 0.16s cubic-bezier(0, 0, 0.2, 1);
+  transition: color 0.16s cubic-bezier(0, 0, 0.2, 1), opacity 0.16s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.anchor-link:hover {
+  color: #2196f3;
+  color: var(--theme-primary, #2196f3);
+  text-decoration: none;
+}
+
 html {
   position: relative;
 }
@@ -397,8 +424,48 @@ html, body {
   font-size: 1.25rem;
 }
 
-.doc-content > h3 {
+.doc-content > h4 {
   font-size: 1.125rem;
+}
+
+.doc-content > h1, .doc-content > h2 {
+  margin-top: 3rem;
+}
+
+.doc-content > h3, .doc-content > h4, .doc-content > h5, .doc-content > h6 {
+  margin-top: 2rem;
+}
+
+.doc-content > h1:first-child, .doc-content > h2:first-child {
+  margin-top: 0;
+}
+
+.doc-content > h1 .anchor-header, .doc-content > h2 .anchor-header, .doc-content > h3 .anchor-header, .doc-content > h4 .anchor-header, .doc-content > h5 .anchor-header, .doc-content > h6 .anchor-header {
+  display: inline-block;
+  height: 5.5rem;
+  margin-top: -5.5rem;
+  visibility: hidden;
+}
+
+.doc-content > h1 .anchor-link, .doc-content > h2 .anchor-link, .doc-content > h3 .anchor-link, .doc-content > h4 .anchor-link, .doc-content > h5 .anchor-link, .doc-content > h6 .anchor-link {
+  padding-left: 0.375rem;
+  opacity: 0;
+}
+
+.doc-content > h1:hover > .anchor-link,
+.doc-content > h1 .anchor-link:focus, .doc-content > h2:hover > .anchor-link,
+.doc-content > h2 .anchor-link:focus, .doc-content > h3:hover > .anchor-link,
+.doc-content > h3 .anchor-link:focus, .doc-content > h4:hover > .anchor-link,
+.doc-content > h4 .anchor-link:focus, .doc-content > h5:hover > .anchor-link,
+.doc-content > h5 .anchor-link:focus, .doc-content > h6:hover > .anchor-link,
+.doc-content > h6 .anchor-link:focus {
+  opacity: 1;
+}
+
+.doc-content hr {
+  border-top: 1px dashed;
+  border-color: #64b5f6;
+  border-color: var(--theme-primary-light, #64b5f6);
 }
 
 @media screen and (min-width: 1600px) {

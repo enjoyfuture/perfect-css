@@ -52,9 +52,9 @@
       <li>
         <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
       </li>
-      <li>
-        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
-      </li>
+      <!--<li>-->
+        <!--<a class="ripple ripple-primary nav-link " href="/themes/">主题</a>-->
+      <!--</li>-->
       <li>
         <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
@@ -1144,14 +1144,16 @@
           </div>
           <hr/>
           <h2>
-<a id="toc-1" class="menu-anchor" data-target="toc-1" aria-hidden="true"></a>栅格系统实现</h2>
+<div class="anchor-header" id="toc-1"></div>栅格系统实现<a class="anchor-link" href="#toc-1" data-target="toc-1" aria-hidden="true">#</a>
+</h2>
 <p>栅格系统基于最新 flex 布局实现。采用 <code class="highlighter-rouge">.row</code> 和 <code class="highlighter-rouge">.col</code> 来为元素标签设置布局。为了更好的满足各种宽度的栅格，系统采用 24 列布局实现。
 采用响应式布局，可以实现不同屏幕大小的栅格布局，也可以混合使用不同屏幕的栅格样式。
 比如：<code class="highlighter-rouge">col-24 col-md-6 col-lg-4</code> 当设备很小时，<code class="highlighter-rouge">col-24</code> 起作用，全屏显示；中等设备时 <code class="highlighter-rouge">col-md-6</code> 起作用；
 再大一点的设备 <code class="highlighter-rouge">col-lg-4</code> 起作用。设备大小的零界点请参考<a href="">响应式布局</a>。</p>
 
 <h3>
-<a id="toc-1-1" class="menu-anchor" data-target="toc-1-1" aria-hidden="true"></a>实现原理</h3>
+<div class="anchor-header" id="toc-1-1"></div>实现原理<a class="anchor-link" href="#toc-1-1" data-target="toc-1-1" aria-hidden="true">#</a>
+</h3>
 <ul>
   <li>使用 class 样式 <code class="highlighter-rouge">row</code> 在水平方向上创建行容器，然后在行容器中添加列 <code class="highlighter-rouge">col</code>，类似于 table 功能，但比 table 功能强大</li>
   <li>栅格系统必须是 <code class="highlighter-rouge">row</code> 和 <code class="highlighter-rouge">col</code> 组合使用，而且 <code class="highlighter-rouge">col</code> 被 <code class="highlighter-rouge">row</code> 包裹</li>
@@ -1164,7 +1166,8 @@
 </ul>
 
 <h3>
-<a id="toc-1-2" class="menu-anchor" data-target="toc-1-2" aria-hidden="true"></a>使用场景</h3>
+<div class="anchor-header" id="toc-1-2"></div>使用场景<a class="anchor-link" href="#toc-1-2" data-target="toc-1-2" aria-hidden="true">#</a>
+</h3>
 <ul>
   <li>页面整体布局，左右，左右中布局</li>
   <li>表单布局</li>
@@ -1172,7 +1175,8 @@
 </ul>
 
 <h2>
-<a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>如何使用</h2>
+<div class="anchor-header" id="toc-2"></div>如何使用<a class="anchor-link" href="#toc-2" data-target="toc-2" aria-hidden="true">#</a>
+</h2>
 <p>栅格系统使用 class <code class="highlighter-rouge">container</code> <code class="highlighter-rouge">row</code> 和 <code class="highlighter-rouge">col</code> 来布局显示内容</p>
 
 <div class="doc-example-row">
@@ -1266,11 +1270,13 @@
 </div>
 
 <h2>
-<a id="toc-3" class="menu-anchor" data-target="toc-3" aria-hidden="true"></a>各种列布局</h2>
+<div class="anchor-header" id="toc-3"></div>各种列布局<a class="anchor-link" href="#toc-3" data-target="toc-3" aria-hidden="true">#</a>
+</h2>
 <p>使用 <code class="highlighter-rouge">col-x</code> 可以设置各种大小的列布局。</p>
 
 <h3>
-<a id="toc-3-1" class="menu-anchor" data-target="toc-3-1" aria-hidden="true"></a>等宽布局</h3>
+<div class="anchor-header" id="toc-3-1"></div>等宽布局<a class="anchor-link" href="#toc-3-1" data-target="toc-3-1" aria-hidden="true">#</a>
+</h3>
 <p>对于等宽布局，只需为每列设置 <code class="highlighter-rouge">col</code> 即可</p>
 
 <div class="doc-example-row">
@@ -1325,7 +1331,8 @@
 </div>
 
 <h3>
-<a id="toc-3-2" class="menu-anchor" data-target="toc-3-2" aria-hidden="true"></a>多行布局</h3>
+<div class="anchor-header" id="toc-3-2"></div>多行布局<a class="anchor-link" href="#toc-3-2" data-target="toc-3-2" aria-hidden="true">#</a>
+</h3>
 <p>我们在需要折行的地方加上一个高度为0，宽度为100%的元素来强制换行处理</p>
 
 <div class="doc-example-row">
@@ -1372,7 +1379,8 @@
 </div>
 
 <h3>
-<a id="toc-3-3" class="menu-anchor" data-target="toc-3-3" aria-hidden="true"></a>固定列宽和自适应宽度混合</h3>
+<div class="anchor-header" id="toc-3-3"></div>固定列宽和自适应宽度混合<a class="anchor-link" href="#toc-3-3" data-target="toc-3-3" aria-hidden="true">#</a>
+</h3>
 <p>指定的列宽，比如 <code class="highlighter-rouge">col-5</code>，会按照 5/24 计算其宽度，未指定的列宽 <code class="highlighter-rouge">col</code> 会平均计算剩下的宽度。
 例子中，第一行 <code class="highlighter-rouge">col-5</code> 和 <code class="highlighter-rouge">col-7</code> 占用了 12 格，那剩下的 12 格会平分到两个设置 <code class="highlighter-rouge">col</code>上，即每个宽度占6格。
 第二行设置 <code class="highlighter-rouge">col</code> 的占格子数为：(24-5-10)/3 = 3</p>
@@ -1433,7 +1441,8 @@
 </div>
 
 <h3>
-<a id="toc-3-4" class="menu-anchor" data-target="toc-3-4" aria-hidden="true"></a>根据内容计算列宽度</h3>
+<div class="anchor-header" id="toc-3-4"></div>根据内容计算列宽度<a class="anchor-link" href="#toc-3-4" data-target="toc-3-4" aria-hidden="true">#</a>
+</h3>
 <p>使用样式 <code class="highlighter-rouge">col-{breakpoint}-auto</code> 设置列，表示列的宽度会根据内容来计算其宽度,
 但当内容很多时会导致布局混乱，所以需要我们设置最大宽度，或强制换行显示</p>
 
@@ -1487,12 +1496,14 @@
 </div>
 
 <h2>
-<a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>响应式布局下栅格系统的使用</h2>
+<div class="anchor-header" id="toc-4"></div>响应式布局下栅格系统的使用<a class="anchor-link" href="#toc-4" data-target="toc-4" aria-hidden="true">#</a>
+</h2>
 <p>栅格系统提供了5个层次的响应式布局样式 <code class="highlighter-rouge">col-xs-*</code> <code class="highlighter-rouge">col-sm-*</code> <code class="highlighter-rouge">col-md-*</code> <code class="highlighter-rouge">col-lg-*</code> <code class="highlighter-rouge">col-xl-*</code>，
 分别对应不同大小的设备。</p>
 
 <h3>
-<a id="toc-4-1" class="menu-anchor" data-target="toc-4-1" aria-hidden="true"></a>折中的方案</h3>
+<div class="anchor-header" id="toc-4-1"></div>折中的方案<a class="anchor-link" href="#toc-4-1" data-target="toc-4-1" aria-hidden="true">#</a>
+</h3>
 <p>为了兼容各个设备的布局，我们常用 <code class="highlighter-rouge">col-sm-*</code> 来创建栅格系统</p>
 
 <div class="doc-example-row">
@@ -1545,7 +1556,8 @@
 </div>
 
 <h3>
-<a id="toc-4-2" class="menu-anchor" data-target="toc-4-2" aria-hidden="true"></a>混合使用</h3>
+<div class="anchor-header" id="toc-4-2"></div>混合使用<a class="anchor-link" href="#toc-4-2" data-target="toc-4-2" aria-hidden="true">#</a>
+</h3>
 <p>为了兼顾各种设备大小的布局，混合使用响应式布局是个完美的解决方案，下面的例子，在改变屏幕大小时，每列所占宽度的比例会变化的。</p>
 
 <div class="doc-example-row">
@@ -1586,11 +1598,13 @@
 </div>
 
 <h2>
-<a id="toc-5" class="menu-anchor" data-target="toc-5" aria-hidden="true"></a>对齐</h2>
+<div class="anchor-header" id="toc-5"></div>对齐<a class="anchor-link" href="#toc-5" data-target="toc-5" aria-hidden="true">#</a>
+</h2>
 <p>使用工具类 flex 提供的样式可以设置栅格垂直和水平对齐方式</p>
 
 <h3>
-<a id="toc-5-1" class="menu-anchor" data-target="toc-5-1" aria-hidden="true"></a>垂直对齐</h3>
+<div class="anchor-header" id="toc-5-1"></div>垂直对齐<a class="anchor-link" href="#toc-5-1" data-target="toc-5-1" aria-hidden="true">#</a>
+</h3>
 <p>垂直对齐使用class <code class="highlighter-rouge">align-items-{breakpoint}-*</code> 和 <code class="highlighter-rouge">.align-self{breakpoint}-*</code>
 前者是指整行上对应的列对齐方式，设置 <code class="highlighter-rouge">row</code> 上，而后者是指某一列对齐方式，设置在 <code class="highlighter-rouge">col</code> 上</p>
 
@@ -1741,7 +1755,8 @@
 </div>
 
 <h3>
-<a id="toc-5-2" class="menu-anchor" data-target="toc-5-2" aria-hidden="true"></a>水平对齐</h3>
+<div class="anchor-header" id="toc-5-2"></div>水平对齐<a class="anchor-link" href="#toc-5-2" data-target="toc-5-2" aria-hidden="true">#</a>
+</h3>
 <p>水平对齐使用class <code class="highlighter-rouge">justify-content-{breakpoint}-*</code> 设置在 <code class="highlighter-rouge">row</code> 上</p>
 
 <div class="doc-example-row">
@@ -1858,7 +1873,8 @@
 </div>
 
 <h2>
-<a id="toc-6" class="menu-anchor" data-target="toc-6" aria-hidden="true"></a>无边距</h2>
+<div class="anchor-header" id="toc-6"></div>无边距<a class="anchor-link" href="#toc-6" data-target="toc-6" aria-hidden="true">#</a>
+</h2>
 <p>默认每列设置了左右内边距，如果想去掉左右内边距，可以在 <code class="highlighter-rouge">row</code> 上添加 class <code class="highlighter-rouge">no-gutters</code>
 下面例子中，第一行是有边距，第二行是无边距。如果连容器的内边距都不需要，可以把 <code class="highlighter-rouge">.container</code>
 和 <code class="highlighter-rouge">.container-fluid</code> 去掉。</p>
@@ -1935,13 +1951,15 @@
 </div>
 
 <h2>
-<a id="toc-7" class="menu-anchor" data-target="toc-7" aria-hidden="true"></a>重新排序</h2>
+<div class="anchor-header" id="toc-7"></div>重新排序<a class="anchor-link" href="#toc-7" data-target="toc-7" aria-hidden="true">#</a>
+</h2>
 <p>我们可以使用 flex <code class="highlighter-rouge">order-*</code> 、<code class="highlighter-rouge">offset-*</code> 或 <a href="/docs/utilities/spacing/">margin utilities</a> 来调整列显示位置，
 使用 <code class="highlighter-rouge">order-*</code> 直接改变列位置，使用 <code class="highlighter-rouge">offset-*</code> 或 margin auto 通过设置 margin-left 或 margin-right 来偏移列，
 变相的达到调整位置的目的</p>
 
 <h3>
-<a id="toc-7-1" class="menu-anchor" data-target="toc-7-1" aria-hidden="true"></a>flex order 排序</h3>
+<div class="anchor-header" id="toc-7-1"></div>flex order 排序<a class="anchor-link" href="#toc-7-1" data-target="toc-7-1" aria-hidden="true">#</a>
+</h3>
 <p>使用 <code class="highlighter-rouge">.order-*</code> 来调整列位置，可以调整到 1 ~ 24，比如 <code class="highlighter-rouge">order-4</code> <code class="highlighter-rouge">order-md-4</code> 等</p>
 
 <div class="doc-example-row">
@@ -2034,7 +2052,8 @@
 </div>
 
 <h3>
-<a id="toc-7-2" class="menu-anchor" data-target="toc-7-2" aria-hidden="true"></a>offset 调整位置</h3>
+<div class="anchor-header" id="toc-7-2"></div>offset 调整位置<a class="anchor-link" href="#toc-7-2" data-target="toc-7-2" aria-hidden="true">#</a>
+</h3>
 <p>使用 <code class="highlighter-rouge">.offset-*</code> 来调整列位置，比如 <code class="highlighter-rouge">offset-md-7</code>，实际上是增加了 margin-left 值，使列移动到 <code class="highlighter-rouge">col-md-7</code> 的位置上。</p>
 
 <div class="doc-example-row">
@@ -2085,7 +2104,8 @@
 </div>
 
 <h3>
-<a id="toc-7-3" class="menu-anchor" data-target="toc-7-3" aria-hidden="true"></a>margin auto 排序</h3>
+<div class="anchor-header" id="toc-7-3"></div>margin auto 排序<a class="anchor-link" href="#toc-7-3" data-target="toc-7-3" aria-hidden="true">#</a>
+</h3>
 <p>使用 <code class="highlighter-rouge">m*-auto</code> 可以设置左右 margin 为 auto，从而使左右留出空白空间</p>
 
 <div class="doc-example-row">
@@ -2201,7 +2221,8 @@
 </div>
 
 <h2>
-<a id="toc-8" class="menu-anchor" data-target="toc-8" aria-hidden="true"></a>栅格系统嵌套</h2>
+<div class="anchor-header" id="toc-8"></div>栅格系统嵌套<a class="anchor-link" href="#toc-8" data-target="toc-8" aria-hidden="true">#</a>
+</h2>
 
 <p>嵌套类似于表格嵌套，就是在列中再包含一个栅格，理论上可以无限嵌套使用</p>
 
@@ -2255,7 +2276,8 @@
 </div>
 
 <h2>
-<a id="toc-9" class="menu-anchor" data-target="toc-9" aria-hidden="true"></a>自定义栅格系统</h2>
+<div class="anchor-header" id="toc-9"></div>自定义栅格系统<a class="anchor-link" href="#toc-9" data-target="toc-9" aria-hidden="true">#</a>
+</h2>
 <p>通过修改 Sass 变量，可以调整栅格格数，间距大小，以及结合响应式调整屏幕零界点大小</p>
 
 <p>grid 对应的变量文件为 <a href="https://github.com/joy-web/perfect-css/scss/layout/grid/_variable.scss">https://github.com/joy-web/perfect-css/tree/master/scss/layout/grid/_variable.scss</a></p>
@@ -2284,7 +2306,8 @@
 <p>修改后需要重新编译生成 css 代码，也可以通过自定义主题来在线设置，保存并下载生成的 css 文件。TODO 待完成</p>
 
 <h2>
-<a id="toc-10" class="menu-anchor" data-target="toc-10" aria-hidden="true"></a>开启关闭响应式布局</h2>
+<div class="anchor-header" id="toc-10"></div>开启关闭响应式布局<a class="anchor-link" href="#toc-10" data-target="toc-10" aria-hidden="true">#</a>
+</h2>
 <p>我们可以通过设置 Scss 变量 <a href="https://github.com/joy-web/perfect-css/tree/master/scss/base/variables/_options.scss">$enable-responsive</a> 来开启或关闭响应式布局，默认是开启。在不需要响应式布局的情况下，可以关闭。
 关闭后，我们使用 <code class="highlighter-rouge">col</code> <code class="highlighter-rouge">col-2</code> 等即可创建栅格系统。需要注意的时，要配合 class <code class="highlighter-rouge">container</code>来使用，并自定义
 父容器的宽度。</p>
