@@ -64,6 +64,16 @@
   padding: .5rem 1rem;
 }
 
+.perfect-menu .menu-title:hover {
+  color: #64b5f6;
+  color: var(--theme-primary-light, #64b5f6);
+}
+
+.perfect-menu .menu-title.active {
+  color: #2196f3;
+  color: var(--theme-primary, #2196f3);
+}
+
 .perfect-menu .menu-sub-title:hover {
   color: #2196f3;
   color: var(--theme-primary, #2196f3);
@@ -336,6 +346,7 @@ html, body {
   right: 0;
   z-index: 1000;
   padding-top: .5rem;
+  border-top: 1px solid;
   border-bottom: 1px solid;
   border-left: 1px solid;
   overflow: hidden;
@@ -420,7 +431,7 @@ html, body {
             transform: translate(0, 0);
   }
   .doc-catalogue-header::before {
-    content: '目录';
+    content: "目录";
     padding-left: .5rem;
     color: #999;
   }
@@ -435,7 +446,7 @@ html, body {
 }
 
 .doc-catalogue .menu-title:hover::after, .doc-catalogue .menu-title.active::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 25%;
   bottom: 20%;
@@ -502,8 +513,8 @@ html, body {
 
 .icon-pure-code,
 .icon-pure-code-expand {
-  -webkit-transform: rotate(-45deg) scale(0.8);
-          transform: rotate(-45deg) scale(0.8);
+  -webkit-transform: rotate(-45deg) scale(0.6);
+          transform: rotate(-45deg) scale(0.6);
   color: #e1bee7;
   color: var(--theme-secondary-lighter, #e1bee7);
 }
@@ -545,8 +556,8 @@ html, body {
 
 .doc-code-copy .icon-pure-copy {
   cursor: pointer;
-  -webkit-transform: scale(0.6);
-          transform: scale(0.6);
+  -webkit-transform: scale(0.4);
+          transform: scale(0.4);
   color: #e1bee7;
   color: var(--theme-secondary-lighter, #e1bee7);
 }
@@ -906,6 +917,10 @@ html, body {
  * $property is typically color or background-color, but can be any CSS property that accepts color values.
  * $style should be one of the map keys in $theme-property-values (_variables.scss).
  */
+.highlighter-rouge {
+  margin-bottom: 1rem;
+}
+
 .highlighter-rouge:hover {
   position: relative;
 }

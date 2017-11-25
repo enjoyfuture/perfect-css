@@ -64,6 +64,16 @@
   padding: .5rem 1rem;
 }
 
+.perfect-menu .menu-title:hover {
+  color: #64b5f6;
+  color: var(--theme-primary-light, #64b5f6);
+}
+
+.perfect-menu .menu-title.active {
+  color: #2196f3;
+  color: var(--theme-primary, #2196f3);
+}
+
 .perfect-menu .menu-sub-title:hover {
   color: #2196f3;
   color: var(--theme-primary, #2196f3);
@@ -2022,6 +2032,67 @@ fieldset:disabled .btn.btn-customer, .btn.btn-customer:disabled, .btn.btn-custom
   border: 8px solid #eee;
   -webkit-transform: translateX(-16px);
           transform: translateX(-16px);
+}
+
+.crumb-custom {
+  font-size: 1.25rem;
+}
+
+.crumb-custom .crumb-item + .crumb-item::before {
+  content: "/";
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+/**
+ * Applies the correct theme color style to the specified property.
+ * $property is typically color or background-color, but can be any CSS property that accepts color values.
+ * $style should be one of the map keys in $theme-property-values (_variables.scss).
+ */
+.border-panel {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.border-panel [class*="border"],
+.border-panel [class*="radius"] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  width: 100px;
+  height: 100px;
+  padding: .5rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
+  background-color: rgba(0, 0, 0, 0.02);
+  text-align: center;
+}
+
+.border-panel [class*="radius"] {
+  background-color: rgba(33, 150, 243, 0.16);
+  background-color: var(--theme-primary-alpha, rgba(33, 150, 243, 0.16));
+}
+
+.border-panel-0 [class*="border"] {
+  border: 1px solid #2196f3;
+  border-color: #2196f3;
 }
 
 /*# sourceMappingURL=maps/components.css.map */
