@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="CSS3 Perfect">
+    <meta name="description"
+          content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+    <meta name="author" content="Linder Wang">
+
+    <title>
+      后台管理系统数据列表页
+    </title>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="../../../favicon.png">
+    <link rel="icon" href="../../../favicon.ico">
+
+    <!-- Perfect CSS -->
+    <link href="../../../assets/css/perfect.css" rel="stylesheet">
+    <!-- 自定义样式 -->
+    <link href="./list.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="navbar navbar-expand navbar-primary navbar-top flex-column flex-sm-row">
+      <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
+        <i class="icon-pure-menu"></i>
+      </div>
+      <a class="navbar-brand m-r-0 m-r-sm-2" href="#">Perfect</a>
+      <div class="navbar-scroll">
+        <ul class="navbar-nav">
+          <li><a class="nav-link active" href="#">首页</a></li>
+          <li><a class="nav-link" href="#">关于页</a></li>
+          <li><a class="nav-link disabled" href="#">禁止 Disabled</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <aside id="drawer" class="drawer drawer-permanent navbar-top-adjust">
+      <nav class="drawer-nav">
+        <nav class="drawer-content">
+
+        </nav>
+      </nav>
+    </aside>
+
+    <main class="drawer-main">
+      <div class="content-main">
+        <ul class="crumb">
+          <li class="crumb-item"><a href="#">首页</a></li>
+          <li class="crumb-item">产品</li>
+          <li class="crumb-item">资产查询</li>
+        </ul>
+
+        <div class="form-panel">
+          <div class="row no-gutters">
+            <div class="col-xl-6 col-md-8 col-sm-12">
+              <div class="form-field-inline">
+                <label for="input1">资产供应商</label>
+                <div class="select select-primary">
+                  <select class="select-inner" id="input1">
+                    <option value="">全部</option>
+                    <option value="1">供应商1</option>
+                    <option value="2">供应商2</option>
+                    <option value="3">供应商3</option>
+                    <option value="4">供应商4</option>
+                    <option value="5">供应商5</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-md-8 col-sm-12">
+              <div class="form-field-inline">
+                <label for="input2">贷款方平台</label>
+                <div class="input input-primary" id="input2">
+                  <input type="text" class="input-field" placeholder="贷款方平台">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-md-8 col-sm-12">
+              <div class="form-field-inline">
+                <label for="input3">标的号</label>
+                <div class="input input-primary" id="input3">
+                  <input type="text" class="input-field" placeholder="标的号">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-md-8 col-sm-12">
+              <div class="form-field-inline">
+                <label for="input4">产品状态</label>
+                <div class="select select-primary">
+                  <select class="select-inner" id="input4">
+                    <option value="">全部</option>
+                    <option value="1">状态1</option>
+                    <option value="2">状态2</option>
+                    <option value="3">状态3</option>
+                    <option value="4">状态4</option>
+                    <option value="5">状态5</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-md-8 col-sm-12">
+              <div class="form-field-inline">
+                <label for="input5">合同号</label>
+                <div class="input input-primary" id="input5">
+                  <input type="text" class="input-field" placeholder="合同号">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-md-8 col-sm-12">
+              <div class="form-field-inline">
+                <label for="input6">贷款人名称</label>
+                <div class="input input-primary" id="input6">
+                  <input type="text" class="input-field" placeholder="贷款人名称">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-md-8 col-sm-12">
+              <div class="form-field-inline">
+                <label for="input7">证件号码</label>
+                <div class="input input-primary" id="input7">
+                  <input type="text" class="input-field" placeholder="证件号码">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-md-8 col-sm-12">
+              <div class="form-field-inline">
+                <label for="input8">项目信息</label>
+                <div class="select select-primary">
+                  <select class="select-inner" id="input8">
+                    <option value="">全部</option>
+                    <option value="1">项目1</option>
+                    <option value="2">项目2</option>
+                    <option value="3">项目3</option>
+                    <option value="4">项目4</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-6 col-md-8 col-sm-12">
+              <div class="form-field-inline">
+                <label>新上架</label>
+                <div class="radio-checkbox-group">
+                  <label class="form-field">
+                    <div class="radio radio-primary">
+                      <input class="radio-native-control" type="radio" name="new" id="new_yes"/>
+                      <div class="radio-background">
+                        <div class="radio-circle-outer"></div>
+                        <div class="radio-circle-inner"></div>
+                      </div>
+                    </div>
+                    是
+                  </label>
+
+                  <label class="form-field">
+                    <div class="radio radio-primary">
+                      <input class="radio-native-control" type="radio" name="new" id="new_no"/>
+                      <div class="radio-background">
+                        <div class="radio-circle-outer"></div>
+                        <div class="radio-circle-inner"></div>
+                      </div>
+                    </div>
+                    否
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-12">
+              <div class="form-field-inline">
+                <label>销往</label>
+                <div class="radio-checkbox-group">
+                  <label class="form-field">
+                    <div class="checkbox checkbox-primary checkbox-ripple">
+                      <input class="checkbox-native-control" type="checkbox" name="sellto" />
+                      <div class="checkbox-background">
+                        <div class="checkbox-mark-outer"></div>
+                        <div class="checkbox-mark-inner"></div>
+                      </div>
+                    </div>
+                    北京
+                  </label>
+
+                  <label class="form-field">
+                    <div class="checkbox checkbox-primary checkbox-ripple">
+                      <input class="checkbox-native-control" type="checkbox" name="sellto"/>
+                      <div class="checkbox-background">
+                        <div class="checkbox-mark-outer"></div>
+                        <div class="checkbox-mark-inner"></div>
+                      </div>
+                    </div>
+                    天津
+                  </label>
+
+                  <label class="form-field">
+                    <div class="checkbox checkbox-primary checkbox-ripple">
+                      <input class="checkbox-native-control" type="checkbox" name="sellto"/>
+                      <div class="checkbox-background">
+                        <div class="checkbox-mark-outer"></div>
+                        <div class="checkbox-mark-inner"></div>
+                      </div>
+                    </div>
+                    河北
+                  </label>
+
+                  <label class="form-field">
+                    <div class="checkbox checkbox-primary checkbox-ripple">
+                      <input class="checkbox-native-control" type="checkbox" name="sellto"/>
+                      <div class="checkbox-background">
+                        <div class="checkbox-mark-outer"></div>
+                        <div class="checkbox-mark-inner"></div>
+                      </div>
+                    </div>
+                    山东
+                  </label>
+
+                  <label class="form-field">
+                    <div class="checkbox checkbox-primary checkbox-ripple">
+                      <input class="checkbox-native-control" type="checkbox" name="sellto"/>
+                      <div class="checkbox-background">
+                        <div class="checkbox-mark-outer"></div>
+                        <div class="checkbox-mark-inner"></div>
+                      </div>
+                    </div>
+                    内蒙
+                  </label>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+
+          <div class="btn-group m-t-2 text-right">
+            <button class="btn btn-raised btn-primary">查询</button>
+            <button class="btn btn-raised btn-success">清空</button>
+          </div>
+        </div>
+
+        <table class="table table-thead-primary table-striped table-hover-primary m-t-4">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>姓名</th>
+              <th>手机</th>
+              <th>邮箱</th>
+              <th>职位</th>
+              <th>部门</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>张三</td>
+            <td>19912345678</td>
+            <td>999@999.com</td>
+            <td>前端程序猿</td>
+            <td>前端研发部</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>李四</td>
+            <td>19912345678</td>
+            <td>999@999.com</td>
+            <td>前端程序猿</td>
+            <td>前端研发部</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>王五</td>
+            <td>19912345678</td>
+            <td>999@999.com</td>
+            <td>前端👨‍💻‍</td>
+            <td>前端研发部</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>赵六</td>
+            <td>19912345678</td>
+            <td>999@999.com</td>
+            <td>前端程序媛</td>
+            <td>前端研发部</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="page m-t-4">
+          <ul class="page-items">
+            <li class="page-item disabled">上一页</li>
+            <li class="page-item active">1</li>
+            <li class="page-item">2</li>
+            <li class="page-item page-more page-prev" title="后退5页"></li>
+            <li class="page-item">3</li>
+            <li class="page-item">4</li>
+            <li class="page-item page-more page-next" title="前进5页"></li>
+            <li class="page-item">5</li>
+            <li class="page-item">6</li>
+            <li class="page-item">下一页</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <!-- 先使用 jQuery 处理，等后续 JavaScript 组件完善后，替换 -->
+    <script src="../../../assets/js/vendor/jquery.min.js"></script>
+    <script src="./list.js"></script>
+  </body>
+</html>
