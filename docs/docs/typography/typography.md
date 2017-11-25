@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: 排版 (Typography)
+title: Typography 排版
 description: 对于内容展示所常用的 HTML 元素我们都为其赋予了特定样式，包括样式标准化（normalization）、排版、列表等。
 group: typography
 toc: true

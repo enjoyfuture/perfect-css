@@ -1,9 +1,7 @@
 ---
 layout: docs
-title: 基础样式-间距
-description: 间距
-group: utilities
+title: 工具样式-Spacing 间距
+description: 
+group: utils
 toc: true
 ---
-
-间距

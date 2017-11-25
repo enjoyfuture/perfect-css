@@ -1,9 +1,9 @@
 ---
 layout: docs
-title: 组件类样式-Tooltip 组件
-description: Tooltip 组件
-group: components
+title: 元素组件-Tooltip 提示
+description: Tooltip 提示
+group: elements
 toc: true
 ---
 
-Tooltip 组件
+Tooltip 提示

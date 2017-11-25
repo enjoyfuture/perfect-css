@@ -1,8 +1,8 @@
 ---
 layout: docs
-title: 组件类样式-Image 组件
-description: Image 组件
-group: components
+title: 元素组件-Image 图像
+description: 
+group: elements
 toc: true
 ---
 

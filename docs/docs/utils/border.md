@@ -1,9 +1,7 @@
 ---
 layout: docs
-title: 基础样式-边框
-description: 边框
-group: utilities
+title: 工具样式-Border 边框和圆角
+description: 
+group: utils
 toc: true
 ---
-
-边框

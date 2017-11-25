@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: 布局-栅格系统
+title: 布局-Grid 栅格
 description: 栅格系统用来处理页面布局，通过行和列来布局元素，结合响应式来适配不同设备大小的布局展示，
              提供更友好的页面展示。响应式栅格系统的强大功能，只需使用 class『.row』 和 『.col』即可完成整个页面的布局。
 group: layout

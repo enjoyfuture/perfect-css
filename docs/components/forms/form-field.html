@@ -1,0 +1,270 @@
+---
+layout: components
+title: Form Field 表单域
+group: forms
+---
+
+<h2>单一表单元素</h2>
+
+<section class="component-container component-vertical-spacing">
+  <div class="form-field">
+    <label for="account">账户</label>
+    <div class="input input-primary">
+      <input type="text" class="input-field" placeholder="请输入账户" id="account"/>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="province">省份</label>
+    <div class="select select-primary">
+      <select class="select-inner" id="province">
+        <option value="1">河北</option>
+        <option value="2">北京</option>
+        <option value="3">天津</option>
+        <option value="4">山东</option>
+        <option value="5">山西</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label>性别</label>
+    <div class="radio-checkbox-group">
+      <div class="form-field">
+        <div class="radio radio-primary">
+          <input class="radio-native-control" type="radio" name="sex" id="sex-man"/>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <label for="sex-man">男</label>
+      </div>
+
+      <div class="form-field">
+        <div class="radio radio-primary">
+          <input class="radio-native-control" type="radio" name="sex" id="sex-woman"/>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <label for="sex-woman">女</label>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-field">
+    <label>爱好</label>
+    <div class="radio-checkbox-group">
+      <label class="form-field">
+        <div class="checkbox checkbox-primary">
+          <input class="checkbox-native-control" type="checkbox" name="hobby" />
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        编程
+      </label>
+
+      <label class="form-field">
+        <div class="checkbox checkbox-primary">
+          <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        数学
+      </label>
+
+      <label class="form-field">
+        <div class="checkbox checkbox-primary">
+          <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        音乐
+      </label>
+
+      <label class="form-field">
+        <div class="checkbox checkbox-primary">
+          <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        读书
+      </label>
+    </div>
+
+  </div>
+
+</section>
+
+<h2>表单元素组</h2>
+
+<section class="component-container">
+  <div class="form-field-group">
+    <div class="form-field">
+      <label for="group_account">账户</label>
+      <div class="input input-primary">
+        <input type="text" class="input-field" placeholder="请输入账户" id="group_account"/>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="group_province">省份</label>
+      <div class="select select-primary">
+        <select class="select-inner" id="group_province">
+          <option value="1">河北</option>
+          <option value="2">北京</option>
+          <option value="3">天津</option>
+          <option value="4">山东</option>
+          <option value="5">山西</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>性别</label>
+      <div class="radio-checkbox-group">
+        <div class="form-field">
+          <div class="radio radio-primary">
+            <input class="radio-native-control" type="radio" name="sex" id="group-sex-man"/>
+            <div class="radio-background">
+              <div class="radio-circle-outer"></div>
+              <div class="radio-circle-inner"></div>
+            </div>
+          </div>
+          <label for="group-sex-man">男</label>
+        </div>
+
+        <div class="form-field">
+          <div class="radio radio-primary">
+            <input class="radio-native-control" type="radio" name="sex" id="group-sex-woman"/>
+            <div class="radio-background">
+              <div class="radio-circle-outer"></div>
+              <div class="radio-circle-inner"></div>
+            </div>
+          </div>
+          <label for="group-sex-woman">女</label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-field">
+      <label>爱好</label>
+      <div class="radio-checkbox-group">
+        <label class="form-field">
+          <div class="checkbox checkbox-primary">
+            <input class="checkbox-native-control" type="checkbox" name="hobby" />
+            <div class="checkbox-background">
+              <div class="checkbox-mark-outer"></div>
+              <div class="checkbox-mark-inner"></div>
+            </div>
+          </div>
+          编程
+        </label>
+
+        <label class="form-field">
+          <div class="checkbox checkbox-primary">
+            <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+            <div class="checkbox-background">
+              <div class="checkbox-mark-outer"></div>
+              <div class="checkbox-mark-inner"></div>
+            </div>
+          </div>
+          数学
+        </label>
+
+        <label class="form-field">
+          <div class="checkbox checkbox-primary">
+            <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+            <div class="checkbox-background">
+              <div class="checkbox-mark-outer"></div>
+              <div class="checkbox-mark-inner"></div>
+            </div>
+          </div>
+          音乐
+        </label>
+
+        <label class="form-field">
+          <div class="checkbox checkbox-primary">
+            <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+            <div class="checkbox-background">
+              <div class="checkbox-mark-outer"></div>
+              <div class="checkbox-mark-inner"></div>
+            </div>
+          </div>
+          读书
+        </label>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<h2>.form-field-left 和 .form-field-right</h2>
+
+<h3>label 位置放在 input 后面，但显示的位置在左侧，需要借助于样式 .form-field-left</h3>
+<section class="component-container">
+  <div class="form-field form-field-left">
+    <div class="input input-primary">
+      <input type="password" class="input-field" placeholder="请输入账户" id="password"/>
+    </div>
+    <label for="password">密码</label>
+  </div>
+</section>
+
+<h3>label 位置放在 input 前面，但显示的位置在右侧，需要借助于样式 .form-field-right</h3>
+<section class="component-container">
+  <div class="form-field form-field-right">
+    <label>男</label>
+    <div class="radio radio-info">
+      <input class="radio-native-control" type="radio" name="radio1">
+      <div class="radio-background">
+        <div class="radio-circle-outer"></div>
+        <div class="radio-circle-inner"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<h2>100% 显示</h2>
+
+<section class="component-container">
+  <div class="form-field">
+    <label class="label-inline" for="account_full">账户</label>
+    <div class="input input-primary input-full" id="account_full">
+      <input type="text" class="input-field" placeholder="请输入账户">
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label class="label-inline" for="password_full">密码</label>
+    <div class="input input-primary input-full" id="password_full">
+      <input type="password" class="input-field" placeholder="请输入密码">
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label class="label-inline" for="fruits">水果种类</label>
+    <div class="select select-primary select-full">
+      <select class="select-inner" id="fruits">
+        <option value="1">🍌</option>
+        <option value="2">🍎</option>
+        <option value="3">🍐</option>
+        <option value="4">🍉</option>
+        <option value="5">🍑</option>
+      </select>
+    </div>
+  </div>
+</section>
+

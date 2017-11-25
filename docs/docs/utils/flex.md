@@ -1,9 +1,7 @@
 ---
 layout: docs
-title: 基础样式-Flex
-description: Flex
-group: utilities
+title: 工具样式-Flex 弹性布局
+description: 
+group: utils
 toc: true
 ---
-
-Flex

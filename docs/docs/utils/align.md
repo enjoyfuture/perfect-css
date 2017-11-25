@@ -1,8 +1,8 @@
 ---
 layout: docs
-title: 基础样式-文本对齐
-description: 文本对齐
-group: utilities
+title: 工具样式-Align 文本对齐方式
+description: Align 文本对齐方式
+group: utils
 toc: true
 ---
 

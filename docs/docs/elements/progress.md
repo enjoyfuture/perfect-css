@@ -1,8 +1,8 @@
 ---
 layout: docs
-title: 组件类样式-Progress 组件
-description: Progress 组件
-group: components
+title: 元素组件-Progress 进度条
+description: 
+group: elements
 toc: true
 ---
 

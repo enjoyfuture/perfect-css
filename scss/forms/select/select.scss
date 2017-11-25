@@ -8,10 +8,11 @@
 @import "variable";
 
 .select {
-  position: relative;
-  display:  inline-block;
-  width:    $form-input-width;
-  cursor:   pointer;
+  position:   relative;
+  box-sizing: border-box;
+  display:    inline-block;
+  width:      $form-input-width;
+  cursor:     pointer;
   @include theme-prop(color, primary-on-light);
 
   // 箭头

@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: 导航类样式-导航栏
+title: 导航组件-Navar 导航栏
 description: Perfect 提供了一个可响应式布局的导航栏功能
 group: navigation
 toc: true

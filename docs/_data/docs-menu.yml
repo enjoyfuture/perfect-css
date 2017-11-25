@@ -40,8 +40,8 @@
 - title: Typography 排版
   file: typography
   pages:
-    - title: Paragraph 段落
-      file: paragraph
+    - title: Typography 排版
+      file: typography
     - title: Code 代码
       file: code
 - title: Layout 布局
@@ -64,13 +64,13 @@
       file: input
     - title: Select 下拉选择框
       file: select
-    - title: Dropdown 下拉菜单
+    - title: DropDown 下拉菜单
       file: dropdown
     - title: Radio 单选框
       file: radio
     - title: Checkbox 复选框
       file: checkbox
-    - title: Upload 文件上传
+    - title: Upload 上传文件
       file: upload
     - title: Switch 开关
       file: switch
@@ -150,7 +150,7 @@
       file: align
     - title: Border 边框和圆角
       file: border
-    - title: Display display 相关属性值样式
+    - title: Display 相关属性值
       file: display
     - title: Flex 弹性布局
       file: flex
@@ -167,7 +167,7 @@
 - title: 图标
   file: icons
   pages:
-    - title: 纯 css 图标
+    - title: 纯 CSS 图标
       file: icon-pure-css
 - title: Html 标签和样式属性
   file: tag-property

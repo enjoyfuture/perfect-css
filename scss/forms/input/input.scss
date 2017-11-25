@@ -5,6 +5,7 @@
 @import "../../base/mixins/box-shadow";
 @import "../../ripple/mixin";
 @import "../../theme/mixin";
+@import "../../theme/variable";
 @import "../../shadow/mixin";
 @import "variable";
 @import "function";
@@ -12,10 +13,10 @@
 
 // 定义在 Input 元素外层包裹上
 .input {
-  position:    relative;
-  display:     inline-block;
-  width:       $form-input-width;
-  will-change: opacity, transform, color;
+  position:   relative;
+  box-sizing: border-box;
+  display:    inline-block;
+  width:      $form-input-width;
 
   // 如果加入 label 则设置间距
   label > input,
@@ -33,6 +34,7 @@
   line-height:             $input-line-height;
   background:              none;
   background-clip:         padding-box;
+  will-change:             opacity, transform, color;
   -webkit-appearance:      none; // 去掉 input 默认的行为和样式表现
   -webkit-font-smoothing:  antialiased; // 抗锯齿效果
   -moz-osx-font-smoothing: grayscale; // 抗锯齿效果
@@ -54,6 +56,7 @@
   &:focus {
     border-color: $grey-color-500;
     outline:      none;
+    transition:   input-transition(opacity);
 
     // 获取焦点时，隐藏 placeholder
     &::placeholder {

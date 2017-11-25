@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: 基础组件-阴影效果 Shadow
+title: 基础-Shadow 阴影效果
 description: 阴影效果模拟物体在深度和方向上投影，从而产生更直观的视觉效果。物体的高度和光的角度决定了影子的外观。
              Perfect CSS 提供了 0 到 24 范围的投影效果，值越大表明投影越大。
 group: base

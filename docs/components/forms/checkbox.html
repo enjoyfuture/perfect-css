@@ -1,0 +1,569 @@
+---
+layout: components
+title: Checkbox 复选框
+group: forms
+---
+
+<section class="component-container component-spacing">
+  <button class="btn btn-raised btn-primary ripple ripple-impact" id="disabledState">Toggle disabled</button>
+  <button class="btn btn-raised btn-secondary ripple ripple-impact" id="indeterminateState">Toggle indeterminate</button>
+</section>
+
+<h2 class="m-t-3">纯 CSS 样式</h2>
+
+<h3>基本样式</h3>
+<section class="component-container component-spacing">
+  <div class="form-field">
+    <div class="checkbox">
+      <input class="checkbox-native-control" type="checkbox" id="checkbox_base1"/>
+      <div class="checkbox-background">
+        <div class="checkbox-mark-outer"></div>
+        <div class="checkbox-mark-inner"></div>
+      </div>
+    </div>
+    <label for="checkbox_base1">基本样式 1</label>
+  </div>
+
+  <div class="form-field">
+    <div class="checkbox">
+      <input class="checkbox-native-control" type="checkbox" id="checkbox_base2"/>
+      <div class="checkbox-background">
+        <div class="checkbox-mark-outer"></div>
+        <div class="checkbox-mark-inner"></div>
+      </div>
+    </div>
+    <label for="checkbox_base2">基本样式 2</label>
+  </div>
+</section>
+
+<h3>带波纹样式</h3>
+<section class="component-container component-spacing">
+  <div class="form-field">
+    <div class="checkbox checkbox-ripple">
+      <input class="checkbox-native-control" type="checkbox" id="checkbox_ripple1"/>
+      <div class="checkbox-background">
+        <div class="checkbox-mark-outer"></div>
+        <div class="checkbox-mark-inner"></div>
+      </div>
+    </div>
+    <label for="checkbox_ripple1">带波纹样式 1</label>
+  </div>
+
+  <div class="form-field">
+    <div class="checkbox checkbox-ripple">
+      <input class="checkbox-native-control" type="checkbox" id="checkbox_ripple2"/>
+      <div class="checkbox-background">
+        <div class="checkbox-mark-outer"></div>
+        <div class="checkbox-mark-inner"></div>
+      </div>
+    </div>
+    <label for="checkbox_ripple2">带波纹样式 2</label>
+  </div>
+</section>
+
+<h2>JavaScript 波纹动效</h2>
+<section class="component-container component-spacing">
+  <div class="form-field">
+    <div class="checkbox ripple ripple-impact ripple-unbounded">
+      <input class="checkbox-native-control" type="checkbox" id="checkbox_ripple_impact1"/>
+      <div class="checkbox-background">
+        <div class="checkbox-mark-outer"></div>
+        <div class="checkbox-mark-inner"></div>
+      </div>
+    </div>
+    <label for="checkbox_ripple_impact1">波纹动效 1</label>
+  </div>
+
+  <div class="form-field">
+    <div class="checkbox ripple ripple-impact ripple-unbounded">
+      <input class="checkbox-native-control" type="checkbox" id="checkbox_ripple_impact2"/>
+      <div class="checkbox-background">
+        <div class="checkbox-mark-outer"></div>
+        <div class="checkbox-mark-inner"></div>
+      </div>
+    </div>
+    <label for="checkbox_ripple_impact2">波纹动效 2</label>
+  </div>
+</section>
+
+<h2>圆形 Checkbox</h2>
+<section class="component-container component-spacing">
+  <div class="checkbox checkbox-circle">
+    <input class="checkbox-native-control" type="checkbox" name="circle"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-circle checkbox-ripple">
+    <input class="checkbox-native-control" type="checkbox" name="circle"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-circle ripple ripple-impact ripple-unbounded">
+    <input class="checkbox-native-control" type="checkbox" name="circle"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h2>Checkbox 主题</h2>
+<h3>主颜色</h3>
+<h4>Primary</h4>
+
+<section class="component-container component-spacing">
+  <div class="checkbox checkbox-primary">
+    <input class="checkbox-native-control" type="checkbox" name="primary"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-primary checkbox-ripple">
+    <input class="checkbox-native-control" type="checkbox" name="primary"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-primary ripple ripple-impact ripple-unbounded">
+    <input class="checkbox-native-control" type="checkbox" name="primary"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-circle checkbox-primary checkbox-ripple">
+    <input class="checkbox-native-control" type="checkbox" name="primary"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Secondary</h4>
+<section class="component-container component-spacing">
+  <div class="checkbox checkbox-secondary">
+    <input class="checkbox-native-control" type="checkbox" name="secondary">
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-secondary checkbox-ripple">
+    <input class="checkbox-native-control" type="checkbox" name="secondary">
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-secondary ripple ripple-impact ripple-unbounded">
+    <input class="checkbox-native-control" type="checkbox" name="secondary">
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-circle checkbox-secondary checkbox-ripple">
+    <input class="checkbox-native-control" type="checkbox" name="secondary"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h3>辅助颜色</h3>
+<h4>Success</h4>
+<section class="component-container component-spacing">
+  <div class="checkbox checkbox-success">
+    <input class="checkbox-native-control" type="checkbox" name="success"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-ripple checkbox-success">
+    <input class="checkbox-native-control" type="checkbox" name="success"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-success ripple ripple-impact ripple-unbounded">
+    <input class="checkbox-native-control" type="checkbox" name="success"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-circle checkbox-success checkbox-ripple">
+    <input class="checkbox-native-control" type="checkbox" name="success"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Info</h4>
+<section class="component-container component-spacing">
+  <div class="checkbox checkbox-info">
+    <input class="checkbox-native-control" type="checkbox" name="info"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-ripple checkbox-info">
+    <input class="checkbox-native-control" type="checkbox" name="info"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-info ripple ripple-impact ripple-unbounded">
+    <input class="checkbox-native-control" type="checkbox" name="info"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-circle checkbox-info checkbox-ripple">
+    <input class="checkbox-native-control" type="checkbox" name="info"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Warning</h4>
+<section class="component-container component-spacing">
+  <div class="checkbox checkbox-warning">
+    <input class="checkbox-native-control" type="checkbox" name="warning"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-ripple checkbox-warning">
+    <input class="checkbox-native-control" type="checkbox" name="warning"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-warning ripple ripple-impact ripple-unbounded">
+    <input class="checkbox-native-control" type="checkbox" name="warning"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-circle checkbox-warning checkbox-ripple">
+    <input class="checkbox-native-control" type="checkbox" name="warning"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h4>Error</h4>
+<section class="component-container component-spacing">
+  <div class="checkbox checkbox-error">
+    <input class="checkbox-native-control" type="checkbox" name="error"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-ripple checkbox-error">
+    <input class="checkbox-native-control" type="checkbox" name="error"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-error ripple ripple-impact ripple-unbounded">
+    <input class="checkbox-native-control" type="checkbox" name="error"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-circle checkbox-error checkbox-ripple">
+    <input class="checkbox-native-control" type="checkbox" name="error"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h2>Checkbox 大小</h2>
+
+<h3>Checkbox 变大</h3>
+<section class="component-container component-spacing">
+  <div class="checkbox checkbox-lg">
+    <input class="checkbox-native-control" type="checkbox" name="radio_lg"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-lg checkbox-ripple">
+    <input class="checkbox-native-control" type="checkbox" name="radio_lg"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-lg ripple ripple-impact ripple-unbounded">
+    <input class="checkbox-native-control" type="checkbox" name="radio_lg"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h3>Checkbox 变小</h3>
+<section class="component-container component-spacing">
+  <div class="checkbox checkbox-sm">
+    <input class="checkbox-native-control" type="checkbox" name="radio_sm"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-sm checkbox-ripple">
+    <input class="checkbox-native-control" type="checkbox" name="radio_sm"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-sm ripple ripple-impact ripple-unbounded">
+    <input class="checkbox-native-control" type="checkbox" name="radio_sm"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h2>Checkbox 定制化</h2>
+
+<h3>颜色</h3>
+<section class="component-container component-spacing">
+  <div class="checkbox checkbox-customer">
+    <input class="checkbox-native-control" type="checkbox" name="radio_customer"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-ripple checkbox-customer">
+    <input class="checkbox-native-control" type="checkbox" name="radio_customer"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-customer ripple ripple-impact ripple-unbounded">
+    <input class="checkbox-native-control" type="checkbox" name="radio_customer"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+</section>
+
+<h3>大小</h3>
+<section class="component-container component-spacing">
+  <div class="checkbox checkbox-customer checkbox-customer-lg">
+    <input class="checkbox-native-control" type="checkbox" name="checkbox-customer-lg"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-ripple checkbox-customer checkbox-customer-lg">
+    <input class="checkbox-native-control" type="checkbox" name="checkbox-customer-lg"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+  <div class="checkbox checkbox-customer checkbox-customer-lg ripple ripple-impact ripple-unbounded">
+    <input class="checkbox-native-control" type="checkbox" name="checkbox-customer-lg"/>
+    <div class="checkbox-background">
+      <div class="checkbox-mark-outer"></div>
+      <div class="checkbox-mark-inner"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(function () {
+
+    /**
+     * 计算事件坐标
+     * @param {!Event} ev
+     * @param {!ClientRect} clientRect
+     * @return {!{x: number, y: number}}
+     */
+    function getNormalizedEventCoords(ev, clientRect) {
+      const x = window.pageXOffset;
+      const y = window.pageYOffset;
+      const documentX = x + clientRect.left;
+      const documentY = y + clientRect.top;
+
+      let normalizedX;
+      let normalizedY;
+      // Determine touch point relative to the ripple container.
+      if (ev.type === 'touchstart') {
+        normalizedX = ev.changedTouches[0].pageX - documentX;
+        normalizedY = ev.changedTouches[0].pageY - documentY;
+      } else {
+        normalizedX = ev.pageX - documentX;
+        normalizedY = ev.pageY - documentY;
+      }
+
+      return {x: normalizedX, y: normalizedY};
+    }
+
+    // 返回其大小
+    function getCssVariableValue($el) {
+      // 动态的修改 css variable
+      const width = $el.outerWidth();
+      const height = $el.outerHeight();
+
+      const maxDim = Math.max(width, height);
+      const diameter = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+
+      // 60%
+      const size = maxDim * 0.6;
+      // 直径多加 10
+      const radius = diameter + 10;
+
+      const scale = radius / size;
+
+      return {
+        width,
+        height,
+        size,
+        scale
+      };
+    }
+
+
+    function setCssVariable($el, {width, height, size, scale}) {
+      $el[0].style.setProperty('--ripple-width', width + 'px');
+      $el[0].style.setProperty('--ripple-height', height + 'px');
+      $el[0].style.setProperty('--ripple-size', size + 'px');
+      $el[0].style.setProperty('--ripple-scale', scale);
+
+      if ($el.hasClass('ripple-unbounded')) {
+        const left = Math.round((width / 2) - (size / 2));
+        const top = Math.round((height / 2) - (size / 2));
+
+        $el[0].style.setProperty('--ripple-left', `${left}px`);
+        $el[0].style.setProperty('--ripple-top', `${top}px`);
+      }
+    }
+
+    const $rippleImpact = $('.ripple-impact');
+    $rippleImpact.mousedown((e) => {
+      const $el = $(e.currentTarget);
+
+      const value = getCssVariableValue($el);
+
+      setCssVariable($el, value);
+
+      // 如果是 unbounded
+      if (!$el.hasClass('ripple-unbounded')) {
+        const {width, height, size} = value;
+
+        const clientRect = $el[0].getBoundingClientRect();
+        let startPoint = getNormalizedEventCoords(e, clientRect);
+
+        startPoint = {
+          x: startPoint.x - (size / 2),
+          y: startPoint.y - (size / 2),
+        };
+
+        const endPoint = {
+          x: (width / 2) - (size / 2),
+          y: (height / 2) - (size / 2),
+        };
+
+        const translateStart = `${startPoint.x}px, ${startPoint.y}px`;
+        const translateEnd = `${endPoint.x}px, ${endPoint.y}px`;
+
+        $el[0].style.setProperty('--ripple-translate-start', translateStart);
+        $el[0].style.setProperty('--ripple-translate-end', translateEnd);
+      }
+
+      $el.addClass('ripple-impact-active');
+
+    });
+
+    $rippleImpact.on('mouseup', (e) => {
+      const $el = $(e.currentTarget);
+      // 延迟260ms 执行
+      setTimeout(() => {
+        $el.removeClass('ripple-impact-active ripple-impact-focused');
+      }, 260);
+    });
+
+    const $rippleInput = $('.ripple-impact input');
+
+    $rippleInput.on('focus', (e) => {
+      const $el = $(e.currentTarget).parent();
+      $el.addClass('ripple-impact-focused');
+    }).on('blur', (e) => {
+      const $el = $(e.currentTarget).parent();
+      $el.removeClass('ripple-impact-focused');
+    });
+
+
+    // 初始化ripple-impact css variable
+    $rippleImpact.each(function (index, el) {
+      const $el = $(el);
+      const value = getCssVariableValue($el);
+      setCssVariable($el, value);
+    });
+
+    // Disabled
+    let disabled = false;
+    $('#disabledState').click(function () {
+      $('.checkbox').each(function (index, el) {
+        if (disabled) {
+          $(el).removeClass('checkbox-disabled').find('.checkbox-native-control').prop('disabled', false);
+        } else {
+          $(el).addClass('checkbox-disabled').find('.checkbox-native-control').prop('disabled', true);
+        }
+      });
+
+      disabled = !disabled;
+    });
+
+    // Indeterminate
+    let indeterminate = false;
+    $('#indeterminateState').click(function () {
+      $('.checkbox').each(function (index, el) {
+        $(el).find('.checkbox-native-control').prop('indeterminate', !indeterminate);
+      });
+
+      indeterminate = !indeterminate;
+    });
+  });
+</script>

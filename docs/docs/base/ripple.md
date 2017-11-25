@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: 基础组件-波纹效果 Ripple
+title: 基础-Ripple 波纹效果
 description: 波纹效果，通过 CSS 和 Javascript 为组件呈现出类似水波纹的效果
 group: base
 toc: true

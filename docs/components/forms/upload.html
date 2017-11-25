@@ -1,0 +1,62 @@
+---
+layout: components
+title: Upload 上传文件
+group: forms
+---
+
+<h2>普通上传文件</h2>
+
+<h3>基本用法</h3>
+<section class="component-container">
+  <div class="upload" tabindex="0">
+    <span>选择文件</span>
+    <span class="upload-filename" data-file-name>未选择文件</span>
+    <span class="upload-filetype" data-file-type></span>
+    <input type="file" name="base_file" class="upload-file">
+  </div>
+</section>
+
+<h3>选择多个文件</h3>
+<section class="component-container">
+  <div class="upload" tabindex="0">
+    <span>选择文件</span>
+    <span class="upload-filename" data-file-name>未选择文件</span>
+    <span class="upload-filetype" data-file-type></span>
+    <input type="file" name="multiple_file" multiple class="upload-file">
+  </div>
+</section>
+
+<h3>过滤上传文件格式</h3>
+<section class="component-container">
+  <div class="upload" tabindex="0">
+    <span>选择文件</span>
+    <span class="upload-filename" data-file-name>未选择文件</span>
+    <span class="upload-filetype" data-file-type></span>
+    <input type="file" name="accept_file" accept="image/*" capture="camera" class="upload-file">
+  </div>
+</section>
+
+<h2>带进度的上传文件</h2>
+
+<h2>可拖拽上传文件</h2>
+
+<h2>上传列表-类似于微信发布图片到朋友圈</h2>
+
+<h2>自定义上传文件，比如上传身份证</h2>
+
+<script>
+  $(function () {
+    $('.upload-file').change(function (e) {
+      const el = e.target;
+      const files = el.files;
+      if (files.length > 1) {
+        $(el).parent().find('[data-file-name]').text(`选择了${files.length}个文件`);
+      } else {
+        const [fileName, fileType] = files[0].name.split('.');
+        $(el).parent().find('[data-file-name]').text(fileName);
+        $(el).parent().find('[data-file-type]').text(`.${fileType}`);
+      }
+    });
+  });
+
+</script>

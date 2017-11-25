@@ -1,0 +1,46 @@
+// 上传文件组件
+@import "../../base/mixins/text-ellipsis";
+@import "../../base/variables/form";
+@import "../../base/variables/font";
+@import "../../theme/variable";
+@import "variable";
+
+.upload {
+  position:    relative;
+  box-sizing:  border-box;
+  display:     inline-flex;
+  align-items: center;
+  width:       $form-input-width;
+  padding:     $input-padding-y $input-padding-x;
+  border:      1px solid $input-border-color;
+  line-height: $input-line-height;
+  white-space: nowrap;
+  user-select: none;
+  will-change: opacity, transform, color;
+
+  &:focus,
+  &:active {
+    border-color: $grey-color-500;
+  }
+
+  &-file {
+    position: absolute;
+    top:      0;
+    bottom:   0;
+    left:     0;
+    width:    100%;
+    opacity:  0;
+  }
+
+  &-filename {
+    margin-left: .25rem;
+    font-size:   $font-size-xs;
+    color:       $grey-color-600;
+    @include text-ellipsis;
+  }
+
+  &-filetype {
+    font-size: $font-size-xs;
+    color:     $grey-color-600;
+  }
+}

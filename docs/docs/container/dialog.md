@@ -1,9 +1,9 @@
 ---
 layout: docs
-title: 容器类样式-对话框窗口
-description: 对话框窗口
+title: 容器组件-Dialog 对话框
+description: Dialog 对话框
 group: container
 toc: true
 ---
 
-对话框窗口
+Dialog 对话框

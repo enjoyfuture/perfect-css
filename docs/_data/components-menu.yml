@@ -6,8 +6,6 @@
 - title: 基础
   file: base
   pages:
-    - title: Normalize 重置样式
-      file: normalize
     - title: Animation 动画
       file: animation
     - title: Ripple 波纹效果
@@ -41,13 +39,13 @@
       file: input
     - title: Select 下拉选择框
       file: select
-    - title: Dropdown 下拉菜单
+    - title: DropDown 下拉菜单
       file: dropdown
     - title: Radio 单选框
       file: radio
     - title: Checkbox 复选框
       file: checkbox
-    - title: Upload 文件上传
+    - title: Upload 上传文件
       file: upload
     - title: Switch 开关
       file: switch
@@ -138,5 +136,5 @@
 - title: 图标
   file: icons
   pages:
-    - title: 纯 css 图标
+    - title: 纯 CSS 图标
       file: icon-pure-css
