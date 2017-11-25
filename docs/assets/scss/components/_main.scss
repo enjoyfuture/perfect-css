@@ -1,38 +1,14 @@
 @import "../../../../scss/theme/variable";
 @import "../../../../scss/theme/mixin";
 @import "../../../../scss/shadow/mixin";
+@import "../mixins/header";
 
 // 基础样式
 .component-wrap {
   padding: 1.5rem;
-
-  > h1 {
-    font-size: 1.75rem;
-  }
-
-  > h2 {
-    font-size: 1.5rem;
-  }
-
-  > h3 {
-    font-size: 1.25rem;
-  }
-
-  > h4 {
-    font-size: 1.125rem;
-  }
-
-  > h1, > h2, > h3, > h4 {
-    margin-top: 2rem;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-
-  > h1, > h2 {
-    margin-top: 3rem;
-  }
+  @include header-font-size;
+  @include header-margin;
+  @include header-anchor;
 
   > h1, > h2, > h3, > h4, > h5, > h6 {
     position:     relative;
@@ -48,10 +24,11 @@
       height:         .5rem;
       vertical-align: middle;
       @include theme-prop(background, primary);
+      // sass-lint:disable indentation
       @include shadow(6,
-        $umbra-color: var(--theme-primary-lighter),
-        $penumbra-color: var(--theme-primary-lighter),
-        $ambient-color: var(--theme-primary-lightest)
+                      $umbra-color: var(--theme-primary-lighter),
+                      $penumbra-color: var(--theme-primary-lighter),
+                      $ambient-color: var(--theme-primary-lightest)
       );
     }
   }
@@ -66,8 +43,8 @@
 
 // 组件间距
 .component-spacing {
-  >div, >button, >a {
-    margin-right:  1rem;
+  > div, > button, > a {
+    margin-right: 1rem;
     &:last-child {
       margin-right: 0;
     }
@@ -75,13 +52,13 @@
 }
 
 .component-bottom-spacing {
-  >div, >button, >a {
-    margin-bottom:  1rem;
+  > div, > button, > a {
+    margin-bottom: 1rem;
   }
 }
 
 .component-vertical-spacing {
-  >div, >button, >a, >nav {
+  > div, > button, > a, > nav {
     margin-bottom: 1rem;
     &:last-child {
       margin-bottom: 0;

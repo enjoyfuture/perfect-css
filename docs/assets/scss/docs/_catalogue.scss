@@ -2,6 +2,7 @@
 @import "../../../../scss/responsive/mixin";
 @import "../../../../scss/theme/mixin";
 @import "../../../../scss/animation/mixin";
+@import "../mixins/header";
 
 .doc-catalogue-menu:hover {
   .doc-catalogue-panel {
@@ -10,28 +11,28 @@
 }
 
 .doc-catalogue-panel {
-  position: fixed;
-  top: 64px;
-  right: 0;
-  z-index: 1000;
-  padding-top: .5rem;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-  overflow: hidden;
+  position:         fixed;
+  top:              64px;
+  right:            0;
+  z-index:          1000;
+  padding-top:      .5rem;
+  border-top:       1px solid;
+  border-bottom:    1px solid;
+  border-left:      1px solid;
+  overflow:         hidden;
   background-color: #fff;
-  transform: translate(200%, 0);
+  transform:        translate(200%, 0);
   @include theme-prop(border-color, secondary-lightest);
   @include animation-transition(transform);
 }
 
 .doc-catalogue-icon {
   position: fixed;
-  top: 4.5rem;
-  right: .5rem;
-  z-index: 1000;
+  top:      4.5rem;
+  right:    .5rem;
+  z-index:  1000;
   @include theme-prop(background-color, hint-on-dark);
-  cursor: pointer;
+  cursor:   pointer;
 
   .icon-pure-catalogue {
     @include theme-prop(color, secondary);
@@ -43,23 +44,15 @@
 }
 
 .doc-content {
-  padding-top: 1rem;
+  padding-top:    1rem;
   padding-bottom: 1rem;
+  @include header-font-size;
+  @include header-margin;
+  @include header-anchor;
 
-  > h1 {
-    font-size: 1.75rem;
-  }
-
-  > h2 {
-    font-size: 1.5rem;
-  }
-
-  > h3 {
-    font-size: 1.25rem;
-  }
-
-  > h3 {
-    font-size: 1.125rem;
+  hr {
+    border-top: 1px dashed;
+    @include theme-prop(border-color, primary-light);
   }
 }
 
@@ -71,50 +64,50 @@
     display: flex;
   }
   .doc-content {
-    flex: 0 0 79.1666666667%;
+    flex:      0 0 79.1666666667%;
     max-width: 79.1666666667%;
   }
 
   .doc-catalogue-menu-right {
-    display: block;
-    flex: 0 0 20.8333333333%;
-    max-width: 20.8333333333%;
+    display:     block;
+    flex:        0 0 20.8333333333%;
+    max-width:   20.8333333333%;
     margin-left: 1rem;
     border-left: 1px solid $grey-color-300;
   }
 
   .doc-catalogue-panel {
-    position: static;
-    right: auto;
+    position:   static;
+    right:      auto;
     margin-top: 1rem;
-    border: 0;
-    transform: translate(0, 0);
+    border:     0;
+    transform:  translate(0, 0);
   }
 
   .doc-catalogue-header {
     &::before {
-      content: "目录";
+      content:      "目录";
       padding-left: .5rem;
-      color: #999;
+      color:        #999;
     }
   }
 }
 
 .doc-catalogue {
   .menu-title {
-    position: relative;
-    min-width: 200px;
-    overflow: hidden;
+    position:      relative;
+    min-width:     200px;
+    overflow:      hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space:   nowrap;
 
     &:hover::after,
     &.active::after {
-      content: "";
-      position: absolute;
-      top: 25%;
-      bottom: 20%;
-      left: 0;
+      content:     "";
+      position:    absolute;
+      top:         25%;
+      bottom:      20%;
+      left:        0;
       border-left: 1px solid;
       @include theme-prop(border-left-color, secondary);
     }

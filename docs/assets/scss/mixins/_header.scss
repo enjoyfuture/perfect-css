@@ -1,0 +1,57 @@
+// h1~h6 margin
+@mixin header-margin {
+  > h1, > h2 {
+    margin-top: 3rem;
+  }
+
+  > h3, > h4, > h5, > h6 {
+    margin-top: 2rem;
+  }
+
+  > h1, > h2 {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+// font-size
+@mixin header-font-size {
+  > h1 {
+    font-size: 1.75rem;
+  }
+
+  > h2 {
+    font-size: 1.5rem;
+  }
+
+  > h3 {
+    font-size: 1.25rem;
+  }
+
+  > h4 {
+    font-size: 1.125rem;
+  }
+}
+
+// 通过添加伪类 ::before 使 h1~h6 表现出来变高的效果，处理锚点
+@mixin header-anchor {
+  > h1, > h2, > h3, > h4, > h5, > h6 {
+    .anchor-header {
+      display: inline-block;
+      height:     5.5rem;
+      margin-top: -5.5rem;
+      visibility: hidden;
+    }
+
+    .anchor-link {
+      padding-left: 0.375rem;
+      opacity:      0;
+    }
+
+    &:hover > .anchor-link,
+    .anchor-link:focus {
+      opacity: 1;
+    }
+  }
+}

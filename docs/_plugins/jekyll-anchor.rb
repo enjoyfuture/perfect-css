@@ -1,3 +1,4 @@
+# 为 component 对应 html 添加锚点
 
 require 'nokogiri'
 
@@ -25,7 +26,8 @@ module Jekyll
         i = 0
         nodes.each do |node|
           # 为栏目对应的内容加锚点
-          node[:content_node].add_previous_sibling(%Q{<a id="#{prefix}#{i + 1}" class="menu-anchor"></a>})
+          node[:content_node].children.first.add_previous_sibling(%Q{<div class="anchor-header" id="#{prefix}#{i + 1}"></div>})
+          node[:content_node].children.last.add_next_sibling(%Q{<a class="anchor-link" href="##{prefix}#{i + 1}">#</a>})
 
           if node[:children] && node[:children].length > 0
             addAnchorToContent(node[:children], "#{prefix}#{i + 1}-");
@@ -87,7 +89,7 @@ module Jekyll
                 parent: entries,
                 name: name,
                 text: text,
-                content_node: header_content
+                content_node: node
               }
               entries[:children] << anchor_node
 
@@ -100,7 +102,7 @@ module Jekyll
                   parent: currentNode[:parent],
                   name: name,
                   text: text,
-                  content_node: header_content
+                  content_node: node
                 }
                 currentNode[:parent][:children] << anchor_node
 
@@ -112,7 +114,7 @@ module Jekyll
                   parent: currentNode,
                   name: name,
                   text: text,
-                  content_node: header_content
+                  content_node: node
                 }
                 currentNode[:children] << anchor_node
 
@@ -129,7 +131,7 @@ module Jekyll
                   parent: ancestor,
                   name: name,
                   text: text,
-                  content_node: header_content
+                  content_node: node
                 }
                 ancestor[:children] << anchor_node
               end

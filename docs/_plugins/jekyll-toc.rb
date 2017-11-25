@@ -1,4 +1,5 @@
 # 参考 https://github.com/toshimaru/jekyll-toc 和 https://github.com/dafi/jekyll-toc-generator 实现
+# Nokogiri 文档 http://www.rubydoc.info/github/sparklemotion/nokogiri/Nokogiri/XML/NodeSet
 
 require 'nokogiri'
 
@@ -53,7 +54,8 @@ module Jekyll
         nodes.each do |node|
           if anchor
             # 为栏目对应的内容加锚点
-            node[:content_node].add_previous_sibling(%Q{<a id="#{prefix}#{i + 1}" class="menu-anchor" data-target="#{prefix}#{i + 1}" aria-hidden="true"></a>})
+            node[:content_node].children.first.add_previous_sibling(%Q{<div class="anchor-header" id="#{prefix}#{i + 1}"></div>})
+            node[:content_node].children.last.add_next_sibling(%Q{<a class="anchor-link" href="##{prefix}#{i + 1}" data-target="#{prefix}#{i + 1}" aria-hidden="true">#</a>})
           end
 
           html << %Q{  <li>\n}
@@ -79,7 +81,8 @@ module Jekyll
         i = 0
         nodes.each do |node|
           # 为栏目对应的内容加锚点
-          node[:content_node].add_previous_sibling(%Q{<a id="#{prefix}#{i + 1}" class="menu-anchor" data-target="#{prefix}#{i + 1}" aria-hidden="true"></a>})
+          node[:content_node].children.first.add_previous_sibling(%Q{<div class="anchor-header" id="#{prefix}#{i + 1}"></div>})
+          node[:content_node].children.last.add_next_sibling(%Q{<a class="anchor-link" href="##{prefix}#{i + 1}" data-target="#{prefix}#{i + 1}" aria-hidden="true">#</a>})
 
           if node[:children] && node[:children].length > 0
             addAnchorToContent(node[:children], "#{prefix}#{i + 1}-");
@@ -141,7 +144,7 @@ module Jekyll
                 parent: entries,
                 name: name,
                 text: text,
-                content_node: header_content
+                content_node: node
               }
               entries[:children] << toc
 
@@ -154,7 +157,7 @@ module Jekyll
                   parent: currentToc[:parent],
                   name: name,
                   text: text,
-                  content_node: header_content
+                  content_node: node
                 }
                 currentToc[:parent][:children] << toc
 
@@ -166,7 +169,7 @@ module Jekyll
                   parent: currentToc,
                   name: name,
                   text: text,
-                  content_node: header_content
+                  content_node: node
                 }
                 currentToc[:children] << toc
 
@@ -183,7 +186,7 @@ module Jekyll
                   parent: ancestor,
                   name: name,
                   text: text,
-                  content_node: header_content
+                  content_node: node
                 }
                 ancestor[:children] << toc
               end
