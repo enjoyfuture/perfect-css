@@ -15,8 +15,8 @@
 - title: Typography 排版
   file: typography
   pages:
-    - title: Paragraph 段落
-      file: paragraph
+    - title: Typography 排版
+      file: typography
     - title: Code 代码
       file: code
 - title: Layout 布局

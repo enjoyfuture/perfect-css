@@ -1,3 +1,5 @@
+@import "../base/variables/font";
+
 .font {
   font-size: $font-size !important;
 }
@@ -29,6 +31,10 @@
 
 .font-weight-bolder {
   font-weight: $font-weight-bolder !important;
+}
+
+.font-italic {
+  font-style: italic !important;
 }
 
 // 数字表示字体粗细
