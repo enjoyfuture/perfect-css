@@ -52,9 +52,9 @@
       <li>
         <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
       </li>
-      <li>
-        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
-      </li>
+      <!--<li>-->
+        <!--<a class="ripple ripple-primary nav-link " href="/themes/">主题</a>-->
+      <!--</li>-->
       <li>
         <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
@@ -1147,10 +1147,12 @@
           </div>
           <hr/>
           <h1>
-<a id="toc-1" class="menu-anchor" data-target="toc-1" aria-hidden="true"></a>主题设计理念</h1>
+<div class="anchor-header" id="toc-1"></div>主题设计理念<a class="anchor-link" href="#toc-1" data-target="toc-1" aria-hidden="true">#</a>
+</h1>
 
 <h2>
-<a id="toc-1-1" class="menu-anchor" data-target="toc-1-1" aria-hidden="true"></a>色彩和色调</h2>
+<div class="anchor-header" id="toc-1-1"></div>色彩和色调<a class="anchor-link" href="#toc-1-1" data-target="toc-1-1" aria-hidden="true">#</a>
+</h2>
 
 <ul>
   <li>Perfect CSS 颜色遵循 WCAG 2.0 规范标准，突出对比度，更利于视觉障碍(色盲)阅读。</li>
@@ -1167,26 +1169,30 @@
 <p>Perfect CSS 基准色参考了 <a href="https://material.io/guidelines/style/color.html">Material Color</a></p>
 
 <h2>
-<a id="toc-1-2" class="menu-anchor" data-target="toc-1-2" aria-hidden="true"></a>颜色</h2>
+<div class="anchor-header" id="toc-1-2"></div>颜色<a class="anchor-link" href="#toc-1-2" data-target="toc-1-2" aria-hidden="true">#</a>
+</h2>
 <p>Perfect CSS 定义了三种基本颜色和四种辅助颜色，三种基本颜色分别为主颜色、次颜色（强调颜色）和背景颜色，
 四种辅助颜色包含成功 success 、信息 info、警告 warning 和错误 error。具体在<a href="#toc-4">【主题 Sass 变量】</a>中会给出详细讲解。</p>
 
 <h1>
-<a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>使用</h1>
+<div class="anchor-header" id="toc-2"></div>使用<a class="anchor-link" href="#toc-2" data-target="toc-2" aria-hidden="true">#</a>
+</h1>
 
 <p>可以使用预设的 Sass 变量来修改颜色值，也可以使用定义的 Mixin 和 Function用在样式组件中，其中 Mixin
 <code class="highlighter-rouge">theme-prop</code> 会用在各个组件中，用来设置与颜色相关的 CSS property。通过 <code class="highlighter-rouge">theme-prop</code> 设置的属性值，
 可以方便的通过修改 CSS 变量来定制主题，详细可以在<a href="#toc-5">【主题 Sass Mixin Function】</a>中查看。</p>
 
 <h1>
-<a id="toc-3" class="menu-anchor" data-target="toc-3" aria-hidden="true"></a>例子</h1>
+<div class="anchor-header" id="toc-3"></div>例子<a class="anchor-link" href="#toc-3" data-target="toc-3" aria-hidden="true">#</a>
+</h1>
 
 <p>例子中给出了主题对应的 Mixin 和 Function 的用法，以及主题预设的 CSS 样式（前景和背景色 classes）。</p>
 
 <p><a href="/components/theme/classes/" target="_blank">例子</a></p>
 
 <h1>
-<a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>主题 Sass 变量</h1>
+<div class="anchor-header" id="toc-4"></div>主题 Sass 变量<a class="anchor-link" href="#toc-4" data-target="toc-4" aria-hidden="true">#</a>
+</h1>
 <p>主题 Sass 变量包括基本颜色变量、色调变量、辅助颜色变量和灰度颜色变量。</p>
 
 <p>首先给出颜色透明度变量</p>
@@ -1194,14 +1200,16 @@
 </code></pre></div></div>
 
 <h2>
-<a id="toc-4-1" class="menu-anchor" data-target="toc-4-1" aria-hidden="true"></a>基本颜色</h2>
+<div class="anchor-header" id="toc-4-1"></div>基本颜色<a class="anchor-link" href="#toc-4-1" data-target="toc-4-1" aria-hidden="true">#</a>
+</h2>
 <p>Perfect CSS 定义了三种基本颜色值，分别为主色、次色（对比色）以及背景色，对应的变量为 
 <code class="highlighter-rouge">$theme-primary</code> <code class="highlighter-rouge">$theme-secondary</code> <code class="highlighter-rouge">$theme-background</code></p>
 
 <p>次色一般采用强调色，突出显示特性或场景。</p>
 
 <h3>
-<a id="toc-4-1-1" class="menu-anchor" data-target="toc-4-1-1" aria-hidden="true"></a>基本颜色基础值</h3>
+<div class="anchor-header" id="toc-4-1-1"></div>基本颜色基础值<a class="anchor-link" href="#toc-4-1-1" data-target="toc-4-1-1" aria-hidden="true">#</a>
+</h3>
 
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$theme-primary</span><span class="p">:</span> <span class="mh">#2196f3</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span> <span class="c1">// 主颜色，使用蓝色 $blue-500 #2196f3
 </span><span class="nv">$theme-secondary</span><span class="p">:</span> <span class="mh">#e040fb</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span> <span class="c1">// 次颜色，也叫强调(accent)颜色，使用紫色 $purple-a-200 #e040fb
@@ -1325,7 +1333,8 @@
 </table>
 
 <h3>
-<a id="toc-4-1-2" class="menu-anchor" data-target="toc-4-1-2" aria-hidden="true"></a>基本颜色对比色调判断值（深色或浅色）</h3>
+<div class="anchor-header" id="toc-4-1-2"></div>基本颜色对比色调判断值（深色或浅色）<a class="anchor-link" href="#toc-4-1-2" data-target="toc-4-1-2" aria-hidden="true">#</a>
+</h3>
 <p>Perfect CSS 中色调是指浅色（白色）和深色（黑色）以及加入透明色后的颜色值，主要用来突出对比度。
 比如深红色背景色，此时的对比色应该是白色，而浅红色背景色对比色应该是黑色。
 对于给定一个背景颜色值，前景色应该使用浅色还是深色可以通过函数 <code class="highlighter-rouge">@function theme-light-or-dark</code> 来计算返回。</p>
@@ -1369,7 +1378,8 @@
 </code></pre></div></div>
 
 <h3>
-<a id="toc-4-1-3" class="menu-anchor" data-target="toc-4-1-3" aria-hidden="true"></a>深色和浅色色调颜色值</h3>
+<div class="anchor-header" id="toc-4-1-3"></div>深色和浅色色调颜色值<a class="anchor-link" href="#toc-4-1-3" data-target="toc-4-1-3" aria-hidden="true">#</a>
+</h3>
 
 <p>Perfect CSS 中深色和浅色（黑色和白色）色调值分别定义了 4 种透明度色值</p>
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$theme-text-colors</span><span class="p">:</span> <span class="p">(</span>
@@ -1389,7 +1399,8 @@
 </code></pre></div></div>
 
 <h3>
-<a id="toc-4-1-4" class="menu-anchor" data-target="toc-4-1-4" aria-hidden="true"></a>基本颜色对应的对比色调值</h3>
+<div class="anchor-header" id="toc-4-1-4"></div>基本颜色对应的对比色调值<a class="anchor-link" href="#toc-4-1-4" data-target="toc-4-1-4" aria-hidden="true">#</a>
+</h3>
 <p>通过上面的<a href="#toc-4-1-2">【基本颜色对比色调判断值（深色或浅色）】</a>和<a href="#toc-4-1-3">【深色和浅色色调值】</a>可以方便的计算出给定基本颜色值对应的对比色调值，比如 <code class="highlighter-rouge">$theme-primary</code> 默认给定的颜色计算出对比色调应该是 light。下面给出使用方法和例子，
 比如在 CSS 组件中要设置 color 属性值，如果要设置 <code class="highlighter-rouge">$theme-primary</code> 的对比色调 <code class="highlighter-rouge">hint</code> 值时，可以按照以下步骤来计算出</p>
 <ul>
@@ -1761,7 +1772,8 @@
 </table>
 
 <h2>
-<a id="toc-4-2" class="menu-anchor" data-target="toc-4-2" aria-hidden="true"></a>辅助颜色</h2>
+<div class="anchor-header" id="toc-4-2"></div>辅助颜色<a class="anchor-link" href="#toc-4-2" data-target="toc-4-2" aria-hidden="true">#</a>
+</h2>
 
 <p>除了上面定义的三种基本颜色外，Perfect CSS 又定义了成功 success 、信息 info、警告 warning 和错误 error 四种辅助颜色，这四种颜色主要用在背景，文本，按钮等上，用来区分文本颜色和背景，以及表单样式（比如校验失败和成功的颜色）等。</p>
 
@@ -1827,7 +1839,8 @@
 </table>
 
 <h2>
-<a id="toc-4-3" class="menu-anchor" data-target="toc-4-3" aria-hidden="true"></a>灰色颜色</h2>
+<div class="anchor-header" id="toc-4-3"></div>灰色颜色<a class="anchor-link" href="#toc-4-3" data-target="toc-4-3" aria-hidden="true">#</a>
+</h2>
 
 <p>Perfect CSS 定义了 10 种常用灰色颜色，提供了黑色透明度和灰色本身颜色两种方案实现，可以根据配置项 <code class="highlighter-rouge">$enable-transparent</code> 来选择其中一种方案，默认使用黑色透明度，修改 <code class="highlighter-rouge">base/variables/_options.scss</code> 中变量 <code class="highlighter-rouge">$enable-transparent</code> 可以改变实现方案。</p>
 
@@ -1900,10 +1913,12 @@
 </code></pre></div></div>
 
 <h1>
-<a id="toc-5" class="menu-anchor" data-target="toc-5" aria-hidden="true"></a>主题 Sass Function 和 Mixin</h1>
+<div class="anchor-header" id="toc-5"></div>主题 Sass Function 和 Mixin<a class="anchor-link" href="#toc-5" data-target="toc-5" aria-hidden="true">#</a>
+</h1>
 
 <h2>
-<a id="toc-5-1" class="menu-anchor" data-target="toc-5-1" aria-hidden="true"></a>Function</h2>
+<div class="anchor-header" id="toc-5-1"></div>Function<a class="anchor-link" href="#toc-5-1" data-target="toc-5-1" aria-hidden="true">#</a>
+</h2>
 
 <table class="doc-table">
   <thead>
@@ -1941,7 +1956,8 @@
 </table>
 
 <h2>
-<a id="toc-5-2" class="menu-anchor" data-target="toc-5-2" aria-hidden="true"></a>Mixin</h2>
+<div class="anchor-header" id="toc-5-2"></div>Mixin<a class="anchor-link" href="#toc-5-2" data-target="toc-5-2" aria-hidden="true">#</a>
+</h2>
 
 <table class="doc-table">
   <thead>
@@ -1987,7 +2003,8 @@
 </table>
 
 <h1>
-<a id="toc-6" class="menu-anchor" data-target="toc-6" aria-hidden="true"></a>主题 CSS 变量</h1>
+<div class="anchor-header" id="toc-6"></div>主题 CSS 变量<a class="anchor-link" href="#toc-6" data-target="toc-6" aria-hidden="true">#</a>
+</h1>
 <p>主题样式中采用了最新的 CSS 变量，这样可以很方便的通过修改 CSS 变量值来改变主题，不过对于低版本的浏览器不兼容 CSS 变量。CSS 变量结合 Mixin <code class="highlighter-rouge">theme-color-prop</code> 和 <code class="highlighter-rouge">theme-tone-prop</code> 来设置颜色值。
 Perfect CSS 提供了以下 CSS 变量值</p>
 
@@ -2175,12 +2192,14 @@ Perfect CSS 提供了以下 CSS 变量值</p>
 </table>
 
 <h1>
-<a id="toc-7" class="menu-anchor" data-target="toc-7" aria-hidden="true"></a>主题 CSS Classes</h1>
+<div class="anchor-header" id="toc-7"></div>主题 CSS Classes<a class="anchor-link" href="#toc-7" data-target="toc-7" aria-hidden="true">#</a>
+</h1>
 <p>我们可以通过主题提供的 CSS Classes 来修改 html 元素的前景和背景色，以及文本内容的灰度颜色值等。
 所提供的 CSS Classes Property 值设置为 <code class="highlighter-rouge">!important</code>，优先级最高，从而能覆盖其他样式设置的主题颜色值</p>
 
 <h2>
-<a id="toc-7-1" class="menu-anchor" data-target="toc-7-1" aria-hidden="true"></a>主题背景 CSS Classes</h2>
+<div class="anchor-header" id="toc-7-1"></div>主题背景 CSS Classes<a class="anchor-link" href="#toc-7-1" data-target="toc-7-1" aria-hidden="true">#</a>
+</h2>
 
 <p><a href="/components/theme/classes/#anchor-1-1-1" target="_blank">实例</a></p>
 
@@ -2264,7 +2283,8 @@ Perfect CSS 提供了以下 CSS 变量值</p>
 </table>
 
 <h2>
-<a id="toc-7-2" class="menu-anchor" data-target="toc-7-2" aria-hidden="true"></a>主题前景 CSS Classes</h2>
+<div class="anchor-header" id="toc-7-2"></div>主题前景 CSS Classes<a class="anchor-link" href="#toc-7-2" data-target="toc-7-2" aria-hidden="true">#</a>
+</h2>
 
 <p><a href="/components/theme/classes/#anchor-1-1-2" target="_blank">实例</a></p>
 
@@ -2344,7 +2364,8 @@ Perfect CSS 提供了以下 CSS 变量值</p>
 </table>
 
 <h2>
-<a id="toc-7-3" class="menu-anchor" data-target="toc-7-3" aria-hidden="true"></a>辅助颜色背景 CSS Classes</h2>
+<div class="anchor-header" id="toc-7-3"></div>辅助颜色背景 CSS Classes<a class="anchor-link" href="#toc-7-3" data-target="toc-7-3" aria-hidden="true">#</a>
+</h2>
 
 <p><a href="/components/theme/classes/#anchor-1-2-1" target="_blank">实例</a></p>
 
@@ -2424,7 +2445,8 @@ Perfect CSS 提供了以下 CSS 变量值</p>
 </table>
 
 <h2>
-<a id="toc-7-4" class="menu-anchor" data-target="toc-7-4" aria-hidden="true"></a>辅助颜色前景 CSS Classes</h2>
+<div class="anchor-header" id="toc-7-4"></div>辅助颜色前景 CSS Classes<a class="anchor-link" href="#toc-7-4" data-target="toc-7-4" aria-hidden="true">#</a>
+</h2>
 
 <p><a href="/components/theme/classes/#anchor-1-2-2" target="_blank">实例</a></p>
 
@@ -2504,7 +2526,8 @@ Perfect CSS 提供了以下 CSS 变量值</p>
 </table>
 
 <h2>
-<a id="toc-7-5" class="menu-anchor" data-target="toc-7-5" aria-hidden="true"></a>灰度颜色背景 CSS Classes</h2>
+<div class="anchor-header" id="toc-7-5"></div>灰度颜色背景 CSS Classes<a class="anchor-link" href="#toc-7-5" data-target="toc-7-5" aria-hidden="true">#</a>
+</h2>
 
 <p><a href="/components/theme/classes/#anchor-1-3-1" target="_blank">实例</a></p>
 
@@ -2560,7 +2583,8 @@ Perfect CSS 提供了以下 CSS 变量值</p>
 </table>
 
 <h2>
-<a id="toc-7-6" class="menu-anchor" data-target="toc-7-6" aria-hidden="true"></a>灰度颜色前景 CSS Classes</h2>
+<div class="anchor-header" id="toc-7-6"></div>灰度颜色前景 CSS Classes<a class="anchor-link" href="#toc-7-6" data-target="toc-7-6" aria-hidden="true">#</a>
+</h2>
 
 <p><a href="/components/theme/classes/#anchor-1-3-2" target="_blank">实例</a></p>
 

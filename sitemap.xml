@@ -313,9 +313,6 @@
 <loc>http://0.0.0.0:9090/docs/container/panel/</loc>
 </url>
 <url>
-<loc>http://0.0.0.0:9090/components/typography/paragraph/</loc>
-</url>
-<url>
 <loc>http://0.0.0.0:9090/docs/utils/position/</loc>
 </url>
 <url>
@@ -452,6 +449,9 @@
 </url>
 <url>
 <loc>http://0.0.0.0:9090/docs/elements/tree/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:9090/components/typography/typography/</loc>
 </url>
 <url>
 <loc>http://0.0.0.0:9090/docs/typography/typography/</loc>

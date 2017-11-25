@@ -861,16 +861,38 @@
   font-size: 1.125rem;
 }
 
-.component-wrap > h1, .component-wrap > h2, .component-wrap > h3, .component-wrap > h4 {
+.component-wrap > h1, .component-wrap > h2 {
+  margin-top: 3rem;
+}
+
+.component-wrap > h3, .component-wrap > h4, .component-wrap > h5, .component-wrap > h6 {
   margin-top: 2rem;
 }
 
-.component-wrap > h1:first-child, .component-wrap > h2:first-child, .component-wrap > h3:first-child, .component-wrap > h4:first-child {
+.component-wrap > h1:first-child, .component-wrap > h2:first-child {
   margin-top: 0;
 }
 
-.component-wrap > h1, .component-wrap > h2 {
-  margin-top: 3rem;
+.component-wrap > h1 .anchor-header, .component-wrap > h2 .anchor-header, .component-wrap > h3 .anchor-header, .component-wrap > h4 .anchor-header, .component-wrap > h5 .anchor-header, .component-wrap > h6 .anchor-header {
+  display: inline-block;
+  height: 5.5rem;
+  margin-top: -5.5rem;
+  visibility: hidden;
+}
+
+.component-wrap > h1 .anchor-link, .component-wrap > h2 .anchor-link, .component-wrap > h3 .anchor-link, .component-wrap > h4 .anchor-link, .component-wrap > h5 .anchor-link, .component-wrap > h6 .anchor-link {
+  padding-left: 0.375rem;
+  opacity: 0;
+}
+
+.component-wrap > h1:hover > .anchor-link,
+.component-wrap > h1 .anchor-link:focus, .component-wrap > h2:hover > .anchor-link,
+.component-wrap > h2 .anchor-link:focus, .component-wrap > h3:hover > .anchor-link,
+.component-wrap > h3 .anchor-link:focus, .component-wrap > h4:hover > .anchor-link,
+.component-wrap > h4 .anchor-link:focus, .component-wrap > h5:hover > .anchor-link,
+.component-wrap > h5 .anchor-link:focus, .component-wrap > h6:hover > .anchor-link,
+.component-wrap > h6 .anchor-link:focus {
+  opacity: 1;
 }
 
 .component-wrap > h1, .component-wrap > h2, .component-wrap > h3, .component-wrap > h4, .component-wrap > h5, .component-wrap > h6 {
