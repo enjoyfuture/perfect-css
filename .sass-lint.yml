@@ -496,7 +496,7 @@ rules:
     - per-property: {}
   pseudo-element: 1 # 伪元素必须是双冒号 ::
   quotes: # 使用单引号还是双引号
-    - 0
+    - 1
     - style: double
   shorthand-values: # 简写值，比如 margin: 1px 1px 1px 1px 应该使用简写值 margin: 1px
     - 1
