@@ -1,0 +1,2408 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="keywords" content="CSS3 Perfect">
+<meta name="description"
+      content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+<meta name="author" content="Linder Wang">
+
+<title>
+  
+  布局-栅格系统 &middot; Perfect
+  
+</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" href="/favicon.ico">
+
+<!-- Perfect CSS -->
+<link href="/assets/css/perfect.css" rel="stylesheet">
+<!-- 页面 CSS -->
+<link href="/assets/css/docs.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <header class="navbar navbar-fixed navbar-expand navbar-primary">
+  
+  <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
+    <i class="icon-pure-menu"></i>
+  </div>
+  
+
+  <a class="navbar-brand" href="/">
+    <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
+  </a>
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/">首页</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link active" href="/docs/getting-started/introduction/">文档</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/components/">组件</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+    <!--把 jquery 单独引入到页面最上面-->
+<script src="/assets/js/vendor/jquery.min.js"></script>
+
+
+    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+      <nav class="drawer-nav">
+        <nav class="drawer-content">
+          
+
+
+
+
+
+
+
+<ul class="menu perfect-menu">
+
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/getting-started/introduction/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">Perfect 之旅</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/introduction/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">介绍</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/download/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">下载</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/best-practices/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">最佳实践</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/css-module/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">CSS 模块化支持</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/javascript/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">JavaScript 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/theme/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">自定义主题</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/color-swatches/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">七色卡</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/compatibility/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">兼容性</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/build/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">开发构建</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/changelog/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">历史版本</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/issue/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">问题和建议</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/develop-guide/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Perfect 开发指南</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/getting-started/browser-bug/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">浏览器 bug</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/setup/global-styles/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">Perfect 设置</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/setup/global-styles/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">全局样式</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/setup/options/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">配置项</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/setup/sass/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Sass</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/setup/javascript/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">JavaScript</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/setup/flex/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Flex</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/setup/media-queries/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">媒体查询</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/theme/design-concept/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">主题</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/theme/design-concept/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">设计理念</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/theme/custom-theme/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">自定义主题</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/layout/container/" 
+       class="menu-title menu-header active" style="padding-left: 1rem;">布局</a>
+    <ul class="menu">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/layout/container/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">容器</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/layout/grid/"
+             class="menu-title menu-sub-title active" style="padding-left: 2rem;">Grid</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/layout/responsive/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">响应式布局</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/typography/typography/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">排版</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/typography/typography/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">段落</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/typography/color/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">颜色</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/typography/code/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">代码</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/typography/table/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">表格</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/base/ripple/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">基础组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/ripple/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">波纹效果 Ripple</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/shadow/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">阴影效果 Shadow</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/navigation/nav/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">导航类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/navigation/nav/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">导航</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/navigation/navbar/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">导航栏</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/navigation/menu/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">菜单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/navigation/pagination/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">分页</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/container/form/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">容器类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/form/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Form 表单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/panel/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Panel 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/tab/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tab Panel 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/card/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Card 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/list/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">List Panel 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/dialog/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">对话框窗口</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/elements/button/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">元素类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/button/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Button 按钮</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/input/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Input 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/dropdown/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">DropDown 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/progress/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/crumb/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">面包屑</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/tooltip/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tooltip 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/popover/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Popover 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/image/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/utils/float/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">工具类样式</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/float/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">浮动</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/position/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">定位</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/color/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">颜色</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/flex/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Flex</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/spacing/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">间距</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/border/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">边框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/align/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">文本对齐</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/tag-property/tag/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">Html 标签和样式属性</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/tag-property/tag/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Html 标签</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/tag-property/property/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">样式属性</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/plugins/plugin1/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">插件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/plugins/plugin1/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">插件1</a></li>
+      
+    </ul>
+  </li>
+  
+</ul>
+
+<script>
+  $(function () {
+    // 菜单超过一屏可以滚动查看
+    var $menuPanel = $('.drawer-content')[0];
+    var $menu = $('.drawer-content > .perfect-menu')[0];
+
+    $menu.addEventListener('transitionend', function () {
+      $menu.style.transition = 'unset';
+    });
+    $('.menu').on('click', '.menu-header', function (e) {
+      e.preventDefault();
+      // 隐藏其他打开的菜单
+      $('.menu .menu').slideUp();
+      var $el = $(e.currentTarget);
+      var $nextEl = $el.next();
+      if ($nextEl.is(':visible')) {
+        $nextEl.slideUp();
+      } else {
+        $nextEl.slideDown(true, function () {
+          var menuPanelTop = $menuPanel.getBoundingClientRect().top;
+          var menuTop = $menu.getBoundingClientRect().top;
+          var currentElTop = e.currentTarget.getBoundingClientRect().top;
+          if (currentElTop < menuPanelTop) {
+            $menu.style.transform = `translateY(${menuTop - currentElTop}px)`;
+            $menu.style.transition = 'transform 200ms ease-in-out';
+          }
+        });
+      }
+    });
+
+    const isWheel = (() => {
+      const ua = navigator.userAgent;
+      if (/gecko/i.test(ua) && !(/webkit/i.test(ua)) && (/firefox/i.test(ua))) { // Firefox
+        return false;
+      }
+      return true;
+    })();
+    const reg = /translateY\(([-\w]+)\)/;
+
+    $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
+      const {scrollHeight, clientHeight} = $menuPanel;
+      const step = 20;
+      const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+
+      // 判断鼠标滑轮向上还是向下滑动
+      let upDown;
+      const {detail, wheelDelta} = event;
+      if (detail) {
+        if (detail < 0) { // up
+          upDown = 'up';
+        } else if (detail > 0) { // down
+          upDown = 'down';
+        }
+      } else if (wheelDelta) { //
+        if (wheelDelta > 0) { // up
+          upDown = 'up';
+        }
+        if (wheelDelta < 0) { // down
+          upDown = 'down';
+        }
+      }
+
+      const {transform} = $menu.style;
+
+      let y = reg.exec(transform);
+      y = y ? parseFloat(y[1], 10) : 0;
+
+      if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === maxOffset)) {
+        return;
+      }
+
+      if (maxOffset > 0) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      if (upDown === 'up' && y < 0) {
+        $menu.style.transform = `translateY(${Math.min(y + step, 0)}px)`;
+      } else if (upDown === 'down' && Math.abs(y) < maxOffset) {
+        $menu.style.transform = `translateY(${Math.max(y - step, -maxOffset)}px)`;
+      }
+    }, false);
+
+  });
+</script>
+
+        </nav>
+      </nav>
+    </aside>
+
+    <main class="drawer-main navbar-fixed-adjust">
+      
+      <div class="doc-main">
+        <div class="doc-content catalogue-counter">
+          <div class="doc-catalogue-menu">
+            <div class="doc-catalogue-icon">
+              <i class="icon-pure-catalogue"></i>
+            </div>
+            <div class="doc-catalogue-panel">
+<ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
+  <li>
+    <a class="menu-title" href="#" title="栅格系统实现" data-menu="toc-1">栅格系统实现</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="实现原理" data-menu="toc-1-1">实现原理</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="使用场景" data-menu="toc-1-2">使用场景</a>
+  </li>
+</ul>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="如何使用" data-menu="toc-2">如何使用</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="各种列布局" data-menu="toc-3">各种列布局</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="等宽布局" data-menu="toc-3-1">等宽布局</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="多行布局" data-menu="toc-3-2">多行布局</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="固定列宽和自适应宽度混合" data-menu="toc-3-3">固定列宽和自适应宽度混合</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="根据内容计算列宽度" data-menu="toc-3-4">根据内容计算列宽度</a>
+  </li>
+</ul>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="响应式布局下栅格系统的使用" data-menu="toc-4">响应式布局下栅格系统的使用</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="折中的方案" data-menu="toc-4-1">折中的方案</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="混合使用" data-menu="toc-4-2">混合使用</a>
+  </li>
+</ul>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="对齐" data-menu="toc-5">对齐</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="垂直对齐" data-menu="toc-5-1">垂直对齐</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="水平对齐" data-menu="toc-5-2">水平对齐</a>
+  </li>
+</ul>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="无边距" data-menu="toc-6">无边距</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="重新排序" data-menu="toc-7">重新排序</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="flex order 排序" data-menu="toc-7-1">flex order 排序</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="offset 调整位置" data-menu="toc-7-2">offset 调整位置</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="margin auto 排序" data-menu="toc-7-3">margin auto 排序</a>
+  </li>
+</ul>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="栅格系统嵌套" data-menu="toc-8">栅格系统嵌套</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="自定义栅格系统" data-menu="toc-9">自定义栅格系统</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="开启关闭响应式布局" data-menu="toc-10">开启关闭响应式布局</a>
+  </li>
+</ul>
+</div>
+          </div>
+          <div class="doc-content-header">
+            <p>栅格系统用来处理页面布局，通过行和列来布局元素，结合响应式来适配不同设备大小的布局展示， 提供更友好的页面展示。响应式栅格系统的强大功能，只需使用 class『.row』 和 『.col』即可完成整个页面的布局。</p>
+            <div>
+              <a href="https://github.com/joy-web/perfect-css/edit/master/docs/docs/layout/grid.md" target="_blank">编辑该页面</a>
+              <a href="https://github.com/joy-web/perfect-css/issues/new?title=问题或建议(布局-栅格系统)" target="_blank">问题和建议</a>
+            </div>
+          </div>
+          <hr/>
+          <h2>
+<a id="toc-1" class="menu-anchor" data-target="toc-1" aria-hidden="true"></a>栅格系统实现</h2>
+<p>栅格系统基于最新 flex 布局实现。采用 <code class="highlighter-rouge">.row</code> 和 <code class="highlighter-rouge">.col</code> 来为元素标签设置布局。为了更好的满足各种宽度的栅格，系统采用 24 列布局实现。
+采用响应式布局，可以实现不同屏幕大小的栅格布局，也可以混合使用不同屏幕的栅格样式。
+比如：<code class="highlighter-rouge">col-24 col-md-6 col-lg-4</code> 当设备很小时，<code class="highlighter-rouge">col-24</code> 起作用，全屏显示；中等设备时 <code class="highlighter-rouge">col-md-6</code> 起作用；
+再大一点的设备 <code class="highlighter-rouge">col-lg-4</code> 起作用。设备大小的零界点请参考<a href="">响应式布局</a>。</p>
+
+<h3>
+<a id="toc-1-1" class="menu-anchor" data-target="toc-1-1" aria-hidden="true"></a>实现原理</h3>
+<ul>
+  <li>使用 class 样式 <code class="highlighter-rouge">row</code> 在水平方向上创建行容器，然后在行容器中添加列 <code class="highlighter-rouge">col</code>，类似于 table 功能，但比 table 功能强大</li>
+  <li>栅格系统必须是 <code class="highlighter-rouge">row</code> 和 <code class="highlighter-rouge">col</code> 组合使用，而且 <code class="highlighter-rouge">col</code> 被 <code class="highlighter-rouge">row</code> 包裹</li>
+  <li>
+<code class="highlighter-rouge">col-1</code> 到 <code class="highlighter-rouge">col-24</code> 组成了不同宽度的列，比如 <code class="highlighter-rouge">col-8</code> 的宽度为 8/24</li>
+  <li>通过添加响应式样式，来实现不同设备上的展示，比如: <code class="highlighter-rouge">col-md-2</code>
+</li>
+  <li>对于 col 总和超过24，列会自动在第二行中显示</li>
+  <li>对于多行布局，除了使用多个 <code class="highlighter-rouge">row</code> 外，还可以在需要折行的地方加上 <code class="highlighter-rouge">&lt;div class="w-100"&gt;&lt;/div&gt;</code> 强制换行</li>
+</ul>
+
+<h3>
+<a id="toc-1-2" class="menu-anchor" data-target="toc-1-2" aria-hidden="true"></a>使用场景</h3>
+<ul>
+  <li>页面整体布局，左右，左右中布局</li>
+  <li>表单布局</li>
+  <li>替代表格</li>
+</ul>
+
+<h2>
+<a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>如何使用</h2>
+<p>栅格系统使用 class <code class="highlighter-rouge">container</code> <code class="highlighter-rouge">row</code> 和 <code class="highlighter-rouge">col</code> 来布局显示内容</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col-sm">col-sm</div>
+    <div class="col-sm">col-sm</div>
+    <div class="col-sm">col-sm</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm"</span><span class="nt">&gt;</span>col-sm<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm"</span><span class="nt">&gt;</span>col-sm<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm"</span><span class="nt">&gt;</span>col-sm<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<p>上面定义了相等的三列，采用 sm(600px) 小屏幕处理，当设备小于600px 时，撑满一整行显示。用法上需要注意的地方有以下几点。</p>
+
+<ul>
+  <li>外层包裹容器样式，可以设置内容宽度大小 <code class="highlighter-rouge">.container</code> 使用 <code class="highlighter-rouge">.container</code> 定义的宽度，
+而 <code class="highlighter-rouge">.container-fluid</code> 百分百撑满整个容器宽度</li>
+  <li>使用 flex 定义栅格系统，当没有指定列宽时（即 col 后面的数字），会自动根据列的个数平均计算其宽度，
+比如一行中设置6列（<code class="highlighter-rouge">.col</code>），则每列的宽度为 1/6</li>
+  <li>默认每列都设置了左右内边距(<code class="highlighter-rouge">padding</code>)，如果想使内边距为0，可以在行上加入样式 <code class="highlighter-rouge">no-gutters</code>
+</li>
+  <li>按照响应式布局，栅格提供了5个层次的列，分别为 xs sm md lg xl</li>
+  <li>建议通常使用响应式零界点 md 来处理列，即 <code class="highlighter-rouge">col-md-x</code>
+</li>
+  <li>当一列上混合出现不同层次的列样式时，会根据设备大小，优先命中最大宽度设备对应的列样式。
+比如，我们在列上设置了 <code class="highlighter-rouge">col-sm-8 col-md-7 col-lg-6</code>，sm md lg 对应的零界点为 600px 1024px 1440px 。
+当屏幕宽度超过1440px 时，使用 <code class="highlighter-rouge">col-lg-6</code> 对应的宽度；介于600px和1024px时，使用 <code class="highlighter-rouge">col-md-7</code> 对应的宽度；
+小于600px 时，使用 <code class="highlighter-rouge">col-sm-8</code> 对应的宽度。这样就可以更好的兼顾了各种设备大小的布局。看下面的例子，注意观察屏幕宽度变化，对应的列布局变化。</li>
+</ul>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-md-9 col-lg-8">col-sm-10 col-md-9 col-lg-8</div>
+    <div class="col-sm-14 col-md-15 col-lg-16">col-sm-14 col-md-15 col-lg-16</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-10 col-md-9 col-lg-8"</span><span class="nt">&gt;</span>col-sm-10 col-md-9 col-lg-8<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-14 col-md-15 col-lg-16"</span><span class="nt">&gt;</span>col-sm-14 col-md-15 col-lg-16<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h2>
+<a id="toc-3" class="menu-anchor" data-target="toc-3" aria-hidden="true"></a>各种列布局</h2>
+<p>使用 <code class="highlighter-rouge">col-x</code> 可以设置各种大小的列布局。</p>
+
+<h3>
+<a id="toc-3-1" class="menu-anchor" data-target="toc-3-1" aria-hidden="true"></a>等宽布局</h3>
+<p>对于等宽布局，只需为每列设置 <code class="highlighter-rouge">col</code> 即可</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col">1</div>
+    <div class="col">2</div>
+    <div class="col">3</div>
+    <div class="col">4</div>
+  </div>
+  
+  <div class="row">
+    <div class="col">1</div>
+    <div class="col">2</div>
+    <div class="col">3</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h3>
+<a id="toc-3-2" class="menu-anchor" data-target="toc-3-2" aria-hidden="true"></a>多行布局</h3>
+<p>我们在需要折行的地方加上一个高度为0，宽度为100%的元素来强制换行处理</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="w-100"></div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>col<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>col<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"w-100"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>col<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>col<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>col<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h3>
+<a id="toc-3-3" class="menu-anchor" data-target="toc-3-3" aria-hidden="true"></a>固定列宽和自适应宽度混合</h3>
+<p>指定的列宽，比如 <code class="highlighter-rouge">col-5</code>，会按照 5/24 计算其宽度，未指定的列宽 <code class="highlighter-rouge">col</code> 会平均计算剩下的宽度。
+例子中，第一行 <code class="highlighter-rouge">col-5</code> 和 <code class="highlighter-rouge">col-7</code> 占用了 12 格，那剩下的 12 格会平分到两个设置 <code class="highlighter-rouge">col</code>上，即每个宽度占6格。
+第二行设置 <code class="highlighter-rouge">col</code> 的占格子数为：(24-5-10)/3 = 3</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col-5">col-5</div>
+    <div class="col-7">col-7</div>
+    <div class="col">col</div>
+  </div>
+  
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col-10">col-10</div>
+    <div class="col">col</div>
+    <div class="col-5">col-5</div>
+    <div class="col">col</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>col<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-5"</span><span class="nt">&gt;</span>col-5<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-7"</span><span class="nt">&gt;</span>col-7<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>col<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>col<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-10"</span><span class="nt">&gt;</span>col-10<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>col<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-5"</span><span class="nt">&gt;</span>col-5<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>col<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h3>
+<a id="toc-3-4" class="menu-anchor" data-target="toc-3-4" aria-hidden="true"></a>根据内容计算列宽度</h3>
+<p>使用样式 <code class="highlighter-rouge">col-{breakpoint}-auto</code> 设置列，表示列的宽度会根据内容来计算其宽度,
+但当内容很多时会导致布局混乱，所以需要我们设置最大宽度，或强制换行显示</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">col-md-4</div>
+    <div class="col-md-auto">根据内容计算列宽度</div>
+    <div class="col-md-5">col-md-5</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-6">col-lg-6</div>
+    <div class="col-lg-auto">根据内容的多少，会占用下一列的宽度</div>
+    <div class="col">col</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>col-md-4<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-auto"</span><span class="nt">&gt;</span>根据内容计算列宽度<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-5"</span><span class="nt">&gt;</span>col-md-5<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-6"</span><span class="nt">&gt;</span>col-lg-6<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-auto"</span><span class="nt">&gt;</span>根据内容的多少，会占用下一列的宽度<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>col<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h2>
+<a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>响应式布局下栅格系统的使用</h2>
+<p>栅格系统提供了5个层次的响应式布局样式 <code class="highlighter-rouge">col-xs-*</code> <code class="highlighter-rouge">col-sm-*</code> <code class="highlighter-rouge">col-md-*</code> <code class="highlighter-rouge">col-lg-*</code> <code class="highlighter-rouge">col-xl-*</code>，
+分别对应不同大小的设备。</p>
+
+<h3>
+<a id="toc-4-1" class="menu-anchor" data-target="toc-4-1" aria-hidden="true"></a>折中的方案</h3>
+<p>为了兼容各个设备的布局，我们常用 <code class="highlighter-rouge">col-sm-*</code> 来创建栅格系统</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10">col-sm-10</div>
+    <div class="col-sm-8">col-sm-8</div>
+    <div class="col-sm-6">col-sm-6</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm">col-sm</div>
+    <div class="col-sm">col-sm</div>
+    <div class="col-sm">col-sm</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-10"</span><span class="nt">&gt;</span>col-sm-10<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-8"</span><span class="nt">&gt;</span>col-sm-8<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6"</span><span class="nt">&gt;</span>col-sm-6<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm"</span><span class="nt">&gt;</span>col-sm<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm"</span><span class="nt">&gt;</span>col-sm<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm"</span><span class="nt">&gt;</span>col-sm<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h3>
+<a id="toc-4-2" class="menu-anchor" data-target="toc-4-2" aria-hidden="true"></a>混合使用</h3>
+<p>为了兼顾各种设备大小的布局，混合使用响应式布局是个完美的解决方案，下面的例子，在改变屏幕大小时，每列所占宽度的比例会变化的。</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <!-- 首列在移动端等小屏幕下全屏显示，在大一点的屏幕下，宽度占用2/3-->
+  <div class="row">
+    <div class="col-24 col-md-16">col-24 col-md-16</div>
+    <div class="col-12 col-md-8">col-12 col-md-8</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- 首列在移动端等小屏幕下全屏显示，在大一点的屏幕下，宽度占用2/3--&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-24 col-md-16"</span><span class="nt">&gt;</span>col-24 col-md-16<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-12 col-md-8"</span><span class="nt">&gt;</span>col-12 col-md-8<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h2>
+<a id="toc-5" class="menu-anchor" data-target="toc-5" aria-hidden="true"></a>对齐</h2>
+<p>使用工具类 flex 提供的样式可以设置栅格垂直和水平对齐方式</p>
+
+<h3>
+<a id="toc-5-1" class="menu-anchor" data-target="toc-5-1" aria-hidden="true"></a>垂直对齐</h3>
+<p>垂直对齐使用class <code class="highlighter-rouge">align-items-{breakpoint}-*</code> 和 <code class="highlighter-rouge">.align-self{breakpoint}-*</code>
+前者是指整行上对应的列对齐方式，设置 <code class="highlighter-rouge">row</code> 上，而后者是指某一列对齐方式，设置在 <code class="highlighter-rouge">col</code> 上</p>
+
+<div class="doc-example-row doc-example-row-flex-cols">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col">
+      顶端对齐
+    </div>
+    <div class="col">
+      顶端对齐
+    </div>
+    <div class="col">
+      顶端对齐
+    </div>
+  </div>
+  
+  <div class="row align-items-center">
+    <div class="col">
+      垂直居中
+    </div>
+    <div class="col">
+      垂直居中
+    </div>
+    <div class="col">
+      垂直居中
+    </div>
+  </div>
+  
+  <div class="row align-items-end">
+    <div class="col">
+      底端对齐
+    </div>
+    <div class="col">
+      底端对齐
+    </div>
+    <div class="col">
+      底端对齐
+    </div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row align-items-start"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      顶端对齐
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      顶端对齐
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      顶端对齐
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row align-items-center"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      垂直居中
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      垂直居中
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      垂直居中
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row align-items-end"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      底端对齐
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      底端对齐
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      底端对齐
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<div class="doc-example-row doc-example-row-flex-cols">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col align-self-start">
+      顶端对齐
+    </div>
+    <div class="col align-self-center">
+      垂直居中
+    </div>
+    <div class="col align-self-end">
+      底端对齐
+    </div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col align-self-start"</span><span class="nt">&gt;</span>
+      顶端对齐
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col align-self-center"</span><span class="nt">&gt;</span>
+      垂直居中
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col align-self-end"</span><span class="nt">&gt;</span>
+      底端对齐
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h3>
+<a id="toc-5-2" class="menu-anchor" data-target="toc-5-2" aria-hidden="true"></a>水平对齐</h3>
+<p>水平对齐使用class <code class="highlighter-rouge">justify-content-{breakpoint}-*</code> 设置在 <code class="highlighter-rouge">row</code> 上</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-8">
+      左对齐
+    </div>
+    <div class="col-8">
+      左对齐
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      居中对齐
+    </div>
+    <div class="col-8">
+      居中对齐
+    </div>
+  </div>
+  <div class="row justify-content-end">
+    <div class="col-8">
+      右对齐
+    </div>
+    <div class="col-8">
+      右对齐
+    </div>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col-5">
+      平均对齐
+    </div>
+    <div class="col-5">
+      平均对齐
+    </div>
+    <div class="col-5">
+      平均对齐
+    </div>
+  </div>
+  <div class="row justify-content-between">
+    <div class="col-8">
+      两端对齐
+    </div>
+    <div class="col-8">
+      两端对齐
+    </div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row justify-content-start"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+      左对齐
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+      左对齐
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row justify-content-center"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+      居中对齐
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+      居中对齐
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row justify-content-end"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+      右对齐
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+      右对齐
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row justify-content-around"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-5"</span><span class="nt">&gt;</span>
+      平均对齐
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-5"</span><span class="nt">&gt;</span>
+      平均对齐
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-5"</span><span class="nt">&gt;</span>
+      平均对齐
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row justify-content-between"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+      两端对齐
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+      两端对齐
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h2>
+<a id="toc-6" class="menu-anchor" data-target="toc-6" aria-hidden="true"></a>无边距</h2>
+<p>默认每列设置了左右内边距，如果想去掉左右内边距，可以在 <code class="highlighter-rouge">row</code> 上添加 class <code class="highlighter-rouge">no-gutters</code>
+下面例子中，第一行是有边距，第二行是无边距。如果连容器的内边距都不需要，可以把 <code class="highlighter-rouge">.container</code>
+和 <code class="highlighter-rouge">.container-fluid</code> 去掉。</p>
+
+<div class="doc-example-row doc-example-row-gutters">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <div>col-8</div>
+    </div>
+    <div class="col-8">
+      <div>col-8</div>
+    </div>
+    <div class="col-8">
+      <div>col-8</div>
+    </div>
+  </div>
+</div>
+<div class="row no-gutters">
+  <div class="col-8">
+    <div>col-8</div>
+  </div>
+  <div class="col-8">
+    <div>col-8</div>
+  </div>
+  <div class="col-8">
+    <div>col-8</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div&gt;</span>col-8<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div&gt;</span>col-8<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div&gt;</span>col-8<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row no-gutters"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>col-8<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>col-8<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>col-8<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h2>
+<a id="toc-7" class="menu-anchor" data-target="toc-7" aria-hidden="true"></a>重新排序</h2>
+<p>我们可以使用 flex <code class="highlighter-rouge">order-*</code> 、<code class="highlighter-rouge">offset-*</code> 或 <a href="/docs/utilities/spacing/">margin utilities</a> 来调整列显示位置，
+使用 <code class="highlighter-rouge">order-*</code> 直接改变列位置，使用 <code class="highlighter-rouge">offset-*</code> 或 margin auto 通过设置 margin-left 或 margin-right 来偏移列，
+变相的达到调整位置的目的</p>
+
+<h3>
+<a id="toc-7-1" class="menu-anchor" data-target="toc-7-1" aria-hidden="true"></a>flex order 排序</h3>
+<p>使用 <code class="highlighter-rouge">.order-*</code> 来调整列位置，可以调整到 1 ~ 24，比如 <code class="highlighter-rouge">order-4</code> <code class="highlighter-rouge">order-md-4</code> 等</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col order-4">order-4 位置由1变为4</div>
+    <div class="col">位置由2变为1</div>
+    <div class="order-2 col">order-2 位置由3变为2</div>
+    <div class="order-3 col">order-3 位置由4变为3</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col order-4"</span><span class="nt">&gt;</span>order-4 位置由1变为4<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>位置由2变为1<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"order-2 col"</span><span class="nt">&gt;</span>order-2 位置由3变为2<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"order-3 col"</span><span class="nt">&gt;</span>order-3 位置由4变为3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<p>我们也可以使用 <code class="highlighter-rouge">.order-first</code> 快速改变元素位置到首行或首列</p>
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col">
+      第一个元素，位置改变
+    </div>
+    <div class="col">
+      第二个元素，位置改变
+    </div>
+    <div class="col order-first">
+      位置由3变成1
+    </div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      第一个元素，位置改变
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      第二个元素，位置改变
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col order-first"</span><span class="nt">&gt;</span>
+      位置由3变成1
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h3>
+<a id="toc-7-2" class="menu-anchor" data-target="toc-7-2" aria-hidden="true"></a>offset 调整位置</h3>
+<p>使用 <code class="highlighter-rouge">.offset-*</code> 来调整列位置，比如 <code class="highlighter-rouge">offset-md-7</code>，实际上是增加了 margin-left 值，使列移动到 <code class="highlighter-rouge">col-md-7</code> 的位置上。</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">col-md-7</div>
+    <div class="col-md-7 offset-md-7">col-md-7 offset-md-7，向右移动了7格</div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-9">col-md-8 offset-md-9，向右移动了9格</div>
+  </div>
+  <div class="row">    
+    <div class="col-md-10 offset-md-10">col-md-10 offset-md-10，向右移动了10格</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-7"</span><span class="nt">&gt;</span>col-md-7<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-7 offset-md-7"</span><span class="nt">&gt;</span>col-md-7 offset-md-7，向右移动了7格<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-8 offset-md-9"</span><span class="nt">&gt;</span>col-md-8 offset-md-9，向右移动了9格<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>    
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-10 offset-md-10"</span><span class="nt">&gt;</span>col-md-10 offset-md-10，向右移动了10格<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h3>
+<a id="toc-7-3" class="menu-anchor" data-target="toc-7-3" aria-hidden="true"></a>margin auto 排序</h3>
+<p>使用 <code class="highlighter-rouge">m*-auto</code> 可以设置左右 margin 为 auto，从而使左右留出空白空间</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 m-l-auto">col-md-8 m-l-auto</div>
+    <div class="col-md-6">col-md-4</div>
+    <div class="col-md-6">col-md-4</div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 m-md-auto">col-md-6 m-md-auto</div>
+    <div class="col-md-6 m-l-md-auto">col-md-6 m-md-auto</div>
+  </div>
+  <div class="row">
+    <div class="col-auto m-r-auto">col-auto m-r-auto</div>
+    <div class="col-auto">col-auto</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-8 m-l-auto"</span><span class="nt">&gt;</span>col-md-8 m-l-auto<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>col-md-4<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>col-md-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6 m-md-auto"</span><span class="nt">&gt;</span>col-md-6 m-md-auto<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6 m-l-md-auto"</span><span class="nt">&gt;</span>col-md-6 m-md-auto<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-auto m-r-auto"</span><span class="nt">&gt;</span>col-auto m-r-auto<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-auto"</span><span class="nt">&gt;</span>col-auto<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<p>另外使用 <code class="highlighter-rouge">m*-auto</code> 可以实现左右位移的效果</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col-8 m-l-auto">左边位移</div>
+    <div class="col-4">col-4</div>
+    <div class="col-4">col-4</div>
+  </div>
+  <div class="row">
+    <div class="col-4">col-4</div>
+    <div class="col-4">col-4</div>
+    <div class="col-8 m-r-auto">右边位移</div>
+  </div>
+  <div class="row">
+    <div class="col-6 m-l-auto">左位移</div>
+    <div class="col-4">col-4</div>
+    <div class="col-6 m-r-auto">右位移</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8 m-l-auto"</span><span class="nt">&gt;</span>左边位移<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-4"</span><span class="nt">&gt;</span>col-4<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-4"</span><span class="nt">&gt;</span>col-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-4"</span><span class="nt">&gt;</span>col-4<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-4"</span><span class="nt">&gt;</span>col-4<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-8 m-r-auto"</span><span class="nt">&gt;</span>右边位移<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-6 m-l-auto"</span><span class="nt">&gt;</span>左位移<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-4"</span><span class="nt">&gt;</span>col-4<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-6 m-r-auto"</span><span class="nt">&gt;</span>右位移<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h2>
+<a id="toc-8" class="menu-anchor" data-target="toc-8" aria-hidden="true"></a>栅格系统嵌套</h2>
+
+<p>嵌套类似于表格嵌套，就是在列中再包含一个栅格，理论上可以无限嵌套使用</p>
+
+<div class="doc-example-row">
+
+<div class="doc-example">
+<div class="doc-example-render" data-example-id="">
+<div class="container">
+  <div class="row">
+    <div class="col-md-16">
+      外层栅格系统
+      <div class="row">
+        <div class="col-md-8">内层栅格系统</div>
+        <div class="col-md-8">内层栅格系统</div>
+        <div class="col-md-8">内层栅格系统</div>
+      </div>
+    </div>
+    <div class="col-md-4">col-md-4</div>
+  </div>
+</div>
+</div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-16"</span><span class="nt">&gt;</span>
+      外层栅格系统
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-8"</span><span class="nt">&gt;</span>内层栅格系统<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-8"</span><span class="nt">&gt;</span>内层栅格系统<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-8"</span><span class="nt">&gt;</span>内层栅格系统<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>col-md-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+
+</div>
+
+<h2>
+<a id="toc-9" class="menu-anchor" data-target="toc-9" aria-hidden="true"></a>自定义栅格系统</h2>
+<p>通过修改 Sass 变量，可以调整栅格格数，间距大小，以及结合响应式调整屏幕零界点大小</p>
+
+<p>grid 对应的变量文件为 <a href="https://github.com/joy-web/perfect-css/scss/layout/grid/_variable.scss">https://github.com/joy-web/perfect-css/tree/master/scss/layout/grid/_variable.scss</a></p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$grid-columns</span><span class="p">:</span> <span class="m">24</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$grid-gutter-width</span><span class="p">:</span> <span class="m">30px</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>响应式对应的变量文件为 <a href="https://github.com/joy-web/perfect-css/scss/responsive/_variable.scss">https://github.com/joy-web/perfect-css/tree/master/scss/responsive/_variable.scss</a></p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$responsive-breakpoints</span><span class="p">:</span> <span class="p">(</span>
+  <span class="n">xs</span><span class="o">:</span> <span class="m">0</span><span class="o">,</span> <span class="o">//</span> <span class="n">xsmall</span>
+  <span class="n">sm</span><span class="o">:</span> <span class="m">600px</span><span class="o">,</span> <span class="o">//</span> <span class="n">small</span>
+  <span class="n">md</span><span class="o">:</span> <span class="m">1024px</span><span class="o">,</span> <span class="o">//</span> <span class="nb">medium</span>
+  <span class="n">lg</span><span class="o">:</span> <span class="m">1440px</span><span class="o">,</span> <span class="o">//</span> <span class="nb">large</span>
+  <span class="n">xl</span><span class="o">:</span> <span class="m">1600px</span><span class="o">,</span> <span class="o">//</span> <span class="n">xlarge</span>
+<span class="p">)</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+
+<span class="nv">$container-max-widths</span><span class="p">:</span> <span class="p">(</span>
+  <span class="n">sm</span><span class="o">:</span> <span class="m">600px</span><span class="o">,</span>
+  <span class="n">md</span><span class="o">:</span> <span class="m">1024px</span><span class="o">,</span>
+  <span class="n">lg</span><span class="o">:</span> <span class="m">1440px</span><span class="o">,</span>
+  <span class="n">xl</span><span class="o">:</span> <span class="m">1600px</span>
+<span class="p">)</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+</code></pre></div></div>
+<p>修改后需要重新编译生成 css 代码，也可以通过自定义主题来在线设置，保存并下载生成的 css 文件。TODO 待完成</p>
+
+<h2>
+<a id="toc-10" class="menu-anchor" data-target="toc-10" aria-hidden="true"></a>开启关闭响应式布局</h2>
+<p>我们可以通过设置 Scss 变量 <a href="https://github.com/joy-web/perfect-css/tree/master/scss/base/variables/_options.scss">$enable-responsive</a> 来开启或关闭响应式布局，默认是开启。在不需要响应式布局的情况下，可以关闭。
+关闭后，我们使用 <code class="highlighter-rouge">col</code> <code class="highlighter-rouge">col-2</code> 等即可创建栅格系统。需要注意的时，要配合 class <code class="highlighter-rouge">container</code>来使用，并自定义
+父容器的宽度。</p>
+
+
+        </div>
+        <div class="doc-catalogue-menu-right">
+          <div class="doc-catalogue-panel">
+<ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
+  <li>
+    <a class="menu-title" href="#" title="栅格系统实现" data-menu="toc-1">栅格系统实现</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="实现原理" data-menu="toc-1-1">实现原理</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="使用场景" data-menu="toc-1-2">使用场景</a>
+  </li>
+</ul>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="如何使用" data-menu="toc-2">如何使用</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="各种列布局" data-menu="toc-3">各种列布局</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="等宽布局" data-menu="toc-3-1">等宽布局</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="多行布局" data-menu="toc-3-2">多行布局</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="固定列宽和自适应宽度混合" data-menu="toc-3-3">固定列宽和自适应宽度混合</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="根据内容计算列宽度" data-menu="toc-3-4">根据内容计算列宽度</a>
+  </li>
+</ul>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="响应式布局下栅格系统的使用" data-menu="toc-4">响应式布局下栅格系统的使用</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="折中的方案" data-menu="toc-4-1">折中的方案</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="混合使用" data-menu="toc-4-2">混合使用</a>
+  </li>
+</ul>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="对齐" data-menu="toc-5">对齐</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="垂直对齐" data-menu="toc-5-1">垂直对齐</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="水平对齐" data-menu="toc-5-2">水平对齐</a>
+  </li>
+</ul>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="无边距" data-menu="toc-6">无边距</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="重新排序" data-menu="toc-7">重新排序</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="flex order 排序" data-menu="toc-7-1">flex order 排序</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="offset 调整位置" data-menu="toc-7-2">offset 调整位置</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="margin auto 排序" data-menu="toc-7-3">margin auto 排序</a>
+  </li>
+</ul>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="栅格系统嵌套" data-menu="toc-8">栅格系统嵌套</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="自定义栅格系统" data-menu="toc-9">自定义栅格系统</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="开启关闭响应式布局" data-menu="toc-10">开启关闭响应式布局</a>
+  </li>
+</ul>
+</div>
+        </div>
+      </div>
+      
+    </main>
+
+    <script src="/assets/js/vendor/clipboard.min.js"></script>
+<script src="/assets/js/perfect.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/scrollSpy.js"></script>
+
+<script src="/assets/js/plugins/catalogueSpy.js"></script>
+<script>
+  $(function () {
+    var ScrollSpy = perfect.default.ScrollSpy;
+    var CatalogueSpy = perfect.default.CatalogueSpy;
+    new ScrollSpy(document.body, {
+      menu: '.doc-catalogue-panel',
+      container: '.doc-content',
+      offset: 64,
+      anchor: false,
+      extend: true,
+      plugins: CatalogueSpy,
+    });
+
+    // 窗口滑动到某一位置时，修改目录定位位置
+    var $cataloguePanel = $('.doc-catalogue-menu-right .doc-catalogue-panel');
+    $(window).on('scroll', function (event) {
+      if ($cataloguePanel.is(':visible')) {
+        var top = window.scrollY;
+        var clientHeight = document.documentElement.clientHeight;
+        var scrollHeight = document.documentElement.scrollHeight;
+        var contentTop = $('.doc-content').offset().top;
+
+        if (top > scrollHeight - clientHeight) {
+          $cataloguePanel.css({
+            position: 'absolute',
+            top: top + 'px'
+          });
+        } else if (top + 64 > contentTop) {
+          $cataloguePanel.css({
+            position: 'fixed',
+            top: '64px'
+          });
+        } else {
+          $cataloguePanel.css({
+            position: 'static',
+          });
+        }
+      }
+    });
+
+    $(window).trigger('scroll');
+  });
+</script>
+
+
+<script>
+  $(function () {
+    // 展开代码
+    $('.doc-example-expand [data-code-icon]').click(function () {
+      var $el = $(this);
+      var $icon = $el.children();
+      var $code = $el.parent().next();
+      var $tooltip = $el.next().find('.tooltip-inner');
+      if ($icon.hasClass('icon-pure-code')) {
+        $icon.removeClass('icon-pure-code');
+        $icon.addClass('icon-pure-code-expand');
+        $tooltip.text('隐藏 Code');
+        $code.fadeIn();
+      } else {
+        $icon.removeClass('icon-pure-code-expand');
+        $icon.addClass('icon-pure-code');
+        $tooltip.text('显示 Code');
+        $code.fadeOut();
+      }
+    });
+
+    // 为代码添加复制按钮
+    $('.highlight:not(.doc-example-highlight)').each(function () {
+      var copyCodeIconHtml = '<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>\n' +
+        '    <div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">复制代码</div></div>';
+      $(this).before(copyCodeIconHtml);
+    });
+
+    // 复制到剪贴板
+    var clipboard = new Clipboard('.doc-code-copy', {
+      target: function (trigger) {
+        return trigger.nextElementSibling.nextElementSibling;
+      }
+    });
+
+    clipboard.on('success', function (e) {
+      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
+      $tooltip.text('复制成功');
+      e.clearSelection();
+    });
+
+    $('.doc-code-copy').mouseleave(function () {
+      var $tooltip = $(this).next().find('.tooltip-inner');
+      $tooltip.text('复制代码');
+    });
+
+//    clipboard.on('error', function (e) {
+//      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
+//      var fallbackMsg = '请使用快捷键 ' + modifierKey + 'C 来复制';
+//      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
+//      $tooltip.text('复制成功');
+//      e.clearSelection();
+//    });
+
+  });
+
+</script>
+
+
+    <script>
+  $(function () {
+    var $drawer = $('#drawer');
+    $drawer[0].addEventListener('transitionend', () => {
+      $drawer.removeClass('drawer-animating');
+    });
+
+    $('#toggleDrawer').click(function (e) {
+      const clientWidth = document.documentElement.clientWidth;
+      if(clientWidth < 1200){
+        $drawer.toggleClass('drawer-open');
+        $('body').toggleClass('drawer-scroll-lock');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-close');
+      } else {
+        // 当超过1440px 时，利用该样式，隐藏显示处理
+        $drawer.toggleClass('drawer-close');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-open');
+      }
+    });
+
+    $('#drawer').click(function () {
+      $drawer.removeClass('drawer-open');
+      $('body').removeClass('drawer-scroll-lock');
+      $drawer.addClass('drawer-animating');
+    });
+
+    $('.drawer-content').click(function (e) {
+      e.stopPropagation();
+    });
+  });
+</script>
+
+    <script>
+  $(function () {
+    // 定时切换主题，TODO 为了调试方便，暂先改为10秒，等上线前改为 1分钟
+    var themes = ['theme-red', 'theme-pink', 'theme-purple', 'theme-deep-purple',
+      'theme-indigo', 'theme-blue', 'theme-light-blue', 'theme-cyan', 'theme-teal',
+      'theme-green', 'theme-light-green', 'theme-lime', 'theme-yellow', 'theme-amber',
+      'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
+    setInterval(function () {
+      var r = Math.floor(Math.random() * 16);
+      $('body').removeClass().addClass(themes[r]);
+    }, 10000);
+  })
+</script>
+
+  </body>
+</html>

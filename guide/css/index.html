@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <header class="navbar navbar-fixed navbar-expand navbar-primary">
+  
+
+  <a class="navbar-brand" href="/">
+    <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
+  </a>
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/">首页</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/docs/getting-started/introduction/">文档</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/components/">组件</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+</head>
+<body>
+
+<nav class="navbar navbar-doc navbar-toggleable-md fixed-top bd-navbar">
+  <div class="d-flex justify-content-between d-lg-none">
+    <a class="navbar-brand" href="/">
+      Perfect
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav"
+            aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+
+  <div class="collapse navbar-collapse" id="bd-main-nav">
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-item nav-link "
+        href="/">Perfect</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+           href="/docs/getting-started/introduction/">文档</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+        href="/examples/">例子</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link active"
+           href="/guide/css">规范</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+           href="/theme/">自定义主题</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link "
+           href="/draft/">草稿</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="row m-l-3 doc-main">
+    <div class="doc-content catalogue-counter col-24 col-lg-19 col-md-17">
+      <h2>
+<a id="toc-1" class="menu-anchor" data-target="toc-1" aria-hidden="true"></a>说明</h2>
+<p>首先我们必须遵循黄金法则(Golden Rule):
+<strong>不管有多少人参与，一定要确保每一行代码都像是同一个人编写的</strong>
+(<strong>Every line of code should appear to be written by a single person, no matter the number of contributors</strong>)。
+这就需要我们永远遵循这套规范，每个项目成员按照这个规范来编写代码。</p>
+
+<p>注：<strong>以下规范主要以 CSS 来制定，同样也适用于 Sass</strong></p>
+
+<p>本规范包含以下内容</p>
+
+<ul>
+  <li>CSS 命名规范</li>
+  <li>CSS 书写规范</li>
+  <li>CSS 注释</li>
+  <li>CSS 预编译器 Sass</li>
+  <li>sass-lint 代码检测工具</li>
+</ul>
+
+<h2>
+<a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>CSS 命名规范</h2>
+
+<ol>
+  <li>文件名使用英文小写，多个单词时，中间用中划线 (-) 连接，比如：<code class="highlighter-rouge">common.scss</code> <code class="highlighter-rouge">button-groups.scss</code> 等</li>
+  <li>class 命名使用英文小写，多个单词时，中间用中划线 (-) 连接，比如：<code class="highlighter-rouge">.panel{}</code>  <code class="highlighter-rouge">.panel-default{}</code> 等</li>
+  <li>class 命名注意缩写，但是不能盲目的过渡缩写，<code class="highlighter-rouge">.btn</code> 代表 <code class="highlighter-rouge">button</code>，但是 <code class="highlighter-rouge">.s</code> 不能表达任何意思</li>
+  <li>基于最近的父 class 或基本 (base) class 作为新 class 的前缀</li>
+  <li>文件必须用 <code class="highlighter-rouge">UTF-8</code> 编码，在HTML中指定 <code class="highlighter-rouge">UTF-8</code> 编码即可，在CSS中不需要再指定，只要保持其文件编码为 <code class="highlighter-rouge">UTF-8</code> 就可以了</li>
+  <li>使用有意义的通用的英文单词或缩写来命名，class 的命名应反映该元素的功能，而不要用抽象晦涩的命名</li>
+  <li>采用 scss 格式书写，变量按照第2条规范来命名，即全部小写，多个单词中间用中划线 (-) 连接，比如：<code class="highlighter-rouge">$btn-padding-x: 1rem !default;</code>
+</li>
+  <li>常用 class 命名名称，以下列出 class 名称或其前缀</li>
+</ol>
+
+<table class="doc-table">
+  <thead>
+    <tr>
+      <th style="width: 50%">class</th>
+      <th style="width: 50%">含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>alert</td>
+      <td>提示信息</td>
+    </tr>
+    <tr>
+      <td>badge</td>
+      <td>徽章</td>
+    </tr>
+    <tr>
+      <td>btn, button</td>
+      <td>按钮</td>
+    </tr>
+    <tr>
+      <td>wrapper</td>
+      <td>容器，包，一般用于最外层</td>
+    </tr>
+    <tr>
+      <td>container</td>
+      <td>容器</td>
+    </tr>
+    <tr>
+      <td>panel</td>
+      <td>面板</td>
+    </tr>
+    <tr>
+      <td>card</td>
+      <td>卡片</td>
+    </tr>
+    <tr>
+      <td>tree</td>
+      <td>树</td>
+    </tr>
+    <tr>
+      <td>tab</td>
+      <td>tab 标签</td>
+    </tr>
+    <tr>
+      <td>crumbs, breadcrumbs</td>
+      <td>面包屑</td>
+    </tr>
+    <tr>
+      <td>dropdown</td>
+      <td>下拉框</td>
+    </tr>
+    <tr>
+      <td>form-control</td>
+      <td>表单</td>
+    </tr>
+    <tr>
+      <td>row</td>
+      <td>行</td>
+    </tr>
+    <tr>
+      <td>col</td>
+      <td>列</td>
+    </tr>
+    <tr>
+      <td>img, figure</td>
+      <td>图像样式</td>
+    </tr>
+    <tr>
+      <td>input-group</td>
+      <td>输入框分组</td>
+    </tr>
+    <tr>
+      <td>list-group</td>
+      <td>列表</td>
+    </tr>
+    <tr>
+      <td>menu</td>
+      <td>菜单</td>
+    </tr>
+    <tr>
+      <td>clearfix</td>
+      <td>清除浮动</td>
+    </tr>
+    <tr>
+      <td>nav</td>
+      <td>导航</td>
+    </tr>
+    <tr>
+      <td>navbar</td>
+      <td>导航栏</td>
+    </tr>
+    <tr>
+      <td>pagination, page</td>
+      <td>分页</td>
+    </tr>
+    <tr>
+      <td>popover</td>
+      <td>弹出框</td>
+    </tr>
+    <tr>
+      <td>progress</td>
+      <td>进度条</td>
+    </tr>
+    <tr>
+      <td>table</td>
+      <td>表格</td>
+    </tr>
+    <tr>
+      <td>tooltip</td>
+      <td>提示</td>
+    </tr>
+    <tr>
+      <td>pos</td>
+      <td>定位</td>
+    </tr>
+    <tr>
+      <td>m-t, m-b, m-l, m-r</td>
+      <td>外边距</td>
+    </tr>
+    <tr>
+      <td>p-t, p-b, p-l, p-r</td>
+      <td>内边距</td>
+    </tr>
+    <tr>
+      <td>bg</td>
+      <td>背景</td>
+    </tr>
+    <tr>
+      <td>text</td>
+      <td>文本</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>错误</td>
+    </tr>
+    <tr>
+      <td>help</td>
+      <td>帮助</td>
+    </tr>
+    <tr>
+      <td>hide</td>
+      <td>隐藏</td>
+    </tr>
+    <tr>
+      <td>icon</td>
+      <td>图标</td>
+    </tr>
+    <tr>
+      <td>info</td>
+      <td>信息</td>
+    </tr>
+    <tr>
+      <td>modal, dialog</td>
+      <td>模态窗口，对话框</td>
+    </tr>
+    <tr>
+      <td>toast</td>
+      <td>toast 提示信息</td>
+    </tr>
+    <tr>
+      <td>primary</td>
+      <td>主要</td>
+    </tr>
+    <tr>
+      <td>secondary</td>
+      <td>次要</td>
+    </tr>
+    <tr>
+      <td>selected</td>
+      <td>已选</td>
+    </tr>
+    <tr>
+      <td>show</td>
+      <td>显示</td>
+    </tr>
+    <tr>
+      <td>success</td>
+      <td>成功（提示）</td>
+    </tr>
+    <tr>
+      <td>thumbnail</td>
+      <td>缩略图</td>
+    </tr>
+    <tr>
+      <td>date</td>
+      <td>日期</td>
+    </tr>
+    <tr>
+      <td>time</td>
+      <td>时间</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>
+<a id="toc-3" class="menu-anchor" data-target="toc-3" aria-hidden="true"></a>CSS 书写规范</h2>
+
+<p>以下会列出部分书写规范，更多的规范，我们会使用 sass-lint 来限制，webStorm 中有对应的插件，开启 sass-lint 实时检测</p>
+
+<h3>
+<a id="toc-3-1" class="menu-anchor" data-target="toc-3-1" aria-hidden="true"></a>语法和排版</h3>
+
+<ol>
+  <li>使用两个空格来代替制表符（tab）作为缩进，— 这是保证代码在各种环境下显示一致的唯一方式</li>
+  <li>选择器规则应该采用多行书写，每条声明独占一行，排版美观、方便阅读、快速定位错误报告</li>
+  <li>所有声明语句都应当以分号结尾。最后一条声明语句后面的分号是可选的，但是，如果省略这个分号，你的代码可能更易出错</li>
+  <li>对于属性值或颜色参数，省略小于 1 的小数前面的 0 （例如：.5 代替 0.5；-.5px 代替 -0.5px）</li>
+  <li>十六进制颜色值应该全部小写，例如，<code class="highlighter-rouge">#6ce26c</code>
+</li>
+  <li>尽量使用简写形式的十六进制值，例如，用 <code class="highlighter-rouge">#fff</code> 代替 <code class="highlighter-rouge">#ffffff</code>
+</li>
+  <li>避免为 0 值指定单位，例如，用 <code class="highlighter-rouge">margin: 0;</code> 代替 <code class="highlighter-rouge">margin: 0px;</code>
+</li>
+  <li>如果需要，尽量不要写带有浏览器前缀的属性，我们利用 <code class="highlighter-rouge">autoprefixer</code> 自动补齐</li>
+  <li>每行长度最多100个字符，对于超长的样式，在样式值的 <code class="highlighter-rouge">空格</code> 处或 <code class="highlighter-rouge">,</code> 后换行
+    <div class="language-scss highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nc">.guide</span> <span class="p">{</span>
+  <span class="c1">// 同一属性，多个属性值，以逗号换行
+</span>  <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="mh">#655</span><span class="o">,</span>
+  <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">15px</span> <span class="no">deeppink</span><span class="o">,</span>
+  <span class="m">0</span> <span class="m">2px</span> <span class="m">5px</span> <span class="m">15px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="mi">.6</span><span class="p">);</span>
+   
+  <span class="c1">// 函数属性值，适当时候以逗号来换行
+</span>  <span class="nl">background</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="m">45deg</span><span class="o">,</span>
+    <span class="mh">#fb3</span> <span class="m">25%</span><span class="o">,</span> <span class="mh">#58a</span> <span class="m">0</span><span class="o">,</span> <span class="mh">#58a</span> <span class="m">50%</span><span class="o">,</span>
+    <span class="mh">#fb3</span> <span class="m">0</span><span class="o">,</span> <span class="mh">#fb3</span> <span class="m">75%</span><span class="o">,</span> <span class="mh">#58a</span> <span class="m">0</span><span class="p">);</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="m">30px</span> <span class="m">30px</span><span class="p">;</span>
+   
+  <span class="c1">// 同一属性，多个属性值，以逗号换行
+</span>  <span class="nl">background</span><span class="p">:</span> <span class="mh">#58a</span><span class="p">;</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="no">white</span> <span class="m">2px</span><span class="o">,</span> <span class="nb">transparent</span> <span class="m">0</span><span class="p">)</span><span class="o">,</span>
+  <span class="nf">linear-gradient</span><span class="p">(</span><span class="m">90deg</span><span class="o">,</span> <span class="no">white</span> <span class="m">2px</span><span class="o">,</span> <span class="nb">transparent</span> <span class="m">0</span><span class="p">)</span><span class="o">,</span>
+  <span class="nf">linear-gradient</span><span class="p">(</span><span class="nf">hsla</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0%</span><span class="o">,</span> <span class="m">100%</span><span class="o">,</span> <span class="mi">.3</span><span class="p">)</span> <span class="m">1px</span><span class="o">,</span> <span class="nb">transparent</span> <span class="m">0</span><span class="p">)</span><span class="o">,</span>
+  <span class="nf">linear-gradient</span><span class="p">(</span><span class="m">90deg</span><span class="o">,</span> <span class="nf">hsla</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0%</span><span class="o">,</span> <span class="m">100%</span><span class="o">,</span> <span class="mi">.3</span><span class="p">)</span> <span class="m">1px</span><span class="o">,</span> <span class="nb">transparent</span> <span class="m">0</span><span class="p">);</span>
+  <span class="nl">background-size</span><span class="p">:</span> <span class="m">75px</span> <span class="m">75px</span><span class="o">,</span> <span class="m">75px</span> <span class="m">75px</span><span class="o">,</span> <span class="m">15px</span> <span class="m">15px</span><span class="o">,</span> <span class="m">15px</span> <span class="m">15px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>scss 嵌套中，嵌套与 CSS 属性之间空一行</li>
+</ol>
+
+<h3>
+<a id="toc-3-2" class="menu-anchor" data-target="toc-3-2" aria-hidden="true"></a>属性声明顺序</h3>
+
+<p>相关的属性声明应当归为一组，并按照下面的顺序书写</p>
+
+<ol>
+  <li>伪类内容</li>
+  <li>Layout 布局 (Positioning, Flex an Float)</li>
+  <li>Box model 盒模型 - 按 width height padding margin border 顺序书写</li>
+  <li>Overflow</li>
+  <li>Font 字体</li>
+  <li>Typographic 排版</li>
+  <li>List 列表</li>
+  <li>Other 其他</li>
+  <li>animation 动画相关</li>
+</ol>
+
+<p>具体每一个属性书写顺序请参考 <a href="%E9%93%BE%E6%8E%A5%E5%BE%85%E8%A1%A5%E5%85%85">sass-lint.yml</a></p>
+
+<h3>
+<a id="toc-3-3" class="menu-anchor" data-target="toc-3-3" aria-hidden="true"></a>scss 嵌套顺序</h3>
+
+<ol>
+  <li>当前选择器的样式属性</li>
+  <li>父级选择器的伪类选择器 (:first-child, :hover, :active etc)</li>
+  <li>伪类元素 (::before and ::after)</li>
+  <li>父级选择器的扩展增强样式 (.selected, .active, .enlarged etc.)</li>
+  <li>Sass的上下文媒体查询</li>
+  <li>兄弟选择器样式</li>
+  <li>子选择器样式</li>
+</ol>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.product-teaser</span> <span class="p">{</span>
+  <span class="c1">// 1. Style attributes
+</span>  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="mh">#00a8c6</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#fff9ff</span><span class="p">;</span>
+
+  <span class="c1">// 2. Pseudo selectors with parent selector
+</span>  <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="mh">#00a8c6</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 3. Pseudo elements with parent selector
+</span>  <span class="err">&amp;</span><span class="p">:</span><span class="o">:</span><span class="n">before</span> <span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span> <span class="s2">""</span><span class="p">;</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+    <span class="nl">border-top</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="mh">#00c176</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="err">&amp;</span><span class="p">:</span><span class="o">:</span><span class="n">after</span> <span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span> <span class="s2">""</span><span class="p">;</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+    <span class="nl">border-top</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="mh">#00a8c6</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 4. State classes with parent selector
+</span>  <span class="k">&amp;</span><span class="nc">.active</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="mh">#ff003c</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#ff8edf</span><span class="p">;</span>
+
+    <span class="c1">// 4.2. Pseuso selector in state class selector
+</span>    <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+      <span class="nl">color</span><span class="p">:</span> <span class="mh">#d14</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 5. Contextual media queries
+</span>  <span class="k">@media</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">640px</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">2em</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 6. Brother selectors
+</span>  <span class="o">+</span> <span class="nc">.main</span>  <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.2em</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 7. Sub selectors
+</span>  <span class="o">&gt;</span> <span class="nc">.content</span> <span class="o">&gt;</span> <span class="nc">.title</span> <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.2em</span><span class="p">;</span>
+
+    <span class="c1">// 7.5. Contextual media queries in sub selector
+</span>    <span class="k">@media</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">640px</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+      <span class="nl">letter-spacing</span><span class="p">:</span> <span class="mi">.2em</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3>
+<a id="toc-3-4" class="menu-anchor" data-target="toc-3-4" aria-hidden="true"></a>简写形式的属性声明</h3>
+
+<p>在需要显式地设置属性值的情况下，应当尽量<code class="highlighter-rouge">限制</code>使用简写形式的属性声明，常见的滥用简写属性声明的情况如下</p>
+<ul>
+  <li>padding</li>
+  <li>margin</li>
+  <li>font</li>
+  <li>background</li>
+  <li>border</li>
+  <li>border-radius</li>
+</ul>
+
+<p>大部分情况下，我们不需要为简写形式的属性声明指定所有值。例如，HTML 的头部元素只需要设置上、下边距（margin）的值，
+因此，在必要的时候，只需覆盖这两个值就可以。过度使用简写形式的属性声明会导致代码混乱，
+并且会对属性值带来不必要的覆盖从而引起意外的副作用</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Bad example */</span>
+<span class="nc">.element</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="sx">url("image.jpg")</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">3px</span> <span class="m">3px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* Good example */</span>
+<span class="nc">.element</span> <span class="p">{</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url("image.jpg")</span><span class="p">;</span>
+  <span class="nl">border-top-left-radius</span><span class="p">:</span> <span class="m">3px</span><span class="p">;</span>
+  <span class="nl">border-top-right-radius</span><span class="p">:</span> <span class="m">3px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3>
+<a id="toc-3-5" class="menu-anchor" data-target="toc-3-5" aria-hidden="true"></a>超链接书写顺序</h3>
+<p>链接的样式请严格按照如下顺序添加： a:link -&gt; a:visited -&gt; a:hover -&gt; a:active</p>
+
+<h3>
+<a id="toc-3-6" class="menu-anchor" data-target="toc-3-6" aria-hidden="true"></a>选择器书写格式</h3>
+
+<ul>
+  <li>避免使用多个属性选择器（例如，[class^=”…”]），这会降低浏览器的性能</li>
+  <li>选择器嵌套要尽可能的短，最好不要超过3，太深的嵌套会降低浏览器的性能</li>
+  <li>只在必要的情况下才使用后代选择器 (例如，没有使用带前缀 class 的情况)</li>
+  <li>尽可能提高代码模块的复用，样式尽量用组合的方式
+*. 为选择器中的属性值添加双引号，例如，<code class="highlighter-rouge">input[type="text"]</code>
+*. 当一个 rule 包含多个 selector 时，每个选择器声明必须独占一行
+    <div class="language-scss highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="c1">// good
+</span>  <span class="nc">.post</span><span class="o">,</span>
+  <span class="nc">.page</span><span class="o">,</span>
+  <span class="nc">.comment</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="mh">#00a8c6</span><span class="p">;</span>
+  <span class="p">}</span>
+    
+  <span class="c1">// bad
+</span>  <span class="nc">.post</span><span class="o">,</span> <span class="nc">.page</span><span class="o">,</span> <span class="nc">.comment</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="mh">#00a8c6</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2>
+<a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>注释</h2>
+
+<p>请确保代码是描述性的、注释良好并且易于他人理解的。好的代码注释能够传达样式上下文关系和代码要实现的目的。</p>
+
+<p>注释不要简单地重申组件或 class 名称，最好能以详细的说明。对于较长的注释，务必书写完整的句子；对于一般性注解，可以书写简洁的短语。</p>
+
+<p>由于采用 Sass 来书写 css，我们统一使用 // 来注释，只在打包样式主文件，添加多行注释</p>
+
+<p>单行注释</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// comment
+</span></code></pre></div></div>
+<p>多行注释</p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*  
+* comment 1
+* comment 2
+*/</span>
+</code></pre></div></div>
+<p>对于 scss 文件，我们大部分采用单行注释，这样编译成 <code class="highlighter-rouge">css</code> 时会删除掉这些注释，
+而多行注释一般写在页面的头部，说明该样式文件是干什么的，怎么用等信息</p>
+
+<h2>
+<a id="toc-5" class="menu-anchor" data-target="toc-5" aria-hidden="true"></a>文件大小</h2>
+
+<p>单个CSS文件应避免过大，原则上不超过500行，可以按模块或组件拆成粒度更小的文件。</p>
+
+<h2>
+<a id="toc-6" class="menu-anchor" data-target="toc-6" aria-hidden="true"></a>预编译器 Sass</h2>
+
+<p>待补充</p>
+
+<h2>
+<a id="toc-7" class="menu-anchor" data-target="toc-7" aria-hidden="true"></a>sass-lint 代码检测工具</h2>
+
+<p>需要安装 sass-lint</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install <span class="nt">--save-dev</span> sass-lint
+</code></pre></div></div>
+<p>并设置 <code class="highlighter-rouge">.sass-lint.yml</code> 配置文件</p>
+
+<p>对于 WebStorm，需要安装插件<a href="https://github.com/idok/sass-lint-plugin">sass-lint-plugin</a></p>
+
+<h2>
+<a id="toc-8" class="menu-anchor" data-target="toc-8" aria-hidden="true"></a>scss 代码文件结构以及 CSS 模块化</h2>
+
+<p>scss 目录下包含</p>
+
+<ul>
+  <li>主文件 <code class="highlighter-rouge">perfect.scss</code>，可以一次性的全部引入所有 css 样式</li>
+  <li>基础文件 <code class="highlighter-rouge">perfect-reset.scss</code>，包括 <code class="highlighter-rouge">normalize.scss</code> 和 <code class="highlighter-rouge">reset.scss</code>
+</li>
+  <li>工具类样式 <code class="highlighter-rouge">perfect-utils.scss</code>，所有工具类样式，调用之前需先导入 <code class="highlighter-rouge">perfect-reset.scss</code>
+</li>
+  <li>动画样式 <code class="highlighter-rouge">perfect-animation.scss</code>，所有动画样式，调用之前需先导入 <code class="highlighter-rouge">perfect-reset.scss</code>
+</li>
+  <li>CSS 模块文件夹 <code class="highlighter-rouge">modules</code>，可以单独引入某一 CSS 模块文件，调用之前需先导入 <code class="highlighter-rouge">perfect-reset.scss</code>
+</li>
+  <li>CSS 工具类样式文件夹 utils，包含所有工具类样式</li>
+  <li>CSS 动画样式文件夹 <code class="highlighter-rouge">animation</code> ，包含各种动画样式</li>
+  <li>etc 定义变量、mixin、函数和重置样式，只作为 scss 编译过程文件，不会生成对应的 css 文件</li>
+</ul>
+
+<p>其中 CSS 模块 <code class="highlighter-rouge">modules</code> 中包含以下几类</p>
+
+<ul>
+  <li>typography 排版样式(Font, Paragraphs, Text, Color, Header(h1-h6), Links, Lists(ul ol dl), code)，
+包括 code, header, link</li>
+  <li>print 打印样式</li>
+  <li>layout 布局，包括 box, container, float, grid</li>
+  <li>navigation 导航样式，包括 crumbs, menu, nav, navbar, pagination, tree</li>
+  <li>container 容器样式，包括 accordion, callout, card, carousel, form, list-panel, modal, panel, tab-panel, table, modal</li>
+  <li>components 组件样式，包括 badge, btn, btn-group, dropDown, image, input, input-group, popover, progress, toast, tooltip</li>
+</ul>
+
+<p>工具类样式 utils</p>
+
+<ul>
+  <li>align 文本对齐方向</li>
+  <li>background 背景颜色，定义各种基本颜色背景色</li>
+  <li>border 边框和圆角</li>
+  <li>clearfix 清除浮层</li>
+  <li>color 文本颜色，定义各种基本颜色前景色</li>
+  <li>display 可视化</li>
+  <li>flexbox flex 相关样式</li>
+  <li>position 定位</li>
+  <li>spacing 内外边距</li>
+  <li>text 内容样式，比如单行省略，多行省略等</li>
+  <li>条纹背景</li>
+  <li>其他</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── animation
+│   └── fade-in.scss
+├── etc
+│   ├── functions.scss
+│   ├── mixins
+│   │   ├── breakpoints.scss
+│   │   ├── buttons.scss
+│   │   ├── cards.scss
+│   │   └── transition.scss
+│   ├── mixins.scss
+│   ├── normalize.scss
+│   ├── reset.scss
+│   ├── variables
+│   │   ├── crumbs.scss
+│   │   ├── cursor.scss
+│   │   ├── dropdown.scss
+│   │   ├── font.scss
+│   │   ├── forms.scss
+│   └── variables.scss
+├── modules
+│   ├── components
+│   │   ├── badge.scss
+│   │   ├── btn-group.scss
+│   │   ├── btn.scss
+│   │   ├── dropdown.scss
+│   │   ├── image.scss
+│   │   ├── input-group.scss
+│   │   ├── input.scss
+│   │   ├── popover.scss
+│   │   ├── progress.scss
+│   │   ├── toast.scss
+│   │   └── tooltip.scss
+│   ├── container
+│   │   ├── accordion.scss
+│   │   ├── callout.scss
+│   │   ├── card.scss
+│   │   ├── carousel.scss
+│   │   ├── form.scss
+│   │   ├── list-panel.scss
+│   │   ├── modal.scss
+│   │   ├── panel.scss
+│   │   ├── tab-panel.scss
+│   │   └── table.scss
+│   ├── layout
+│   │   ├── box.scss
+│   │   ├── container.scss
+│   │   ├── float.scss
+│   │   └── grid.scss
+│   ├── navigation
+│   │   ├── crumbs.scss
+│   │   ├── menu.scss
+│   │   ├── nav.scss
+│   │   ├── navbar.scss
+│   │   ├── pagination.scss
+│   │   └── tree.scss
+│   ├── print.scss
+│   └── typography
+│       ├── code.scss
+│       ├── header.scss
+│       └── link.scss
+├── perfect-animation.scss
+├── perfect-reset.scss
+├── perfect-utils.scss
+├── perfect.scss
+└── utils
+    ├── align.scss
+    ├── background.scss
+    ├── border.scss
+    ├── clearfix.scss
+    ├── color.scss
+    ├── display.scss
+    ├── flexbox.scss
+    ├── position.scss
+    ├── spacing.scss
+    └── text.scss
+</code></pre></div></div>
+
+<h2>
+<a id="toc-9" class="menu-anchor" data-target="toc-9" aria-hidden="true"></a>docs 文件结构</h2>
+
+
+    </div>
+    <div class="col-24 col-lg-5 col-md-7">
+      <div class="doc-catalogue-panel">
+<ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
+  <li>
+    <a class="menu-title" href="#" title="说明" data-menu="toc-1">说明</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="CSS 命名规范" data-menu="toc-2">CSS 命名规范</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="CSS 书写规范" data-menu="toc-3">CSS 书写规范</a>
+<ul class="menu menu-catalogue doc-catalogue">
+  <li>
+    <a class="menu-title" href="#" title="语法和排版" data-menu="toc-3-1">语法和排版</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="属性声明顺序" data-menu="toc-3-2">属性声明顺序</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="scss 嵌套顺序" data-menu="toc-3-3">scss 嵌套顺序</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="简写形式的属性声明" data-menu="toc-3-4">简写形式的属性声明</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="超链接书写顺序" data-menu="toc-3-5">超链接书写顺序</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="选择器书写格式" data-menu="toc-3-6">选择器书写格式</a>
+  </li>
+</ul>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="注释" data-menu="toc-4">注释</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="文件大小" data-menu="toc-5">文件大小</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="预编译器 Sass" data-menu="toc-6">预编译器 Sass</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="sass-lint 代码检测工具" data-menu="toc-7">sass-lint 代码检测工具</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="scss 代码文件结构以及 CSS 模块化" data-menu="toc-8">scss 代码文件结构以及 CSS 模块化</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="docs 文件结构" data-menu="toc-9">docs 文件结构</a>
+  </li>
+</ul>
+</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-assist"></div>
+<footer class="footer">
+  <div class="text-center">
+    Copyright © 2016-2017 Powered by Perfect 团队
+  </div>
+</footer>
+
+<script src="/assets/js/vendor/clipboard.min.js"></script>
+<script src="/assets/js/perfect.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/scrollSpy.js"></script>
+
+<script src="/assets/js/plugins/catalogueSpy.js"></script>
+<script>
+  $(function () {
+    var ScrollSpy = perfect.default.ScrollSpy;
+    var CatalogueSpy = perfect.default.CatalogueSpy;
+    new ScrollSpy(document.body, {
+      menu: '.doc-catalogue-panel',
+      container: '.doc-content',
+      offset: 64,
+      anchor: false,
+      extend: true,
+      plugins: CatalogueSpy,
+    });
+
+    // 窗口滑动到某一位置时，修改目录定位位置
+    var $cataloguePanel = $('.doc-catalogue-menu-right .doc-catalogue-panel');
+    $(window).on('scroll', function (event) {
+      if ($cataloguePanel.is(':visible')) {
+        var top = window.scrollY;
+        var clientHeight = document.documentElement.clientHeight;
+        var scrollHeight = document.documentElement.scrollHeight;
+        var contentTop = $('.doc-content').offset().top;
+
+        if (top > scrollHeight - clientHeight) {
+          $cataloguePanel.css({
+            position: 'absolute',
+            top: top + 'px'
+          });
+        } else if (top + 64 > contentTop) {
+          $cataloguePanel.css({
+            position: 'fixed',
+            top: '64px'
+          });
+        } else {
+          $cataloguePanel.css({
+            position: 'static',
+          });
+        }
+      }
+    });
+
+    $(window).trigger('scroll');
+  });
+</script>
+
+
+<script>
+  $(function () {
+    // 展开代码
+    $('.doc-example-expand [data-code-icon]').click(function () {
+      var $el = $(this);
+      var $icon = $el.children();
+      var $code = $el.parent().next();
+      var $tooltip = $el.next().find('.tooltip-inner');
+      if ($icon.hasClass('icon-pure-code')) {
+        $icon.removeClass('icon-pure-code');
+        $icon.addClass('icon-pure-code-expand');
+        $tooltip.text('隐藏 Code');
+        $code.fadeIn();
+      } else {
+        $icon.removeClass('icon-pure-code-expand');
+        $icon.addClass('icon-pure-code');
+        $tooltip.text('显示 Code');
+        $code.fadeOut();
+      }
+    });
+
+    // 为代码添加复制按钮
+    $('.highlight:not(.doc-example-highlight)').each(function () {
+      var copyCodeIconHtml = '<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>\n' +
+        '    <div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">复制代码</div></div>';
+      $(this).before(copyCodeIconHtml);
+    });
+
+    // 复制到剪贴板
+    var clipboard = new Clipboard('.doc-code-copy', {
+      target: function (trigger) {
+        return trigger.nextElementSibling.nextElementSibling;
+      }
+    });
+
+    clipboard.on('success', function (e) {
+      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
+      $tooltip.text('复制成功');
+      e.clearSelection();
+    });
+
+    $('.doc-code-copy').mouseleave(function () {
+      var $tooltip = $(this).next().find('.tooltip-inner');
+      $tooltip.text('复制代码');
+    });
+
+//    clipboard.on('error', function (e) {
+//      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
+//      var fallbackMsg = '请使用快捷键 ' + modifierKey + 'C 来复制';
+//      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
+//      $tooltip.text('复制成功');
+//      e.clearSelection();
+//    });
+
+  });
+
+</script>
+
+
+</body>
+</html>

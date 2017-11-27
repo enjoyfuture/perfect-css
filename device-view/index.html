@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="keywords" content="CSS3 Perfect">
+<meta name="description"
+      content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+<meta name="author" content="Linder Wang">
+
+<title>
+  
+  设备预览 &middot; Perfect
+  
+</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" href="/favicon.ico">
+
+<!-- Perfect CSS -->
+<link href="/assets/css/perfect.css" rel="stylesheet">
+<!-- 页面 CSS -->
+<link href="/assets/css/device-view.css" rel="stylesheet">
+
+</head>
+<body>
+<device-resizer style="display: none;">
+  <div class="device-toolbar">
+    <div class="device-header">
+      <div class="device-brand">
+        <a class="brand-icon" href="/"></a>
+        <div class="brand-name">设备预览</div>
+      </div>
+      <div class="device-url-container">
+        <div class="device-url-icon">
+          <i class="icon-pure-browser"></i>
+        </div>
+        <input class="device-url-input" placeholder="请输入 URL">
+      </div>
+      <div class="device-select">
+        <div class="device-icon" name="handset">
+          <i class="icon-pure-handset"></i>
+        </div>
+        <div class="device-icon" name="window">
+          <i class="icon-pure-pc"></i>
+        </div>
+        <div class="device-icon" name="all">
+          <i class="icon-pure-handset-pc"></i>
+        </div>
+      </div>
+    </div>
+    <div class="device-selector-wrapper">
+      <div class="device-selector-topbar"></div>
+    </div>
+  </div>
+
+  <div class="device-container">
+    <div class="device-list" view="window">
+      <device-view device="window">
+        <div class="frame-container">
+          <iframe class="frame-device" src="/"></iframe>
+        </div>
+      </device-view>
+      <device-view device="table" landscape="">
+        <div class="frame-container">
+          <iframe class="frame-device" sandbox="allow-scripts allow-same-origin"
+                  src="/"></iframe>
+        </div>
+      </device-view>
+      <device-view device="handset">
+        <div class="frame-container">
+          <iframe class="frame-device" sandbox="allow-scripts allow-same-origin"
+                  src="/"></iframe>
+        </div>
+      </device-view>
+    </div>
+  </div>
+
+</device-resizer>
+
+<script src="/assets/js/vendor/jquery.min.js"></script>
+<script>
+  $(function () {
+    // location hash 转换为数组
+    function hash2Json() {
+      var hash = location.hash;
+      var hashArray;
+      var json = {};
+      if (hash) {
+        hash = hash.substring(1);
+        hashArray = hash.split('&');
+        hashArray.forEach(function (item) {
+          var it = item.split('=');
+          if (it.length === 2) {
+            json[it[0]] = it[1];
+          }
+        });
+      }
+      return json;
+    }
+
+    // 更新 hash
+    function updateHash(obj) {
+      if (!obj) {
+        return;
+      }
+      var hash = '';
+      var json = hash2Json();
+      Object.keys(obj).forEach(function (item) {
+        json[item] = obj[item];
+      });
+
+      Object.keys(json).forEach(function (item) {
+        hash += item + '=' + json[item] + '&';
+      });
+      hash = hash.substring(0, hash.length - 1);
+      location.hash = hash;
+    }
+
+    function deviceWidth(width) {
+      var deviceProfiles = deviceResizer.deviceProfiles;
+      var windowWidth = 1440;
+      var handsetWidth = 360;
+      deviceProfiles.forEach(function (item) {
+        if (item.device === 'window' && item.size === width) {
+          windowWidth = item.size;
+        }
+        if (item.device === 'handset' && item.size === width) {
+          handsetWidth = item.size;
+        }
+      });
+      return {
+        windowWidth: windowWidth,
+        handsetWidth: handsetWidth
+      };
+    }
+
+    // 屏幕各种大小设备
+    var deviceResizer = {
+      deviceProfiles: [
+        {
+          device: 'window',
+          size: 1600
+        },
+        {
+          device: 'window',
+          size: 1440
+        },
+        {
+          device: 'window',
+          size: 1280
+        },
+        {
+          aspect: '4x3',
+          device: 'handset',
+          label: 'Tablet',
+          landscape: true,
+          size: 1024,
+          height: 768
+        },
+        {
+          device: 'window',
+          size: 960
+        },
+        {
+          device: 'window',
+          size: 840
+        },
+        {
+          aspect: '4x3',
+          device: 'handset',
+          label: 'Tablet',
+          landscape: false,
+          size: 720,
+          height: 960
+        },
+        {
+          device: 'window',
+          size: 600
+        },
+        {
+          aspect: '16x9',
+          device: 'handset',
+          label: 'Phone',
+          landscape: true,
+          size: 600,
+          height: 337.5
+        },
+        {
+          device: 'window',
+          size: 480
+        },
+        {
+          aspect: '16x9',
+          device: 'handset',
+          label: 'Phone',
+          size: 360,
+          height: 640
+        }
+      ],
+      windowBreakpoints: [
+        {
+          label: 'xsmall',
+          size: 480
+        },
+        {
+          label: 'small',
+          size: 600
+        },
+        {
+          label: 'medium',
+          size: 960
+        },
+        {
+          label: 'large',
+          size: 1280
+        },
+        {
+          label: 'xlarge',
+          size: Number.MAX_SAFE_INTEGER
+        }
+      ]
+    };
+
+    var json = hash2Json();
+    var url = json.url;
+    var device = json.device || 'handset';
+
+    var widths = deviceWidth(Number(json.width));
+    var windowWidth = widths.windowWidth;
+    var handsetWidth = widths.handsetWidth;
+
+    var selectorTopbar = $('.device-selector-topbar');
+    var selectorWrapper = $('.device-selector-wrapper');
+
+    // 根据给定的数据加载 device bar
+    function renderDeviceBar() {
+      if (device === 'all') {
+        selectorTopbar.empty();
+        selectorWrapper.hide();
+      } else {
+        var html = [];
+        var width = device === 'window' ? windowWidth : handsetWidth;
+        deviceResizer.deviceProfiles.forEach(function (item) {
+          if (item.device === device) {
+            html.push(`
+          <div class="device-selector-item ${width === item.size ? ' active' : ''}" style="width:${item.size}px" data-device="${item.size}">
+            <div class="left size">${item.size}</div>
+            <div class="right size">${item.size}</div>
+          </div>`);
+          }
+        });
+
+        var label = getDeviceLabel();
+        html.push(`<div class="device-selector-label">${label}</div>`);
+        selectorTopbar.html(html.join(' '));
+        selectorWrapper.show();
+      }
+    }
+
+    // 重新设置 device bar label 显示值
+    function getDeviceLabel() {
+      var label = '';
+      var windowBreakpoints = deviceResizer.windowBreakpoints;
+      var deviceProfiles = deviceResizer.deviceProfiles;
+      if (device === 'window') {
+        for (var i = 0, len = windowBreakpoints.length; i < len; i++) {
+          if (windowBreakpoints[i].size >= windowWidth) {
+            label = `Window ${windowBreakpoints[i].label}`;
+            break;
+          }
+        }
+      } else if (device === 'handset') {
+        for (var i = 0, len = deviceProfiles.length; i < len; i++) {
+          if (deviceProfiles[i].size === handsetWidth && deviceProfiles[i].device === device) {
+            label = `${deviceProfiles[i].label} ${deviceProfiles[i].landscape ? 'landscape' : 'portrait'}`;
+            break;
+          }
+        }
+      }
+
+      return label;
+    }
+
+    // 修改 device-view 属性值
+    function updateDeviceView() {
+      $('.device-container .device-list').attr('view', device);
+      if (device === 'all') {
+        $('.device-container device-view').attr('style', '');
+        return;
+      }
+      var $container = $(`.device-container device-view[device="${device}"]`);
+      var deviceProfiles = deviceResizer.deviceProfiles;
+      var width = device === 'window' ? windowWidth : handsetWidth;
+
+      for (var i = 0; i < deviceProfiles.length; i++) {
+        if (deviceProfiles[i].device === device && deviceProfiles[i].size === width) {
+          if (device === 'handset') {
+            $container.attr('device', device).attr('device-width', width).attr('aspect', deviceProfiles[i].aspect)
+              .css({
+                width: width + 'px',
+                height: deviceProfiles[i].height + 'px'
+              });
+            if (deviceProfiles[i].landscape) {
+              $container.attr('landscape', '');
+            } else {
+              $container.removeAttr('landscape');
+            }
+          } else {
+            $container.attr('device', device).attr('device-width', width).css({
+              width: width + 'px'
+            });
+          }
+          break;
+        }
+      }
+    }
+
+    // 切换在不同的设备间预览页面
+    $('.device-toolbar .device-select').on('click', '.device-icon', function (e) {
+      var $el = $(e.currentTarget);
+      $el.find('i').addClass('active');
+      $el.siblings().find('i').removeClass('active');
+      var type = $el.attr('name');
+      $('.device-container .device-list').attr('view', type);
+      device = type;
+
+      if (type === 'all') {
+        location.hash = 'device=all';
+      } else {
+        updateHash({
+          width: type === 'window' ? windowWidth : handsetWidth,
+          device: type
+        });
+      }
+
+      renderDeviceBar();
+      updateDeviceView();
+    });
+
+    $('.device-selector-topbar').on('click', '.device-selector-item', function (e) {
+      e.stopPropagation();
+      var $el = $(e.currentTarget);
+      $el.addClass('active').siblings().removeClass('active');
+      var deviceSize = $el.data('device');
+
+      device === 'window' ? windowWidth = deviceSize : handsetWidth = deviceSize;
+      updateHash({device: device, width: deviceSize});
+
+      var label = getDeviceLabel();
+      $('.device-selector-label').text(label);
+      updateDeviceView();
+    });
+
+    // init
+    renderDeviceBar();
+    updateDeviceView();
+
+    $(`.device-select .device-icon[name=${device}] i`).addClass('active');
+
+    if (!url) {
+      url = location.origin + '/';
+    }
+
+    $('.device-url-input').val(decodeURIComponent(url));
+    $('.device-list iframe').attr('src', decodeURIComponent(url));
+
+    $('.device-url-input').keypress(function (e) {
+      var keyCode = e.keyCode;
+
+      if (keyCode === 13) {
+        var val = e.currentTarget.value;
+        $('.device-list iframe').attr('src', val);
+      }
+    });
+
+    $('device-resizer').show();
+  });
+</script>
+
+
+</body>
+</html>
