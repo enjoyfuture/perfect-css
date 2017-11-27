@@ -12,10 +12,6 @@
 * _plugins ruby 插件
 * assets 定义 CSS 和 js 文件
 * docs 参考文档
-<<<<<<< HEAD
-=======
-* components 组件
->>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 * draft 开发草稿文件
 * guide 开发规范
 
