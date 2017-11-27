@@ -33,6 +33,15 @@ git subtree push --prefix=_gh_pages origin gh-pages --squash
 git push
 ```
 
+说明：
+* 执行 git subtree push --prefix=_gh_pages origin gh-pages --squash 提示代码冲突时，需要执行以下操作解决冲突
+   1. 切换到 gh-pages 分支下，git pull 后，再切回到原来的分支
+   2. 执行命令 git subtree pull --prefix=_gh_pages git@github_hopefuture:joy-web/perfect.git gh-pages --squash
+   3. 重新执行上面的生成 docs 步骤，这时候不需要再执行 git subtree pull
+* 当多人合作时，提交时，需要先执行 pull
+  git subtree pull --prefix=_gh_pages git@github_hopefuture:joy-web/perfect.git gh-pages --squash
+  本人配置了 github 别名为 github_hopefuture，如不配置，应该是 github.com
+
 # 绑定域名
 
 1. Ping enjoyfuture.github.io 拿到 enjoyfuture.github.io 对应的 ip
