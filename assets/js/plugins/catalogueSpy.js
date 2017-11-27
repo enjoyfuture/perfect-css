@@ -68,6 +68,137 @@
   var isWheel = _util2.default.isWheel;
 
 
+<<<<<<< HEAD
+  var CatalogueSpy = function (perfect) {
+    var doc = document;
+    var reg = /translateY\(([-\w]+)\)/;
+
+    var CatalogueSpy = function () {
+      function CatalogueSpy(scrollSpy) {
+        var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+        _classCallCheck(this, CatalogueSpy);
+
+        _initialiseProps.call(this);
+
+        this.scrollSpy = scrollSpy;
+        this.config = _extends({}, CatalogueSpy.defaultConfig, config);
+
+        var menuHeight = this.config.menuHeight;
+
+        if (!menuHeight) {
+          menuHeight = 400; // todo ，取浏览器可视化高度，待实现
+          this.config.menuHeight = menuHeight;
+        }
+
+        var $menuPanel = scrollSpy.$menuPanel;
+
+        $menuPanel.style.transform = 'translateY(0)';
+        $menuPanel.style.maxHeight = menuHeight + 'px';
+        this.$menuPanel = $menuPanel;
+      }
+
+      _createClass(CatalogueSpy, [{
+        key: 'mount',
+        value: function mount() {
+          // fixme 待改进，改成 scrollSpy 触发该事件，参考 web-guide 项目
+          // http://www.zhangxinxu.com/wordpress/2013/04/js-mousewheel-dommousescroll-event/
+          this.$menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleScroll(true), false);
+        }
+      }, {
+        key: 'unmount',
+        value: function unmount() {
+          console.info('待补充');
+        }
+      }]);
+
+      return CatalogueSpy;
+    }();
+
+    CatalogueSpy.defaultConfig = {
+      menuHeight: null, // 设置菜单高度，如果不设置，则取当前浏览器可视高度
+      step: 10 // 滚动鼠标，菜单滑动步长
+    };
+
+    var _initialiseProps = function _initialiseProps() {
+      var _this = this;
+
+      this.handleScroll = function (prevent) {
+        return function (event) {
+          var _$menuPanel = _this.$menuPanel,
+              scrollHeight = _$menuPanel.scrollHeight,
+              clientHeight = _$menuPanel.clientHeight;
+          var step = _this.config.step;
+
+          _this.maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+
+          // 判断鼠标滑轮向上还是向下滑动
+          var upDown = void 0;
+          var detail = event.detail,
+              wheelDelta = event.wheelDelta;
+
+          if (detail) {
+            if (detail < 0) {
+              // up
+              upDown = 'up';
+            } else if (detail > 0) {
+              // down
+              upDown = 'down';
+            }
+          } else if (wheelDelta) {
+            //
+            if (wheelDelta > 0) {
+              // up
+              upDown = 'up';
+            }
+            if (wheelDelta < 0) {
+              // down
+              upDown = 'down';
+            }
+          }
+
+          var transform = _this.$menuPanel.style.transform;
+
+
+          var y = reg.exec(transform);
+          y = y ? parseFloat(y[1], 10) : 0;
+
+          if (prevent && _this.maxOffset > 0) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          if (upDown === 'up' && y === 0 || upDown === 'down' && Math.abs(y) === _this.maxOffset) {
+            return;
+          }
+
+          if (upDown === 'up' && y < 0) {
+            _this.$menuPanel.style.transform = 'translateY(' + Math.min(y + step, 0) + 'px)';
+          } else if (upDown === 'down' && Math.abs(y) < _this.maxOffset) {
+            _this.$menuPanel.style.transform = 'translateY(' + Math.max(y - step, -_this.maxOffset) + 'px)';
+          }
+        };
+      };
+
+      this.scrollMenu = function (lastSelector) {
+        var step = _this.config.step;
+        var $menuPanel = _this.$menuPanel;
+        var scrollHeight = $menuPanel.scrollHeight,
+            clientHeight = $menuPanel.clientHeight;
+
+        var maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+        if (maxOffset === 0) {
+          return;
+        }
+        maxOffset += 1; // 由于计算偏差，需要微调1个像素
+        // 如果当前菜单项隐藏，则向上拉
+        // Fixme 注意这里还需计算 $menuPanel.parentElement padding 和 border 的值，待处理
+        var menuRect = $menuPanel.parentElement.getBoundingClientRect();
+        var currentTarget = doc.querySelectorAll(lastSelector.join(','));
+        Array.prototype.forEach.call(currentTarget, function (el) {
+          var rect = el.getBoundingClientRect();
+          while (rect.top < menuRect.top || rect.bottom > menuRect.bottom) {
+=======
   var win = window;
   var doc = document;
   var resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize';
@@ -211,6 +342,7 @@
         Array.prototype.forEach.call(currentTarget, function (el) {
           var rect = el.getBoundingClientRect();
           while (rect.top > 0 && rect.bottom > 0 && (rect.top < menuRect.top || rect.bottom > menuRect.bottom)) {
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
             var transform = $menuPanel.style.transform;
 
             var y = reg.exec(transform);
@@ -223,6 +355,13 @@
             rect = el.getBoundingClientRect();
           }
         });
+<<<<<<< HEAD
+      };
+    };
+
+    perfect.CatalogueSpy = CatalogueSpy;
+    return CatalogueSpy;
+=======
       }
     };
   };
@@ -230,6 +369,7 @@
   var CatalogueSpy = function (perfect) {
     perfect.CatalogueSpy = _CatalogueSpy;
     return _CatalogueSpy;
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
   }(_perfect2.default);
 
   exports.default = CatalogueSpy;
