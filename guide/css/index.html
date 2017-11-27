@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
 <head>
-  <header class="navbar navbar-fixed navbar-expand navbar-primary">
+  <header class="navbar navbar-top navbar-expand navbar-primary flex-column flex-sm-row">
   
 
-  <a class="navbar-brand" href="/">
+  <a class="navbar-brand m-r-0 m-r-sm-2" href="/">
+
     <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
   </a>
-  <div class="navbar-collapse">
+  <div class="navbar-scroll">
     <ul class="navbar-nav">
       <li>
         <a class="ripple ripple-primary nav-link " href="/">首页</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/docs/getting-started/introduction/">文档</a>
+        <a class="ripple ripple-primary nav-link " href="/docs/perfect-tour/getting-started/">文档</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/components/ripple/">组件</a>
+        <a class="ripple ripple-primary nav-link " href="/components/">组件</a>
       </li>
       <li>
         <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
       </li>
+      <!--<li>-->
+        <!--<a class="ripple ripple-primary nav-link " href="/themes/">主题</a>-->
+      <!--</li>-->
       <li>
-        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
-      </li>
-      <li>
-        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
     </ul>
   </div>
@@ -78,9 +79,10 @@
 
 <div class="container-fluid">
   <div class="row m-l-3 doc-main">
-    <div class="doc-content col-24 col-lg-19 col-md-17">
+    <div class="doc-content catalogue-counter col-24 col-lg-19 col-md-17">
       <h2>
-<a id="toc-1" class="menu-anchor" data-target="toc-1" aria-hidden="true"></a>说明</h2>
+<div class="anchor-header" id="toc-1"></div>说明<a class="anchor-link" href="#toc-1" data-target="toc-1" aria-hidden="true">#</a>
+</h2>
 <p>首先我们必须遵循黄金法则(Golden Rule):
 <strong>不管有多少人参与，一定要确保每一行代码都像是同一个人编写的</strong>
 (<strong>Every line of code should appear to be written by a single person, no matter the number of contributors</strong>)。
@@ -99,7 +101,8 @@
 </ul>
 
 <h2>
-<a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>CSS 命名规范</h2>
+<div class="anchor-header" id="toc-2"></div>CSS 命名规范<a class="anchor-link" href="#toc-2" data-target="toc-2" aria-hidden="true">#</a>
+</h2>
 
 <ol>
   <li>文件名使用英文小写，多个单词时，中间用中划线 (-) 连接，比如：<code class="highlighter-rouge">common.scss</code> <code class="highlighter-rouge">button-groups.scss</code> 等</li>
@@ -116,8 +119,8 @@
 <table class="doc-table">
   <thead>
     <tr>
-      <th>class</th>
-      <th>含义</th>
+      <th style="width: 50%">class</th>
+      <th style="width: 50%">含义</th>
     </tr>
   </thead>
   <tbody>
@@ -309,12 +312,14 @@
 </table>
 
 <h2>
-<a id="toc-3" class="menu-anchor" data-target="toc-3" aria-hidden="true"></a>CSS 书写规范</h2>
+<div class="anchor-header" id="toc-3"></div>CSS 书写规范<a class="anchor-link" href="#toc-3" data-target="toc-3" aria-hidden="true">#</a>
+</h2>
 
 <p>以下会列出部分书写规范，更多的规范，我们会使用 sass-lint 来限制，webStorm 中有对应的插件，开启 sass-lint 实时检测</p>
 
 <h3>
-<a id="toc-3-1" class="menu-anchor" data-target="toc-3-1" aria-hidden="true"></a>语法和排版</h3>
+<div class="anchor-header" id="toc-3-1"></div>语法和排版<a class="anchor-link" href="#toc-3-1" data-target="toc-3-1" aria-hidden="true">#</a>
+</h3>
 
 <ol>
   <li>使用两个空格来代替制表符（tab）作为缩进，— 这是保证代码在各种环境下显示一致的唯一方式</li>
@@ -330,7 +335,7 @@
   <li>如果需要，尽量不要写带有浏览器前缀的属性，我们利用 <code class="highlighter-rouge">autoprefixer</code> 自动补齐</li>
   <li>每行长度最多100个字符，对于超长的样式，在样式值的 <code class="highlighter-rouge">空格</code> 处或 <code class="highlighter-rouge">,</code> 后换行
     <div class="language-scss highlighter-rouge">
-<pre class="highlight"><code><span class="nc">.guide</span> <span class="p">{</span>
+<div class="highlight"><pre class="highlight"><code><span class="nc">.guide</span> <span class="p">{</span>
   <span class="c1">// 同一属性，多个属性值，以逗号换行
 </span>  <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="mh">#655</span><span class="o">,</span>
   <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">15px</span> <span class="no">deeppink</span><span class="o">,</span>
@@ -350,14 +355,14 @@
   <span class="nf">linear-gradient</span><span class="p">(</span><span class="m">90deg</span><span class="o">,</span> <span class="nf">hsla</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0%</span><span class="o">,</span> <span class="m">100%</span><span class="o">,</span> <span class="mi">.3</span><span class="p">)</span> <span class="m">1px</span><span class="o">,</span> <span class="nb">transparent</span> <span class="m">0</span><span class="p">);</span>
   <span class="nl">background-size</span><span class="p">:</span> <span class="m">75px</span> <span class="m">75px</span><span class="o">,</span> <span class="m">75px</span> <span class="m">75px</span><span class="o">,</span> <span class="m">15px</span> <span class="m">15px</span><span class="o">,</span> <span class="m">15px</span> <span class="m">15px</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>scss 嵌套中，嵌套与 CSS 属性之间空一行</li>
 </ol>
 
 <h3>
-<a id="toc-3-2" class="menu-anchor" data-target="toc-3-2" aria-hidden="true"></a>属性声明顺序</h3>
+<div class="anchor-header" id="toc-3-2"></div>属性声明顺序<a class="anchor-link" href="#toc-3-2" data-target="toc-3-2" aria-hidden="true">#</a>
+</h3>
 
 <p>相关的属性声明应当归为一组，并按照下面的顺序书写</p>
 
@@ -376,7 +381,8 @@
 <p>具体每一个属性书写顺序请参考 <a href="%E9%93%BE%E6%8E%A5%E5%BE%85%E8%A1%A5%E5%85%85">sass-lint.yml</a></p>
 
 <h3>
-<a id="toc-3-3" class="menu-anchor" data-target="toc-3-3" aria-hidden="true"></a>scss 嵌套顺序</h3>
+<div class="anchor-header" id="toc-3-3"></div>scss 嵌套顺序<a class="anchor-link" href="#toc-3-3" data-target="toc-3-3" aria-hidden="true">#</a>
+</h3>
 
 <ol>
   <li>当前选择器的样式属性</li>
@@ -388,8 +394,7 @@
   <li>子选择器样式</li>
 </ol>
 
-<div class="language-scss highlighter-rouge">
-<pre class="highlight"><code><span class="nc">.product-teaser</span> <span class="p">{</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.product-teaser</span> <span class="p">{</span>
   <span class="c1">// 1. Style attributes
 </span>  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
   <span class="nl">padding</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
@@ -447,11 +452,11 @@
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3>
-<a id="toc-3-4" class="menu-anchor" data-target="toc-3-4" aria-hidden="true"></a>简写形式的属性声明</h3>
+<div class="anchor-header" id="toc-3-4"></div>简写形式的属性声明<a class="anchor-link" href="#toc-3-4" data-target="toc-3-4" aria-hidden="true">#</a>
+</h3>
 
 <p>在需要显式地设置属性值的情况下，应当尽量<code class="highlighter-rouge">限制</code>使用简写形式的属性声明，常见的滥用简写属性声明的情况如下</p>
 <ul>
@@ -467,8 +472,7 @@
 因此，在必要的时候，只需覆盖这两个值就可以。过度使用简写形式的属性声明会导致代码混乱，
 并且会对属性值带来不必要的覆盖从而引起意外的副作用</p>
 
-<div class="language-scss highlighter-rouge">
-<pre class="highlight"><code><span class="cm">/* Bad example */</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Bad example */</span>
 <span class="nc">.element</span> <span class="p">{</span>
   <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span><span class="p">;</span>
   <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
@@ -484,15 +488,16 @@
   <span class="nl">border-top-left-radius</span><span class="p">:</span> <span class="m">3px</span><span class="p">;</span>
   <span class="nl">border-top-right-radius</span><span class="p">:</span> <span class="m">3px</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3>
-<a id="toc-3-5" class="menu-anchor" data-target="toc-3-5" aria-hidden="true"></a>超链接书写顺序</h3>
+<div class="anchor-header" id="toc-3-5"></div>超链接书写顺序<a class="anchor-link" href="#toc-3-5" data-target="toc-3-5" aria-hidden="true">#</a>
+</h3>
 <p>链接的样式请严格按照如下顺序添加： a:link -&gt; a:visited -&gt; a:hover -&gt; a:active</p>
 
 <h3>
-<a id="toc-3-6" class="menu-anchor" data-target="toc-3-6" aria-hidden="true"></a>选择器书写格式</h3>
+<div class="anchor-header" id="toc-3-6"></div>选择器书写格式<a class="anchor-link" href="#toc-3-6" data-target="toc-3-6" aria-hidden="true">#</a>
+</h3>
 
 <ul>
   <li>避免使用多个属性选择器（例如，[class^=”…”]），这会降低浏览器的性能</li>
@@ -502,7 +507,7 @@
 *. 为选择器中的属性值添加双引号，例如，<code class="highlighter-rouge">input[type="text"]</code>
 *. 当一个 rule 包含多个 selector 时，每个选择器声明必须独占一行
     <div class="language-scss highlighter-rouge">
-<pre class="highlight"><code>  <span class="c1">// good
+<div class="highlight"><pre class="highlight"><code>  <span class="c1">// good
 </span>  <span class="nc">.post</span><span class="o">,</span>
   <span class="nc">.page</span><span class="o">,</span>
   <span class="nc">.comment</span> <span class="p">{</span>
@@ -513,13 +518,13 @@
 </span>  <span class="nc">.post</span><span class="o">,</span> <span class="nc">.page</span><span class="o">,</span> <span class="nc">.comment</span> <span class="p">{</span>
     <span class="nl">color</span><span class="p">:</span> <span class="mh">#00a8c6</span><span class="p">;</span>
   <span class="p">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
 </ul>
 
 <h2>
-<a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>注释</h2>
+<div class="anchor-header" id="toc-4"></div>注释<a class="anchor-link" href="#toc-4" data-target="toc-4" aria-hidden="true">#</a>
+</h2>
 
 <p>请确保代码是描述性的、注释良好并且易于他人理解的。好的代码注释能够传达样式上下文关系和代码要实现的目的。</p>
 
@@ -529,45 +534,43 @@
 
 <p>单行注释</p>
 
-<div class="language-scss highlighter-rouge">
-<pre class="highlight"><code><span class="c1">// comment
-</span></code></pre>
-</div>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// comment
+</span></code></pre></div></div>
 <p>多行注释</p>
-<div class="language-scss highlighter-rouge">
-<pre class="highlight"><code><span class="cm">/*  
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*  
 * comment 1
 * comment 2
 */</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>对于 scss 文件，我们大部分采用单行注释，这样编译成 <code class="highlighter-rouge">css</code> 时会删除掉这些注释，
 而多行注释一般写在页面的头部，说明该样式文件是干什么的，怎么用等信息</p>
 
 <h2>
-<a id="toc-5" class="menu-anchor" data-target="toc-5" aria-hidden="true"></a>文件大小</h2>
+<div class="anchor-header" id="toc-5"></div>文件大小<a class="anchor-link" href="#toc-5" data-target="toc-5" aria-hidden="true">#</a>
+</h2>
 
 <p>单个CSS文件应避免过大，原则上不超过500行，可以按模块或组件拆成粒度更小的文件。</p>
 
 <h2>
-<a id="toc-6" class="menu-anchor" data-target="toc-6" aria-hidden="true"></a>预编译器 Sass</h2>
+<div class="anchor-header" id="toc-6"></div>预编译器 Sass<a class="anchor-link" href="#toc-6" data-target="toc-6" aria-hidden="true">#</a>
+</h2>
 
 <p>待补充</p>
 
 <h2>
-<a id="toc-7" class="menu-anchor" data-target="toc-7" aria-hidden="true"></a>sass-lint 代码检测工具</h2>
+<div class="anchor-header" id="toc-7"></div>sass-lint 代码检测工具<a class="anchor-link" href="#toc-7" data-target="toc-7" aria-hidden="true">#</a>
+</h2>
 
 <p>需要安装 sass-lint</p>
-<div class="language-bash highlighter-rouge">
-<pre class="highlight"><code>npm install --save-dev sass-lint
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install <span class="nt">--save-dev</span> sass-lint
+</code></pre></div></div>
 <p>并设置 <code class="highlighter-rouge">.sass-lint.yml</code> 配置文件</p>
 
 <p>对于 WebStorm，需要安装插件<a href="https://github.com/idok/sass-lint-plugin">sass-lint-plugin</a></p>
 
 <h2>
-<a id="toc-8" class="menu-anchor" data-target="toc-8" aria-hidden="true"></a>scss 代码文件结构以及 CSS 模块化</h2>
+<div class="anchor-header" id="toc-8"></div>scss 代码文件结构以及 CSS 模块化<a class="anchor-link" href="#toc-8" data-target="toc-8" aria-hidden="true">#</a>
+</h2>
 
 <p>scss 目录下包含</p>
 
@@ -615,8 +618,7 @@
   <li>其他</li>
 </ul>
 
-<div class="highlighter-rouge">
-<pre class="highlight"><code>.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
 ├── animation
 │   └── fade-in.scss
 ├── etc
@@ -692,11 +694,11 @@
     ├── position.scss
     ├── spacing.scss
     └── text.scss
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2>
-<a id="toc-9" class="menu-anchor" data-target="toc-9" aria-hidden="true"></a>docs 文件结构</h2>
+<div class="anchor-header" id="toc-9"></div>docs 文件结构<a class="anchor-link" href="#toc-9" data-target="toc-9" aria-hidden="true">#</a>
+</h2>
 
 
     </div>
@@ -704,51 +706,51 @@
       <div class="doc-catalogue-panel">
 <ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
   <li>
-    <a class="menu-title" href="#" data-menu="toc-1">说明</a>
+    <a class="menu-title" href="#" title="说明" data-menu="toc-1">说明</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-2">CSS 命名规范</a>
+    <a class="menu-title" href="#" title="CSS 命名规范" data-menu="toc-2">CSS 命名规范</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-3">CSS 书写规范</a>
+    <a class="menu-title" href="#" title="CSS 书写规范" data-menu="toc-3">CSS 书写规范</a>
 <ul class="menu menu-catalogue doc-catalogue">
   <li>
-    <a class="menu-title" href="#" data-menu="toc-3-1">语法和排版</a>
+    <a class="menu-title" href="#" title="语法和排版" data-menu="toc-3-1">语法和排版</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-3-2">属性声明顺序</a>
+    <a class="menu-title" href="#" title="属性声明顺序" data-menu="toc-3-2">属性声明顺序</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-3-3">scss 嵌套顺序</a>
+    <a class="menu-title" href="#" title="scss 嵌套顺序" data-menu="toc-3-3">scss 嵌套顺序</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-3-4">简写形式的属性声明</a>
+    <a class="menu-title" href="#" title="简写形式的属性声明" data-menu="toc-3-4">简写形式的属性声明</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-3-5">超链接书写顺序</a>
+    <a class="menu-title" href="#" title="超链接书写顺序" data-menu="toc-3-5">超链接书写顺序</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-3-6">选择器书写格式</a>
+    <a class="menu-title" href="#" title="选择器书写格式" data-menu="toc-3-6">选择器书写格式</a>
   </li>
 </ul>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-4">注释</a>
+    <a class="menu-title" href="#" title="注释" data-menu="toc-4">注释</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-5">文件大小</a>
+    <a class="menu-title" href="#" title="文件大小" data-menu="toc-5">文件大小</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-6">预编译器 Sass</a>
+    <a class="menu-title" href="#" title="预编译器 Sass" data-menu="toc-6">预编译器 Sass</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-7">sass-lint 代码检测工具</a>
+    <a class="menu-title" href="#" title="sass-lint 代码检测工具" data-menu="toc-7">sass-lint 代码检测工具</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-8">scss 代码文件结构以及 CSS 模块化</a>
+    <a class="menu-title" href="#" title="scss 代码文件结构以及 CSS 模块化" data-menu="toc-8">scss 代码文件结构以及 CSS 模块化</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-9">docs 文件结构</a>
+    <a class="menu-title" href="#" title="docs 文件结构" data-menu="toc-9">docs 文件结构</a>
   </li>
 </ul>
 </div>
@@ -776,32 +778,36 @@
     new ScrollSpy(document.body, {
       menu: '.doc-catalogue-panel',
       container: '.doc-content',
-      offset: 50,
+      offset: 70,
       anchor: false,
       extend: true,
       plugins: CatalogueSpy,
     });
-    // 窗口滑动到某一位置时，修改目录定位位置
-    $(window).on('scroll', function (event) {
-      var top = window.scrollY;
-      var clientHeight = document.documentElement.clientHeight;
-      var scrollHeight = document.documentElement.scrollHeight;
-      var contentTop = $('.doc-content').offset().top;
 
-      if (top > scrollHeight - clientHeight) {
-        $('.doc-catalogue-panel').css({
-          position: 'absolute',
-          top: top + 'px'
-        });
-      } else if (top + 52 > contentTop) {
-        $('.doc-catalogue-panel').css({
-          position: 'fixed',
-          top: '50px'
-        });
-      } else {
-        $('.doc-catalogue-panel').css({
-          position: 'static',
-        });
+    // 窗口滑动到某一位置时，修改目录定位位置
+    var $cataloguePanel = $('.doc-catalogue-menu-right .doc-catalogue-panel');
+    $(window).on('scroll', function (event) {
+      if ($cataloguePanel.is(':visible')) {
+        var top = window.scrollY;
+        var clientHeight = document.documentElement.clientHeight;
+        var scrollHeight = document.documentElement.scrollHeight;
+        var contentTop = $('.doc-content').offset().top;
+
+        if (top > scrollHeight - clientHeight) {
+          $cataloguePanel.css({
+            position: 'absolute',
+            top: top + 'px'
+          });
+        } else if (top + 54 > contentTop) {
+          $cataloguePanel.css({
+            position: 'fixed',
+            top: '54px'
+          });
+        } else {
+          $cataloguePanel.css({
+            position: 'static',
+          });
+        }
       }
     });
 
@@ -812,36 +818,58 @@
 
 <script>
   $(function () {
+    // 展开代码
+    $('.doc-example-expand [data-code-icon]').click(function () {
+      var $el = $(this);
+      var $icon = $el.children();
+      var $code = $el.parent().next();
+      var $tooltip = $el.next().find('.tooltip-inner');
+      if ($icon.hasClass('icon-pure-code')) {
+        $icon.removeClass('icon-pure-code');
+        $icon.addClass('icon-pure-code-expand');
+        $tooltip.text('隐藏 Code');
+        $code.fadeIn();
+      } else {
+        $icon.removeClass('icon-pure-code-expand');
+        $icon.addClass('icon-pure-code');
+        $tooltip.text('显示 Code');
+        $code.fadeOut();
+      }
+    });
+
     // 为代码添加复制按钮
     $('.highlight:not(.doc-example-highlight)').each(function () {
-      var btnHtml = '<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>'
-      $(this).before(btnHtml);
+      var copyCodeIconHtml = '<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>\n' +
+        '    <div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">复制代码</div></div>';
+      $(this).before(copyCodeIconHtml);
     });
 
     // 复制到剪贴板
-    var clipboard = new Clipboard('.doc-copy-btn', {
+    var clipboard = new Clipboard('.doc-code-copy', {
       target: function (trigger) {
-        return trigger.parentNode.nextElementSibling
+        return trigger.nextElementSibling.nextElementSibling;
       }
     });
 
     clipboard.on('success', function (e) {
-      //$(e.trigger)
-      //  .attr('title', 'Copied!')
-      e.clearSelection()
+      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
+      $tooltip.text('复制成功');
+      e.clearSelection();
     });
 
-    clipboard.on('error', function (e) {
-      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
-      var fallbackMsg = 'Press ' + modifierKey + 'C to copy';
-
-      //$(e.trigger)
-      //.attr('title', fallbackMsg)
-      //.tooltip('_fixTitle')
-      //.tooltip('show')
-      //.attr('title', 'Copy to clipboard')
-      //.tooltip('_fixTitle')
+    $('.doc-code-copy').mouseleave(function () {
+      var $tooltip = $(this).next().find('.tooltip-inner');
+      $tooltip.text('复制代码');
     });
+
+//    clipboard.on('error', function (e) {
+//      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
+//      var fallbackMsg = '请使用快捷键 ' + modifierKey + 'C 来复制';
+//      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
+//      $tooltip.text('复制成功');
+//      e.clearSelection();
+//    });
+
   });
 
 </script>

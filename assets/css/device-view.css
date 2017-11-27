@@ -1,3 +1,8 @@
+@charset "UTF-8";
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
 body {
   padding: 0;
   margin: 0;
@@ -16,8 +21,8 @@ device-resizer {
       flex-direction: column;
   height: 100vh;
   overflow: hidden;
-  color: #444;
-  background: #f9f9f9;
+  color: rgba(0, 0, 0, 0.74);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .device-header {
@@ -27,10 +32,9 @@ device-resizer {
       flex-direction: row;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  padding: 12px 20px;
+  padding: .5rem 1.25rem;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  background: #ffffff;
 }
 
 .device-brand {
@@ -48,11 +52,11 @@ device-resizer {
 
 .brand-name {
   display: inline-block;
-  height: 36px;
-  margin-left: 12px;
-  font-size: 16px;
+  height: 2.25rem;
+  margin-left: .75rem;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 36px;
+  line-height: 2.25rem;
 }
 
 .device-url-container {
@@ -61,23 +65,25 @@ device-resizer {
   -ms-flex-direction: row;
       flex-direction: row;
   width: 400px;
-  height: 24px;
-  padding: 6px;
+  height: 1.5rem;
+  padding: .375rem;
   border-radius: 2px;
   background: #eee;
   cursor: pointer;
   fill: currentColor;
 }
 
-.device-url-icon {
-  color: #424242;
+.device-url-icon [class*="icon-pure-"] {
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
 }
 
 .device-url-input {
   width: 100%;
-  padding-left: 12px;
+  padding-left: 1rem;
   border: 0;
-  font-size: 14px;
+  font-size: .875rem;
   background: inherit;
   outline: 0;
 }
@@ -92,25 +98,23 @@ device-resizer {
 }
 
 .device-icon {
-  width: 24px;
-  height: 24px;
   margin: 6px 12px;
-  color: rgba(0, 0, 0, 0.4);
-  fill: currentColor;
+  cursor: pointer;
 }
 
-.device-icon.active {
-  color: rgba(0, 0, 0, 0.8);
+.device-icon [class*="icon-pure-"] {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
 }
 
 .device-selector-wrapper {
   position: relative;
-  height: 15px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  height: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   font-weight: 500;
-  color: #212121;
-  background: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  background: #ffffff;
   white-space: nowrap;
 }
 
@@ -124,25 +128,22 @@ device-resizer {
   position: absolute;
   left: 0;
   right: 0;
-  box-sizing: border-box;
-  height: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 1rem;
   margin-left: auto;
   margin-right: auto;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  font-size: 10px;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: .75rem;
   font-weight: 500;
-  line-height: 16px;
+  line-height: 1rem;
   color: #fff;
   cursor: pointer;
 }
 
-.device-selector-item:focus, .device-selector-item:hover {
-  background: #eee;
-}
-
-.device-selector-item.active {
-  background: #eee;
+.device-selector-item:focus, .device-selector-item:hover, .device-selector-item.active {
+  background: rgba(0, 0, 0, 0.065);
 }
 
 .device-selector-item > .size {
@@ -166,7 +167,7 @@ device-resizer {
   margin-left: -100px;
   font-size: 12px;
   font-weight: 500;
-  line-height: 15px;
+  line-height: 1rem;
   color: #212121;
   text-align: center;
   pointer-events: none;
@@ -218,7 +219,8 @@ device-view[device="handset"][landscape] {
 
 .device-list[view="all"] > device-view {
   bottom: 0;
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   display: block;
   -webkit-transform: scale(0.5);
           transform: scale(0.5);

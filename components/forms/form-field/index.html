@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="CSS3 Perfect">
+<meta name="description"
+      content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+<meta name="author" content="Linder Wang">
+
+<title>
+  
+  Form Field 表单域 &middot; Perfect
+  
+</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" href="/favicon.ico">
+
+<!-- Perfect CSS -->
+<link href="/assets/css/perfect.css" rel="stylesheet">
+<!-- 页面 CSS -->
+<link href="/assets/css/components.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <header class="navbar navbar-top navbar-expand navbar-primary flex-column flex-sm-row">
+  
+  <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
+    <i class="icon-pure-menu"></i>
+  </div>
+  
+
+  <a class="navbar-brand m-r-0 m-r-sm-2" href="/">
+
+    <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
+  </a>
+  <div class="navbar-scroll">
+    <ul class="navbar-nav">
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/">首页</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/docs/perfect-tour/getting-started/">文档</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link active" href="/components/">组件</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
+      </li>
+      <!--<li>-->
+        <!--<a class="ripple ripple-primary nav-link " href="/themes/">主题</a>-->
+      <!--</li>-->
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+    <!--把 jquery 单独引入到页面最上面-->
+<script src="/assets/js/vendor/jquery.min.js"></script>
+
+
+    <aside id="drawer" class="drawer drawer-permanent navbar-top-adjust">
+      <nav class="drawer-nav">
+        <nav class="drawer-content">
+          
+
+
+
+
+
+
+
+<ul class="menu perfect-menu">
+
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/theme/classes/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">theme 主题</a>
+    <ul class="menu"  style="display: none;" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/theme/classes/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">主题 Classes</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/base/animation/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">基础</a>
+    <ul class="menu"  style="display: none;" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/base/animation/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Animation 动画</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/base/ripple/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Ripple 波纹效果</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/base/shadow/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Shadow 阴影效果</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/typography/typography/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">Typography 排版</a>
+    <ul class="menu"  style="display: none;" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/typography/typography/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Typography 排版</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/typography/code/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Code 代码</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/layout/box/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">Layout 布局</a>
+    <ul class="menu"  style="display: none;" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/layout/box/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Box 盒子布局</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/layout/drawer/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Drawer 抽屉布局</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/layout/container/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Container 容器</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/layout/grid/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Grid 栅格</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/layout/responsive/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Responsive 响应式</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/forms/input/" 
+       class="menu-title menu-header active" style="padding-left: 1rem;">表单组件</a>
+    <ul class="menu" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/forms/input/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Input 输入框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/forms/select/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Select 下拉选择框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/forms/dropdown/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">DropDown 下拉菜单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/forms/radio/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Radio 单选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/forms/checkbox/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/forms/upload/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Upload 上传文件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/forms/switch/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Switch 开关</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/forms/slider/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Slider 滑块</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/forms/button/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Button 按钮</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/forms/form-field/"
+           class="menu-title menu-sub-title active" style="padding-left: 2rem;">Form Field 表单域</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/elements/menu/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">元素组件</a>
+    <ul class="menu"  style="display: none;" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/menu/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Menu 菜单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/list-menu/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">List Menu 列表菜单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/tree/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Tree 树形组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/page/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Page 分页</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/loading/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Loading 加载</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/toast/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Toast 吐司提示</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/tooltip/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Tooltip 提示</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/image/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 图像</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/callout/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Callout 引线式标注</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/progress/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 进度条</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/tag/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Tag 标签</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/badge/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 角标</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/back-top/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Back Top 返回顶部</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/date-picker/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Date Picker 日期选择器</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/color-picker/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Color Picker 颜色选择器</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/timeline/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Timeline 时间轴</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/navigation/crumb/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">导航组件</a>
+    <ul class="menu"  style="display: none;" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/crumb/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Crumb 面包屑</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/navbar/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Navbar 导航栏</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/steps/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Steps 步骤条</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/tabs/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Tabs 标签页</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/container/list/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">容器组件</a>
+    <ul class="menu"  style="display: none;" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/list/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">List 列表</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/table/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Table 表格</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/card/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Card 卡片</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/panel/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Panel 面板</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/dialog/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Dialog 对话框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/accordion/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Accordion 手风琴</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/carousel/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Carousel 轮播图</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/utils/align/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">工具样式</a>
+    <ul class="menu"  style="display: none;" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/utils/align/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Align 文本对齐方式</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/utils/border/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Border 边框和圆角</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/utils/flex/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Flex 弹性布局</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/utils/sizing/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Sizing 元素大小</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/utils/spacing/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Spacing 间距</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/utils/text/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Text 文本修饰</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/icons/icon-pure-css/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">图标</a>
+    <ul class="menu"  style="display: none;" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/icons/icon-pure-css/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">纯 CSS 图标</a></li>
+      
+    </ul>
+  </li>
+  
+</ul>
+
+<script>
+  $(function () {
+    // 菜单超过一屏可以滚动查看
+    const $menuPanel = $('.drawer-content')[0];
+    const $menu = $('.drawer-content > .perfect-menu')[0];
+
+    // 页面进入时，设置上次的 translateY
+    const translateY = window.sessionStorage.getItem('nav-menus-translateY');
+    if (translateY) {
+      $menu.style.transform = `translateY(${translateY}px)`;
+    }
+
+    $menu.addEventListener('transitionend', function () {
+      $menu.style.transition = 'unset';
+    });
+    $('.menu').on('click', '.menu-header', function (e) {
+      e.preventDefault();
+      // 隐藏其他打开的菜单
+      $('.menu .menu').slideUp();
+      const $el = $(e.currentTarget);
+      const $nextEl = $el.next();
+      if ($nextEl.is(':visible')) {
+        $nextEl.slideUp();
+      } else {
+        $nextEl.slideDown(true, function () {
+          const menuPanelTop = $menuPanel.getBoundingClientRect().top;
+          const menuTop = $menu.getBoundingClientRect().top;
+          const currentElTop = e.currentTarget.getBoundingClientRect().top;
+          if (currentElTop < menuPanelTop) {
+            $menu.style.transform = `translateY(${menuTop - currentElTop}px)`;
+            $menu.style.transition = 'transform 200ms ease-in-out';
+          }
+        });
+      }
+    });
+
+    const isWheel = (() => {
+      const ua = navigator.userAgent;
+      if (/gecko/i.test(ua) && !(/webkit/i.test(ua)) && (/firefox/i.test(ua))) { // Firefox
+        return false;
+      }
+      return true;
+    })();
+
+    const reg = /translateY\(([-\w]+)\)/;
+
+    // Fixme 需要处理触摸滚动限制回弹效果
+    $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
+      const {scrollHeight, clientHeight} = $menuPanel;
+      const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+
+      // 判断鼠标滑轮向上还是向下滑动
+      let upDown;
+      const {detail, wheelDelta} = event;
+      if (detail) {
+        if (detail < 0) { // up
+          upDown = 'up';
+        } else if (detail > 0) { // down
+          upDown = 'down';
+        }
+      } else if (wheelDelta) { //
+        if (wheelDelta > 0) { // up
+          upDown = 'up';
+        }
+        if (wheelDelta < 0) { // down
+          upDown = 'down';
+        }
+      }
+
+      const speed = Math.abs(detail || wheelDelta);
+      // 在 mac 系统下 如果 (speed % 120) === 0 是鼠标滑动，否则是触摸滑动
+      const step = (speed % 120) === 0 ? 0.2 * speed : 5;
+
+      const {transform} = $menu.style;
+
+      let y = reg.exec(transform);
+      y = y ? parseFloat(y[1], 10) : 0;
+
+      if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === maxOffset)) {
+        return;
+      }
+
+      if (maxOffset > 0) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      let translateY;
+      if (upDown === 'up' && y < 0) {
+        translateY = Math.min(y + step, 0);
+      } else if (upDown === 'down' && Math.abs(y) < maxOffset) {
+        translateY = Math.max(y - step, -maxOffset);
+      }
+
+      window.sessionStorage.setItem('nav-menus-translateY', translateY);
+      $menu.style.transform = `translateY(${translateY}px)`;
+    }, false);
+
+  });
+</script>
+
+        </nav>
+      </nav>
+    </aside>
+
+    <main class="drawer-main">
+      <section class="component-wrap catalogue-counter">
+        <h2>单一表单元素</h2>
+
+<section class="component-container component-vertical-spacing">
+  <div class="form-field">
+    <label for="account">账户</label>
+    <div class="input input-primary">
+      <input type="text" class="input-field" placeholder="请输入账户" id="account"/>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="province">省份</label>
+    <div class="select select-primary">
+      <select class="select-inner" id="province">
+        <option value="1">河北</option>
+        <option value="2">北京</option>
+        <option value="3">天津</option>
+        <option value="4">山东</option>
+        <option value="5">山西</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label>性别</label>
+    <div class="radio-checkbox-group">
+      <div class="form-field">
+        <div class="radio radio-primary">
+          <input class="radio-native-control" type="radio" name="sex" id="sex-man"/>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <label for="sex-man">男</label>
+      </div>
+
+      <div class="form-field">
+        <div class="radio radio-primary">
+          <input class="radio-native-control" type="radio" name="sex" id="sex-woman"/>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <label for="sex-woman">女</label>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-field">
+    <label>爱好</label>
+    <div class="radio-checkbox-group">
+      <label class="form-field">
+        <div class="checkbox checkbox-primary">
+          <input class="checkbox-native-control" type="checkbox" name="hobby" />
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        编程
+      </label>
+
+      <label class="form-field">
+        <div class="checkbox checkbox-primary">
+          <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        数学
+      </label>
+
+      <label class="form-field">
+        <div class="checkbox checkbox-primary">
+          <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        音乐
+      </label>
+
+      <label class="form-field">
+        <div class="checkbox checkbox-primary">
+          <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        读书
+      </label>
+    </div>
+
+  </div>
+
+</section>
+
+<h2>表单元素组</h2>
+
+<section class="component-container">
+  <div class="form-field-group">
+    <div class="form-field">
+      <label for="group_account">账户</label>
+      <div class="input input-primary">
+        <input type="text" class="input-field" placeholder="请输入账户" id="group_account"/>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="group_province">省份</label>
+      <div class="select select-primary">
+        <select class="select-inner" id="group_province">
+          <option value="1">河北</option>
+          <option value="2">北京</option>
+          <option value="3">天津</option>
+          <option value="4">山东</option>
+          <option value="5">山西</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>性别</label>
+      <div class="radio-checkbox-group">
+        <div class="form-field">
+          <div class="radio radio-primary">
+            <input class="radio-native-control" type="radio" name="sex" id="group-sex-man"/>
+            <div class="radio-background">
+              <div class="radio-circle-outer"></div>
+              <div class="radio-circle-inner"></div>
+            </div>
+          </div>
+          <label for="group-sex-man">男</label>
+        </div>
+
+        <div class="form-field">
+          <div class="radio radio-primary">
+            <input class="radio-native-control" type="radio" name="sex" id="group-sex-woman"/>
+            <div class="radio-background">
+              <div class="radio-circle-outer"></div>
+              <div class="radio-circle-inner"></div>
+            </div>
+          </div>
+          <label for="group-sex-woman">女</label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-field">
+      <label>爱好</label>
+      <div class="radio-checkbox-group">
+        <label class="form-field">
+          <div class="checkbox checkbox-primary">
+            <input class="checkbox-native-control" type="checkbox" name="hobby" />
+            <div class="checkbox-background">
+              <div class="checkbox-mark-outer"></div>
+              <div class="checkbox-mark-inner"></div>
+            </div>
+          </div>
+          编程
+        </label>
+
+        <label class="form-field">
+          <div class="checkbox checkbox-primary">
+            <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+            <div class="checkbox-background">
+              <div class="checkbox-mark-outer"></div>
+              <div class="checkbox-mark-inner"></div>
+            </div>
+          </div>
+          数学
+        </label>
+
+        <label class="form-field">
+          <div class="checkbox checkbox-primary">
+            <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+            <div class="checkbox-background">
+              <div class="checkbox-mark-outer"></div>
+              <div class="checkbox-mark-inner"></div>
+            </div>
+          </div>
+          音乐
+        </label>
+
+        <label class="form-field">
+          <div class="checkbox checkbox-primary">
+            <input class="checkbox-native-control" type="checkbox" name="hobby"/>
+            <div class="checkbox-background">
+              <div class="checkbox-mark-outer"></div>
+              <div class="checkbox-mark-inner"></div>
+            </div>
+          </div>
+          读书
+        </label>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<h2>.form-field-left 和 .form-field-right</h2>
+
+<h3>label 位置放在 input 后面，但显示的位置在左侧，需要借助于样式 .form-field-left</h3>
+<section class="component-container">
+  <div class="form-field form-field-left">
+    <div class="input input-primary">
+      <input type="password" class="input-field" placeholder="请输入账户" id="password"/>
+    </div>
+    <label for="password">密码</label>
+  </div>
+</section>
+
+<h3>label 位置放在 input 前面，但显示的位置在右侧，需要借助于样式 .form-field-right</h3>
+<section class="component-container">
+  <div class="form-field form-field-right">
+    <label>男</label>
+    <div class="radio radio-info">
+      <input class="radio-native-control" type="radio" name="radio1">
+      <div class="radio-background">
+        <div class="radio-circle-outer"></div>
+        <div class="radio-circle-inner"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<h2>100% 显示</h2>
+
+<section class="component-container">
+  <div class="form-field">
+    <label class="label-inline" for="account_full">账户</label>
+    <div class="input input-primary input-full" id="account_full">
+      <input type="text" class="input-field" placeholder="请输入账户">
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label class="label-inline" for="password_full">密码</label>
+    <div class="input input-primary input-full" id="password_full">
+      <input type="password" class="input-field" placeholder="请输入密码">
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label class="label-inline" for="fruits">水果种类</label>
+    <div class="select select-primary select-full">
+      <select class="select-inner" id="fruits">
+        <option value="1">🍌</option>
+        <option value="2">🍎</option>
+        <option value="3">🍐</option>
+        <option value="4">🍉</option>
+        <option value="5">🍑</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+
+      </section>
+    </main>
+
+    <script>
+  $(function () {
+    var $drawer = $('#drawer');
+    $drawer[0].addEventListener('transitionend', () => {
+      $drawer.removeClass('drawer-animating');
+    });
+
+    $('#toggleDrawer').click(function (e) {
+      const clientWidth = document.documentElement.clientWidth;
+      if(clientWidth < 1200){
+        $drawer.toggleClass('drawer-open');
+        $('body').toggleClass('drawer-scroll-lock');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-close');
+      } else {
+        // 当超过1440px 时，利用该样式，隐藏显示处理
+        $drawer.toggleClass('drawer-close');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-open');
+      }
+    });
+
+    $('#drawer').click(function () {
+      $drawer.removeClass('drawer-open');
+      $('body').removeClass('drawer-scroll-lock');
+      $drawer.addClass('drawer-animating');
+    });
+
+    $('.drawer-content').click(function (e) {
+      e.stopPropagation();
+    });
+  });
+</script>
+
+    <script>
+  $(function () {
+    // 定时切换主题，TODO 为了调试方便，暂先改为10秒，等上线前改为 1分钟
+    const themes = ['theme-red', 'theme-pink', 'theme-purple', 'theme-deep-purple',
+      'theme-indigo', 'theme-blue', 'theme-light-blue', 'theme-cyan', 'theme-teal',
+      'theme-green', 'theme-light-green', 'theme-lime', 'theme-amber',
+      'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
+
+    setInterval(function () {
+      const r = Math.floor(Math.random() * 16);
+      $('body').removeClass().addClass(themes[r]);
+    }, 10000);
+  })
+</script>
+
+  </body>
+</html>

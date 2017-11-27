@@ -11,7 +11,7 @@
 
 <title>
   
-  基础样式-代码 &middot; Perfect
+  排版-Code 代码 &middot; Perfect
   
 </title>
 
@@ -21,40 +21,42 @@
 
 <!-- Perfect CSS -->
 <link href="/assets/css/perfect.css" rel="stylesheet">
-<!-- docs CSS -->
+<!-- 页面 CSS -->
 <link href="/assets/css/docs.css" rel="stylesheet">
-
 
   </head>
   <body>
 
-    <header class="navbar navbar-fixed navbar-expand navbar-primary">
+    <header class="navbar navbar-top navbar-expand navbar-primary flex-column flex-sm-row">
   
-  <span class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer"></span>
+  <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
+    <i class="icon-pure-menu"></i>
+  </div>
   
 
-  <a class="navbar-brand" href="/">
+  <a class="navbar-brand m-r-0 m-r-sm-2" href="/">
+
     <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
   </a>
-  <div class="navbar-collapse">
+  <div class="navbar-scroll">
     <ul class="navbar-nav">
       <li>
         <a class="ripple ripple-primary nav-link " href="/">首页</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link active" href="/docs/getting-started/introduction/">文档</a>
+        <a class="ripple ripple-primary nav-link active" href="/docs/perfect-tour/getting-started/">文档</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/components/ripple/">组件</a>
+        <a class="ripple ripple-primary nav-link " href="/components/">组件</a>
       </li>
       <li>
         <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
       </li>
+      <!--<li>-->
+        <!--<a class="ripple ripple-primary nav-link " href="/themes/">主题</a>-->
+      <!--</li>-->
       <li>
-        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
-      </li>
-      <li>
-        <a class="ripple ripple-primary nav-link " href="/development/">开发</a>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
       </li>
     </ul>
   </div>
@@ -64,7 +66,7 @@
 <script src="/assets/js/vendor/jquery.min.js"></script>
 
 
-    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+    <aside id="drawer" class="drawer drawer-permanent navbar-top-adjust">
       <nav class="drawer-nav">
         <nav class="drawer-content">
           
@@ -72,7 +74,11 @@
 
 
 
-<ul class="menu">
+
+
+
+<ul class="menu perfect-menu">
+
   
   
   
@@ -80,87 +86,89 @@
   
   
   <li class="menu-item">
-    <a href="/docs/getting-started/introduction/" 
-       class="menu-title menu-header ">Perfect 之旅</a>
-    <ul class="menu" style="display: none;">
+    <a href="/docs/perfect-tour/getting-started/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">Perfect 之旅</a>
+    <ul class="menu"  style="display: none;" >
       
       
 
       
-      <li class="menu-item"><a href="/docs/getting-started/introduction/"
-             class="menu-title ">介绍</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/perfect-tour/getting-started/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">快速上手</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/getting-started/download/"
-             class="menu-title ">下载</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/perfect-tour/best-practices/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">最佳实践</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/getting-started/best-practices/"
-             class="menu-title ">最佳实践</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/perfect-tour/component-list/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">组件一览</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/getting-started/css-module/"
-             class="menu-title ">CSS 模块化支持</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/perfect-tour/compatibility/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">兼容性</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/getting-started/javascript/"
-             class="menu-title ">JavaScript 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/perfect-tour/build/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">开发构建</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/getting-started/theme/"
-             class="menu-title ">自定义主题</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/perfect-tour/changelog/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">更新日志</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/getting-started/color-swatches/"
-             class="menu-title ">七色卡</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/perfect-tour/thanks/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">感谢</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/getting-started/compatibility/"
-             class="menu-title ">兼容性</a></li>
-      
-      
 
       
-      <li class="menu-item"><a href="/docs/getting-started/build/"
-             class="menu-title ">开发构建</a></li>
-      
-      
 
-      
-      <li class="menu-item"><a href="/docs/getting-started/changelog/"
-             class="menu-title ">历史版本</a></li>
-      
-      
-
-      
-      <li class="menu-item"><a href="/docs/getting-started/issue/"
-             class="menu-title ">问题和建议</a></li>
-      
-      
-
-      
-      <li class="menu-item"><a href="/docs/getting-started/develop-guide/"
-             class="menu-title ">Perfect 开发指南</a></li>
-      
-      
-
-      
-      <li class="menu-item"><a href="/docs/getting-started/browser-bug/"
-             class="menu-title ">浏览器 bug</a></li>
+      <li class="menu-item">
+        <a href="/docs/perfect-tour/sponsor/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">赞助</a></li>
       
     </ul>
   </li>
@@ -171,45 +179,39 @@
   
   
   <li class="menu-item">
-    <a href="/docs/setup/global-styles/" 
-       class="menu-title menu-header ">Perfect 设置</a>
-    <ul class="menu" style="display: none;">
+    <a href="/docs/theme/design-concept/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">Theme 主题</a>
+    <ul class="menu"  style="display: none;" >
       
       
 
       
-      <li class="menu-item"><a href="/docs/setup/global-styles/"
-             class="menu-title ">全局样式</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/theme/design-concept/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">设计理念</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/setup/options/"
-             class="menu-title ">配置项</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/theme/color/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">颜色</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/setup/sass/"
-             class="menu-title ">Sass</a></li>
-      
-      
 
       
-      <li class="menu-item"><a href="/docs/setup/javascript/"
-             class="menu-title ">JavaScript</a></li>
-      
-      
 
-      
-      <li class="menu-item"><a href="/docs/setup/flex/"
-             class="menu-title ">Flex</a></li>
-      
-      
-
-      
-      <li class="menu-item"><a href="/docs/setup/media-queries/"
-             class="menu-title ">媒体查询</a></li>
+      <li class="menu-item">
+        <a href="/docs/theme/custom-theme/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">自定义主题</a></li>
       
     </ul>
   </li>
@@ -220,27 +222,49 @@
   
   
   <li class="menu-item">
-    <a href="/docs/layout/container/" 
-       class="menu-title menu-header ">布局</a>
-    <ul class="menu" style="display: none;">
+    <a href="/docs/base/normalize/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">基础</a>
+    <ul class="menu"  style="display: none;" >
       
       
 
       
-      <li class="menu-item"><a href="/docs/layout/container/"
-             class="menu-title ">容器</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/normalize/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Normalize 重置样式</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/layout/grid/"
-             class="menu-title ">Grid</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/animation/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Animation 动画</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/layout/responsive/"
-             class="menu-title ">响应式布局</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/ripple/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Ripple 波纹效果</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/base/shadow/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Shadow 阴影效果</a></li>
       
     </ul>
   </li>
@@ -252,32 +276,28 @@
   
   <li class="menu-item">
     <a href="/docs/typography/typography/" 
-       class="menu-title menu-header active">排版</a>
-    <ul class="menu">
+       class="menu-title menu-header active" style="padding-left: 1rem;">Typography 排版</a>
+    <ul class="menu" >
       
       
 
       
-      <li class="menu-item"><a href="/docs/typography/typography/"
-             class="menu-title ">段落</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/typography/typography/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Typography 排版</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/typography/color/"
-             class="menu-title ">颜色</a></li>
-      
-      
 
       
-      <li class="menu-item"><a href="/docs/typography/code/"
-             class="menu-title active">代码</a></li>
-      
-      
 
-      
-      <li class="menu-item"><a href="/docs/typography/table/"
-             class="menu-title ">表格</a></li>
+      <li class="menu-item">
+        <a href="/docs/typography/code/"
+           class="menu-title menu-sub-title active" style="padding-left: 2rem;">Code 代码</a></li>
       
     </ul>
   </li>
@@ -288,33 +308,59 @@
   
   
   <li class="menu-item">
-    <a href="/docs/navigation/nav/" 
-       class="menu-title menu-header ">导航类样式</a>
-    <ul class="menu" style="display: none;">
+    <a href="/docs/layout/box/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">Layout 布局</a>
+    <ul class="menu"  style="display: none;" >
       
       
 
       
-      <li class="menu-item"><a href="/docs/navigation/nav/"
-             class="menu-title ">导航</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/layout/box/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Box 盒子布局</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/navigation/navbar/"
-             class="menu-title ">导航栏</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/layout/drawer/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Drawer 抽屉布局</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/navigation/menu/"
-             class="menu-title ">菜单</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/layout/container/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Container 容器</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/navigation/pagination/"
-             class="menu-title ">分页</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/layout/grid/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Grid 栅格</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/layout/responsive/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Responsive 响应式</a></li>
       
     </ul>
   </li>
@@ -325,45 +371,109 @@
   
   
   <li class="menu-item">
-    <a href="/docs/container/form/" 
-       class="menu-title menu-header ">容器类样式</a>
-    <ul class="menu" style="display: none;">
+    <a href="/docs/forms/input/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">表单组件</a>
+    <ul class="menu"  style="display: none;" >
       
       
 
       
-      <li class="menu-item"><a href="/docs/container/form/"
-             class="menu-title ">Form 表单</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/forms/input/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Input 输入框</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/container/panel/"
-             class="menu-title ">Panel 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/forms/select/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Select 下拉选择框</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/container/tab/"
-             class="menu-title ">Tab Panel 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/forms/dropdown/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">DropDown 下拉菜单</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/container/card/"
-             class="menu-title ">Card 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/forms/radio/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Radio 单选框</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/container/list/"
-             class="menu-title ">List Panel 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/forms/checkbox/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/container/dialog/"
-             class="menu-title ">对话框窗口</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/forms/upload/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Upload 上传文件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/forms/switch/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Switch 开关</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/forms/slider/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Slider 滑块</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/forms/button/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Button 按钮</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/forms/form-field/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Form Field 表单域</a></li>
       
     </ul>
   </li>
@@ -374,63 +484,169 @@
   
   
   <li class="menu-item">
-    <a href="/docs/components/button/" 
-       class="menu-title menu-header ">组件类样式</a>
-    <ul class="menu" style="display: none;">
+    <a href="/docs/elements/menu/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">元素组件</a>
+    <ul class="menu"  style="display: none;" >
       
       
 
       
-      <li class="menu-item"><a href="/docs/components/button/"
-             class="menu-title ">Button 按钮</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/menu/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Menu 菜单</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/components/input/"
-             class="menu-title ">Input 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/list-menu/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">List Menu 列表菜单</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/components/dropdown/"
-             class="menu-title ">DropDown 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/tree/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Tree 树形组件</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/components/progress/"
-             class="menu-title ">Progress 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/page/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Page 分页</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/components/alert/"
-             class="menu-title ">Alert 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/loading/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Loading 加载</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/components/crumb/"
-             class="menu-title ">面包屑</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/toast/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Toast 吐司提示</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/components/tooltip/"
-             class="menu-title ">Tooltip 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/tooltip/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Tooltip 提示</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/components/popover/"
-             class="menu-title ">Popover 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/image/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 图像</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/components/image/"
-             class="menu-title ">Image 组件</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/callout/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Callout 引线式标注</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/progress/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 进度条</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/tag/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Tag 标签</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/badge/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 角标</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/back-top/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Back Top 返回顶部</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/date-picker/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Date Picker 日期选择器</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/color-picker/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Color Picker 颜色选择器</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/elements/timeline/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Timeline 时间轴</a></li>
       
     </ul>
   </li>
@@ -441,51 +657,258 @@
   
   
   <li class="menu-item">
-    <a href="/docs/utils/float/" 
-       class="menu-title menu-header ">工具类样式</a>
-    <ul class="menu" style="display: none;">
+    <a href="/docs/navigation/crumb/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">导航组件</a>
+    <ul class="menu"  style="display: none;" >
       
       
 
       
-      <li class="menu-item"><a href="/docs/utils/float/"
-             class="menu-title ">浮动</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/navigation/crumb/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Crumb 面包屑</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/utils/position/"
-             class="menu-title ">定位</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/navigation/navbar/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Navbar 导航栏</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/utils/color/"
-             class="menu-title ">颜色</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/navigation/steps/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Steps 步骤条</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/utils/flex/"
-             class="menu-title ">Flex</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/navigation/tabs/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Tabs 标签页</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/container/list/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">容器组件</a>
+    <ul class="menu"  style="display: none;" >
       
       
 
       
-      <li class="menu-item"><a href="/docs/utils/spacing/"
-             class="menu-title ">间距</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/list/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">List 列表</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/utils/border/"
-             class="menu-title ">边框</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/table/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Table 表格</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/utils/align/"
-             class="menu-title ">文本对齐</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/card/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Card 卡片</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/panel/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Panel 面板</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/dialog/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Dialog 对话框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/accordion/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Accordion 手风琴</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/container/carousel/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Carousel 轮播图</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/utils/align/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">工具样式</a>
+    <ul class="menu"  style="display: none;" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/align/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Align 文本对齐方式</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/border/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Border 边框和圆角</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/display/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Display 相关属性值</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/flex/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Flex 弹性布局</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/float/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Float 浮层和清空浮层</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/position/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Position 定位</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/sizing/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Sizing 元素大小</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/spacing/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Spacing 间距</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/utils/text/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Text 文本修饰</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/docs/icons/icon-pure-css/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">图标</a>
+    <ul class="menu"  style="display: none;" >
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/icons/icon-pure-css/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">纯 CSS 图标</a></li>
       
     </ul>
   </li>
@@ -497,58 +920,28 @@
   
   <li class="menu-item">
     <a href="/docs/tag-property/tag/" 
-       class="menu-title menu-header ">Html 标签和样式属性</a>
-    <ul class="menu" style="display: none;">
+       class="menu-title menu-header " style="padding-left: 1rem;">Html 标签和样式属性</a>
+    <ul class="menu"  style="display: none;" >
       
       
 
       
-      <li class="menu-item"><a href="/docs/tag-property/tag/"
-             class="menu-title ">Html 标签</a></li>
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/tag-property/tag/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Html 标签</a></li>
       
       
 
       
-      <li class="menu-item"><a href="/docs/tag-property/property/"
-             class="menu-title ">样式属性</a></li>
-      
-    </ul>
-  </li>
-  
-  
-  
-
-  
-  
-  <li class="menu-item">
-    <a href="/docs/plugins/plugin1/" 
-       class="menu-title menu-header ">插件</a>
-    <ul class="menu" style="display: none;">
-      
-      
 
       
-      <li class="menu-item"><a href="/docs/plugins/plugin1/"
-             class="menu-title ">插件1</a></li>
-      
-    </ul>
-  </li>
-  
-  
-  
 
-  
-  
-  <li class="menu-item">
-    <a 
-       class="menu-title menu-header ">辅助样式库</a>
-    <ul class="menu" style="display: none;">
-      
-      
-
-      
-      <li class="menu-item"><a href="http://www.iconfont.cn/"
-             target="_blank"class="menu-title ">阿里图标库</a></li>
+      <li class="menu-item">
+        <a href="/docs/tag-property/property/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">样式属性</a></li>
       
     </ul>
   </li>
@@ -557,18 +950,101 @@
 
 <script>
   $(function () {
+    // 菜单超过一屏可以滚动查看
+    const $menuPanel = $('.drawer-content')[0];
+    const $menu = $('.drawer-content > .perfect-menu')[0];
+
+    // 页面进入时，设置上次的 translateY
+    const translateY = window.sessionStorage.getItem('nav-menus-translateY');
+    if (translateY) {
+      $menu.style.transform = `translateY(${translateY}px)`;
+    }
+
+    $menu.addEventListener('transitionend', function () {
+      $menu.style.transition = 'unset';
+    });
     $('.menu').on('click', '.menu-header', function (e) {
       e.preventDefault();
       // 隐藏其他打开的菜单
-      $('.menu .menu').slideUp('slow');
-      var $el = $(e.currentTarget);
-      var $nextEl = $el.next();
+      $('.menu .menu').slideUp();
+      const $el = $(e.currentTarget);
+      const $nextEl = $el.next();
       if ($nextEl.is(':visible')) {
-        $nextEl.slideUp('slow');
+        $nextEl.slideUp();
       } else {
-        $nextEl.slideDown('slow');
+        $nextEl.slideDown(true, function () {
+          const menuPanelTop = $menuPanel.getBoundingClientRect().top;
+          const menuTop = $menu.getBoundingClientRect().top;
+          const currentElTop = e.currentTarget.getBoundingClientRect().top;
+          if (currentElTop < menuPanelTop) {
+            $menu.style.transform = `translateY(${menuTop - currentElTop}px)`;
+            $menu.style.transition = 'transform 200ms ease-in-out';
+          }
+        });
       }
     });
+
+    const isWheel = (() => {
+      const ua = navigator.userAgent;
+      if (/gecko/i.test(ua) && !(/webkit/i.test(ua)) && (/firefox/i.test(ua))) { // Firefox
+        return false;
+      }
+      return true;
+    })();
+
+    const reg = /translateY\(([-\w]+)\)/;
+
+    // Fixme 需要处理触摸滚动限制回弹效果
+    $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
+      const {scrollHeight, clientHeight} = $menuPanel;
+      const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+
+      // 判断鼠标滑轮向上还是向下滑动
+      let upDown;
+      const {detail, wheelDelta} = event;
+      if (detail) {
+        if (detail < 0) { // up
+          upDown = 'up';
+        } else if (detail > 0) { // down
+          upDown = 'down';
+        }
+      } else if (wheelDelta) { //
+        if (wheelDelta > 0) { // up
+          upDown = 'up';
+        }
+        if (wheelDelta < 0) { // down
+          upDown = 'down';
+        }
+      }
+
+      const speed = Math.abs(detail || wheelDelta);
+      // 在 mac 系统下 如果 (speed % 120) === 0 是鼠标滑动，否则是触摸滑动
+      const step = (speed % 120) === 0 ? 0.2 * speed : 5;
+
+      const {transform} = $menu.style;
+
+      let y = reg.exec(transform);
+      y = y ? parseFloat(y[1], 10) : 0;
+
+      if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === maxOffset)) {
+        return;
+      }
+
+      if (maxOffset > 0) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      let translateY;
+      if (upDown === 'up' && y < 0) {
+        translateY = Math.min(y + step, 0);
+      } else if (upDown === 'down' && Math.abs(y) < maxOffset) {
+        translateY = Math.max(y - step, -maxOffset);
+      }
+
+      window.sessionStorage.setItem('nav-menus-translateY', translateY);
+      $menu.style.transform = `translateY(${translateY}px)`;
+    }, false);
 
   });
 </script>
@@ -577,24 +1053,49 @@
       </nav>
     </aside>
 
-    <main class="drawer-main navbar-fixed-adjust">
+    <main class="drawer-main">
+      
       <div class="doc-main">
-        
-        <div class="row no-gutters">
-          <div class="doc-content col-24 col-xl-19 col-lg-18 col-md-17 p-r-3">
-            <p>通过定制代码样式来友好的展现编程代码，让用户清晰的查看代码，结合高亮代码插件， 呈现给用户的是可读性强、易于使用的代码格式。</p>
-            <div class="doc-content-header">
-              <a href="https://github.com/joy-web/perfect-css/edit/master/docs/docs/typography/code.md" target="_blank">编辑该页面</a>
-              <a href="https://github.com/joy-web/perfect-css/issues/new?title=问题或建议(基础样式-代码)" target="_blank">问题和建议</a>
+        <div class="doc-content catalogue-counter">
+          <div class="doc-catalogue-menu">
+            <div class="doc-catalogue-icon">
+              <i class="icon-pure-catalogue"></i>
             </div>
-            <hr/>
-
-            <p>代码样式对应源文件：<a href="https://github.com/joy-web/perfect-css/scss/core/base-styles/code.scss" target="_blank">/scss/core/base-styles/code.scss</a></p>
+            <div class="doc-catalogue-panel">
+<ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
+  <li>
+    <a class="menu-title" href="#" title="代码块级元素 pre" data-menu="toc-1">代码块级元素 pre</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="代码行内元素 code" data-menu="toc-2">代码行内元素 code</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="键盘字母元素 kbd" data-menu="toc-3">键盘字母元素 kbd</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="输出元素 samp" data-menu="toc-4">输出元素 samp</a>
+  </li>
+  <li>
+    <a class="menu-title" href="#" title="变量 var" data-menu="toc-5">变量 var</a>
+  </li>
+</ul>
+</div>
+          </div>
+          <div class="doc-content-header">
+            <p>通过定制代码样式来友好的展现编程代码，让用户清晰的查看代码，结合高亮代码插件， 呈现给用户的是可读性强、易于使用的代码格式。</p>
+            <div>
+              <a href="https://github.com/joy-web/perfect-css/edit/master/docs/docs/typography/code.md" target="_blank">编辑该页面</a>
+              <a href="https://github.com/joy-web/perfect-css/issues/new?title=问题或建议(排版-Code 代码)" target="_blank">问题和建议</a>
+            </div>
+          </div>
+          <hr/>
+          <p>代码样式对应源文件：<a href="https://github.com/joy-web/perfect-css/tree/master/scss/core/base-styles/code.scss" target="_blank">/scss/core/base-styles/code.scss</a></p>
 
 <p>CSS 中用来处理代码的 html 标签主要有 <code class="highlighter-rouge">code</code>  <code class="highlighter-rouge">pre</code> <code class="highlighter-rouge">var</code> <code class="highlighter-rouge">kbd</code> <code class="highlighter-rouge">samp</code></p>
 
 <h2>
-<a id="toc-1" class="menu-anchor" data-target="toc-1" aria-hidden="true"></a>代码块级元素 <code class="highlighter-rouge">pre</code>
+<div class="anchor-header" id="toc-1"></div>代码块级元素 <code class="highlighter-rouge">pre</code>
+<a class="anchor-link" href="#toc-1" data-target="toc-1" aria-hidden="true">#</a>
 </h2>
 
 <p>我们使用 <code class="highlighter-rouge">pre</code> 来显示多行代码，需要注意的是，代码中的尖括号需要做转义处理，pre 中的内容
@@ -626,8 +1127,20 @@
   </code>
 </pre>
 </div>
-<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>
-<div class="highlight doc-example-highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">"pre-scroll"</span> <span class="na">id=</span><span class="s">"preScroll"</span><span class="nt">&gt;</span>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">"pre-scroll"</span> <span class="na">id=</span><span class="s">"preScroll"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>代码第一行内容<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
   <span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>代码第二行内容<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
   <span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>代码第三行内容<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
@@ -646,11 +1159,13 @@
     return styles;
   }
   <span class="nt">&lt;/code&gt;</span>
-<span class="nt">&lt;/pre&gt;</span></code></pre></div>
+<span class="nt">&lt;/pre&gt;</span></code></pre>
+</div>
 </div>
 
 <h2>
-<a id="toc-2" class="menu-anchor" data-target="toc-2" aria-hidden="true"></a>代码行内元素 <code class="highlighter-rouge">code</code>
+<div class="anchor-header" id="toc-2"></div>代码行内元素 <code class="highlighter-rouge">code</code>
+<a class="anchor-link" href="#toc-2" data-target="toc-2" aria-hidden="true">#</a>
 </h2>
 
 <p>用来处理行内元素，可以使用 <code class="highlighter-rouge">code</code> ，注意代码中的内容尖括号需要转义处理</p>
@@ -659,12 +1174,26 @@
 <div class="doc-example-render" data-example-id="">
 html <code>&lt;span&gt;</code> 是一个行内元素，这里 &lt;span&gt; 用 code 包裹后显示效果为 <code>&lt;span&gt;</code>
 </div>
-<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>
-<div class="highlight doc-example-highlight"><pre><code class="language-html" data-lang="html">html <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> 是一个行内元素，这里 <span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span> 用 code 包裹后显示效果为 <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span></code></pre></div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html">html <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> 是一个行内元素，这里 <span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span> 用 code 包裹后显示效果为 <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>span<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span></code></pre>
+</div>
 </div>
 
 <h2>
-<a id="toc-3" class="menu-anchor" data-target="toc-3" aria-hidden="true"></a>键盘字母元素 <code class="highlighter-rouge">kbd</code>
+<div class="anchor-header" id="toc-3"></div>键盘字母元素 <code class="highlighter-rouge">kbd</code>
+<a class="anchor-link" href="#toc-3" data-target="toc-3" aria-hidden="true">#</a>
 </h2>
 
 <p>可以用 <code class="highlighter-rouge">kbd</code> 元素来包裹指令、快捷键等。</p>
@@ -675,14 +1204,28 @@ html <code>&lt;span&gt;</code> 是一个行内元素，这里 &lt;span&gt; 用 c
 我们按下快捷键 <kbd>command + c</kbd> 复制选中的内容。<br>
 kbd 也可以嵌套使用，嵌套中的内层，字体会加粗显示。例如：<kbd><kbd>command</kbd> + <kbd>a</kbd></kbd>
 </div>
-<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>
-<div class="highlight doc-example-highlight"><pre><code class="language-html" data-lang="html">在 Mac 终端中，我们可以用 <span class="nt">&lt;kbd&gt;</span>ls -a<span class="nt">&lt;/kbd&gt;</span> 来查看当前目录下所有文件和文件夹（包括隐藏的文件）。<span class="nt">&lt;br/&gt;</span>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html">在 Mac 终端中，我们可以用 <span class="nt">&lt;kbd&gt;</span>ls -a<span class="nt">&lt;/kbd&gt;</span> 来查看当前目录下所有文件和文件夹（包括隐藏的文件）。<span class="nt">&lt;br/&gt;</span>
 我们按下快捷键 <span class="nt">&lt;kbd&gt;</span>command + c<span class="nt">&lt;/kbd&gt;</span> 复制选中的内容。<span class="nt">&lt;br/&gt;</span>
-kbd 也可以嵌套使用，嵌套中的内层，字体会加粗显示。例如：<span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>command<span class="nt">&lt;/kbd&gt;</span> + <span class="nt">&lt;kbd&gt;</span>a<span class="nt">&lt;/kbd&gt;&lt;/kbd&gt;</span></code></pre></div>
+kbd 也可以嵌套使用，嵌套中的内层，字体会加粗显示。例如：<span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>command<span class="nt">&lt;/kbd&gt;</span> + <span class="nt">&lt;kbd&gt;</span>a<span class="nt">&lt;/kbd&gt;&lt;/kbd&gt;</span></code></pre>
+</div>
 </div>
 
 <h2>
-<a id="toc-4" class="menu-anchor" data-target="toc-4" aria-hidden="true"></a>输出元素 <code class="highlighter-rouge">samp</code>
+<div class="anchor-header" id="toc-4"></div>输出元素 <code class="highlighter-rouge">samp</code>
+<a class="anchor-link" href="#toc-4" data-target="toc-4" aria-hidden="true">#</a>
 </h2>
 
 <p><code class="highlighter-rouge">samp</code> 是 Sample（示例）的缩写。各种程序的代码示例可以用 <code class="highlighter-rouge">samp</code> 括起来。比如一段输出错误信息等。</p>
@@ -697,14 +1240,28 @@ kbd 也可以嵌套使用，嵌套中的内层，字体会加粗显示。例如�
 字符组合 <samp>ae</samp> 被转义后，可以变成 æ 连字字符。
 在 HTML 中，用于 <code>ae</code> 连字的转义写法是 <code>æ</code>，浏览器会将它转换成相应的 <code>æ</code> 连字字符来显示。
 </div>
-<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>
-<div class="highlight doc-example-highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;samp&gt;</span>计算机示例程序输出，这里发生了一个非常严重的错误：连接数据库出错<span class="nt">&lt;/samp&gt;</span> <span class="nt">&lt;br/&gt;</span>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;samp&gt;</span>计算机示例程序输出，这里发生了一个非常严重的错误：连接数据库出错<span class="nt">&lt;/samp&gt;</span> <span class="nt">&lt;br/&gt;</span>
 字符组合 <span class="nt">&lt;samp&gt;</span>ae<span class="nt">&lt;/samp&gt;</span> 被转义后，可以变成 <span class="ni">&amp;aelig;</span> 连字字符。
-在 HTML 中，用于 <span class="nt">&lt;code&gt;</span>ae<span class="nt">&lt;/code&gt;</span> 连字的转义写法是 <span class="nt">&lt;code&gt;</span><span class="ni">&amp;aelig;</span><span class="nt">&lt;/code&gt;</span>，浏览器会将它转换成相应的 <span class="nt">&lt;code&gt;</span>æ<span class="nt">&lt;/code&gt;</span> 连字字符来显示。</code></pre></div>
+在 HTML 中，用于 <span class="nt">&lt;code&gt;</span>ae<span class="nt">&lt;/code&gt;</span> 连字的转义写法是 <span class="nt">&lt;code&gt;</span><span class="ni">&amp;aelig;</span><span class="nt">&lt;/code&gt;</span>，浏览器会将它转换成相应的 <span class="nt">&lt;code&gt;</span>æ<span class="nt">&lt;/code&gt;</span> 连字字符来显示。</code></pre>
+</div>
 </div>
 
 <h2>
-<a id="toc-5" class="menu-anchor" data-target="toc-5" aria-hidden="true"></a>变量 <code class="highlighter-rouge">var</code>
+<div class="anchor-header" id="toc-5"></div>变量 <code class="highlighter-rouge">var</code>
+<a class="anchor-link" href="#toc-5" data-target="toc-5" aria-hidden="true">#</a>
 </h2>
 
 <p>在程序代码中，可以用 var 来包裹变量</p>
@@ -713,36 +1270,48 @@ kbd 也可以嵌套使用，嵌套中的内层，字体会加粗显示。例如�
 <div class="doc-example-render" data-example-id="">
 let <var>sum</var> = <var>num1</var> + <var>num2</var> * 3;
 </div>
-<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>
-<div class="highlight doc-example-highlight"><pre><code class="language-html" data-lang="html">let <span class="nt">&lt;var&gt;</span>sum<span class="nt">&lt;/var&gt;</span> = <span class="nt">&lt;var&gt;</span>num1<span class="nt">&lt;/var&gt;</span> + <span class="nt">&lt;var&gt;</span>num2<span class="nt">&lt;/var&gt;</span> * 3;</code></pre></div>
+<div class="doc-example-expand">
+<div class="doc-code-icon" data-code-icon=""><i class="icon-pure-code"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">显示 Code</div>
+</div>
+</div>
+<div class="highlight doc-example-highlight">
+<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+<div class="tooltip tooltip-top">
+<div class="arrow"></div>
+<div class="tooltip-inner">复制代码</div>
+</div>
+<pre><code class="language-html" data-lang="html">let <span class="nt">&lt;var&gt;</span>sum<span class="nt">&lt;/var&gt;</span> = <span class="nt">&lt;var&gt;</span>num1<span class="nt">&lt;/var&gt;</span> + <span class="nt">&lt;var&gt;</span>num2<span class="nt">&lt;/var&gt;</span> * 3;</code></pre>
+</div>
 </div>
 
 
-          </div>
-          <div class="col-24 col-xl-5 col-lg-6 col-md-7">
-            <div class="doc-catalogue-panel">
+        </div>
+        <div class="doc-catalogue-menu-right">
+          <div class="doc-catalogue-panel">
 <ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
   <li>
-    <a class="menu-title" href="#" data-menu="toc-1">代码块级元素 pre</a>
+    <a class="menu-title" href="#" title="代码块级元素 pre" data-menu="toc-1">代码块级元素 pre</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-2">代码行内元素 code</a>
+    <a class="menu-title" href="#" title="代码行内元素 code" data-menu="toc-2">代码行内元素 code</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-3">键盘字母元素 kbd</a>
+    <a class="menu-title" href="#" title="键盘字母元素 kbd" data-menu="toc-3">键盘字母元素 kbd</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-4">输出元素 samp</a>
+    <a class="menu-title" href="#" title="输出元素 samp" data-menu="toc-4">输出元素 samp</a>
   </li>
   <li>
-    <a class="menu-title" href="#" data-menu="toc-5">变量 var</a>
+    <a class="menu-title" href="#" title="变量 var" data-menu="toc-5">变量 var</a>
   </li>
 </ul>
 </div>
-          </div>
         </div>
-        
       </div>
+      
     </main>
 
     <script src="/assets/js/vendor/clipboard.min.js"></script>
@@ -758,32 +1327,36 @@ let <var>sum</var> = <var>num1</var> + <var>num2</var> * 3;
     new ScrollSpy(document.body, {
       menu: '.doc-catalogue-panel',
       container: '.doc-content',
-      offset: 50,
+      offset: 70,
       anchor: false,
       extend: true,
       plugins: CatalogueSpy,
     });
-    // 窗口滑动到某一位置时，修改目录定位位置
-    $(window).on('scroll', function (event) {
-      var top = window.scrollY;
-      var clientHeight = document.documentElement.clientHeight;
-      var scrollHeight = document.documentElement.scrollHeight;
-      var contentTop = $('.doc-content').offset().top;
 
-      if (top > scrollHeight - clientHeight) {
-        $('.doc-catalogue-panel').css({
-          position: 'absolute',
-          top: top + 'px'
-        });
-      } else if (top + 52 > contentTop) {
-        $('.doc-catalogue-panel').css({
-          position: 'fixed',
-          top: '50px'
-        });
-      } else {
-        $('.doc-catalogue-panel').css({
-          position: 'static',
-        });
+    // 窗口滑动到某一位置时，修改目录定位位置
+    var $cataloguePanel = $('.doc-catalogue-menu-right .doc-catalogue-panel');
+    $(window).on('scroll', function (event) {
+      if ($cataloguePanel.is(':visible')) {
+        var top = window.scrollY;
+        var clientHeight = document.documentElement.clientHeight;
+        var scrollHeight = document.documentElement.scrollHeight;
+        var contentTop = $('.doc-content').offset().top;
+
+        if (top > scrollHeight - clientHeight) {
+          $cataloguePanel.css({
+            position: 'absolute',
+            top: top + 'px'
+          });
+        } else if (top + 54 > contentTop) {
+          $cataloguePanel.css({
+            position: 'fixed',
+            top: '54px'
+          });
+        } else {
+          $cataloguePanel.css({
+            position: 'static',
+          });
+        }
       }
     });
 
@@ -794,36 +1367,58 @@ let <var>sum</var> = <var>num1</var> + <var>num2</var> * 3;
 
 <script>
   $(function () {
+    // 展开代码
+    $('.doc-example-expand [data-code-icon]').click(function () {
+      var $el = $(this);
+      var $icon = $el.children();
+      var $code = $el.parent().next();
+      var $tooltip = $el.next().find('.tooltip-inner');
+      if ($icon.hasClass('icon-pure-code')) {
+        $icon.removeClass('icon-pure-code');
+        $icon.addClass('icon-pure-code-expand');
+        $tooltip.text('隐藏 Code');
+        $code.fadeIn();
+      } else {
+        $icon.removeClass('icon-pure-code-expand');
+        $icon.addClass('icon-pure-code');
+        $tooltip.text('显示 Code');
+        $code.fadeOut();
+      }
+    });
+
     // 为代码添加复制按钮
     $('.highlight:not(.doc-example-highlight)').each(function () {
-      var btnHtml = '<div class="doc-copy"><button class="doc-copy-btn" title="复制到剪贴板">复制</button></div>'
-      $(this).before(btnHtml);
+      var copyCodeIconHtml = '<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>\n' +
+        '    <div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">复制代码</div></div>';
+      $(this).before(copyCodeIconHtml);
     });
 
     // 复制到剪贴板
-    var clipboard = new Clipboard('.doc-copy-btn', {
+    var clipboard = new Clipboard('.doc-code-copy', {
       target: function (trigger) {
-        return trigger.parentNode.nextElementSibling
+        return trigger.nextElementSibling.nextElementSibling;
       }
     });
 
     clipboard.on('success', function (e) {
-      //$(e.trigger)
-      //  .attr('title', 'Copied!')
-      e.clearSelection()
+      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
+      $tooltip.text('复制成功');
+      e.clearSelection();
     });
 
-    clipboard.on('error', function (e) {
-      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
-      var fallbackMsg = 'Press ' + modifierKey + 'C to copy';
-
-      //$(e.trigger)
-      //.attr('title', fallbackMsg)
-      //.tooltip('_fixTitle')
-      //.tooltip('show')
-      //.attr('title', 'Copy to clipboard')
-      //.tooltip('_fixTitle')
+    $('.doc-code-copy').mouseleave(function () {
+      var $tooltip = $(this).next().find('.tooltip-inner');
+      $tooltip.text('复制代码');
     });
+
+//    clipboard.on('error', function (e) {
+//      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
+//      var fallbackMsg = '请使用快捷键 ' + modifierKey + 'C 来复制';
+//      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
+//      $tooltip.text('复制成功');
+//      e.clearSelection();
+//    });
+
   });
 
 </script>
@@ -838,7 +1433,7 @@ let <var>sum</var> = <var>num1</var> + <var>num2</var> * 3;
 
     $('#toggleDrawer').click(function (e) {
       const clientWidth = document.documentElement.clientWidth;
-      if(clientWidth < 1440){
+      if(clientWidth < 1200){
         $drawer.toggleClass('drawer-open');
         $('body').toggleClass('drawer-scroll-lock');
         $drawer.addClass('drawer-animating');
@@ -865,6 +1460,20 @@ let <var>sum</var> = <var>num1</var> + <var>num2</var> * 3;
   });
 </script>
 
+    <script>
+  $(function () {
+    // 定时切换主题，TODO 为了调试方便，暂先改为10秒，等上线前改为 1分钟
+    const themes = ['theme-red', 'theme-pink', 'theme-purple', 'theme-deep-purple',
+      'theme-indigo', 'theme-blue', 'theme-light-blue', 'theme-cyan', 'theme-teal',
+      'theme-green', 'theme-light-green', 'theme-lime', 'theme-amber',
+      'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
+
+    setInterval(function () {
+      const r = Math.floor(Math.random() * 16);
+      $('body').removeClass().addClass(themes[r]);
+    }, 10000);
+  })
+</script>
 
   </body>
 </html>
