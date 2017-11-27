@@ -1,7 +1,8 @@
 ---
 layout: docs
 title: 表单组件-Input 输入框
-description: Input 组件提供了一个可视的与用户输入交互的文本输入框，包含 input 和 textarea，结合 label 一起使用。
+description: Input 组件提供了一个可视的与用户输入交互的文本输入框，包含 input 和 textarea，
+             可单独使用，也可结合 label 一起使用。
 group: forms
 toc: true
 ---
