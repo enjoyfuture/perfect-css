@@ -1,5 +1,6 @@
 @import "../../../../scss/theme/variable";
 @import "../../../../scss/theme/mixin";
+@import "../mixins/header";
 
 .drawer-content {
   overflow: hidden;
@@ -18,24 +19,42 @@
 
 .doc-main {
   min-height: 500px;
-  padding: 0 1rem;
+  padding:    0 1rem;
+}
+
+.doc-content {
+  padding-top:    1rem;
+  padding-bottom: 1rem;
+  @include header-font-size;
+  @include header-margin;
+  @include header-anchor;
+
+  ol, ul {
+    margin-left: 1rem;
+  }
 
   p, li {
     line-height: 2;
   }
 
   p {
-    margin-top: 1rem;
+    margin-top:    1rem;
     margin-bottom: 1rem;
   }
 
-  h1, h2, h3 {
-    margin-top: 2rem;
+  a {
+    margin-left: .25rem;
+    margin-right: .25rem;
+  }
+
+  hr {
+    border-top: 1px dashed;
+    @include theme-prop(border-color, primary-light);
   }
 }
 
 .doc-table {
-  width: 95%;
+  width:         95%;
   margin-bottom: 1rem;
 
   tbody > tr:nth-of-type(odd) {
@@ -48,8 +67,8 @@
 
   th,
   td {
-    padding: .5rem 1rem;
-    border-top: 1px solid;
+    padding:     .5rem 1rem;
+    border-top:  1px solid;
     border-left: 1px solid;
     @include theme-prop(border-color, secondary-lighter);
 

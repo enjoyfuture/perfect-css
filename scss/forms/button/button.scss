@@ -73,10 +73,6 @@
   @include button-front($color: primary-on-dark);
   @include button-back($background-color: hint-on-light);
 
-  //&.btn {
-  //  @include button-ripple((background-color: #fff, opacity: $btn-filled-ripple-opacity));
-  //}
-
   // disabled
   @include button-disabled($btn-bg-disabled);
 }

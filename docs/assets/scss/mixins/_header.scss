@@ -9,8 +9,8 @@
   }
 
   > h1, > h2 {
-    &:first-child {
-      margin-top: 0;
+    &:first-of-type {
+      margin-top: 1rem;
     }
   }
 }

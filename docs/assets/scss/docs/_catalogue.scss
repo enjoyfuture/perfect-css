@@ -2,7 +2,7 @@
 @import "../../../../scss/responsive/mixin";
 @import "../../../../scss/theme/mixin";
 @import "../../../../scss/animation/mixin";
-@import "../mixins/header";
+@import "../../../../scss/base/variables/font";
 
 .doc-catalogue-menu:hover {
   .doc-catalogue-panel {
@@ -12,7 +12,7 @@
 
 .doc-catalogue-panel {
   position:         fixed;
-  top:              64px;
+  top:              54px;
   right:            0;
   z-index:          1000;
   padding-top:      .5rem;
@@ -41,19 +41,6 @@
 
 .doc-catalogue-menu-right {
   display: none;
-}
-
-.doc-content {
-  padding-top:    1rem;
-  padding-bottom: 1rem;
-  @include header-font-size;
-  @include header-margin;
-  @include header-anchor;
-
-  hr {
-    border-top: 1px dashed;
-    @include theme-prop(border-color, primary-light);
-  }
 }
 
 @media screen and (min-width: 1600px) {
@@ -85,10 +72,16 @@
   }
 
   .doc-catalogue-header {
+    position:   relative;
+    margin-top: 1.25rem;
+
     &::before {
       content:      "目录";
+      position:     absolute;
+      top:          -2rem;
       padding-left: .5rem;
-      color:        #999;
+      font-size:    $font-size;
+      font-weight:  500;
     }
   }
 }

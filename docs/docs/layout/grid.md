@@ -483,14 +483,14 @@ toc: true
 ## 自定义栅格系统
 通过修改 Sass 变量，可以调整栅格格数，间距大小，以及结合响应式调整屏幕零界点大小
 
-grid 对应的变量文件为 [{{site.repo}}/tree/master/scss/layout/grid/_variable.scss]({{site.repo}}/scss/layout/grid/_variable.scss)
+grid 对应的变量文件为 [{{site.repo_root}}scss/layout/grid/_variable.scss]({{site.repo}}/scss/layout/grid/_variable.scss)
 
 ```scss
 $grid-columns: 24 !default;
 $grid-gutter-width: 30px !default;
 ```
 
-响应式对应的变量文件为 [{{site.repo}}/tree/master/scss/responsive/_variable.scss]({{site.repo}}/scss/responsive/_variable.scss)
+响应式对应的变量文件为 [{{site.repo_root}}scss/responsive/_variable.scss]({{site.repo}}/scss/responsive/_variable.scss)
 
 ```scss
 $responsive-breakpoints: (
@@ -511,7 +511,7 @@ $container-max-widths: (
 修改后需要重新编译生成 css 代码，也可以通过自定义主题来在线设置，保存并下载生成的 css 文件。TODO 待完成
 
 ## 开启关闭响应式布局
-我们可以通过设置 Scss 变量 [$enable-responsive]({{site.repo}}/tree/master/scss/base/variables/_options.scss) 来开启或关闭响应式布局，默认是开启。在不需要响应式布局的情况下，可以关闭。
+我们可以通过设置 Scss 变量 [$enable-responsive]({{site.repo_root}}scss/base/variables/_options.scss) 来开启或关闭响应式布局，默认是开启。在不需要响应式布局的情况下，可以关闭。
 关闭后，我们使用 `col` `col-2` 等即可创建栅格系统。需要注意的时，要配合 class `container`来使用，并自定义
 父容器的宽度。
 

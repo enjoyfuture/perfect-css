@@ -11,7 +11,7 @@
     new ScrollSpy(document.body, {
       menu: '.doc-catalogue-panel',
       container: '.doc-content',
-      offset: 64,
+      offset: 70,
       anchor: false,
       extend: true,
       plugins: CatalogueSpy,
@@ -31,10 +31,10 @@
             position: 'absolute',
             top: top + 'px'
           });
-        } else if (top + 64 > contentTop) {
+        } else if (top + 54 > contentTop) {
           $cataloguePanel.css({
             position: 'fixed',
-            top: '64px'
+            top: '54px'
           });
         } else {
           $cataloguePanel.css({

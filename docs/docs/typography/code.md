@@ -7,7 +7,7 @@ group: typography
 toc: true
 ---
 
-代码样式对应源文件：[/scss/core/base-styles/code.scss]({{ site.repo }}/scss/core/base-styles/code.scss){:target="_blank"}
+代码样式对应源文件：[/scss/core/base-styles/code.scss]({{ site.repo_root }}scss/core/base-styles/code.scss){:target="_blank"}
 
 CSS 中用来处理代码的 html 标签主要有 `code`  `pre` `var` `kbd` `samp`
 
