@@ -951,8 +951,14 @@
 <script>
   $(function () {
     // 菜单超过一屏可以滚动查看
-    var $menuPanel = $('.drawer-content')[0];
-    var $menu = $('.drawer-content > .perfect-menu')[0];
+    const $menuPanel = $('.drawer-content')[0];
+    const $menu = $('.drawer-content > .perfect-menu')[0];
+
+    // 页面进入时，设置上次的 translateY
+    const translateY = window.sessionStorage.getItem('nav-menus-translateY');
+    if (translateY) {
+      $menu.style.transform = `translateY(${translateY}px)`;
+    }
 
     $menu.addEventListener('transitionend', function () {
       $menu.style.transition = 'unset';
@@ -961,15 +967,15 @@
       e.preventDefault();
       // 隐藏其他打开的菜单
       $('.menu .menu').slideUp();
-      var $el = $(e.currentTarget);
-      var $nextEl = $el.next();
+      const $el = $(e.currentTarget);
+      const $nextEl = $el.next();
       if ($nextEl.is(':visible')) {
         $nextEl.slideUp();
       } else {
         $nextEl.slideDown(true, function () {
-          var menuPanelTop = $menuPanel.getBoundingClientRect().top;
-          var menuTop = $menu.getBoundingClientRect().top;
-          var currentElTop = e.currentTarget.getBoundingClientRect().top;
+          const menuPanelTop = $menuPanel.getBoundingClientRect().top;
+          const menuTop = $menu.getBoundingClientRect().top;
+          const currentElTop = e.currentTarget.getBoundingClientRect().top;
           if (currentElTop < menuPanelTop) {
             $menu.style.transform = `translateY(${menuTop - currentElTop}px)`;
             $menu.style.transition = 'transform 200ms ease-in-out';
@@ -1029,11 +1035,15 @@
         event.stopPropagation();
       }
 
+      let translateY;
       if (upDown === 'up' && y < 0) {
-        $menu.style.transform = `translateY(${Math.min(y + step, 0)}px)`;
+        translateY = Math.min(y + step, 0);
       } else if (upDown === 'down' && Math.abs(y) < maxOffset) {
-        $menu.style.transform = `translateY(${Math.max(y - step, -maxOffset)}px)`;
+        translateY = Math.max(y - step, -maxOffset);
       }
+
+      window.sessionStorage.setItem('nav-menus-translateY', translateY);
+      $menu.style.transform = `translateY(${translateY}px)`;
     }, false);
 
   });
@@ -2746,7 +2756,7 @@ Perfect CSS 提供了以下 CSS 变量值</p>
     new ScrollSpy(document.body, {
       menu: '.doc-catalogue-panel',
       container: '.doc-content',
-      offset: 64,
+      offset: 70,
       anchor: false,
       extend: true,
       plugins: CatalogueSpy,
@@ -2766,10 +2776,10 @@ Perfect CSS 提供了以下 CSS 变量值</p>
             position: 'absolute',
             top: top + 'px'
           });
-        } else if (top + 64 > contentTop) {
+        } else if (top + 54 > contentTop) {
           $cataloguePanel.css({
             position: 'fixed',
-            top: '64px'
+            top: '54px'
           });
         } else {
           $cataloguePanel.css({
