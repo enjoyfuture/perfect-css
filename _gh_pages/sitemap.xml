@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/docs/components/alert/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/docs/utils/align/</loc>
+=======
+<loc>http://perfect-css.com/docs/utils/align/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/elements/badge/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/getting-started/best-practices/</loc>
@@ -19,19 +26,42 @@
 <loc>http://perfect-css.com/docs/getting-started/build/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/button/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/docs/components/button/</loc>
+=======
+<loc>http://perfect-css.com/examples/button/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/elements/button/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/elements/button/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/container/card/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/docs/getting-started/changelog/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/components/checkbox/</loc>
+=======
+<loc>http://perfect-css.com/components/container/carousel/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/getting-started/changelog/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/elements/checkbox/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/theme/classes/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/draft/classname/</loc>
@@ -46,19 +76,36 @@
 <loc>http://perfect-css.com/docs/getting-started/color-swatches/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/docs/utils/color/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/docs/typography/color/</loc>
+=======
+<loc>http://perfect-css.com/docs/typography/color/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/utils/color/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/getting-started/compatibility/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/docs/layout/container/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/docs/components/crumb/</loc>
+=======
+<loc>http://perfect-css.com/components/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/layout/container/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/elements/crumb/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/getting-started/css-module/</loc>
@@ -67,18 +114,32 @@
 <loc>http://perfect-css.com/guide/css/</loc>
 </url>
 <url>
+<<<<<<< HEAD
+=======
+<loc>http://perfect-css.com/docs/theme/design-concept/</loc>
+</url>
+<url>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 <loc>http://perfect-css.com/docs/getting-started/develop-guide/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/device-view/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/dialog/</loc>
+=======
+<loc>http://perfect-css.com/components/container/dialog/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/dialog/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/container/dialog/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/docs/getting-started/download/</loc>
 </url>
 <url>
@@ -89,6 +150,75 @@
 </url>
 <url>
 <loc>http://perfect-css.com/docs/components/dropdown/</loc>
+=======
+<loc>http://perfect-css.com/components/container/dialog/dialog1/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/dialog/dialog1/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/container/dialog/dialog2/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/dialog/dialog2/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/dialog/dialog3/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/container/dialog/dialog3/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/dialog/dialog4/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/container/dialog/dialog4/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/dialog/dialog5/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/container/dialog/dialog5/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/container/dialog/dialog6/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/dialog/dialog6/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/dialog/dialog7/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/container/dialog/dialog7/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/dialog/dialog8/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/container/dialog/dialog8/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/dialog/dialog9/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/container/dialog/dialog9/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/getting-started/download/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/container/drawer-permanent/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/container/drawer/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/elements/dropdown/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/draft/example-code/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/setup/flex/</loc>
@@ -100,7 +230,11 @@
 <loc>http://perfect-css.com/docs/utils/float/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/form/</loc>
+=======
+<loc>http://perfect-css.com/components/container/form/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/container/from/</loc>
@@ -109,21 +243,36 @@
 <loc>http://perfect-css.com/docs/setup/global-styles/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/grid/</loc>
+=======
+<loc>http://perfect-css.com/components/layout/grid/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/layout/grid/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/image/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/docs/components/image/</loc>
+=======
+<loc>http://perfect-css.com/components/icons/icon-pure-css/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/elements/image/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/elements/image/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/draft/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/</loc>
 </url>
 <url>
@@ -131,6 +280,18 @@
 </url>
 <url>
 <loc>http://perfect-css.com/docs/components/input/</loc>
+=======
+<loc>http://perfect-css.com/examples/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/elements/input/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/elements/input/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/getting-started/introduction/</loc>
@@ -139,16 +300,33 @@
 <loc>http://perfect-css.com/docs/getting-started/issue/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/docs/getting-started/javascript/</loc>
+=======
+<loc>http://perfect-css.com/examples/item-form/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/setup/javascript/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/draft/layout/layout/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/components/list/</loc>
+=======
+<loc>http://perfect-css.com/docs/getting-started/javascript/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/draft/layout/layout/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/item-form/list-ios/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/container/list/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/container/list/</loc>
@@ -157,7 +335,11 @@
 <loc>http://perfect-css.com/docs/setup/media-queries/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/menu/</loc>
+=======
+<loc>http://perfect-css.com/components/navigation/menu/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/navigation/menu/</loc>
@@ -166,7 +348,11 @@
 <loc>http://perfect-css.com/docs/navigation/nav/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/navbar/</loc>
+=======
+<loc>http://perfect-css.com/components/navigation/navbar/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/navigation/navbar/</loc>
@@ -181,52 +367,104 @@
 <loc>http://perfect-css.com/docs/container/penal/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/docs/components/popover/</loc>
+=======
+<loc>http://perfect-css.com/docs/elements/popover/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/utils/position/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/docs/components/progress/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/components/radio/</loc>
+=======
+<loc>http://perfect-css.com/components/elements/progress/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/elements/progress/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/elements/radio/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/layout/responsive/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/ripple/</loc>
+=======
+<loc>http://perfect-css.com/components/base/ripple/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/base/ripple/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/setup/sass/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/select/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/components/shadow/</loc>
+=======
+<loc>http://perfect-css.com/components/elements/select/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/base/shadow/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/base/shadow/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/utils/spacing/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/tab/</loc>
+=======
+<loc>http://perfect-css.com/components/elements/switch/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/container/tab/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/table/</loc>
+=======
+<loc>http://perfect-css.com/components/container/table/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/typography/table/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/docs/getting-started/theme/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/components/toast/</loc>
+=======
+<loc>http://perfect-css.com/components/navigation/tabs/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/examples/theme/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/getting-started/theme/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/components/elements/toast/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/draft/toc/</loc>
@@ -238,10 +476,17 @@
 <loc>http://perfect-css.com/draft/tone/tone2/</loc>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://perfect-css.com/components/tooltip/</loc>
 </url>
 <url>
 <loc>http://perfect-css.com/docs/components/tooltip/</loc>
+=======
+<loc>http://perfect-css.com/components/elements/tooltip/</loc>
+</url>
+<url>
+<loc>http://perfect-css.com/docs/elements/tooltip/</loc>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 </url>
 <url>
 <loc>http://perfect-css.com/docs/typography/typography/</loc>

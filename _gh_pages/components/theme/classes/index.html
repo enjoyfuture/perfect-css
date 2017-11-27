@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="keywords" content="CSS3 Perfect">
+<meta name="description"
+      content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+<meta name="author" content="Linder Wang">
+
+<title>
+  
+  主题 Classes &middot; Perfect
+  
+</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" href="/favicon.ico">
+
+<!-- Perfect CSS -->
+<link href="/assets/css/perfect.css" rel="stylesheet">
+<!-- 页面 CSS -->
+<link href="/assets/css/components.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <header class="navbar navbar-fixed navbar-expand navbar-primary">
+  
+  <div class="drawer-toggle drawer-permanent-toggle" id="toggleDrawer">
+    <i class="icon-pure-menu"></i>
+  </div>
+  
+
+  <a class="navbar-brand" href="/">
+    <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29"><defs><style>.cls-1,.cls-2,.cls-4{fill:none;stroke:#fff;stroke-linecap:round;}.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{stroke-width:20px;}.cls-2,.cls-4{stroke-linejoin:round;}.cls-3{fill:#fff;}.cls-4{stroke-width:3px;}</style></defs><title>Perfect</title><g><g><path class="cls-1" d="M10,10h95.86a45.87,45.87,0,1,1,0,91.74h-58"/><polyline class="cls-2" points="77.52 56.94 10 56.94 10 145.14"/><circle class="cls-3" cx="106.43" cy="57.02" r="10.25"/><path class="cls-4" d="M64.18,154.29v-26.9h18.5a8.09,8.09,0,1,1,0,16.17H73"/><line class="cls-4" x1="80.36" y1="143.65" x2="91.51" y2="154.79"/><line class="cls-4" x1="203.5" y1="154.23" x2="203.5" y2="127.83"/><line class="cls-4" x1="190.62" y1="127.45" x2="216.4" y2="127.45"/><path class="cls-4" d="M186.3,133.21a13.24,13.24,0,1,0-.08,15.38"/><polyline class="cls-4" points="53.11 153.79 30.79 153.79 30.79 127.89 53.11 127.89"/><line class="cls-4" x1="30.79" y1="140.84" x2="52.99" y2="140.84"/><polyline class="cls-4" points="155.55 153.79 133.23 153.79 133.23 127.89 155.55 127.89"/><line class="cls-4" x1="133.23" y1="140.84" x2="155.43" y2="140.84"/><polyline class="cls-4" points="101.86 153.79 101.86 127.89 124.18 127.89"/><line class="cls-4" x1="101.86" y1="140.84" x2="124.06" y2="140.84"/></g></g></svg>
+  </a>
+  <div class="navbar-collapse">
+    <ul class="navbar-nav">
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/">首页</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/docs/getting-started/introduction/">文档</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link active" href="/components/">组件</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/themes/">主题</a>
+      </li>
+      <li>
+        <a class="ripple ripple-primary nav-link " href="/device-view/">设备</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+    <!--把 jquery 单独引入到页面最上面-->
+<script src="/assets/js/vendor/jquery.min.js"></script>
+
+
+    <aside id="drawer" class="drawer drawer-permanent navbar-fixed-adjust">
+      <nav class="drawer-nav">
+        <nav class="drawer-content">
+          
+
+
+
+
+
+
+
+<ul class="menu perfect-menu">
+
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/theme/classes/" 
+       class="menu-title menu-header active" style="padding-left: 1rem;">主题 theme</a>
+    <ul class="menu">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/theme/classes/"
+             class="menu-title menu-sub-title active" style="padding-left: 2rem;">主题 Classes</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/layout/grid/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">布局 layout</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/layout/grid/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">栅格 Grid</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/typography/paragraph/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">排版 typography</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/typography/paragraph/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">段落 paragraph</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/base/ripple/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">基础组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/base/ripple/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">波纹效果 Ripple</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/base/shadow/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">阴影效果 Shadow</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/navigation/menu/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">导航类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/menu/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">菜单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/navigation/tabs/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tab 标签</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/container/carousel/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">容器类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/carousel/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Carousel 轮播图组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/dialog/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">对话框窗口(Dialog)</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/drawer/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">抽屉组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/form/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Form 表单</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/list/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">List 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/container/table/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Table 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/elements/button/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">元素类组件</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/button/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Button 按钮</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/input/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Input 输入框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/radio/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Radio 单选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/checkbox/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/select/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Select 下拉选择框</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/switch/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Switch 开关</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/progress/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 进度条</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/image/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/badge/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 标记刻章组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/toast/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Toast 组件</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/elements/tooltip/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">Tooltip 组件</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/icons/icon-pure-css/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">图标</a>
+    <ul class="menu" style="display: none;">
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/components/icons/icon-pure-css/"
+             class="menu-title menu-sub-title" style="padding-left: 2rem;">纯 css 图标</a></li>
+      
+    </ul>
+  </li>
+  
+  
+  
+
+  
+  
+  <li class="menu-item">
+    <a href="/components/utils/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">工具类样式</a>
+    <ul class="menu" style="display: none;">
+      
+    </ul>
+  </li>
+  
+</ul>
+
+<script>
+  $(function () {
+    // 菜单超过一屏可以滚动查看
+    var $menuPanel = $('.drawer-content')[0];
+    var $menu = $('.drawer-content > .perfect-menu')[0];
+
+    $menu.addEventListener('transitionend', function () {
+      $menu.style.transition = 'unset';
+    });
+    $('.menu').on('click', '.menu-header', function (e) {
+      e.preventDefault();
+      // 隐藏其他打开的菜单
+      $('.menu .menu').slideUp();
+      var $el = $(e.currentTarget);
+      var $nextEl = $el.next();
+      if ($nextEl.is(':visible')) {
+        $nextEl.slideUp();
+      } else {
+        $nextEl.slideDown(true, function () {
+          var menuPanelTop = $menuPanel.getBoundingClientRect().top;
+          var menuTop = $menu.getBoundingClientRect().top;
+          var currentElTop = e.currentTarget.getBoundingClientRect().top;
+          if (currentElTop < menuPanelTop) {
+            $menu.style.transform = `translateY(${menuTop - currentElTop}px)`;
+            $menu.style.transition = 'transform 200ms ease-in-out';
+          }
+        });
+      }
+    });
+
+    const isWheel = (() => {
+      const ua = navigator.userAgent;
+      if (/gecko/i.test(ua) && !(/webkit/i.test(ua)) && (/firefox/i.test(ua))) { // Firefox
+        return false;
+      }
+      return true;
+    })();
+    const reg = /translateY\(([-\w]+)\)/;
+
+    $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
+      const {scrollHeight, clientHeight} = $menuPanel;
+      const step = 20;
+      const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+
+      // 判断鼠标滑轮向上还是向下滑动
+      let upDown;
+      const {detail, wheelDelta} = event;
+      if (detail) {
+        if (detail < 0) { // up
+          upDown = 'up';
+        } else if (detail > 0) { // down
+          upDown = 'down';
+        }
+      } else if (wheelDelta) { //
+        if (wheelDelta > 0) { // up
+          upDown = 'up';
+        }
+        if (wheelDelta < 0) { // down
+          upDown = 'down';
+        }
+      }
+
+      const {transform} = $menu.style;
+
+      let y = reg.exec(transform);
+      y = y ? parseFloat(y[1], 10) : 0;
+
+      if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === maxOffset)) {
+        return;
+      }
+
+      if (maxOffset > 0) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      if (upDown === 'up' && y < 0) {
+        $menu.style.transform = `translateY(${Math.min(y + step, 0)}px)`;
+      } else if (upDown === 'down' && Math.abs(y) < maxOffset) {
+        $menu.style.transform = `translateY(${Math.max(y - step, -maxOffset)}px)`;
+      }
+    }, false);
+
+  });
+</script>
+
+        </nav>
+      </nav>
+    </aside>
+
+    <main class="drawer-main navbar-fixed-adjust">
+      <section class="component-wrap catalogue-counter">
+        <h2>
+<a id="anchor-1" class="menu-anchor"></a> Perfect CSS Theme 例子</h2>
+
+<h3>
+<a id="anchor-1-1" class="menu-anchor"></a>主题颜色</h3>
+
+<h4>
+<a id="anchor-1-1-1" class="menu-anchor"></a>背景色 class</h4>
+
+<section class="d-flex flex-row flex-wrap theme-demo">
+  <div class="theme-background">主题背景颜色背景色<br>.theme-background</div>
+  <div class="theme-primary-bg">主题主颜色背景色<br>.theme-primary-bg</div>
+  <div class="theme-secondary-bg">主题次颜色背景色<br>.theme-secondary-bg</div>
+  <div class="theme-primary-light-bg">主题主颜色浅色背景色<br>.theme-primary-light-bg</div>
+  <div class="theme-secondary-light-bg">主题次颜色浅色背景色<br>.theme-secondary-light-bg</div>
+  <div class="theme-primary-lighter-bg">主题主颜色更浅色背景色<br>.theme-primary-lighter-bg</div>
+  <div class="theme-secondary-lighter-bg">主题次颜色更浅色背景色<br>.theme-secondary-lighter-bg</div>
+  <div class="theme-primary-lightest-bg">主题主颜色最浅色背景色<br>.theme-primary-lightest-bg</div>
+  <div class="theme-secondary-lightest-bg">主题次颜色最浅色背景色<br>.theme-secondary-lightest-bg</div>
+  <div class="theme-primary-dark-bg">主题主颜色深色背景色<br>.theme-primary-dark-bg</div>
+  <div class="theme-secondary-dark-bg">主题次颜色深色背景色<br>.theme-secondary-dark-bg</div>
+  <div class="theme-primary-darker-bg">主题主颜色更深色背景色<br>.theme-primary-darker-bg</div>
+  <div class="theme-secondary-darker-bg">主题次颜色更深色背景色<br>.theme-secondary-darker-bg</div>
+  <div class="theme-primary-darkest-bg">主题主颜色最深色背景色<br>.theme-primary-darkest-bg</div>
+  <div class="theme-secondary-darkest-bg">主题次颜色最深色背景色<br>.theme-secondary-darkest-bg</div>
+  <div class="theme-primary-alpha-bg">主题主颜色透明色背景色<br>.theme-primary-alpha-bg</div>
+  <div class="theme-secondary-alpha-bg">主题次颜色透明色背景色<br>.theme-secondary-alpha-bg</div>
+</section>
+
+<h4>
+<a id="anchor-1-1-2" class="menu-anchor"></a>前景色 class</h4>
+
+<section class="d-flex flex-row flex-wrap theme-demo">
+  <div class="theme-primary">主题主颜色前景色<br>.theme-primary</div>
+  <div class="theme-secondary">主题次颜色前景色<br>.theme-secondary</div>
+  <div class="theme-primary-light">主题主颜色浅色前景色<br>.theme-primary-light</div>
+  <div class="theme-secondary-light">主题次颜色浅色前景色<br>.theme-secondary-light</div>
+  <div class="theme-primary-lighter">主题主颜色更浅色前景色<br>.theme-primary-lighter</div>
+  <div class="theme-secondary-lighter">主题次颜色更浅色前景色<br>.theme-secondary-lighter</div>
+  <div class="theme-primary-lightest">主题主颜色最浅色前景色<br>.theme-primary-lightest</div>
+  <div class="theme-secondary-lightest">主题次颜色最浅色前景色<br>.theme-secondary-lightest</div>
+  <div class="theme-primary-dark">主题主颜色深色前景色<br>.theme-primary-dark</div>
+  <div class="theme-secondary-dark">主题次颜色深色前景色<br>.theme-secondary-dark</div>
+  <div class="theme-primary-darker">主题主颜色更深色前景色<br>.theme-primary-darker</div>
+  <div class="theme-secondary-darker">主题次颜色更深色前景色<br>.theme-secondary-darker</div>
+  <div class="theme-primary-darkest">主题主颜色最深色前景色<br>.theme-primary-darkest</div>
+  <div class="theme-secondary-darkest">主题次颜色最深色前景色<br>.theme-secondary-darkest</div>
+  <div class="theme-primary-alpha">主题主颜色透明色前景色<br>.theme-primary-alpha</div>
+  <div class="theme-secondary-alpha">主题次颜色透明色前景色<br>.theme-secondary-alpha</div>
+</section>
+
+<h3>
+<a id="anchor-1-2" class="menu-anchor"></a>辅助颜色</h3>
+<h4>
+<a id="anchor-1-2-1" class="menu-anchor"></a>背景色 class</h4>
+
+<section class="d-flex flex-row flex-wrap theme-demo">
+  <div class="theme-success-bg">辅助颜色-成功背景色<br>.theme-success-bg</div>
+  <div class="theme-info-bg">辅助颜色-信息背景色<br>.theme-info-bg</div>
+  <div class="theme-warning-bg">辅助颜色-警告背景色<br>.theme-warning-bg</div>
+  <div class="theme-error-bg">辅助颜色-错误背景色<br>.theme-error-bg</div>
+  <div class="theme-success-light-bg">辅助颜色-成功浅色背景色<br>.theme-success-light-bg</div>
+  <div class="theme-info-light-bg">辅助颜色-信息浅色背景色<br>.theme-info-light-bg</div>
+  <div class="theme-warning-light-bg">辅助颜色-警告浅色背景色<br>.theme-warning-light-bg</div>
+  <div class="theme-error-light-bg">辅助颜色-错误浅色背景色<br>.theme-error-light-bg</div>
+  <div class="theme-success-dark-bg">辅助颜色-成功深色背景色<br>.theme-success-dark-bg</div>
+  <div class="theme-info-dark-bg">辅助颜色-信息深色背景色<br>.theme-info-dark-bg</div>
+  <div class="theme-warning-dark-bg">辅助颜色-警告深色背景色<br>.theme-warning-dark-bg</div>
+  <div class="theme-error-dark-bg">辅助颜色-错误深色背景色<br>.theme-error-dark-bg</div>
+  <div class="theme-success-alpha-bg">辅助颜色-成功透明色背景色<br>.theme-success-alpha-bg</div>
+  <div class="theme-info-alpha-bg">辅助颜色-信息透明色背景色<br>.theme-info-alpha-bg</div>
+  <div class="theme-warning-alpha-bg">辅助颜色-警告透明色背景色<br>.theme-warning-alpha-bg</div>
+  <div class="theme-error-alpha-bg">辅助颜色-错误透明色背景色<br>.theme-error-alpha-bg</div>
+</section>
+
+<h4>
+<a id="anchor-1-2-2" class="menu-anchor"></a>前景色 class</h4>
+
+<section class="d-flex flex-row flex-wrap theme-demo">
+  <div class="theme-success">辅助颜色-成功前景色<br>.theme-success</div>
+  <div class="theme-info">辅助颜色-信息前景色<br>.theme-info</div>
+  <div class="theme-warning">辅助颜色-警告前景色<br>.theme-warning</div>
+  <div class="theme-error">辅助颜色-错误前景色<br>.theme-error</div>
+  <div class="theme-success-light">辅助颜色-成功浅色前景色<br>.theme-success-light</div>
+  <div class="theme-info-light">辅助颜色-信息浅色前景色<br>.theme-info-light</div>
+  <div class="theme-warning-light">辅助颜色-警告浅色前景色<br>.theme-warning-light</div>
+  <div class="theme-error-light">辅助颜色-错误浅色前景色<br>.theme-error-light</div>
+  <div class="theme-success-dark">辅助颜色-成功深色前景色<br>.theme-success-dark</div>
+  <div class="theme-info-dark">辅助颜色-信息深色前景色<br>.theme-info-dark</div>
+  <div class="theme-warning-dark">辅助颜色-警告深色前景色<br>.theme-warning-dark</div>
+  <div class="theme-error-dark">辅助颜色-错误深色前景色<br>.theme-error-dark</div>
+  <div class="theme-success-alpha">辅助颜色-成功透明色前景色<br>.theme-success-alpha</div>
+  <div class="theme-info-alpha">辅助颜色-信息透明色前景色<br>.theme-info-alpha</div>
+  <div class="theme-warning-alpha">辅助颜色-警告透明色前景色<br>.theme-warning-alpha</div>
+  <div class="theme-error-alpha">辅助颜色-错误透明色前景色<br>.theme-error-alpha</div>
+</section>
+
+<h3>
+<a id="anchor-1-3" class="menu-anchor"></a>灰度颜色</h3>
+
+<h4>
+<a id="anchor-1-3-1" class="menu-anchor"></a>背景</h4>
+
+<section class="d-flex flex-row flex-wrap theme-demo">
+  <div class="theme-grey-bg-50">灰度颜色背景颜色值 50<br>.theme-grey-bg-50</div>
+  <div class="theme-grey-bg-100">灰度颜色背景颜色值 100<br>.theme-grey-bg-100</div>
+  <div class="theme-grey-bg-200">灰度颜色背景颜色值 200<br>.theme-grey-bg-200</div>
+  <div class="theme-grey-bg-300">灰度颜色背景颜色值 300<br>.theme-grey-bg-300</div>
+  <div class="theme-grey-bg-400">灰度颜色背景颜色值 400<br>.theme-grey-bg-400</div>
+  <div class="theme-grey-bg-500">灰度颜色背景颜色值 500<br>.theme-grey-bg-500</div>
+  <div class="theme-grey-bg-600">灰度颜色背景颜色值 600<br>.theme-grey-bg-600</div>
+  <div class="theme-grey-bg-700">灰度颜色背景颜色值 700<br>.theme-grey-bg-700</div>
+  <div class="theme-grey-bg-800">灰度颜色背景颜色值 800<br>.theme-grey-bg-800</div>
+  <div class="theme-grey-bg-900">灰度颜色背景颜色值 900<br>.theme-grey-bg-900</div>
+</section>
+
+<h4>
+<a id="anchor-1-3-2" class="menu-anchor"></a>前景</h4>
+
+<section class="d-flex flex-row flex-wrap theme-demo">
+  <div class="theme-grey-50">灰度颜色前景颜色值 50<br>.theme-grey-50</div>
+  <div class="theme-grey-100">灰度颜色前景颜色值 100<br>.theme-grey-100</div>
+  <div class="theme-grey-200">灰度颜色前景颜色值 200<br>.theme-grey-200</div>
+  <div class="theme-grey-300">灰度颜色前景颜色值 300<br>.theme-grey-300</div>
+  <div class="theme-grey-400">灰度颜色前景颜色值 400<br>.theme-grey-400</div>
+  <div class="theme-grey-500">灰度颜色前景颜色值 500<br>.theme-grey-500</div>
+  <div class="theme-grey-600">灰度颜色前景颜色值 600<br>.theme-grey-600</div>
+  <div class="theme-grey-700">灰度颜色前景颜色值 700<br>.theme-grey-700</div>
+  <div class="theme-grey-800">灰度颜色前景颜色值 800<br>.theme-grey-800</div>
+  <div class="theme-grey-900">灰度颜色前景颜色值 900<br>.theme-grey-900</div>
+</section>
+
+      </section>
+    </main>
+
+    <script>
+  $(function () {
+    var $drawer = $('#drawer');
+    $drawer[0].addEventListener('transitionend', () => {
+      $drawer.removeClass('drawer-animating');
+    });
+
+    $('#toggleDrawer').click(function (e) {
+      const clientWidth = document.documentElement.clientWidth;
+      if(clientWidth < 1200){
+        $drawer.toggleClass('drawer-open');
+        $('body').toggleClass('drawer-scroll-lock');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-close');
+      } else {
+        // 当超过1440px 时，利用该样式，隐藏显示处理
+        $drawer.toggleClass('drawer-close');
+        $drawer.addClass('drawer-animating');
+
+        $drawer.removeClass('drawer-open');
+      }
+    });
+
+    $('#drawer').click(function () {
+      $drawer.removeClass('drawer-open');
+      $('body').removeClass('drawer-scroll-lock');
+      $drawer.addClass('drawer-animating');
+    });
+
+    $('.drawer-content').click(function (e) {
+      e.stopPropagation();
+    });
+  });
+</script>
+
+    <script>
+  $(function () {
+    // 定时切换主题，TODO 为了调试方便，暂先改为10秒，等上线前改为 1分钟
+    var themes = ['theme-red', 'theme-pink', 'theme-purple', 'theme-deep-purple',
+      'theme-indigo', 'theme-blue', 'theme-light-blue', 'theme-cyan', 'theme-teal',
+      'theme-green', 'theme-light-green', 'theme-lime', 'theme-yellow', 'theme-amber',
+      'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
+    setInterval(function () {
+      var r = Math.floor(Math.random() * 16);
+      $('body').removeClass().addClass(themes[r]);
+    }, 10000);
+  })
+</script>
+
+  </body>
+</html>

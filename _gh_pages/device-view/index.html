@@ -2,6 +2,7 @@
 <html lang="zh-cmn-Hans">
 <head>
   <meta charset="utf-8">
+<<<<<<< HEAD
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="keywords" content="CSS3 Perfect">
@@ -17,6 +18,29 @@
 
   <!-- Perfect CSS -->
   <link href="/assets/css/device-view.css" rel="stylesheet">
+=======
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="keywords" content="CSS3 Perfect">
+<meta name="description"
+      content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+<meta name="author" content="Linder Wang">
+
+<title>
+  
+  设备预览 &middot; Perfect
+  
+</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" href="/favicon.ico">
+
+<!-- Perfect CSS -->
+<link href="/assets/css/perfect.css" rel="stylesheet">
+<!-- 页面 CSS -->
+<link href="/assets/css/device-view.css" rel="stylesheet">
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 
 </head>
 <body>
@@ -24,6 +48,7 @@
   <div class="device-toolbar">
     <div class="device-header">
       <div class="device-brand">
+<<<<<<< HEAD
         <div class="brand-icon"></div>
         <div class="brand-name">组件预览</div>
       </div>
@@ -37,11 +62,20 @@
               ></path>
             </g>
           </svg>
+=======
+        <a class="brand-icon" href="/"></a>
+        <div class="brand-name">设备预览</div>
+      </div>
+      <div class="device-url-container">
+        <div class="device-url-icon">
+          <i class="icon-pure-browser"></i>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
         </div>
         <input class="device-url-input" placeholder="请输入 URL">
       </div>
       <div class="device-select">
         <div class="device-icon" name="handset">
+<<<<<<< HEAD
           <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"
                style="pointer-events: none; display: block; width: 100%; height: 100%;">
             <g>
@@ -70,6 +104,15 @@
               ></path>
             </g>
           </svg>
+=======
+          <i class="icon-pure-handset"></i>
+        </div>
+        <div class="device-icon" name="window">
+          <i class="icon-pure-pc"></i>
+        </div>
+        <div class="device-icon" name="all">
+          <i class="icon-pure-handset-pc"></i>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
         </div>
       </div>
     </div>
@@ -82,19 +125,31 @@
     <div class="device-list" view="window">
       <device-view device="window">
         <div class="frame-container">
+<<<<<<< HEAD
           <iframe class="frame-device" src="/components/"></iframe>
+=======
+          <iframe class="frame-device" src="/"></iframe>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
         </div>
       </device-view>
       <device-view device="table" landscape="">
         <div class="frame-container">
           <iframe class="frame-device" sandbox="allow-scripts allow-same-origin"
+<<<<<<< HEAD
                   src="/components/"></iframe>
+=======
+                  src="/"></iframe>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
         </div>
       </device-view>
       <device-view device="handset">
         <div class="frame-container">
           <iframe class="frame-device" sandbox="allow-scripts allow-same-origin"
+<<<<<<< HEAD
                   src="/components/"></iframe>
+=======
+                  src="/"></iframe>
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
         </div>
       </device-view>
     </div>
@@ -118,7 +173,11 @@
           if (it.length === 2) {
             json[it[0]] = it[1];
           }
+<<<<<<< HEAD
         })
+=======
+        });
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
       }
       return json;
     }
@@ -156,7 +215,11 @@
       return {
         windowWidth: windowWidth,
         handsetWidth: handsetWidth
+<<<<<<< HEAD
       }
+=======
+      };
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
     }
 
     // 屏幕各种大小设备
@@ -255,11 +318,19 @@
     var handsetWidth = widths.handsetWidth;
 
     var selectorTopbar = $('.device-selector-topbar');
+<<<<<<< HEAD
+=======
+    var selectorWrapper = $('.device-selector-wrapper');
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
 
     // 根据给定的数据加载 device bar
     function renderDeviceBar() {
       if (device === 'all') {
         selectorTopbar.empty();
+<<<<<<< HEAD
+=======
+        selectorWrapper.hide();
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
       } else {
         var html = [];
         var width = device === 'window' ? windowWidth : handsetWidth;
@@ -276,6 +347,10 @@
         var label = getDeviceLabel();
         html.push(`<div class="device-selector-label">${label}</div>`);
         selectorTopbar.html(html.join(' '));
+<<<<<<< HEAD
+=======
+        selectorWrapper.show();
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
       }
     }
 
@@ -340,13 +415,22 @@
     // 切换在不同的设备间预览页面
     $('.device-toolbar .device-select').on('click', '.device-icon', function (e) {
       var $el = $(e.currentTarget);
+<<<<<<< HEAD
       $el.addClass('active').siblings().removeClass('active');
+=======
+      $el.find('i').addClass('active');
+      $el.siblings().find('i').removeClass('active');
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
       var type = $el.attr('name');
       $('.device-container .device-list').attr('view', type);
       device = type;
 
       if (type === 'all') {
+<<<<<<< HEAD
         location.hash = '';
+=======
+        location.hash = 'device=all';
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
       } else {
         updateHash({
           width: type === 'window' ? windowWidth : handsetWidth,
@@ -373,6 +457,7 @@
     });
 
     // init
+<<<<<<< HEAD
     if (device !== 'all') {
       renderDeviceBar();
     }
@@ -382,6 +467,15 @@
 
     if (!url) {
       url = location.origin + '/components/';
+=======
+    renderDeviceBar();
+    updateDeviceView();
+
+    $(`.device-select .device-icon[name=${device}] i`).addClass('active');
+
+    if (!url) {
+      url = location.origin + '/';
+>>>>>>> 274d71830943ddf222d83be4859ecf2552378ea5
     }
 
     $('.device-url-input').val(decodeURIComponent(url));

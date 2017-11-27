@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="keywords" content="CSS3 Perfect">
+<meta name="description"
+      content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
+<meta name="author" content="Linder Wang">
+
+<title>
+  
+  条目和表单 &middot; Perfect
+  
+</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" href="/favicon.ico">
+
+<!-- Perfect CSS -->
+<link href="/assets/css/perfect.css" rel="stylesheet">
+<!-- 页面 CSS -->
+<link href="/assets/css/examples.css" rel="stylesheet">
+
+</head>
+<body>
+<script src="/assets/js/vendor/jquery.min.js"></script>
+<style>
+  .examples-wrap {
+    background-color: #f5f5f5;
+    margin-bottom:    100px;
+  }
+
+  .correct {
+    border-left:   2px solid #508cee;
+    border-bottom: 2px solid #508cee;
+    height:        7px;
+    width:         13px;
+    transform:     rotate(-45deg);
+  }
+
+  .icon-grey {
+    background: rgba(0, 0, 0, .26);
+  }
+
+  .avatar-1 {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAADl0lEQVRYR+2WXWxURRTHfzP37pa2qVIJUbQEq1ACIcLGilBIEBISbH2Qz4B9UHnAYIMPNY0kaGJiiJJACg9teCF+EyLRGmUpWhMTAsYAWoRolE8VBQpShbLbdvfeGTJzsVqMvUsuTXi487K72Tvn/Od3/ufMFflXazS38RKxwIjViQlGBEhMMCYYlUDU/bEHY4JRCUTdP2welNUL0bks+shnVqOY9BgkigZ+Fyq8IIHiwek4S18LYkpncGzlg5D46Y3/JE+W4DbtgqvdeFuW2Ofd1e/AiDK85oWFagsOVsjbjJhQg7PiDcj3Q/by4ATJYii5E9XejDrwIXLeKuSjSyFZAn4erl6CXBbKK0AQ7DcH6mgpiObNCfTyQbJ/LzcJRaWo9CbUobZAYOoJK9rQ1md/QjgOjK4EraAvA6UjBw4UhrMggYwai/v8+wEBLzc4pnDATeDvfAX9w5cD/7kv7YF8H+rgR+AkkLPq4a9zeDvW4jZsR+3ZbImHrVCBcuZyZKoOEiNsIruM7270Yn8WdWwforQcMX4GlJYbBw3O/8fPeB+sw139Lv4nr6MP7w7TF+5BW7KZy8EtgstdICWUjYa+nkCouC5CSFRnGjF2CsKU03iz5yLetudwnnwZUVkNaPTJA4gHquHCKetT760GuHLxf4WGErSNO78BWfOULZkxuCkp3b/DXRU2qSXVn8FrrbfJxOS5VpQV+F6jLak9jGka41lzKCcJV7rwmhcNSbEwgbWNyEcWoc/+iDACx1Shv/0UkaoLiFRMAeXhbVmGGDcNZ8UGexD9S6cVJO6bHDTF4XYoG4VT14SofBi6TuBtffoWCPybYObPoMTFd6DaNyOmLkDcOymw5aE2VHqj/e7Ub0Lcn0J1tCImzkYf/wpRNRv8HPrYfmTti3bE+G3XZ+sQEkMJyjkrgw40TdKfCT5Ng5iRcf44jJlow+tfv0N1tAQCn2mBXC/q6x3IuatQe99EVs2Cu8fjb2/CWbbeltl/ew36t++jEZRznkU+tACd6YbeHusje23leyFRjD5zBJEohnsmoE8dBMdFjEuhvmhFHf0c94WdcOkM6puPkY83WtLGm0a47txlu3moFUrwP5uTJbarTdnMfNRHO+wj5u5V5t7NZZHTFw/MONNchq6+cBo5rRZlRksuG/i3Mx19zIRGGOYHbp7gMAu6MXwsMCrwmGBMMCqBqPtjD8YEoxKIuj/2YFSC1wAeSKdY8K4WXQAAAABJRU5ErkJggg==);
+  }
+
+  .avatar-2 {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAADcElEQVRYR+2XT2wVRRzHPzO77XumtFD+2SYtFF4KgbSmCqIhEQoJYNLAhQMHT+gJCARDAC8m6sVoSBM9GDWp8YBHT8aDQEOhFCSKAiUFA4GW1xfSQAvPUl7/zM6YnSlNkUiXbGs47O/y9u3Ob+Y7n9/3t/OeGPtph+EFDpEIjFmdhGBMgCQEE4JxCcTNTzyYEIxLIG7+jHlQLt6EUQVM7ozVKCrWgFc88T2q8EgCxYJX8Fbtd3MK78m5TQBCElxuweTa3TMvjb/5WxjNo1r32lv++s+hqAR1Yk9UbW65KL9mxMJX8V4/CMEIjD18cgEvDcWz0Fe+R3f/gly+A7nkbfBfAq1g5D6oYSipcHmjg25DXUcj0Xw+gXrMLTY5vCIrRnd+h+457gQu2gDFpVaIyd9ChNRLq8BoUI+guGxiQ1PhjCSQkkr8xiMhcAhFTg4hQfoEF77A3Pl14om/pcUS193HQBYhM1uhcBf12xH8Dc3TJ1AubUJWN4KXskJsWN/9y4uqgO77A5EqQyxogFSZ29DkeJhD/d5sNxtc/BrTe2oqgFN70JZsaZPtQAr3bNlIz4WxIVeyxyEkOtuGKK9FlFaDn4bCAKrjQ7yG3Yj5deHOMHcvI+bXw2DWjlFnP4bhgf8UGqnEcsU7rkRhk4yXlKG+ceOHf2kEqAKq7YBdTFS+idewy16r85/iNzY76mHTyCIQwn0W+lGtz+7qaALrdiJrNmMe3ESEAmfXYG6fRFQ3OiLltVaAat2HmLcCb80hK9r0d1nyYk7GeS57CtLlePXvOaJ/96BOH35mmaMJfExwNA/IideKqFpnFw8j7GDd2WKvvTc+QMxdib76A6JiNSb05surLEHTdwFZ/y6mt53g4lfT4MFl25GZba5JVMF50TaIgXw3zF7i+mbgGrrrqBO49iMIhtE3f7avHX39R+TC1yz54PxneKvft4SDc59gHtyIR1DWbkdWvYUZyY83hnLHVuhHL4UZ+Avhp6CsBnOv04oX8xw9nevA3/glDN1B95xA1u20pENvhsJN9iTBpW/iCXwq20sjM02Yvj9hViUm12GHhGev7m235GTNFnuq2PuZrZj+q5jBXmT1eufDYNj5N9sWv8RTzjDDAyI1yQxrmOYS/89qE4JxgScEE4JxCcTNTzyYEIxLIG7+C+/BfwDK37LYVaBsTgAAAABJRU5ErkJggg==);
+  }
+
+</style>
+
+<div class="examples-wrap">
+  <section>
+    <h1>Item&Form</h1>
+    <p>条目&表单</p>
+
+    <section class="panel-container m-t-5">
+      <h5 class="theme-primary">选择型条目(单行)</h5>
+      <section class="list-wrap" style="background-color: #f5f5f5;">
+        <ul class="list list-spacing">
+          <li class="list-item">
+            <span class="list-item-icon-start icon-grey"></span>
+            <span>这里是文案</span>
+            <span class="list-item-text-right">附加文案</span>
+            <span class="list-item-icon-end icon-pure-caret-right"></span>
+          </li>
+          <li class="list-item">
+            <span>这里是文案</span>
+            <span class="list-item-text-right theme-secondary">可变色的附加文案1</span>
+            <span class="list-item-icon-end icon-pure-caret-right"></span>
+          </li>
+          <li class="list-item">
+            <span>这里是文案</span>
+            <span class="list-item-text-right theme-primary">928,393.04</span>
+            <span class="list-item-icon-end icon-pure-caret-right"></span>
+          </li>
+        </ul>
+      </section>
+
+      <div class="list m-t-4">
+        <a class="list-item list-item-action" href="">按下状态，鼠标点击查看效果
+          <span class="list-item-icon-end icon-pure-caret-right"></span></a>
+      </div>
+
+      <div class="m-t-4 theme-primary">
+        <p class="m-t-4">右侧的文字颜色可根据内容的强度设计</p>
+        <p>右侧文案根据情况选择不同的文字大小</p>
+      </div>
+
+    </section>
+
+    <section class="panel-container m-t-5">
+      <h5 class="theme-primary">条目叠加时</h5>
+      <ul class="list theme-background">
+        <li class="list-item">
+          <span class="list-item-icon-start icon-grey"></span>
+          <span>这里是文案</span>
+          <span class="list-item-text-right">附加文案</span>
+          <span class="list-item-icon-end icon-pure-caret-right"></span>
+        </li>
+        <li class="list-divider list-divider-inset-icon"></li>
+        <li class="list-item">
+          <span class="list-item-icon-start icon-grey"></span>
+          <span>这里是文案</span>
+          <span class="list-item-text-right theme-success">可变色的附加文案1</span>
+          <span class="list-item-icon-end icon-pure-caret-right"></span>
+        </li>
+        <li class="list-divider list-divider-inset-icon"></li>
+        <li class="list-item">
+          <span class="list-item-icon-start icon-grey"></span>
+          <span>这里是文案</span>
+          <span class="list-item-text-right theme-primary">928,393.04</span>
+          <span class="list-item-icon-end icon-pure-caret-right"></span>
+        </li>
+      </ul>
+
+      <h5 class="theme-primary m-t-4">当条目很多且级别较弱时</h5>
+      <ul class="list list-dense theme-background">
+        <li class="list-item">
+          <span>这里是文案</span>
+          <span class="list-item-icon-end icon-pure-caret-right"></span>
+        </li>
+        <li class="list-divider list-divider-inset"></li>
+        <li class="list-item">
+          <span>这里是文案</span>
+          <span class="list-item-icon-end icon-pure-caret-right"></span>
+        </li>
+        <li class="list-divider list-divider-inset"></li>
+        <li class="list-item">
+          <span>这里是文案</span>
+          <span class="list-item-icon-end icon-pure-caret-right"></span>
+        </li>
+      </ul>
+
+    </section>
+
+    <section class="panel-container m-t-5">
+      <h5 class="theme-primary">选择型条目（多行叠加）</h5>
+      <div class="row">
+        <div class="col-md m-t-4">
+          <ul class="list list-spacing">
+            <li class="list-item">
+              <span class="list-item-text">
+                交通银行(尾号3089)
+                <span class="list-item-text-secondary">说明文案</span>
+              </span>
+              <span class="list-item-icon-end icon-pure-caret-right"></span>
+            </li>
+            <li class="list-item bg-transparent">
+              <span class="list-item-text">
+                小金库
+                <span class="list-item-text-secondary">可转出额度0元</span>
+              </span>
+              <span class="list-item-text-right">额度不足</span>
+            </li>
+            <li class="list-item">
+              <span class="list-item-text">
+                招商银行(尾号2342)
+                <span class="list-item-text-secondary">说明文案</span>
+              </span>
+            </li>
+            <li class="list-item m-t-4">
+              <span class="list-item-icon-start icon-grey"></span>
+              <span class="list-item-text">
+                交通银行(尾号3089)
+                <span class="list-item-text-secondary">说明文案</span>
+              </span>
+              <span class="list-item-icon-end icon-pure-caret-right"></span>
+            </li>
+            <li class="list-item m-t-4">
+              <span class="list-item-text">
+                投保人：王杨(188****8849)
+                <span class="list-item-text-secondary">身份证：150********2453</span>
+              </span>
+              <span class="list-item-icon-end icon-pure-caret-right"></span>
+            </li>
+
+            <li class="list-item m-t-2">
+              <span class="list-item-icon-start icon-grey"></span>
+              <span>新建投保人</span>
+              <span class="list-item-icon-end icon-pure-caret-right"></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md m-t-4">
+          <ul class="list theme-background">
+            <li class="list-item">
+              <span class="list-item-avatar avatar-1"></span>
+              <span class="list-item-text">
+                这里是文案
+                <span class="list-item-text-secondary">说明文案</span>
+              </span>
+              <span class="list-item-icon-end icon-pure-caret-right"></span>
+            </li>
+            <li class="list-divider list-divider-inset-avatar"></li>
+            <li class="list-item">
+              <span class="list-item-avatar avatar-2"></span>
+              <span class="list-item-text">
+                这里是文案
+                <span class="list-item-text-secondary">说明文案</span>
+              </span>
+              <span class="list-item-icon-end icon-pure-caret-right"></span>
+            </li>
+            <li class="list-divider list-divider-inset-avatar"></li>
+
+            <li class="list-item">
+              <span class="list-item-avatar avatar-1"></span>
+              <span class="list-item-text">
+                这里是文案
+                <span class="list-item-text-secondary">说明文案</span>
+              </span>
+              <span class="list-item-text-right">附加文案1</span>
+              <span class="list-item-icon-end icon-pure-caret-right"></span>
+            </li>
+            <li class="list-divider list-divider-inset-avatar"></li>
+
+            <li class="list-item">
+              <span class="list-item-avatar avatar-2"></span>
+              <span class="list-item-text">
+                这里是文案
+                <span class="list-item-text-secondary">说明文案</span>
+              </span>
+              <span class="list-item-text-right">附加文案5.6%</span>
+              <span class="list-item-icon-end icon-pure-caret-right"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="panel-container m-t-5">
+      <div class="row">
+        <div class="col-md m-t-4">
+          <h5 class="theme-info">带Tab标签的导航 标签个数≤3个时，用16px</h5>
+          <nav class="tab-bar tab-bar-primary tab-bar-between">
+            <a class="tab active" href="#one">标签1</a>
+            <a class="tab" href="#two">标签2</a>
+            <a class="tab" href="#three">标签3</a>
+          </nav>
+        </div>
+
+        <div class="col-md m-t-4">
+          <h5 class="theme-primary">标签个数4-5个时，用14px</h5>
+          <nav class="tab-bar tab-bar-sm tab-secondary tab-bar-between">
+            <a class="tab active" href="#1">标签1</a>
+            <a class="tab" href="#2">标签2</a>
+            <a class="tab" href="#3">标签3</a>
+            <a class="tab" href="#4">标签4</a>
+            <a class="tab" href="#5">标签5</a>
+          </nav>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="panel-container m-t-5">
+      <div class="row">
+        <div class="col-md m-t-4">
+          <h5 class="theme-primary">标签超过5个的时候使用可滑动的样式</h5>
+          <div class="tab-bar-scroller">
+            <div class="tab-bar-scroller-indicator">
+              <i class="tab-bar-scroller-indicator-inner icon-pure-caret-left"></i>
+            </div>
+            <div class="tab-bar-scroller-frame">
+              <nav class="tab-bar tab-bar-smooth">
+                <a class="tab active" href="#one">标签1</a>
+                <a class="tab ripple ripple-impact" href="#two" style="--ripple-width:89.6719px; --ripple-height:48px; --ripple-size:53.8031px; --ripple-scale:2.07628;">标签2</a>
+                <a class="tab ripple ripple-impact" href="#three" style="--ripple-width:90.0312px; --ripple-height:48px; --ripple-size:54.0187px; --ripple-scale:2.07386;">标签3</a>
+                <a class="tab ripple ripple-impact" href="#four" style="--ripple-width:90.2969px; --ripple-height:48px; --ripple-size:54.1781px; --ripple-scale:2.07209;">标签4</a>
+                <a class="tab ripple ripple-impact" href="#five" style="--ripple-width:89.9062px; --ripple-height:48px; --ripple-size:53.9437px; --ripple-scale:2.0747;">标签5</a>
+                <a class="tab ripple ripple-impact" href="#six" style="--ripple-width:90.2031px; --ripple-height:48px; --ripple-size:54.1219px; --ripple-scale:2.07272;">标签6</a>
+                <a class="tab ripple ripple-impact" href="#seven" style="--ripple-width:89.125px; --ripple-height:48px; --ripple-size:53.475px; --ripple-scale:2.08001;">标签7</a>
+                <a class="tab ripple ripple-impact" href="#eight" style="--ripple-width:90.2188px; --ripple-height:48px; --ripple-size:54.1313px; --ripple-scale:2.07261;">标签8</a>
+                <a class="tab ripple ripple-impact" href="#nice" style="--ripple-width:90.2031px; --ripple-height:48px; --ripple-size:54.1219px; --ripple-scale:2.07272;">标签9</a>
+                <a class="tab ripple ripple-impact" href="#ten" style="--ripple-width:97.5469px; --ripple-height:48px; --ripple-size:58.5281px; --ripple-scale:2.02838;">标签10</a>
+                <a class="tab ripple ripple-impact" href="#elevent" style="--ripple-width:94.9219px; --ripple-height:48px; --ripple-size:56.9531px; --ripple-scale:2.04322;">标签11</a>
+                <a class="tab ripple ripple-impact" href="#eight" style="--ripple-width:97.125px; --ripple-height:48px; --ripple-size:58.275px; --ripple-scale:2.03069;">标签12</a>
+                <a class="tab ripple ripple-impact" href="#thirteen" style="--ripple-width:97.5px; --ripple-height:48px; --ripple-size:58.5px; --ripple-scale:2.02863;">标签13</a>
+                <a class="tab ripple ripple-impact" href="#fourteen" style="--ripple-width:97.7656px; --ripple-height:48px; --ripple-size:58.6594px; --ripple-scale:2.02718;">标签14</a>
+                <a class="tab ripple ripple-impact" href="#fifteen" style="--ripple-width:97.3594px; --ripple-height:48px; --ripple-size:58.4156px; --ripple-scale:2.0294;">标签15</a>
+                <span class="tab-bar-smooth-line" style="transition: none; width: 1389.34px; transform: scale(0.0666667, 1) translateX(0px); visibility: visible;"></span>
+              </nav>
+            </div>
+            <div class="tab-bar-scroller-indicator enabled">
+              <i class="tab-bar-scroller-indicator-inner icon-pure-caret-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="panel-container m-t-5">
+      <div class="row">
+        <div class="col-md m-t-4">
+          <h5 class="theme-primary">下拉菜单条目(ios)</h5>
+          <ul class="list">
+            <li class="list-item">
+              <span class="theme-primary list-item-text-center">选择文案1</span>
+              <span class="list-item-icon-end correct"></span>
+            </li>
+            <li class="list-divider"></li>
+            <li class="list-item">
+              <span class="list-item-text-center">选择文案2</span>
+              <span class="list-item-icon-end"></span>
+            </li>
+            <li class="list-divider"></li>
+            <li class="list-item">
+              <span class="list-item-text-center">选择文案3</span>
+              <span class="list-item-icon-end"></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md m-t-4">
+          <h5 class="theme-primary">下拉菜单条目(android)</h5>
+          <ul class="list">
+            <li class="list-item">
+              <span class="theme-primary">全部理财</span>
+              <span class="list-item-icon-end correct"></span>
+            </li>
+            <li class="list-divider list-divider-inset"></li>
+            <li class="list-item">
+              <span>基金理财</span>
+              <span class="list-item-icon-end"></span>
+            </li>
+            <li class="list-divider list-divider-inset"></li>
+            <li class="list-item">
+              <span>基金理财</span>
+              <span class="list-item-icon-end"></span>
+            </li>
+            <li class="list-divider list-divider-inset"></li>
+            <li class="list-item">
+              <span>票据理财</span>
+              <span class="list-item-icon-end"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="panel-container m-t-5">
+      <h5 class="theme-primary">带标题的选择型表单</h5>
+      <div class="row">
+        <div class="col-md m-t-4">
+          <ul class="list">
+            <li class="list-item">
+              <span class="list-item-text">
+                &nbsp;
+                <span class="list-item-text-secondary h-base">卡类型</span>
+              </span>
+              <span class="list-item-icon-end icon-pure-caret-right"></span>
+            </li>
+          </ul>
+
+          <ul class="list m-t-3">
+            <li class="list-item">
+              <span class="list-item-text">
+                <span class="theme-primary h6">卡类型</span>
+                <span class="list-item-text-secondary text-dark h-base m-t-1">交通银行 储蓄卡</span>
+              </span>
+              <span class="list-item-icon-end icon-pure-caret-right"></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md m-t-4">
+          <p class="theme-primary">点击选择条目 进入选择页</p>
+          <p class="theme-primary">返回后提示文案缩小赏析，改变颜色</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel-container m-t-5">
+      <h5 class="theme-primary">输入型表单</h5>
+      <p class="theme-primary">点击input时提示文字缩小上移，改变颜色</p>
+      <div class="row">
+        <div class="col-md m-t-4" style="background: #fff;">
+          <div class="p-t-2">
+            <div class="input input-float-above input-full">
+              <input type="text" class="input-field input-field-focused" id="input-field1"
+                     value="戴永明">
+              <label for="input-field1" class="input-label">持卡人姓名</label>
+            </div>
+          </div>
+
+          <div class="p-t-2">
+            <div class="input input-float-above input-full">
+              <input type="text" class="input-field" id="input-field2">
+              <label for="input-field2" class="input-label">身份证号</label>
+            </div>
+          </div>
+          <div class="p-t-2">
+            <div class="input input-float-above input-full">
+              <input type="text" class="input-field" id="input-field3">
+              <label for="input-field3" class="input-label">手机号</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md m-t-4 theme-background">
+          <div class="p-t-2">
+            <div class="input input-float-above input-full input-invalid">
+              <input type="text" class="input-field input-field-focused" id="input-field4"
+                     value="152098745637">
+              <label for="input-field4" class="input-label">请填写11位手机号</label>
+            </div>
+          </div>
+          <div class="p-t-2">
+            <div class="input input-float-above input-full">
+              <input type="text" class="input-field" id="input-field5"
+                     value="无效的值">
+              <label for="input-field5" class="input-label">身份证号</label>
+            </div>
+          </div>
+
+          <div class="p-t-2">
+            <div class="input input-float-above input-full">
+              <input type="text" class="input-field" id="input-field6" disabled
+                     value="不可更改的信息">
+              <label for="input-field6" class="input-label">持卡人姓名</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="panel-container m-t-5">
+      <h5 class="theme-primary">checkbox</h5>
+      <div>
+        <div class="form-field">
+          <div class="checkbox">
+            <input class="checkbox-native-control" type="checkbox" id="checkbox_base1"/>
+            <div class="checkbox-background">
+              <div class="checkbox-mark-outer"></div>
+              <div class="checkbox-mark-inner"></div>
+            </div>
+          </div>
+          <label for="checkbox_base1">基本样式 1</label>
+        </div>
+
+        <div class="form-field">
+          <div class="checkbox checkbox-ripple">
+            <input class="checkbox-native-control" type="checkbox" id="checkbox_ripple1"/>
+            <div class="checkbox-background">
+              <div class="checkbox-mark-outer"></div>
+              <div class="checkbox-mark-inner"></div>
+            </div>
+          </div>
+          <label for="checkbox_ripple1">带波纹样式 1</label>
+        </div>
+      </div>
+
+      <div class="m-t-2">
+        <div class="checkbox checkbox-primary">
+          <input class="checkbox-native-control" type="checkbox" name="primary"/>
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        <div class="checkbox checkbox-secondary">
+          <input class="checkbox-native-control" type="checkbox" name="primary"/>
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        <div class="checkbox checkbox-info">
+          <input class="checkbox-native-control" type="checkbox" name="primary"/>
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        <div class="checkbox checkbox-success">
+          <input class="checkbox-native-control" type="checkbox" name="primary"/>
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+        <div class="checkbox checkbox-error">
+          <input class="checkbox-native-control" type="checkbox" name="primary"/>
+          <div class="checkbox-background">
+            <div class="checkbox-mark-outer"></div>
+            <div class="checkbox-mark-inner"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <h5>圆形 Checkbox</h5>
+    <section class="component-container component-spacing">
+      <div class="checkbox checkbox-circle">
+        <input class="checkbox-native-control" type="checkbox" name="circle"/>
+        <div class="checkbox-background">
+          <div class="checkbox-mark-outer"></div>
+          <div class="checkbox-mark-inner"></div>
+        </div>
+      </div>
+      <div class="checkbox checkbox-circle checkbox-ripple">
+        <input class="checkbox-native-control" type="checkbox" name="circle"/>
+        <div class="checkbox-background">
+          <div class="checkbox-mark-outer"></div>
+          <div class="checkbox-mark-inner"></div>
+        </div>
+      </div>
+      <div class="checkbox checkbox-circle checkbox-primary">
+        <input class="checkbox-native-control" type="checkbox" name="circle"/>
+        <div class="checkbox-background">
+          <div class="checkbox-mark-outer"></div>
+          <div class="checkbox-mark-inner"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel-container m-t-5">
+      <h5 class="theme-primary">radio</h5>
+      <div>
+        <div class="form-field">
+          <div class="radio">
+            <input class="radio-native-control" type="radio" name="radio_base" id="radio_base1"/>
+            <div class="radio-background">
+              <div class="radio-circle-outer"></div>
+              <div class="radio-circle-inner"></div>
+            </div>
+          </div>
+          <label for="radio_base1">基本样式 1</label>
+        </div>
+
+        <div class="form-field">
+          <div class="radio radio-ripple">
+            <input class="radio-native-control" type="radio" name="radio_ripple" id="radio_ripple1"/>
+            <div class="radio-background">
+              <div class="radio-circle-outer"></div>
+              <div class="radio-circle-inner"></div>
+            </div>
+          </div>
+          <label for="radio_ripple1">带波纹样式 1</label>
+        </div>
+      </div>
+
+      <div class="m-t-2">
+        <div class="radio radio-primary">
+          <input class="radio-native-control" type="radio" name="primary"/>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-secondary">
+          <input class="radio-native-control" type="radio" name="primary"/>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-info">
+          <input class="radio-native-control" type="radio" name="primary"/>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-success">
+          <input class="radio-native-control" type="radio" name="primary"/>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+        <div class="radio radio-error">
+          <input class="radio-native-control" type="radio" name="primary"/>
+          <div class="radio-background">
+            <div class="radio-circle-outer"></div>
+            <div class="radio-circle-inner"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+</div>
+
+<script>
+  $(function () {
+    $('.tab-bar').on('click', '.tab', function (e) {
+      $(e.currentTarget).addClass('active').siblings().removeClass('active');
+    });
+
+    // 处理 input-float-above
+    $('.input-float-above .input-field').blur(function (e) {
+      var val = $(e.currentTarget).val();
+      if (val) {
+        $(e.currentTarget).addClass('input-field-focused');
+      } else {
+        $(e.currentTarget).removeClass('input-field-focused');
+      }
+    });
+
+    $('.input-float-above .input-field').each(function (index, item) {
+      if ($(item).val()) {
+        $(item).addClass('input-field-focused');
+      } else {
+        $(item).removeClass('input-field-focused');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
