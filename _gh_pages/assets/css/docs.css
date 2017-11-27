@@ -298,17 +298,83 @@ html, body {
   padding: 0 1rem;
 }
 
-.doc-main p, .doc-main li {
+.doc-content {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.doc-content > h1 {
+  font-size: 1.75rem;
+}
+
+.doc-content > h2 {
+  font-size: 1.5rem;
+}
+
+.doc-content > h3 {
+  font-size: 1.25rem;
+}
+
+.doc-content > h4 {
+  font-size: 1.125rem;
+}
+
+.doc-content > h1, .doc-content > h2 {
+  margin-top: 3rem;
+}
+
+.doc-content > h3, .doc-content > h4, .doc-content > h5, .doc-content > h6 {
+  margin-top: 2rem;
+}
+
+.doc-content > h1:first-of-type, .doc-content > h2:first-of-type {
+  margin-top: 1rem;
+}
+
+.doc-content > h1 .anchor-header, .doc-content > h2 .anchor-header, .doc-content > h3 .anchor-header, .doc-content > h4 .anchor-header, .doc-content > h5 .anchor-header, .doc-content > h6 .anchor-header {
+  display: inline-block;
+  height: 5.5rem;
+  margin-top: -5.5rem;
+  visibility: hidden;
+}
+
+.doc-content > h1 .anchor-link, .doc-content > h2 .anchor-link, .doc-content > h3 .anchor-link, .doc-content > h4 .anchor-link, .doc-content > h5 .anchor-link, .doc-content > h6 .anchor-link {
+  padding-left: 0.375rem;
+  opacity: 0;
+}
+
+.doc-content > h1:hover > .anchor-link,
+.doc-content > h1 .anchor-link:focus, .doc-content > h2:hover > .anchor-link,
+.doc-content > h2 .anchor-link:focus, .doc-content > h3:hover > .anchor-link,
+.doc-content > h3 .anchor-link:focus, .doc-content > h4:hover > .anchor-link,
+.doc-content > h4 .anchor-link:focus, .doc-content > h5:hover > .anchor-link,
+.doc-content > h5 .anchor-link:focus, .doc-content > h6:hover > .anchor-link,
+.doc-content > h6 .anchor-link:focus {
+  opacity: 1;
+}
+
+.doc-content ol, .doc-content ul {
+  margin-left: 1rem;
+}
+
+.doc-content p, .doc-content li {
   line-height: 2;
 }
 
-.doc-main p {
+.doc-content p {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.doc-main h1, .doc-main h2, .doc-main h3 {
-  margin-top: 2rem;
+.doc-content a {
+  margin-left: .25rem;
+  margin-right: .25rem;
+}
+
+.doc-content hr {
+  border-top: 1px dashed;
+  border-color: #64b5f6;
+  border-color: var(--theme-primary-light, #64b5f6);
 }
 
 .doc-table {
@@ -362,6 +428,24 @@ html, body {
  * $property is typically color or background-color, but can be any CSS property that accepts color values.
  * $style should be one of the map keys in $theme-property-values (_variables.scss).
  */
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
 .doc-catalogue-menu:hover .doc-catalogue-panel {
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
@@ -369,7 +453,7 @@ html, body {
 
 .doc-catalogue-panel {
   position: fixed;
-  top: 64px;
+  top: 54px;
   right: 0;
   z-index: 1000;
   padding-top: .5rem;
@@ -407,67 +491,6 @@ html, body {
   display: none;
 }
 
-.doc-content {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.doc-content > h1 {
-  font-size: 1.75rem;
-}
-
-.doc-content > h2 {
-  font-size: 1.5rem;
-}
-
-.doc-content > h3 {
-  font-size: 1.25rem;
-}
-
-.doc-content > h4 {
-  font-size: 1.125rem;
-}
-
-.doc-content > h1, .doc-content > h2 {
-  margin-top: 3rem;
-}
-
-.doc-content > h3, .doc-content > h4, .doc-content > h5, .doc-content > h6 {
-  margin-top: 2rem;
-}
-
-.doc-content > h1:first-child, .doc-content > h2:first-child {
-  margin-top: 0;
-}
-
-.doc-content > h1 .anchor-header, .doc-content > h2 .anchor-header, .doc-content > h3 .anchor-header, .doc-content > h4 .anchor-header, .doc-content > h5 .anchor-header, .doc-content > h6 .anchor-header {
-  display: inline-block;
-  height: 5.5rem;
-  margin-top: -5.5rem;
-  visibility: hidden;
-}
-
-.doc-content > h1 .anchor-link, .doc-content > h2 .anchor-link, .doc-content > h3 .anchor-link, .doc-content > h4 .anchor-link, .doc-content > h5 .anchor-link, .doc-content > h6 .anchor-link {
-  padding-left: 0.375rem;
-  opacity: 0;
-}
-
-.doc-content > h1:hover > .anchor-link,
-.doc-content > h1 .anchor-link:focus, .doc-content > h2:hover > .anchor-link,
-.doc-content > h2 .anchor-link:focus, .doc-content > h3:hover > .anchor-link,
-.doc-content > h3 .anchor-link:focus, .doc-content > h4:hover > .anchor-link,
-.doc-content > h4 .anchor-link:focus, .doc-content > h5:hover > .anchor-link,
-.doc-content > h5 .anchor-link:focus, .doc-content > h6:hover > .anchor-link,
-.doc-content > h6 .anchor-link:focus {
-  opacity: 1;
-}
-
-.doc-content hr {
-  border-top: 1px dashed;
-  border-color: #64b5f6;
-  border-color: var(--theme-primary-light, #64b5f6);
-}
-
 @media screen and (min-width: 1600px) {
   .doc-catalogue-menu {
     display: none;
@@ -497,10 +520,17 @@ html, body {
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
   }
+  .doc-catalogue-header {
+    position: relative;
+    margin-top: 1.25rem;
+  }
   .doc-catalogue-header::before {
     content: "目录";
+    position: absolute;
+    top: -2rem;
     padding-left: .5rem;
-    color: #999;
+    font-size: 1rem;
+    font-weight: 500;
   }
 }
 

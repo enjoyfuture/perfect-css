@@ -1490,11 +1490,6 @@ address {
 }
 
 ol,
-ul {
-  list-style-position: inside;
-}
-
-ol,
 ul,
 dl {
   padding-left: 0;

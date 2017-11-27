@@ -869,8 +869,8 @@
   margin-top: 2rem;
 }
 
-.component-wrap > h1:first-child, .component-wrap > h2:first-child {
-  margin-top: 0;
+.component-wrap > h1:first-of-type, .component-wrap > h2:first-of-type {
+  margin-top: 1rem;
 }
 
 .component-wrap > h1 .anchor-header, .component-wrap > h2 .anchor-header, .component-wrap > h3 .anchor-header, .component-wrap > h4 .anchor-header, .component-wrap > h5 .anchor-header, .component-wrap > h6 .anchor-header {
