@@ -2460,6 +2460,464 @@ hr {
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
+[class*="icon-pure-"] {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  font-style: normal;
+  color: #757575;
+  vertical-align: middle;
+}
+
+[class*="icon-pure-"]::before, [class*="icon-pure-"]::after {
+  content: "";
+  display: inline-block;
+  pointer-events: none;
+}
+
+[class*="icon-pure-"]:hover, [class*="icon-pure-"].active {
+  color: #212121;
+}
+
+[class*="icon-pure-"][data-circle] {
+  width: 30px;
+  height: 30px;
+  border: 2px solid;
+  border-radius: 50%;
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+[class*="icon-pure-arrow-"] {
+  content: "";
+  width: 0;
+  height: 0;
+  border: 10px solid;
+}
+
+[class*="icon-pure-arrow-"]::before, [class*="icon-pure-arrow-"]::after {
+  content: normal;
+}
+
+.icon-pure-arrow-up {
+  border-color: transparent transparent currentColor;
+  border-top-width: 0;
+  border-bottom-style: solid;
+}
+
+.icon-pure-arrow-down {
+  border-color: currentColor transparent transparent;
+  border-top-style: solid;
+  border-bottom-width: 0;
+}
+
+.icon-pure-arrow-left {
+  border-color: transparent currentColor transparent transparent;
+  border-left-width: 0;
+  border-right-style: solid;
+}
+
+.icon-pure-arrow-right {
+  border-color: transparent transparent transparent currentColor;
+  border-left-style: solid;
+  border-right-width: 0;
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+.icon-pure-caret-right::before, .icon-pure-caret-up::before, .icon-pure-caret-down::before, .icon-pure-caret-left::before, .icon-pure-caret-right::after, .icon-pure-caret-up::after, .icon-pure-caret-down::after, .icon-pure-caret-left::after {
+  position: absolute;
+  bottom: 0;
+  right: 4px;
+  width: 12.1421356237px;
+  height: 2px;
+  margin: auto 0;
+  -webkit-box-shadow: inset 0 0 0 4px;
+          box-shadow: inset 0 0 0 4px;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.icon-pure-caret-right::before, .icon-pure-caret-up::before, .icon-pure-caret-down::before, .icon-pure-caret-left::before {
+  top: 2px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.icon-pure-caret-right::after, .icon-pure-caret-up::after, .icon-pure-caret-down::after, .icon-pure-caret-left::after {
+  top: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.icon-pure-caret-up {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.icon-pure-caret-down {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.icon-pure-caret-left {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+.icon-pure-minus::before, .icon-pure-plus::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: currentColor;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 20px;
+  height: 2px;
+}
+
+.icon-pure-plus::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: currentColor;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 2px;
+  height: 20px;
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+.icon-pure-check {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.icon-pure-check::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: currentColor;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 20px;
+  height: 2px;
+}
+
+.icon-pure-check::after {
+  position: absolute;
+  left: 0;
+  width: 2px;
+  height: 10px;
+  background: currentColor;
+}
+
+.icon-pure-check[data-circle]::before {
+  top: 55%;
+  left: 55%;
+  width: 15px;
+}
+
+.icon-pure-check[data-circle]::after {
+  top: 6.6666666px;
+  left: 6px;
+  width: 2px;
+  height: 8px;
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+.icon-pure-pencil {
+  width: 6px;
+  background-color: currentColor;
+  -webkit-transform: rotate(45deg) scale(0.8);
+          transform: rotate(45deg) scale(0.8);
+}
+
+.icon-pure-pencil::before {
+  position: absolute;
+  top: -6px;
+  width: 6px;
+  height: 5px;
+  border-radius: 2px;
+  background-color: currentColor;
+}
+
+.icon-pure-pencil::after {
+  position: absolute;
+  top: 21px;
+  border-width: 8px 3px;
+  border-style: solid;
+  border-color: currentColor transparent transparent;
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+.icon-pure-questions {
+  width: 30px;
+  height: 30px;
+  border: 2px solid;
+  border-radius: 50%;
+}
+
+.icon-pure-questions::before {
+  content: "?";
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  margin-top: -2px;
+  font-size: 20px;
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+.icon-pure-menu {
+  width: 20px;
+  height: 2px;
+  -webkit-box-shadow: inset 0 0 0 20px, 0 -6px, 0 6px;
+          box-shadow: inset 0 0 0 20px, 0 -6px, 0 6px;
+}
+
+.icon-pure-menu::before, .icon-pure-menu::after {
+  content: normal;
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+.icon-pure-catalogue {
+  width: 4px;
+  height: 4px;
+  margin: 16px 26px 16px 8px;
+  -webkit-box-shadow: inset 0 0 0 20px, 0 -8px 0 0, 0 8px 0 0;
+          box-shadow: inset 0 0 0 20px, 0 -8px 0 0, 0 8px 0 0;
+}
+
+.icon-pure-catalogue::before {
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  height: 4px;
+  -webkit-box-shadow: inset 0 0 0 20px, 0 -8px 0 0, 0 8px 0 0;
+          box-shadow: inset 0 0 0 20px, 0 -8px 0 0, 0 8px 0 0;
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+.icon-pure-code, .icon-pure-code-expand {
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.icon-pure-code::before, .icon-pure-code-expand::before {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+.icon-pure-code::after, .icon-pure-code-expand::after {
+  content: normal;
+}
+
+.icon-pure-code-expand::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 8px;
+  width: 2px;
+  height: 20px;
+  background-color: currentColor;
+  -webkit-transform: rotate(65deg);
+          transform: rotate(65deg);
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+.icon-pure-copy {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  width: 20px;
+  height: 28px;
+  border: 2px solid;
+  border-radius: 0 0 0 10px;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+
+.icon-pure-copy::before {
+  position: absolute;
+  bottom: -3px;
+  left: -3px;
+  width: 0;
+  height: 0;
+  border-width: 5px;
+  border-style: solid;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-radius: 2px;
+}
+
+.icon-pure-copy::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: currentColor;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 40%;
+  width: 2px;
+  height: 2px;
+  -webkit-box-shadow: 2px 0 0 0, 4px 0 0 0, 6px 0 0 0, -2px 0 0 0, -4px 0 0 0, -6px 0 0 0, 0 6px 0 0, 2px 6px 0 0, 4px 6px 0 0, 6px 6px 0 0, -2px 6px 0 0, -4px 6px 0 0, -6px 6px 0 0, 0 -6px 0 0, 2px -6px 0 0, 4px -6px 0 0, 6px -6px 0 0, -2px -6px 0 0, -4px -6px 0 0, -6px -6px 0 0, -6px -16px 0 0, -4px -16px 0 0, -2px -16px 0 0, 0 -16px 0 0, 2px -16px 0 0, 4px -16px 0 0, 6px -16px 0 0, 8px -16px 0 0, 10px -16px 0 0, 12px -16px 0 0, 14px -16px 0 0, -6px -14px 0 0, 14px 12px 0 0, 13px 12px 0 0, 16px -16px 0 0, 16px -14px 0 0, 16px -12px 0 0, 16px -10px 0 0, 16px -8px 0 0, 16px -6px 0 0, 16px -4px 0 0, 16px -2px 0 0, 16px 0 0 0, 16px 2px 0 0, 16px 4px 0 0, 16px 6px 0 0, 16px 8px 0 0, 16px 10px 0 0, 16px 12px 0 0;
+          box-shadow: 2px 0 0 0, 4px 0 0 0, 6px 0 0 0, -2px 0 0 0, -4px 0 0 0, -6px 0 0 0, 0 6px 0 0, 2px 6px 0 0, 4px 6px 0 0, 6px 6px 0 0, -2px 6px 0 0, -4px 6px 0 0, -6px 6px 0 0, 0 -6px 0 0, 2px -6px 0 0, 4px -6px 0 0, 6px -6px 0 0, -2px -6px 0 0, -4px -6px 0 0, -6px -6px 0 0, -6px -16px 0 0, -4px -16px 0 0, -2px -16px 0 0, 0 -16px 0 0, 2px -16px 0 0, 4px -16px 0 0, 6px -16px 0 0, 8px -16px 0 0, 10px -16px 0 0, 12px -16px 0 0, 14px -16px 0 0, -6px -14px 0 0, 14px 12px 0 0, 13px 12px 0 0, 16px -16px 0 0, 16px -14px 0 0, 16px -12px 0 0, 16px -10px 0 0, 16px -8px 0 0, 16px -6px 0 0, 16px -4px 0 0, 16px -2px 0 0, 16px 0 0 0, 16px 2px 0 0, 16px 4px 0 0, 16px 6px 0 0, 16px 8px 0 0, 16px 10px 0 0, 16px 12px 0 0;
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+.icon-pure-handset {
+  width: 20px;
+  height: 28px;
+  border-width: 4px 2px;
+  border-style: solid;
+  border-radius: 4px;
+}
+
+.icon-pure-handset::before, .icon-pure-handset::after {
+  content: normal;
+}
+
+.icon-pure-pc {
+  width: 32px;
+  border-bottom: 3px solid;
+}
+
+.icon-pure-pc::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: currentColor;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 20px;
+  height: 12px;
+  border-width: 3px 2px 1px;
+  border-style: solid;
+  border-radius: 3px 3px 0 0;
+  background-color: transparent;
+}
+
+.icon-pure-pc::after {
+  content: normal;
+}
+
+.icon-pure-handset-pc {
+  width: 24px;
+  height: 16px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-top-left-radius: 3px;
+}
+
+.icon-pure-handset-pc::before {
+  position: absolute;
+  bottom: 0;
+  width: 3px;
+  height: 3px;
+  -webkit-box-shadow: -6px 3px 0 0, -3px 3px 0 0, 0 3px 0 0, 3px 3px 0 0, 6px 3px 0 0, 9px 3px 0 0, 15px 3px 0 0, 18px 3px 0 0, 21px 3px 0 0;
+          box-shadow: -6px 3px 0 0, -3px 3px 0 0, 0 3px 0 0, 3px 3px 0 0, 6px 3px 0 0, 9px 3px 0 0, 15px 3px 0 0, 18px 3px 0 0, 21px 3px 0 0;
+}
+
+.icon-pure-handset-pc::after {
+  width: 2px;
+  height: 2px;
+  -webkit-box-shadow: 15px -2px 0 0, 15px -4px 0 0, 15px -6px 0 0, 15px -8px 0 0, 15px -10px 0 0, 22px -2px 0 0, 22px -4px 0 0, 22px -6px 0 0, 22px -8px 0 0, 22px -10px 0 0, 15px -12px 0 0, 17px -12px 0 0, 19px -12px 0 0, 21px -12px 0 0, 22px -12px 0 0;
+          box-shadow: 15px -2px 0 0, 15px -4px 0 0, 15px -6px 0 0, 15px -8px 0 0, 15px -10px 0 0, 22px -2px 0 0, 22px -4px 0 0, 22px -6px 0 0, 22px -8px 0 0, 22px -10px 0 0, 15px -12px 0 0, 17px -12px 0 0, 19px -12px 0 0, 21px -12px 0 0, 22px -12px 0 0;
+}
+
+.icon-pure-browser {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-image: radial-gradient(4px 10px at center, transparent 0, transparent 4px, currentColor 5px, currentColor 6px, transparent 7px);
+  -webkit-box-shadow: inset 0 0 0 2px;
+          box-shadow: inset 0 0 0 2px;
+}
+
+.icon-pure-browser::before {
+  position: absolute;
+  bottom: 0;
+  width: 24px;
+  height: 24px;
+  background-image: radial-gradient(4px 8px at center, transparent 0, transparent 4px, currentColor 5px, currentColor 6px, transparent 7px);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.icon-pure-browser:hover::before, .icon-pure-browser.active::before {
+  background-image: radial-gradient(4px 8px at center, transparent 0, transparent 4px, #212121 5px, #212121 6px, transparent 7px);
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+.icon-pure-close::before, .icon-pure-close::after {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 20px;
+  height: 1px;
+  background-color: currentColor;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.icon-pure-close::after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
 /**
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
@@ -12961,464 +13419,6 @@ th {
   color: transparent;
   background-color: transparent;
   text-shadow: none;
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-[class*="icon-pure-"] {
-  position: relative;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  font-style: normal;
-  color: #757575;
-  vertical-align: middle;
-}
-
-[class*="icon-pure-"]::before, [class*="icon-pure-"]::after {
-  content: "";
-  display: inline-block;
-  pointer-events: none;
-}
-
-[class*="icon-pure-"]:hover, [class*="icon-pure-"].active {
-  color: #212121;
-}
-
-[class*="icon-pure-"][data-circle] {
-  width: 30px;
-  height: 30px;
-  border: 2px solid;
-  border-radius: 50%;
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-[class*="icon-pure-arrow-"] {
-  content: "";
-  width: 0;
-  height: 0;
-  border: 10px solid;
-}
-
-[class*="icon-pure-arrow-"]::before, [class*="icon-pure-arrow-"]::after {
-  content: normal;
-}
-
-.icon-pure-arrow-up {
-  border-color: transparent transparent currentColor;
-  border-top-width: 0;
-  border-bottom-style: solid;
-}
-
-.icon-pure-arrow-down {
-  border-color: currentColor transparent transparent;
-  border-top-style: solid;
-  border-bottom-width: 0;
-}
-
-.icon-pure-arrow-left {
-  border-color: transparent currentColor transparent transparent;
-  border-left-width: 0;
-  border-right-style: solid;
-}
-
-.icon-pure-arrow-right {
-  border-color: transparent transparent transparent currentColor;
-  border-left-style: solid;
-  border-right-width: 0;
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-.icon-pure-caret-right::before, .icon-pure-caret-up::before, .icon-pure-caret-down::before, .icon-pure-caret-left::before, .icon-pure-caret-right::after, .icon-pure-caret-up::after, .icon-pure-caret-down::after, .icon-pure-caret-left::after {
-  position: absolute;
-  bottom: 0;
-  right: 4px;
-  width: 12.1421356237px;
-  height: 2px;
-  margin: auto 0;
-  -webkit-box-shadow: inset 0 0 0 4px;
-          box-shadow: inset 0 0 0 4px;
-  -webkit-transform-origin: right;
-          transform-origin: right;
-}
-
-.icon-pure-caret-right::before, .icon-pure-caret-up::before, .icon-pure-caret-down::before, .icon-pure-caret-left::before {
-  top: 2px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
-
-.icon-pure-caret-right::after, .icon-pure-caret-up::after, .icon-pure-caret-down::after, .icon-pure-caret-left::after {
-  top: 0;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-
-.icon-pure-caret-up {
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-}
-
-.icon-pure-caret-down {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-}
-
-.icon-pure-caret-left {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-.icon-pure-minus::before, .icon-pure-plus::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: currentColor;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 20px;
-  height: 2px;
-}
-
-.icon-pure-plus::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: currentColor;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 2px;
-  height: 20px;
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-.icon-pure-check {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-
-.icon-pure-check::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: currentColor;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 20px;
-  height: 2px;
-}
-
-.icon-pure-check::after {
-  position: absolute;
-  left: 0;
-  width: 2px;
-  height: 10px;
-  background: currentColor;
-}
-
-.icon-pure-check[data-circle]::before {
-  top: 55%;
-  left: 55%;
-  width: 15px;
-}
-
-.icon-pure-check[data-circle]::after {
-  top: 6.6666666px;
-  left: 6px;
-  width: 2px;
-  height: 8px;
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-.icon-pure-pencil {
-  width: 6px;
-  background-color: currentColor;
-  -webkit-transform: rotate(45deg) scale(0.8);
-          transform: rotate(45deg) scale(0.8);
-}
-
-.icon-pure-pencil::before {
-  position: absolute;
-  top: -6px;
-  width: 6px;
-  height: 5px;
-  border-radius: 2px;
-  background-color: currentColor;
-}
-
-.icon-pure-pencil::after {
-  position: absolute;
-  top: 21px;
-  border-width: 8px 3px;
-  border-style: solid;
-  border-color: currentColor transparent transparent;
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-.icon-pure-questions {
-  width: 30px;
-  height: 30px;
-  border: 2px solid;
-  border-radius: 50%;
-}
-
-.icon-pure-questions::before {
-  content: "?";
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-  margin-top: -2px;
-  font-size: 20px;
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-.icon-pure-menu {
-  width: 20px;
-  height: 2px;
-  -webkit-box-shadow: inset 0 0 0 20px, 0 -6px, 0 6px;
-          box-shadow: inset 0 0 0 20px, 0 -6px, 0 6px;
-}
-
-.icon-pure-menu::before, .icon-pure-menu::after {
-  content: normal;
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-.icon-pure-catalogue {
-  width: 4px;
-  height: 4px;
-  margin: 16px 26px 16px 8px;
-  -webkit-box-shadow: inset 0 0 0 20px, 0 -8px 0 0, 0 8px 0 0;
-          box-shadow: inset 0 0 0 20px, 0 -8px 0 0, 0 8px 0 0;
-}
-
-.icon-pure-catalogue::before {
-  position: absolute;
-  left: 8px;
-  width: 16px;
-  height: 4px;
-  -webkit-box-shadow: inset 0 0 0 20px, 0 -8px 0 0, 0 8px 0 0;
-          box-shadow: inset 0 0 0 20px, 0 -8px 0 0, 0 8px 0 0;
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-.icon-pure-code, .icon-pure-code-expand {
-  width: 12px;
-  height: 12px;
-  border-top: 2px solid currentColor;
-  border-left: 2px solid currentColor;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-
-.icon-pure-code::before, .icon-pure-code-expand::before {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  width: 10px;
-  height: 10px;
-  border-bottom: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-}
-
-.icon-pure-code::after, .icon-pure-code-expand::after {
-  content: normal;
-}
-
-.icon-pure-code-expand::after {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 8px;
-  width: 2px;
-  height: 20px;
-  background-color: currentColor;
-  -webkit-transform: rotate(65deg);
-          transform: rotate(65deg);
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-.icon-pure-copy {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  width: 20px;
-  height: 28px;
-  border: 2px solid;
-  border-radius: 0 0 0 10px;
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
-}
-
-.icon-pure-copy::before {
-  position: absolute;
-  bottom: -3px;
-  left: -3px;
-  width: 0;
-  height: 0;
-  border-width: 5px;
-  border-style: solid;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-  border-radius: 2px;
-}
-
-.icon-pure-copy::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: currentColor;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  top: 40%;
-  width: 2px;
-  height: 2px;
-  -webkit-box-shadow: 2px 0 0 0, 4px 0 0 0, 6px 0 0 0, -2px 0 0 0, -4px 0 0 0, -6px 0 0 0, 0 6px 0 0, 2px 6px 0 0, 4px 6px 0 0, 6px 6px 0 0, -2px 6px 0 0, -4px 6px 0 0, -6px 6px 0 0, 0 -6px 0 0, 2px -6px 0 0, 4px -6px 0 0, 6px -6px 0 0, -2px -6px 0 0, -4px -6px 0 0, -6px -6px 0 0, -6px -16px 0 0, -4px -16px 0 0, -2px -16px 0 0, 0 -16px 0 0, 2px -16px 0 0, 4px -16px 0 0, 6px -16px 0 0, 8px -16px 0 0, 10px -16px 0 0, 12px -16px 0 0, 14px -16px 0 0, -6px -14px 0 0, 14px 12px 0 0, 13px 12px 0 0, 16px -16px 0 0, 16px -14px 0 0, 16px -12px 0 0, 16px -10px 0 0, 16px -8px 0 0, 16px -6px 0 0, 16px -4px 0 0, 16px -2px 0 0, 16px 0 0 0, 16px 2px 0 0, 16px 4px 0 0, 16px 6px 0 0, 16px 8px 0 0, 16px 10px 0 0, 16px 12px 0 0;
-          box-shadow: 2px 0 0 0, 4px 0 0 0, 6px 0 0 0, -2px 0 0 0, -4px 0 0 0, -6px 0 0 0, 0 6px 0 0, 2px 6px 0 0, 4px 6px 0 0, 6px 6px 0 0, -2px 6px 0 0, -4px 6px 0 0, -6px 6px 0 0, 0 -6px 0 0, 2px -6px 0 0, 4px -6px 0 0, 6px -6px 0 0, -2px -6px 0 0, -4px -6px 0 0, -6px -6px 0 0, -6px -16px 0 0, -4px -16px 0 0, -2px -16px 0 0, 0 -16px 0 0, 2px -16px 0 0, 4px -16px 0 0, 6px -16px 0 0, 8px -16px 0 0, 10px -16px 0 0, 12px -16px 0 0, 14px -16px 0 0, -6px -14px 0 0, 14px 12px 0 0, 13px 12px 0 0, 16px -16px 0 0, 16px -14px 0 0, 16px -12px 0 0, 16px -10px 0 0, 16px -8px 0 0, 16px -6px 0 0, 16px -4px 0 0, 16px -2px 0 0, 16px 0 0 0, 16px 2px 0 0, 16px 4px 0 0, 16px 6px 0 0, 16px 8px 0 0, 16px 10px 0 0, 16px 12px 0 0;
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-.icon-pure-handset {
-  width: 20px;
-  height: 28px;
-  border-width: 4px 2px;
-  border-style: solid;
-  border-radius: 4px;
-}
-
-.icon-pure-handset::before, .icon-pure-handset::after {
-  content: normal;
-}
-
-.icon-pure-pc {
-  width: 32px;
-  border-bottom: 3px solid;
-}
-
-.icon-pure-pc::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: currentColor;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 20px;
-  height: 12px;
-  border-width: 3px 2px 1px;
-  border-style: solid;
-  border-radius: 3px 3px 0 0;
-  background-color: transparent;
-}
-
-.icon-pure-pc::after {
-  content: normal;
-}
-
-.icon-pure-handset-pc {
-  width: 24px;
-  height: 16px;
-  border-top: 2px solid;
-  border-left: 2px solid;
-  border-top-left-radius: 3px;
-}
-
-.icon-pure-handset-pc::before {
-  position: absolute;
-  bottom: 0;
-  width: 3px;
-  height: 3px;
-  -webkit-box-shadow: -6px 3px 0 0, -3px 3px 0 0, 0 3px 0 0, 3px 3px 0 0, 6px 3px 0 0, 9px 3px 0 0, 15px 3px 0 0, 18px 3px 0 0, 21px 3px 0 0;
-          box-shadow: -6px 3px 0 0, -3px 3px 0 0, 0 3px 0 0, 3px 3px 0 0, 6px 3px 0 0, 9px 3px 0 0, 15px 3px 0 0, 18px 3px 0 0, 21px 3px 0 0;
-}
-
-.icon-pure-handset-pc::after {
-  width: 2px;
-  height: 2px;
-  -webkit-box-shadow: 15px -2px 0 0, 15px -4px 0 0, 15px -6px 0 0, 15px -8px 0 0, 15px -10px 0 0, 22px -2px 0 0, 22px -4px 0 0, 22px -6px 0 0, 22px -8px 0 0, 22px -10px 0 0, 15px -12px 0 0, 17px -12px 0 0, 19px -12px 0 0, 21px -12px 0 0, 22px -12px 0 0;
-          box-shadow: 15px -2px 0 0, 15px -4px 0 0, 15px -6px 0 0, 15px -8px 0 0, 15px -10px 0 0, 22px -2px 0 0, 22px -4px 0 0, 22px -6px 0 0, 22px -8px 0 0, 22px -10px 0 0, 15px -12px 0 0, 17px -12px 0 0, 19px -12px 0 0, 21px -12px 0 0, 22px -12px 0 0;
-}
-
-.icon-pure-browser {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-image: radial-gradient(4px 10px at center, transparent 0, transparent 4px, currentColor 5px, currentColor 6px, transparent 7px);
-  -webkit-box-shadow: inset 0 0 0 2px;
-          box-shadow: inset 0 0 0 2px;
-}
-
-.icon-pure-browser::before {
-  position: absolute;
-  bottom: 0;
-  width: 24px;
-  height: 24px;
-  background-image: radial-gradient(4px 8px at center, transparent 0, transparent 4px, currentColor 5px, currentColor 6px, transparent 7px);
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-}
-
-.icon-pure-browser:hover::before, .icon-pure-browser.active::before {
-  background-image: radial-gradient(4px 8px at center, transparent 0, transparent 4px, #212121 5px, #212121 6px, transparent 7px);
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-.icon-pure-close::before, .icon-pure-close::after {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  width: 20px;
-  height: 1px;
-  background-color: currentColor;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-
-.icon-pure-close::after {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
 }
 
 /*# sourceMappingURL=maps/perfect.css.map */
