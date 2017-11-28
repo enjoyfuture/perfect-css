@@ -923,11 +923,11 @@
   border-bottom-color: var(--theme-primary-lighter, #bbdefb);
 }
 
-.component-spacing > div, .component-spacing > button, .component-spacing > a {
+.component-spacing > div, .component-spacing > button, .component-spacing > a, .component-spacing > label {
   margin-right: 1rem;
 }
 
-.component-spacing > div:last-child, .component-spacing > button:last-child, .component-spacing > a:last-child {
+.component-spacing > div:last-child, .component-spacing > button:last-child, .component-spacing > a:last-child, .component-spacing > label:last-child {
   margin-right: 0;
 }
 
