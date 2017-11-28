@@ -62,6 +62,9 @@ const div1 = (<div className={perfect.container}></div>);
 // Typography 排版
 @import "~perfect-css/scss/typography/typography";
 
+// 纯 css 图标
+@import "~perfect-css/scss/icon-pure-css/icon-pure-css";
+
 // Layout 布局
 @import "~perfect-css/scss/layout/box/box"; // Box 盒子布局
 @import "~perfect-css/scss/layout/drawer/drawer"; // Drawer 抽屉布局
@@ -125,8 +128,6 @@ const div1 = (<div className={perfect.container}></div>);
 @import "~perfect-css/scss/utils/spacing"; // 间距
 @import "~perfect-css/scss/utils/text"; // 文本修饰
 
-// 纯 css 图标
-@import "~perfect-css/scss/icon-pure-css/icon-pure-css";
 ```
 
 以上样板文件与 Perfect CSS 源文件[scss/perfect.scss]({{site.repo_root}}scss/perfect.scss){:target="_blank"}保持一致，我们根据需要去掉或注释掉暂时用不到的组件，

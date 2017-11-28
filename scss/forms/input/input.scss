@@ -146,7 +146,7 @@
     }
   }
 
-  // Move label when textfield gets autofilled in Chrome
+  // 当 input 输入框获取焦点时，label 向上移动
   // .input-field:-webkit-autofill + .input-label
   .input-field:focus + .input-label,
   .input-field-focused + .input-label,

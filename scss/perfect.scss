@@ -28,6 +28,9 @@
 // Typography 排版
 @import "typography/typography";
 
+// 纯 css 图标
+@import "icon-pure-css/icon-pure-css";
+
 // Layout 布局
 @import "layout/box/box"; // Box 盒子布局
 @import "layout/drawer/drawer"; // Drawer 抽屉布局
@@ -91,6 +94,4 @@
 @import "utils/spacing"; // 间距
 @import "utils/text"; // 文本修饰
 
-// 纯 css 图标
-@import "icon-pure-css/icon-pure-css";
 

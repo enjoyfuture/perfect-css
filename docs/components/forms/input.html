@@ -26,47 +26,64 @@ group: forms
 
 <h4>input 放在 label 中</h4>
 <section class="component-container component-spacing">
-  <div class="input">
-    <label>姓名: <input type="text" class="input-field" placeholder="输入框"/></label>
-  </div>
-  <div class="input">
-    <label>年龄: <input type="text" class="input-field" value="29"/></label>
-  </div>
-  <div class="input">
-    <label>爱好: <input type="text" class="input-field" disabled placeholder="编程"/></label>
-  </div>
+  <label>姓名:
+    <span class="input">
+      <input type="text" class="input-field" placeholder="输入框"/>
+    </span>
+  </label>
+  <label>年龄:
+    <span class="input">
+      <input type="text" class="input-field" value="29"/>
+    </span>
+  </label>
+  <label>爱好:
+    <span class="input">
+      <input type="text" class="input-field" disabled placeholder="编程"/>
+    </span>
+  </label>
 </section>
 
 <h4>input 跟 label 同级</h4>
-<section class="component-container component-spacing">
-  <div class="input">
+<section class="component-container component-spacing d-flex">
+  <div>
     <label for="input1">姓名:</label>
-    <input type="text" class="input-field" id="input1" placeholder="Name"/>
+    <div class="input">
+      <input type="text" class="input-field" id="input1" placeholder="Name"/>
+    </div>
   </div>
-  <div class="input">
+
+  <div>
     <label for="input2">年龄:</label>
-    <input type="text" class="input-field" id="input2" value="29" placeholder="年龄"/>
+    <div class="input">
+      <input type="text" class="input-field" id="input2" value="29" placeholder="年龄"/>
+    </div>
   </div>
-  <div class="input">
+
+  <div>
     <label for="input3">爱好:</label>
-    <input type="text" class="input-field" id="input3" disabled placeholder="编程"/>
+    <div class="input">
+      <input type="text" class="input-field" id="input3" disabled placeholder="编程"/>
+    </div>
   </div>
 </section>
 
-<h3>扁平化输入框，即只有一条底边框表单</h3>
-<section class="component-container component-spacing">
+<h3>扁平化输入框，即只有一条底边框</h3>
+<section class="component-container component-spacing d-flex">
   <div class="input">
     <input type="text" class="input-field input-flat" placeholder="扁平化输入框"/>
   </div>
-  <div class="input">
-    <label>
-      姓名:
+  <label>
+    姓名:
+    <span class="input">
       <input type="text" class="input-field input-flat" placeholder="请输入你的名字"/>
-    </label>
-  </div>
-  <div class="input">
+    </span>
+  </label>
+
+  <div>
     <label for="input4">年龄:</label>
-    <input type="text" class="input-field input-flat" id="input4" value="29" placeholder="年龄"/>
+    <div class="input">
+      <input type="text" class="input-field input-flat" id="input4" value="29" placeholder="年龄"/>
+    </div>
   </div>
   <div class="input">
     <input type="text" class="input-field input-flat" disabled placeholder="Disabled"/>
@@ -109,13 +126,13 @@ group: forms
 <h4>默认宽度</h4>
 <section class="component-container">
   <div class="input">
-    <textarea class="input-field"></textarea>
+    <textarea class="input-field" cols="100" rows="5"></textarea>
   </div>
 </section>
 <h4>100%宽度</h4>
 <section class="component-container">
   <div class="input input-full">
-    <textarea class="input-field"></textarea>
+    <textarea class="input-field" cols="40" rows="5"></textarea>
   </div>
 </section>
 
@@ -136,15 +153,33 @@ group: forms
   <div class="input input-invalid">
     <input type="text" class="input-field" placeholder="无效的值"/>
   </div>
-  <div class="input input-invalid">
-    <label>邮箱: <input type="text" class="input-field" placeholder="无效的值"/></label>
-  </div>
+  <label>邮箱:
+    <span class="input input-invalid">
+      <input type="text" class="input-field" placeholder="无效的值"/>
+    </span>
+  </label>
   <div class="input input-invalid">
     <input type="text" class="input-field input-flat" placeholder="无效的值"/>
   </div>
   <div class="input input-float-above input-invalid">
     <input type="text" class="input-field" id="input-field3" placeholder="无效的值"/>
     <label for="input-field3" class="input-label">用户名</label>
+  </div>
+</section>
+
+<h4>100%宽度</h4>
+<section class="component-container component-vertical-spacing">
+  <div class="input input-full input-invalid">
+    <input type="text" class="input-field" placeholder="四边带边框 Inputs"/>
+  </div>
+
+  <div class="input input-full input-invalid">
+    <input type="text" class="input-field input-flat" placeholder="扁平化输入框"/>
+  </div>
+
+  <div class="input input-full input-float-above input-invalid">
+    <input type="text" class="input-field" id="input-full-field-invalid"/>
+    <label for="input-full-field-invalid" class="input-label">100% 宽度</label>
   </div>
 </section>
 
@@ -170,10 +205,12 @@ group: forms
 
 <h3>图标在后面</h3>
 <section class="component-container component-spacing">
-  <div class="input input-icon-end">
-    <label>邮箱: <input type="text" class="input-field" value="888888@qq.com"/></label>
-    <i class="input-icon icon-pure-plus"></i>
-  </div>
+  <label>邮箱:
+    <span class="input input-icon-end">
+      <input type="text" class="input-field" value="888888@qq.com"/>
+      <i class="input-icon icon-pure-plus"></i>
+    </span>
+  </label>
 
   <div class="input input-icon-end">
     <input type="text" class="input-field" placeholder="Hello World"/>
@@ -537,7 +574,7 @@ group: forms
 
 </section>
 
-  <script>
+<script>
   $(function () {
     $('.input-float-above .input-field').blur(function (e) {
       var val = $(e.currentTarget).val();
@@ -548,7 +585,7 @@ group: forms
       }
     });
 
-    $('.input-float-above .input-field').each(function(index, item){
+    $('.input-float-above .input-field').each(function (index, item) {
       if ($(item).val()) {
         $(item).addClass('input-field-focused');
       } else {
