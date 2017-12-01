@@ -296,31 +296,5 @@
 
 <div class="doc1-mask-modal"></div>
 
-
-<script src="/assets/js/vendor/jquery.min.js"></script>
-<script>
-  $(function () {
-    $('.doc1-menu-nav').on('click', '.menu-header', function (e) {
-      e.preventDefault();
-      var $el = $(e.currentTarget);
-      var $nextEl = $el.next();
-      if ($nextEl.is(':visible')) {
-        $nextEl.slideUp('slow');
-      } else {
-        $nextEl.slideDown('slow');
-      }
-    });
-
-    $('.doc1-menu-btn').click(function () {
-      $('.doc1-side').addClass('doc1-side-drawer-visible');
-      $('.doc1-mask-modal').addClass('visible');
-    });
-
-    $('.doc1-mask-modal').click(function () {
-      $('.doc1-side').removeClass('doc1-side-drawer-visible');
-      $('.doc1-mask-modal').removeClass('visible');
-    });
-  });
-</script>
 </body>
 </html>

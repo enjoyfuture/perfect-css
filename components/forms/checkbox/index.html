@@ -35,7 +35,6 @@
   
 
   <a class="navbar-brand m-r-0 m-r-sm-2" href="/">
-
     <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29">
       <defs>
         <style>.cls-1, .cls-2, .cls-4 { fill: none; stroke: #fff; stroke-linecap: round; }
@@ -96,17 +95,16 @@
 </header>
 
 <script>
-  const navLinks = document.querySelectorAll('#perfect_header .nav-link');
-  for (let i = 0, len = navLinks.length; i < len; i++) {
-    navLinks[i].addEventListener('click', function () {
-      // 切换时，删除左侧菜单 nav-menus-translateY 值
-      window.sessionStorage.removeItem('nav-menus-translateY');
-    }, false);
-  }
+  (function () {
+    const navLinks = document.querySelectorAll('#perfect_header .nav-link');
+    for (let i = 0, len = navLinks.length; i < len; i++) {
+      navLinks[i].addEventListener('click', function () {
+        // 切换时，删除左侧菜单 nav-menus-translateY 值
+        window.sessionStorage.removeItem('nav-menus-translateY');
+      }, false);
+    }
+  })();
 </script>
-
-    <!--把 jquery 单独引入到页面最上面-->
-<script src="/assets/js/vendor/jquery.min.js"></script>
 
 
     <aside id="drawer" class="drawer drawer-permanent navbar-top-adjust">
@@ -806,40 +804,53 @@
 </ul>
 
 <script>
-  $(function () {
+  (function () {
     // 菜单超过一屏可以滚动查看
-    const $menuPanel = $('.drawer-content')[0];
-    const $menu = $('.drawer-content > .perfect-menu')[0];
+    const drawerContent = document.querySelector('.drawer-content');
+    const perfectMenu = document.querySelector('.drawer-content > .perfect-menu');
 
     // 页面进入时，设置上次的 translateY
     const translateY = window.sessionStorage.getItem('nav-menus-translateY');
     if (translateY) {
-      $menu.style.transform = `translateY(${translateY}px)`;
+      perfectMenu.style.transform = `translateY(${translateY}px)`;
     }
 
-    $menu.addEventListener('transitionend', function () {
-      $menu.style.transition = 'unset';
+    perfectMenu.addEventListener('transitionend', function () {
+      perfectMenu.style.transition = 'unset';
     });
-    $('.menu').on('click', '.menu-header', function (e) {
-      e.preventDefault();
-      // 隐藏其他打开的菜单
-      $('.menu .menu').slideUp();
-      const $el = $(e.currentTarget);
-      const $nextEl = $el.next();
-      if ($nextEl.is(':visible')) {
-        $nextEl.slideUp();
-      } else {
-        $nextEl.slideDown(true, function () {
-          const menuPanelTop = $menuPanel.getBoundingClientRect().top;
-          const menuTop = $menu.getBoundingClientRect().top;
-          const currentElTop = e.currentTarget.getBoundingClientRect().top;
-          if (currentElTop < menuPanelTop) {
-            $menu.style.transform = `translateY(${menuTop - currentElTop}px)`;
-            $menu.style.transition = 'transform 200ms ease-in-out';
+
+    const menu = document.querySelector('.menu');
+    menu.addEventListener('click', function (e) {
+      const target = e.target;
+      if (target.classList.contains('menu-header')) {
+        e.preventDefault();
+        const next = target.nextElementSibling;
+        // 隐藏其他打开的菜单
+        [].forEach.call(document.querySelectorAll('.menu .menu'), function (item) {
+          if (item !== next) {
+            item.style.display = 'none';
           }
         });
+
+        // TODO 待修改成动画
+        if (next.style.display === 'none') {
+          next.style.display = '';
+
+          setTimeout(function() {
+            const menuPanelTop = drawerContent.getBoundingClientRect().top;
+            const menuTop = perfectMenu.getBoundingClientRect().top;
+            const currentElTop = target.getBoundingClientRect().top;
+            if (currentElTop < menuPanelTop) {
+              perfectMenu.style.transform = `translateY(${menuTop - currentElTop}px)`;
+              perfectMenu.style.transition = 'transform 200ms ease-in-out';
+            }
+          });
+        } else {
+          next.style.display = 'none';
+        }
       }
-    });
+    }, false);
+
 
     const isWheel = (() => {
       const ua = navigator.userAgent;
@@ -852,8 +863,8 @@
     const reg = /translateY\(([-\w]+)\)/;
 
     // Fixme 需要处理触摸滚动限制回弹效果
-    $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
-      const {scrollHeight, clientHeight} = $menuPanel;
+    drawerContent.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
+      const {scrollHeight, clientHeight} = drawerContent;
       const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
 
       // 判断鼠标滑轮向上还是向下滑动
@@ -878,7 +889,7 @@
       // 在 mac 系统下 如果 (speed % 120) === 0 是鼠标滑动，否则是触摸滑动
       const step = (speed % 120) === 0 ? 0.2 * speed : 5;
 
-      const {transform} = $menu.style;
+      const {transform} = perfectMenu.style;
 
       let y = reg.exec(transform);
       y = y ? parseFloat(y[1], 10) : 0;
@@ -900,10 +911,10 @@
       }
 
       window.sessionStorage.setItem('nav-menus-translateY', translateY);
-      $menu.style.transform = `translateY(${translateY}px)`;
+      perfectMenu.style.transform = `translateY(${translateY}px)`;
     }, false);
 
-  });
+  })();
 </script>
 
         </nav>
@@ -1480,54 +1491,75 @@
     </main>
 
     <script>
-  $(function () {
-    var $drawer = $('#drawer');
-    $drawer[0].addEventListener('transitionend', () => {
-      $drawer.removeClass('drawer-animating');
-    });
+  (function () {
+    const drawer = document.getElementById('drawer');
+    drawer.addEventListener('transitionend', () => {
+      drawer.classList.remove('drawer-animating');
+    }, false);
 
-    $('#toggleDrawer').click(function (e) {
+    document.getElementById('toggleDrawer').addEventListener('transitionend', () => {
       const clientWidth = document.documentElement.clientWidth;
-      if(clientWidth < 1200){
-        $drawer.toggleClass('drawer-open');
-        $('body').toggleClass('drawer-scroll-lock');
-        $drawer.addClass('drawer-animating');
+      if (clientWidth < 1200) {
+        if (drawer.classList.contains('drawer-open')) {
+          drawer.classList.remove('drawer-open');
+        } else {
+          drawer.classList.add('drawer-open');
+        }
 
-        $drawer.removeClass('drawer-close');
+        if (document.body.classList.contains('drawer-scroll-lock')) {
+          document.body.classList.remove('drawer-scroll-lock');
+        } else {
+          document.body.classList.add('drawer-scroll-lock');
+        }
+
+        drawer.classList.add('drawer-animating');
+        drawer.classList.remove('drawer-close');
       } else {
         // 当超过1440px 时，利用该样式，隐藏显示处理
-        $drawer.toggleClass('drawer-close');
-        $drawer.addClass('drawer-animating');
+        if (drawer.classList.contains('drawer-close')) {
+          drawer.classList.remove('drawer-close');
+        } else {
+          drawer.classList.add('drawer-close');
+        }
 
-        $drawer.removeClass('drawer-open');
+        drawer.classList.add('drawer-animating');
+        drawer.classList.remove('drawer-open');
       }
-    });
+    }, false);
 
-    $('#drawer').click(function () {
-      $drawer.removeClass('drawer-open');
-      $('body').removeClass('drawer-scroll-lock');
-      $drawer.addClass('drawer-animating');
-    });
+    drawer.addEventListener('click', () => {
+      drawer.classList.remove('drawer-open');
+      document.body.classList.remove('drawer-scroll-lock');
+      drawer.classList.add('drawer-animating');
+    }, false);
 
-    $('.drawer-content').click(function (e) {
+
+    document.querySelector('.drawer-content').addEventListener('click', (e) => {
       e.stopPropagation();
-    });
-  });
+    }, false);
+
+  })();
 </script>
 
     <script>
-  $(function () {
+  (function () {
     // 定时切换主题，TODO 为了调试方便，暂先改为10秒，等上线前改为 1分钟
     const themes = ['theme-red', 'theme-pink', 'theme-purple', 'theme-deep-purple',
       'theme-indigo', 'theme-blue', 'theme-light-blue', 'theme-cyan', 'theme-teal',
       'theme-green', 'theme-light-green', 'theme-lime', 'theme-amber',
       'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
 
+    let lastTheme = '';
     setInterval(function () {
       const r = Math.floor(Math.random() * 16);
-      $('body').removeClass().addClass(themes[r]);
+      const classList = document.body.classList;
+      if (classList.length > 0 && lastTheme) {
+        classList.remove(lastTheme);
+      }
+      classList.add(themes[r]);
+      lastTheme = themes[r];
     }, 10000);
-  })
+  })();
 </script>
 
   </body>

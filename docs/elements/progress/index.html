@@ -35,7 +35,6 @@
   
 
   <a class="navbar-brand m-r-0 m-r-sm-2" href="/">
-
     <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29">
       <defs>
         <style>.cls-1, .cls-2, .cls-4 { fill: none; stroke: #fff; stroke-linecap: round; }
@@ -96,17 +95,16 @@
 </header>
 
 <script>
-  const navLinks = document.querySelectorAll('#perfect_header .nav-link');
-  for (let i = 0, len = navLinks.length; i < len; i++) {
-    navLinks[i].addEventListener('click', function () {
-      // 切换时，删除左侧菜单 nav-menus-translateY 值
-      window.sessionStorage.removeItem('nav-menus-translateY');
-    }, false);
-  }
+  (function () {
+    const navLinks = document.querySelectorAll('#perfect_header .nav-link');
+    for (let i = 0, len = navLinks.length; i < len; i++) {
+      navLinks[i].addEventListener('click', function () {
+        // 切换时，删除左侧菜单 nav-menus-translateY 值
+        window.sessionStorage.removeItem('nav-menus-translateY');
+      }, false);
+    }
+  })();
 </script>
-
-    <!--把 jquery 单独引入到页面最上面-->
-<script src="/assets/js/vendor/jquery.min.js"></script>
 
 
     <aside id="drawer" class="drawer drawer-permanent navbar-top-adjust">
@@ -182,6 +180,16 @@
       <li class="menu-item">
         <a href="/docs/perfect-tour/build/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">开发构建</a></li>
+      
+      
+
+      
+
+      
+
+      <li class="menu-item">
+        <a href="/docs/perfect-tour/guide/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">CSS 规范</a></li>
       
       
 
@@ -992,40 +1000,53 @@
 </ul>
 
 <script>
-  $(function () {
+  (function () {
     // 菜单超过一屏可以滚动查看
-    const $menuPanel = $('.drawer-content')[0];
-    const $menu = $('.drawer-content > .perfect-menu')[0];
+    const drawerContent = document.querySelector('.drawer-content');
+    const perfectMenu = document.querySelector('.drawer-content > .perfect-menu');
 
     // 页面进入时，设置上次的 translateY
     const translateY = window.sessionStorage.getItem('nav-menus-translateY');
     if (translateY) {
-      $menu.style.transform = `translateY(${translateY}px)`;
+      perfectMenu.style.transform = `translateY(${translateY}px)`;
     }
 
-    $menu.addEventListener('transitionend', function () {
-      $menu.style.transition = 'unset';
+    perfectMenu.addEventListener('transitionend', function () {
+      perfectMenu.style.transition = 'unset';
     });
-    $('.menu').on('click', '.menu-header', function (e) {
-      e.preventDefault();
-      // 隐藏其他打开的菜单
-      $('.menu .menu').slideUp();
-      const $el = $(e.currentTarget);
-      const $nextEl = $el.next();
-      if ($nextEl.is(':visible')) {
-        $nextEl.slideUp();
-      } else {
-        $nextEl.slideDown(true, function () {
-          const menuPanelTop = $menuPanel.getBoundingClientRect().top;
-          const menuTop = $menu.getBoundingClientRect().top;
-          const currentElTop = e.currentTarget.getBoundingClientRect().top;
-          if (currentElTop < menuPanelTop) {
-            $menu.style.transform = `translateY(${menuTop - currentElTop}px)`;
-            $menu.style.transition = 'transform 200ms ease-in-out';
+
+    const menu = document.querySelector('.menu');
+    menu.addEventListener('click', function (e) {
+      const target = e.target;
+      if (target.classList.contains('menu-header')) {
+        e.preventDefault();
+        const next = target.nextElementSibling;
+        // 隐藏其他打开的菜单
+        [].forEach.call(document.querySelectorAll('.menu .menu'), function (item) {
+          if (item !== next) {
+            item.style.display = 'none';
           }
         });
+
+        // TODO 待修改成动画
+        if (next.style.display === 'none') {
+          next.style.display = '';
+
+          setTimeout(function() {
+            const menuPanelTop = drawerContent.getBoundingClientRect().top;
+            const menuTop = perfectMenu.getBoundingClientRect().top;
+            const currentElTop = target.getBoundingClientRect().top;
+            if (currentElTop < menuPanelTop) {
+              perfectMenu.style.transform = `translateY(${menuTop - currentElTop}px)`;
+              perfectMenu.style.transition = 'transform 200ms ease-in-out';
+            }
+          });
+        } else {
+          next.style.display = 'none';
+        }
       }
-    });
+    }, false);
+
 
     const isWheel = (() => {
       const ua = navigator.userAgent;
@@ -1038,8 +1059,8 @@
     const reg = /translateY\(([-\w]+)\)/;
 
     // Fixme 需要处理触摸滚动限制回弹效果
-    $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
-      const {scrollHeight, clientHeight} = $menuPanel;
+    drawerContent.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
+      const {scrollHeight, clientHeight} = drawerContent;
       const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
 
       // 判断鼠标滑轮向上还是向下滑动
@@ -1064,7 +1085,7 @@
       // 在 mac 系统下 如果 (speed % 120) === 0 是鼠标滑动，否则是触摸滑动
       const step = (speed % 120) === 0 ? 0.2 * speed : 5;
 
-      const {transform} = $menu.style;
+      const {transform} = perfectMenu.style;
 
       let y = reg.exec(transform);
       y = y ? parseFloat(y[1], 10) : 0;
@@ -1086,10 +1107,10 @@
       }
 
       window.sessionStorage.setItem('nav-menus-translateY', translateY);
-      $menu.style.transform = `translateY(${translateY}px)`;
+      perfectMenu.style.transform = `translateY(${translateY}px)`;
     }, false);
 
-  });
+  })();
 </script>
 
         </nav>
@@ -1132,14 +1153,11 @@
 
     <script src="/assets/js/vendor/clipboard.min.js"></script>
 <script src="/assets/js/perfect.js"></script>
-<script src="/assets/js/util.js"></script>
-<script src="/assets/js/scrollSpy.js"></script>
 
-<script src="/assets/js/plugins/catalogueSpy.js"></script>
 <script>
-  $(function () {
-    var ScrollSpy = perfect.default.ScrollSpy;
-    var CatalogueSpy = perfect.default.CatalogueSpy;
+  (function () {
+    const ScrollSpy = perfect.ScrollSpy;
+    const CatalogueSpy = perfect.CatalogueSpy;
     new ScrollSpy(document.body, {
       menu: '.doc-catalogue-panel',
       container: '.doc-content',
@@ -1150,145 +1168,174 @@
     });
 
     // 窗口滑动到某一位置时，修改目录定位位置
-    var $cataloguePanel = $('.doc-catalogue-menu-right .doc-catalogue-panel');
-    $(window).on('scroll', function (event) {
-      if ($cataloguePanel.is(':visible')) {
-        var top = window.scrollY;
-        var clientHeight = document.documentElement.clientHeight;
-        var scrollHeight = document.documentElement.scrollHeight;
-        var contentTop = $('.doc-content').offset().top;
+    const cataloguePanel = document.querySelector('.doc-catalogue-menu-right .doc-catalogue-panel');
+
+    const scrollEvent = function () {
+      const boundingClientRect = cataloguePanel.getBoundingClientRect();
+      if (boundingClientRect.width > 0 && boundingClientRect.height > 0) {
+        const top = window.scrollY;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const contentTop = document.querySelector('.doc-content').getBoundingClientRect().top;
 
         if (top > scrollHeight - clientHeight) {
-          $cataloguePanel.css({
-            position: 'absolute',
-            top: top + 'px'
-          });
+          cataloguePanel.style.position = 'absolute';
+          cataloguePanel.style.top = top + 'px';
         } else if (top + 54 > contentTop) {
-          $cataloguePanel.css({
-            position: 'fixed',
-            top: '54px'
-          });
+          cataloguePanel.style.position = 'fixed';
+          cataloguePanel.style.top = '54px';
         } else {
-          $cataloguePanel.css({
-            position: 'static',
-          });
+          cataloguePanel.style.position = 'static';
         }
       }
-    });
+    };
 
-    $(window).trigger('scroll');
-  });
+    document.addEventListener('scroll', scrollEvent, false);
+    scrollEvent();
+  })();
 </script>
 
 
 <script>
-  $(function () {
-    // 展开代码
-    $('.doc-example-expand [data-code-icon]').click(function () {
-      var $el = $(this);
-      var $icon = $el.children();
-      var $code = $el.parent().next();
-      var $tooltip = $el.next().find('.tooltip-inner');
-      if ($icon.hasClass('icon-pure-code')) {
-        $icon.removeClass('icon-pure-code');
-        $icon.addClass('icon-pure-code-expand');
-        $tooltip.text('隐藏 Code');
-        $code.fadeIn();
-      } else {
-        $icon.removeClass('icon-pure-code-expand');
-        $icon.addClass('icon-pure-code');
-        $tooltip.text('显示 Code');
-        $code.fadeOut();
-      }
-    });
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      // 展开代码
+      [].forEach.call(document.querySelectorAll('.doc-example-expand [data-code-icon]'), function (item) {
+        item.addEventListener('click', function (e) {
+          const el = e.currentTarget;
+          const icon = el.childNodes[0];
+          const code = el.parentNode.nextElementSibling;
+          const tooltip = el.nextElementSibling.querySelector('.tooltip-inner');
+          const iconClass = icon.classList;
 
-    // 为代码添加复制按钮
-    $('.highlight:not(.doc-example-highlight)').each(function () {
-      var copyCodeIconHtml = '<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>\n' +
-        '    <div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">复制代码</div></div>';
-      $(this).before(copyCodeIconHtml);
-    });
+          // TODO 待动画处理
+          if (iconClass.contains('icon-pure-code')) {
+            iconClass.remove('icon-pure-code');
+            iconClass.add('icon-pure-code-expand');
+            tooltip.innerHTML = '隐藏 Code';
+            code.style.display = 'block';
+          } else {
+            iconClass.remove('icon-pure-code-expand');
+            iconClass.add('icon-pure-code');
+            tooltip.innerHTML = '显示 Code';
+            code.style.display = 'none';
+          }
+        }, false);
+      });
 
-    // 复制到剪贴板
-    var clipboard = new Clipboard('.doc-code-copy', {
-      target: function (trigger) {
-        return trigger.nextElementSibling.nextElementSibling;
-      }
-    });
+      // 为代码添加复制按钮
+      [].forEach.call(document.querySelectorAll('.highlight:not(.doc-example-highlight)'), function (item) {
+        const div = document.createElement('div');
+        div.innerHTML = `<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+        <div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">复制代码</div></div>`;
 
-    clipboard.on('success', function (e) {
-      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
-      $tooltip.text('复制成功');
-      e.clearSelection();
-    });
+        item.insertBefore(div.childNodes[0], item.lastChild);
+        item.insertBefore(div.childNodes[1], item.lastChild);
+      });
 
-    $('.doc-code-copy').mouseleave(function () {
-      var $tooltip = $(this).next().find('.tooltip-inner');
-      $tooltip.text('复制代码');
-    });
+      // 复制到剪贴板
+      const clipboard = new Clipboard('.doc-code-copy', {
+        target: function (trigger) {
+          return trigger.nextElementSibling.nextElementSibling;
+        },
+      });
 
-//    clipboard.on('error', function (e) {
-//      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
-//      var fallbackMsg = '请使用快捷键 ' + modifierKey + 'C 来复制';
-//      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
-//      $tooltip.text('复制成功');
-//      e.clearSelection();
-//    });
+      clipboard.on('success', function (e) {
+        const tooltip = e.trigger.nextElementSibling.querySelector('.tooltip-inner');
+        tooltip.innerHTML = '复制成功';
+        e.clearSelection();
+      });
 
-  });
+      [].forEach.call(document.querySelectorAll('.doc-code-copy'), function (item) {
+        item.addEventListener('mouseleave', function (e) {
+          const tooltip = e.target.nextElementSibling.querySelector('.tooltip-inner');
+          tooltip.innerHTML = '复制代码';
+        }, false);
+      });
+
+      clipboard.on('error', function (e) {
+        const modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
+        const fallbackMsg = '请使用快捷键 ' + modifierKey + 'C 来复制';
+        const tooltip = e.trigger.nextElementSibling.querySelector('.tooltip-inner');
+        tooltip.innerHTML = fallbackMsg;
+        e.clearSelection();
+      });
+    }, false);
+  })();
 
 </script>
 
 
     <script>
-  $(function () {
-    var $drawer = $('#drawer');
-    $drawer[0].addEventListener('transitionend', () => {
-      $drawer.removeClass('drawer-animating');
-    });
+  (function () {
+    const drawer = document.getElementById('drawer');
+    drawer.addEventListener('transitionend', () => {
+      drawer.classList.remove('drawer-animating');
+    }, false);
 
-    $('#toggleDrawer').click(function (e) {
+    document.getElementById('toggleDrawer').addEventListener('transitionend', () => {
       const clientWidth = document.documentElement.clientWidth;
-      if(clientWidth < 1200){
-        $drawer.toggleClass('drawer-open');
-        $('body').toggleClass('drawer-scroll-lock');
-        $drawer.addClass('drawer-animating');
+      if (clientWidth < 1200) {
+        if (drawer.classList.contains('drawer-open')) {
+          drawer.classList.remove('drawer-open');
+        } else {
+          drawer.classList.add('drawer-open');
+        }
 
-        $drawer.removeClass('drawer-close');
+        if (document.body.classList.contains('drawer-scroll-lock')) {
+          document.body.classList.remove('drawer-scroll-lock');
+        } else {
+          document.body.classList.add('drawer-scroll-lock');
+        }
+
+        drawer.classList.add('drawer-animating');
+        drawer.classList.remove('drawer-close');
       } else {
         // 当超过1440px 时，利用该样式，隐藏显示处理
-        $drawer.toggleClass('drawer-close');
-        $drawer.addClass('drawer-animating');
+        if (drawer.classList.contains('drawer-close')) {
+          drawer.classList.remove('drawer-close');
+        } else {
+          drawer.classList.add('drawer-close');
+        }
 
-        $drawer.removeClass('drawer-open');
+        drawer.classList.add('drawer-animating');
+        drawer.classList.remove('drawer-open');
       }
-    });
+    }, false);
 
-    $('#drawer').click(function () {
-      $drawer.removeClass('drawer-open');
-      $('body').removeClass('drawer-scroll-lock');
-      $drawer.addClass('drawer-animating');
-    });
+    drawer.addEventListener('click', () => {
+      drawer.classList.remove('drawer-open');
+      document.body.classList.remove('drawer-scroll-lock');
+      drawer.classList.add('drawer-animating');
+    }, false);
 
-    $('.drawer-content').click(function (e) {
+
+    document.querySelector('.drawer-content').addEventListener('click', (e) => {
       e.stopPropagation();
-    });
-  });
+    }, false);
+
+  })();
 </script>
 
     <script>
-  $(function () {
+  (function () {
     // 定时切换主题，TODO 为了调试方便，暂先改为10秒，等上线前改为 1分钟
     const themes = ['theme-red', 'theme-pink', 'theme-purple', 'theme-deep-purple',
       'theme-indigo', 'theme-blue', 'theme-light-blue', 'theme-cyan', 'theme-teal',
       'theme-green', 'theme-light-green', 'theme-lime', 'theme-amber',
       'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
 
+    let lastTheme = '';
     setInterval(function () {
       const r = Math.floor(Math.random() * 16);
-      $('body').removeClass().addClass(themes[r]);
+      const classList = document.body.classList;
+      if (classList.length > 0 && lastTheme) {
+        classList.remove(lastTheme);
+      }
+      classList.add(themes[r]);
+      lastTheme = themes[r];
     }, 10000);
-  })
+  })();
 </script>
 
   </body>
