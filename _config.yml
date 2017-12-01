@@ -28,16 +28,16 @@ plugins:
   - jekyll-sitemap
 
 # 通用变量
-title: Perfect
-description: Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.
-authors: Linder Wang, and Perfect contributors
+title:            Perfect
+description:      Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.
+authors:          Linder Wang, and Perfect contributors
 
 # Custom vars 自定义变量
-current_version:  0.1.0
+current_version:  0.3.0
+current_branch:   v0-dev
 repo:             https://github.com/joy-web/perfect-css
 repo_root:        https://github.com/joy-web/perfect-css/tree/master/
 
 download:
-  source:         https://github.com/joy-web/perfect-css/archive/master.zip
-  dist:           https://github.com/joy-web/perfect-css/archive/master.zip #待上传
-
+  source:         https://github.com/joy-web/perfect-css/archive/v0.3.0.zip
+  dist:           https://github.com/joy-web/perfect-css/releases/download/v0.3.0/perfect-css-0.3.0-dist.zip

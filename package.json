@@ -21,6 +21,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "clean:docs": "rimraf ./docs/assets/css ./docs/assets/js ./_gh_pages/**",
+    "clean:tmp": "rimraf ./_tmp",
     "dev": "cross-env NODE_ENV=development webpack --progress --colors --config webpack.config.babel.js --watch",
     "dev:min": "cross-env NODE_ENV=development webpack -p --progress --colors --config webpack.config.babel.js",
     "build": "cross-env NODE_ENV=production webpack --progress --colors --config webpack.config.babel.js",
@@ -36,11 +37,14 @@
     "css-prefix": "node css-prefix.js",
     "cpy-js": "cpy ./node_modules/clipboard/dist/clipboard.min.js ./docs/assets/js/vendor",
     "github-pages": "npm run jekyll:docs && git add _gh_pages && git commit -m \"Update docs\" && git subtree push --prefix=_gh_pages origin gh-pages --squash && git push",
-    "prepublish": "npm run dist"
+    "pregenerate-zip": "npm run dist",
+    "generate-zip": "npm run clean:tmp && mkdirp _tmp/dist/css && mkdirp _tmp/dist/js && babel-node generate-dist-zip.js",
+    "prepublishOnly": "npm run dist"
   },
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^7.1.6",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "babel-loader": "^7.1.2",
@@ -58,7 +62,9 @@
     "eslint-plugin-ava": "^4.3.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
+    "file-package": "^1.0.6",
     "glob": "^7.1.2",
+    "mkdirp": "^0.5.1",
     "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.2",
     "postcss-flexbugs-fixes": "^3.2.0",

@@ -117,6 +117,12 @@ Note:
 npm run css-prefix
 ```
 
+### Generate Perfect CSS dist zip
+
+```npm
+npm run generate-zip
+```
+
 ## Issue
 
 https://github.com/joy-web/perfect-css/issues
