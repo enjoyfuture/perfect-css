@@ -39,94 +39,94 @@ const div1 = (<div className={perfect.container}></div>);
 // 根据页面需要，自定义需要导入的 Perfect css 样式
 
 // 变量、mixin 和函数
-@import "~perfect-css/scss/base/variables";
-@import "~perfect-css/scss/base/mixins";
-@import "~perfect-css/scss/base/functions";
-@import "~perfect-css/scss/base/base";
+@import "~perfect-css/components/base/variables";
+@import "~perfect-css/components/base/mixins";
+@import "~perfect-css/components/base/functions";
+@import "~perfect-css/components/base/base";
 
 // Theme 主题
-@import "~perfect-css/scss/theme/theme";
+@import "~perfect-css/components/theme/theme";
 
 // Normalize 重置样式
-@import "~perfect-css/scss/normalize/normalize";
+@import "~perfect-css/components/normalize/normalize";
 
 // Animation 动画
-@import "~perfect-css/scss/animation/animation";
+@import "~perfect-css/components/animation/animation";
 
 // Ripple 波纹效果
-@import "~perfect-css/scss/ripple/ripple";
+@import "~perfect-css/components/ripple/ripple";
 
 // Shadow 阴影效果
-@import "~perfect-css/scss/shadow/shadow";
+@import "~perfect-css/components/shadow/shadow";
 
 // Typography 排版
-@import "~perfect-css/scss/typography/typography";
+@import "~perfect-css/components/typography/typography";
 
 // 纯 css 图标
-@import "~perfect-css/scss/icon-pure-css/icon-pure-css";
+@import "~perfect-css/components/icon-pure-css/icon-pure-css";
 
 // Layout 布局
-@import "~perfect-css/scss/layout/box/box"; // Box 盒子布局
-@import "~perfect-css/scss/layout/drawer/drawer"; // Drawer 抽屉布局
-@import "~perfect-css/scss/layout/container/container"; // Container 容器
-@import "~perfect-css/scss/layout/grid/grid"; // Grid 栅格
+@import "~perfect-css/components/layout/box/box"; // Box 盒子布局
+@import "~perfect-css/components/layout/drawer/drawer"; // Drawer 抽屉布局
+@import "~perfect-css/components/layout/container/container"; // Container 容器
+@import "~perfect-css/components/layout/grid/grid"; // Grid 栅格
 
 // 表单组件
-@import "~perfect-css/scss/forms/input/input"; // Input 输入框
-@import "~perfect-css/scss/forms/select/select"; // Select 下拉选择框
-@import "~perfect-css/scss/forms/dropdown/dropdown"; // Dropdown 下拉菜单
-@import "~perfect-css/scss/forms/radio/radio"; // Radio 单选框
-@import "~perfect-css/scss/forms/checkbox/checkbox"; // Checkbox 复选框
-@import "~perfect-css/scss/forms/upload/upload"; // Upload 文件上传
-@import "~perfect-css/scss/forms/switch/switch"; // Switch 开关
-@import "~perfect-css/scss/forms/slider/slider"; // Slider 滑块
-@import "~perfect-css/scss/forms/button/button"; // Button 按钮
-@import "~perfect-css/scss/forms/form-field/form-field"; // Form Field 表单域
+@import "~perfect-css/components/forms/input/input"; // Input 输入框
+@import "~perfect-css/components/forms/select/select"; // Select 下拉选择框
+@import "~perfect-css/components/forms/dropdown/dropdown"; // Dropdown 下拉菜单
+@import "~perfect-css/components/forms/radio/radio"; // Radio 单选框
+@import "~perfect-css/components/forms/checkbox/checkbox"; // Checkbox 复选框
+@import "~perfect-css/components/forms/upload/upload"; // Upload 文件上传
+@import "~perfect-css/components/forms/switch/switch"; // Switch 开关
+@import "~perfect-css/components/forms/slider/slider"; // Slider 滑块
+@import "~perfect-css/components/forms/button/button"; // Button 按钮
+@import "~perfect-css/components/forms/form-field/form-field"; // Form Field 表单域
 
 // 元素组件
-@import "~perfect-css/scss/elements/menu/menu"; // Menu 菜单
-@import "~perfect-css/scss/elements/menu/list-menu"; // List Menu 列表菜单
-@import "~perfect-css/scss/elements/tree/tree"; // Tree 树形组件
-@import "~perfect-css/scss/elements/page/page"; // Page 分页
-@import "~perfect-css/scss/elements/loading/loading"; // Loading 加载
-@import "~perfect-css/scss/elements/toast/toast"; // Toast 吐司提示
-@import "~perfect-css/scss/elements/tooltip/tooltip"; // Tooltip 提示
-@import "~perfect-css/scss/elements/image/image"; // Image 图像
-@import "~perfect-css/scss/elements/callout/callout"; // Callout 引线式标注
-@import "~perfect-css/scss/elements/progress/progress"; // Progress 进度条
-@import "~perfect-css/scss/elements/tag/tag"; // Tag 标签
-@import "~perfect-css/scss/elements/badge/badge"; // Badge 角标
-@import "~perfect-css/scss/elements/back-top/back-top"; // Back Top 返回顶部
-@import "~perfect-css/scss/elements/date-picker/date-picker"; // Date Picker 日期选择器
-@import "~perfect-css/scss/elements/color-picker/color-picker"; // Color Picker 颜色选择器
-@import "~perfect-css/scss/elements/timeline/timeline"; // Timeline 时间轴
+@import "~perfect-css/components/elements/menu/menu"; // Menu 菜单
+@import "~perfect-css/components/elements/menu/list-menu"; // List Menu 列表菜单
+@import "~perfect-css/components/elements/tree/tree"; // Tree 树形组件
+@import "~perfect-css/components/elements/page/page"; // Page 分页
+@import "~perfect-css/components/elements/loading/loading"; // Loading 加载
+@import "~perfect-css/components/elements/toast/toast"; // Toast 吐司提示
+@import "~perfect-css/components/elements/tooltip/tooltip"; // Tooltip 提示
+@import "~perfect-css/components/elements/image/image"; // Image 图像
+@import "~perfect-css/components/elements/callout/callout"; // Callout 引线式标注
+@import "~perfect-css/components/elements/progress/progress"; // Progress 进度条
+@import "~perfect-css/components/elements/tag/tag"; // Tag 标签
+@import "~perfect-css/components/elements/badge/badge"; // Badge 角标
+@import "~perfect-css/components/elements/back-top/back-top"; // Back Top 返回顶部
+@import "~perfect-css/components/elements/date-picker/date-picker"; // Date Picker 日期选择器
+@import "~perfect-css/components/elements/color-picker/color-picker"; // Color Picker 颜色选择器
+@import "~perfect-css/components/elements/timeline/timeline"; // Timeline 时间轴
 
 // navigation 导航样式
-@import "~perfect-css/scss/navigation/crumb/crumb"; // Crumb 面包屑
-@import "~perfect-css/scss/navigation/navbar/navbar"; // Navbar 导航栏
-@import "~perfect-css/scss/navigation/steps/steps"; // Steps 步骤条
-@import "~perfect-css/scss/navigation/tabs/tabs"; // Tabs 标签页
-@import "~perfect-css/scss/navigation/tabs/tab-bar-scroller"; // 可滑动的 Tabs 标签页
+@import "~perfect-css/components/navigation/crumb/crumb"; // Crumb 面包屑
+@import "~perfect-css/components/navigation/navbar/navbar"; // Navbar 导航栏
+@import "~perfect-css/components/navigation/steps/steps"; // Steps 步骤条
+@import "~perfect-css/components/navigation/tabs/tabs"; // Tabs 标签页
+@import "~perfect-css/components/navigation/tabs/tab-bar-scroller"; // 可滑动的 Tabs 标签页
 
 // container 容器样式
-@import "~perfect-css/scss/container/list/list"; // List 列表
-@import "~perfect-css/scss/container/table/table"; // Table 表格
-@import "~perfect-css/scss/container/card/card"; // Card 卡片
-@import "~perfect-css/scss/container/panel/panel"; // Panel 面板
-@import "~perfect-css/scss/container/dialog/dialog"; // Dialog 对话框
-@import "~perfect-css/scss/container/accordion/accordion"; // Accordion 手风琴
-@import "~perfect-css/scss/container/carousel/carousel"; // Carousel 轮播图
+@import "~perfect-css/components/container/list/list"; // List 列表
+@import "~perfect-css/components/container/table/table"; // Table 表格
+@import "~perfect-css/components/container/card/card"; // Card 卡片
+@import "~perfect-css/components/container/panel/panel"; // Panel 面板
+@import "~perfect-css/components/container/dialog/dialog"; // Dialog 对话框
+@import "~perfect-css/components/container/accordion/accordion"; // Accordion 手风琴
+@import "~perfect-css/components/container/carousel/carousel"; // Carousel 轮播图
 
 // 工具类 classes
-@import "~perfect-css/scss/utils/align"; // 文本对齐方式
-@import "~perfect-css/scss/utils/border"; // 边框和圆角
-@import "~perfect-css/scss/utils/display"; // display 相关属性值样式
-@import "~perfect-css/scss/utils/flex"; // 弹性布局样式
-@import "~perfect-css/scss/utils/float"; // 浮层和清空浮层
-@import "~perfect-css/scss/utils/position"; // 定位
-@import "~perfect-css/scss/utils/sizing"; // 元素大小
-@import "~perfect-css/scss/utils/spacing"; // 间距
-@import "~perfect-css/scss/utils/text"; // 文本修饰
+@import "~perfect-css/components/utils/align"; // 文本对齐方式
+@import "~perfect-css/components/utils/border"; // 边框和圆角
+@import "~perfect-css/components/utils/display"; // display 相关属性值样式
+@import "~perfect-css/components/utils/flex"; // 弹性布局样式
+@import "~perfect-css/components/utils/float"; // 浮层和清空浮层
+@import "~perfect-css/components/utils/position"; // 定位
+@import "~perfect-css/components/utils/sizing"; // 元素大小
+@import "~perfect-css/components/utils/spacing"; // 间距
+@import "~perfect-css/components/utils/text"; // 文本修饰
 
 ```
 
