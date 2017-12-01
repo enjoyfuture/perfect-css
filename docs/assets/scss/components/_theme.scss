@@ -1,6 +1,6 @@
 // theme
-@import "../../../../scss/shadow/mixin";
-@import "../../../../scss/theme/mixin";
+@import "../../../../components/shadow/mixin";
+@import "../../../../components/theme/mixin";
 
 .theme-demo {
   [class*="theme"] {

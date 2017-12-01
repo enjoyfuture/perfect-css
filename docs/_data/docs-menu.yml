@@ -11,6 +11,8 @@
       file: compatibility
     - title: 开发构建
       file: build
+    - title: CSS 规范
+      file: guide
     - title: 更新日志
       file: changelog
     - title: 感谢

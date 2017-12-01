@@ -2,7 +2,5 @@
 .idea
 node_modules
 dist
-build
 docs/assets/css
 docs/assets/js
-!docs/assets/js/src

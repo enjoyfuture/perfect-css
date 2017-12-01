@@ -28,6 +28,7 @@ files:
     - scss/**/*.scss
     - docs/assets/scss/**/*.scss
   ignore:
+    - docs/assets/scss/docs/_highlight.scss
 options:
   formatter: stylish # 格式风格
   merge-default-rules: false

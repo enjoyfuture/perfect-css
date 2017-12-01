@@ -6,7 +6,6 @@
   {% endif %}
 
   <a class="navbar-brand m-r-0 m-r-sm-2" href="{{ site.baseurl }}/">
-
     <svg xmlns="http://www.w3.org/2000/svg" height="32" width="46.581421" viewBox="0 0 217.9 156.29">
       <defs>
         <style>.cls-1, .cls-2, .cls-4 { fill: none; stroke: #fff; stroke-linecap: round; }
@@ -67,11 +66,13 @@
 </header>
 
 <script>
-  const navLinks = document.querySelectorAll('#perfect_header .nav-link');
-  for (let i = 0, len = navLinks.length; i < len; i++) {
-    navLinks[i].addEventListener('click', function () {
-      // 切换时，删除左侧菜单 nav-menus-translateY 值
-      window.sessionStorage.removeItem('nav-menus-translateY');
-    }, false);
-  }
+  (function () {
+    const navLinks = document.querySelectorAll('#perfect_header .nav-link');
+    for (let i = 0, len = navLinks.length; i < len; i++) {
+      navLinks[i].addEventListener('click', function () {
+        // 切换时，删除左侧菜单 nav-menus-translateY 值
+        window.sessionStorage.removeItem('nav-menus-translateY');
+      }, false);
+    }
+  })();
 </script>

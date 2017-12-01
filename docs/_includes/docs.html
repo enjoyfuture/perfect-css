@@ -1,13 +1,10 @@
 <script src="{{ site.baseurl }}/assets/js/vendor/clipboard.min.js"></script>
 <script src="{{ site.baseurl }}/assets/js/perfect.js"></script>
-<script src="{{ site.baseurl }}/assets/js/util.js"></script>
-<script src="{{ site.baseurl }}/assets/js/scrollSpy.js"></script>
 {% if page.toc %}
-<script src="{{ site.baseurl }}/assets/js/plugins/catalogueSpy.js"></script>
 <script>
-  $(function () {
-    var ScrollSpy = perfect.default.ScrollSpy;
-    var CatalogueSpy = perfect.default.CatalogueSpy;
+  (function () {
+    const ScrollSpy = perfect.ScrollSpy;
+    const CatalogueSpy = perfect.CatalogueSpy;
     new ScrollSpy(document.body, {
       menu: '.doc-catalogue-panel',
       container: '.doc-content',
@@ -18,92 +15,100 @@
     });
 
     // 窗口滑动到某一位置时，修改目录定位位置
-    var $cataloguePanel = $('.doc-catalogue-menu-right .doc-catalogue-panel');
-    $(window).on('scroll', function (event) {
-      if ($cataloguePanel.is(':visible')) {
-        var top = window.scrollY;
-        var clientHeight = document.documentElement.clientHeight;
-        var scrollHeight = document.documentElement.scrollHeight;
-        var contentTop = $('.doc-content').offset().top;
+    const cataloguePanel = document.querySelector('.doc-catalogue-menu-right .doc-catalogue-panel');
+
+    const scrollEvent = function () {
+      const boundingClientRect = cataloguePanel.getBoundingClientRect();
+      if (boundingClientRect.width > 0 && boundingClientRect.height > 0) {
+        const top = window.scrollY;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const contentTop = document.querySelector('.doc-content').getBoundingClientRect().top;
 
         if (top > scrollHeight - clientHeight) {
-          $cataloguePanel.css({
-            position: 'absolute',
-            top: top + 'px'
-          });
+          cataloguePanel.style.position = 'absolute';
+          cataloguePanel.style.top = top + 'px';
         } else if (top + 54 > contentTop) {
-          $cataloguePanel.css({
-            position: 'fixed',
-            top: '54px'
-          });
+          cataloguePanel.style.position = 'fixed';
+          cataloguePanel.style.top = '54px';
         } else {
-          $cataloguePanel.css({
-            position: 'static',
-          });
+          cataloguePanel.style.position = 'static';
         }
       }
-    });
+    };
 
-    $(window).trigger('scroll');
-  });
+    document.addEventListener('scroll', scrollEvent, false);
+    scrollEvent();
+  })();
 </script>
 {% endif %}
 
 <script>
-  $(function () {
-    // 展开代码
-    $('.doc-example-expand [data-code-icon]').click(function () {
-      var $el = $(this);
-      var $icon = $el.children();
-      var $code = $el.parent().next();
-      var $tooltip = $el.next().find('.tooltip-inner');
-      if ($icon.hasClass('icon-pure-code')) {
-        $icon.removeClass('icon-pure-code');
-        $icon.addClass('icon-pure-code-expand');
-        $tooltip.text('隐藏 Code');
-        $code.fadeIn();
-      } else {
-        $icon.removeClass('icon-pure-code-expand');
-        $icon.addClass('icon-pure-code');
-        $tooltip.text('显示 Code');
-        $code.fadeOut();
-      }
-    });
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      // 展开代码
+      [].forEach.call(document.querySelectorAll('.doc-example-expand [data-code-icon]'), function (item) {
+        item.addEventListener('click', function (e) {
+          const el = e.currentTarget;
+          const icon = el.childNodes[0];
+          const code = el.parentNode.nextElementSibling;
+          const tooltip = el.nextElementSibling.querySelector('.tooltip-inner');
+          const iconClass = icon.classList;
 
-    // 为代码添加复制按钮
-    $('.highlight:not(.doc-example-highlight)').each(function () {
-      var copyCodeIconHtml = '<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>\n' +
-        '    <div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">复制代码</div></div>';
-      $(this).before(copyCodeIconHtml);
-    });
+          // TODO 待动画处理
+          if (iconClass.contains('icon-pure-code')) {
+            iconClass.remove('icon-pure-code');
+            iconClass.add('icon-pure-code-expand');
+            tooltip.innerHTML = '隐藏 Code';
+            code.style.display = 'block';
+          } else {
+            iconClass.remove('icon-pure-code-expand');
+            iconClass.add('icon-pure-code');
+            tooltip.innerHTML = '显示 Code';
+            code.style.display = 'none';
+          }
+        }, false);
+      });
 
-    // 复制到剪贴板
-    var clipboard = new Clipboard('.doc-code-copy', {
-      target: function (trigger) {
-        return trigger.nextElementSibling.nextElementSibling;
-      }
-    });
+      // 为代码添加复制按钮
+      [].forEach.call(document.querySelectorAll('.highlight:not(.doc-example-highlight)'), function (item) {
+        const div = document.createElement('div');
+        div.innerHTML = `<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
+        <div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">复制代码</div></div>`;
 
-    clipboard.on('success', function (e) {
-      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
-      $tooltip.text('复制成功');
-      e.clearSelection();
-    });
+        item.insertBefore(div.childNodes[0], item.lastChild);
+        item.insertBefore(div.childNodes[1], item.lastChild);
+      });
 
-    $('.doc-code-copy').mouseleave(function () {
-      var $tooltip = $(this).next().find('.tooltip-inner');
-      $tooltip.text('复制代码');
-    });
+      // 复制到剪贴板
+      const clipboard = new Clipboard('.doc-code-copy', {
+        target: function (trigger) {
+          return trigger.nextElementSibling.nextElementSibling;
+        },
+      });
 
-//    clipboard.on('error', function (e) {
-//      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
-//      var fallbackMsg = '请使用快捷键 ' + modifierKey + 'C 来复制';
-//      var $tooltip = $(e.trigger).next().find('.tooltip-inner');
-//      $tooltip.text('复制成功');
-//      e.clearSelection();
-//    });
+      clipboard.on('success', function (e) {
+        const tooltip = e.trigger.nextElementSibling.querySelector('.tooltip-inner');
+        tooltip.innerHTML = '复制成功';
+        e.clearSelection();
+      });
 
-  });
+      [].forEach.call(document.querySelectorAll('.doc-code-copy'), function (item) {
+        item.addEventListener('mouseleave', function (e) {
+          const tooltip = e.target.nextElementSibling.querySelector('.tooltip-inner');
+          tooltip.innerHTML = '复制代码';
+        }, false);
+      });
+
+      clipboard.on('error', function (e) {
+        const modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
+        const fallbackMsg = '请使用快捷键 ' + modifierKey + 'C 来复制';
+        const tooltip = e.trigger.nextElementSibling.querySelector('.tooltip-inner');
+        tooltip.innerHTML = fallbackMsg;
+        e.clearSelection();
+      });
+    }, false);
+  })();
 
 </script>
 

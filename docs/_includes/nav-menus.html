@@ -45,40 +45,53 @@
 </ul>
 
 <script>
-  $(function () {
+  (function () {
     // 菜单超过一屏可以滚动查看
-    const $menuPanel = $('.drawer-content')[0];
-    const $menu = $('.drawer-content > .perfect-menu')[0];
+    const drawerContent = document.querySelector('.drawer-content');
+    const perfectMenu = document.querySelector('.drawer-content > .perfect-menu');
 
     // 页面进入时，设置上次的 translateY
     const translateY = window.sessionStorage.getItem('nav-menus-translateY');
     if (translateY) {
-      $menu.style.transform = `translateY(${translateY}px)`;
+      perfectMenu.style.transform = `translateY(${translateY}px)`;
     }
 
-    $menu.addEventListener('transitionend', function () {
-      $menu.style.transition = 'unset';
+    perfectMenu.addEventListener('transitionend', function () {
+      perfectMenu.style.transition = 'unset';
     });
-    $('.menu').on('click', '.menu-header', function (e) {
-      e.preventDefault();
-      // 隐藏其他打开的菜单
-      $('.menu .menu').slideUp();
-      const $el = $(e.currentTarget);
-      const $nextEl = $el.next();
-      if ($nextEl.is(':visible')) {
-        $nextEl.slideUp();
-      } else {
-        $nextEl.slideDown(true, function () {
-          const menuPanelTop = $menuPanel.getBoundingClientRect().top;
-          const menuTop = $menu.getBoundingClientRect().top;
-          const currentElTop = e.currentTarget.getBoundingClientRect().top;
-          if (currentElTop < menuPanelTop) {
-            $menu.style.transform = `translateY(${menuTop - currentElTop}px)`;
-            $menu.style.transition = 'transform 200ms ease-in-out';
+
+    const menu = document.querySelector('.menu');
+    menu.addEventListener('click', function (e) {
+      const target = e.target;
+      if (target.classList.contains('menu-header')) {
+        e.preventDefault();
+        const next = target.nextElementSibling;
+        // 隐藏其他打开的菜单
+        [].forEach.call(document.querySelectorAll('.menu .menu'), function (item) {
+          if (item !== next) {
+            item.style.display = 'none';
           }
         });
+
+        // TODO 待修改成动画
+        if (next.style.display === 'none') {
+          next.style.display = '';
+
+          setTimeout(function() {
+            const menuPanelTop = drawerContent.getBoundingClientRect().top;
+            const menuTop = perfectMenu.getBoundingClientRect().top;
+            const currentElTop = target.getBoundingClientRect().top;
+            if (currentElTop < menuPanelTop) {
+              perfectMenu.style.transform = `translateY(${menuTop - currentElTop}px)`;
+              perfectMenu.style.transition = 'transform 200ms ease-in-out';
+            }
+          });
+        } else {
+          next.style.display = 'none';
+        }
       }
-    });
+    }, false);
+
 
     const isWheel = (() => {
       const ua = navigator.userAgent;
@@ -91,8 +104,8 @@
     const reg = /translateY\(([-\w]+)\)/;
 
     // Fixme 需要处理触摸滚动限制回弹效果
-    $menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
-      const {scrollHeight, clientHeight} = $menuPanel;
+    drawerContent.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', function (event) {
+      const {scrollHeight, clientHeight} = drawerContent;
       const maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
 
       // 判断鼠标滑轮向上还是向下滑动
@@ -117,7 +130,7 @@
       // 在 mac 系统下 如果 (speed % 120) === 0 是鼠标滑动，否则是触摸滑动
       const step = (speed % 120) === 0 ? 0.2 * speed : 5;
 
-      const {transform} = $menu.style;
+      const {transform} = perfectMenu.style;
 
       let y = reg.exec(transform);
       y = y ? parseFloat(y[1], 10) : 0;
@@ -139,8 +152,8 @@
       }
 
       window.sessionStorage.setItem('nav-menus-translateY', translateY);
-      $menu.style.transform = `translateY(${translateY}px)`;
+      perfectMenu.style.transform = `translateY(${translateY}px)`;
     }, false);
 
-  });
+  })();
 </script>

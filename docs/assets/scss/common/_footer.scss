@@ -1,6 +1,6 @@
 // 页面底部样式
 
-@import "../../../../scss/theme/variable";
+@import "../../../../components/theme/variable";
 
 .footer-assist {
   // 此处的数值等于 footer 的高度 + 预留的间距
@@ -14,5 +14,6 @@
   padding: 1rem 0;
   border-top: 1px solid $grey-color-300;
   color: map-get(map-get($theme-text-colors, dark), secondary);
+  background: #fff;
 }
 

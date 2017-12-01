@@ -1,8 +1,8 @@
 // 目录和内容
-@import "../../../../scss/responsive/mixin";
-@import "../../../../scss/theme/mixin";
-@import "../../../../scss/animation/mixin";
-@import "../../../../scss/base/variables/font";
+@import "../../../../components/responsive/mixin";
+@import "../../../../components/theme/mixin";
+@import "../../../../components/animation/mixin";
+@import "../../../../components/base/variables/font";
 
 .doc-catalogue-menu:hover {
   .doc-catalogue-panel {

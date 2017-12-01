@@ -1,86 +1,86 @@
-@import "../../../../scss/theme/function";
-@import "../../../../scss/theme/variable";
+@import "../../../../components/theme/function";
+@import "../../../../components/theme/variable";
 
 // 使用 test-module 描述测试某一模块，test 描述测试具体的功能点
 
-@include test-module('Theme Function') {
+@include test-module("Theme Function") {
   // $rgb: $rgb / 255;
   // if($rgb < 0.03928, $rgb / 12.92, pow(($rgb + 0.055) / 1.055, 2.4))
-  @include test('测试 @function coefficient($rgb)') {
+  @include test("测试 @function coefficient($rgb)") {
     $rgb: [ coefficient(0), coefficient(1), coefficient(200) ];
     $expect: [ 0, 0.000303526983549, 0.57758044043 ];
-    @include assert-equal($rgb, $expect, '', true);
+    @include assert-equal($rgb, $expect, "", true);
   }
 
-  @include test('测试 @function theme-luminance($color)') {
+  @include test("测试 @function theme-luminance($color)") {
     $color: [ theme-luminance(#fff), theme-luminance(#000), theme-luminance(#9c27b0) ];
     $expect: [ 1, 0, 0.116535469457 ];
-    @include assert-equal($color, $expect, '', true);
+    @include assert-equal($color, $expect, "", true);
   }
 
-  @include test('测试 @function theme-contrast-ratio($back, $front)') {
+  @include test("测试 @function theme-contrast-ratio($back, $front)") {
     // 黑白对比度为 21
     @include assert-equal(theme-contrast-ratio(#000, #fff), 21);
     // 红白对比度
-    @include assert-equal(theme-contrast-ratio(#f44336, #000), 5.70274960156, '', true);
+    @include assert-equal(theme-contrast-ratio(#f44336, #000), 5.70274960156, "", true);
   }
 
-  @include test('测试 @function theme-light-or-dark($color)') {
+  @include test("测试 @function theme-tone($color)") {
     // $red-500 深色颜色，则返回为 light
-    @include assert-equal(theme-light-or-dark(#f44336), light);
+    @include assert-equal(theme-tone(#f44336), dark);
     // $red-200
-    @include assert-equal(theme-light-or-dark(#ef9a9a), dark);
+    @include assert-equal(theme-tone(#ef9a9a), light);
     // $red-400
-    @include assert-equal(theme-light-or-dark(#ef5350), light);
+    @include assert-equal(theme-contrast-tone(#ef5350), light);
   }
 
-  @include test('测试 @function theme-tone-var($theme-tone-property)') {
-    @include assert-equal(theme-tone-var($theme-tone-property: primary-on-primary), #{$theme-primary-tone}-primary);
-    @include assert-equal(theme-tone-var($theme-tone-property: secondary-on-primary), #{$theme-primary-tone}-secondary);
-    @include assert-equal(theme-tone-var($theme-tone-property: hint-on-primary), #{$theme-primary-tone}-hint);
-    @include assert-equal(theme-tone-var($theme-tone-property: disabled-on-primary), #{$theme-primary-tone}-disabled);
+  @include test("测试 @function theme-contrast-tone-var($theme-contrast-tone-property)") {
+    @include assert-equal(theme-contrast-tone-var($theme-contrast-tone-property: primary-on-primary), #{$theme-primary-contrast-tone}-primary);
+    @include assert-equal(theme-contrast-tone-var($theme-contrast-tone-property: secondary-on-primary), #{$theme-primary-contrast-tone}-secondary);
+    @include assert-equal(theme-contrast-tone-var($theme-contrast-tone-property: hint-on-primary), #{$theme-primary-contrast-tone}-hint);
+    @include assert-equal(theme-contrast-tone-var($theme-contrast-tone-property: disabled-on-primary), #{$theme-primary-contrast-tone}-disabled);
 
-    @include assert-equal(theme-tone-var($theme-tone-property: primary-on-primary-light), #{$theme-primary-light-tone}-primary);
-    @include assert-equal(theme-tone-var($theme-tone-property: secondary-on-primary-light), #{$theme-primary-light-tone}-secondary);
-    @include assert-equal(theme-tone-var($theme-tone-property: hint-on-primary-light), #{$theme-primary-light-tone}-hint);
-    @include assert-equal(theme-tone-var($theme-tone-property: disabled-on-primary-light), #{$theme-primary-light-tone}-disabled);
+    @include assert-equal(theme-contrast-tone-var($theme-contrast-tone-property: primary-on-primary-light), #{$theme-primary-light-contrast-tone}-primary);
+    @include assert-equal(theme-contrast-tone-var($theme-contrast-tone-property: secondary-on-primary-light), #{$theme-primary-light-contrast-tone}-secondary);
+    @include assert-equal(theme-contrast-tone-var($theme-contrast-tone-property: hint-on-primary-light), #{$theme-primary-light-contrast-tone}-hint);
+    @include assert-equal(theme-contrast-tone-var($theme-contrast-tone-property: disabled-on-primary-light), #{$theme-primary-light-contrast-tone}-disabled);
 
-    @include assert-equal(theme-tone-var(primary-on-primary-dark), #{$theme-primary-dark-tone}-primary);
-    @include assert-equal(theme-tone-var(secondary-on-primary-dark), #{$theme-primary-dark-tone}-secondary);
-    @include assert-equal(theme-tone-var(hint-on-primary-dark), #{$theme-primary-dark-tone}-hint);
-    @include assert-equal(theme-tone-var(disabled-on-primary-dark), #{$theme-primary-dark-tone}-disabled);
+    @include assert-equal(theme-contrast-tone-var(primary-on-primary-dark), #{$theme-primary-dark-contrast-tone}-primary);
+    @include assert-equal(theme-contrast-tone-var(secondary-on-primary-dark), #{$theme-primary-dark-contrast-tone}-secondary);
+    @include assert-equal(theme-contrast-tone-var(hint-on-primary-dark), #{$theme-primary-dark-contrast-tone}-hint);
+    @include assert-equal(theme-contrast-tone-var(disabled-on-primary-dark), #{$theme-primary-dark-contrast-tone}-disabled);
 
-    @include assert-equal(theme-tone-var(primary-on-secondary), #{$theme-secondary-tone}-primary);
-    @include assert-equal(theme-tone-var(secondary-on-secondary), #{$theme-secondary-tone}-secondary);
-    @include assert-equal(theme-tone-var(hint-on-secondary), #{$theme-secondary-tone}-hint);
-    @include assert-equal(theme-tone-var(disabled-on-secondary), #{$theme-secondary-tone}-disabled);
-
-
-    @include assert-equal(theme-tone-var(primary-on-secondary-light), #{$theme-secondary-light-tone}-primary);
-    @include assert-equal(theme-tone-var(secondary-on-secondary-light), #{$theme-secondary-light-tone}-secondary);
-    @include assert-equal(theme-tone-var(hint-on-secondary-light), #{$theme-secondary-light-tone}-hint);
-    @include assert-equal(theme-tone-var(disabled-on-secondary-light), #{$theme-secondary-light-tone}-disabled);
-
-    @include assert-equal(theme-tone-var(primary-on-secondary-dark), #{$theme-secondary-dark-tone}-primary);
-    @include assert-equal(theme-tone-var(secondary-on-secondary-dark), #{$theme-secondary-dark-tone}-secondary);
-    @include assert-equal(theme-tone-var(hint-on-secondary-dark), #{$theme-secondary-dark-tone}-hint);
-    @include assert-equal(theme-tone-var(disabled-on-secondary-dark), #{$theme-secondary-dark-tone}-disabled);
-
-    @include assert-equal(theme-tone-var(primary-on-background), #{$theme-background-tone}-primary);
-    @include assert-equal(theme-tone-var(secondary-on-background), #{$theme-background-tone}-secondary);
-    @include assert-equal(theme-tone-var(hint-on-background), #{$theme-background-tone}-hint);
-    @include assert-equal(theme-tone-var(disabled-on-background), #{$theme-background-tone}-disabled);
-
-    @include assert-equal(theme-tone-var(primary-on-light), dark-primary);
-    @include assert-equal(theme-tone-var(secondary-on-light), dark-secondary);
-    @include assert-equal(theme-tone-var(hint-on-light), dark-hint);
-    @include assert-equal(theme-tone-var(disabled-on-light), dark-disabled);
+    @include assert-equal(theme-contrast-tone-var(primary-on-secondary), #{$theme-secondary-contrast-tone}-primary);
+    @include assert-equal(theme-contrast-tone-var(secondary-on-secondary), #{$theme-secondary-contrast-tone}-secondary);
+    @include assert-equal(theme-contrast-tone-var(hint-on-secondary), #{$theme-secondary-contrast-tone}-hint);
+    @include assert-equal(theme-contrast-tone-var(disabled-on-secondary), #{$theme-secondary-contrast-tone}-disabled);
 
 
-    @include assert-equal(theme-tone-var(primary-on-dark), light-primary);
-    @include assert-equal(theme-tone-var(secondary-on-dark), light-secondary);
-    @include assert-equal(theme-tone-var(hint-on-dark), light-hint);
-    @include assert-equal(theme-tone-var(disabled-on-dark), light-disabled);
+    @include assert-equal(theme-contrast-tone-var(primary-on-secondary-light), #{$theme-secondary-light-contrast-tone}-primary);
+    @include assert-equal(theme-contrast-tone-var(secondary-on-secondary-light), #{$theme-secondary-light-contrast-tone}-secondary);
+    @include assert-equal(theme-contrast-tone-var(hint-on-secondary-light), #{$theme-secondary-light-contrast-tone}-hint);
+    @include assert-equal(theme-contrast-tone-var(disabled-on-secondary-light), #{$theme-secondary-light-contrast-tone}-disabled);
+
+    @include assert-equal(theme-contrast-tone-var(primary-on-secondary-dark), #{$theme-secondary-dark-contrast-tone}-primary);
+    @include assert-equal(theme-contrast-tone-var(secondary-on-secondary-dark), #{$theme-secondary-dark-contrast-tone}-secondary);
+    @include assert-equal(theme-contrast-tone-var(hint-on-secondary-dark), #{$theme-secondary-dark-contrast-tone}-hint);
+    @include assert-equal(theme-contrast-tone-var(disabled-on-secondary-dark), #{$theme-secondary-dark-contrast-tone}-disabled);
+
+    @include assert-equal(theme-contrast-tone-var(primary-on-background), #{$theme-background-contrast-tone}-primary);
+    @include assert-equal(theme-contrast-tone-var(secondary-on-background), #{$theme-background-contrast-tone}-secondary);
+    @include assert-equal(theme-contrast-tone-var(hint-on-background), #{$theme-background-contrast-tone}-hint);
+    @include assert-equal(theme-contrast-tone-var(disabled-on-background), #{$theme-background-contrast-tone}-disabled);
+
+    @include assert-equal(theme-contrast-tone-var(primary-on-light), dark-primary);
+    @include assert-equal(theme-contrast-tone-var(secondary-on-light), dark-secondary);
+    @include assert-equal(theme-contrast-tone-var(hint-on-light), dark-hint);
+    @include assert-equal(theme-contrast-tone-var(disabled-on-light), dark-disabled);
+
+
+    @include assert-equal(theme-contrast-tone-var(primary-on-dark), light-primary);
+    @include assert-equal(theme-contrast-tone-var(secondary-on-dark), light-secondary);
+    @include assert-equal(theme-contrast-tone-var(hint-on-dark), light-hint);
+    @include assert-equal(theme-contrast-tone-var(disabled-on-dark), light-disabled);
 
   }
 }

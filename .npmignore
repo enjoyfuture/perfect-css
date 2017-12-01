@@ -1,0 +1,4 @@
+# Ignore publish files
+# https://docs.npmjs.com/files/package.json#files
+# It override the file ".gitignore" to avoid some files that cannot be published successfully.
+.idea
