@@ -78,8 +78,11 @@ module Jekyll
           level = 7 - name[1].to_i
           header_content = node.children.first # 取目录下第一个元素
 
+          # 返回符合条件的所有祖先元素数组 Get a list of ancestor Node for this Node.
+          ancestor = node.ancestors('.component-container')
+
           # 如果目录下有内容并且不是例子中的 header
-          if header_content && node.parent['class'] != 'doc-example'
+          if header_content && ancestor.length == 0
             if index == 0
               # 初始化第一个元素
               anchor_node = {
