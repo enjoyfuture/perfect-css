@@ -3,6 +3,7 @@
 @import "../base/variables/font";
 @import "../base/variables/link";
 @import "normalize-css";
+@import "variable";
 
 // 规范化样式
 // 在 normalize.css 的基础上重新定义样式
@@ -12,23 +13,30 @@
 // 在 ie11 和 edge 中，当鼠标离开滚动条时，会自动隐藏，这样用户体验可能不是很好，
 // 故显式开启，当有滚动条时，一直显示
 // 2. 设置默认字体为 sans-serif
-// 3. 在Windows Phone和iOS中，通过调整字体大小为100%来阻止文本改变位置
+// 3. 在Windows Phone和iOS中，通过设置字体大小为100%来阻止文本改变大小
 // 4. 在 IOS 下点击高亮修改为完全透明
 
 html {
-  -ms-overflow-style: scrollbar; // 1
-  font-family: sans-serif; // 2
-  font-weight: $font-weight-base;
-  -webkit-text-size-adjust: 100%; // 3
-  -ms-text-size-adjust: 100%; // 3
+  -ms-overflow-style:          scrollbar; // 1
+  font-family:                 sans-serif; // 2
+  font-weight:                 $font-weight-base;
+  -webkit-text-size-adjust:    100%; // 3
+  -ms-text-size-adjust:        100%; // 3
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 4
+}
+
+// IE10+ doesn't honor `<meta name="viewport">` in some cases.
+@at-root {
+  @-ms-viewport {
+    width: #{device-width};
+  }
 }
 
 // 1. 最佳实践，提供一个默认的前景和背景
 body {
   font-family: $font-family;
-  //设置默认字体大小，其他元素采用 rem ，动态的根据 body 的字体大小来计算其大小
-  font-size: var(--font-size-base, $font-size-base);
+  // 设置默认字体大小，其他元素采用 rem ，动态的根据 body 的字体大小来计算其大小
+  font-size:   var(--font-size-base, $font-size-base);
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   @include theme-prop(color, primary-on-light); // 1 前景对应  rgba(0, 0, 0, .87),
@@ -56,44 +64,45 @@ main {
 
 // 重置 margin-top margin-bottom
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 1rem;
+  margin-top:    0;
+  margin-bottom: $header-margin-bottom;
 }
 
 // 重置
 // 用 rem 设置 margin-top margin-bottom
 p {
-  margin-top: 0;
-  margin-bottom: .5rem;
+  margin-top:    0;
+  margin-bottom: $p-margin-bottom;
 }
 
 // Abbreviations
 //
-// 1. Remove the bottom border in Chrome 57- and Firefox 39-.
-// 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
-// 3. Add explicit cursor to indicate changed behavior.
-// 4. Duplicate behavior to the data-* attribute for our tooltip plugin
-
-abbr[title],
-abbr[data-original-title] { // 4
-  border-bottom: 0; // 1
-  text-decoration: underline; // 2
-  text-decoration: underline dotted; // 2
-  cursor: help; // 3
+// 1. 鼠标图标设置为帮助形式
+abbr[title] {
+  cursor: help; // 1
 }
 
 address {
-  margin-bottom: 1rem;
-  font-style: normal;
-  line-height: inherit;
+  margin-bottom: $address-margin-bottom;
+  font-style:    normal;
+  line-height:   inherit;
 }
 
 ol,
 ul,
 dl {
-  padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 1rem;
+  margin-top:    0;
+  margin-bottom: $list-spacer;
+}
+
+ol,
+ul {
+  padding-left: $list-spacer;
+}
+
+li {
+  padding-top:    $list-spacer / 4;
+  padding-bottom: $list-spacer / 4;
 }
 
 ol ol,
@@ -108,23 +117,21 @@ dt {
 }
 
 dd {
-  margin-bottom: .5rem;
-  margin-left: 0; // Undo browser default
+  margin-bottom: $list-spacer / 2;
+  margin-left:   0; // 取消浏览器默认左外边距
 }
 
 blockquote {
   margin: 0 0 1rem;
 }
 
-//
 // Links
-//
 
 a {
   text-decoration: $link-decoration;
   @include theme-prop(color, primary);
 
-  @include hover {
+  &:hover {
     @include theme-prop(color, primary-dark);
     text-decoration: $link-hover-decoration;
   }
@@ -132,9 +139,11 @@ a {
 
 // 对于没有 href 并且没有设置 tabindex 的 a 元素修改为样式跟普通元素一样
 a:not([href]):not([tabindex]) {
+  color:           inherit;
   text-decoration: none;
 
   @include hover-focus {
+    color:           inherit;
     text-decoration: none;
   }
 
@@ -143,31 +152,25 @@ a:not([href]):not([tabindex]) {
   }
 }
 
-//
 // Code
-//
 
 pre {
-  // Remove browser default top margin
-  margin-top: 0;
-  // Reset browser default of `1em` to use `rem`s
-  margin-bottom: 1rem;
-  // Don't allow content to break outside
-  overflow: auto;
+  // 去掉浏览器默认的上边距
+  margin-top:         0;
+  // 设置浏览器的下边距
+  margin-bottom:      $spacer;
+  // 设置为超过高度后自动显示滚动条
+  overflow:           auto;
+  // 恢复 IE11 and Edge 上的显示滚动条
+  -ms-overflow-style: scrollbar;
 }
-
-//
-// Figures
-//
 
 figure {
-  // Apply a consistent margin strategy (matches our type styles).
-  margin: 0 0 1rem;
+  // 重置 figure margin
+  margin: 0 0 $spacer;
 }
 
-//
 // 重置图片样式
-//
 
 img {
   // 重置为垂直居中
@@ -186,7 +189,7 @@ a,
 area,
 button,
 [role="button"],
-input,
+input:not([type="range"]),
 label,
 select,
 summary,
@@ -194,9 +197,7 @@ textarea {
   touch-action: manipulation;
 }
 
-//
 // 重置 Forms 表单样式
-//
 
 label {
   display: inline-block;
@@ -208,7 +209,7 @@ select,
 optgroup,
 textarea {
   font-family: inherit;
-  font-size: inherit;
+  font-size:   inherit;
   line-height: inherit;
 }
 
@@ -216,47 +217,41 @@ input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
-  // Remove the default appearance of temporal inputs to avoid a Mobile Safari
-  // bug where setting a custom line-height prevents text from being vertically
-  // centered within the input.
+  // 解决在 IOS 中不能垂直居中的问题
   // See https://bugs.webkit.org/show_bug.cgi?id=139848
+  // https://www.w3cplus.com/css3/changing-appearance-of-element-with-css3.html
   -webkit-appearance: listbox;
 }
 
 textarea {
-  // Textareas should really only resize vertically so they don't break their (horizontal) containers.
+  // 只提供垂直可以改变高度，水平方向禁止拉伸
   resize: vertical;
 }
 
 fieldset {
-  // Browsers set a default `min-width: min-content;` on fieldsets,
-  // unlike e.g. `<div>`s, which have `min-width: 0;` by default.
-  // So we reset that to ensure fieldsets behave more like a standard block element.
-  // and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
+  // 重置最小宽度为 0
+  // https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
   min-width: 0;
-  // Reset the default outline behavior of fieldsets so they don't affect page layout.
-  padding: 0;
-  margin: 0;
-  border: 0;
+  // 重置其他默认样式
+  padding:   0;
+  margin:    0;
+  border:    0;
 }
 
 legend {
-  display: block;
-  width: 100%;
-  margin-bottom: .5rem;
-  font-size: 1.5rem;
-  line-height: inherit;
+  display:       block;
+  width:         100%;
+  margin-bottom: $spacer / 2;
+  font-size:     $font-size-lg;
+  line-height:   inherit;
 }
 
 [type="search"] {
-  // Correct the odd appearance in Chrome and Safari.
+  // 去掉浏览器特有的表现
   -webkit-appearance: none;
 }
 
-//
-// Correct element displays
-//
-
+// 对于标签 output 默认设置为 display 为 inline-block
 output {
   display: inline-block;
 }
