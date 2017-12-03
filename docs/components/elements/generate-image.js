@@ -7,30 +7,34 @@
       background: '#FB803A',
       text: '最热',
       size: [40, 40],
+      ratio: 2
    })
    * @returns {string}
    */
   function generateImage({
-    fontSize = 20,
+    fontSize = null,
     color = '#fff',
     background = '#616161',
     text = '',
     size = [600, 200],
   }) {
-
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-
     const width = size[0],
       height = size[1],
       fontFamily = 'sans-serif';
 
+    if (!fontSize) { // 取宽度的 1/15
+      fontSize = width / 15;
+    }
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
     canvas.width = width;
     canvas.height = height;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
     ctx.fillStyle = background;
     ctx.fillRect(0, 0, width, height);
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
     ctx.fillStyle = color;
     ctx.font = `bold ${fontSize}px ${fontFamily}`;
     ctx.fillText(text, (width / 2), (height / 2), width);
