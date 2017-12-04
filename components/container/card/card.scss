@@ -1,1 +1,240 @@
-//
+@import "../../base/variables/font";
+@import "../../shadow/shadow";
+@import "../../responsive/mixin";
+@import "variable";
+
+// 卡片
+// 卡片的实现包含
+// card-header card-body card-footer card-actions card-media
+
+.card {
+  box-sizing:     border-box;
+  display:        flex;
+  flex-direction: column;
+  border:         1px solid $card-border-color;
+  border-radius:  $card-border-radius;
+  overflow:       hidden;
+
+  &-header,
+  &-footer {
+    padding:          $card-spacing * .75 $card-spacing;
+    background-color: $card-header-footer-bg;
+  }
+
+  &-header {
+    border-bottom: 1px solid $card-border-color;
+  }
+
+  &-footer {
+    border-top: 1px solid $card-border-color;
+  }
+
+  // 媒介，指图片，视频等
+  // 铺满整个或部分区域
+  &-media-overlay {
+    box-sizing: border-box;
+    padding:    $card-spacing;
+  }
+
+  &-media {
+    width: 100%;
+  }
+
+  &-body {
+    // https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex
+    // 元素会根据自身的宽度与高度来确定尺寸，会自行伸长以吸收flex容器中额外的自由空间，
+    // 也会缩短至自身最小尺寸以适应容器
+    // 这里主要为了使 footers 能在最底部显示
+    flex: 1 1 auto;
+    padding: $card-spacing;
+  }
+
+  &-title,
+  &-subtitle {
+    margin-bottom:           $card-spacing * .75;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing:  antialiased;
+  }
+
+  &-title {
+    font-size:   $font-size-lg;
+    font-weight: 500;
+  }
+
+  &-subtitle {
+    margin-top:  -$card-spacing / 2;
+    font-size:   $font-size-base;
+    font-weight: 400;
+    @include theme-prop(color, secondary-on-light);
+  }
+
+  &-text {
+    margin:    0;
+    font-size: $font-size-base;
+    & + .card-text {
+      margin-top: $card-spacing / 2;
+    }
+  }
+
+  &-actions {
+    box-sizing: border-box;
+    display:    flex;
+    padding:    $card-spacing;
+
+    .card-action {
+      margin-right: $card-spacing;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    // 垂直显示
+    &-vertical {
+      flex-flow:   column;
+      align-items: flex-start;
+
+      .card-action {
+        margin: 0 0 $card-spacing;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // 头像
+  &-avatar-wrap {
+    position: relative;
+    padding:  $card-spacing;
+
+    .card-avatar {
+      position:      absolute;
+      width:         2.5rem;
+      height:        2.5rem;
+      border-radius: 50%;
+    }
+
+    .card-title {
+      margin-left: 3.5rem;
+    }
+
+    .card-subtitle {
+      margin-left: 3.5rem;
+    }
+  }
+
+  &-block {
+    box-sizing:      border-box;
+    display:         flex;
+    flex-direction:  row;
+    align-items:     flex-start;
+    justify-content: space-between;
+
+    .card-media {
+      width:   auto;
+      padding: $card-spacing;
+    }
+  }
+
+  // card shadow
+  &-shadow {
+    border: 0;
+    @include shadow(2);
+  }
+
+  // card tabs
+  &-header-tabs {
+    padding-top:    0;
+    padding-bottom: 0;
+  }
+}
+
+// 对于重叠的区域，需要设置padding-top: 0;
+.card-avatar-wrap + .card-media,
+.card-avatar-wrap + .card-body,
+.card-avatar-wrap + .card-actions,
+.card-body + .card-actions {
+  padding-top: 0;
+}
+
+// 卡片组
+.card-group {
+  display:        flex;
+  flex-direction: column;
+
+  > .card {
+    margin-bottom: $card-spacing / 2;
+  }
+
+  @include media-breakpoint-up(sm) {
+    flex-flow: row wrap;
+    > .card {
+      // https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+      // flex-basis 必须指定单位来解决该 bug
+      flex:          1 0 0%;
+      margin-bottom: 0;
+      border-radius: 0;
+
+      &:first-child {
+        border-top-left-radius:    $card-border-radius;
+        border-bottom-left-radius: $card-border-radius;
+      }
+
+      &:last-child {
+        border-top-right-radius:    $card-border-radius;
+        border-bottom-right-radius: $card-border-radius;
+      }
+
+      + .card {
+        margin-left: 0;
+        border-left: 0;
+      }
+    }
+  }
+}
+
+// 带间距的卡片组
+.card-spacing {
+  display:        flex;
+  flex-direction: column;
+
+  .card {
+    margin-bottom: $card-spacing;
+  }
+
+  @include media-breakpoint-up(sm) {
+    flex-flow:    row wrap;
+    margin-left:  -$card-spacing;
+    margin-right: -$card-spacing;
+
+    .card {
+      display:        flex;
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+      // flex-basis 必须指定单位来解决该 bug
+      flex:           1 0 0%;
+      flex-direction: column;
+      margin:         0 $card-spacing;
+    }
+  }
+}
+
+// 卡片 Columns 布局
+
+.card-columns {
+  .card {
+    margin-bottom: $card-columns-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
+    column-count: $card-columns-count;
+    column-gap: $card-columns-gap;
+
+    .card {
+      display: inline-flex; // 防止一个卡片在跨列显示，设置为 inline-block 也可以
+      width: 100%; // 占满整个区域
+    }
+  }
+}

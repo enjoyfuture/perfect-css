@@ -1,0 +1,17 @@
+@import "../../theme/variable";
+@import "../../base/variables/border";
+
+$card-spacing: 1rem !default;
+$card-border-color: $grey-color-300 !default;
+$card-border-radius: $border-radius !default;
+$card-header-footer-bg: $grey-color-50 !default;
+$card-avatar-size: 2.5rem !default;
+
+// card columns
+$card-group-margin: ($card-spacing / 2) !default;
+
+$card-columns-count: 3 !default;
+// 列间距
+$card-columns-gap: 1.25rem !default;
+$card-columns-margin: $card-spacing * .75 !default;
+

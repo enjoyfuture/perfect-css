@@ -29,25 +29,18 @@
   @include header-margin;
   @include header-anchor;
 
-  ol, ul {
-    margin-left: 1rem;
-  }
-
-  p, li {
-    line-height: 2;
-  }
-
-  p {
+  > p {
     margin-top:    1rem;
     margin-bottom: 1rem;
+    line-height:   2;
   }
 
   a {
-    margin-left: .25rem;
+    margin-left:  .25rem;
     margin-right: .25rem;
   }
 
-  hr {
+  > hr {
     border-top: 1px dashed;
     @include theme-prop(border-color, primary-light);
   }

@@ -43,7 +43,7 @@
 
 // 组件间距
 .component-spacing {
-  > div, > button, > a, > label {
+  > div, > button, > a, > label, > img, >span {
     margin-right: 1rem;
     &:last-child {
       margin-right: 0;
