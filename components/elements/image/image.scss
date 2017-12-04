@@ -1,11 +1,9 @@
-
 @import "../../base/variables/spacing";
-@import "./variable";
-
 @import "../../theme/mixin";
 @import "../../base/mixins/border-radius";
 @import "../../shadow/mixin";
 @import "../../animation/mixin";
+@import "./variable";
 @import "./mixin";
 
 // 自适应图片
@@ -19,7 +17,6 @@
   border: $thumbnail-border-width solid $thumbnail-border-color;
 
   @include theme-prop(background-color, primary-on-dark);
-
   @include border-radius($thumbnail-border-radius);
   @include animation-transition(all, 200ms, ease-in-out);
   @include shadow(4);
@@ -28,10 +25,8 @@
   @include img-fluid;
 }
 
-//
 // Figures
 // 人物
-//
 
 .figure {
   display: inline-block;
@@ -44,7 +39,7 @@
 
 .figure-caption {
   font-size: $figure-caption-font-size;
-  @include theme-prop(background-color, secondary-on-dark);
+  @include theme-prop(color, secondary-on-light);
   text-align: center;
 }
 

@@ -137,8 +137,6 @@
       file: table
     - title: Card 卡片
       file: card
-    - title: Panel 面板
-      file: panel
     - title: Dialog 对话框
       file: dialog
     - title: Accordion 手风琴

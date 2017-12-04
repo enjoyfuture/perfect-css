@@ -12,7 +12,8 @@
   margin-left:  ($gutter / -2);
   margin-right: ($gutter / -2);
 
-  * {
+  // 所有的包含 col 的样式设置 border-box 为 border-box
+  [class*="col"] {
     box-sizing: border-box;
   }
 }

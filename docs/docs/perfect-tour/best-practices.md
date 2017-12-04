@@ -112,7 +112,6 @@ const div1 = (<div className={perfect.container}></div>);
 @import "~perfect-css/components/container/list/list"; // List 列表
 @import "~perfect-css/components/container/table/table"; // Table 表格
 @import "~perfect-css/components/container/card/card"; // Card 卡片
-@import "~perfect-css/components/container/panel/panel"; // Panel 面板
 @import "~perfect-css/components/container/dialog/dialog"; // Dialog 对话框
 @import "~perfect-css/components/container/accordion/accordion"; // Accordion 手风琴
 @import "~perfect-css/components/container/carousel/carousel"; // Carousel 轮播图

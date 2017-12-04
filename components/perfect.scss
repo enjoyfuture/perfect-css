@@ -1,9 +1,3 @@
-/*!
- * Perfect
- * Copyright 2016-2017 The Perfect Authors
- * Licensed under MIT (https://github.com/joy-web/perfect-css/blob/master/LICENSE)
- */
-
 // 变量、mixin 和函数
 @import "base/variables";
 @import "base/mixins";
@@ -78,7 +72,6 @@
 @import "container/list/list"; // List 列表
 @import "container/table/table"; // Table 表格
 @import "container/card/card"; // Card 卡片
-@import "container/panel/panel"; // Panel 面板
 @import "container/dialog/dialog"; // Dialog 对话框
 @import "container/accordion/accordion"; // Accordion 手风琴
 @import "container/carousel/carousel"; // Carousel 轮播图
