@@ -1,1 +1,20 @@
 // box layout 分为 Horizontal Box 和 Vertical Box
+@import "mixin";
+@import "variable";
+
+.box {
+  display: flex;
+
+  // Horizontal Box
+  &-h {
+    flex-direction: row;
+  }
+
+  // Vertical Box
+  &-v {
+    flex-direction: column;
+  }
+}
+
+@include box-column($box-columns);
+

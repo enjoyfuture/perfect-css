@@ -1,0 +1,43 @@
+@import "../../../../components/theme/mixin";
+@import "../../../../components/theme/variable";
+
+.box-demo {
+  border: 1px solid $grey-color-500;
+
+  .box-demo {
+    border: 0;
+  }
+
+  > [class*="box"] {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    @include theme-prop(background-color, primary-alpha);
+
+    &:nth-of-type(2) {
+      @include theme-prop(background-color, secondary-alpha);
+    }
+  }
+
+  &.box-h {
+    > [class*="box"] {
+      border-right: 1px solid;
+      @include theme-prop(border-right-color, primary-light);
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+
+  &.box-v {
+    > [class*="box"] {
+      border-bottom: 1px solid;
+      @include theme-prop(border-bottom-color, primary-light);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}

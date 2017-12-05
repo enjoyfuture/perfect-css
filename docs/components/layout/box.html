@@ -4,3 +4,88 @@ title: Box 盒子布局
 group: layout
 anchor: true
 ---
+
+<h2>水平布局</h2>
+<section class="component-container">
+  <div class="box box-h box-demo" style="height: 200px;">
+    <div class="box-item-3">左</div>
+    <div class="box-item-7">中</div>
+    <div class="box-item-2">右</div>
+  </div>
+</section>
+
+<h2>垂直布局</h2>
+<section class="component-container">
+  <div class="box box-v box-demo" style="height: 200px;">
+    <div class="box-item-3">上</div>
+    <div class="box-item-7">中</div>
+    <div class="box-item-2">下</div>
+  </div>
+</section>
+
+<h2>圣杯布局 Holy Grail Layout</h2>
+
+<h3>固定百分比</h3>
+<section class="component-container">
+  <div class="box box-v box-demo" style="height: 300px;">
+    <div class="box-item-2">上(16.67%)</div>
+    <div class="box-item-8 box box-h box-demo">
+      <div class="box-item-2">左(16.67%)</div>
+      <div class="box-item-8">中(66.67%)</div>
+      <div class="box-item-2">右(16.67%)</div>
+    </div>
+    <div class="box-item-2">下(16.67%)</div>
+  </div>
+</section>
+
+<h3>上下左右固定大小，中间自适应</h3>
+<section class="component-container">
+  <div class="box box-v box-demo" style="height: 300px;">
+    <div class="box-item" style="flex:0 0 50px;">上(50px)</div>
+    <div class="box-item box box-h box-demo">
+      <div class="box-item" style="flex:0 0 200px;">左(200px)</div>
+      <div class="box-item">中(100% - 200px - 150px)</div>
+      <div class="box-item" style="flex:0 0 150px;">右(150px)</div>
+    </div>
+    <div class="box-item" style="flex:0 0 30px;">下(30px)</div>
+  </div>
+</section>
+
+<h3>圣杯布局变体</h3>
+<section class="component-container">
+  <div class="box box-h box-demo" style="height: 300px;">
+    <div class="box-item-2">左(16.67%)</div>
+    <div class="box-item-8 box box-v box-demo">
+      <div class="box-item-2">上(16.67%)</div>
+      <div class="box-item-8">中(66.67%)</div>
+      <div class="box-item-2">下(16.67%)</div>
+    </div>
+    <div class="box-item-2">右(16.67%)</div>
+  </div>
+</section>
+
+<h2>Grid</h2>
+<section class="component-container">
+  <div class="box box-v box-demo" style="height: 160px;">
+    <div class="box-item box box-h box-demo">
+      <div class="box-item">1</div>
+      <div class="box-item">2</div>
+      <div class="box-item">3</div>
+      <div class="box-item">4</div>
+    </div>
+    <div class="box-item box box-h box-demo">
+      <div class="box-item">5</div>
+      <div class="box-item">6</div>
+      <div class="box-item">7</div>
+      <div class="box-item">8</div>
+    </div>
+    <div class="box-item box box-h box-demo">
+      <div class="box-item">9</div>
+      <div class="box-item">10</div>
+      <div class="box-item">11</div>
+      <div class="box-item">12</div>
+    </div>
+  </div>
+</section>
+
+
