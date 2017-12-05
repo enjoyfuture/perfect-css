@@ -145,13 +145,13 @@
   $contrast-tone: theme-contrast-tone($color);
 
   @if ($fore) {
-    color: $color;
-    color: var(--theme-#{$style}, $color);
+    color:            $color;
+    color:            var(--theme-#{$style}, $color);
     background-color: map-get($theme-contrast-tone-property-values, primary-on-#{$tone});
     background-color: var(--theme-#{$contrast-tone}-primary, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
   } @else {
-    color: map-get($theme-contrast-tone-property-values, primary-on-#{$tone});
-    color: var(--theme-#{$contrast-tone}-primary, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
+    color:            map-get($theme-contrast-tone-property-values, primary-on-#{$tone});
+    color:            var(--theme-#{$contrast-tone}-primary, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
     background-color: $color;
     background-color: var(--theme-#{$style}, $color);
   }
@@ -161,36 +161,38 @@
 // 如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），
 // 这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可
 @mixin theme-classes($tone: false) {
-  // 设置 primary 和 secondary 以及浅色和深色背景颜色值
-  // .theme-primary-bg {background-color: #2196f3; background-color: var(--theme-primary, #2196f3);}
-  @each $style in map-keys($theme-property-values) {
-    @if $style == "background" {
-      // 背景色，用在背景上
-      // .theme-background {background-color: #fff; background-color: var(--theme-background, #fff);}
-      .theme-background {
-        @include theme-prop(background-color, background, true);
-        @if ($tone) {
-          @include theme-prop(color, primary-on-background, true);
-        }
-      }
-    } @else {
-      .theme-#{$style}-bg {
-        @include theme-prop(background-color, $style, true);
-        @if ($tone) {
+  @each $style, $color in $theme-property-values {
+    $color-alpha: alpha($color);
+
+    // 设置 primary 和 secondary 以及浅色和深色背景颜色
+    // .theme-primary-bg {background-color: #2196f3; background-color: var(--theme-primary, #2196f3);}
+    // 对于 $style 值为 background 时
+    // .theme-background {background-color: #fff; background-color: var(--theme-background, #fff);}
+    $class-name: if($style == "background", $style, #{$style}-bg);
+
+    .theme-#{$class-name} {
+      @include theme-prop(background-color, $style, true);
+      @if ($tone) {
+        @if ($color-alpha == 1) {
           @include theme-prop(color, primary-on-#{$style}, true);
+        } @else {
+          @include theme-prop(color, primary-on-light, true);
         }
       }
     }
-  }
 
-  // 通过添加该样式值，改变文本主题前景颜色值，对于主题色调($theme-contrast-tone-property-values)，不单独设置
-  // .theme-primary {color: #2196f3; color: var(--theme-primary, #2196f3);}
-  @each $style in map-keys($theme-property-values) {
+    // 设置 primary 和 secondary 以及浅色和深色前景颜色
+    // .theme-primary {color: #2196f3; color: var(--theme-primary, #2196f3);}
     @if $style != "background" {
       .theme-#{$style} {
         @include theme-prop(color, $style, true);
+
         @if ($tone) {
-          @include theme-prop(background-color, primary-on-#{$style}, true);
+          @if ($color-alpha == 1) {
+            @include theme-prop(background-color, primary-on-#{$style}, true);
+          } @else {
+            @include theme-prop(background-color, primary-on-dark, true);
+          }
         }
       }
     }
@@ -201,23 +203,23 @@
 // 如果 $tone 设为 true，则会给出对应的前景或背景对比颜色色调值（深色或浅色），
 // 这样可以突出对比度，方便阅读，在需要的地方可以调用该 mixin ，并且参数 $tone 设为 true 即可
 @mixin theme-assist-classes($tone: false) {
-  // 辅助颜色背景色
-  // .theme-success-bg {background-color: #4caf50; background-color: var(--theme-success, #4caf50);}
   @each $theme, $color in $theme-assist-colors {
+    $color-alpha: alpha($color);
+
+    // 辅助颜色背景色
+    // .theme-success-bg {background-color: #4caf50; background-color: var(--theme-success, #4caf50);}
     .theme-#{$theme}-bg {
       background-color: $color !important;
       background-color: var(--theme-#{$theme}, $color) !important;
       @if ($tone) {
-        $contrast-tone: theme-contrast-tone($color);
+        $contrast-tone: if($color-alpha == 1, theme-contrast-tone($color), "dark");
         $color: map-get(map-get($theme-text-colors, $contrast-tone), primary);
         color: $color !important;
       }
     }
-  }
 
-  // 辅助颜色前景色
-  // .theme-success {color: #4caf50; color: var(--theme-success, #4caf50);}
-  @each $theme, $color in $theme-assist-colors {
+    // 辅助颜色前景色
+    // .theme-success {color: #4caf50; color: var(--theme-success, #4caf50);}
     .theme-#{$theme} {
       color: $color !important;
       color: var(--theme-#{$theme}, $color) !important;
