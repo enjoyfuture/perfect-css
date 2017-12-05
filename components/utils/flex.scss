@@ -74,7 +74,7 @@
     .align-content#{$infix}-stretch { align-content: stretch !important; }
 
     // 设置 flex 某一个子元素垂直对齐方式
-    // align-self 属性允许单个子元素与其他子元素不一样的对齐方式，可覆盖 align-items 属性，
+    // align-self 属性允许单个子元素与其他子元素不一样的对齐方式，可覆盖父元素 align-items 属性，
     // 默认值为auto，表示继承父元素的 align-items 属性，如果父元素没有设置 align-items，则等同于stretch
     // 说明参见 align-items
     .align-self#{$infix}-auto     { align-self: auto !important; }

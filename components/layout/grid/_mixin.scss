@@ -90,7 +90,7 @@
 
 // 定义生成 gird framework mixin
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $responsive-breakpoints) {
-  // 定义列公共样式，通过占位符选择器
+  // 定义列公共样式，通用占位符选择器
   %grid-column {
     position:      relative;
     width:         100%;
