@@ -30,8 +30,6 @@
       file: container
     - title: Grid 栅格
       file: grid
-    - title: Responsive 响应式
-      file: responsive
 - title: 表单组件
   file: forms
   pages:

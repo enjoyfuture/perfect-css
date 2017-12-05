@@ -2,6 +2,7 @@
 @import "../../../../components/theme/variable";
 @import "../../../../components/theme/mixin";
 @import "../../../../components/animation/mixin";
+@import "../mixins/grid";
 
 // 例子样式
 .doc-example {
@@ -106,24 +107,7 @@
 
 // 栅格例子样式
 .doc-example-row {
-  .row + .row {
-    margin-top: 1rem;
-  }
-  // 嵌套的样式
-  .row .row {
-    border: 1px solid;
-  }
-  [class*="col"] {
-    padding-top:    .5rem;
-    padding-bottom: .5rem;
-    color:          #fff;
-    @include theme-prop(background-color, primary-light);
-    text-align:     center;
-
-    &:nth-of-type(2n) {
-      @include theme-prop(background-color, primary);
-    }
-  }
+  @include grid-example;
 }
 
 .doc-example-row-flex-cols .row {

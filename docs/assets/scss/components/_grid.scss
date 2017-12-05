@@ -1,0 +1,10 @@
+@import "../mixins/grid";
+
+.grid-demo {
+  @include grid-example;
+}
+
+.grid-demo-row-flex-cols .row {
+  min-height: 5rem;
+  @include theme-prop(background-color, primary-lightest);
+}
