@@ -29,6 +29,7 @@ files:
     - docs/assets/scss/**/*.scss
   ignore:
     - docs/assets/scss/docs/_highlight.scss
+    - components/normalize/_normalize-css.scss
 options:
   formatter: stylish # 格式风格
   merge-default-rules: false
