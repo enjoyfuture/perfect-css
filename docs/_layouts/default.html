@@ -20,6 +20,11 @@
   <!-- Perfect CSS -->
   <link href="{{ site.baseurl }}/assets/css/perfect.css" rel="stylesheet">
 
+  {% if page.customerCss %}
+  <!-- 自定义样式 -->
+  <link href="{{ site.baseurl }}/assets/css/{{ page.customerCss }}.css" rel="stylesheet">
+  {% endif %}
+
 </head>
 <body>
   {{ content }}

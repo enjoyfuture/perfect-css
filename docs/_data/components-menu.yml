@@ -26,8 +26,6 @@
       file: box
     - title: Drawer 抽屉布局
       file: drawer
-    - title: Container 容器
-      file: container
     - title: Grid 栅格
       file: grid
 - title: 表单组件
