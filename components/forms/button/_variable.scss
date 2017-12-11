@@ -26,5 +26,5 @@ $btn-bg-disabled: map-get($greys, 300) !default;
 
 $btn-group-margin-x: .5rem !default;
 
-// 是否开启定制主题，包括主颜色和辅助颜色，默认关闭，需要的话可开启
-$enable-custom-theme-for-btn: false !default;
+// 是否开启定制主题，包括主颜色和辅助颜色，默认开启，需要的话可关闭
+$enable-custom-theme-for-btn: true !default;

@@ -18,5 +18,5 @@ $input-padding-x-sm: .5rem !default;
 $input-padding-y-sm: .25rem !default;
 $input-icon-top-sm: .125rem !default;
 
-// 是否开启定制主题，包括主颜色和辅助颜色，默认关闭，需要的话可开启
-$enable-custom-theme-for-input: false !default;
+// 是否开启定制主题，包括主颜色和辅助颜色，默认开启，需要的话可关闭
+$enable-custom-theme-for-input: true !default;
