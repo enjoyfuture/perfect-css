@@ -257,28 +257,8 @@
       
 
       <li class="menu-item">
-        <a href="/components/layout/container/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">Container 容器</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
         <a href="/components/layout/grid/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Grid 栅格</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
-        <a href="/components/layout/responsive/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">Responsive 响应式</a></li>
       
     </ul>
   </li>
@@ -669,16 +649,6 @@
       
 
       <li class="menu-item">
-        <a href="/components/container/panel/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">Panel 面板</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
         <a href="/components/container/dialog/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Dialog 对话框</a></li>
       
@@ -923,7 +893,105 @@
 
     <main class="drawer-main">
       <section class="component-wrap catalogue-counter">
-        
+        <h2>
+<div class="anchor-header" id="anchor-1"></div>水平布局<a class="anchor-link" href="#anchor-1">#</a>
+</h2>
+<section class="component-container">
+  <div class="box box-h box-demo" style="height: 200px;">
+    <div class="box-item-3">左</div>
+    <div class="box-item-7">中</div>
+    <div class="box-item-2">右</div>
+  </div>
+</section>
+
+<h2>
+<div class="anchor-header" id="anchor-2"></div>垂直布局<a class="anchor-link" href="#anchor-2">#</a>
+</h2>
+<section class="component-container">
+  <div class="box box-v box-demo" style="height: 200px;">
+    <div class="box-item-3">上</div>
+    <div class="box-item-7">中</div>
+    <div class="box-item-2">下</div>
+  </div>
+</section>
+
+<h2>
+<div class="anchor-header" id="anchor-3"></div>圣杯布局 Holy Grail Layout<a class="anchor-link" href="#anchor-3">#</a>
+</h2>
+
+<h3>
+<div class="anchor-header" id="anchor-3-1"></div>固定百分比<a class="anchor-link" href="#anchor-3-1">#</a>
+</h3>
+<section class="component-container">
+  <div class="box box-v box-demo" style="height: 300px;">
+    <div class="box-item-2">上(16.67%)</div>
+    <div class="box-item-8 box box-h box-demo">
+      <div class="box-item-2">左(16.67%)</div>
+      <div class="box-item-8">中(66.67%)</div>
+      <div class="box-item-2">右(16.67%)</div>
+    </div>
+    <div class="box-item-2">下(16.67%)</div>
+  </div>
+</section>
+
+<h3>
+<div class="anchor-header" id="anchor-3-2"></div>上下左右固定大小，中间自适应<a class="anchor-link" href="#anchor-3-2">#</a>
+</h3>
+<section class="component-container">
+  <div class="box box-v box-demo" style="height: 300px;">
+    <div class="box-item" style="flex:0 0 50px;">上(50px)</div>
+    <div class="box-item box box-h box-demo">
+      <div class="box-item" style="flex:0 0 200px;">左(200px)</div>
+      <div class="box-item">中(100% - 200px - 150px)</div>
+      <div class="box-item" style="flex:0 0 150px;">右(150px)</div>
+    </div>
+    <div class="box-item" style="flex:0 0 30px;">下(30px)</div>
+  </div>
+</section>
+
+<h3>
+<div class="anchor-header" id="anchor-3-3"></div>圣杯布局变体<a class="anchor-link" href="#anchor-3-3">#</a>
+</h3>
+<section class="component-container">
+  <div class="box box-h box-demo" style="height: 300px;">
+    <div class="box-item-2">左(16.67%)</div>
+    <div class="box-item-8 box box-v box-demo">
+      <div class="box-item-2">上(16.67%)</div>
+      <div class="box-item-8">中(66.67%)</div>
+      <div class="box-item-2">下(16.67%)</div>
+    </div>
+    <div class="box-item-2">右(16.67%)</div>
+  </div>
+</section>
+
+<h2>
+<div class="anchor-header" id="anchor-4"></div>Grid<a class="anchor-link" href="#anchor-4">#</a>
+</h2>
+<section class="component-container">
+  <div class="box box-v box-demo" style="height: 160px;">
+    <div class="box-item box box-h box-demo">
+      <div class="box-item">1</div>
+      <div class="box-item">2</div>
+      <div class="box-item">3</div>
+      <div class="box-item">4</div>
+    </div>
+    <div class="box-item box box-h box-demo">
+      <div class="box-item">5</div>
+      <div class="box-item">6</div>
+      <div class="box-item">7</div>
+      <div class="box-item">8</div>
+    </div>
+    <div class="box-item box box-h box-demo">
+      <div class="box-item">9</div>
+      <div class="box-item">10</div>
+      <div class="box-item">11</div>
+      <div class="box-item">12</div>
+    </div>
+  </div>
+</section>
+
+
+
       </section>
     </main>
 

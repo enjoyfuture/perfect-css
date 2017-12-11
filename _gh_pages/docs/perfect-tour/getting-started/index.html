@@ -802,16 +802,6 @@
       
 
       <li class="menu-item">
-        <a href="/docs/container/panel/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">Panel 面板</a></li>
-      
-      
-
-      
-
-      
-
-      <li class="menu-item">
         <a href="/docs/container/dialog/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Dialog 对话框</a></li>
       
@@ -1134,7 +1124,7 @@
     <a class="menu-title" href="#" title="利用 npm 或 yarn 包管理器安装" data-menu="toc-1-1">利用 npm 或 yarn 包管理器安装</a>
   </li>
   <li>
-    <a class="menu-title" href="#" title="压缩的 CSS 和 JavaScript" data-menu="toc-1-2">压缩的 CSS 和 JavaScript</a>
+    <a class="menu-title" href="#" title="下载已编译的 CSS 和 JavaScript" data-menu="toc-1-2">下载已编译的 CSS 和 JavaScript</a>
   </li>
   <li>
     <a class="menu-title" href="#" title="源码" data-menu="toc-1-3">源码</a>
@@ -1148,7 +1138,7 @@
     <a class="menu-title" href="#" title="使用 Perfect" data-menu="toc-3">使用 Perfect</a>
 <ul class="menu menu-catalogue doc-catalogue">
   <li>
-    <a class="menu-title" href="#" title="通过 link 标签直接引入" data-menu="toc-3-1">通过 link 标签直接引入</a>
+    <a class="menu-title" href="#" title="通过 link 和 script 标签直接引入" data-menu="toc-3-1">通过 link 和 script 标签直接引入</a>
   </li>
   <li>
     <a class="menu-title" href="#" title="Perfect CSS CDN" data-menu="toc-3-2">Perfect CSS CDN</a>
@@ -1179,9 +1169,9 @@
 </div>
           </div>
           <div class="doc-content-header">
-            <p><p>Perfect CSS 充分利用了最新 CSS 特性来实现，提供了常用的样式库组件，支持各种大小设备， 可快速搭建项目，自定义组件大小和颜色。Perfect CSS 可概括为功能强大、组件齐全、可扩展性强。</p> <p>如果你想用默认提供的组件搭建项目，直接按照文档和实例一步一步使用即可， 如果你想定制化组件，可参考<a href="../best-practices/">最佳实践</a>。</p></p>
+            <p><p>Perfect CSS 充分利用了最新 CSS 特性来实现，提供了常用的样式库组件，支持各种大小设备， 可快速搭建项目，自定义主题和组件大小。Perfect CSS 的特点是功能强大、组件齐全、可扩展性强。</p> <p>如果你想用默认提供的组件库搭建项目，直接按照本文档中提供的指南使用即可， 如果你想定制化组件，可参考<a href="../best-practices/">最佳实践</a>。</p></p>
             <div>
-              <a href="https://github.com/joy-web/perfect-css/edit/master/docs/docs/perfect-tour/getting-started.md" target="_blank">编辑该页面</a>
+              <a href="https://github.com/joy-web/perfect-css/edit/v0-dev/docs/docs/perfect-tour/getting-started.md" target="_blank">编辑该页面</a>
               <a href="https://github.com/joy-web/perfect-css/issues/new?title=问题或建议(Perfect 之旅-快速上手)" target="_blank">问题和建议</a>
             </div>
           </div>
@@ -1189,12 +1179,15 @@
           <h2>
 <div class="anchor-header" id="toc-1"></div>下载<a class="anchor-link" href="#toc-1" data-target="toc-1" aria-hidden="true">#</a>
 </h2>
-<p>可以通过 <a href="https://www.npmjs.com/package/perfect-css">npm</a> 或 <a href="https://yarnpkg.com/zh-Hans/package/perfect-css">yarn</a> 来安装 <code class="highlighter-rouge">Perfect CSS</code>。也可以从 <a href="">github</a> 下载已编译压缩好的 <code class="highlighter-rouge">Perfect CSS</code> 文件，
-或直接下载<a href="https://github.com/joy-web/perfect-css/archive/v0-dev.zip">源文件</a>，源文件中包括了源码、例子和文档。</p>
+<p>可以通过 <a href="https://www.npmjs.com/package/perfect-css">npm</a> 或
+ <a href="https://yarnpkg.com/zh-Hans/package/perfect-css">yarn</a> 来安装 <code class="highlighter-rouge">Perfect CSS</code>，
+ 也可以从 github 下载<a href="https://github.com/joy-web/perfect-css/releases/download/v0.3.0/perfect-css-0.3.0-dist.zip">已编译好的 <code class="highlighter-rouge">Perfect CSS</code> 文件</a>，
+或直接下载<a href="https://github.com/joy-web/perfect-css/archive/v0.3.0.zip">源文件</a>，源文件中包括了源码、例子和文档。</p>
 
 <h3>
 <div class="anchor-header" id="toc-1-1"></div>利用 npm 或 yarn 包管理器安装<a class="anchor-link" href="#toc-1-1" data-target="toc-1-1" aria-hidden="true">#</a>
 </h3>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install perfect-css <span class="nt">--save</span>
 </code></pre></div></div>
 
@@ -1202,16 +1195,25 @@
 </code></pre></div></div>
 
 <h3>
-<div class="anchor-header" id="toc-1-2"></div>压缩的 CSS 和 JavaScript<a class="anchor-link" href="#toc-1-2" data-target="toc-1-2" aria-hidden="true">#</a>
+<div class="anchor-header" id="toc-1-2"></div>下载已编译的 CSS 和 JavaScript<a class="anchor-link" href="#toc-1-2" data-target="toc-1-2" aria-hidden="true">#</a>
 </h3>
+<ul>
+  <li>已编译的文件只包含了全部 CSS 和 JavaScript 的编译文件，也提供了压缩文件，
+可以直接引入到 html 页面中使用</li>
+  <li>不包含源文件、例子和文档</li>
+</ul>
+
+<p>
+<a class="btn btn-primary btn-raised" href="https://github.com/joy-web/perfect-css/releases/download/v0.3.0/perfect-css-0.3.0-dist.zip" target="_blank">下载</a>
+</p>
 
 <h3>
 <div class="anchor-header" id="toc-1-3"></div>源码<a class="anchor-link" href="#toc-1-3" data-target="toc-1-3" aria-hidden="true">#</a>
 </h3>
 
-<p>如果你想查看源代码或者修改源代码后重新生成样式库，可以从 github 上 <a href="https://github.com/joy-web/perfect-css">下载</a> 源码。
-<a href="../build">构建编译源代码</a>是件很开心的事，从中你可以学习到一些 CSS 组件的实现、SASS 的用法，
-当然当你发现了问题或更好的建议时，请及时反馈给 <a href="https://github.com/joy-web/perfect-css/issues/new?title=%E9%97%AE%E9%A2%98%E6%88%96%E5%BB%BA%E8%AE%AE" target="_blank">Perfect CSS 成员组</a>，在此对你发现的问题和提出的宝贵意见深表感谢！</p>
+<p>如果你想查看源代码或者修改源代码后重新编译生成样式库，可以从 github 上<a href="https://github.com/joy-web/perfect-css" target="_blank">下载</a>源码。
+<a href="../build/">构建编译源代码</a>是件很开心的事，从中你可以学习到一些 CSS 组件是如何实现的、SASS 用法以及其他前端知识，
+当然如果你发现了问题或更好的建议，请及时反馈给 <a href="https://github.com/joy-web/perfect-css/issues/new?title=%E9%97%AE%E9%A2%98%E6%88%96%E5%BB%BA%E8%AE%AE" target="_blank">Perfect CSS 成员组</a>，在此对你发现的问题和提出的宝贵意见深表感谢！</p>
 
 <h2>
 <div class="anchor-header" id="toc-2"></div>Hello World<a class="anchor-link" href="#toc-2" data-target="toc-2" aria-hidden="true">#</a>
@@ -1280,38 +1282,44 @@
 </h2>
 
 <h3>
-<div class="anchor-header" id="toc-3-1"></div>通过 link 标签直接引入<a class="anchor-link" href="#toc-3-1" data-target="toc-3-1" aria-hidden="true">#</a>
+<div class="anchor-header" id="toc-3-1"></div>通过 link 和 script 标签直接引入<a class="anchor-link" href="#toc-3-1" data-target="toc-3-1" aria-hidden="true">#</a>
 </h3>
 
-<p>通过在 <code class="highlighter-rouge">&lt;head&gt;</code> 标签中插入 <code class="highlighter-rouge">&lt;link&gt;</code> 标签来引入 Perfect 样式。</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"/perfect/dist/css/perfect.min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+<p>通过在 <code class="highlighter-rouge">&lt;head&gt;</code> 标签中插入 <code class="highlighter-rouge">&lt;link&gt;</code> 标签来引入 Perfect 样式，
+通过在 <code class="highlighter-rouge">&lt;body&gt;</code> 标签中插入 <code class="highlighter-rouge">&lt;script&gt;</code> 标签来引入 Perfect 脚本。</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"/perfect-css/dist/css/perfect.min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+...
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/perfect-css/dist/js/perfect.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div></div>
 
 <h3>
 <div class="anchor-header" id="toc-3-2"></div>Perfect CSS CDN<a class="anchor-link" href="#toc-3-2" data-target="toc-3-2" aria-hidden="true">#</a>
 </h3>
 
-<p>也可以通过 Perfect CSS CDN 来加速资源的载入，CDN 提供了更快的加载速度，更好的缓存。
-CDN 资源待补充</p>
+<p>可以通过 Perfect CSS CDN 来载入 CSS 和 JavaScript，CDN 提供了更快的加载速度，更好的缓存。
+TODO CDN 资源待补充</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"css/perfect.min.css"</span> <span class="na">integrity=</span><span class="s">""</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+...
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/perfect.min.js"</span> <span class="na">integrity=</span><span class="s">""</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div></div>
 
 <h3>
 <div class="anchor-header" id="toc-3-3"></div>修改并编译源代码<a class="anchor-link" href="#toc-3-3" data-target="toc-3-3" aria-hidden="true">#</a>
 </h3>
 
-<p>我们可以下载 Perfect CSS 源码，根据需要修改 CSS 代码后重新打包构建后引入项目中。</p>
+<p><a href="https://github.com/joy-web/perfect-css" target="_blank">下载 Perfect CSS 源码</a>，
+根据需要修改代码后重新<a href="../build/">构建编译</a>后引入项目中。</p>
 
 <h3>
 <div class="anchor-header" id="toc-3-4"></div>使用 <code class="highlighter-rouge">JavaScript</code> 导入<a class="anchor-link" href="#toc-3-4" data-target="toc-3-4" aria-hidden="true">#</a>
 </h3>
 
 <p>目前来看，通过 JavaScript 动态导入是最常用的方式，可以用在 <a href="https://reactjs.org/" target="_blank">React</a>，
-<a href="https://cn.vuejs.org/" target="_blank">Vue.js</a>，<a href="https://angular.io/" target="_blank">Angular</a> 等。
-结合构建打包工具 <a href="https://webpack.js.org/" target="_blank">Webpack</a>可以快速的搭建项目。
-以下给出了示例代码</p>
+<a href="https://cn.vuejs.org/" target="_blank">Vue.js</a>，<a href="https://angular.io/" target="_blank">Angular</a> 等等，
+结合构建打包工具 <a href="https://webpack.js.org/" target="_blank">Webpack</a>可以快速的搭建项目。</p>
+
+<p>以下给出了示例代码</p>
 
 <ol>
   <li><a href="">Perfect CSS + React + Webpack</a></li>
@@ -1319,30 +1327,31 @@ CDN 资源待补充</p>
   <li><a href="">Perfect CSS + Angular + Webpack</a></li>
 </ol>
 
-<p>导入的方式又可以分为普通导入和 CSS Module 方式引入，我们可以使用 es6 语法 <code class="highlighter-rouge">import</code> 导入，也可以使用 <code class="highlighter-rouge">require</code> 导入</p>
+<p>导入的方式又可以分为普通导入和 CSS Module 方式导入，我们可以使用 es6 语法 <code class="highlighter-rouge">import</code> 导入，也可以使用 <code class="highlighter-rouge">require</code> 导入</p>
 
 <h4>
 <div class="anchor-header" id="toc-3-4-1"></div>普通导入<a class="anchor-link" href="#toc-3-4-1" data-target="toc-3-4-1" aria-hidden="true">#</a>
 </h4>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="k">from</span> <span class="s1">'perfect/perfect.min.css'</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="k">from</span> <span class="s1">'perfect'</span><span class="p">;</span> <span class="c1">// 导入 scss 文件，也可以导入编译好的 CSS 文件 import from 'perfect/dist/perfect.css'; </span>
 <span class="c1">// 或者</span>
-<span class="nx">require</span><span class="p">(</span><span class="s1">'perfect/perfect.min.css'</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'perfect'</span><span class="p">);</span>
 </code></pre></div></div>
-<p>也可以根据需要部分导入 css 样式或 sass 样式</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="k">from</span> <span class="s1">'perfect/css/elements/button/button.css'</span><span class="p">;</span>
+
+<p>可以根据需要部分导入 css 样式或 sass 样式</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="k">from</span> <span class="s1">'perfect/dist/forms/button.css'</span><span class="p">;</span>
 <span class="c1">// 或者</span>
-<span class="nx">require</span><span class="p">(</span><span class="s1">'perfect/sass/elements/button/button.sass'</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'perfect/components/forms/button/button.sass'</span><span class="p">);</span>
 </code></pre></div></div>
 
 <h4>
 <div class="anchor-header" id="toc-3-4-2"></div>CSS Module 导入<a class="anchor-link" href="#toc-3-4-2" data-target="toc-3-4-2" aria-hidden="true">#</a>
 </h4>
-<p>CSS Module 导入也可以结合 <code class="highlighter-rouge">classnames</code> 来一起使用</p>
+<p>CSS Module 导入可以结合 <code class="highlighter-rouge">classnames</code> 来一起使用</p>
 
 <p>以下是在 react 中的用法</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">classNames</span> <span class="k">from</span> <span class="s1">'classnames/bind'</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">styles</span> <span class="k">from</span> <span class="s1">'perfect/perfect.min.css'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">styles</span> <span class="k">from</span> <span class="s1">'perfect'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">perfectCss</span> <span class="o">=</span> <span class="nx">classNames</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">styles</span><span class="p">);</span>
 <span class="c1">// ...</span>
@@ -1357,8 +1366,8 @@ CDN 资源待补充</p>
 <span class="k">export</span> <span class="k">default</span> <span class="nx">Com1</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>以上不论是普通导入还是 CSS Module 导入，都需要结合前端构建工具，比如 <a href="https://webpack.js.org/">Webpack</a>。
-关于 Webpack 的使用，这里就不展开说明了，感兴趣的读者可以查看其<a href="https://webpack.js.org/">官网</a>。</p>
+<p>以上不论是普通导入还是 CSS Module 导入，都需要结合前端构建工具，比如 <a href="https://webpack.js.org/" target="_blank">Webpack</a>。
+关于 Webpack 的使用，这里就不展开说明了，感兴趣的读者可以查看其<a href="https://webpack.js.org/" target="_blank">官网</a>。</p>
 
 <p>上面给出了最基本的使用方法，对于高级使用可以参见<a href="../best-practices/">最佳实践</a></p>
 
@@ -1384,10 +1393,11 @@ CDN 资源待补充</p>
   <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"icon"</span> <span class="na">href=</span><span class="s">"/favicon.ico"</span><span class="nt">&gt;</span>
   
   <span class="c">&lt;!-- Perfect CSS --&gt;</span>
-  <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"/assets/css/perfect.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"/perfect-css/dist/css/perfect.min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
 
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/perfect-css/dist/js/perfect.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
@@ -1415,10 +1425,10 @@ CDN 资源待补充</p>
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no"</span><span class="nt">&gt;</span>
 </code></pre></div></div>
 
-<p>新的 meta viewport 加入了 shrink-to-fit，
+<p><span class="theme-error">注意：</span>新的 meta viewport 加入了 shrink-to-fit，
 默认情况下，即不设置 shrink-to-fit=no，当内容溢出时，会缩小内容来适应整个浏览器宽度，
 有时我们不想缩小而是让溢出的内容隐藏，这时通过设置 shrink-to-fit=no 来禁用默认的行为。
-详细说明可以参见<a href="https://bitsofco.de/ios-safari-and-shrink-to-fit/">这篇文章</a></p>
+详细说明可以参见<a href="https://bitsofco.de/ios-safari-and-shrink-to-fit/" target="_blank">这篇文章</a></p>
 
 
         </div>
@@ -1432,7 +1442,7 @@ CDN 资源待补充</p>
     <a class="menu-title" href="#" title="利用 npm 或 yarn 包管理器安装" data-menu="toc-1-1">利用 npm 或 yarn 包管理器安装</a>
   </li>
   <li>
-    <a class="menu-title" href="#" title="压缩的 CSS 和 JavaScript" data-menu="toc-1-2">压缩的 CSS 和 JavaScript</a>
+    <a class="menu-title" href="#" title="下载已编译的 CSS 和 JavaScript" data-menu="toc-1-2">下载已编译的 CSS 和 JavaScript</a>
   </li>
   <li>
     <a class="menu-title" href="#" title="源码" data-menu="toc-1-3">源码</a>
@@ -1446,7 +1456,7 @@ CDN 资源待补充</p>
     <a class="menu-title" href="#" title="使用 Perfect" data-menu="toc-3">使用 Perfect</a>
 <ul class="menu menu-catalogue doc-catalogue">
   <li>
-    <a class="menu-title" href="#" title="通过 link 标签直接引入" data-menu="toc-3-1">通过 link 标签直接引入</a>
+    <a class="menu-title" href="#" title="通过 link 和 script 标签直接引入" data-menu="toc-3-1">通过 link 和 script 标签直接引入</a>
   </li>
   <li>
     <a class="menu-title" href="#" title="Perfect CSS CDN" data-menu="toc-3-2">Perfect CSS CDN</a>
