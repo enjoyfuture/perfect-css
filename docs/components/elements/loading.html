@@ -4,3 +4,131 @@ title: Loading 加载
 group: elements
 anchor: true
 ---
+
+<h2>基本用法</h2>
+<section class="component-container">
+  <div class="btn-group" id="baseLoading">
+    <button class="btn btn-raised btn-primary" data-type="dot">圆点</button>
+    <button class="btn btn-raised btn-primary" data-type="dot-switch">圆点碰撞切换</button>
+    <button class="btn btn-raised btn-primary" data-type="icon">图标(黑色)</button>
+    <button class="btn btn-raised btn-primary" data-type="icon-reverse">图标(白色)</button>
+    <button class="btn btn-raised btn-primary" data-type="text">文案</button>
+    <button class="btn btn-raised btn-primary" data-type="curtain">动效文案</button>
+  </div>
+  <div>
+    <div class="loading" data-target="dot" style="display: none;">
+      <div class="loading-dot"></div>
+    </div>
+    <div class="loading" data-target="dot-switch" style="display: none;">
+      <div class="loading-dot-switch"></div>
+    </div>
+    <div class="loading" data-target="icon" style="display: none;">
+      <div class="loading-icon"></div>
+    </div>
+    <div class="loading" data-target="icon-reverse" style="display: none;">
+      <div class="loading-icon-reverse"></div>
+    </div>
+    <div class="loading" data-target="text" style="display: none;">
+      <div class="loading-text">加载中...</div>
+    </div>
+    <div class="loading" data-target="curtain" style="display: none;">
+      <div class="loading-text-curtain" data-text="加载中..."></div>
+    </div>
+  </div>
+</section>
+
+<h2>区域显示</h2>
+<section class="component-container">
+  <div class="btn-group" id="rangeLoading">
+    <button class="btn btn-raised btn-primary" data-type="dot">圆点</button>
+    <button class="btn btn-raised btn-primary" data-type="dot-switch">圆点碰撞切换</button>
+    <button class="btn btn-raised btn-primary" data-type="icon">图标(黑色)</button>
+    <button class="btn btn-raised btn-primary" data-type="icon-reverse">图标(白色)</button>
+    <button class="btn btn-raised btn-primary" data-type="text">文案</button>
+    <button class="btn btn-raised btn-primary" data-type="curtain">动效文案</button>
+  </div>
+  <div class="position-relative border" style="width: 500px; height: 200px;">
+    <div class="loading loading-range" data-target="dot" style="display: none;">
+      <div class="loading-dot"></div>
+    </div>
+    <div class="loading loading-range" data-target="dot-switch" style="display: none;">
+      <div class="loading-dot-switch"></div>
+    </div>
+    <div class="loading loading-range" data-target="icon" style="display: none;">
+      <div class="loading-icon"></div>
+    </div>
+    <div class="loading loading-range" data-target="icon-reverse" style="display: none;">
+      <div class="loading-icon-reverse"></div>
+    </div>
+    <div class="loading loading-range" data-target="text" style="display: none;">
+      <div class="loading-text">加载中...</div>
+    </div>
+    <div class="loading loading-range" data-target="curtain" style="display: none;">
+      <div class="loading-text-curtain" data-text="加载中..."></div>
+    </div>
+  </div>
+</section>
+
+<h2>背景是透明的</h2>
+<section class="component-container row">
+  <div class="col-8">
+    <iframe src="{{ site.baseurl }}/components/elements/loading/loading1/" frameborder="0" class="iframe-demo" style="height: 200px;"></iframe>
+  </div>
+  <div class="col-8">
+    <iframe src="{{ site.baseurl }}/components/elements/loading/loading2/" frameborder="0" class="iframe-demo" style="height: 200px;"></iframe>
+  </div>
+</section>
+
+<h2>自定义图标</h2>
+<section class="component-container row">
+  <div class="col-8">
+    <iframe src="{{ site.baseurl }}/components/elements/loading/loading3/" frameborder="0" class="iframe-demo" style="height: 200px;"></iframe>
+  </div>
+
+  <div class="col-8">
+    <iframe src="{{ site.baseurl }}/components/elements/loading/loading4/" frameborder="0" class="iframe-demo" style="height: 200px;"></iframe>
+  </div>
+
+  <!--<div class="col-8">-->
+    <!--<iframe src="{{ site.baseurl }}/components/elements/loading/loading5/" frameborder="0" class="iframe-demo" style="height: 200px;"></iframe>-->
+  <!--</div>-->
+</section>
+
+<script>
+  (function () {
+    const baseLoading = document.getElementById('baseLoading');
+    baseLoading.addEventListener('click', function (e) {
+      const nextEl = baseLoading.nextElementSibling;
+      [].forEach.call(nextEl.querySelectorAll('.loading'), (el) => {
+        el.style.setProperty('display', 'none');
+      });
+
+      if (e.target.tagName.toLowerCase() === 'button') {
+        const type = e.target.dataset.type;
+        const target = nextEl.querySelector(`[data-target="${type}"]`);
+        target.style.removeProperty('display');
+      }
+    });
+
+    [].forEach.call(baseLoading.nextElementSibling.querySelectorAll('.loading'), (el) => {
+      el.addEventListener('click', function (e) {
+        e.currentTarget.style.setProperty('display', 'none');
+      });
+    });
+
+    // 局部 loading
+    const rangeLoading = document.getElementById('rangeLoading');
+    rangeLoading.addEventListener('click', function (e) {
+      const nextEl = rangeLoading.nextElementSibling;
+      [].forEach.call(nextEl.querySelectorAll('.loading'), (el) => {
+        el.style.setProperty('display', 'none');
+      });
+
+      if (e.target.tagName.toLowerCase() === 'button') {
+        const type = e.target.dataset.type;
+        const target = nextEl.querySelector(`[data-target="${type}"]`);
+        target.style.removeProperty('display');
+      }
+    });
+  })();
+</script>

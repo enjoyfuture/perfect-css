@@ -1,0 +1,208 @@
+@keyframes loading-icon-custom1 {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.loading-icon-custom1 {
+  position:  relative;
+  transform: scale(.15) translateY(-40px);
+
+  & > div {
+    position:         absolute;
+    width:            15px;
+    height:           40px;
+    border-radius:    20%;
+    background:       #000;
+    transform-origin: 6px 77px;
+    animation:        loading-icon-custom1 linear 1s infinite;
+
+    &:nth-child(1) {
+      transform:       rotate(0deg);
+      animation-delay: -0.916666666666667s;
+    }
+
+    &:nth-child(2) {
+      transform:       rotate(30deg);
+      animation-delay: -0.833333333333333s;
+    }
+    &:nth-child(3) {
+      transform:       rotate(60deg);
+      animation-delay: -0.75s;
+    }
+    &:nth-child(4) {
+      transform:       rotate(90deg);
+      animation-delay: -0.666666666666667s;
+    }
+    &:nth-child(5) {
+      transform:       rotate(120deg);
+      animation-delay: -0.583333333333333s;
+    }
+    &:nth-child(6) {
+      transform:       rotate(150deg);
+      animation-delay: -0.5s;
+    }
+    &:nth-child(7) {
+      transform:       rotate(180deg);
+      animation-delay: -0.416666666666667s;
+    }
+    &:nth-child(8) {
+      transform:       rotate(210deg);
+      animation-delay: -0.333333333333333s;
+    }
+    &:nth-child(9) {
+      transform:       rotate(240deg);
+      animation-delay: -0.25s;
+    }
+    &:nth-child(10) {
+      transform:       rotate(270deg);
+      animation-delay: -0.166666666666667s;
+    }
+    &:nth-child(11) {
+      transform:       rotate(300deg);
+      animation-delay: -0.083333333333333s;
+    }
+    &:nth-child(12) {
+      transform:       rotate(330deg);
+      animation-delay: 0s;
+    }
+  }
+}
+
+@keyframes loading-icon-custom2 {
+  0% {
+    top:     12px;
+    left:    12px;
+    width:   0;
+    height:  0;
+    opacity: 1;
+  }
+  100% {
+    top:     0;
+    left:    0;
+    width:   24px;
+    height:  24px;
+    opacity: 0;
+  }
+}
+
+.loading-icon-custom2 {
+  position:    relative;
+  margin-top:  -12px;
+  margin-left: -12px;
+
+  & > div {
+    position:      absolute;
+    border:        2px solid #212121;
+    border-radius: 50%;
+    animation:     loading-icon-custom2 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+
+    &:nth-child(2) {
+      animation-delay: -.5s;
+    }
+  }
+}
+
+// TODO 待写成函数的形式
+//@keyframes loading-icon-custom3 {
+//  0% {
+//    width: 16.8px;
+//    height: 16.8px;
+//    background: #ffffff;
+//  }
+//  25% {
+//    width: 16.8px;
+//    height: 16.8px;
+//    background: #ffffff;
+//  }
+//  50% {
+//    width: 28px;
+//    height: 28px;
+//    background: #ffffff;
+//  }
+//  75% {
+//    width: 16.8px;
+//    height: 16.8px;
+//    background: #ffffff;
+//  }
+//  100% {
+//    width: 16.8px;
+//    height: 16.8px;
+//    background: #ffffff;
+//  }
+//}
+//.loading-icon-custom3 {
+//  position: relative;
+//
+//  & > div {
+//    position: absolute;
+//    border-radius: 50%;
+//    transform: translate(-50%, -50%);
+//    animation: loading-icon-custom3 1s linear infinite;
+//
+//    &:nth-child(1) {
+//      top: 100px;
+//      left: 170px;
+//      animation-delay: -0.917s;
+//    }
+//    &:nth-child(2) {
+//      top: 135px;
+//      left: 160.622px;
+//      animation-delay: -0.833s;
+//    }
+//    &:nth-child(3) {
+//      top: 160.622px;
+//      left: 135px;
+//      animation-delay: -0.75s;
+//    }
+//    &:nth-child(4) {
+//      top: 170px;
+//      left: 100px;
+//      animation-delay: -0.667s;
+//    }
+//    &:nth-child(5) {
+//      top: 160.622px;
+//      left: 65px;
+//      animation-delay: -0.583s;
+//    }
+//    &:nth-child(6) {
+//      top: 135px;
+//      left: 39.378px;
+//      animation-delay: -0.5s;
+//    }
+//    &:nth-child(7) {
+//      top: 100px;
+//      left: 30px;
+//      animation-delay: -0.417s;
+//    }
+//    &:nth-child(8) {
+//      top: 65px;
+//      left: 39.378px;
+//      animation-delay: -0.333s;
+//    }
+//    &:nth-child(9) {
+//      top: 39.378px;
+//      left: 65px;
+//      animation-delay: -0.25s;
+//    }
+//    &:nth-child(10) {
+//      top: 30px;
+//      left: 100px;
+//      animation-delay: -0.167s;
+//    }
+//    &:nth-child(11) {
+//      top: 39.378px;
+//      left: 135px;
+//      animation-delay: -0.083s;
+//    }
+//    &:nth-child(12) {
+//      top: 65px;
+//      left: 160.622px;
+//      animation-delay: 0s;
+//    }
+//  }
+//}
+

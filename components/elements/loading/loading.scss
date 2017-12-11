@@ -1,1 +1,139 @@
 // 包括 loading 和 loading-bar
+@import "../../base/variables/border";
+@import "../../theme/mixin";
+@import "../../animation/variable";
+@import "../../theme/variable";
+@import "keyframe";
+@import "mixin";
+@import "variable";
+
+.loading {
+  position:         fixed;
+  top:              0;
+  bottom:           0;
+  left:             0;
+  right:            0;
+  z-index:          1000;
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  background-color: rgba(#000, .4);
+
+  // 动画圆点
+  &-dot {
+    display:       inline-block;
+    width:         $loading-dot-size;
+    height:        $loading-dot-size;
+    border-radius: 50%;
+    @include theme-prop(background-color, primary-on-light);
+    animation:     loading-dot .8s 0s $animation-ease-in-out infinite;
+  }
+
+  // 两个圆点碰撞切换
+  &-dot-switch {
+    display: flex;
+    &::before,
+    &::after {
+      content:       "";
+      display:       inline-block;
+      width:         $loading-dot-size;
+      height:        $loading-dot-size;
+      border-radius: 50%;
+      @include theme-prop(background-color, primary-on-light);
+      opacity:       .6;
+      animation:     loading-dot-switch 2s 0s $animation-ease-in-out infinite;
+    }
+
+    &::before {
+      position: absolute;
+    }
+
+    &::after {
+      animation-delay: -1s;
+    }
+  }
+
+  // 文案
+  &-text {
+    font-size: $loading-text-font-size;
+    @include theme-prop(color, primary-on-light);
+  }
+
+  // 窗帘式动画
+  &-text-curtain {
+    &::before,
+    &::after {
+      content:    attr(data-text);
+      position:   absolute;
+      top:        50%;
+      left:       50%;
+      margin-top: -($loading-text-font-size * $line-height-base) / 2;
+      overflow:   hidden;
+      font-size:  $loading-text-font-size;
+      text-align: center;
+      transform:  translateX(-50%);
+    }
+
+    &::before {
+      @include theme-prop(color, secondary-on-light);
+    }
+
+    &::after {
+      height:    0;
+      color:     #fff;
+      // animation-fill-mode
+      // （1）none：默认值，回到动画没开始时的状态
+      // （2）backwards：让动画回到第一帧的状态
+      // （3）both: 根据animation-direction 轮流应用forwards和backwards规则
+      // animation-direction: normal alternate、reverse、alternate-reverse
+      // http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html
+      // http://demones.github.io/web-learning/css3/animation/animation.html
+      // https://www.cnblogs.com/aaronjs/p/4642015.html
+      // https://designmodo.com/steps-css-animations/
+      animation: loading-curtain 1s linear infinite alternate both;
+    }
+  }
+
+  // 图标动画
+  &-icon {
+    display:           block;
+    width:             $loading-icon-size;
+    height:            $loading-icon-size;
+    background-repeat: no-repeat;
+    background-size:   100%;
+    animation:         loading-icon 1s step-end infinite;
+    @include loading-icon($grey-color-900);
+  }
+
+  // 图标动画，黑色背景
+  &-icon-reverse {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           $loading-icon-size * 2;
+    height:          $loading-icon-size * 2;
+    border-radius:   $border-radius;
+    @include theme-prop(background-color, secondary-on-light);
+
+    &::after {
+      content:           "";
+      display:           block;
+      width:             $loading-icon-size;
+      height:            $loading-icon-size;
+      background-repeat: no-repeat;
+      background-size:   contain;
+      animation:         loading-icon 1s step-end infinite;
+      @include loading-icon(#fff);
+    }
+  }
+
+  // 区域 loading，需要设置父元素或祖先元素为 .position-relative
+  &-range {
+    position: absolute;
+  }
+
+  // 背景为透明的
+  &-transparent {
+    background-color: transparent;
+  }
+}
