@@ -9,12 +9,12 @@
       content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
 <meta name="author" content="Linder Wang">
 <title>
-  布局-Responsive 响应式 &middot; Perfect
+  Ripple 效果 &middot; Perfect
 </title>
 <link rel="apple-touch-icon" href="/favicon.png">
 <link rel="icon" href="/favicon.ico">
 <link href="/assets/css/perfect.css" rel="stylesheet">
-<link href="/assets/css/docs.css" rel="stylesheet">
+<link href="/assets/css/components.css" rel="stylesheet">
   </head>
   <body>
     <header id="perfect_header" class="navbar navbar-top navbar-expand navbar-primary flex-column flex-sm-row">
@@ -58,10 +58,10 @@
         <a class="ripple ripple-primary nav-link " href="/">首页</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link active" href="/docs/perfect-tour/getting-started/">文档</a>
+        <a class="ripple ripple-primary nav-link " href="/docs/perfect-tour/getting-started/">文档</a>
       </li>
       <li>
-        <a class="ripple ripple-primary nav-link " href="/components/">组件</a>
+        <a class="ripple ripple-primary nav-link active" href="/components/">组件</a>
       </li>
       <li>
         <a class="ripple ripple-primary nav-link " href="/examples/">例子</a>
@@ -83,293 +83,225 @@
     }
   })();
 </script>
+    <script src="/assets/js/perfect.js"></script>
     <aside id="drawer" class="drawer drawer-permanent navbar-top-adjust">
       <nav class="drawer-nav">
         <nav class="drawer-content">
 <ul class="menu perfect-menu">
   <li class="menu-item">
-    <a href="/docs/perfect-tour/getting-started/" 
-       class="menu-title menu-header " style="padding-left: 1rem;">Perfect 之旅</a>
+    <a href="/components/theme/classes/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">theme 主题</a>
     <ul class="menu"  style="display: none;" >
       <li class="menu-item">
-        <a href="/docs/perfect-tour/getting-started/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">快速上手</a></li>
-      <li class="menu-item">
-        <a href="/docs/perfect-tour/best-practices/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">最佳实践</a></li>
-      <li class="menu-item">
-        <a href="/docs/perfect-tour/component-list/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">组件一览</a></li>
-      <li class="menu-item">
-        <a href="/docs/perfect-tour/compatibility/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">兼容性</a></li>
-      <li class="menu-item">
-        <a href="/docs/perfect-tour/build/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">开发构建</a></li>
-      <li class="menu-item">
-        <a href="/docs/perfect-tour/guide/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">CSS 规范</a></li>
-      <li class="menu-item">
-        <a href="/docs/perfect-tour/changelog/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">更新日志</a></li>
-      <li class="menu-item">
-        <a href="/docs/perfect-tour/thanks/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">感谢</a></li>
-      <li class="menu-item">
-        <a href="/docs/perfect-tour/sponsor/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">赞助</a></li>
+        <a href="/components/theme/classes/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">主题 Classes</a></li>
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/docs/theme/design-concept/" 
-       class="menu-title menu-header " style="padding-left: 1rem;">Theme 主题</a>
-    <ul class="menu"  style="display: none;" >
+    <a href="/components/base/animation/" 
+       class="menu-title menu-header active" style="padding-left: 1rem;">基础</a>
+    <ul class="menu" >
       <li class="menu-item">
-        <a href="/docs/theme/design-concept/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">设计理念</a></li>
-      <li class="menu-item">
-        <a href="/docs/theme/color/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">颜色</a></li>
-      <li class="menu-item">
-        <a href="/docs/theme/custom-theme/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">自定义主题</a></li>
-    </ul>
-  </li>
-  <li class="menu-item">
-    <a href="/docs/base/normalize/" 
-       class="menu-title menu-header " style="padding-left: 1rem;">基础</a>
-    <ul class="menu"  style="display: none;" >
-      <li class="menu-item">
-        <a href="/docs/base/normalize/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">Normalize 重置样式</a></li>
-      <li class="menu-item">
-        <a href="/docs/base/animation/"
+        <a href="/components/base/animation/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Animation 动画</a></li>
       <li class="menu-item">
-        <a href="/docs/base/ripple/"
+        <a href="/components/base/ripple/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Ripple 波纹效果</a></li>
       <li class="menu-item">
-        <a href="/docs/base/shadow/"
+        <a href="/components/base/shadow/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Shadow 阴影效果</a></li>
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/docs/typography/typography/" 
+    <a href="/components/typography/typography/" 
        class="menu-title menu-header " style="padding-left: 1rem;">Typography 排版</a>
     <ul class="menu"  style="display: none;" >
       <li class="menu-item">
-        <a href="/docs/typography/typography/"
+        <a href="/components/typography/typography/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Typography 排版</a></li>
       <li class="menu-item">
-        <a href="/docs/typography/code/"
+        <a href="/components/typography/code/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Code 代码</a></li>
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/docs/layout/box/" 
-       class="menu-title menu-header active" style="padding-left: 1rem;">Layout 布局</a>
-    <ul class="menu" >
+    <a href="/components/layout/box/" 
+       class="menu-title menu-header " style="padding-left: 1rem;">Layout 布局</a>
+    <ul class="menu"  style="display: none;" >
       <li class="menu-item">
-        <a href="/docs/layout/box/"
+        <a href="/components/layout/box/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Box 盒子布局</a></li>
       <li class="menu-item">
-        <a href="/docs/layout/drawer/"
+        <a href="/components/layout/drawer/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Drawer 抽屉布局</a></li>
       <li class="menu-item">
-        <a href="/docs/layout/container/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">Container 容器</a></li>
-      <li class="menu-item">
-        <a href="/docs/layout/grid/"
+        <a href="/components/layout/grid/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Grid 栅格</a></li>
-      <li class="menu-item">
-        <a href="/docs/layout/responsive/"
-           class="menu-title menu-sub-title active" style="padding-left: 2rem;">Responsive 响应式</a></li>
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/docs/forms/input/" 
+    <a href="/components/forms/input/" 
        class="menu-title menu-header " style="padding-left: 1rem;">表单组件</a>
     <ul class="menu"  style="display: none;" >
       <li class="menu-item">
-        <a href="/docs/forms/input/"
+        <a href="/components/forms/input/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Input 输入框</a></li>
       <li class="menu-item">
-        <a href="/docs/forms/select/"
+        <a href="/components/forms/select/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Select 下拉选择框</a></li>
       <li class="menu-item">
-        <a href="/docs/forms/dropdown/"
+        <a href="/components/forms/dropdown/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">DropDown 下拉菜单</a></li>
       <li class="menu-item">
-        <a href="/docs/forms/radio/"
+        <a href="/components/forms/radio/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Radio 单选框</a></li>
       <li class="menu-item">
-        <a href="/docs/forms/checkbox/"
+        <a href="/components/forms/checkbox/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Checkbox 复选框</a></li>
       <li class="menu-item">
-        <a href="/docs/forms/upload/"
+        <a href="/components/forms/upload/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Upload 上传文件</a></li>
       <li class="menu-item">
-        <a href="/docs/forms/switch/"
+        <a href="/components/forms/switch/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Switch 开关</a></li>
       <li class="menu-item">
-        <a href="/docs/forms/slider/"
+        <a href="/components/forms/slider/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Slider 滑块</a></li>
       <li class="menu-item">
-        <a href="/docs/forms/button/"
+        <a href="/components/forms/button/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Button 按钮</a></li>
       <li class="menu-item">
-        <a href="/docs/forms/form-field/"
+        <a href="/components/forms/form-field/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Form Field 表单域</a></li>
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/docs/elements/menu/" 
+    <a href="/components/elements/menu/" 
        class="menu-title menu-header " style="padding-left: 1rem;">元素组件</a>
     <ul class="menu"  style="display: none;" >
       <li class="menu-item">
-        <a href="/docs/elements/menu/"
+        <a href="/components/elements/menu/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Menu 菜单</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/list-menu/"
+        <a href="/components/elements/list-menu/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">List Menu 列表菜单</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/tree/"
+        <a href="/components/elements/tree/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Tree 树形组件</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/page/"
+        <a href="/components/elements/page/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Page 分页</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/loading/"
+        <a href="/components/elements/loading/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Loading 加载</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/toast/"
+        <a href="/components/elements/toast/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Toast 吐司提示</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/tooltip/"
+        <a href="/components/elements/tooltip/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Tooltip 提示</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/image/"
+        <a href="/components/elements/image/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Image 图像</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/callout/"
+        <a href="/components/elements/callout/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Callout 引线式标注</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/progress/"
+        <a href="/components/elements/progress/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Progress 进度条</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/tag/"
+        <a href="/components/elements/tag/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Tag 标签</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/badge/"
+        <a href="/components/elements/badge/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Badge 角标</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/back-top/"
+        <a href="/components/elements/back-top/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Back Top 返回顶部</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/date-picker/"
+        <a href="/components/elements/date-picker/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Date Picker 日期选择器</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/color-picker/"
+        <a href="/components/elements/color-picker/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Color Picker 颜色选择器</a></li>
       <li class="menu-item">
-        <a href="/docs/elements/timeline/"
+        <a href="/components/elements/timeline/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Timeline 时间轴</a></li>
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/docs/navigation/crumb/" 
+    <a href="/components/navigation/crumb/" 
        class="menu-title menu-header " style="padding-left: 1rem;">导航组件</a>
     <ul class="menu"  style="display: none;" >
       <li class="menu-item">
-        <a href="/docs/navigation/crumb/"
+        <a href="/components/navigation/crumb/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Crumb 面包屑</a></li>
       <li class="menu-item">
-        <a href="/docs/navigation/navbar/"
+        <a href="/components/navigation/navbar/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Navbar 导航栏</a></li>
       <li class="menu-item">
-        <a href="/docs/navigation/steps/"
+        <a href="/components/navigation/steps/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Steps 步骤条</a></li>
       <li class="menu-item">
-        <a href="/docs/navigation/tabs/"
+        <a href="/components/navigation/tabs/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Tabs 标签页</a></li>
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/docs/container/list/" 
+    <a href="/components/container/list/" 
        class="menu-title menu-header " style="padding-left: 1rem;">容器组件</a>
     <ul class="menu"  style="display: none;" >
       <li class="menu-item">
-        <a href="/docs/container/list/"
+        <a href="/components/container/list/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">List 列表</a></li>
       <li class="menu-item">
-        <a href="/docs/container/table/"
+        <a href="/components/container/table/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Table 表格</a></li>
       <li class="menu-item">
-        <a href="/docs/container/card/"
+        <a href="/components/container/card/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Card 卡片</a></li>
       <li class="menu-item">
-        <a href="/docs/container/dialog/"
+        <a href="/components/container/dialog/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Dialog 对话框</a></li>
       <li class="menu-item">
-        <a href="/docs/container/accordion/"
+        <a href="/components/container/accordion/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Accordion 手风琴</a></li>
       <li class="menu-item">
-        <a href="/docs/container/carousel/"
+        <a href="/components/container/carousel/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Carousel 轮播图</a></li>
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/docs/utils/align/" 
+    <a href="/components/utils/align/" 
        class="menu-title menu-header " style="padding-left: 1rem;">工具样式</a>
     <ul class="menu"  style="display: none;" >
       <li class="menu-item">
-        <a href="/docs/utils/align/"
+        <a href="/components/utils/align/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Align 文本对齐方式</a></li>
       <li class="menu-item">
-        <a href="/docs/utils/border/"
+        <a href="/components/utils/border/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Border 边框和圆角</a></li>
       <li class="menu-item">
-        <a href="/docs/utils/display/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">Display 相关属性值</a></li>
-      <li class="menu-item">
-        <a href="/docs/utils/flex/"
+        <a href="/components/utils/flex/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Flex 弹性布局</a></li>
       <li class="menu-item">
-        <a href="/docs/utils/float/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">Float 浮层和清空浮层</a></li>
-      <li class="menu-item">
-        <a href="/docs/utils/position/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">Position 定位</a></li>
-      <li class="menu-item">
-        <a href="/docs/utils/sizing/"
+        <a href="/components/utils/sizing/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Sizing 元素大小</a></li>
       <li class="menu-item">
-        <a href="/docs/utils/spacing/"
+        <a href="/components/utils/spacing/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Spacing 间距</a></li>
       <li class="menu-item">
-        <a href="/docs/utils/text/"
+        <a href="/components/utils/text/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Text 文本修饰</a></li>
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/docs/icons/icon-pure-css/" 
+    <a href="/components/icons/icon-pure-css/" 
        class="menu-title menu-header " style="padding-left: 1rem;">图标</a>
     <ul class="menu"  style="display: none;" >
       <li class="menu-item">
-        <a href="/docs/icons/icon-pure-css/"
+        <a href="/components/icons/icon-pure-css/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">纯 CSS 图标</a></li>
-    </ul>
-  </li>
-  <li class="menu-item">
-    <a href="/docs/tag-property/tag/" 
-       class="menu-title menu-header " style="padding-left: 1rem;">Html 标签和样式属性</a>
-    <ul class="menu"  style="display: none;" >
-      <li class="menu-item">
-        <a href="/docs/tag-property/tag/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">Html 标签</a></li>
-      <li class="menu-item">
-        <a href="/docs/tag-property/property/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">样式属性</a></li>
     </ul>
   </li>
 </ul>
@@ -472,133 +404,266 @@
       </nav>
     </aside>
     <main class="drawer-main">
-      <div class="doc-main">
-        <div class="doc-content catalogue-counter">
-          <div class="doc-catalogue-menu">
-            <div class="doc-catalogue-icon">
-              <i class="icon-pure-catalogue"></i>
-            </div>
-            <div class="doc-catalogue-panel">
-<ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
-</ul>
-</div>
-          </div>
-          <div class="doc-content-header">
-            <p>响应式</p>
-            <div>
-              <a href="https://github.com/joy-web/perfect-css/edit/v0-dev/docs/docs/layout/responsive.md" target="_blank">编辑该页面</a>
-              <a href="https://github.com/joy-web/perfect-css/issues/new?title=问题或建议(布局-Responsive 响应式)" target="_blank">问题和建议</a>
-            </div>
-          </div>
-          <hr/>
-          <p>响应式</p>
-        </div>
-        <div class="doc-catalogue-menu-right">
-          <div class="doc-catalogue-panel">
-<ul class="menu menu-catalogue doc-catalogue doc-catalogue-header">
-</ul>
-</div>
-        </div>
-      </div>
-    </main>
-    <script src="/assets/js/vendor/clipboard.min.js"></script>
-<script src="/assets/js/perfect.js"></script>
+      <section class="component-wrap catalogue-counter">
+        <h2>
+<div class="anchor-header" id="anchor-1"></div>纯 CSS Ripple<a class="anchor-link" href="#anchor-1">#</a>
+</h2>
+<h3>
+<div class="anchor-header" id="anchor-1-1"></div>有界限的、切断的 Ripple<a class="anchor-link" href="#anchor-1-1">#</a>
+</h3>
+<section class="ripple-demo">
+  <div class="ripple" tabindex="0">
+    纯 CSS 波纹效果
+  </div>
+</section>
+<h3>
+<div class="anchor-header" id="anchor-1-2"></div>没有被切断的、完整的 Ripple<a class="anchor-link" href="#anchor-1-2">#</a>
+</h3>
+<section class="ripple-demo">
+  <div class="ripple ripple-unbounded" tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+</section>
+<h2>
+<div class="anchor-header" id="anchor-2"></div>Ripple 动效<a class="anchor-link" href="#anchor-2">#</a>
+</h2>
+<h3>
+<div class="anchor-header" id="anchor-2-1"></div>有界限的、切断的动效<a class="anchor-link" href="#anchor-2-1">#</a>
+</h3>
+<section class="ripple-demo">
+  <div class="ripple ripple-impact" tabindex="0">
+    点击看效果，结合 JavaScript 动态设置其 CSS 变量
+  </div>
+</section>
+<h3>
+<div class="anchor-header" id="anchor-2-2"></div>没有被切断的、完整的动效<a class="anchor-link" href="#anchor-2-2">#</a>
+</h3>
+<section class="ripple-demo">
+  <div class="ripple ripple-impact ripple-unbounded" tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+</section>
+<h3>
+<div class="anchor-header" id="anchor-2-3"></div>取消当前活动态<a class="anchor-link" href="#anchor-2-3">#</a>
+</h3>
+<section class="ripple-demo">
+  <div class="ripple ripple-impact ripple-impact-active inactive-demo" tabindex="0" style="--ripple-translate-start: 0; --ripple-translate-end: 50px;">
+    点击看效果，结合 JavaScript 动态设置其 CSS 变量
+  </div>
+</section>
+<h2>
+<div class="anchor-header" id="anchor-3"></div>Ripple 主题<a class="anchor-link" href="#anchor-3">#</a>
+</h2>
+<h3>
+<div class="anchor-header" id="anchor-3-1"></div>主颜色<a class="anchor-link" href="#anchor-3-1">#</a>
+</h3>
+<h4>
+<div class="anchor-header" id="anchor-3-1-1"></div>纯 CSS <a class="anchor-link" href="#anchor-3-1-1">#</a>
+</h4>
+<section class="d-flex align-items-center ripple-demo">
+  <div class="ripple ripple-primary" tabindex="0">
+    Primary
+  </div>
+  <div class="ripple ripple-secondary" tabindex="0">
+    Secondary
+  </div>
+  <div class="ripple ripple-unbounded ripple-primary" tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+  <div class="ripple ripple-unbounded ripple-secondary" tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+</section>
+<h4>
+<div class="anchor-header" id="anchor-3-1-2"></div>动效<a class="anchor-link" href="#anchor-3-1-2">#</a>
+</h4>
+<section class="d-flex align-items-center ripple-demo">
+  <div class="ripple ripple-primary ripple-impact" tabindex="0">
+    Primary
+  </div>
+  <div class="ripple ripple-secondary ripple-impact" tabindex="0">
+    Secondary
+  </div>
+  <div class="ripple ripple-unbounded ripple-primary ripple-impact" tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+  <div class="ripple ripple-unbounded ripple-secondary ripple-impact" tabindex="0">
+    <div class="icon-circle"></div>
+  </div>
+</section>
+<h3>
+<div class="anchor-header" id="anchor-3-2"></div>辅助样式<a class="anchor-link" href="#anchor-3-2">#</a>
+</h3>
+<h4>
+<div class="anchor-header" id="anchor-3-2-1"></div>纯 CSS <a class="anchor-link" href="#anchor-3-2-1">#</a>
+</h4>
+<section class="d-flex ripple-demo">
+  <div class="ripple ripple-success" tabindex="0">
+    成功
+  </div>
+  <div class="ripple ripple-info" tabindex="0">
+    信息
+  </div>
+  <div class="ripple ripple-warning" tabindex="0">
+    警告
+  </div>
+  <div class="ripple ripple-error" tabindex="0">
+    错误
+  </div>
+</section>
+<h4>
+<div class="anchor-header" id="anchor-3-2-2"></div>动效 <a class="anchor-link" href="#anchor-3-2-2">#</a>
+</h4>
+<section class="d-flex ripple-demo">
+  <div class="ripple ripple-success ripple-impact" tabindex="0">
+    成功
+  </div>
+  <div class="ripple ripple-info ripple-impact" tabindex="0">
+    信息
+  </div>
+  <div class="ripple ripple-warning ripple-impact" tabindex="0">
+    警告
+  </div>
+  <div class="ripple ripple-error ripple-impact" tabindex="0">
+    错误
+  </div>
+</section>
+<h2>
+<div class="anchor-header" id="anchor-4"></div>自定义背景<a class="anchor-link" href="#anchor-4">#</a>
+</h2>
+<section class="d-flex ripple-demo">
+  <div class="ripple ripple-custom1" tabindex="0">
+    自定义背景1
+  </div>
+  <div class="ripple ripple-custom2" tabindex="0">
+    自定义背景2
+  </div>
+  <div class="ripple ripple-impact ripple-custom2" tabindex="0">
+    自定义背景2-动画效果
+  </div>
+</section>
+<h2>
+<div class="anchor-header" id="anchor-5"></div>用在 button 标签上<a class="anchor-link" href="#anchor-5">#</a>
+</h2>
+<section class="d-flex ripple-demo">
+  <button type="button" class="ripple">
+    button
+  </button>
+  <button type="button" class="ripple ripple-impact">
+    impact button
+  </button>
+</section>
 <script>
-  (function () {
-    const ScrollSpy = perfect.ScrollSpy;
-    const CatalogueSpy = perfect.CatalogueSpy;
-    new ScrollSpy(document.body, {
-      menu: '.doc-catalogue-panel',
-      container: '.doc-content',
-      offset: 70,
-      anchor: false,
-      extend: true,
-      plugins: CatalogueSpy,
-    });
-    // 窗口滑动到某一位置时，修改目录定位位置
-    const cataloguePanel = document.querySelector('.doc-catalogue-menu-right .doc-catalogue-panel');
-    const scrollEvent = function () {
-      const boundingClientRect = cataloguePanel.getBoundingClientRect();
-      if (boundingClientRect.width > 0 && boundingClientRect.height > 0) {
-        const top = window.scrollY;
-        const clientHeight = document.documentElement.clientHeight;
-        const scrollHeight = document.documentElement.scrollHeight;
-        const contentTop = document.querySelector('.doc-content').getBoundingClientRect().top;
-        if (top > scrollHeight - clientHeight) {
-          cataloguePanel.style.position = 'absolute';
-          cataloguePanel.style.top = top + 'px';
-        } else if (top + 54 > contentTop) {
-          cataloguePanel.style.position = 'fixed';
-          cataloguePanel.style.top = '54px';
-        } else {
-          cataloguePanel.style.position = 'static';
-        }
+  $(function () {
+    /**
+     * 计算事件坐标
+     * @param {!Event} ev
+     * @param {!ClientRect} clientRect
+     * @return {!{x: number, y: number}}
+     */
+    function getNormalizedEventCoords(ev, clientRect) {
+      const x = window.pageXOffset;
+      const y = window.pageYOffset;
+      const documentX = x + clientRect.left;
+      const documentY = y + clientRect.top;
+      let normalizedX;
+      let normalizedY;
+      // Determine touch point relative to the ripple container.
+      if (ev.type === 'touchstart') {
+        normalizedX = ev.changedTouches[0].pageX - documentX;
+        normalizedY = ev.changedTouches[0].pageY - documentY;
+      } else {
+        normalizedX = ev.pageX - documentX;
+        normalizedY = ev.pageY - documentY;
       }
-    };
-    document.addEventListener('scroll', scrollEvent, false);
-    scrollEvent();
-  })();
+      return {x: normalizedX, y: normalizedY};
+    }
+    // 返回其大小
+    function getCssVariableValue($el) {
+      // 动态的修改 css variable
+      const width = $el.outerWidth();
+      const height = $el.outerHeight();
+      const maxDim = Math.max(width, height);
+      const diameter = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+      // 60%
+      const size = maxDim * 0.6;
+      // 直径多加 10
+      const radius = diameter + 10;
+      const scale = radius / size;
+      return {
+        width,
+        height,
+        size,
+        scale,
+      };
+    }
+    function setCssVariable($el, {width, height, size, scale}) {
+      $el[0].style.setProperty('--ripple-width', width + 'px');
+      $el[0].style.setProperty('--ripple-height', height + 'px');
+      $el[0].style.setProperty('--ripple-size', size + 'px');
+      $el[0].style.setProperty('--ripple-scale', scale);
+      if ($el.hasClass('ripple-unbounded')) {
+        const left = Math.round((width / 2) - (size / 2));
+        const top = Math.round((height / 2) - (size / 2));
+        $el[0].style.setProperty('--ripple-left', `${left}px`);
+        $el[0].style.setProperty('--ripple-top', `${top}px`);
+      }
+    }
+    const $ripple = $('.ripple-impact:not(.inactive-demo)');
+    $ripple.mousedown((e) => {
+      const $el = $(e.currentTarget);
+      const value = getCssVariableValue($el);
+      setCssVariable($el, value);
+      // 如果是 unbounded
+      if (!$el.hasClass('ripple-unbounded')) {
+        const {width, height, size} = value;
+        const clientRect = $el[0].getBoundingClientRect();
+        let startPoint = getNormalizedEventCoords(e, clientRect);
+        startPoint = {
+          x: startPoint.x - (size / 2),
+          y: startPoint.y - (size / 2),
+        };
+        const endPoint = {
+          x: (width / 2) - (size / 2),
+          y: (height / 2) - (size / 2),
+        };
+        const translateStart = `${startPoint.x}px, ${startPoint.y}px`;
+        const translateEnd = `${endPoint.x}px, ${endPoint.y}px`;
+        $el[0].style.setProperty('--ripple-translate-start', translateStart);
+        $el[0].style.setProperty('--ripple-translate-end', translateEnd);
+      }
+      $el.addClass('ripple-impact-active');
+    });
+    $ripple.on('mouseup', (e) => {
+      const $el = $(e.currentTarget);
+      // 延迟260ms 执行
+      setTimeout(() => {
+        $el.removeClass('ripple-impact-active ripple-impact-focused');
+      }, 260);
+    });
+    $ripple.on('focus', (e) => {
+      const $el = $(e.currentTarget);
+      $el.addClass('ripple-impact-focused');
+    });
+    $ripple.on('blur', (e) => {
+      const $el = $(e.currentTarget);
+      $el.removeClass('ripple-impact-focused');
+    });
+    // 初始化ripple-impact css variable
+    $('.ripple-impact').each(function (index, el) {
+      const $el = $(el);
+      const value = getCssVariableValue($el);
+      setCssVariable($el, value);
+    });
+    $('.inactive-demo').click(function (e) {
+      const $el = $(e.currentTarget);
+      $el[0].style.setProperty('--ripple-scale', 1);
+      $el.addClass('ripple-impact-inactive');
+    });
+  });
 </script>
-<script>
-  (function () {
-    document.addEventListener('DOMContentLoaded', function () {
-      // 展开代码
-      [].forEach.call(document.querySelectorAll('.doc-example-expand [data-code-icon]'), function (item) {
-        item.addEventListener('click', function (e) {
-          const el = e.currentTarget;
-          const icon = el.childNodes[0];
-          const code = el.parentNode.nextElementSibling;
-          const tooltip = el.nextElementSibling.querySelector('.tooltip-inner');
-          const iconClass = icon.classList;
-          // TODO 待动画处理
-          if (iconClass.contains('icon-pure-code')) {
-            iconClass.remove('icon-pure-code');
-            iconClass.add('icon-pure-code-expand');
-            tooltip.innerHTML = '隐藏 Code';
-            code.style.display = 'block';
-          } else {
-            iconClass.remove('icon-pure-code-expand');
-            iconClass.add('icon-pure-code');
-            tooltip.innerHTML = '显示 Code';
-            code.style.display = 'none';
-          }
-        }, false);
-      });
-      // 为代码添加复制按钮
-      [].forEach.call(document.querySelectorAll('.highlight:not(.doc-example-highlight)'), function (item) {
-        const div = document.createElement('div');
-        div.innerHTML = `<div class="doc-code-copy"><i class="icon-pure-copy"></i></div>
-        <div class="tooltip tooltip-top"><div class="arrow"></div><div class="tooltip-inner">复制代码</div></div>`;
-        item.insertBefore(div.childNodes[0], item.lastChild);
-        item.insertBefore(div.childNodes[1], item.lastChild);
-      });
-      // 复制到剪贴板
-      const clipboard = new Clipboard('.doc-code-copy', {
-        target: function (trigger) {
-          return trigger.nextElementSibling.nextElementSibling;
-        },
-      });
-      clipboard.on('success', function (e) {
-        const tooltip = e.trigger.nextElementSibling.querySelector('.tooltip-inner');
-        tooltip.innerHTML = '复制成功';
-        e.clearSelection();
-      });
-      [].forEach.call(document.querySelectorAll('.doc-code-copy'), function (item) {
-        item.addEventListener('mouseleave', function (e) {
-          const tooltip = e.target.nextElementSibling.querySelector('.tooltip-inner');
-          tooltip.innerHTML = '复制代码';
-        }, false);
-      });
-      clipboard.on('error', function (e) {
-        const modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
-        const fallbackMsg = '请使用快捷键 ' + modifierKey + 'C 来复制';
-        const tooltip = e.trigger.nextElementSibling.querySelector('.tooltip-inner');
-        tooltip.innerHTML = fallbackMsg;
-        e.clearSelection();
-      });
-    }, false);
-  })();
-</script>
+      </section>
+    </main>
     <script>
   (function () {
     const drawer = document.getElementById('drawer');

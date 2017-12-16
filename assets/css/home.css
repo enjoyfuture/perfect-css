@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+html {
+  position: relative;
+}
+
+html,
+body {
+  height: auto;
+  min-height: 100%;
+}
+
 /**
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点

@@ -1854,11 +1854,19 @@ output {
   }
 }
 
+.ripple-test-edge-var-bug {
+  --ripple-test-edge-var: 1px solid #000;
+  visibility: hidden;
+}
+
+.ripple-test-edge-var-bug::before {
+  border: var(--ripple-test-edge-var);
+}
+
 .ripple {
   position: relative;
   overflow: hidden;
   outline: none;
-  will-change: transform, opacity;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -1866,8 +1874,9 @@ output {
 .ripple:not(.ripple-impact):hover::before,
 .ripple:not(.ripple-impact):active::after {
   opacity: 0.6;
-  -webkit-transition-duration: 85ms;
-          transition-duration: 85ms;
+  -webkit-transition-duration: 15ms;
+          transition-duration: 15ms;
+  will-change: transform, opacity;
 }
 
 .ripple::before {
@@ -1881,8 +1890,8 @@ output {
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
-  -webkit-transition: opacity 250ms linear;
-  transition: opacity 250ms linear;
+  -webkit-transition: opacity 225ms linear;
+  transition: opacity 225ms linear;
 }
 
 .ripple::after {
@@ -1896,13 +1905,11 @@ output {
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
-  -webkit-transition: opacity 250ms linear;
-  transition: opacity 250ms linear;
+  -webkit-transition: opacity 225ms linear;
+  transition: opacity 225ms linear;
 }
 
 .ripple-impact {
-  --ripple-width: 0;
-  --ripple-height: 0;
   --ripple-size: 0;
   --ripple-left: 0;
   --ripple-top: 0;
@@ -1914,16 +1921,14 @@ output {
 .ripple-impact.ripple-impact-focused::after,
 .ripple-impact:active::after {
   opacity: .6;
-  -webkit-transition-duration: 85ms;
-          transition-duration: 85ms;
+  -webkit-transition-duration: 75ms;
+          transition-duration: 75ms;
 }
 
 .ripple-impact::before {
   top: 0;
   left: 0;
-  width: 100%;
   width: var(--ripple-size, 100%);
-  height: 100%;
   height: var(--ripple-size, 100%);
   -webkit-transform: scale(0);
           transform: scale(0);
@@ -1932,13 +1937,15 @@ output {
 }
 
 .ripple-impact.ripple-impact-active::before {
-  -webkit-animation: 300ms ripple-radius-in forwards, 83ms ripple-opacity-in forwards;
-          animation: 300ms ripple-radius-in forwards, 83ms ripple-opacity-in forwards;
+  -webkit-animation: 225ms ripple-radius-in forwards, 75ms ripple-opacity-in forwards;
+          animation: 225ms ripple-radius-in forwards, 75ms ripple-opacity-in forwards;
 }
 
 .ripple-impact.ripple-impact-inactive::before {
-  -webkit-animation: 300ms ripple-radius-out forwards, 83ms ripple-opacity-out forwards;
-          animation: 300ms ripple-radius-out forwards, 83ms ripple-opacity-out forwards;
+  -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
+          transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
+  -webkit-animation: 150ms ripple-opacity-out forwards;
+          animation: 150ms ripple-opacity-out forwards;
 }
 
 .ripple-unbounded {
@@ -1946,27 +1953,19 @@ output {
 }
 
 .ripple-unbounded::after {
-  top: calc(50% - 50%);
   top: var(--ripple-top, calc(50% - 50%));
-  left: calc(50% - 50%);
   left: var(--ripple-left, calc(50% - 50%));
-  width: 100%;
   width: var(--ripple-size, 100%);
-  height: 100%;
   height: var(--ripple-size, 100%);
 }
 
 .ripple-impact.ripple-unbounded::after {
-  -webkit-transform: scale(0);
-          transform: scale(0);
   -webkit-transform: scale(var(--ripple-scale, 0));
           transform: scale(var(--ripple-scale, 0));
 }
 
 .ripple-impact.ripple-unbounded::before {
-  top: 0;
   top: var(--ripple-top, 0);
-  left: 0;
   left: var(--ripple-left, 0);
 }
 
@@ -3295,6 +3294,12 @@ hr {
   }
 }
 
+@media (min-width: 1600px) {
+  .drawer-nav {
+    width: 100%;
+  }
+}
+
 .drawer-header {
   position: relative;
 }
@@ -3521,6 +3526,12 @@ hr {
   }
 }
 
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1600px;
+  }
+}
+
 .container-fluid {
   width: 100%;
   -webkit-box-sizing: border-box;
@@ -3687,7 +3698,33 @@ hr {
 .col-xl-23,
 .col-xl-24,
 .col-xl,
-.col-xl-auto {
+.col-xl-auto,
+.col-xxl-1,
+.col-xxl-2,
+.col-xxl-3,
+.col-xxl-4,
+.col-xxl-5,
+.col-xxl-6,
+.col-xxl-7,
+.col-xxl-8,
+.col-xxl-9,
+.col-xxl-10,
+.col-xxl-11,
+.col-xxl-12,
+.col-xxl-13,
+.col-xxl-14,
+.col-xxl-15,
+.col-xxl-16,
+.col-xxl-17,
+.col-xxl-18,
+.col-xxl-19,
+.col-xxl-20,
+.col-xxl-21,
+.col-xxl-22,
+.col-xxl-23,
+.col-xxl-24,
+.col-xxl,
+.col-xxl-auto {
   position: relative;
   width: 100%;
   min-height: 1px;
@@ -5599,6 +5636,388 @@ hr {
   }
 }
 
+@media (min-width: 1600px) {
+  .col-xxl {
+    -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+    -ms-flex-positive: 1;
+        flex-grow: 1;
+    max-width: 100%;
+  }
+
+  .col-xxl-auto {
+    -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+  }
+
+  .col-xxl-1 {
+    -ms-flex: 0 0 4.16666666667%;
+        flex: 0 0 4.16666666667%;
+    max-width: 4.16666666667%;
+  }
+
+  .col-xxl-2 {
+    -ms-flex: 0 0 8.33333333333%;
+        flex: 0 0 8.33333333333%;
+    max-width: 8.33333333333%;
+  }
+
+  .col-xxl-3 {
+    -ms-flex: 0 0 12.5%;
+        flex: 0 0 12.5%;
+    max-width: 12.5%;
+  }
+
+  .col-xxl-4 {
+    -ms-flex: 0 0 16.6666666667%;
+        flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+  }
+
+  .col-xxl-5 {
+    -ms-flex: 0 0 20.8333333333%;
+        flex: 0 0 20.8333333333%;
+    max-width: 20.8333333333%;
+  }
+
+  .col-xxl-6 {
+    -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .col-xxl-7 {
+    -ms-flex: 0 0 29.1666666667%;
+        flex: 0 0 29.1666666667%;
+    max-width: 29.1666666667%;
+  }
+
+  .col-xxl-8 {
+    -ms-flex: 0 0 33.3333333333%;
+        flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+  }
+
+  .col-xxl-9 {
+    -ms-flex: 0 0 37.5%;
+        flex: 0 0 37.5%;
+    max-width: 37.5%;
+  }
+
+  .col-xxl-10 {
+    -ms-flex: 0 0 41.6666666667%;
+        flex: 0 0 41.6666666667%;
+    max-width: 41.6666666667%;
+  }
+
+  .col-xxl-11 {
+    -ms-flex: 0 0 45.8333333333%;
+        flex: 0 0 45.8333333333%;
+    max-width: 45.8333333333%;
+  }
+
+  .col-xxl-12 {
+    -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .col-xxl-13 {
+    -ms-flex: 0 0 54.1666666667%;
+        flex: 0 0 54.1666666667%;
+    max-width: 54.1666666667%;
+  }
+
+  .col-xxl-14 {
+    -ms-flex: 0 0 58.3333333333%;
+        flex: 0 0 58.3333333333%;
+    max-width: 58.3333333333%;
+  }
+
+  .col-xxl-15 {
+    -ms-flex: 0 0 62.5%;
+        flex: 0 0 62.5%;
+    max-width: 62.5%;
+  }
+
+  .col-xxl-16 {
+    -ms-flex: 0 0 66.6666666667%;
+        flex: 0 0 66.6666666667%;
+    max-width: 66.6666666667%;
+  }
+
+  .col-xxl-17 {
+    -ms-flex: 0 0 70.8333333333%;
+        flex: 0 0 70.8333333333%;
+    max-width: 70.8333333333%;
+  }
+
+  .col-xxl-18 {
+    -ms-flex: 0 0 75%;
+        flex: 0 0 75%;
+    max-width: 75%;
+  }
+
+  .col-xxl-19 {
+    -ms-flex: 0 0 79.1666666667%;
+        flex: 0 0 79.1666666667%;
+    max-width: 79.1666666667%;
+  }
+
+  .col-xxl-20 {
+    -ms-flex: 0 0 83.3333333333%;
+        flex: 0 0 83.3333333333%;
+    max-width: 83.3333333333%;
+  }
+
+  .col-xxl-21 {
+    -ms-flex: 0 0 87.5%;
+        flex: 0 0 87.5%;
+    max-width: 87.5%;
+  }
+
+  .col-xxl-22 {
+    -ms-flex: 0 0 91.6666666667%;
+        flex: 0 0 91.6666666667%;
+    max-width: 91.6666666667%;
+  }
+
+  .col-xxl-23 {
+    -ms-flex: 0 0 95.8333333333%;
+        flex: 0 0 95.8333333333%;
+    max-width: 95.8333333333%;
+  }
+
+  .col-xxl-24 {
+    -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .order-xxl-first {
+    -ms-flex-order: -1;
+        order: -1;
+  }
+
+  .order-xxl-1 {
+    -ms-flex-order: 1;
+        order: 1;
+  }
+
+  .order-xxl-2 {
+    -ms-flex-order: 2;
+        order: 2;
+  }
+
+  .order-xxl-3 {
+    -ms-flex-order: 3;
+        order: 3;
+  }
+
+  .order-xxl-4 {
+    -ms-flex-order: 4;
+        order: 4;
+  }
+
+  .order-xxl-5 {
+    -ms-flex-order: 5;
+        order: 5;
+  }
+
+  .order-xxl-6 {
+    -ms-flex-order: 6;
+        order: 6;
+  }
+
+  .order-xxl-7 {
+    -ms-flex-order: 7;
+        order: 7;
+  }
+
+  .order-xxl-8 {
+    -ms-flex-order: 8;
+        order: 8;
+  }
+
+  .order-xxl-9 {
+    -ms-flex-order: 9;
+        order: 9;
+  }
+
+  .order-xxl-10 {
+    -ms-flex-order: 10;
+        order: 10;
+  }
+
+  .order-xxl-11 {
+    -ms-flex-order: 11;
+        order: 11;
+  }
+
+  .order-xxl-12 {
+    -ms-flex-order: 12;
+        order: 12;
+  }
+
+  .order-xxl-13 {
+    -ms-flex-order: 13;
+        order: 13;
+  }
+
+  .order-xxl-14 {
+    -ms-flex-order: 14;
+        order: 14;
+  }
+
+  .order-xxl-15 {
+    -ms-flex-order: 15;
+        order: 15;
+  }
+
+  .order-xxl-16 {
+    -ms-flex-order: 16;
+        order: 16;
+  }
+
+  .order-xxl-17 {
+    -ms-flex-order: 17;
+        order: 17;
+  }
+
+  .order-xxl-18 {
+    -ms-flex-order: 18;
+        order: 18;
+  }
+
+  .order-xxl-19 {
+    -ms-flex-order: 19;
+        order: 19;
+  }
+
+  .order-xxl-20 {
+    -ms-flex-order: 20;
+        order: 20;
+  }
+
+  .order-xxl-21 {
+    -ms-flex-order: 21;
+        order: 21;
+  }
+
+  .order-xxl-22 {
+    -ms-flex-order: 22;
+        order: 22;
+  }
+
+  .order-xxl-23 {
+    -ms-flex-order: 23;
+        order: 23;
+  }
+
+  .order-xxl-24 {
+    -ms-flex-order: 24;
+        order: 24;
+  }
+
+  .offset-xxl-0 {
+    margin-left: 0;
+  }
+
+  .offset-xxl-1 {
+    margin-left: 4.16666666667%;
+  }
+
+  .offset-xxl-2 {
+    margin-left: 8.33333333333%;
+  }
+
+  .offset-xxl-3 {
+    margin-left: 12.5%;
+  }
+
+  .offset-xxl-4 {
+    margin-left: 16.6666666667%;
+  }
+
+  .offset-xxl-5 {
+    margin-left: 20.8333333333%;
+  }
+
+  .offset-xxl-6 {
+    margin-left: 25%;
+  }
+
+  .offset-xxl-7 {
+    margin-left: 29.1666666667%;
+  }
+
+  .offset-xxl-8 {
+    margin-left: 33.3333333333%;
+  }
+
+  .offset-xxl-9 {
+    margin-left: 37.5%;
+  }
+
+  .offset-xxl-10 {
+    margin-left: 41.6666666667%;
+  }
+
+  .offset-xxl-11 {
+    margin-left: 45.8333333333%;
+  }
+
+  .offset-xxl-12 {
+    margin-left: 50%;
+  }
+
+  .offset-xxl-13 {
+    margin-left: 54.1666666667%;
+  }
+
+  .offset-xxl-14 {
+    margin-left: 58.3333333333%;
+  }
+
+  .offset-xxl-15 {
+    margin-left: 62.5%;
+  }
+
+  .offset-xxl-16 {
+    margin-left: 66.6666666667%;
+  }
+
+  .offset-xxl-17 {
+    margin-left: 70.8333333333%;
+  }
+
+  .offset-xxl-18 {
+    margin-left: 75%;
+  }
+
+  .offset-xxl-19 {
+    margin-left: 79.1666666667%;
+  }
+
+  .offset-xxl-20 {
+    margin-left: 83.3333333333%;
+  }
+
+  .offset-xxl-21 {
+    margin-left: 87.5%;
+  }
+
+  .offset-xxl-22 {
+    margin-left: 91.6666666667%;
+  }
+
+  .offset-xxl-23 {
+    margin-left: 95.8333333333%;
+  }
+}
+
 /**
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
@@ -5613,58 +6032,6 @@ hr {
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-
-@keyframes ripple-radius-in {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-}
-
-@keyframes ripple-radius-out {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@keyframes ripple-opacity-in {
-  from {
-    opacity: 0;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ripple-opacity-out {
-  from {
-    opacity: 1;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
 
 /**
  * 计算两种颜色的对比度，一般指前景色和背景色
@@ -6487,58 +6854,6 @@ hr {
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
 
-@keyframes ripple-radius-in {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-}
-
-@keyframes ripple-radius-out {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@keyframes ripple-opacity-in {
-  from {
-    opacity: 0;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ripple-opacity-out {
-  from {
-    opacity: 1;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
 /**
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
@@ -6575,58 +6890,6 @@ hr {
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-
-@keyframes ripple-radius-in {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-}
-
-@keyframes ripple-radius-out {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@keyframes ripple-opacity-in {
-  from {
-    opacity: 0;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ripple-opacity-out {
-  from {
-    opacity: 1;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
 
 .radio {
   position: relative;
@@ -7104,58 +7367,6 @@ hr {
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
 
-@keyframes ripple-radius-in {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-}
-
-@keyframes ripple-radius-out {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@keyframes ripple-opacity-in {
-  from {
-    opacity: 0;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ripple-opacity-out {
-  from {
-    opacity: 1;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
 /**
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
@@ -7192,58 +7403,6 @@ hr {
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-
-@keyframes ripple-radius-in {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-}
-
-@keyframes ripple-radius-out {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@keyframes ripple-opacity-in {
-  from {
-    opacity: 0;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ripple-opacity-out {
-  from {
-    opacity: 1;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
 
 .checkbox {
   position: relative;
@@ -8282,58 +8441,6 @@ hr {
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
 
-@keyframes ripple-radius-in {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-}
-
-@keyframes ripple-radius-out {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@keyframes ripple-opacity-in {
-  from {
-    opacity: 0;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ripple-opacity-out {
-  from {
-    opacity: 1;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
 /**
 * 关于 font weight 的设置，跟字体粗细值有关
 * 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
@@ -8379,58 +8486,6 @@ hr {
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
 
-@keyframes ripple-radius-in {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-}
-
-@keyframes ripple-radius-out {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@keyframes ripple-opacity-in {
-  from {
-    opacity: 0;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ripple-opacity-out {
-  from {
-    opacity: 1;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
 .btn {
   position: relative;
   -webkit-box-sizing: border-box;
@@ -8459,7 +8514,6 @@ hr {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
-  will-change: transform, opacity;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -8467,8 +8521,9 @@ hr {
 .btn:not(.ripple-impact):hover::before,
 .btn:not(.ripple-impact):active::after {
   opacity: 0.6;
-  -webkit-transition-duration: 85ms;
-          transition-duration: 85ms;
+  -webkit-transition-duration: 15ms;
+          transition-duration: 15ms;
+  will-change: transform, opacity;
 }
 
 .btn:not(.ripple-impact)::before {
@@ -8482,8 +8537,8 @@ hr {
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
-  -webkit-transition: opacity 250ms linear;
-  transition: opacity 250ms linear;
+  -webkit-transition: opacity 225ms linear;
+  transition: opacity 225ms linear;
 }
 
 .btn:not(.ripple-impact)::after {
@@ -8497,8 +8552,8 @@ hr {
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
-  -webkit-transition: opacity 250ms linear;
-  transition: opacity 250ms linear;
+  -webkit-transition: opacity 225ms linear;
+  transition: opacity 225ms linear;
 }
 
 .btn:hover {
@@ -10514,58 +10569,6 @@ a.page-item:hover {
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
 
-@keyframes ripple-radius-in {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-}
-
-@keyframes ripple-radius-out {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@keyframes ripple-opacity-in {
-  from {
-    opacity: 0;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ripple-opacity-out {
-  from {
-    opacity: 1;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
 /**
 * 关于 font weight 的设置，跟字体粗细值有关
 * 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
@@ -10847,6 +10850,36 @@ a.page-item:hover {
   }
 
   .navbar-expand-xl .navbar-toggler.show {
+    display: block;
+  }
+}
+
+@media (min-width: 1600px) {
+  .navbar-expand-xxl {
+    -ms-flex-direction: row;
+        flex-direction: row;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -ms-flex-pack: start;
+        justify-content: flex-start;
+  }
+
+  .navbar-expand-xxl .navbar-nav {
+    -ms-flex-direction: row;
+        flex-direction: row;
+  }
+
+  .navbar-expand-xxl .navbar-collapse {
+    display: -ms-flexbox;
+    display: flex;
+    opacity: 1;
+  }
+
+  .navbar-expand-xxl .navbar-toggler {
+    display: none;
+  }
+
+  .navbar-expand-xxl .navbar-toggler.show {
     display: block;
   }
 }
@@ -13824,6 +13857,163 @@ th {
   }
 }
 
+@media (min-width: 1600px) {
+  .flex-xxl-row {
+    -ms-flex-direction: row !important;
+        flex-direction: row !important;
+  }
+
+  .flex-xxl-column {
+    -ms-flex-direction: column !important;
+        flex-direction: column !important;
+  }
+
+  .flex-xxl-row-reverse {
+    -ms-flex-direction: row-reverse !important;
+        flex-direction: row-reverse !important;
+  }
+
+  .flex-xxl-column-reverse {
+    -ms-flex-direction: column-reverse !important;
+        flex-direction: column-reverse !important;
+  }
+
+  .flex-xxl-wrap {
+    -ms-flex-wrap: wrap !important;
+        flex-wrap: wrap !important;
+  }
+
+  .flex-xxl-nowrap {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important;
+  }
+
+  .flex-xxl-wrap-reverse {
+    -ms-flex-wrap: wrap-reverse !important;
+        flex-wrap: wrap-reverse !important;
+  }
+
+  .justify-content-xxl-start {
+    -ms-flex-pack: start !important;
+        justify-content: flex-start !important;
+  }
+
+  .justify-content-xxl-end {
+    -ms-flex-pack: end !important;
+        justify-content: flex-end !important;
+  }
+
+  .justify-content-xxl-center {
+    -ms-flex-pack: center !important;
+        justify-content: center !important;
+  }
+
+  .justify-content-xxl-between {
+    -ms-flex-pack: justify !important;
+        justify-content: space-between !important;
+  }
+
+  .justify-content-xxl-around {
+    -ms-flex-pack: distribute !important;
+        justify-content: space-around !important;
+  }
+
+  .justify-content-xxl-evenly {
+    -ms-flex-pack: space-evenly !important;
+        justify-content: space-evenly !important;
+  }
+
+  .align-items-xxl-start {
+    -ms-flex-align: start !important;
+        align-items: flex-start !important;
+  }
+
+  .align-items-xxl-end {
+    -ms-flex-align: end !important;
+        align-items: flex-end !important;
+  }
+
+  .align-items-xxl-center {
+    -ms-flex-align: center !important;
+        align-items: center !important;
+  }
+
+  .align-items-xxl-baseline {
+    -ms-flex-align: baseline !important;
+        align-items: baseline !important;
+  }
+
+  .align-items-xxl-stretch {
+    -ms-flex-align: stretch !important;
+        align-items: stretch !important;
+  }
+
+  .align-content-xxl-start {
+    -ms-flex-line-pack: start !important;
+        align-content: flex-start !important;
+  }
+
+  .align-content-xxl-end {
+    -ms-flex-line-pack: end !important;
+        align-content: flex-end !important;
+  }
+
+  .align-content-xxl-center {
+    -ms-flex-line-pack: center !important;
+        align-content: center !important;
+  }
+
+  .align-content-xxl-between {
+    -ms-flex-line-pack: justify !important;
+        align-content: space-between !important;
+  }
+
+  .align-content-xxl-around {
+    -ms-flex-line-pack: distribute !important;
+        align-content: space-around !important;
+  }
+
+  .align-content-xxl-evenly {
+    -ms-flex-line-pack: space-evenly !important;
+        align-content: space-evenly !important;
+  }
+
+  .align-content-xxl-stretch {
+    -ms-flex-line-pack: stretch !important;
+        align-content: stretch !important;
+  }
+
+  .align-self-xxl-auto {
+    -ms-flex-item-align: auto !important;
+        align-self: auto !important;
+  }
+
+  .align-self-xxl-start {
+    -ms-flex-item-align: start !important;
+        align-self: flex-start !important;
+  }
+
+  .align-self-xxl-end {
+    -ms-flex-item-align: end !important;
+        align-self: flex-end !important;
+  }
+
+  .align-self-xxl-center {
+    -ms-flex-item-align: center !important;
+        align-self: center !important;
+  }
+
+  .align-self-xxl-baseline {
+    -ms-flex-item-align: baseline !important;
+        align-self: baseline !important;
+  }
+
+  .align-self-xxl-stretch {
+    -ms-flex-item-align: stretch !important;
+        align-self: stretch !important;
+  }
+}
+
 .clearfix::after {
   content: "";
   display: block;
@@ -15744,6 +15934,368 @@ th {
 
   .m-l-xl-auto,
   .m-x-xl-auto {
+    margin-left: auto !important;
+  }
+}
+
+@media (min-width: 1600px) {
+  .m-xxl-0 {
+    margin: 0 !important;
+  }
+
+  .m-t-xxl-0,
+  .m-y-xxl-0 {
+    margin-top: 0 !important;
+  }
+
+  .m-r-xxl-0,
+  .m-x-xxl-0 {
+    margin-right: 0 !important;
+  }
+
+  .m-b-xxl-0,
+  .m-y-xxl-0 {
+    margin-bottom: 0 !important;
+  }
+
+  .m-l-xxl-0,
+  .m-x-xxl-0 {
+    margin-left: 0 !important;
+  }
+
+  .m-xxl-1 {
+    margin: 0.25rem !important;
+  }
+
+  .m-t-xxl-1,
+  .m-y-xxl-1 {
+    margin-top: 0.25rem !important;
+  }
+
+  .m-r-xxl-1,
+  .m-x-xxl-1 {
+    margin-right: 0.25rem !important;
+  }
+
+  .m-b-xxl-1,
+  .m-y-xxl-1 {
+    margin-bottom: 0.25rem !important;
+  }
+
+  .m-l-xxl-1,
+  .m-x-xxl-1 {
+    margin-left: 0.25rem !important;
+  }
+
+  .m-xxl-2 {
+    margin: 0.5rem !important;
+  }
+
+  .m-t-xxl-2,
+  .m-y-xxl-2 {
+    margin-top: 0.5rem !important;
+  }
+
+  .m-r-xxl-2,
+  .m-x-xxl-2 {
+    margin-right: 0.5rem !important;
+  }
+
+  .m-b-xxl-2,
+  .m-y-xxl-2 {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .m-l-xxl-2,
+  .m-x-xxl-2 {
+    margin-left: 0.5rem !important;
+  }
+
+  .m-xxl-3 {
+    margin: 1rem !important;
+  }
+
+  .m-t-xxl-3,
+  .m-y-xxl-3 {
+    margin-top: 1rem !important;
+  }
+
+  .m-r-xxl-3,
+  .m-x-xxl-3 {
+    margin-right: 1rem !important;
+  }
+
+  .m-b-xxl-3,
+  .m-y-xxl-3 {
+    margin-bottom: 1rem !important;
+  }
+
+  .m-l-xxl-3,
+  .m-x-xxl-3 {
+    margin-left: 1rem !important;
+  }
+
+  .m-xxl-4 {
+    margin: 1.5rem !important;
+  }
+
+  .m-t-xxl-4,
+  .m-y-xxl-4 {
+    margin-top: 1.5rem !important;
+  }
+
+  .m-r-xxl-4,
+  .m-x-xxl-4 {
+    margin-right: 1.5rem !important;
+  }
+
+  .m-b-xxl-4,
+  .m-y-xxl-4 {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .m-l-xxl-4,
+  .m-x-xxl-4 {
+    margin-left: 1.5rem !important;
+  }
+
+  .m-xxl-5 {
+    margin: 2rem !important;
+  }
+
+  .m-t-xxl-5,
+  .m-y-xxl-5 {
+    margin-top: 2rem !important;
+  }
+
+  .m-r-xxl-5,
+  .m-x-xxl-5 {
+    margin-right: 2rem !important;
+  }
+
+  .m-b-xxl-5,
+  .m-y-xxl-5 {
+    margin-bottom: 2rem !important;
+  }
+
+  .m-l-xxl-5,
+  .m-x-xxl-5 {
+    margin-left: 2rem !important;
+  }
+
+  .m-xxl-6 {
+    margin: 3rem !important;
+  }
+
+  .m-t-xxl-6,
+  .m-y-xxl-6 {
+    margin-top: 3rem !important;
+  }
+
+  .m-r-xxl-6,
+  .m-x-xxl-6 {
+    margin-right: 3rem !important;
+  }
+
+  .m-b-xxl-6,
+  .m-y-xxl-6 {
+    margin-bottom: 3rem !important;
+  }
+
+  .m-l-xxl-6,
+  .m-x-xxl-6 {
+    margin-left: 3rem !important;
+  }
+
+  .p-xxl-0 {
+    padding: 0 !important;
+  }
+
+  .p-t-xxl-0,
+  .p-y-xxl-0 {
+    padding-top: 0 !important;
+  }
+
+  .p-r-xxl-0,
+  .p-x-xxl-0 {
+    padding-right: 0 !important;
+  }
+
+  .p-b-xxl-0,
+  .p-y-xxl-0 {
+    padding-bottom: 0 !important;
+  }
+
+  .p-l-xxl-0,
+  .p-x-xxl-0 {
+    padding-left: 0 !important;
+  }
+
+  .p-xxl-1 {
+    padding: 0.25rem !important;
+  }
+
+  .p-t-xxl-1,
+  .p-y-xxl-1 {
+    padding-top: 0.25rem !important;
+  }
+
+  .p-r-xxl-1,
+  .p-x-xxl-1 {
+    padding-right: 0.25rem !important;
+  }
+
+  .p-b-xxl-1,
+  .p-y-xxl-1 {
+    padding-bottom: 0.25rem !important;
+  }
+
+  .p-l-xxl-1,
+  .p-x-xxl-1 {
+    padding-left: 0.25rem !important;
+  }
+
+  .p-xxl-2 {
+    padding: 0.5rem !important;
+  }
+
+  .p-t-xxl-2,
+  .p-y-xxl-2 {
+    padding-top: 0.5rem !important;
+  }
+
+  .p-r-xxl-2,
+  .p-x-xxl-2 {
+    padding-right: 0.5rem !important;
+  }
+
+  .p-b-xxl-2,
+  .p-y-xxl-2 {
+    padding-bottom: 0.5rem !important;
+  }
+
+  .p-l-xxl-2,
+  .p-x-xxl-2 {
+    padding-left: 0.5rem !important;
+  }
+
+  .p-xxl-3 {
+    padding: 1rem !important;
+  }
+
+  .p-t-xxl-3,
+  .p-y-xxl-3 {
+    padding-top: 1rem !important;
+  }
+
+  .p-r-xxl-3,
+  .p-x-xxl-3 {
+    padding-right: 1rem !important;
+  }
+
+  .p-b-xxl-3,
+  .p-y-xxl-3 {
+    padding-bottom: 1rem !important;
+  }
+
+  .p-l-xxl-3,
+  .p-x-xxl-3 {
+    padding-left: 1rem !important;
+  }
+
+  .p-xxl-4 {
+    padding: 1.5rem !important;
+  }
+
+  .p-t-xxl-4,
+  .p-y-xxl-4 {
+    padding-top: 1.5rem !important;
+  }
+
+  .p-r-xxl-4,
+  .p-x-xxl-4 {
+    padding-right: 1.5rem !important;
+  }
+
+  .p-b-xxl-4,
+  .p-y-xxl-4 {
+    padding-bottom: 1.5rem !important;
+  }
+
+  .p-l-xxl-4,
+  .p-x-xxl-4 {
+    padding-left: 1.5rem !important;
+  }
+
+  .p-xxl-5 {
+    padding: 2rem !important;
+  }
+
+  .p-t-xxl-5,
+  .p-y-xxl-5 {
+    padding-top: 2rem !important;
+  }
+
+  .p-r-xxl-5,
+  .p-x-xxl-5 {
+    padding-right: 2rem !important;
+  }
+
+  .p-b-xxl-5,
+  .p-y-xxl-5 {
+    padding-bottom: 2rem !important;
+  }
+
+  .p-l-xxl-5,
+  .p-x-xxl-5 {
+    padding-left: 2rem !important;
+  }
+
+  .p-xxl-6 {
+    padding: 3rem !important;
+  }
+
+  .p-t-xxl-6,
+  .p-y-xxl-6 {
+    padding-top: 3rem !important;
+  }
+
+  .p-r-xxl-6,
+  .p-x-xxl-6 {
+    padding-right: 3rem !important;
+  }
+
+  .p-b-xxl-6,
+  .p-y-xxl-6 {
+    padding-bottom: 3rem !important;
+  }
+
+  .p-l-xxl-6,
+  .p-x-xxl-6 {
+    padding-left: 3rem !important;
+  }
+
+  .m-xxl-auto {
+    margin: auto !important;
+  }
+
+  .m-t-xxl-auto,
+  .m-y-xxl-auto {
+    margin-top: auto !important;
+  }
+
+  .m-r-xxl-auto,
+  .m-x-xxl-auto {
+    margin-right: auto !important;
+  }
+
+  .m-b-xxl-auto,
+  .m-y-xxl-auto {
+    margin-bottom: auto !important;
+  }
+
+  .m-l-xxl-auto,
+  .m-x-xxl-auto {
     margin-left: auto !important;
   }
 }

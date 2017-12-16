@@ -8,20 +8,12 @@
   <meta name="description"
         content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
   <meta name="author" content="Linder Wang">
-
   <title>
     toc - table of content 算法 &middot; Perfect
   </title>
-
-  <!-- Favicons -->
   <link rel="apple-touch-icon" href="/favicon.png">
   <link rel="icon" href="/favicon.ico">
-
-  <!-- Perfect CSS -->
   <link href="/assets/css/perfect.css" rel="stylesheet">
-
-  
-
 </head>
 <body>
   <h3>table of content 算法思想</h3>
@@ -33,16 +25,13 @@
   比如页面中给出 ['h2', 'h2', 'h3', 'h4', 'h1', 'h1', 'h1', 'h2', 'h3', 'h2', 'h4', 'h2', 'h5', 'h3', 'h3', 'h4', 'h6', 'h2', 'h1'];
 </p>
 <p>则显示的结果为</p>
-
 <div id="toc"></div>
-
 <script>
   // 根据 h1 到 h6 来动态生成目录结构，此算法比较复杂，也比较优雅，利用树结构来实现
   // 实现过程比较简单，但构思巧妙，首先初始化根节点树，然后遍历每一个节点，如果级别一样，则说明是相同的父节点
   // 如果当前级别小于前一个，则作为前一个的儿子，如果当前级别大于前一个，则向上查找共同的祖先节点，
   // 遍历过程中以当前节点为基准，用到了引用和父子间的关系
   const arr = ['h2', 'h2', 'h3', 'h4', 'h1', 'h1', 'h1', 'h2', 'h3', 'h2', 'h4', 'h2', 'h5', 'h3', 'h3', 'h4', 'h6', 'h2', 'h1'];
-
   //初始化根节点
   const tocs = {
     level: 0,
@@ -52,7 +41,6 @@
     text: null,
     root: true
   };
-
   let currentToc = null;
   arr.forEach(function (item, index) {
     let toc = null;
@@ -104,7 +92,6 @@
     }
     currentToc = toc;
   });
-
   function generateToc(nodes, prefix) {
     var html = '';
     if (nodes && nodes.length > 0) {
@@ -116,21 +103,15 @@
         if (node.children && node.children.length > 0) {
           html += generateToc(node.children, prefix + (i + 1) + '-');
         }
-
         html += '  </li>\n';
       }
       html += '</ul>';
     }
     return html;
   }
-
   const tocPrefix = 'toc-';
   const html = generateToc(tocs.children, tocPrefix);
-
   document.getElementById('toc').innerHTML = html;
-
-
 </script>
-
 </body>
 </html>

@@ -40,6 +40,7 @@
 * [foundation](http://foundation.zurb.com/)
 * [Material Design](https://material.io/)
 * [animate.css](https://daneden.github.io/animate.css/)
+* [anijs 动画库](http://anijs.github.io/)
 * [muse-ui](http://www.muse-ui.org/)
 * [Loaders.css](https://connoratherton.com/loaders)
 * [Pure.css](http://purecss.io/)

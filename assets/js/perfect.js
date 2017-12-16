@@ -247,7 +247,7 @@ exports.default = util;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CatalogueSpy = exports.ScrollSpy = undefined;
+exports.Ripple = exports.CatalogueSpy = exports.ScrollSpy = undefined;
 
 var _scrollSpy = __webpack_require__(2);
 
@@ -257,10 +257,15 @@ var _catalogueSpy = __webpack_require__(3);
 
 var _catalogueSpy2 = _interopRequireDefault(_catalogueSpy);
 
+var _ripple = __webpack_require__(4);
+
+var _ripple2 = _interopRequireDefault(_ripple);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.ScrollSpy = _scrollSpy2.default;
 exports.CatalogueSpy = _catalogueSpy2.default;
+exports.Ripple = _ripple2.default;
 
 /***/ }),
 /* 2 */
@@ -985,6 +990,960 @@ var _initialiseProps = function _initialiseProps() {
 };
 
 exports.default = CatalogueSpy;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _component = __webpack_require__(5);
+
+var _component2 = _interopRequireDefault(_component);
+
+var _util = __webpack_require__(6);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// 定义常量
+var classes = {
+  ELEMENT: 'ripple-impact',
+  UNBOUNDED: 'ripple-unbounded',
+  FOCUSED: 'ripple-impact-focused',
+  ACTIVE: 'ripple-impact-active',
+  INACTIVE: 'ripple-impact-inactive'
+};
+
+var cssVar = {
+  VAR_SIZE: '--ripple-size',
+  VAR_LEFT: '--ripple-left',
+  VAR_TOP: '--ripple-top',
+  VAR_SCALE: '--ripple-scale',
+  VAR_TRANSLATE_START: '--ripple-translate-start',
+  VAR_TRANSLATE_END: '--ripple-translate-end'
+};
+
+var numbers = {
+  PADDING: 10, // 波纹 padding
+  INITIAL_ORIGIN_SCALE: 0.6, // 初始波纹缩放比例
+  DEACTIVATION_TIMEOUT_MS: 225, // 从活动状态到结束持续的时间，看 scss 变量 $ripple-translate-duration
+  DEACTIVATION_MS: 150 // 非活动状态到结束持续的时间，看 scss 变量 $ripple-fade-out-duration
+};
+
+// 非活动状态和活动状态对应
+var DEACTIVATION_ACTIVATION_PAIRS = {
+  mouseup: 'mousedown',
+  pointerup: 'pointerdown',
+  touchend: 'touchstart',
+  keyup: 'keydown',
+  blur: 'focus'
+};
+
+var Ripple = function (_Component) {
+  _inherits(Ripple, _Component);
+
+  _createClass(Ripple, null, [{
+    key: 'mount',
+
+
+    /**
+     * 静态方法实例化 Ripple 组件
+     * @param element
+     * @param isUnbounded
+     * @returns {Ripple}
+     */
+    value: function mount(element) {
+      var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+          _ref$isUnbounded = _ref.isUnbounded,
+          isUnbounded = _ref$isUnbounded === undefined ? undefined : _ref$isUnbounded;
+
+      var ripple = new Ripple(element);
+      if (isUnbounded !== undefined) {
+        ripple.unbounded = /** @type {boolean} */isUnbounded;
+      }
+      return ripple;
+    }
+
+    /**
+     * @param {Ripple} instance
+     * @return {RippleAdapter}
+     */
+
+  }, {
+    key: 'createAdapter',
+    value: function createAdapter(instance) {
+      var matches = (0, _util.getMatchesProperty)(HTMLElement.prototype);
+
+      // 封装一些适配器方法
+      return {
+        isSupportsCssVars: function isSupportsCssVars() {
+          return (0, _util.supportsCssVariables)(window);
+        },
+        isUnbounded: function isUnbounded() {
+          return instance.unbounded;
+        },
+        isActive: function isActive() {
+          return instance.element[matches](':active');
+        },
+        isDisabled: function isDisabled() {
+          return instance.disabled;
+        },
+        addClass: function addClass(className) {
+          return instance.element.classList.add(className);
+        },
+        removeClass: function removeClass(className) {
+          return instance.element.classList.remove(className);
+        },
+        registerImpactHandler: function registerImpactHandler(evtType, handler) {
+          return instance.element.addEventListener(evtType, handler, (0, _util.applyPassive)());
+        },
+        deregisterImpactHandler: function deregisterImpactHandler(evtType, handler) {
+          return instance.element.removeEventListener(evtType, handler, (0, _util.applyPassive)());
+        },
+        registerResizeHandler: function registerResizeHandler(handler) {
+          return window.addEventListener('resize', handler);
+        },
+        deregisterResizeHandler: function deregisterResizeHandler(handler) {
+          return window.removeEventListener('resize', handler);
+        },
+        updateCssVariable: function updateCssVariable(varName, value) {
+          return instance.element.style.setProperty(varName, value);
+        },
+        removeCssVariable: function removeCssVariable(varName) {
+          return instance.element.style.removeProperty(varName);
+        },
+        computeBoundingRect: function computeBoundingRect() {
+          return instance.element.getBoundingClientRect();
+        },
+        getWindowPageOffset: function getWindowPageOffset() {
+          return { x: window.pageXOffset, y: window.pageYOffset };
+        }
+      };
+    }
+
+    /**
+     * 重置 Ripple 活动状态
+     * @returns {}
+     */
+
+  }, {
+    key: 'resetActivationState',
+    value: function resetActivationState() {
+      return {
+        isActivated: false, // 当前是否为活动状态
+        hasDeactivationUXRun: false, // 是否有取消激活运行状态
+        wasActivatedByPointer: false, // 是否是通过鼠标或触摸来激活(也可以调用方法激活)
+        wasElementMadeActive: false, // 元素是否处于活动状态，即 element.matches(':active') 为 true
+        activationStartTime: 0, // 开始时间
+        activationEvent: null, // 当前事件对象 event
+        isProgrammatic: false // 是否在当前活动进程中
+      };
+    }
+  }]);
+
+  function Ripple() {
+    var _ref2;
+
+    _classCallCheck(this, Ripple);
+
+    for (var _len = arguments.length, config = Array(_len), _key = 0; _key < _len; _key++) {
+      config[_key] = arguments[_key];
+    }
+
+    // 用来处理是否设置了 disabled
+    var _this = _possibleConstructorReturn(this, (_ref2 = Ripple.__proto__ || Object.getPrototypeOf(Ripple)).call.apply(_ref2, [this].concat(config)));
+
+    _this.disabled = false;
+
+    // 是否是无界限的 Ripple
+    _this.unbounded = false;
+
+    // 创建适配器
+    _this.adapter = Ripple.createAdapter(_this);
+
+    // 用来处理 requestAnimationFrame 返回的值
+    _this.layoutFrame = 0;
+
+    // Ripple Rect size
+    _this.rippleSize = { width: 0, height: 0 };
+
+    // 初始化 Ripple 默认活动状态
+    _this.activationState = Ripple.resetActivationState();
+
+    // 动画持续的时长
+    _this.duration = 0;
+
+    //
+    _this.initialSize = 0;
+
+    // 波纹扩散最大的圆弧
+    _this.maxRadius = 0;
+
+    // 无解限制坐标
+    _this.unboundedCoords = {
+      left: 0,
+      top: 0
+    };
+
+    // 缩放比例
+    _this.scale = 0;
+
+    // activation setTimeout Id
+    _this.activationTimer = null;
+
+    // deactivation removal setTimeout Id
+    _this.deactivationRemovalTimer = null;
+
+    // 动画是否结束
+    _this.activationAnimationHasEnded = false;
+
+    // activation setTimeout 函数
+    _this.activationTimerCallback = function () {
+      _this.activationAnimationHasEnded = true;
+      _this.runDeactivationAnimation();
+    };
+
+    // 事件与监听函数名称对应
+    _this.listenerInfos = [{ activate: 'touchstart', deactivate: 'touchend' }, { activate: 'pointerdown', deactivate: 'pointerup' }, { activate: 'mousedown', deactivate: 'mouseup' }, { activate: 'keydown', deactivate: 'keyup' }, { focus: 'focus', blur: 'blur' }];
+
+    // 监听函数 Map
+    _this.listeners = {
+      activate: function activate(e) {
+        return _this.activate(e);
+      },
+      deactivate: function deactivate(e) {
+        return _this.deactivate(e);
+      },
+      focus: function focus() {
+        return requestAnimationFrame(function () {
+          return _this.adapter.addClass(classes.FOCUSED);
+        });
+      },
+      blur: function blur() {
+        return requestAnimationFrame(function () {
+          return _this.adapter.removeClass(classes.FOCUSED);
+        });
+      }
+    };
+
+    _this._init();
+    return _this;
+  }
+
+  // /**
+  //  * @returns {boolean}
+  //  */
+  // get unbounded() {
+  //   return this.unbounded;
+  // }
+  //
+  // /**
+  //  * @param {boolean} unbounded
+  //  */
+  // set unbounded(unbounded) {
+  //   const {UNBOUNDED} = classes;
+  //   this.unbounded = Boolean(unbounded);
+  //   if (this.unbounded) {
+  //     this.element.classList.add(UNBOUNDED);
+  //   } else {
+  //     this.element.classList.remove(UNBOUNDED);
+  //   }
+  // }
+
+  // 是否支持 css 变量
+
+
+  _createClass(Ripple, [{
+    key: 'isSupported',
+    value: function isSupported() {
+      return this.adapter.isSupportsCssVars();
+    }
+
+    // 初始化组件
+
+  }, {
+    key: '_init',
+    value: function _init() {
+      var _this2 = this;
+
+      if (!this.isSupported()) {
+        return;
+      }
+
+      this.addEventListeners();
+
+      var ELEMENT = classes.ELEMENT,
+          UNBOUNDED = classes.UNBOUNDED;
+
+      requestAnimationFrame(function () {
+        _this2.adapter.addClass(ELEMENT);
+        if (_this2.adapter.isUnbounded()) {
+          _this2.adapter.addClass(UNBOUNDED);
+        }
+        _this2.layoutInternal();
+      });
+    }
+
+    /**
+     * 重新布局，重置波纹参数
+     * 比如当窗口改变时，调用该方法
+     */
+
+  }, {
+    key: 'layout',
+    value: function layout() {
+      var _this3 = this;
+
+      if (this.layoutFrame) {
+        cancelAnimationFrame(this.layoutFrame);
+      }
+      this.layoutFrame = requestAnimationFrame(function () {
+        _this3.layoutInternal();
+        _this3.layoutFrame = 0;
+      });
+    }
+
+    // 初始化波纹个参数
+
+  }, {
+    key: 'layoutInternal',
+    value: function layoutInternal() {
+      this.rippleRect = this.adapter.computeBoundingRect();
+      var _rippleRect = this.rippleRect,
+          width = _rippleRect.width,
+          height = _rippleRect.height;
+
+      // 波纹大小
+
+      var maxDim = Math.max(width, height);
+      // 波纹直径
+      var diameter = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+
+      // 初始波纹大小，取波纹大小的 60%
+      this.initialSize = maxDim * numbers.INITIAL_ORIGIN_SCALE;
+
+      // 波纹扩散圆弧，直径 + padding
+      this.maxRadius = diameter + numbers.PADDING;
+      // 计算缩放比例
+      this.scale = this.maxRadius / this.initialSize;
+      this.duration = 1000 * Math.sqrt(this.maxRadius / 1024);
+      this.updateCssVariableValue();
+    }
+  }, {
+    key: 'updateCssVariableValue',
+    value: function updateCssVariableValue() {
+      var VAR_SIZE = cssVar.VAR_SIZE,
+          VAR_LEFT = cssVar.VAR_LEFT,
+          VAR_TOP = cssVar.VAR_TOP,
+          VAR_SCALE = cssVar.VAR_SCALE;
+
+
+      this.adapter.updateCssVariable(VAR_SIZE, this.initialSize + 'px');
+      this.adapter.updateCssVariable(VAR_SCALE, this.scale);
+
+      if (this.adapter.isUnbounded()) {
+        var _rippleRect2 = this.rippleRect,
+            width = _rippleRect2.width,
+            height = _rippleRect2.height;
+
+        this.unboundedCoords = {
+          left: Math.round(width / 2 - this.initialSize / 2),
+          top: Math.round(height / 2 - this.initialSize / 2)
+        };
+
+        this.adapter.updateCssVariable(VAR_LEFT, this.unboundedCoords.left + 'px');
+        this.adapter.updateCssVariable(VAR_TOP, this.unboundedCoords.top + 'px');
+      }
+    }
+
+    // 设置监听事件
+
+  }, {
+    key: 'addEventListeners',
+    value: function addEventListeners() {
+      var _this4 = this;
+
+      this.listenerInfos.forEach(function (info) {
+        Object.keys(info).forEach(function (k) {
+          _this4.adapter.registerImpactHandler(info[k], _this4.listeners[k]);
+        });
+      });
+
+      // 注册 resize 事件
+      this.adapter.registerResizeHandler(this.layout);
+    }
+
+    // 删除事件
+
+  }, {
+    key: 'removeEventListeners',
+    value: function removeEventListeners() {
+      var _this5 = this;
+
+      this.listenerInfos.forEach(function (info) {
+        Object.keys(info).forEach(function (k) {
+          _this5.adapter.deregisterImpactHandler(info[k], _this5.listeners[k]);
+        });
+      });
+      this.adapter.deregisterResizeHandler(this.layout);
+    }
+
+    /**
+     * 当 Ripple 处于活动状态时
+     * 对应的事件有 touchstart pointerdown mousedown keydown
+     * @param {Event} e
+     * @private
+     */
+
+  }, {
+    key: 'activate',
+    value: function activate(e) {
+      var _this6 = this;
+
+      if (this.adapter.isDisabled()) {
+        return;
+      }
+
+      var activationState = this.activationState;
+
+      if (activationState.isActivated) {
+        return;
+      }
+
+      activationState.isActivated = true;
+      activationState.isProgrammatic = e === null;
+      activationState.activationEvent = e;
+      activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown';
+      activationState.activationStartTime = Date.now();
+
+      requestAnimationFrame(function () {
+        // 对于 keydown 事件需要判断是否当前为活动状态，即 element.matches(':active')
+        // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
+        // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
+        activationState.wasElementMadeActive = e && e.type === 'keydown' ? _this6.adapter.isActive() : true;
+        if (activationState.wasElementMadeActive) {
+          _this6.animateActivation();
+        } else {
+          // 如果元素没有被激活，重置 Ripple 状态
+          _this6.activationState = Ripple.resetActivationState();
+        }
+      });
+    }
+
+    // 处理 Ripple 动画
+
+  }, {
+    key: 'animateActivation',
+    value: function animateActivation() {
+      var _this7 = this;
+
+      var VAR_TRANSLATE_START = cssVar.VAR_TRANSLATE_START,
+          VAR_TRANSLATE_END = cssVar.VAR_TRANSLATE_END;
+      var ACTIVE = classes.ACTIVE,
+          INACTIVE = classes.INACTIVE;
+      var DEACTIVATION_TIMEOUT_MS = numbers.DEACTIVATION_TIMEOUT_MS;
+
+
+      var translateStart = '';
+      var translateEnd = '';
+
+      if (!this.adapter.isUnbounded()) {
+        var _getTranslationCoords = this.getTranslationCoords(),
+            startPoint = _getTranslationCoords.startPoint,
+            endPoint = _getTranslationCoords.endPoint;
+
+        translateStart = startPoint.x + 'px, ' + startPoint.y + 'px';
+        translateEnd = endPoint.x + 'px, ' + endPoint.y + 'px';
+      }
+
+      this.adapter.updateCssVariable(VAR_TRANSLATE_START, translateStart);
+      this.adapter.updateCssVariable(VAR_TRANSLATE_END, translateEnd);
+      // 取消进行中的 activation 和 deactivation
+      clearTimeout(this.activationTimer);
+      clearTimeout(this.deactivationRemovalTimer);
+      this.rmActivationClasses();
+      this.adapter.removeClass(INACTIVE);
+
+      // 强制重绘，触发动画
+      this.adapter.computeBoundingRect();
+      this.adapter.addClass(ACTIVE);
+      this.activationTimer = setTimeout(function () {
+        return _this7.activationTimerCallback();
+      }, DEACTIVATION_TIMEOUT_MS);
+    }
+
+    /**
+     * 返回Translation 开始和结束坐标
+     * @returns {{startPoint: ({x: number, y: number}|*), endPoint: {x: number, y: number}}}
+     */
+
+  }, {
+    key: 'getTranslationCoords',
+    value: function getTranslationCoords() {
+      var activationState = this.activationState;
+      var activationEvent = activationState.activationEvent,
+          wasActivatedByPointer = activationState.wasActivatedByPointer;
+      var _rippleRect3 = this.rippleRect,
+          width = _rippleRect3.width,
+          height = _rippleRect3.height;
+
+
+      var startPoint = void 0;
+      if (wasActivatedByPointer) {
+        startPoint = (0, _util.getNormalizedEventCoords)(activationEvent, this.adapter.getWindowPageOffset(), this.adapter.computeBoundingRect());
+      } else {
+        startPoint = {
+          x: width / 2,
+          y: height / 2
+        };
+      }
+      // Center the element around the start point.
+      startPoint = {
+        x: startPoint.x - this.initialSize / 2,
+        y: startPoint.y - this.initialSize / 2
+      };
+
+      var endPoint = {
+        x: width / 2 - this.initialSize / 2,
+        y: height / 2 - this.initialSize / 2
+      };
+
+      return { startPoint: startPoint, endPoint: endPoint };
+    }
+
+    /**
+     * 运行 Deactivation 动画
+     */
+
+  }, {
+    key: 'runDeactivationAnimation',
+    value: function runDeactivationAnimation() {
+      var _this8 = this;
+
+      var INACTIVE = classes.INACTIVE;
+      var _activationState = this.activationState,
+          hasDeactivationUXRun = _activationState.hasDeactivationUXRun,
+          isActivated = _activationState.isActivated;
+
+      var activationHasEnded = hasDeactivationUXRun || !isActivated;
+      if (activationHasEnded && this.activationAnimationHasEnded) {
+        this.rmActivationClasses();
+        this.adapter.addClass(INACTIVE);
+        this.deactivationRemovalTimer = setTimeout(function () {
+          _this8.adapter.removeClass(INACTIVE);
+        }, numbers.DEACTIVATION_MS);
+      }
+    }
+
+    /**
+     * 删除活动状态
+     */
+
+  }, {
+    key: 'rmActivationClasses',
+    value: function rmActivationClasses() {
+      var ACTIVE = classes.ACTIVE;
+
+      this.adapter.removeClass(ACTIVE);
+      this.activationAnimationHasEnded = false;
+      this.adapter.computeBoundingRect();
+    }
+
+    /**
+     * 取消活动状态事件
+     * @param e
+     * @private
+     */
+
+  }, {
+    key: 'deactivate',
+    value: function deactivate(e) {
+      var _this9 = this;
+
+      var activationState = this.activationState;
+      // 如果当前不是活动状态，则取消
+
+      if (!activationState.isActivated) {
+        return;
+      }
+      // 如果是进行中的取消过程
+      if (activationState.isProgrammatic) {
+        var evtObject = null;
+        var _state = _extends({}, activationState);
+        requestAnimationFrame(function () {
+          return _this9.animateDeactivation(evtObject, _state);
+        });
+        this.activationState = Ripple.resetActivationState();
+        return;
+      }
+
+      var actualActivationType = DEACTIVATION_ACTIVATION_PAIRS[e.type];
+      var expectedActivationType = activationState.activationEvent.type;
+      // NOTE: Pointer events are tricky - https://patrickhlauke.github.io/touch/tests/results/
+      // Essentially, what we need to do here is decouple the deactivation UX from the actual
+      // deactivation state itself. This way, touch/pointer events in sequence do not trample one
+      // another.
+      var needsDeactivationUX = actualActivationType === expectedActivationType;
+      var needsActualDeactivation = needsDeactivationUX;
+      if (activationState.wasActivatedByPointer) {
+        needsActualDeactivation = e.type === 'mouseup';
+      }
+
+      var state = _extends({}, activationState);
+      requestAnimationFrame(function () {
+        if (needsDeactivationUX) {
+          _this9.activationState.hasDeactivationUXRun = true;
+          _this9.animateDeactivation(e, state);
+        }
+
+        if (needsActualDeactivation) {
+          _this9.activationState = Ripple.resetActivationState();
+        }
+      });
+    }
+
+    /**
+     * @param {Event} e
+     * @param {!ActivationStateType} options
+     * @private
+     */
+
+  }, {
+    key: 'animateDeactivation',
+    value: function animateDeactivation(e, _ref3) {
+      var wasActivatedByPointer = _ref3.wasActivatedByPointer,
+          wasElementMadeActive = _ref3.wasElementMadeActive;
+      var FOCUSED = classes.FOCUSED;
+
+      if (wasActivatedByPointer || wasElementMadeActive) {
+        // Remove class left over by element being focused
+        this.adapter.removeClass(FOCUSED);
+        this.runDeactivationAnimation();
+      }
+    }
+  }]);
+
+  return Ripple;
+}(_component2.default);
+
+exports.default = Ripple;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * 组件接口，所有的组件都应该继承该组件
+ */
+var Component = function () {
+  _createClass(Component, null, [{
+    key: 'mount',
+
+
+    /**
+     * 提供静态方法，用来挂载实例化组件
+     * 子组件可以覆盖该方法
+     * @param element
+     * @returns {Component}
+     */
+    value: function mount(element) {
+      return new Component(element);
+    }
+  }]);
+
+  function Component(element) {
+    _classCallCheck(this, Component);
+
+    this.element = element;
+    // 设置 config 到 this 上
+
+    for (var _len = arguments.length, config = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      config[_key - 1] = arguments[_key];
+    }
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = config[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var key = _step.value;
+
+        this[key] = config[key];
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+
+    this.init();
+  }
+
+  _createClass(Component, [{
+    key: 'init',
+    value: function init() {}
+    // 初始化
+    // 子组件可以覆盖该方法，具体实现要初始化的内容
+
+
+    // 卸载组件
+
+  }, {
+    key: 'unmount',
+    value: function unmount() {}
+    // 子组件可以盖该方法
+
+
+    /**
+     * 公共方法，添加注册事件
+     * @param evtType
+     * @param handler
+     */
+
+  }, {
+    key: 'listen',
+    value: function listen(evtType, handler) {
+      this.element.addEventListener(evtType, handler);
+    }
+
+    /**
+     * 公共方法，卸载已注册的事件
+     * @param evtType
+     * @param handler
+     */
+
+  }, {
+    key: 'unlisten',
+    value: function unlisten(evtType, handler) {
+      this.element.removeEventListener(evtType, handler);
+    }
+
+    /**
+     * 公共方法，创建并分发事件
+     * @param evtType 事件名称
+     * @param detail 当事件初始化时传递的数据
+     * @param bubbles 表明该事件是否会冒泡
+     * @param cancelable 表明该事件是否可以被取消
+     */
+
+  }, {
+    key: 'emit',
+    value: function emit(evtType, detail) {
+      var bubbles = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var cancelable = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+      var evt = void 0;
+      if (typeof CustomEvent === 'function') {
+        evt = new CustomEvent(evtType, {
+          detail: detail,
+          bubbles: bubbles,
+          cancelable: cancelable
+        });
+      } else {
+        evt = document.createEvent('CustomEvent');
+        evt.initCustomEvent(evtType, bubbles, cancelable, detail);
+      }
+
+      this.element.dispatchEvent(evt);
+    }
+  }]);
+
+  return Component;
+}();
+
+exports.default = Component;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * 是否支持 css 变量（css 自定义属性）
+ * @private {boolean|undefined}
+ */
+var supportsCssVariables_ = void 0;
+
+/**
+ * 是否支持事件 passive
+ * https://www.cnblogs.com/ziyunfei/p/5545439.html
+ * https://github.com/WICG/EventListenerOptions
+ * @private {boolean|undefined}
+ */
+var supportsPassive_ = void 0;
+
+/**
+ * 对于 Edge 15 浏览器，伪类设置 css 变量存在 bug
+ * @param {!Window} windowObj
+ * @return {boolean}
+ */
+function detectEdgePseudoVarBug(windowObj) {
+  // Detect versions of Edge with buggy var() support
+  // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
+  var document = windowObj.document;
+  var node = document.createElement('div');
+  node.className = 'ripple-test-edge-var-bug';
+  document.body.appendChild(node);
+
+  // The bug exists if ::before style ends up propagating to the parent element.
+  // Additionally, getComputedStyle returns null in iframes with display: "none" in Firefox,
+  // but Firefox is known to support CSS custom properties correctly.
+  // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
+  var computedStyle = windowObj.getComputedStyle(node);
+  var hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
+  node.remove();
+  return hasPseudoVarBug;
+}
+
+/**
+ * 判断是否支持 css 变量
+ * https://caniuse.com/#feat=css-variables
+ * 当前支持的浏览器有：
+ * Edge 15+ (15对于伪类有 bug)、Firefox 31+ 、Chrome 49+ 、Safari 9.1+、Opera 36+
+ * IOS Safari 9.3+ 、(Android 5+: Chromium 62+ Opera 37+ Chrome 62+ FireFox 57+ )
+ * @param {!Window} windowObj
+ * @param {boolean=} forceRefresh
+ * @return {boolean|undefined}
+ */
+
+function supportsCssVariables(windowObj) {
+  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  if (typeof supportsCssVariables_ === 'boolean' && !forceRefresh) {
+    return supportsCssVariables_;
+  }
+
+  var supportsFunctionPresent = windowObj.CSS && typeof windowObj.CSS.supports === 'function';
+  if (!supportsFunctionPresent) {
+    return;
+  }
+
+  var explicitlySupportsCssVars = windowObj.CSS.supports('--css-vars', 'yes');
+  // See: https://bugs.webkit.org/show_bug.cgi?id=154669
+  // See: README section on Safari
+  var weAreFeatureDetectingSafari10plus = windowObj.CSS.supports('(--css-vars: yes)') && windowObj.CSS.supports('color', '#00000000');
+
+  if (explicitlySupportsCssVars || weAreFeatureDetectingSafari10plus) {
+    supportsCssVariables_ = !detectEdgePseudoVarBug(windowObj);
+  } else {
+    supportsCssVariables_ = false;
+  }
+  return supportsCssVariables_;
+}
+
+/**
+ * 判断浏览器是否支持 passive 事件监听，如果支持，则使用
+ * https://www.cnblogs.com/ziyunfei/p/5545439.html
+ * https://github.com/WICG/EventListenerOptions
+ * @param {!Window=} globalObj
+ * @param {boolean=} forceRefresh
+ * @return {boolean|{passive: boolean}}
+ */
+function applyPassive() {
+  var globalObj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window;
+  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  if (supportsPassive_ === undefined || forceRefresh) {
+    var isSupported = false;
+    try {
+      /*eslint-disable getter-return*/
+      globalObj.document.addEventListener('test', null, { get passive() {
+          isSupported = true;
+        } });
+    } catch (e) {
+      /* 不支持*/
+    }
+
+    supportsPassive_ = isSupported;
+  }
+
+  return supportsPassive_ ? { passive: true } : false;
+}
+
+/**
+ * 使用 matches (老版本使用 webkitMatchesSelector, msMatchesSelector) 来测试一个选择器是否被浏览器支持，比如 :active 等
+ * @param {!Object} HTMLElementPrototype
+ * @return {!Array<string>}
+ */
+function getMatchesProperty(HTMLElementPrototype) {
+  return ['webkitMatchesSelector', 'msMatchesSelector', 'matches'].filter(function (p) {
+    return p in HTMLElementPrototype;
+  }).pop();
+}
+
+/**
+ * 返回事件基于元素左上角偏移坐标值
+ * @param {!Event} ev
+ * @param {!{x: number, y: number}} pageOffset
+ * @param {!ClientRect} clientRect
+ * @return {!{x: number, y: number}}
+ */
+function getNormalizedEventCoords(ev, pageOffset, clientRect) {
+  var x = pageOffset.x,
+      y = pageOffset.y;
+
+  var documentX = x + clientRect.left;
+  var documentY = y + clientRect.top;
+
+  var normalizedX = void 0;
+  var normalizedY = void 0;
+  // Determine touch point relative to the ripple container.
+  if (ev.type === 'touchstart') {
+    normalizedX = ev.changedTouches[0].pageX - documentX;
+    normalizedY = ev.changedTouches[0].pageY - documentY;
+  } else {
+    normalizedX = ev.pageX - documentX;
+    normalizedY = ev.pageY - documentY;
+  }
+
+  return { x: normalizedX, y: normalizedY };
+}
+
+exports.supportsCssVariables = supportsCssVariables;
+exports.applyPassive = applyPassive;
+exports.getMatchesProperty = getMatchesProperty;
+exports.getNormalizedEventCoords = getNormalizedEventCoords;
 
 /***/ })
 /******/ ]);
