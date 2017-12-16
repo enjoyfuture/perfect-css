@@ -36,12 +36,12 @@ module Jekyll
         else
           # 输出错误
           raise SyntaxError.new <<-eos
-语法错误：在 'example' 中，由于 markup 不是这四种情况，name, name attr, name attr=value or name attr="<quoted list>"
+            语法错误：在 'example' 中，由于 markup 不是这四种情况，name, name attr, name attr=value or name attr="<quoted list>"
 
-  #{markup}
+              #{markup}
 
-请检查 example <lang> 格式
-eos
+            请检查 example <lang> 格式
+            eos
         end
       end
 

@@ -8,20 +8,12 @@
   <meta name="description"
         content="Perfect is a popular CSS framework based on the modern browser. It can bring you perfect experience and the newest css technology. It is a CSS framework in the future.">
   <meta name="author" content="Linder Wang">
-
   <title>
     Drawer 抽屉布局 &middot; Perfect
   </title>
-
-  <!-- Favicons -->
   <link rel="apple-touch-icon" href="/favicon.png">
   <link rel="icon" href="/favicon.ico">
-
-  <!-- Perfect CSS -->
   <link href="/assets/css/perfect.css" rel="stylesheet">
-
-  
-
 </head>
 <body>
   <header class="navbar navbar-top navbar-expand navbar-primary">
@@ -36,11 +28,9 @@
     </ul>
   </div>
 </header>
-
 <aside id="drawer" class="drawer navbar-top-adjust">
   <nav class="drawer-nav">
     <header class="drawer-header">
-
     </header>
     <nav class="drawer-content">
       <ul class="list">
@@ -78,38 +68,32 @@
     </nav>
   </nav>
 </aside>
-
 <main class="drawer-main">
   <div class="p-4">
     <p>Drawer 组件</p>
     <p>如果左侧菜单固定，可以直接使用 grid 布局来实现</p>
   </div>
 </main>
-
 <script>
   (function () {
     const drawer = document.getElementById('drawer');
     drawer.addEventListener('transitionend', () => {
       drawer.classList.remove('drawer-animating');
     }, false);
-
     document.getElementById('toggleDrawer').addEventListener('click', function (e) {
       drawer.classList.toggle('drawer-open');
       document.body.classList.toggle('drawer-scroll-lock');
       drawer.classList.add('drawer-animating');
     }, false);
-
     drawer.addEventListener('click', function (e) {
       drawer.classList.remove('drawer-open');
       document.body.classList.remove('drawer-scroll-lock');
       drawer.classList.add('drawer-animating');
     }, false);
-
     document.querySelector('.drawer-content').addEventListener('click', function (e) {
       e.stopPropagation();
     }, false);
   })();
 </script>
-
 </body>
 </html>

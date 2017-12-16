@@ -1189,6 +1189,15 @@
   }
 }
 
+.ripple-test-edge-var-bug {
+  --ripple-test-edge-var: 1px solid #000;
+  visibility: hidden;
+}
+
+.ripple-test-edge-var-bug::before {
+  border: var(--ripple-test-edge-var);
+}
+
 .ripple-demo {
   margin: 1rem;
 }
@@ -1523,58 +1532,6 @@
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
 
-@keyframes ripple-radius-in {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-}
-
-@keyframes ripple-radius-out {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@keyframes ripple-opacity-in {
-  from {
-    opacity: 0;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ripple-opacity-out {
-  from {
-    opacity: 1;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
 .btn.btn-customer {
   display: block;
   width: 30%;
@@ -1640,58 +1597,6 @@ fieldset:disabled .btn.btn-customer,
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-
-@keyframes ripple-radius-in {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-}
-
-@keyframes ripple-radius-out {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@keyframes ripple-opacity-in {
-  from {
-    opacity: 0;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ripple-opacity-out {
-  from {
-    opacity: 1;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
 
 .radio-customer .radio-circle-outer {
   border-color: rgba(156, 39, 176, 0.32);
@@ -1779,58 +1684,6 @@ fieldset:disabled .btn.btn-customer,
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
-
-@keyframes ripple-radius-in {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-}
-
-@keyframes ripple-radius-out {
-  from {
-    -webkit-transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-            transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
-  }
-
-  to {
-    -webkit-transform: translate(var(--ripple-translate-start, 0)) scale(1);
-            transform: translate(var(--ripple-translate-start, 0)) scale(1);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-@keyframes ripple-opacity-in {
-  from {
-    opacity: 0;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes ripple-opacity-out {
-  from {
-    opacity: 1;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
 
 .checkbox-customer .checkbox-mark-outer {
   border-color: rgba(233, 30, 99, 0.32);
@@ -2566,167 +2419,6 @@ fieldset:disabled .btn.btn-customer,
 .loading-icon-custom2 > div:nth-child(2) {
   -webkit-animation-delay: -.5s;
           animation-delay: -.5s;
-}
-
-@-webkit-keyframes loading-icon-custom3 {
-  0% {
-    width: 16.8px;
-    height: 16.8px;
-    background: #ffffff;
-  }
-
-  25% {
-    width: 16.8px;
-    height: 16.8px;
-    background: #ffffff;
-  }
-
-  50% {
-    width: 28px;
-    height: 28px;
-    background: #ffffff;
-  }
-
-  75% {
-    width: 16.8px;
-    height: 16.8px;
-    background: #ffffff;
-  }
-
-  100% {
-    width: 16.8px;
-    height: 16.8px;
-    background: #ffffff;
-  }
-}
-
-@keyframes loading-icon-custom3 {
-  0% {
-    width: 16.8px;
-    height: 16.8px;
-    background: #ffffff;
-  }
-
-  25% {
-    width: 16.8px;
-    height: 16.8px;
-    background: #ffffff;
-  }
-
-  50% {
-    width: 28px;
-    height: 28px;
-    background: #ffffff;
-  }
-
-  75% {
-    width: 16.8px;
-    height: 16.8px;
-    background: #ffffff;
-  }
-
-  100% {
-    width: 16.8px;
-    height: 16.8px;
-    background: #ffffff;
-  }
-}
-
-.loading-icon-custom3 {
-  position: relative;
-}
-
-.loading-icon-custom3 > div {
-  position: absolute;
-  border-radius: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-animation: loading-icon-custom3 1s linear infinite;
-          animation: loading-icon-custom3 1s linear infinite;
-}
-
-.loading-icon-custom3 > div:nth-child(1) {
-  top: 100px;
-  left: 170px;
-  -webkit-animation-delay: -0.917s;
-          animation-delay: -0.917s;
-}
-
-.loading-icon-custom3 > div:nth-child(2) {
-  top: 135px;
-  left: 160.622px;
-  -webkit-animation-delay: -0.833s;
-          animation-delay: -0.833s;
-}
-
-.loading-icon-custom3 > div:nth-child(3) {
-  top: 160.622px;
-  left: 135px;
-  -webkit-animation-delay: -0.75s;
-          animation-delay: -0.75s;
-}
-
-.loading-icon-custom3 > div:nth-child(4) {
-  top: 170px;
-  left: 100px;
-  -webkit-animation-delay: -0.667s;
-          animation-delay: -0.667s;
-}
-
-.loading-icon-custom3 > div:nth-child(5) {
-  top: 160.622px;
-  left: 65px;
-  -webkit-animation-delay: -0.583s;
-          animation-delay: -0.583s;
-}
-
-.loading-icon-custom3 > div:nth-child(6) {
-  top: 135px;
-  left: 39.378px;
-  -webkit-animation-delay: -0.5s;
-          animation-delay: -0.5s;
-}
-
-.loading-icon-custom3 > div:nth-child(7) {
-  top: 100px;
-  left: 30px;
-  -webkit-animation-delay: -0.417s;
-          animation-delay: -0.417s;
-}
-
-.loading-icon-custom3 > div:nth-child(8) {
-  top: 65px;
-  left: 39.378px;
-  -webkit-animation-delay: -0.333s;
-          animation-delay: -0.333s;
-}
-
-.loading-icon-custom3 > div:nth-child(9) {
-  top: 39.378px;
-  left: 65px;
-  -webkit-animation-delay: -0.25s;
-          animation-delay: -0.25s;
-}
-
-.loading-icon-custom3 > div:nth-child(10) {
-  top: 30px;
-  left: 100px;
-  -webkit-animation-delay: -0.167s;
-          animation-delay: -0.167s;
-}
-
-.loading-icon-custom3 > div:nth-child(11) {
-  top: 39.378px;
-  left: 135px;
-  -webkit-animation-delay: -0.083s;
-          animation-delay: -0.083s;
-}
-
-.loading-icon-custom3 > div:nth-child(12) {
-  top: 65px;
-  left: 160.622px;
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
 }
 
 /**

@@ -41,3 +41,11 @@ repo_root:        https://github.com/joy-web/perfect-css/tree/master/
 download:
   source:         https://github.com/joy-web/perfect-css/archive/v0.3.0.zip
   dist:           https://github.com/joy-web/perfect-css/releases/download/v0.3.0/perfect-css-0.3.0-dist.zip
+
+# 压缩插件配置，注意该插件不会处理 script 片段中的内容
+# https://github.com/penibelst/jekyll-compress-html
+# 也可以使用其他插件，参见这里 http://jekyllcn.com/docs/plugins/
+compress_html:
+  blanklines: true
+  comments: all
+  profile: true
