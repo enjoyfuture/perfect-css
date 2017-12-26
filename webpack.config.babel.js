@@ -209,48 +209,84 @@ if (isDev) {
     plugins: [
       createCssExtractTextPlugin(),
     ],
+  }, {
+    cache: true, // 开启缓存，增量编译
+    name: 'js-docs',
+    entry: {home: path.resolve('./docs/assets/es6/home.js')},
+    output: {
+      path: path.resolve('docs/assets/js'),
+      filename: '[name].js',
+      libraryTarget: 'umd',
+      library: 'perfectDoc',
+    },
+    devtool: 'eval-source-map', // 生成 eval-source-map 文件
+    module: {
+      rules: [
+        // https://github.com/MoOx/eslint-loader
+        {
+          enforce: 'pre',
+          test: /\.js$/,
+          use: {
+            loader: 'eslint-loader',
+            options: {
+              fix: true, // 自动修复
+              cache: true, // 开启缓存
+              configFile: '.eslintrc.js',
+              emitError: false, // 验证失败，终止
+            },
+          },
+        },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
+        }],
+    },
   });
 }
 
 if (isProd) {
   // TODO js components 待补充
-  // webpackConfig.push({
-  //   cache: true, // 开启缓存，增量编译
-  //   name: 'js-components',
-  //   entry: path.resolve('./components/perfect.js'),
-  //   output: {
-  //     path: path.resolve(isDev ? 'docs/assets/js' : 'build/js'),
-  //     filename: `perfect.${isMin ? 'min.' : ''}js`,
-  //     libraryTarget: 'umd',
-  //     library: 'perfect',
-  //   },
-  //   devtool: 'eval-source-map', // 生成 eval-source-map 文件
-  //   module: {
-  //     rules: [
-  //       // https://github.com/MoOx/eslint-loader
-  //       {
-  //         enforce: 'pre',
-  //         test: /\.js$/,
-  //         use: {
-  //           loader: 'eslint-loader',
-  //           options: {
-  //             fix: true, // 自动修复
-  //             cache: true, // 开启缓存
-  //             configFile: '.eslintrc.js',
-  //             emitError: false, // 验证失败，终止
-  //           },
-  //         },
-  //       },
-  //       {
-  //         test: /\.js$/,
-  //         exclude: /node_modules/,
-  //         loader: 'babel-loader',
-  //         options: {
-  //           cacheDirectory: true,
-  //         },
-  //       }],
-  //   },
-  // });
+  webpackConfig.push({
+    cache: true, // 开启缓存，增量编译
+    name: 'js-components',
+    entry: path.resolve('./components/perfect.js'),
+    output: {
+      path: path.resolve(isDev ? 'docs/assets/js' : 'build/js'),
+      filename: `perfect.${isMin ? 'min.' : ''}js`,
+      libraryTarget: 'umd',
+      library: 'perfect',
+    },
+    devtool: 'eval-source-map', // 生成 eval-source-map 文件
+    module: {
+      rules: [
+        // https://github.com/MoOx/eslint-loader
+        {
+          enforce: 'pre',
+          test: /\.js$/,
+          use: {
+            loader: 'eslint-loader',
+            options: {
+              fix: true, // 自动修复
+              cache: true, // 开启缓存
+              configFile: '.eslintrc.js',
+              emitError: false, // 验证失败，终止
+            },
+          },
+        },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
+        }],
+    },
+  });
 
   webpackConfig.push({
     cache: true, // 开启缓存，增量编译

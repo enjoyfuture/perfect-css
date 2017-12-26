@@ -48,4 +48,3 @@ download:
 compress_html:
   blanklines: true
   comments: all
-  profile: true
