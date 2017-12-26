@@ -601,31 +601,20 @@
     <script>
   (function () {
     const drawer = document.getElementById('drawer');
+    const toggleDrawer = document.getElementById('toggleDrawer');
     drawer.addEventListener('transitionend', () => {
       drawer.classList.remove('drawer-animating');
     }, false);
-    document.getElementById('toggleDrawer').addEventListener('transitionend', () => {
+    toggleDrawer.addEventListener('click', () => {
       const clientWidth = document.documentElement.clientWidth;
       if (clientWidth < 1200) {
-        if (drawer.classList.contains('drawer-open')) {
-          drawer.classList.remove('drawer-open');
-        } else {
-          drawer.classList.add('drawer-open');
-        }
-        if (document.body.classList.contains('drawer-scroll-lock')) {
-          document.body.classList.remove('drawer-scroll-lock');
-        } else {
-          document.body.classList.add('drawer-scroll-lock');
-        }
+        drawer.classList.toggle('drawer-open');
+        document.body.classList.toggle('drawer-scroll-lock');
         drawer.classList.add('drawer-animating');
         drawer.classList.remove('drawer-close');
       } else {
         // 当超过1440px 时，利用该样式，隐藏显示处理
-        if (drawer.classList.contains('drawer-close')) {
-          drawer.classList.remove('drawer-close');
-        } else {
-          drawer.classList.add('drawer-close');
-        }
+        drawer.classList.toggle('drawer-close');
         drawer.classList.add('drawer-animating');
         drawer.classList.remove('drawer-open');
       }

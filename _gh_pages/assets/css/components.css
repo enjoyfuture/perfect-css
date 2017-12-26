@@ -16,6 +16,11 @@
  * $style should be one of the map keys in $theme-property-values (_variables.scss).
  */
 
+.navbar-primary {
+  background-color: #1976d2;
+  background-color: var(--theme-primary-dark, #1976d2);
+}
+
 .drawer-toggle .icon-pure-menu {
   color: rgba(255, 255, 255, 0.7);
   color: var(--theme-light-secondary, rgba(255, 255, 255, 0.7));
@@ -31,8 +36,46 @@
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
 
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
 .footer-assist {
-  padding-top: 4.5rem;
+  margin-top: 3.3125rem;
 }
 
 .footer {
@@ -970,6 +1013,10 @@
 }
 
 .component-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding: 1rem 0;
   margin: 0 1rem;
   border-bottom: 1px dashed;
@@ -1532,28 +1579,80 @@
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
 
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
 .btn.btn-customer {
-  display: block;
-  width: 30%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  height: 3rem;
   border-radius: 2rem;
   font-size: 1rem;
-  color: #fff;
-  background-color: #00e676;
+  line-height: 3rem;
+  color: #8e24aa;
 }
 
-.btn.btn-customer::before,
-.btn.btn-customer::after {
-  background-color: rgba(0, 0, 0, 0.16);
+.btn.btn-customer:hover {
+  color: #8e24aa;
 }
 
-fieldset:disabled .btn.btn-customer,
-.btn.btn-customer:disabled,
-.btn.btn-customer.disabled {
+.btn.btn-customer:not(.btn-raised):not(.btn-unshadow)::before,
+.btn.btn-customer:not(.btn-raised):not(.btn-unshadow)::after {
+  background-color: rgba(142, 36, 170, 0.08);
+}
+
+.btn.btn-customer.btn-raised,
+.btn.btn-customer.btn-unshadow {
+  color: #ffffff;
+  color: var(--theme-light-primary, #ffffff);
+  background-color: #8e24aa;
+}
+
+.btn.btn-customer.btn-raised::before,
+.btn.btn-customer.btn-raised::after,
+.btn.btn-customer.btn-unshadow::before,
+.btn.btn-customer.btn-unshadow::after {
+  background-color: rgba(0, 0, 0, 0.32);
+}
+
+fieldset:disabled .btn.btn-customer.btn-raised,
+.btn.btn-customer.btn-raised:disabled,
+.btn.btn-customer.btn-raised.disabled,
+fieldset:disabled .btn.btn-customer.btn-unshadow,
+.btn.btn-customer.btn-unshadow:disabled,
+.btn.btn-customer.btn-unshadow.disabled {
   color: rgba(0, 0, 0, 0.38);
   color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: #e0e0e0;
 }
 
 /**
