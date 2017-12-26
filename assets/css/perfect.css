@@ -1697,7 +1697,7 @@ legend {
   display: block;
   width: 100%;
   margin-bottom: 0.5rem;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: inherit;
 }
 
@@ -2414,19 +2414,11 @@ mark,
   https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
 **/
 
-.font {
+.font-lg {
   font-size: 1rem !important;
 }
 
-.font-lg {
-  font-size: 1.125rem !important;
-}
-
 .font-sm {
-  font-size: 0.875rem !important;
-}
-
-.font-xs {
   font-size: 0.75rem !important;
 }
 
@@ -8486,18 +8478,53 @@ hr {
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
 
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
 .btn {
   position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: inline-block;
-  min-width: 4rem;
-  padding: 0.375rem 1.25rem;
-  border: 1px solid transparent;
+  min-width: 5rem;
+  height: 2.25rem;
+  padding: 0 1.25rem;
+  border: 0;
   border-radius: 0.125rem;
   overflow: hidden;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 2.25rem;
   background: transparent;
   color: rgba(0, 0, 0, 0.87);
   color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
@@ -8860,8 +8887,8 @@ fieldset:disabled .btn-info.btn-unshadow,
 
 .btn-warning.btn-raised,
 .btn-warning.btn-unshadow {
-  color: #ffffff;
-  color: var(--theme-light-primary, #ffffff);
+  color: rgba(0, 0, 0, 0.87);
+  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
   background-color: #fb8c00;
   background-color: var(--theme-warning, #fb8c00);
 }
@@ -8935,17 +8962,17 @@ fieldset:disabled .btn-error.btn-unshadow,
 
 .btn-lg {
   font-weight: 400;
-  padding: 1rem 1.25rem;
-  border-radius: 4px;
-  font-size: 1.125rem;
-  line-height: 1;
+  height: 2.5rem;
+  border-radius: 0.125rem;
+  font-size: 1rem;
+  line-height: 2.5rem;
 }
 
 .btn-sm {
-  padding: 0.5rem 0.75rem;
-  border-radius: 2px;
+  height: 2rem;
+  border-radius: 0.125rem;
   font-size: 0.75rem;
-  line-height: 1.25;
+  line-height: 2rem;
 }
 
 .btn-full {
@@ -10094,7 +10121,7 @@ a.page-item:hover {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   word-wrap: break-word;
   opacity: 0;
 }
@@ -10609,7 +10636,7 @@ a.page-item:hover {
   display: -ms-inline-flexbox;
   display: inline-flex;
   margin-right: 0.5rem;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: inherit;
   white-space: nowrap;
   color: rgba(0, 0, 0, 0.87);
@@ -10917,8 +10944,6 @@ a.page-item:hover {
   position: sticky;
   top: 0;
   z-index: 100;
-  -webkit-box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
-          box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
 }
 
 .navbar-top-adjust {
@@ -12146,7 +12171,7 @@ th {
 }
 
 .card-title {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
