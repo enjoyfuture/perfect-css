@@ -56,7 +56,7 @@
   &-inner-top,
   &-inner-bottom {
     position:  absolute;
-    font-size: $font-size-xs;
+    font-size: $font-size-sm;
     transform: translateX(50%);
     @include theme-prop(color, secondary-on-light);
   }

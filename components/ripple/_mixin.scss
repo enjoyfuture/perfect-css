@@ -1,12 +1,32 @@
 // ripple mixin 波纹 涟漪
 @import "../animation/variable";
 @import "../theme/variable";
-@import "./keyframe";
-@import "./function";
+@import "keyframe";
+@import "function";
+@import "variable";
+
+$ripple-common-styles: false !default;
+
+// 确保只加载一次
+@if not $ripple-common-styles {
+  $ripple-common-styles: true;
+  @include ripple-keyframes;
+
+  // 用来测试在 Edge 15 下，伪类不支持 css 变量
+  // Styles used to detect buggy behavior of CSS custom properties in Edge.
+  // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
+  .ripple-test-edge-var-bug {
+    #{--ripple-test-edge-var}: 1px solid #000;
+    visibility:                hidden;
+
+    &::before {
+      border: var(--ripple-test-edge-var);
+    }
+  }
+}
 
 // ripple 基本样式
 @mixin ripple-base($opacity: .6) {
-  will-change: transform, opacity;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   // :focus 指获取焦点时，可以通过 tab 键切换或鼠标点击触发该伪类，而 :active 指鼠标点击或键盘按下时触发
@@ -15,8 +35,9 @@
     &:focus::before,
     &:hover::before,
     &:active::after {
-      opacity: $opacity;
-      transition-duration: 85ms;
+      opacity:             $opacity;
+      transition-duration: $states-wash-duration;
+      will-change:         transform, opacity;
     }
   }
 }
@@ -38,7 +59,7 @@
       $theme-value: map-get($theme-assist-colors, $theme-style);
     }
 
-    @if($theme-value == null) {
+    @if ($theme-value == null) {
       @error "无效的主题属性值，#{$theme-style} 必须是以下的某一 key #{map-keys($theme-property-values)}, #{map-keys($theme-contrast-tone-property-values)}, #{map-keys($theme-assist-colors)} ";
     }
 
@@ -80,15 +101,15 @@
 @mixin ripple-bg-base($config) {
   $radius: map-get($config, radius);
   @include ripple-theme($config);
-  position: absolute;
-  top: calc(50% - #{$radius});
-  left: calc(50% - #{$radius});
-  width: $radius * 2;
-  height: $radius * 2;
-  border-radius: 50%;
+  position:       absolute;
+  top:            calc(50% - #{$radius});
+  left:           calc(50% - #{$radius});
+  width:          $radius * 2;
+  height:         $radius * 2;
+  border-radius:  50%;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 250ms linear;
+  opacity:        0;
+  transition:     opacity $ripple-translate-duration linear;
 }
 
 // 处理 ripple 背景
@@ -114,21 +135,19 @@
 // 设置 ripple 基本变量，这些变量会根据调用的组件大小和位置，动态的修改其值
 // 需要借助 JavaScript 来实现
 @mixin ripple-impact() {
-  #{--ripple-width}: 0;
-  #{--ripple-height}: 0;
-  #{--ripple-size}: 0;
-  #{--ripple-left}: 0;
-  #{--ripple-top}: 0;
-  #{--ripple-scale}: 1;
-  #{--ripple-translate-end}: 0;
+  #{--ripple-size}:            0;
+  #{--ripple-left}:            0;
+  #{--ripple-top}:             0;
+  #{--ripple-scale}:           1;
+  #{--ripple-translate-end}:   0;
   #{--ripple-translate-start}: 0;
 
   // 当 :active 时，显示背景
   // 当 :focus 时，添加该样式 ripple-impact-focused
   &.ripple-impact-focused::after,
   &:active::after {
-    opacity: .6;
-    transition-duration: 85ms;
+    opacity:             .6;
+    transition-duration: $ripple-fade-in-duration;
   }
 }
 
@@ -138,24 +157,23 @@
   $radius: map-get($config, radius);
 
   &#{$pseudo} {
-    top: 0;
-    left: 0;
-    width: $radius;
-    width: var(--ripple-size, $radius);
-    height: $radius;
-    height: var(--ripple-size, $radius);
-    transform: scale(0);
+    top:              0;
+    left:             0;
+    width:            var(--ripple-size, $radius);
+    height:           var(--ripple-size, $radius);
+    transform:        scale(0);
     transform-origin: center center;
   }
 
   // 活动态
   &.ripple-impact-active#{$pseudo} {
-    animation: 300ms ripple-radius-in forwards, 83ms ripple-opacity-in forwards;
+    animation: $ripple-translate-duration ripple-radius-in forwards, $ripple-fade-in-duration ripple-opacity-in forwards;
   }
 
   // 取消活动态
   &.ripple-impact-inactive#{$pseudo} {
-    animation: 300ms ripple-radius-out forwards, 83ms ripple-opacity-out forwards;
+    transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
+    animation: $ripple-fade-out-duration ripple-opacity-out forwards;
   }
 }
 
@@ -171,29 +189,20 @@
     overflow: visible;
 
     &::after {
-      top: calc(50% - #{$radius / 2});
-      top: var(--ripple-top, calc(50% - #{$radius / 2}));
-      left: calc(50% - #{$radius / 2});
-      left: var(--ripple-left, calc(50% - #{$radius / 2}));
-      width: $radius;
-      width: var(--ripple-size, $radius);
-      height: $radius;
+      top:    var(--ripple-top, calc(50% - #{$radius / 2}));
+      left:   var(--ripple-left, calc(50% - #{$radius / 2}));
+      width:  var(--ripple-size, $radius);
       height: var(--ripple-size, $radius);
     }
   }
 
   .ripple-impact {
     &.ripple-unbounded::after {
-      transform: scale(0);
       transform: scale(var(--ripple-scale, 0));
     }
     &.ripple-unbounded::before {
-      top: 0;
-      top: var(--ripple-top, 0);
-      left: 0;
+      top:  var(--ripple-top, 0);
       left: var(--ripple-left, 0);
     }
   }
 }
-
-//

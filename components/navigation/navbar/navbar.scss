@@ -175,10 +175,6 @@
   top:      0;
   // todo z-index 应该设置为变量，与页面中其他元素的层级待处理
   z-index:  100;
-  @if ($navbar-shadow-enable) {
-    @include shadow(6);
-  }
-  //box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .1);
 }
 
 // 当导航设为 fixed 时，需要给 navbar 下面元素额外设置 margin-top

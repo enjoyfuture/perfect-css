@@ -34,13 +34,13 @@
 
   &-filename {
     margin-left: .25rem;
-    font-size:   $font-size-xs;
+    font-size:   $font-size-sm;
     color:       $grey-color-600;
     @include text-ellipsis;
   }
 
   &-filetype {
-    font-size: $font-size-xs;
+    font-size: $font-size-sm;
     color:     $grey-color-600;
   }
 }

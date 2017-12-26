@@ -1,2 +1,7 @@
 // 是否开启定制主题，包括主颜色和辅助颜色，默认开启，需要的话可关闭
 $enable-custom-theme-for-ripple: true !default;
+
+$ripple-translate-duration: 225ms;
+$ripple-fade-in-duration: 75ms;
+$ripple-fade-out-duration: 150ms;
+$states-wash-duration: 15ms;
