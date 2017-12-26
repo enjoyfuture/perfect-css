@@ -35,6 +35,8 @@
 }
 
 .component-container {
+  display:       flex;
+  flex-wrap:     wrap;
   padding:       1rem 0;
   margin:        0 1rem;
   border-bottom: 1px dashed;
@@ -91,9 +93,9 @@
 }
 
 .iframe-demo {
-  width:   100%;
-  height:  300px;
-  border:  1px dotted;
+  width:  100%;
+  height: 300px;
+  border: 1px dotted;
   @include theme-prop(border-color, primary);
 }
 

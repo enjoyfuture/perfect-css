@@ -1,5 +1,9 @@
 @import "../../../../components/theme/mixin";
 
+.navbar-primary {
+  @include theme-prop(background-color, primary-dark);
+}
+
 .drawer-toggle {
   .icon-pure-menu {
     @include theme-prop(color, secondary-on-dark);
