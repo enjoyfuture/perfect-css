@@ -2,7 +2,8 @@
 @import "../../base/variables/font";
 @import "../../theme/variable";
 
-$btn-min-width: 4rem !default; // 即两个字的宽度
+$btn-height: 2.25rem;
+$btn-min-width: 5rem !default;
 $btn-padding-x: 1.25rem !default;
 $btn-font-weight: 500 !default;
 
@@ -11,15 +12,11 @@ $btn-unfilled-ripple-opacity: .16;
 $btn-filled-ripple-opacity: .32;
 
 // btn 大小
-$btn-padding-x-lg: 1.25rem !default;
-$btn-padding-y-lg: 1rem !default;
-$btn-border-radius-lg: 4px !default;
-$btn-line-height-lg: 1 !default;
+$btn-height-lg: 2.5rem;
+$btn-font-size-lg: $font-size-lg;
 
-$btn-padding-x-sm: .75rem !default;
-$btn-padding-y-sm: .5rem !default;
-$btn-border-radius-sm: 2px !default;
-$btn-line-height-sm: 1.25 !default;
+$btn-height-sm: 2rem;
+$btn-font-size-sm: $font-size-sm;
 
 // disabled 状态
 $btn-bg-disabled: map-get($greys, 300) !default;

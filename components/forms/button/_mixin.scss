@@ -1,23 +1,16 @@
 @import "../../theme/mixin";
 @import "../../ripple/mixin";
 @import "../../shadow/mixin";
+@import "../../base/variables/form";
+@import "variable";
 
 // 设置前景
-@mixin button-front($color, $assist: false) {
-  @if ($assist) {
-    @include theme-assist(color, $color);
+@mixin button-front($color) {
+  @include theme-prop(color, $color);
 
-    // 对于 a 标签的处理
-    &:hover {
-      @include theme-assist(color, $color);
-    }
-  } @else {
+  // 对于 a 标签的处理
+  &:hover {
     @include theme-prop(color, $color);
-
-    // 对于 a 标签的处理
-    &:hover {
-      @include theme-prop(color, $color);
-    }
   }
 }
 
@@ -62,9 +55,47 @@
 }
 
 // 设置按钮大小
-@mixin btn-size($btn-font-size, $btn-padding-x, $btn-padding-y, $btn-border-radius, $btn-line-height) {
-  padding: $btn-padding-y $btn-padding-x;
+@mixin btn-size($btn-font-size, $btn-height, $btn-border-radius: $input-border-radius) {
+  height:        $btn-height;
   border-radius: $btn-border-radius;
-  font-size: $btn-font-size;
-  line-height: $btn-line-height;
+  font-size:     $btn-font-size;
+  line-height:   $btn-height;
+}
+
+// 设置按钮主题
+@mixin btn-theme($theme) {
+  @include button-front($color: $theme);
+
+  // 不是浮雕和阴影效果使用该样式设置
+  &:not(.btn-raised):not(.btn-unshadow) {
+    @if type-of($theme) != "color" {
+      @include button-ripple((theme-style: #{$theme}-alpha, opacity: 1));
+    } @else {
+      @include button-ripple((background-color: $theme));
+    }
+  }
+
+  &.btn-raised,
+  &.btn-unshadow {
+    $color: $theme;
+    @if type-of($theme) != "color" {
+      $color: map-get($theme-property-values, $theme);
+      @if ($color == null) {
+        $color: map-get($theme-assist-colors, $theme);
+      }
+    }
+
+    // 判断是用浅色还是深色
+    $color-tone: theme-tone($color);
+
+    // 设置前景色
+    @include theme-prop(color, primary-on-#{$color-tone});
+    // 设置背景色
+    @include theme-prop(background-color, $theme);
+    // 设置 ripple
+    @include button-ripple((opacity: $btn-filled-ripple-opacity));
+
+    // disabled
+    @include button-disabled($btn-bg-disabled);
+  }
 }
