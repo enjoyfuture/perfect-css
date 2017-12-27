@@ -88,6 +88,11 @@
     // 判断是用浅色还是深色
     $color-tone: theme-tone($color);
 
+    // 对于 warning 警告颜色，由于黄色颜色偏浅色，故需要单独处理
+    @if ($theme == "warning") {
+      $color-tone: dark;
+    }
+
     // 设置前景色
     @include theme-prop(color, primary-on-#{$color-tone});
     // 设置背景色
