@@ -1,0 +1,9 @@
+@import "../../../../components/theme/variable";
+@import "../../../../components/theme/mixin";
+@import "../../../../components/forms/input/mixin";
+
+// 自定义按钮
+.input-customer {
+  @include input-size(1.125rem, 3rem, 1.25rem, .75rem);
+  @include input-theme(#8e24aa);
+}

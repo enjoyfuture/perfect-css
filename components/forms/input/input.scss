@@ -16,11 +16,10 @@
   position:   relative;
   box-sizing: border-box;
   display:    inline-block;
-  width:      $form-input-width;
 
   // 如果加入 label 则设置间距
-  label > input,
-  label + input {
+  label > .input-field,
+  label + .input-field {
     margin-left: $input-margin-left;
   }
 }
@@ -28,7 +27,7 @@
 // 定义在 Input 元素上
 .input-field {
   box-sizing:              border-box;
-  width:                   100%;
+  height:                  $input-height;
   padding:                 $input-padding-y $input-padding-x;
   border:                  1px solid $input-border-color;
   line-height:             $input-line-height;
@@ -67,16 +66,86 @@
   // Disabled
   &:disabled,
   &[readonly] {
-    @include theme-prop(color, disabled-on-light);
-    pointer-events: none;
+    @include input-disabled;
   }
 
   // 设置 type="color" 样式
   &[type="color"] {
     // 字体高度 + 上线内边距 + 上下边框
-    min-height: $font-size-base * $input-line-height + $input-padding-y * 2 + .125rem;
+    //min-height: $font-size-base * $input-line-height + $input-padding-y * 2 + .125rem;
     padding: 0;
-    border: 0;
+    border:  0;
+  }
+}
+
+// 扁平化输入框，即只有一条底边框表单
+.input-flat {
+  .input-field {
+    border-width:  0 0 1px;
+    border-radius: 0;
+  }
+}
+
+// full width input
+.input-full {
+  display: block;
+  flex:    1;
+  width:   100%;
+
+  .input-field {
+    display: block;
+    width:   100%;
+  }
+}
+
+// 点击input时提示文字缩小上移，并改变颜色为高亮色
+.input-float {
+  .input-field {
+    height:        auto;
+    padding-top:   $input-float-top;
+    border-width:  0 0 1px;
+    border-radius: 0;
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+
+  &-label {
+    position:         absolute;
+    bottom:           $input-padding-y;
+    left:             $input-padding-x;
+    pointer-events:   none;
+    cursor:           text;
+    transform:        translateY(-20%);
+    transform-origin: left top;
+    transition:       input-transition(transform), input-transition(color), input-transition(font-size);
+    @include theme-prop(color, hint-on-light);
+  }
+
+  // 当 input 输入框获取焦点时，label 向上移动
+  // .input-field:-webkit-autofill + .input-float-label
+  .input-field:focus + .input-float-label,
+  .input-field-focused + .input-float-label,
+  .input-field:-webkit-autofill + .input-float-label {
+    cursor:    auto;
+    transform: translateY(-90%) scale(.8, .8);
+    @include theme-prop(color, secondary-on-light);
+  }
+
+  // Disabled
+  .input-field:disabled,
+  .input-field[readonly] {
+    & + .input-float-label {
+      @include theme-prop(color, disabled-on-light);
+    }
+  }
+}
+
+// textarea 样式
+.input-textarea {
+  .input-field {
+    height: auto;
+    resize: none;
   }
 }
 
@@ -101,158 +170,91 @@
 .input-invalid {
   .input-field {
     @include theme-assist(border-color, error);
-
+    @include theme-assist(color, error);
     // Placeholder
     &::placeholder {
       @include theme-assist(color, error);
     }
-  }
-}
 
-// 扁平化输入框，即只有一条底边框表单
-.input-flat {
-  padding-left:  0;
-  padding-right: 0;
-  border-width:  0 0 1px;
-  border-radius: 0;
-}
-
-// full width input
-.input-full {
-  display: block;
-  flex:    1;
-  width:   100%;
-
-  .input-field {
-    display: block;
-  }
-}
-
-.input-label {
-  position:         absolute;
-  bottom:           $input-label-bottom;
-  left:             0;
-  pointer-events:   none;
-  cursor:           text;
-  transform-origin: left top;
-  transition:       input-transition(transform), input-transition(color), input-transition(font-size);
-  @include theme-prop(color, hint-on-light);
-}
-
-// 点击input时提示文字缩小上移，并改变颜色为高亮色
-.input-float-above {
-  margin-top: 1.5rem;
-
-  .input-field {
-    padding-top:   0;
-    padding-left:  0;
-    padding-right: 0;
-    border-width:  0 0 1px;
-    border-radius: 0;
-    &::placeholder {
-      opacity: 0;
+    &:disabled,
+    &[readonly] {
+      border-color: $grey-color-100;
+      @include theme-prop(color, disabled-on-light);
+      // Placeholder
+      &::placeholder {
+        @include theme-prop(color, disabled-on-light);
+      }
     }
   }
 
-  // 当 input 输入框获取焦点时，label 向上移动
-  // .input-field:-webkit-autofill + .input-label
-  .input-field:focus + .input-label,
-  .input-field-focused + .input-label,
-  .input-field:-webkit-autofill + .input-label {
-    cursor:    auto;
-    transform: translateY(-90%) scale(.8, .8);
-    @include theme-prop(color, primary-on-light);
-  }
-}
-
-// 表单校验无效时
-.input-invalid {
-  .input-label,
-  .input-field:focus + .input-label,
-  .input-field-focused + .input-label,
-  .input-field:-webkit-autofill + .input-label {
+  .input-float-label,
+  .input-field:focus + .input-float-label,
+  .input-field-focused + .input-float-label,
+  .input-field:-webkit-autofill + .input-float-label {
     @include theme-assist(color, error);
   }
 }
 
 // 输入框带图标
 .input-icon {
-  position: absolute;
-  top:      .5rem;
-  cursor:   pointer;
+  position:  absolute;
+  top:       50%;
+  cursor:    pointer;
+  transform: translateY(-50%);
 }
 
 .input-icon-start {
   .input-field {
-    padding-left: 2.5rem;
+    padding-left: $input-icon-field-padding;
   }
 
   .input-icon {
-    left:  .5rem;
+    left:  $input-icon-pos-x;
     right: initial;
   }
 
-  .input-label {
-    left: 2.5rem;
+  .input-float-label {
+    left: $input-icon-field-padding;
   }
 }
 
-.input-icon-end {
+.input.input-icon-end {
   .input-field {
-    padding-right: 2.5rem;
+    padding-right: $input-icon-field-padding;
   }
 
   .input-icon {
     left:  initial;
-    right: .5rem;
+    right: $input-icon-pos-x;
   }
 
-  .input-label {
-    right: 2.5rem;
-  }
-}
-
-.input-float-above {
-  .input-icon {
-    top: -0.5rem;
+  .input-float-label {
+    right: $input-icon-field-padding;
   }
 }
 
 // Sizing
 .input-lg {
-  @include input-size($input-font-size-lg, $input-padding-x-lg, $input-padding-y-lg, $input-icon-top-lg, 1.25, 0);
+  @include input-size($input-font-size-lg, $input-height-lg, $input-padding-x-lg, $input-padding-y-lg);
 }
 
 .input-sm {
-  @include input-size($input-font-size-sm, $input-padding-x-sm, $input-padding-y-sm, $input-icon-top-sm, .75, -.5rem);
+  @include input-size($input-font-size-sm, $input-height-sm, $input-padding-x-sm, $input-padding-y-sm);
 }
 
 // 定义主题样式
 @if ($enable-custom-theme and $enable-custom-theme-for-input) {
   // 主颜色
-  @each $style in ("primary", "secondary") {
-    .input-#{$style} {
-      .input-field {
-        @include theme-prop(border-color, #{$style}-lighter);
-
-        &:focus {
-          @include theme-prop(border-color, #{$style});
-        }
-      }
+  @each $theme in ("primary", "secondary") {
+    .input-#{$theme} {
+      @include input-theme($theme);
     }
   }
 
   // 辅助颜色对应 input
   @each $theme in $theme-assist {
-    $color: map-get($theme-assist-colors, $theme);
     .input-#{$theme} {
-      .input-field {
-        @include theme-assist(border-color, #{$theme}-light);
-
-        &:focus {
-          @include theme-assist(border-color, #{$theme});
-        }
-      }
+      @include input-theme($theme);
     }
   }
 }

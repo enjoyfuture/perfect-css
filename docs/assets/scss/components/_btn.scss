@@ -3,7 +3,7 @@
 @import "../../../../components/forms/button/mixin";
 
 // 自定义按钮
-.btn.btn-customer {
+.btn-customer {
   @include btn-size(1rem, 3rem, 2rem);
   @include btn-theme(#8e24aa);
 }

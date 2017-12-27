@@ -1,43 +1,72 @@
+@import "../../theme/mixin";
+@import "../../theme/variable";
+@import "variable";
+
+// Disabled
+@mixin input-disabled {
+  @include theme-prop(color, disabled-on-light);
+  background-color: $grey-color-100;
+  pointer-events:   none;
+}
 
 // Input 大小 mixin
-@mixin input-size($font-size, $input-padding-x, $input-padding-y,
-  $input-icon-top, $scale, $input-icon-above-top) {
+@mixin input-size($font-size, $input-height, $input-padding-x, $input-padding-y,
+  $input-icon-field-padding: $input-icon-field-padding, $input-float-top: $input-float-top) {
   font-size: $font-size;
 
   .input-field {
+    height:  $input-height;
     padding: $input-padding-y $input-padding-x;
   }
 
-  .input-label {
+  .input-float-label {
     bottom: $input-padding-y;
-  }
-
-  .input-icon {
-    top: $input-icon-top;
-    transform: scale($scale);
-  }
-
-  &.input-float-above {
-    margin-top: $input-padding-y * 2;
-    .input-icon {
-      top: 0;
-    }
-    .input-field {
-      padding-top: 0;
-      padding-left: 0;
-      padding-right: 0;
-    }
+    left:   $input-padding-x;
   }
 
   &.input-icon-start {
     .input-field {
-      padding-left: 2.5rem;
+      padding-left: $input-icon-field-padding;
+    }
+    .input-float-label {
+      left: $input-icon-field-padding;
     }
   }
 
-  &.input-icon-end {
+  &.input.input-icon-end {
     .input-field {
-      padding-right: 2.5rem;
+      padding-right: $input-icon-field-padding;
+    }
+    .input-float-label {
+      right: $input-icon-field-padding;
+    }
+  }
+
+  &.input-float .input-field {
+    height:      auto;
+    padding-top: $input-float-top;
+  }
+}
+
+// 定义 input 主题
+@mixin input-theme($theme) {
+  .input-field {
+    @if type-of($theme) == "color" {
+      border-color: lighten($theme, 20%);
+      &:focus {
+        border-color: $theme;
+      }
+    } @else {
+      @include theme-prop(border-color, #{$theme}-lighter);
+
+      &:focus {
+        @include theme-prop(border-color, #{$theme});
+      }
+    }
+    // Disabled
+    &:disabled,
+    &[readonly] {
+      border-color: $grey-color-100;
     }
   }
 }
