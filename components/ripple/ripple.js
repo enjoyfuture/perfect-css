@@ -121,7 +121,7 @@ class Ripple extends Component {
     // 动画持续的时长
     this.duration = 0;
 
-    //
+    // 波纹初始大小
     this.initialSize = 0;
 
     // 波纹扩散最大的圆弧
@@ -175,26 +175,6 @@ class Ripple extends Component {
     this._init();
   }
 
-  // /**
-  //  * @returns {boolean}
-  //  */
-  // get unbounded() {
-  //   return this.unbounded;
-  // }
-  //
-  // /**
-  //  * @param {boolean} unbounded
-  //  */
-  // set unbounded(unbounded) {
-  //   const {UNBOUNDED} = classes;
-  //   this.unbounded = Boolean(unbounded);
-  //   if (this.unbounded) {
-  //     this.element.classList.add(UNBOUNDED);
-  //   } else {
-  //     this.element.classList.remove(UNBOUNDED);
-  //   }
-  // }
-
   // 是否支持 css 变量
   isSupported() {
     return this.adapter.isSupportsCssVars();
@@ -237,12 +217,12 @@ class Ripple extends Component {
     this.rippleRect = this.adapter.computeBoundingRect();
     const {width, height} = this.rippleRect;
 
-    // 波纹大小
+    // 元素大小
     const maxDim = Math.max(width, height);
     // 波纹直径
     const diameter = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
 
-    // 初始波纹大小，取波纹大小的 60%
+    // 初始波纹大小，取元素大小的 60%
     this.initialSize = maxDim * numbers.INITIAL_ORIGIN_SCALE;
 
     // 波纹扩散圆弧，直径 + padding
