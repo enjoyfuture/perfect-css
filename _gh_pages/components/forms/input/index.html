@@ -173,12 +173,18 @@
       <li class="menu-item">
         <a href="/components/forms/form-field/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Form Field 表单域</a></li>
+      <li class="menu-item">
+        <a href="/components/forms/forms/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Form 综合</a></li>
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/components/elements/menu/" 
+    <a href="/components/elements/list/" 
        class="menu-title menu-header " style="padding-left: 1rem;">元素组件</a>
     <ul class="menu"  style="display: none;" >
+      <li class="menu-item">
+        <a href="/components/elements/list/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">List 列表</a></li>
       <li class="menu-item">
         <a href="/components/elements/menu/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Menu 菜单</a></li>
@@ -248,12 +254,9 @@
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/components/container/list/" 
+    <a href="/components/container/table/" 
        class="menu-title menu-header " style="padding-left: 1rem;">容器组件</a>
     <ul class="menu"  style="display: none;" >
-      <li class="menu-item">
-        <a href="/components/container/list/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">List 列表</a></li>
       <li class="menu-item">
         <a href="/components/container/table/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Table 表格</a></li>
@@ -405,7 +408,28 @@
     </aside>
     <main class="drawer-main">
       <section class="component-wrap catalogue-counter">
-        <h2>
+        <style>
+  /* Fixme 先用背景临时处理图标，待图标组件完善后，该用图标*/
+  .input-icon-demo {
+    width:            1.25rem;
+    height:           1.25rem;
+    border-radius:    50%;
+    background-color: #bdbdbd;
+  }
+</style>
+<div>
+  <div class="form-field">
+    <div class="checkbox checkbox-primary">
+      <input class="checkbox-native-control" type="checkbox" id="disabledState">
+      <div class="checkbox-background">
+        <div class="checkbox-mark-outer"></div>
+        <div class="checkbox-mark-inner"></div>
+      </div>
+    </div>
+    <label>Disabled</label>
+  </div>
+</div>
+<h2 class="m-t-3">
 <div class="anchor-header" id="anchor-1"></div>基本用法<a class="anchor-link" href="#anchor-1">#</a>
 </h2>
 <h3>
@@ -432,66 +456,59 @@
 <div class="anchor-header" id="anchor-1-1-2"></div>input 放在 label 中<a class="anchor-link" href="#anchor-1-1-2">#</a>
 </h4>
 <section class="component-container component-spacing">
-  <label>姓名:
-    <span class="input">
+  <div class="input">
+    <label>
+      姓名:
       <input type="text" class="input-field" placeholder="输入框">
-    </span>
-  </label>
-  <label>年龄:
-    <span class="input">
-      <input type="text" class="input-field" value="29">
-    </span>
-  </label>
-  <label>爱好:
-    <span class="input">
+    </label>
+  </div>
+  <div class="input">
+    <label>密码:
+      <input type="password" class="input-field">
+    </label>
+  </div>
+  <div class="input">
+    <label>爱好:
       <input type="text" class="input-field" disabled placeholder="编程">
-    </span>
-  </label>
+    </label>
+  </div>
 </section>
 <h4>
 <div class="anchor-header" id="anchor-1-1-3"></div>input 跟 label 同级<a class="anchor-link" href="#anchor-1-1-3">#</a>
 </h4>
-<section class="component-container component-spacing d-flex">
-  <div>
+<section class="component-container component-spacing">
+  <div class="input">
     <label for="input1">姓名:</label>
-    <div class="input">
-      <input type="text" class="input-field" id="input1" placeholder="Name">
-    </div>
+    <input type="text" class="input-field" id="input1" placeholder="Name">
   </div>
-  <div>
+  <div class="input">
     <label for="input2">年龄:</label>
-    <div class="input">
-      <input type="text" class="input-field" id="input2" value="29" placeholder="年龄">
-    </div>
+    <input type="text" class="input-field" id="input2" value="29" placeholder="年龄">
   </div>
-  <div>
+  <div class="input">
     <label for="input3">爱好:</label>
-    <div class="input">
-      <input type="text" class="input-field" id="input3" disabled placeholder="编程">
-    </div>
+    <input type="text" class="input-field" id="input3" disabled placeholder="编程">
   </div>
 </section>
 <h3>
 <div class="anchor-header" id="anchor-1-2"></div>扁平化输入框，即只有一条底边框<a class="anchor-link" href="#anchor-1-2">#</a>
 </h3>
-<section class="component-container component-spacing d-flex">
-  <div class="input">
-    <input type="text" class="input-field input-flat" placeholder="扁平化输入框">
+<section class="component-container component-spacing">
+  <div class="input input-flat">
+    <input type="text" class="input-field" placeholder="扁平化输入框">
   </div>
-  <label>
-    姓名:
-    <span class="input">
-      <input type="text" class="input-field input-flat" placeholder="请输入你的名字">
-    </span>
-  </label>
-  <div>
+  <div class="input input-flat">
+    <label>
+      姓名:
+      <input type="text" class="input-field" placeholder="请输入你的名字">
+    </label>
+  </div>
+  <div class="input input-flat">
     <label for="input4">年龄:</label>
-    <div class="input">
-      <input type="text" class="input-field input-flat" id="input4" value="29" placeholder="年龄">
-    </div>
+    <input type="text" class="input-field" id="input4" value="29" placeholder="年龄">
   </div>
-  <div class="input">
-    <input type="text" class="input-field input-flat" disabled placeholder="Disabled">
+  <div class="input input-flat">
+    <input type="text" class="input-field" disabled placeholder="Disabled">
   </div>
 </section>
 <h3>
@@ -501,27 +518,27 @@
   <div class="input input-full">
     <input type="text" class="input-field" placeholder="四边带边框 Inputs">
   </div>
-  <div class="input input-full">
-    <input type="text" class="input-field input-flat" placeholder="扁平化输入框">
+  <div class="input input-flat input-full">
+    <input type="text" class="input-field" placeholder="扁平化输入框">
   </div>
 </section>
 <h3>
 <div class="anchor-header" id="anchor-1-4"></div> 点击input时提示文字缩小上移，并改变颜色为高亮色 <a class="anchor-link" href="#anchor-1-4">#</a>
 </h3>
 <section class="component-container component-spacing">
-  <div class="input input-float-above">
+  <div class="input input-float">
     <input type="text" class="input-field" id="input-field1" value="张三">
-    <label for="input-field1" class="input-label">用户名</label>
+    <label for="input-field1" class="input-float-label">用户名</label>
   </div>
-  <div class="input input-float-above">
+  <div class="input input-float">
     <input type="text" class="input-field" id="input-field2">
-    <label for="input-field2" class="input-label">用户名</label>
+    <label for="input-field2" class="input-float-label">用户名</label>
   </div>
 </section>
 <section class="component-container">
-  <div class="input input-full input-float-above">
+  <div class="input input-full input-float">
     <input type="text" class="input-field" id="input-full-field1">
-    <label for="input-full-field1" class="input-label">100% 宽度</label>
+    <label for="input-full-field1" class="input-float-label">100% 宽度</label>
   </div>
 </section>
 <h3>
@@ -530,16 +547,20 @@
 <h4>
 <div class="anchor-header" id="anchor-1-5-1"></div>默认宽度<a class="anchor-link" href="#anchor-1-5-1">#</a>
 </h4>
-<section class="component-container">
-  <div class="input">
-    <textarea class="input-field" cols="100" rows="5"></textarea>
+<section class="component-container component-spacing">
+  <div class="input input-textarea">
+    <textarea class="input-field" cols="50" rows="5"></textarea>
+  </div>
+  <div class="input input-textarea">
+    <label>说明:</label>
+    <textarea class="input-field" cols="50" rows="5"></textarea>
   </div>
 </section>
 <h4>
 <div class="anchor-header" id="anchor-1-5-2"></div>100%宽度<a class="anchor-link" href="#anchor-1-5-2">#</a>
 </h4>
 <section class="component-container">
-  <div class="input input-full">
+  <div class="input input-textarea input-full">
     <textarea class="input-field" cols="40" rows="5"></textarea>
   </div>
 </section>
@@ -564,17 +585,17 @@
   <div class="input input-invalid">
     <input type="text" class="input-field" placeholder="无效的值">
   </div>
-  <label>邮箱:
-    <span class="input input-invalid">
+  <div class="input input-invalid">
+    <label>邮箱:
       <input type="text" class="input-field" placeholder="无效的值">
-    </span>
-  </label>
+    </label>
+  </div>
   <div class="input input-invalid">
     <input type="text" class="input-field input-flat" placeholder="无效的值">
   </div>
-  <div class="input input-float-above input-invalid">
+  <div class="input input-float input-invalid">
     <input type="text" class="input-field" id="input-field3" placeholder="无效的值">
-    <label for="input-field3" class="input-label">用户名</label>
+    <label for="input-field3" class="input-float-label">用户名</label>
   </div>
 </section>
 <h4>
@@ -587,265 +608,310 @@
   <div class="input input-full input-invalid">
     <input type="text" class="input-field input-flat" placeholder="扁平化输入框">
   </div>
-  <div class="input input-full input-float-above input-invalid">
+  <div class="input input-full input-float input-invalid">
     <input type="text" class="input-field" id="input-full-field-invalid">
-    <label for="input-full-field-invalid" class="input-label">100% 宽度</label>
+    <label for="input-full-field-invalid" class="input-float-label">100% 宽度</label>
   </div>
 </section>
 <h2>
-<div class="anchor-header" id="anchor-4"></div> 输入框中带图标 <a class="anchor-link" href="#anchor-4">#</a>
+<div class="anchor-header" id="anchor-4"></div>其他类型的 input <a class="anchor-link" href="#anchor-4">#</a>
+</h2>
+<section class="component-container component-spacing component-vertical-spacing">
+  <div class="input">
+    <label class="d-inline-flex align-items-center">
+      颜色:
+      <input type="color" class="input-field" value="#f44336">
+    </label>
+  </div>
+  <div class="input">
+    <label>
+      日期:
+      <input type="date" class="input-field">
+    </label>
+  </div>
+  <div class="input">
+    <label>
+      时间:
+      <input type="time" class="input-field">
+    </label>
+  </div>
+  <div class="input">
+    <label>
+      第几周:
+      <input type="week" class="input-field">
+    </label>
+  </div>
+  <div class="input">
+    <label>
+      数字:
+      <input type="number" class="input-field">
+    </label>
+  </div>
+  <div class="input">
+    <label class="d-inline-flex align-items-center">
+      滑块:
+      <input type="range" class="input-field">
+    </label>
+  </div>
+</section>
+<h2>
+<div class="anchor-header" id="anchor-5"></div> 输入框中带图标 <a class="anchor-link" href="#anchor-5">#</a>
 </h2>
 <h3>
-<div class="anchor-header" id="anchor-4-1"></div>图标在前面<a class="anchor-link" href="#anchor-4-1">#</a>
+<div class="anchor-header" id="anchor-5-1"></div>图标在前面<a class="anchor-link" href="#anchor-5-1">#</a>
 </h3>
 <section class="component-container component-spacing">
   <div class="input input-icon-start">
-    <i class="input-icon icon-pure-plus"></i>
+    <i class="input-icon input-icon-demo"></i>
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-icon-start">
-    <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
+  <div class="input input-flat input-icon-start">
+    <i class="input-icon input-icon-demo"></i>
+    <input type="text" class="input-field" placeholder="Perfect Css">
   </div>
-  <div class="input input-float-above input-icon-start">
+  <div class="input input-float input-icon-start">
     <input type="text" class="input-field" id="input-icon">
-    <label for="input-icon" class="input-label">用户名</label>
-    <i class="input-icon icon-pure-plus"></i>
+    <label for="input-icon" class="input-float-label">用户名</label>
+    <i class="input-icon input-icon-demo"></i>
   </div>
 </section>
 <h3>
-<div class="anchor-header" id="anchor-4-2"></div>图标在后面<a class="anchor-link" href="#anchor-4-2">#</a>
+<div class="anchor-header" id="anchor-5-2"></div>图标在后面<a class="anchor-link" href="#anchor-5-2">#</a>
 </h3>
 <section class="component-container component-spacing">
-  <label>邮箱:
-    <span class="input input-icon-end">
+  <div class="input input-icon-end">
+    <label>邮箱:
       <input type="text" class="input-field" value="888888@qq.com">
-      <i class="input-icon icon-pure-plus"></i>
-    </span>
-  </label>
+    </label>
+    <i class="input-icon input-icon-demo"></i>
+  </div>
   <div class="input input-icon-end">
     <input type="text" class="input-field" placeholder="Hello World">
-    <i class="input-icon icon-pure-plus"></i>
+    <i class="input-icon input-icon-demo"></i>
   </div>
-  <div class="input input-icon-end">
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
-    <i class="input-icon icon-pure-plus"></i>
+  <div class="input input-flat input-icon-end">
+    <input type="text" class="input-field" placeholder="Perfect Css">
+    <i class="input-icon input-icon-demo"></i>
   </div>
-  <div class="input input-float-above input-icon-end">
+  <div class="input input-float input-icon-end">
     <input type="text" class="input-field" id="input-icon-end">
-    <label for="input-icon-end" class="input-label">用户名</label>
-    <i class="input-icon icon-pure-plus"></i>
+    <label for="input-icon-end" class="input-float-label">用户名</label>
+    <i class="input-icon input-icon-demo"></i>
   </div>
 </section>
 <h3>
-<div class="anchor-header" id="anchor-4-3"></div> 100% 宽度<a class="anchor-link" href="#anchor-4-3">#</a>
+<div class="anchor-header" id="anchor-5-3"></div> 100% 宽度<a class="anchor-link" href="#anchor-5-3">#</a>
 </h3>
 <section class="component-container component-vertical-spacing">
   <div class="input input-full input-icon-start">
     <input type="text" class="input-field" placeholder="Hello World">
-    <i class="input-icon icon-pure-plus"></i>
+    <i class="input-icon input-icon-demo"></i>
   </div>
-  <div class="input input-full input-icon-start">
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
-    <i class="input-icon icon-pure-plus"></i>
+  <div class="input input-flat input-full input-icon-start">
+    <input type="text" class="input-field" placeholder="Perfect Css">
+    <i class="input-icon input-icon-demo"></i>
   </div>
 </section>
 <section class="component-container component-vertical-spacing">
   <div class="input input-full input-icon-end">
     <input type="text" class="input-field" placeholder="Hello World">
-    <i class="input-icon icon-pure-plus"></i>
+    <i class="input-icon input-icon-demo"></i>
   </div>
-  <div class="input input-full input-icon-end">
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
-    <i class="input-icon icon-pure-plus"></i>
+  <div class="input input-full input-flat input-icon-end">
+    <input type="text" class="input-field" placeholder="Perfect Css">
+    <i class="input-icon input-icon-demo"></i>
   </div>
 </section>
 <section class="component-container">
-  <div class="input input-full input-float-above input-icon-start">
+  <div class="input input-full input-float input-icon-start">
     <input type="text" class="input-field" id="input-icon-start-full">
-    <label for="input-icon-start-full" class="input-label">用户名</label>
-    <i class="input-icon icon-pure-plus"></i>
+    <label for="input-icon-start-full" class="input-float-label">用户名</label>
+    <i class="input-icon input-icon-demo"></i>
   </div>
 </section>
 <section class="component-container">
-  <div class="input input-full input-float-above input-icon-end">
+  <div class="input input-full input-float input-icon-end">
     <input type="text" class="input-field" id="input-icon-end-full">
-    <label for="input-icon-end-full" class="input-label">用户名</label>
-    <i class="input-icon icon-pure-plus"></i>
+    <label for="input-icon-end-full" class="input-float-label">用户名</label>
+    <i class="input-icon input-icon-demo"></i>
   </div>
 </section>
 <h2>
-<div class="anchor-header" id="anchor-5"></div>Input 大小<a class="anchor-link" href="#anchor-5">#</a>
+<div class="anchor-header" id="anchor-6"></div>Input 大小<a class="anchor-link" href="#anchor-6">#</a>
 </h2>
 <h3>
-<div class="anchor-header" id="anchor-5-1"></div>Input 变大<a class="anchor-link" href="#anchor-5-1">#</a>
+<div class="anchor-header" id="anchor-6-1"></div>Input 变大<a class="anchor-link" href="#anchor-6-1">#</a>
 </h3>
 <h4>
-<div class="anchor-header" id="anchor-5-1-1"></div>默认宽度<a class="anchor-link" href="#anchor-5-1-1">#</a>
+<div class="anchor-header" id="anchor-6-1-1"></div>默认宽度<a class="anchor-link" href="#anchor-6-1-1">#</a>
 </h4>
-<section class="component-container component-spacing">
+<section class="component-container component-spacing component-vertical-spacing">
   <div class="input input-lg">
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
   <div class="input input-lg">
     <label>邮箱: <input type="text" class="input-field" value="888888@qq.com"></label>
   </div>
-  <div class="input input-lg input-float-above">
+  <div class="input input-lg input-icon-start">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Hello World">
+  </div>
+  <div class="input input-flat input-lg input-icon-start">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Perfect Css">
+  </div>
+  <div class="input input-lg input-icon-end">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Hello World">
+  </div>
+  <div class="input input-lg input-icon-end">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
+  </div>
+</section>
+<section class="component-container component-spacing component-vertical-spacing">
+  <div class="input input-lg input-float">
     <input type="text" class="input-field" id="input-lg">
-    <label for="input-lg" class="input-label">用户名</label>
+    <label for="input-lg" class="input-float-label">用户名</label>
   </div>
-  <div class="input input-lg input-icon-start">
-    <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field" placeholder="Hello World">
-  </div>
-  <div class="input input-lg input-icon-start">
-    <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
-  </div>
-  <div class="input input-lg input-float-above input-icon-start">
+  <div class="input input-lg input-float input-icon-start">
     <input type="text" class="input-field" id="input-lg-icon">
-    <label for="input-lg-icon" class="input-label">用户名</label>
+    <label for="input-lg-icon" class="input-float-label">用户名</label>
     <i class="input-icon icon-pure-plus"></i>
   </div>
-  <div class="input input-lg input-icon-end">
-    <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field" placeholder="Hello World">
-  </div>
-  <div class="input input-lg input-icon-end">
-    <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
-  </div>
-  <div class="input input-lg input-float-above input-icon-end">
+  <div class="input input-lg input-float input-icon-end">
     <input type="text" class="input-field" id="input-lg-icon-end">
-    <label for="input-lg-icon-end" class="input-label">用户名</label>
+    <label for="input-lg-icon-end" class="input-float-label">用户名</label>
     <i class="input-icon icon-pure-plus"></i>
   </div>
 </section>
 <h4>
-<div class="anchor-header" id="anchor-5-1-2"></div>100%宽度<a class="anchor-link" href="#anchor-5-1-2">#</a>
+<div class="anchor-header" id="anchor-6-1-2"></div>100%宽度<a class="anchor-link" href="#anchor-6-1-2">#</a>
 </h4>
 <section class="component-container component-vertical-spacing">
   <div class="input input-full input-lg">
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-full input-lg input-float-above">
+  <div class="input input-full input-float input-lg">
     <input type="text" class="input-field" id="input-lg-full">
-    <label for="input-lg-full" class="input-label">用户名</label>
+    <label for="input-lg-full" class="input-float-label">用户名</label>
   </div>
-  <div class="input input-full input-lg input-icon-start">
+  <div class="input input-full input-icon-start input-lg">
     <i class="input-icon icon-pure-plus"></i>
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-full input-lg input-icon-start">
+  <div class="input input-full input-flat input-icon-start input-lg">
     <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
+    <input type="text" class="input-field" placeholder="Perfect Css">
   </div>
-  <div class="input input-full input-lg input-float-above input-icon-start">
+  <div class="input input-full input-float input-icon-start input-lg">
     <input type="text" class="input-field" id="input-lg-icon-full">
-    <label for="input-lg-icon-full" class="input-label">用户名</label>
+    <label for="input-lg-icon-full" class="input-float-label">用户名</label>
     <i class="input-icon icon-pure-plus"></i>
   </div>
-  <div class="input input-full input-lg input-icon-end">
+  <div class="input input-full input-icon-end input-lg">
     <i class="input-icon icon-pure-plus"></i>
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-full input-lg input-icon-end">
+  <div class="input input-full input-flat input-icon-end input-lg">
     <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
+    <input type="text" class="input-field" placeholder="Perfect Css">
   </div>
-  <div class="input input-full input-lg input-float-above input-icon-end">
+  <div class="input input-full input-float input-icon-end input-lg">
     <input type="text" class="input-field" id="input-lg-icon-end-full">
-    <label for="input-lg-icon-end-full" class="input-label">用户名</label>
+    <label for="input-lg-icon-end-full" class="input-float-label">用户名</label>
     <i class="input-icon icon-pure-plus"></i>
   </div>
 </section>
 <h3>
-<div class="anchor-header" id="anchor-5-2"></div>Input 变小<a class="anchor-link" href="#anchor-5-2">#</a>
+<div class="anchor-header" id="anchor-6-2"></div>Input 变小<a class="anchor-link" href="#anchor-6-2">#</a>
 </h3>
 <h4>
-<div class="anchor-header" id="anchor-5-2-1"></div>默认宽度<a class="anchor-link" href="#anchor-5-2-1">#</a>
+<div class="anchor-header" id="anchor-6-2-1"></div>默认宽度<a class="anchor-link" href="#anchor-6-2-1">#</a>
 </h4>
-<section class="component-container component-spacing">
+<section class="component-container component-spacing component-vertical-spacing">
   <div class="input input-sm">
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
   <div class="input input-sm">
     <label>邮箱: <input type="text" class="input-field" value="888888@qq.com"></label>
   </div>
-  <div class="input input-sm input-float-above">
+  <div class="input input-icon-start input-sm">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Hello World">
+  </div>
+  <div class="input input-flat input-icon-start input-sm">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Perfect Css">
+  </div>
+  <div class="input input-icon-end input-sm">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Hello World">
+  </div>
+  <div class="input input-flat input-icon-end input-sm">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Perfect Css">
+  </div>
+</section>
+<section class="component-container component-spacing component-vertical-spacing">
+  <div class="input input-float input-sm">
     <input type="text" class="input-field" id="input-sm">
-    <label for="input-sm" class="input-label">用户名</label>
+    <label for="input-sm" class="input-float-label">用户名</label>
   </div>
-  <div class="input input-sm input-icon-start">
-    <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field" placeholder="Hello World">
-  </div>
-  <div class="input input-sm input-icon-start">
-    <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
-  </div>
-  <div class="input input-sm input-float-above input-icon-start">
+  <div class="input input-float input-icon-start input-sm">
     <input type="text" class="input-field" id="input-sm-icon">
-    <label for="input-sm-icon" class="input-label">用户名</label>
+    <label for="input-sm-icon" class="input-float-label">用户名</label>
     <i class="input-icon icon-pure-plus"></i>
   </div>
-  <div class="input input-sm input-icon-end">
-    <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field" placeholder="Hello World">
-  </div>
-  <div class="input input-sm input-icon-end">
-    <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
-  </div>
-  <div class="input input-sm input-float-above input-icon-end">
+  <div class="input input-float input-icon-end input-sm">
     <input type="text" class="input-field" id="input-sm-icon-end">
-    <label for="input-sm-icon-end" class="input-label">用户名</label>
+    <label for="input-sm-icon-end" class="input-float-label">用户名</label>
     <i class="input-icon icon-pure-plus"></i>
   </div>
 </section>
 <h4>
-<div class="anchor-header" id="anchor-5-2-2"></div>100%宽度<a class="anchor-link" href="#anchor-5-2-2">#</a>
+<div class="anchor-header" id="anchor-6-2-2"></div>100%宽度<a class="anchor-link" href="#anchor-6-2-2">#</a>
 </h4>
 <section class="component-container component-vertical-spacing">
   <div class="input input-full input-sm">
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-full input-sm input-float-above">
+  <div class="input input-full input-float input-sm">
     <input type="text" class="input-field" id="input-sm-full">
-    <label for="input-sm-full" class="input-label">用户名</label>
+    <label for="input-sm-full" class="input-float-label">用户名</label>
   </div>
-  <div class="input input-full input-sm input-icon-start">
+  <div class="input input-full input-icon-start input-sm">
     <i class="input-icon icon-pure-plus"></i>
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-full input-sm input-icon-start">
+  <div class="input input-full input-flat input-icon-start input-sm">
     <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
+    <input type="text" class="input-field" placeholder="Perfect Css">
   </div>
-  <div class="input input-full input-sm input-float-above input-icon-start">
+  <div class="input input-full input-float input-icon-start input-sm">
     <input type="text" class="input-field" id="input-sm-icon-full">
-    <label for="input-sm-icon-full" class="input-label">用户名</label>
+    <label for="input-sm-icon-full" class="input-float-label">用户名</label>
     <i class="input-icon icon-pure-plus"></i>
   </div>
-  <div class="input input-full input-sm input-icon-end">
+  <div class="input input-full input-icon-end input-sm">
     <i class="input-icon icon-pure-plus"></i>
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-full input-sm input-icon-end">
+  <div class="input input-full input-flat input-icon-end input-sm">
     <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
+    <input type="text" class="input-field" placeholder="Perfect Css">
   </div>
-  <div class="input input-full input-sm input-float-above input-icon-end">
+  <div class="input input-full input-float input-icon-end input-sm">
     <input type="text" class="input-field" id="input-sm-icon-end-full">
-    <label for="input-sm-icon-end-full" class="input-label">用户名</label>
+    <label for="input-sm-icon-end-full" class="input-float-label">用户名</label>
     <i class="input-icon icon-pure-plus"></i>
   </div>
 </section>
 <h2>
-<div class="anchor-header" id="anchor-6"></div>Input 主题<a class="anchor-link" href="#anchor-6">#</a>
+<div class="anchor-header" id="anchor-7"></div>Input 主题<a class="anchor-link" href="#anchor-7">#</a>
 </h2>
 <h3>
-<div class="anchor-header" id="anchor-6-1"></div>主颜色<a class="anchor-link" href="#anchor-6-1">#</a>
+<div class="anchor-header" id="anchor-7-1"></div>主颜色<a class="anchor-link" href="#anchor-7-1">#</a>
 </h3>
 <section class="component-container component-spacing">
   <div class="input input-primary">
@@ -854,9 +920,9 @@
   <div class="input input-primary">
     <label>邮箱: <input type="text" class="input-field" value="888888@qq.com"></label>
   </div>
-  <div class="input input-primary input-float-above">
+  <div class="input input-primary input-float">
     <input type="text" class="input-field" id="input-primary">
-    <label for="input-primary" class="input-label">用户名</label>
+    <label for="input-primary" class="input-float-label">用户名</label>
   </div>
   <div class="input input-secondary">
     <input type="text" class="input-field" placeholder="Hello World">
@@ -864,48 +930,48 @@
   <div class="input input-secondary">
     <label>邮箱: <input type="text" class="input-field" value="888888@qq.com"></label>
   </div>
-  <div class="input input-secondary input-float-above">
+  <div class="input input-secondary input-float">
     <input type="text" class="input-field" id="input-secondary">
-    <label for="input-secondary" class="input-label">用户名</label>
+    <label for="input-secondary" class="input-float-label">用户名</label>
   </div>
 </section>
 <section class="component-container component-vertical-spacing">
   <div class="input input-full input-primary">
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-full input-secondary input-float-above">
+  <div class="input input-full input-secondary input-float">
     <input type="text" class="input-field" id="input-secondary-full">
-    <label for="input-secondary-full" class="input-label">用户名</label>
+    <label for="input-secondary-full" class="input-float-label">用户名</label>
   </div>
   <div class="input input-full input-primary input-icon-start">
     <i class="input-icon icon-pure-plus"></i>
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-full input-secondary input-icon-start">
+  <div class="input input-full input-flat input-secondary input-icon-start">
     <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
+    <input type="text" class="input-field" placeholder="Perfect Css">
   </div>
-  <div class="input input-full input-primary input-float-above input-icon-start">
+  <div class="input input-full input-primary input-float input-icon-start">
     <input type="text" class="input-field" id="input-primary-icon-full">
-    <label for="input-primary-icon-full" class="input-label">用户名</label>
+    <label for="input-primary-icon-full" class="input-float-label">用户名</label>
     <i class="input-icon icon-pure-plus"></i>
   </div>
   <div class="input input-full input-secondary input-icon-end">
     <i class="input-icon icon-pure-plus"></i>
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-full input-primary input-icon-end">
+  <div class="input input-full input-flat input-primary input-icon-end">
     <i class="input-icon icon-pure-plus"></i>
-    <input type="text" class="input-field input-flat" placeholder="Perfect Css">
+    <input type="text" class="input-field" placeholder="Perfect Css">
   </div>
-  <div class="input input-full input-secondary input-float-above input-icon-end">
+  <div class="input input-full input-secondary input-float input-icon-end">
     <input type="text" class="input-field" id="input-secondary-icon-end-full">
-    <label for="input-secondary-icon-end-full" class="input-label">用户名</label>
+    <label for="input-secondary-icon-end-full" class="input-float-label">用户名</label>
     <i class="input-icon icon-pure-plus"></i>
   </div>
 </section>
 <h3>
-<div class="anchor-header" id="anchor-6-2"></div>辅助颜色<a class="anchor-link" href="#anchor-6-2">#</a>
+<div class="anchor-header" id="anchor-7-2"></div>辅助颜色<a class="anchor-link" href="#anchor-7-2">#</a>
 </h3>
 <section class="component-container component-spacing">
   <div class="input input-success">
@@ -914,9 +980,9 @@
   <div class="input input-info">
     <label>邮箱: <input type="text" class="input-field" value="888888@qq.com"></label>
   </div>
-  <div class="input input-warning input-float-above">
+  <div class="input input-warning input-float">
     <input type="text" class="input-field" id="input-warning">
-    <label for="input-warning" class="input-label">用户名</label>
+    <label for="input-warning" class="input-float-label">用户名</label>
   </div>
   <div class="input input-error">
     <input type="text" class="input-field" placeholder="Hello World">
@@ -926,37 +992,132 @@
   <div class="input input-full input-success">
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-full input-info input-float-above">
+  <div class="input input-full input-info input-float">
     <input type="text" class="input-field" id="input-info-full">
-    <label for="input-info-full" class="input-label">用户名</label>
+    <label for="input-info-full" class="input-float-label">用户名</label>
   </div>
   <div class="input input-full input-warning input-icon-start">
     <i class="input-icon icon-pure-plus"></i>
     <input type="text" class="input-field" placeholder="Hello World">
   </div>
-  <div class="input input-full input-error input-icon-start">
+  <div class="input input-full input-flat input-error input-icon-start">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Perfect Css">
+  </div>
+</section>
+<h3>
+<div class="anchor-header" id="anchor-7-3"></div>自定义 Input <a class="anchor-link" href="#anchor-7-3">#</a>
+</h3>
+<p>定义一个主题色为 #8e24aa，字体为18px 的输入框</p>
+<h4>
+<div class="anchor-header" id="anchor-7-3-1"></div>默认宽度<a class="anchor-link" href="#anchor-7-3-1">#</a>
+</h4>
+<section class="component-container component-spacing component-vertical-spacing">
+  <div class="input input-customer">
+    <input type="text" class="input-field" placeholder="Hello World">
+  </div>
+  <div class="input input-customer">
+    <label>邮箱: <input type="text" class="input-field" value="888888@qq.com"></label>
+  </div>
+  <div class="input input-customer input-icon-start">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Hello World">
+  </div>
+  <div class="input input-flat input-customer input-icon-start">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Perfect Css">
+  </div>
+  <div class="input input-customer input-icon-end">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Hello World">
+  </div>
+  <div class="input input-customer input-icon-end">
     <i class="input-icon icon-pure-plus"></i>
     <input type="text" class="input-field input-flat" placeholder="Perfect Css">
   </div>
 </section>
+<section class="component-container component-spacing component-vertical-spacing">
+  <div class="input input-customer input-float">
+    <input type="text" class="input-field" id="input-customer">
+    <label for="input-customer" class="input-float-label">用户名</label>
+  </div>
+  <div class="input input-customer input-float input-icon-start">
+    <input type="text" class="input-field" id="input-customer-icon">
+    <label for="input-customer-icon" class="input-float-label">用户名</label>
+    <i class="input-icon icon-pure-plus"></i>
+  </div>
+  <div class="input input-customer input-float input-icon-end">
+    <input type="text" class="input-field" id="input-customer-icon-end">
+    <label for="input-customer-icon-end" class="input-float-label">用户名</label>
+    <i class="input-icon icon-pure-plus"></i>
+  </div>
+</section>
+<h4>
+<div class="anchor-header" id="anchor-7-3-2"></div>100%宽度<a class="anchor-link" href="#anchor-7-3-2">#</a>
+</h4>
+<section class="component-container component-vertical-spacing">
+  <div class="input input-full input-customer">
+    <input type="text" class="input-field" placeholder="Hello World">
+  </div>
+  <div class="input input-full input-float input-customer">
+    <input type="text" class="input-field" id="input-customer-full">
+    <label for="input-customer-full" class="input-float-label">用户名</label>
+  </div>
+  <div class="input input-full input-icon-start input-customer">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Hello World">
+  </div>
+  <div class="input input-full input-flat input-icon-start input-customer">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Perfect Css">
+  </div>
+  <div class="input input-full input-float input-icon-start input-customer">
+    <input type="text" class="input-field" id="input-customer-icon-full">
+    <label for="input-customer-icon-full" class="input-float-label">用户名</label>
+    <i class="input-icon icon-pure-plus"></i>
+  </div>
+  <div class="input input-full input-icon-end input-customer">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Hello World">
+  </div>
+  <div class="input input-full input-flat input-icon-end input-customer">
+    <i class="input-icon icon-pure-plus"></i>
+    <input type="text" class="input-field" placeholder="Perfect Css">
+  </div>
+  <div class="input input-full input-float input-icon-end input-customer">
+    <input type="text" class="input-field" id="input-customer-icon-end-full">
+    <label for="input-customer-icon-end-full" class="input-float-label">用户名</label>
+    <i class="input-icon icon-pure-plus"></i>
+  </div>
+</section>
 <script>
-  $(function () {
-    $('.input-float-above .input-field').blur(function (e) {
-      var val = $(e.currentTarget).val();
-      if (val) {
-        $(e.currentTarget).addClass('input-field-focused');
+  (function () {
+    [].forEach.call(document.querySelectorAll('.input-float .input-field'), function (el) {
+      const value = el.value;
+      if (value) {
+        el.classList.add('input-field-focused');
       } else {
-        $(e.currentTarget).removeClass('input-field-focused');
+        el.classList.remove('input-field-focused');
       }
+      el.addEventListener('blur', function (e) {
+        const target = e.currentTarget;
+        const value = target.value;
+        if (value) {
+          target.classList.add('input-field-focused');
+        } else {
+          target.classList.remove('input-field-focused');
+        }
+      });
     });
-    $('.input-float-above .input-field').each(function (index, item) {
-      if ($(item).val()) {
-        $(item).addClass('input-field-focused');
-      } else {
-        $(item).removeClass('input-field-focused');
-      }
+    // Disabled
+    document.getElementById('disabledState').addEventListener('change', function (e) {
+      const target = e.target;
+      const checked = target.checked;
+      [].forEach.call(document.querySelectorAll('.input-field'), function (el) {
+        el.disabled = checked;
+      });
     });
-  });
+  })();
 </script>
       </section>
     </main>

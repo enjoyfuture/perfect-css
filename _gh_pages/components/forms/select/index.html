@@ -173,12 +173,18 @@
       <li class="menu-item">
         <a href="/components/forms/form-field/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Form Field 表单域</a></li>
+      <li class="menu-item">
+        <a href="/components/forms/forms/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">Form 综合</a></li>
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/components/elements/menu/" 
+    <a href="/components/elements/list/" 
        class="menu-title menu-header " style="padding-left: 1rem;">元素组件</a>
     <ul class="menu"  style="display: none;" >
+      <li class="menu-item">
+        <a href="/components/elements/list/"
+           class="menu-title menu-sub-title" style="padding-left: 2rem;">List 列表</a></li>
       <li class="menu-item">
         <a href="/components/elements/menu/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Menu 菜单</a></li>
@@ -248,12 +254,9 @@
     </ul>
   </li>
   <li class="menu-item">
-    <a href="/components/container/list/" 
+    <a href="/components/container/table/" 
        class="menu-title menu-header " style="padding-left: 1rem;">容器组件</a>
     <ul class="menu"  style="display: none;" >
-      <li class="menu-item">
-        <a href="/components/container/list/"
-           class="menu-title menu-sub-title" style="padding-left: 2rem;">List 列表</a></li>
       <li class="menu-item">
         <a href="/components/container/table/"
            class="menu-title menu-sub-title" style="padding-left: 2rem;">Table 表格</a></li>
@@ -421,12 +424,50 @@
 <div class="anchor-header" id="anchor-1"></div>原生的 Select 标签<a class="anchor-link" href="#anchor-1">#</a>
 </h2>
 <h3>
-<div class="anchor-header" id="anchor-1-1"></div>默认样式<a class="anchor-link" href="#anchor-1-1">#</a>
+<div class="anchor-header" id="anchor-1-1"></div>四边带边框<a class="anchor-link" href="#anchor-1-1">#</a>
 </h3>
-<section class="component-container">
-  <div class="form-field">
-    <label for="select-native">食物</label>
-    <div class="select" id="select-native">
+<h4>
+<div class="anchor-header" id="anchor-1-1-1"></div>不使用 label 标签<a class="anchor-link" href="#anchor-1-1-1">#</a>
+</h4>
+<section class="component-container component-spacing">
+  <div class="select">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+  <div class="select">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains" selected>面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+  <div class="select">
+    <select class="select-inner" disabled>
+      <option value="">选择食物</option>
+      <option value="grains" selected>面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+</section>
+<h4>
+<div class="anchor-header" id="anchor-1-1-2"></div>select 放在 label 中<a class="anchor-link" href="#anchor-1-1-2">#</a>
+</h4>
+<section class="component-container component-spacing">
+  <div class="select">
+    <label>
+      食物:
       <select class="select-inner">
         <option value="">选择食物</option>
         <option value="grains">面包</option>
@@ -435,29 +476,65 @@
         <option value="milk">牛奶</option>
         <option value="meat">肉</option>
       </select>
-    </div>
+    </label>
+  </div>
+  <div class="select">
+    <label>
+      食物:
+      <select class="select-inner">
+        <option value="">选择食物</option>
+        <option value="grains">面包</option>
+        <option value="vegetables" disabled>蔬菜(disabled)</option>
+        <option value="fruit" selected>水果水果水果水果水果水果水果</option>
+        <option value="milk">牛奶</option>
+        <option value="meat">肉</option>
+      </select>
+    </label>
+  </div>
+</section>
+<h4>
+<div class="anchor-header" id="anchor-1-1-3"></div>select 跟 label 同级<a class="anchor-link" href="#anchor-1-1-3">#</a>
+</h4>
+<section class="component-container component-spacing">
+  <div class="select">
+    <label for="select1">食物:</label>
+    <select class="select-inner" id="select1">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit" selected>水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
   </div>
 </section>
 <h3>
 <div class="anchor-header" id="anchor-1-2"></div>扁平的<a class="anchor-link" href="#anchor-1-2">#</a>
 </h3>
-<section class="component-container">
-  <div class="form-field">
-    <label for="select-native-flat">食物</label>
-    <div class="select" id="select-native-flat">
-      <select class="select-inner select-flat">
-        <option value="">选择食物</option>
-        <option value="grains">面包</option>
-        <option value="vegetables" disabled>蔬菜(disabled)</option>
-        <option value="fruit">水果水果水果水果水果水果水果</option>
-        <option value="milk">牛奶</option>
-        <option value="meat">肉</option>
-      </select>
-    </div>
+<section class="component-container component-spacing">
+  <div class="select select-flat">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+  <div class="select select-flat">
+    <select class="select-inner" disabled>
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit" selected>水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
   </div>
 </section>
 <h3>
-<div class="anchor-header" id="anchor-1-3"></div>百分比 select<a class="anchor-link" href="#anchor-1-3">#</a>
+<div class="anchor-header" id="anchor-1-3"></div>宽度为 100% 的 select<a class="anchor-link" href="#anchor-1-3">#</a>
 </h3>
 <section class="component-container component-vertical-spacing">
   <div class="select select-full">
@@ -470,8 +547,8 @@
       <option value="meat">肉</option>
     </select>
   </div>
-  <div class="select select-full">
-    <select class="select-inner select-flat">
+  <div class="select select-flat select-full">
+    <select class="select-inner">
       <option value="">选择食物</option>
       <option value="grains">面包</option>
       <option value="vegetables" disabled>蔬菜(disabled)</option>
@@ -481,46 +558,13 @@
     </select>
   </div>
 </section>
-<h2>
-<div class="anchor-header" id="anchor-2"></div> 用 div 模拟 Select (options 使用 list-menu 来处理，待 TODO)<a class="anchor-link" href="#anchor-2">#</a>
-</h2>
+<h3>
+<div class="anchor-header" id="anchor-1-4"></div>Select Multiple 多选<a class="anchor-link" href="#anchor-1-4">#</a>
+</h3>
 <section class="component-container component-spacing">
-  <div class="form-field">
-    <label for="select-native">食物</label>
-    <div id="selectEl" class="select" tabindex="0">
-      <div class="select-inner" tabindex="0">
-        <span class="select-selected-text">选择食物</span>
-        <ul class="select-options">
-          <li class="select-options-item" tabindex="0" aria-selected="true">
-            选择食物
-          </li>
-          <li class="select-options-item" tabindex="0">
-            面包
-          </li>
-          <li class="select-options-item" aria-disabled="true" tabindex="0">
-            蔬菜(disabled)
-          </li>
-          <li class="select-options-item" tabindex="0">
-            水果水果水果水果水果水果水果水果水果水果水果水
-          </li>
-          <li class="select-options-item" tabindex="0">
-            牛奶
-          </li>
-          <li class="select-options-item" tabindex="0">
-            肉
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-<h2>
-<div class="anchor-header" id="anchor-3"></div>Select Multiple 多选<a class="anchor-link" href="#anchor-3">#</a>
-</h2>
-<section class="component-container">
   <select multiple size="8" class="select-multi">
     <optgroup class="option-group" label="蔬菜">
-      <option class="option-item" checked>土豆</option>
+      <option class="option-item" selected>土豆</option>
       <option class="option-item">茄子</option>
       <option class="option-item" disabled>西红柿</option>
     </optgroup>
@@ -541,13 +585,101 @@
   </select>
 </section>
 <h2>
-<div class="anchor-header" id="anchor-4"></div>Select 主题<a class="anchor-link" href="#anchor-4">#</a>
+<div class="anchor-header" id="anchor-2"></div> 用 div 模拟 Select<a class="anchor-link" href="#anchor-2">#</a>
 </h2>
 <h3>
-<div class="anchor-header" id="anchor-4-1"></div>主颜色<a class="anchor-link" href="#anchor-4-1">#</a>
+<div class="anchor-header" id="anchor-2-1"></div>只有一层结构<a class="anchor-link" href="#anchor-2-1">#</a>
+</h3>
+<section class="component-container component-spacing">
+  <div class="form-field">
+    <label class="select-label">食物</label>
+    <div class="select" tabindex="0" id="selectDemo">
+      <div class="select-inner" tabindex="0">
+        <span class="select-selected-text">选择食物</span>
+      </div>
+      <div class="list-menu select-menu">
+        <ul class="list-menu-items list">
+          <li class="list-item" data-value="">选择食物</li>
+          <li class="list-item" data-value="bread">面包</li>
+          <li class="list-item" data-value="vegetables">蔬菜(disabled)</li>
+          <li class="list-item" data-value="fruits">水果水果水果水果水果水果水果水果水果水果水果水</li>
+          <li class="list-item" data-value="milk">牛奶</li>
+          <li class="list-item" data-value="meat">肉</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p>当前的选择: <span id="box-currently-selected">(none)</span></p>
+</section>
+<h3>
+<div class="anchor-header" id="anchor-2-2"></div>级联<a class="anchor-link" href="#anchor-2-2">#</a>
+</h3>
+<section class="component-container component-spacing">
+  <div class="form-field">
+    <label class="select-label">食物</label>
+    <div class="select" tabindex="0" id="selectDemoCascaded">
+      <div class="select-inner" tabindex="0">
+        <span class="select-selected-text">选择食物</span>
+      </div>
+      <div class="list-menu select-menu list-menu-cascaded" aria-controls="click">
+        <ul class="list-menu-items list">
+          <li class="list-item" aria-level="branch">
+            水果
+            <ul class="list-menu-items list">
+              <li class="list-item" aria-level="branch">
+                热带水果
+                <ul class="list-menu-items list">
+                  <li class="list-item" data-value="fruit,tropical-fruit,banana">香蕉</li>
+                  <li class="list-item" data-value="fruit,tropical-fruit,durian">榴莲</li>
+                </ul>
+              </li>
+              <li class="list-item" aria-level="branch">
+                其他水果
+                <ul class="list-menu-items list">
+                  <li class="list-item" data-value="fruit,other-fruit,pear">梨</li>
+                  <li class="list-item" data-value="fruit,other-fruit,apple">苹果</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="list-item" aria-level="branch">
+            蔬菜
+            <ul class="list-menu-items list">
+              <li class="list-item" data-value="vegetables,potato">土豆</li>
+              <li class="list-item" data-value="vegetables,cabbage">白菜</li>
+            </ul>
+          </li>
+          <li class="list-divider">
+          <li class="list-item" aria-level="branch">
+            肉类
+            <ul class="list-menu-items list">
+              <li class="list-item" data-value="meat,beef">牛肉</li>
+              <li class="list-item" data-value="meat,pork">猪肉</li>
+            </ul>
+          </li>
+          <li class="list-item" data-value="rice">米饭</li>
+          <li class="list-divider">
+          <li class="list-item" aria-level="branch">
+            面食
+            <ul class="list-menu-items list">
+              <li class="list-item" data-value="pasta,steamedbun">馒头</li>
+              <li class="list-item" data-value="meat,bigbreadcake">大饼</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p>当前的选择: <span id="cascaded-currently-selected">(none)</span></p>
+</section>
+<h2>
+<div class="anchor-header" id="anchor-3"></div>Select 主题<a class="anchor-link" href="#anchor-3">#</a>
+</h2>
+<h3>
+<div class="anchor-header" id="anchor-3-1"></div>主颜色<a class="anchor-link" href="#anchor-3-1">#</a>
 </h3>
 <h4>
-<div class="anchor-header" id="anchor-4-1-1"></div>Primary<a class="anchor-link" href="#anchor-4-1-1">#</a>
+<div class="anchor-header" id="anchor-3-1-1"></div>Primary<a class="anchor-link" href="#anchor-3-1-1">#</a>
 </h4>
 <section class="component-container component-spacing">
   <div class="select select-primary">
@@ -572,7 +704,7 @@
   </div>
 </section>
 <h4>
-<div class="anchor-header" id="anchor-4-1-2"></div>Secondary<a class="anchor-link" href="#anchor-4-1-2">#</a>
+<div class="anchor-header" id="anchor-3-1-2"></div>Secondary<a class="anchor-link" href="#anchor-3-1-2">#</a>
 </h4>
 <section class="component-container component-spacing">
   <div class="select select-secondary">
@@ -597,10 +729,10 @@
   </div>
 </section>
 <h3>
-<div class="anchor-header" id="anchor-4-2"></div>辅助颜色<a class="anchor-link" href="#anchor-4-2">#</a>
+<div class="anchor-header" id="anchor-3-2"></div>辅助颜色<a class="anchor-link" href="#anchor-3-2">#</a>
 </h3>
 <h4>
-<div class="anchor-header" id="anchor-4-2-1"></div>Success<a class="anchor-link" href="#anchor-4-2-1">#</a>
+<div class="anchor-header" id="anchor-3-2-1"></div>Success<a class="anchor-link" href="#anchor-3-2-1">#</a>
 </h4>
 <section class="component-container component-spacing">
   <div class="select select-success">
@@ -625,7 +757,7 @@
   </div>
 </section>
 <h4>
-<div class="anchor-header" id="anchor-4-2-2"></div>Info<a class="anchor-link" href="#anchor-4-2-2">#</a>
+<div class="anchor-header" id="anchor-3-2-2"></div>Info<a class="anchor-link" href="#anchor-3-2-2">#</a>
 </h4>
 <section class="component-container component-spacing">
   <div class="select select-info">
@@ -650,7 +782,7 @@
   </div>
 </section>
 <h4>
-<div class="anchor-header" id="anchor-4-2-3"></div>Warning<a class="anchor-link" href="#anchor-4-2-3">#</a>
+<div class="anchor-header" id="anchor-3-2-3"></div>Warning<a class="anchor-link" href="#anchor-3-2-3">#</a>
 </h4>
 <section class="component-container component-spacing">
   <div class="select select-warning">
@@ -675,7 +807,7 @@
   </div>
 </section>
 <h4>
-<div class="anchor-header" id="anchor-4-2-4"></div>Error<a class="anchor-link" href="#anchor-4-2-4">#</a>
+<div class="anchor-header" id="anchor-3-2-4"></div>Error<a class="anchor-link" href="#anchor-3-2-4">#</a>
 </h4>
 <section class="component-container component-spacing">
   <div class="select select-error">
@@ -700,38 +832,64 @@
   </div>
 </section>
 <script>
-  $(function () {
-    $(window).click(function () {
-      $('.select').removeClass('select-open');
+  (function () {
+    //    $(window).click(function () {
+    //      $('.select').removeClass('select-open');
+    //    });
+    //
+    //    $('#selectEl .select-inner').click(function (e) {
+    //      e.stopPropagation();
+    //
+    //      $('#selectEl').addClass('select-open');
+    //
+    //      $('#selectEl .select-options-item[aria-selected="true"]').focus();
+    //    });
+    //
+    //    $('#selectEl .select-options-item').click(function (e) {
+    //      e.stopPropagation();
+    //
+    //      var $el = $(e.currentTarget);
+    //      if ($el.attr('aria-disabled') !== 'true') {
+    //        $('#selectEl .select-selected-text').text($el.text());
+    //        $('#selectEl').removeClass('select-open');
+    //        $('#selectEl .select-inner').focus();
+    //        $el.attr('aria-selected', true).siblings().removeAttr('aria-selected');
+    //      }
+    //    });
+    const selectEl = document.getElementById('selectDemo');
+    const boxCurrentlySelected = document.getElementById('box-currently-selected');
+    const select = new perfect.Select(selectEl);
+    selectEl.addEventListener('select:change', function(evt) {
+      const {detail} = evt;
+      const {index, value} = detail;
+      boxCurrentlySelected.textContent = '"第' + index + '个，值为' + value;
     });
-    $('#selectEl .select-inner').click(function (e) {
-      e.stopPropagation();
-      $('#selectEl').addClass('select-open');
-      $('#selectEl .select-options-item[aria-selected="true"]').focus();
-    });
-    $('#selectEl .select-options-item').click(function (e) {
-      e.stopPropagation();
-      var $el = $(e.currentTarget);
-      if ($el.attr('aria-disabled') !== 'true') {
-        $('#selectEl .select-selected-text').text($el.text());
-        $('#selectEl').removeClass('select-open');
-        $('#selectEl .select-inner').focus();
-        $el.attr('aria-selected', true).siblings().removeAttr('aria-selected');
-      }
+    const cascadedSelectEl = document.getElementById('selectDemoCascaded');
+    const currentlySelected = document.getElementById('cascaded-currently-selected');
+    const cascadedSelect = new perfect.Select(cascadedSelectEl);
+    cascadedSelectEl.addEventListener('select:change', function(evt) {
+      const {detail} = evt;
+      const {index, value} = detail;
+      currentlySelected.textContent = '"第' + index + '个，值为' + value;
     });
     // Disabled
-    $('#disabledState').change(function () {
-      const $el = $(this);
-      const checked = $el.prop('checked');
-      $('.select').each(function (index, el) {
+    document.getElementById('disabledState').addEventListener('change', function (e) {
+      const target = e.target;
+      const checked = target.checked;
+      [].forEach.call(document.querySelectorAll('.select-multi'), function (el) {
+        el.disabled = checked;
+      });
+      [].forEach.call(document.querySelectorAll('.select'), function (el) {
         if (checked) {
-          $(el).addClass('select-disabled').find('select.select-inner').prop('disabled', true);
+          el.classList.add('select-disabled');
+          el.querySelector('.select-inner').disabled = true;
         } else {
-          $(el).removeClass('radio-disabled').find('select.select-inner').prop('disabled', false);
+          el.classList.remove('select-disabled');
+          el.querySelector('.select-inner').disabled = false;
         }
       });
     });
-  });
+  })();
 </script>
       </section>
     </main>

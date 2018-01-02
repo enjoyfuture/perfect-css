@@ -541,6 +541,7 @@ body {
   right: 0;
   z-index: 1000;
   padding-top: .5rem;
+  padding-left: .5rem;
   border-top: 1px solid;
   border-bottom: 1px solid;
   border-left: 1px solid;
@@ -627,6 +628,7 @@ body {
 .doc-catalogue .menu-title {
   position: relative;
   min-width: 200px;
+  padding-left: .5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

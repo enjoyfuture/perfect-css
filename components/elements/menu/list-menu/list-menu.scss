@@ -4,23 +4,22 @@
 
 // 列表菜单，需要与列表 .list 和 .list-item 结合使用
 .list-menu {
-  position: absolute;
-  z-index: 3;
-  box-sizing: border-box;
-  display: none;
-  min-width: 180px;
-  max-width: calc(100vw - 32px);
-  max-height: calc(100vh - 32px);
-  border-radius: 2px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  position:         absolute;
+  z-index:          3;
+  box-sizing:       border-box;
+  display:          none;
+  min-width:        180px;
+  max-width:        calc(100vw - 32px);
+  max-height:       calc(100vh - 32px);
+  border-radius:    2px;
+  //overflow-x:       hidden;
+  //overflow-y:       auto;
   background-color: #fff;
-  white-space: nowrap;
-  opacity: 0;
-  transform: scale(0);
+  white-space:      nowrap;
+  opacity:          0;
+  transform:        scale(0);
   transform-origin: top left;
-  will-change: transform, opacity;
-
+  will-change:      transform, opacity;
   @include shadow(2);
 
   &:focus {
@@ -29,23 +28,23 @@
 
   // 显示时
   &-open {
-    display: inline-block;
-    opacity: 1;
+    display:   inline-block;
+    opacity:   1;
     transform: scale(1);
   }
 
   // 动画效果
   &-animating {
-    display: inline-block;
+    display:    inline-block;
     overflow-y: hidden;
     transition: opacity $list-menu-fade-duration $animation-ease-out;
   }
 
   // 菜单元素父节点
   &-items {
-    box-sizing: border-box;
-    overflow-x: hidden;
-    overflow-y: auto;
+    box-sizing:  border-box;
+    //overflow-x: hidden;
+    //overflow-y: auto;
     will-change: transform;
 
     // 所有子元素没有显示时透明处理
@@ -55,6 +54,9 @@
 
     > .list-item {
       cursor: pointer;
+      &:hover {
+        background-color: $list-menu-item-hover-bg;
+      }
     }
 
     // scss 语法，相当于 .list-menu-animating .list-menu-items
@@ -70,7 +72,7 @@
     // scss 语法，相当于 .list-menu-open .list-menu-items > *
     .list-menu-open & {
       > * {
-        opacity: 1;
+        opacity:     1;
         will-change: opacity;
       }
     }
@@ -95,3 +97,12 @@
 
 }
 
+.list-menu-cascade {
+  position: relative;
+
+  .list-menu-items {
+    position: absolute;
+    top:      0;
+    left:     100%;
+  }
+}

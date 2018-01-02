@@ -401,6 +401,25 @@
  */
 
 /**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
+/**
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
@@ -491,23 +510,23 @@
   --theme-light-disabled: rgba(255, 255, 255, 0.5);
   --theme-success: #43a047;
   --theme-info: #0097a7;
-  --theme-warning: #fb8c00;
+  --theme-warning: #fbc02d;
   --theme-error: #f44336;
   --theme-success-light: #81c784;
   --theme-info-light: #4dd0e1;
-  --theme-warning-light: #ffb74d;
+  --theme-warning-light: #fff176;
   --theme-error-light: #e57373;
   --theme-success-lighter: #c8e6c9;
   --theme-info-lighter: #b2ebf2;
-  --theme-warning-lighter: #ffe0b2;
+  --theme-warning-lighter: #fff9c4;
   --theme-error-lighter: #ffcdd2;
   --theme-success-dark: #2e7d32;
   --theme-info-dark: #00838f;
-  --theme-warning-dark: #ef6c00;
+  --theme-warning-dark: #f9a825;
   --theme-error-dark: #c62828;
   --theme-success-alpha: rgba(76, 175, 80, 0.16);
   --theme-info-alpha: rgba(0, 188, 212, 0.16);
-  --theme-warning-alpha: rgba(255, 152, 0, 0.16);
+  --theme-warning-alpha: rgba(255, 235, 59, 0.16);
   --theme-error-alpha: rgba(244, 67, 54, 0.16);
 }
 
@@ -697,13 +716,13 @@
 }
 
 .theme-warning-bg {
-  background-color: #fb8c00 !important;
-  background-color: var(--theme-warning, #fb8c00) !important;
+  background-color: #fbc02d !important;
+  background-color: var(--theme-warning, #fbc02d) !important;
 }
 
 .theme-warning {
-  color: #fb8c00 !important;
-  color: var(--theme-warning, #fb8c00) !important;
+  color: #fbc02d !important;
+  color: var(--theme-warning, #fbc02d) !important;
 }
 
 .theme-error-bg {
@@ -737,13 +756,13 @@
 }
 
 .theme-warning-light-bg {
-  background-color: #ffb74d !important;
-  background-color: var(--theme-warning-light, #ffb74d) !important;
+  background-color: #fff176 !important;
+  background-color: var(--theme-warning-light, #fff176) !important;
 }
 
 .theme-warning-light {
-  color: #ffb74d !important;
-  color: var(--theme-warning-light, #ffb74d) !important;
+  color: #fff176 !important;
+  color: var(--theme-warning-light, #fff176) !important;
 }
 
 .theme-error-light-bg {
@@ -777,13 +796,13 @@
 }
 
 .theme-warning-lighter-bg {
-  background-color: #ffe0b2 !important;
-  background-color: var(--theme-warning-lighter, #ffe0b2) !important;
+  background-color: #fff9c4 !important;
+  background-color: var(--theme-warning-lighter, #fff9c4) !important;
 }
 
 .theme-warning-lighter {
-  color: #ffe0b2 !important;
-  color: var(--theme-warning-lighter, #ffe0b2) !important;
+  color: #fff9c4 !important;
+  color: var(--theme-warning-lighter, #fff9c4) !important;
 }
 
 .theme-error-lighter-bg {
@@ -817,13 +836,13 @@
 }
 
 .theme-warning-dark-bg {
-  background-color: #ef6c00 !important;
-  background-color: var(--theme-warning-dark, #ef6c00) !important;
+  background-color: #f9a825 !important;
+  background-color: var(--theme-warning-dark, #f9a825) !important;
 }
 
 .theme-warning-dark {
-  color: #ef6c00 !important;
-  color: var(--theme-warning-dark, #ef6c00) !important;
+  color: #f9a825 !important;
+  color: var(--theme-warning-dark, #f9a825) !important;
 }
 
 .theme-error-dark-bg {
@@ -857,13 +876,13 @@
 }
 
 .theme-warning-alpha-bg {
-  background-color: rgba(255, 152, 0, 0.16) !important;
-  background-color: var(--theme-warning-alpha, rgba(255, 152, 0, 0.16)) !important;
+  background-color: rgba(255, 235, 59, 0.16) !important;
+  background-color: var(--theme-warning-alpha, rgba(255, 235, 59, 0.16)) !important;
 }
 
 .theme-warning-alpha {
-  color: rgba(255, 152, 0, 0.16) !important;
-  color: var(--theme-warning-alpha, rgba(255, 152, 0, 0.16)) !important;
+  color: rgba(255, 235, 59, 0.16) !important;
+  color: var(--theme-warning-alpha, rgba(255, 235, 59, 0.16)) !important;
 }
 
 .theme-error-alpha-bg {
@@ -2023,14 +2042,14 @@ output {
 
 .ripple-warning::before,
 .ripple-warning::after {
-  background-color: #ff9800;
-  background-color: var(--theme-warning-alpha, rgba(255, 152, 0, 0.16));
+  background-color: #ffeb3b;
+  background-color: var(--theme-warning-alpha, rgba(255, 235, 59, 0.16));
 }
 
 @supports (background-color: color(green a(10%))) {
   .ripple-warning::before,
   .ripple-warning::after {
-    background-color: color(var(--theme-warning-alpha, rgba(255, 152, 0, 0.16)) a(100%));
+    background-color: color(var(--theme-warning-alpha, rgba(255, 235, 59, 0.16)) a(100%));
   }
 }
 
@@ -2258,6 +2277,25 @@ output {
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
+
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
 
 .blockquote {
   padding: 0.5rem 1rem;
@@ -6021,6 +6059,25 @@ hr {
  */
 
 /**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
+/**
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
@@ -6070,25 +6127,98 @@ hr {
   https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
 **/
 
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * Applies the correct theme color style to the specified property.
+ * $property is typically color or background-color, but can be any CSS property that accepts color values.
+ * $style should be one of the map keys in $theme-property-values (_variables.scss).
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
 .input {
   position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: inline-block;
-  width: 180px;
 }
 
-.input label > input,
-.input label + input {
+.input label > .input-field,
+.input label + .input-field {
   margin-left: 0.5rem;
 }
 
 .input-field {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  width: 100%;
+  height: 2.25rem;
   padding: 0.375rem 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.065);
   line-height: 1.5;
   background: none;
   background-clip: padding-box;
@@ -6158,13 +6288,98 @@ hr {
 .input-field[readonly] {
   color: rgba(0, 0, 0, 0.38);
   color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
+  background-color: rgba(0, 0, 0, 0.04);
   pointer-events: none;
 }
 
 .input-field[type="color"] {
-  min-height: 2.1875rem;
   padding: 0;
   border: 0;
+}
+
+.input-field[type="range"] {
+  padding: 0;
+  border: 0;
+  -webkit-appearance: slider-horizontal;
+}
+
+.input-flat .input-field {
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+
+.input-full {
+  display: block;
+  -ms-flex: 1 1;
+      flex: 1 1;
+  width: 100%;
+}
+
+.input-full .input-field {
+  display: block;
+  width: 100%;
+}
+
+.input-float .input-field {
+  height: auto;
+  padding-top: 1.5rem;
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+
+.input-float .input-field::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.input-float .input-field:-ms-input-placeholder {
+  opacity: 0;
+}
+
+.input-float .input-field::-ms-input-placeholder {
+  opacity: 0;
+}
+
+.input-float .input-field::placeholder {
+  opacity: 0;
+}
+
+.input-float-label {
+  position: absolute;
+  bottom: 0.375rem;
+  left: 0.75rem;
+  pointer-events: none;
+  cursor: text;
+  -webkit-transform: translateY(-20%);
+          transform: translateY(-20%);
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-transition: color 180ms cubic-bezier(0, 0, 0.2, 1), font-size 180ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 180ms cubic-bezier(0, 0, 0.2, 1);
+  transition: color 180ms cubic-bezier(0, 0, 0.2, 1), font-size 180ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 180ms cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 180ms cubic-bezier(0, 0, 0.2, 1), color 180ms cubic-bezier(0, 0, 0.2, 1), font-size 180ms cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 180ms cubic-bezier(0, 0, 0.2, 1), color 180ms cubic-bezier(0, 0, 0.2, 1), font-size 180ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 180ms cubic-bezier(0, 0, 0.2, 1);
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--theme-dark-hint, rgba(0, 0, 0, 0.38));
+}
+
+.input-float .input-field:focus + .input-float-label,
+.input-float .input-field-focused + .input-float-label,
+.input-float .input-field:-webkit-autofill + .input-float-label {
+  cursor: auto;
+  -webkit-transform: translateY(-90%) scale(0.8, 0.8);
+          transform: translateY(-90%) scale(0.8, 0.8);
+  color: rgba(0, 0, 0, 0.54);
+  color: var(--theme-dark-secondary, rgba(0, 0, 0, 0.54));
+}
+
+.input-float .input-field:disabled + .input-float-label,
+.input-float .input-field[readonly] + .input-float-label {
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
+}
+
+.input-textarea .input-field {
+  height: auto;
+  resize: none;
 }
 
 .input-placeholder .input-field::-webkit-input-placeholder {
@@ -6214,6 +6429,8 @@ hr {
 .input-invalid .input-field {
   border-color: #f44336;
   border-color: var(--theme-error, #f44336);
+  color: #f44336;
+  color: var(--theme-error, #f44336);
 }
 
 .input-invalid .input-field::-webkit-input-placeholder {
@@ -6236,90 +6453,51 @@ hr {
   color: var(--theme-error, #f44336);
 }
 
-.input-flat {
-  padding-left: 0;
-  padding-right: 0;
-  border-width: 0 0 1px;
-  border-radius: 0;
-}
-
-.input-full {
-  display: block;
-  -ms-flex: 1 1;
-      flex: 1 1;
-  width: 100%;
-}
-
-.input-full .input-field {
-  display: block;
-}
-
-.input-label {
-  position: absolute;
-  bottom: 0.5rem;
-  left: 0;
-  pointer-events: none;
-  cursor: text;
-  -webkit-transform-origin: left top;
-          transform-origin: left top;
-  -webkit-transition: color 180ms cubic-bezier(0, 0, 0.2, 1), font-size 180ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 180ms cubic-bezier(0, 0, 0.2, 1);
-  transition: color 180ms cubic-bezier(0, 0, 0.2, 1), font-size 180ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 180ms cubic-bezier(0, 0, 0.2, 1);
-  transition: transform 180ms cubic-bezier(0, 0, 0.2, 1), color 180ms cubic-bezier(0, 0, 0.2, 1), font-size 180ms cubic-bezier(0, 0, 0.2, 1);
-  transition: transform 180ms cubic-bezier(0, 0, 0.2, 1), color 180ms cubic-bezier(0, 0, 0.2, 1), font-size 180ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 180ms cubic-bezier(0, 0, 0.2, 1);
+.input-invalid .input-field:disabled,
+.input-invalid .input-field[readonly] {
+  border-color: rgba(0, 0, 0, 0.04);
   color: rgba(0, 0, 0, 0.38);
-  color: var(--theme-dark-hint, rgba(0, 0, 0, 0.38));
+  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
 }
 
-.input-float-above {
-  margin-top: 1.5rem;
+.input-invalid .input-field:disabled::-webkit-input-placeholder,
+.input-invalid .input-field[readonly]::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
 }
 
-.input-float-above .input-field {
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
-  border-width: 0 0 1px;
-  border-radius: 0;
+.input-invalid .input-field:disabled:-ms-input-placeholder,
+.input-invalid .input-field[readonly]:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
 }
 
-.input-float-above .input-field::-webkit-input-placeholder {
-  opacity: 0;
+.input-invalid .input-field:disabled::-ms-input-placeholder,
+.input-invalid .input-field[readonly]::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
 }
 
-.input-float-above .input-field:-ms-input-placeholder {
-  opacity: 0;
+.input-invalid .input-field:disabled::placeholder,
+.input-invalid .input-field[readonly]::placeholder {
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
 }
 
-.input-float-above .input-field::-ms-input-placeholder {
-  opacity: 0;
-}
-
-.input-float-above .input-field::placeholder {
-  opacity: 0;
-}
-
-.input-float-above .input-field:focus + .input-label,
-.input-float-above .input-field-focused + .input-label,
-.input-float-above .input-field:-webkit-autofill + .input-label {
-  cursor: auto;
-  -webkit-transform: translateY(-90%) scale(0.8, 0.8);
-          transform: translateY(-90%) scale(0.8, 0.8);
-  color: rgba(0, 0, 0, 0.87);
-  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
-}
-
-.input-invalid .input-label,
-.input-invalid .input-field:focus + .input-label,
-.input-invalid .input-field-focused + .input-label,
-.input-invalid .input-field:-webkit-autofill + .input-label {
+.input-invalid .input-float-label,
+.input-invalid .input-field:focus + .input-float-label,
+.input-invalid .input-field-focused + .input-float-label,
+.input-invalid .input-field:-webkit-autofill + .input-float-label {
   color: #f44336;
   color: var(--theme-error, #f44336);
 }
 
 .input-icon {
   position: absolute;
-  top: .5rem;
+  top: 50%;
   cursor: pointer;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .input-icon-start .input-field {
@@ -6327,29 +6505,25 @@ hr {
 }
 
 .input-icon-start .input-icon {
-  left: .5rem;
+  left: 0.5rem;
   right: initial;
 }
 
-.input-icon-start .input-label {
+.input-icon-start .input-float-label {
   left: 2.5rem;
 }
 
-.input-icon-end .input-field {
+.input.input-icon-end .input-field {
   padding-right: 2.5rem;
 }
 
-.input-icon-end .input-icon {
+.input.input-icon-end .input-icon {
   left: initial;
-  right: .5rem;
+  right: 0.5rem;
 }
 
-.input-icon-end .input-label {
+.input.input-icon-end .input-float-label {
   right: 2.5rem;
-}
-
-.input-float-above .input-icon {
-  top: -0.5rem;
 }
 
 .input-lg {
@@ -6357,39 +6531,34 @@ hr {
 }
 
 .input-lg .input-field {
-  padding: 0.75rem 1rem;
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
 }
 
-.input-lg .input-label {
-  bottom: 0.75rem;
-}
-
-.input-lg .input-icon {
-  top: 0.75rem;
-  -webkit-transform: scale(1.25);
-          transform: scale(1.25);
-}
-
-.input-lg.input-float-above {
-  margin-top: 1.5rem;
-}
-
-.input-lg.input-float-above .input-icon {
-  top: 0;
-}
-
-.input-lg.input-float-above .input-field {
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
+.input-lg .input-float-label {
+  bottom: 0.5rem;
+  left: 1rem;
 }
 
 .input-lg.input-icon-start .input-field {
   padding-left: 2.5rem;
 }
 
-.input-lg.input-icon-end .input-field {
+.input-lg.input-icon-start .input-float-label {
+  left: 2.5rem;
+}
+
+.input-lg.input.input-icon-end .input-field {
   padding-right: 2.5rem;
+}
+
+.input-lg.input.input-icon-end .input-float-label {
+  right: 2.5rem;
+}
+
+.input-lg.input-float .input-field {
+  height: auto;
+  padding-top: 1.5rem;
 }
 
 .input-sm {
@@ -6397,39 +6566,34 @@ hr {
 }
 
 .input-sm .input-field {
+  height: 2rem;
   padding: 0.25rem 0.5rem;
 }
 
-.input-sm .input-label {
+.input-sm .input-float-label {
   bottom: 0.25rem;
-}
-
-.input-sm .input-icon {
-  top: 0.125rem;
-  -webkit-transform: scale(0.75);
-          transform: scale(0.75);
-}
-
-.input-sm.input-float-above {
-  margin-top: 0.5rem;
-}
-
-.input-sm.input-float-above .input-icon {
-  top: 0;
-}
-
-.input-sm.input-float-above .input-field {
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
+  left: 0.5rem;
 }
 
 .input-sm.input-icon-start .input-field {
   padding-left: 2.5rem;
 }
 
-.input-sm.input-icon-end .input-field {
+.input-sm.input-icon-start .input-float-label {
+  left: 2.5rem;
+}
+
+.input-sm.input.input-icon-end .input-field {
   padding-right: 2.5rem;
+}
+
+.input-sm.input.input-icon-end .input-float-label {
+  right: 2.5rem;
+}
+
+.input-sm.input-float .input-field {
+  height: auto;
+  padding-top: 1.5rem;
 }
 
 .input-primary .input-field {
@@ -6442,6 +6606,11 @@ hr {
   border-color: var(--theme-primary, #2196f3);
 }
 
+.input-primary .input-field:disabled,
+.input-primary .input-field[readonly] {
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
 .input-secondary .input-field {
   border-color: #e1bee7;
   border-color: var(--theme-secondary-lighter, #e1bee7);
@@ -6452,9 +6621,14 @@ hr {
   border-color: var(--theme-secondary, #e040fb);
 }
 
+.input-secondary .input-field:disabled,
+.input-secondary .input-field[readonly] {
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
 .input-success .input-field {
-  border-color: #81c784;
-  border-color: var(--theme-success-light, #81c784);
+  border-color: #c8e6c9;
+  border-color: var(--theme-success-lighter, #c8e6c9);
 }
 
 .input-success .input-field:focus {
@@ -6462,9 +6636,14 @@ hr {
   border-color: var(--theme-success, #43a047);
 }
 
+.input-success .input-field:disabled,
+.input-success .input-field[readonly] {
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
 .input-info .input-field {
-  border-color: #4dd0e1;
-  border-color: var(--theme-info-light, #4dd0e1);
+  border-color: #b2ebf2;
+  border-color: var(--theme-info-lighter, #b2ebf2);
 }
 
 .input-info .input-field:focus {
@@ -6472,19 +6651,29 @@ hr {
   border-color: var(--theme-info, #0097a7);
 }
 
+.input-info .input-field:disabled,
+.input-info .input-field[readonly] {
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
 .input-warning .input-field {
-  border-color: #ffb74d;
-  border-color: var(--theme-warning-light, #ffb74d);
+  border-color: #fff9c4;
+  border-color: var(--theme-warning-lighter, #fff9c4);
 }
 
 .input-warning .input-field:focus {
-  border-color: #fb8c00;
-  border-color: var(--theme-warning, #fb8c00);
+  border-color: #fbc02d;
+  border-color: var(--theme-warning, #fbc02d);
+}
+
+.input-warning .input-field:disabled,
+.input-warning .input-field[readonly] {
+  border-color: rgba(0, 0, 0, 0.04);
 }
 
 .input-error .input-field {
-  border-color: #e57373;
-  border-color: var(--theme-error-light, #e57373);
+  border-color: #ffcdd2;
+  border-color: var(--theme-error-lighter, #ffcdd2);
 }
 
 .input-error .input-field:focus {
@@ -6492,9 +6681,54 @@ hr {
   border-color: var(--theme-error, #f44336);
 }
 
+.input-error .input-field:disabled,
+.input-error .input-field[readonly] {
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
 /**
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * Applies the correct theme color style to the specified property.
+ * $property is typically color or background-color, but can be any CSS property that accepts color values.
+ * $style should be one of the map keys in $theme-property-values (_variables.scss).
  */
 
 /**
@@ -6518,12 +6752,40 @@ hr {
  * $style should be one of the map keys in $theme-property-values (_variables.scss).
  */
 
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
 .select {
   position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: inline-block;
-  width: 180px;
   cursor: pointer;
   color: rgba(0, 0, 0, 0.87);
   color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
@@ -6533,7 +6795,7 @@ hr {
   content: "";
   position: absolute;
   top: calc(50% - 5px / 2);
-  right: 5px;
+  right: 0.5rem;
   border: 5px solid transparent;
   border-bottom-width: 0;
   pointer-events: none;
@@ -6543,6 +6805,11 @@ hr {
 
 .select:focus {
   outline: none;
+}
+
+.select label > .select-inner,
+.select label + .select-inner {
+  margin-left: 0.5rem;
 }
 
 .select-inner {
@@ -6555,14 +6822,14 @@ hr {
       align-items: center;
   -ms-flex-pack: start;
       justify-content: flex-start;
-  width: 100%;
+  height: 2.25rem;
   padding: 0.375rem 1.5rem 0.375rem 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.065);
   line-height: 1.5;
   background: none;
   cursor: pointer;
-  -webkit-transition: border-bottom-color 150ms 0ms cubic-bezier(0.4, 0, 1, 1), background-color 150ms 0ms cubic-bezier(0.4, 0, 1, 1);
-  transition: border-bottom-color 150ms 0ms cubic-bezier(0.4, 0, 1, 1), background-color 150ms 0ms cubic-bezier(0.4, 0, 1, 1);
+  -webkit-transition: border-color 150ms 0ms cubic-bezier(0.4, 0, 1, 1), background-color 150ms 0ms cubic-bezier(0.4, 0, 1, 1);
+  transition: border-color 150ms 0ms cubic-bezier(0.4, 0, 1, 1), background-color 150ms 0ms cubic-bezier(0.4, 0, 1, 1);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-appearance: none;
@@ -6574,9 +6841,109 @@ hr {
 }
 
 .select-inner:focus {
-  border-color: rgba(0, 0, 0, 0.87);
-  border-color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
+  border-color: rgba(0, 0, 0, 0.38);
   outline: none;
+}
+
+.select-inner:disabled {
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
+  background-color: rgba(0, 0, 0, 0.04);
+  pointer-events: none;
+}
+
+.select-flat .select-inner {
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+
+.select-full {
+  display: block;
+  -ms-flex: 1 1;
+      flex: 1 1;
+  width: 100%;
+}
+
+.select-full .select-inner {
+  width: 100%;
+}
+
+.select-multi {
+  width: 250px;
+  padding: 0;
+  border: 1px solid;
+  outline: none;
+  -webkit-appearance: none;
+  border-color: rgba(0, 0, 0, 0.38);
+  border-color: var(--theme-dark-hint, rgba(0, 0, 0, 0.38));
+}
+
+.select-multi:disabled .option-item {
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
+  cursor: default;
+}
+
+.select-multi .option-group {
+  padding-left: 1rem;
+  margin-top: 1rem;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--theme-dark-hint, rgba(0, 0, 0, 0.38));
+}
+
+.select-multi .option-group:last-child {
+  margin-bottom: 1rem;
+}
+
+.select-multi .option-group .option-divider {
+  margin-left: -1rem;
+}
+
+.select-multi .option-group .option-item {
+  margin-left: -1rem;
+}
+
+.select-multi .option-item {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  padding: 0.5rem 1rem;
+  color: rgba(0, 0, 0, 0.87);
+  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
+  cursor: pointer;
+}
+
+.select-multi .option-item:first-child {
+  margin-top: 0.75rem;
+}
+
+.select-multi .option-item:last-child {
+  margin-bottom: 0.5rem;
+}
+
+.select-multi .option-item:disabled {
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
+  cursor: default;
+}
+
+.select-multi .option-divider {
+  padding-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 0;
+}
+
+.select-menu.list-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  max-height: 100%;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
 }
 
 .select-selected-text {
@@ -6586,6 +6953,10 @@ hr {
   transition: opacity 125ms 0ms cubic-bezier(0.4, 0, 1, 1), -webkit-transform 125ms 0ms cubic-bezier(0.4, 0, 1, 1);
   transition: opacity 125ms 0ms cubic-bezier(0.4, 0, 1, 1), transform 125ms 0ms cubic-bezier(0.4, 0, 1, 1);
   transition: opacity 125ms 0ms cubic-bezier(0.4, 0, 1, 1), transform 125ms 0ms cubic-bezier(0.4, 0, 1, 1), -webkit-transform 125ms 0ms cubic-bezier(0.4, 0, 1, 1);
+}
+
+.select-scroll-lock {
+  overflow: hidden;
 }
 
 .select-options {
@@ -6706,81 +7077,6 @@ hr {
           user-select: none;
 }
 
-.select-multi {
-  width: 250px;
-  padding: 0;
-  border: 1px solid;
-  outline: none;
-  -webkit-appearance: none;
-  border-color: rgba(0, 0, 0, 0.38);
-  border-color: var(--theme-dark-hint, rgba(0, 0, 0, 0.38));
-}
-
-.select-multi .option-group {
-  padding: 0 0 0 1rem;
-  margin: 1rem 0 0;
-  font-weight: normal;
-  color: rgba(0, 0, 0, 0.38);
-  color: var(--theme-dark-hint, rgba(0, 0, 0, 0.38));
-}
-
-.select-multi .option-group:last-child {
-  margin-bottom: 1rem;
-}
-
-.select-multi .option-group .option-divider {
-  margin-left: -1rem;
-}
-
-.select-multi .option-group .option-item {
-  margin: 0 0 0 -1rem;
-}
-
-.select-multi .option-item {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  padding: .5rem 1rem;
-  color: rgba(0, 0, 0, 0.87);
-  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
-  cursor: pointer;
-}
-
-.select-multi .option-item:first-child {
-  margin-top: .75rem;
-}
-
-.select-multi .option-item:last-child {
-  margin-bottom: .5rem;
-}
-
-.select-multi .option-item:disabled {
-  color: rgba(0, 0, 0, 0.38);
-  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
-  cursor: default;
-}
-
-.select-multi .option-divider {
-  padding-top: .25rem;
-  margin-bottom: .5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  font-size: 0;
-}
-
-.select-full {
-  display: block;
-  -ms-flex: 1 1;
-      flex: 1 1;
-  width: 100%;
-}
-
-.select-flat {
-  padding-left: 0;
-  border-width: 0 0 1px;
-  border-radius: 0;
-}
-
 .select-primary .select-inner {
   border-color: #bbdefb;
   border-color: var(--theme-primary-lighter, #bbdefb);
@@ -6822,13 +7118,13 @@ hr {
 }
 
 .select-warning .select-inner {
-  border-color: #ffb74d;
-  border-color: var(--theme-warning-light, #ffb74d);
+  border-color: #fff176;
+  border-color: var(--theme-warning-light, #fff176);
 }
 
 .select-warning .select-inner:focus {
-  border-color: #fb8c00;
-  border-color: var(--theme-warning, #fb8c00);
+  border-color: #fbc02d;
+  border-color: var(--theme-warning, #fbc02d);
 }
 
 .select-error .select-inner {
@@ -7237,33 +7533,33 @@ hr {
 }
 
 .radio-warning .radio-circle-outer {
-  border-color: #ffb74d;
-  border-color: var(--theme-warning-light, #ffb74d);
+  border-color: #fff176;
+  border-color: var(--theme-warning-light, #fff176);
 }
 
 .radio-warning .radio-circle-inner {
-  background-color: #ffb74d;
-  background-color: var(--theme-warning-light, #ffb74d);
+  background-color: #fff176;
+  background-color: var(--theme-warning-light, #fff176);
 }
 
 .radio-warning .radio-native-control:focus + .radio-background .radio-circle-outer {
-  border-color: #fb8c00;
-  border-color: var(--theme-warning, #fb8c00);
+  border-color: #fbc02d;
+  border-color: var(--theme-warning, #fbc02d);
 }
 
 .radio-warning .radio-native-control:checked:not(:disabled) + .radio-background .radio-circle-outer {
-  border-color: #fb8c00;
-  border-color: var(--theme-warning, #fb8c00);
+  border-color: #fbc02d;
+  border-color: var(--theme-warning, #fbc02d);
 }
 
 .radio-warning .radio-native-control:checked:not(:disabled) + .radio-background .radio-circle-inner {
-  background-color: #fb8c00;
-  background-color: var(--theme-warning, #fb8c00);
+  background-color: #fbc02d;
+  background-color: var(--theme-warning, #fbc02d);
 }
 
 .radio-warning.radio-ripple .radio-background::before {
-  background-color: #ffb74d;
-  background-color: var(--theme-warning-light, #ffb74d);
+  background-color: #fff176;
+  background-color: var(--theme-warning-light, #fff176);
 }
 
 .radio-warning.radio-ripple .radio-native-control:focus + .radio-background::before {
@@ -7272,14 +7568,14 @@ hr {
 
 .radio-warning.ripple-impact::before,
 .radio-warning.ripple-impact::after {
-  background-color: #ff9800;
-  background-color: var(--theme-warning-alpha, rgba(255, 152, 0, 0.16));
+  background-color: #ffeb3b;
+  background-color: var(--theme-warning-alpha, rgba(255, 235, 59, 0.16));
 }
 
 @supports (background-color: color(green a(10%))) {
   .radio-warning.ripple-impact::before,
   .radio-warning.ripple-impact::after {
-    background-color: color(var(--theme-warning-alpha, rgba(255, 152, 0, 0.16)) a(100%));
+    background-color: color(var(--theme-warning-alpha, rgba(255, 235, 59, 0.16)) a(100%));
   }
 }
 
@@ -7784,29 +8080,29 @@ hr {
 }
 
 .checkbox-warning .checkbox-mark-outer {
-  border-color: #ffb74d;
-  border-color: var(--theme-warning-light, #ffb74d);
+  border-color: #fff176;
+  border-color: var(--theme-warning-light, #fff176);
 }
 
 .checkbox-warning .checkbox-mark-inner {
-  background-color: #ffb74d;
-  background-color: var(--theme-warning-light, #ffb74d);
+  background-color: #fff176;
+  background-color: var(--theme-warning-light, #fff176);
 }
 
 .checkbox-warning .checkbox-native-control:focus + .checkbox-background .checkbox-mark-outer {
-  border-color: #fb8c00;
-  border-color: var(--theme-warning, #fb8c00);
+  border-color: #fbc02d;
+  border-color: var(--theme-warning, #fbc02d);
 }
 
 .checkbox-warning .checkbox-native-control:checked:not(:disabled) + .checkbox-background .checkbox-mark-inner,
 .checkbox-warning .checkbox-native-control:indeterminate:not(:disabled) + .checkbox-background .checkbox-mark-inner {
-  background-color: #fb8c00;
-  background-color: var(--theme-warning, #fb8c00);
+  background-color: #fbc02d;
+  background-color: var(--theme-warning, #fbc02d);
 }
 
 .checkbox-warning.checkbox-ripple .checkbox-background::before {
-  background-color: #ffb74d;
-  background-color: var(--theme-warning-light, #ffb74d);
+  background-color: #fff176;
+  background-color: var(--theme-warning-light, #fff176);
 }
 
 .checkbox-warning.checkbox-ripple .checkbox-native-control:focus + .checkbox-background::before {
@@ -7815,14 +8111,14 @@ hr {
 
 .checkbox-warning.ripple-impact::before,
 .checkbox-warning.ripple-impact::after {
-  background-color: #ff9800;
-  background-color: var(--theme-warning-alpha, rgba(255, 152, 0, 0.16));
+  background-color: #ffeb3b;
+  background-color: var(--theme-warning-alpha, rgba(255, 235, 59, 0.16));
 }
 
 @supports (background-color: color(green a(10%))) {
   .checkbox-warning.ripple-impact::before,
   .checkbox-warning.ripple-impact::after {
-    background-color: color(var(--theme-warning-alpha, rgba(255, 152, 0, 0.16)) a(100%));
+    background-color: color(var(--theme-warning-alpha, rgba(255, 235, 59, 0.16)) a(100%));
   }
 }
 
@@ -7923,6 +8219,25 @@ hr {
 **/
 
 /**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
+/**
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
@@ -7937,7 +8252,7 @@ hr {
       align-items: center;
   width: 180px;
   padding: 0.375rem 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.065);
   line-height: 1.5;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -8267,33 +8582,33 @@ hr {
 }
 
 .switch-warning .switch-control:enabled:not(:checked) ~ .switch-track::before {
-  background-color: #ffb74d;
-  background-color: var(--theme-warning-light, #ffb74d);
+  background-color: #fff176;
+  background-color: var(--theme-warning-light, #fff176);
 }
 
 .switch-warning .switch-control:enabled:not(:checked) ~ .switch-track .switch-knob {
-  background-color: #ffb74d;
-  background-color: var(--theme-warning-light, #ffb74d);
+  background-color: #fff176;
+  background-color: var(--theme-warning-light, #fff176);
 }
 
 .switch-warning .switch-control:enabled:not(:checked) ~ .switch-track .switch-knob::before {
-  background-color: #ffb74d;
-  background-color: var(--theme-warning-light, #ffb74d);
+  background-color: #fff176;
+  background-color: var(--theme-warning-light, #fff176);
 }
 
 .switch-warning .switch-control:enabled:checked:not(:disabled) ~ .switch-track::before {
-  background-color: #fb8c00;
-  background-color: var(--theme-warning, #fb8c00);
+  background-color: #fbc02d;
+  background-color: var(--theme-warning, #fbc02d);
 }
 
 .switch-warning .switch-control:enabled:checked:not(:disabled) ~ .switch-track .switch-knob {
-  background-color: #fb8c00;
-  background-color: var(--theme-warning, #fb8c00);
+  background-color: #fbc02d;
+  background-color: var(--theme-warning, #fbc02d);
 }
 
 .switch-warning .switch-control:enabled:checked:not(:disabled) ~ .switch-track .switch-knob::before {
-  background-color: #fb8c00;
-  background-color: var(--theme-warning, #fb8c00);
+  background-color: #fbc02d;
+  background-color: var(--theme-warning, #fbc02d);
 }
 
 .switch-error .switch-control:enabled:not(:checked) ~ .switch-track::before {
@@ -8413,6 +8728,25 @@ hr {
  */
 
 /**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
+/**
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
@@ -8487,6 +8821,25 @@ hr {
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
+
+/**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
 
 /**
 * 关于 font weight 的设置，跟字体粗细值有关
@@ -8863,34 +9216,34 @@ fieldset:disabled .btn-info.btn-unshadow,
 }
 
 .btn-warning {
-  color: #fb8c00;
-  color: var(--theme-warning, #fb8c00);
+  color: #fbc02d;
+  color: var(--theme-warning, #fbc02d);
 }
 
 .btn-warning:hover {
-  color: #fb8c00;
-  color: var(--theme-warning, #fb8c00);
+  color: #fbc02d;
+  color: var(--theme-warning, #fbc02d);
 }
 
 .btn-warning:not(.btn-raised):not(.btn-unshadow)::before,
 .btn-warning:not(.btn-raised):not(.btn-unshadow)::after {
-  background-color: #ff9800;
-  background-color: var(--theme-warning-alpha, rgba(255, 152, 0, 0.16));
+  background-color: #ffeb3b;
+  background-color: var(--theme-warning-alpha, rgba(255, 235, 59, 0.16));
 }
 
 @supports (background-color: color(green a(10%))) {
   .btn-warning:not(.btn-raised):not(.btn-unshadow)::before,
   .btn-warning:not(.btn-raised):not(.btn-unshadow)::after {
-    background-color: color(var(--theme-warning-alpha, rgba(255, 152, 0, 0.16)) a(100%));
+    background-color: color(var(--theme-warning-alpha, rgba(255, 235, 59, 0.16)) a(100%));
   }
 }
 
 .btn-warning.btn-raised,
 .btn-warning.btn-unshadow {
-  color: rgba(0, 0, 0, 0.87);
-  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
-  background-color: #fb8c00;
-  background-color: var(--theme-warning, #fb8c00);
+  color: #ffffff;
+  color: var(--theme-light-primary, #ffffff);
+  background-color: #fbc02d;
+  background-color: var(--theme-warning, #fbc02d);
 }
 
 .btn-warning.btn-raised::before,
@@ -9003,6 +9356,25 @@ fieldset:disabled .btn-error.btn-unshadow,
  */
 
 /**
+* 关于 font weight 的设置，跟字体粗细值有关
+* 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
+    100-300   400-500  600-700  800-900  四种，对应为
+    lighter 比从父元素继承来的值更细(处在字体可行的粗细值范围内)。
+    normal 正常粗细，与400等值。
+    bold 加粗， 与700等值
+    bolder 比从父元素继承来的值更粗 (处在字体可行的粗细值范围内)。
+ 如果设为 -apple-system 或 "PingFang SC"时，就会有更多的字体粗细，
+  100 200 300 400 500 600-900 六种粗细
+  其中 lighter 对应 100    normal 对应 400    bold 对应 700    bolder 对应 700
+
+*  2 在 Chrome 下，默认字体粗细只有两种
+   100-400 500-900 对应为 normal 和 bold，如果设置为 lighter，则等价于 normal， 设为 bolder 等价于 bold
+   如果设为 "PingFang SC" 同样有六种字体粗细，参考上面
+* 所以 font-weight 字体粗细跟字体有关。关于字体粗细的回退机制可以参考以下文章
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight
+**/
+
+/**
  * 计算两种颜色的对比度，一般指前景色和背景色
  * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
  */
@@ -9109,42 +9481,274 @@ fieldset:disabled .btn-error.btn-unshadow,
  */
 
 /**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
  * Applies the correct theme color style to the specified property.
  * $property is typically color or background-color, but can be any CSS property that accepts color values.
  * $style should be one of the map keys in $theme-property-values (_variables.scss).
  */
 
-ul.menu,
-ol.menu {
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+.list {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: block;
   padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
+  margin: 0;
+  list-style-type: none;
+  color: rgba(0, 0, 0, 0.87);
+  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
 }
 
-/*.menu {
-  // 多级菜单间距
-  &-item {
-    padding-left: 1.25rem;
-  }
-}*/
+.list-item-action {
+  color: rgba(0, 0, 0, 0.87);
+  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
+  width: 100%;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.list-item-action:focus,
+.list-item-action:hover {
+  color: rgba(0, 0, 0, 0.87);
+  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
+  background-color: rgba(0, 0, 0, 0.04);
+  text-decoration: none;
+}
+
+.list-item-action.disabled:hover,
+.list-item-action:disabled:hover {
+  background-color: #ffffff;
+  background-color: var(--theme-light-primary, #ffffff);
+}
+
+button.list-item-action {
+  border: 0;
+}
+
+button.list-item-action:focus {
+  outline: 0;
+}
+
+.list-item {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  background-color: var(--theme-light-primary, #ffffff);
+}
+
+.list-item.active {
+  background-color: rgba(0, 0, 0, 0.065);
+}
+
+.list-item.disabled,
+.list-item:disabled {
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
+}
+
+.list-dense {
+  font-size: .75rem;
+}
+
+.list-dense > .list-item {
+  padding: 0.5625rem 1rem;
+}
+
+.list-border .list-item {
+  margin-bottom: -1px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.list-border-inner .list-item {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.list-border-inner .list-item:first-child {
+  border-top: 0;
+}
+
+.list-spacing .list-item {
+  margin-bottom: 0.625rem;
+}
+
+.list-spacing .list-item:last-child {
+  margin-bottom: 0;
+}
+
+.list-item-icon-start,
+.list-item-icon-end {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.list-item-icon-start {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+.list-item-icon-end {
+  margin-left: auto;
+}
+
+.list-dense .list-item-icon-start,
+.list-dense .list-item-icon-end {
+  width: 1.24995rem;
+  height: 1.24995rem;
+  margin-right: 1rem;
+}
+
+.list-item-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 0;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.list-item-text-center {
+  width: 100%;
+  text-align: center;
+}
+
+.list-item-text-center + .list-item-icon-end {
+  position: absolute;
+  right: 1rem;
+}
+
+.list-item-text-right {
+  margin-left: auto;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.list-item-text-right + .list-item-icon-end {
+  margin-left: inherit;
+}
+
+.list-item-text {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+}
+
+.list-item-text-secondary {
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.54);
+  color: var(--theme-dark-secondary, rgba(0, 0, 0, 0.54));
+}
+
+.list-dense .list-item-text-secondary {
+  font-size: 0.75rem;
+}
+
+.list-divider {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.list-divider-inset {
+  width: calc(100% - 1rem);
+  margin-left: 1rem;
+  margin-right: 0;
+}
+
+.list-divider-inset-icon {
+  width: calc(100% - 3.5rem);
+  margin-left: 3.5rem;
+  margin-right: 0;
+}
+
+.list-divider-inset-avatar {
+  width: calc(100% - 4.5rem);
+  margin-left: 4.5rem;
+  margin-right: 0;
+}
+
+.list-group {
+  padding: .5rem 0;
+  background-color: #ffffff;
+  background-color: var(--theme-light-primary, #ffffff);
+}
+
+.list-group-header {
+  margin: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87);
+  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
+}
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * Applies the correct theme color style to the specified property.
+ * $property is typically color or background-color, but can be any CSS property that accepts color values.
+ * $style should be one of the map keys in $theme-property-values (_variables.scss).
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
 
 .menu {
-  margin-left: .5rem;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .menu-title {
   display: block;
-  padding: .3rem .5rem;
+  padding: 0.5rem 1rem;
   font-weight: 400;
   text-decoration: none;
   color: rgba(0, 0, 0, 0.54);
   color: var(--theme-dark-secondary, rgba(0, 0, 0, 0.54));
 }
 
-.menu-title:hover:focus,
-.menu-title:hover:hover,
-.menu-title:focus:focus,
-.menu-title:focus:hover {
+.menu-title:hover,
+.menu-title:focus {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87);
   color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
@@ -9155,43 +9759,211 @@ ol.menu {
   color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
 }
 
-.menu-header {
+.menu-nested {
+  padding-left: 1rem;
+}
+
+.menu-border {
+  -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.menu-active-bg .menu-title:hover,
+.menu-active-bg .menu-title:focus {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.menu-active-bg .menu-title.active {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.menu-spacing-1 {
+  padding-left: 1rem;
+}
+
+.menu-spacing-2 {
+  padding-left: 2rem;
+}
+
+.menu-spacing-3 {
+  padding-left: 3rem;
+}
+
+.menu-spacing-4 {
+  padding-left: 4rem;
+}
+
+.menu-spacing-5 {
+  padding-left: 5rem;
+}
+
+.menu-spacing-6 {
+  padding-left: 6rem;
+}
+
+.menu-cascaded {
+  max-width: 150px;
+}
+
+.menu-cascaded .menu {
+  min-width: 150px;
+}
+
+.menu-cascaded-item {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  cursor: pointer;
+}
+
+.menu-cascaded-item:not([data-leaf])::after {
+  content: "";
+  position: absolute;
+  right: 1rem;
+  z-index: 1;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  will-change: border-color;
+  border-color: rgba(0, 0, 0, 0.38);
+  border-color: var(--theme-dark-hint, rgba(0, 0, 0, 0.38));
+  -webkit-transition: border-color 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 120ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-cascaded-item > .menu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  will-change: visibility, transform;
+  -webkit-transition: visibility 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: visibility 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition: -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 120ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-cascaded-item:hover > .menu {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.menu-cascaded-item:hover::after {
+  border-color: rgba(0, 0, 0, 0.87);
+  border-color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
+}
+
+.menu-cascaded-item:hover,
+.menu-cascaded-item:focus {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.menu-cascaded-item.active {
   color: rgba(0, 0, 0, 0.87);
   color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
-.menu-dropdown::after {
+.menu-cascaded.menu-border .menu {
+  -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.menu-dropdown {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menu-dropdown .menu {
+  min-width: 150px;
+}
+
+.menu-dropdown-item {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  cursor: pointer;
+}
+
+.menu-dropdown-item .menu-title {
+  padding-right: 2rem;
+}
+
+.menu-dropdown-item:not([data-leaf])::after {
   content: "";
-  display: block;
-  clear: both;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 1;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  will-change: border-color;
+  border-color: rgba(0, 0, 0, 0.38);
+  border-color: var(--theme-dark-hint, rgba(0, 0, 0, 0.38));
+  -webkit-transition: border-color 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 120ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.menu-dropdown.menu .menu {
-  display: none;
+.menu-dropdown-item > .menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  visibility: hidden;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  will-change: visibility, transform;
+  -webkit-transition: visibility 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: visibility 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition: -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 120ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.menu-dropdown > .menu-item,
-.menu-dropdown > li {
-  float: left;
+.menu-dropdown-item:hover > .menu {
+  visibility: visible;
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+
+.menu-dropdown-item:hover::after {
+  border-color: rgba(0, 0, 0, 0.87);
+  border-color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
+}
+
+.menu-dropdown-item:hover,
+.menu-dropdown-item:focus {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.menu-dropdown-item.active {
+  color: rgba(0, 0, 0, 0.87);
+  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .menu-dropdown > .menu-item:hover > .menu,
 .menu-dropdown > li:hover > .menu {
-  display: block;
-}
-
-.menu-cascaded {
-  position: relative;
-}
-
-.menu-cascaded > .menu {
-  position: absolute;
-  top: 0;
-  left: 90%;
-  width: 100%;
-}
-
-.menu-cascaded:hover > .menu {
   display: block;
 }
 
@@ -9256,6 +10028,27 @@ ol.menu {
   counter-increment: catalogue6;
 }
 
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
+/**
+ * Applies the correct theme color style to the specified property.
+ * $property is typically color or background-color, but can be any CSS property that accepts color values.
+ * $style should be one of the map keys in $theme-property-values (_variables.scss).
+ */
+
+/**
+ * 计算两种颜色的对比度，一般指前景色和背景色
+ * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
+ */
+
 .list-menu {
   position: absolute;
   z-index: 3;
@@ -9266,8 +10059,6 @@ ol.menu {
   max-width: calc(100vw - 32px);
   max-height: calc(100vh - 32px);
   border-radius: 2px;
-  overflow-x: hidden;
-  overflow-y: auto;
   background-color: #fff;
   white-space: nowrap;
   opacity: 0;
@@ -9301,8 +10092,6 @@ ol.menu {
 .list-menu-items {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  overflow-x: hidden;
-  overflow-y: auto;
   will-change: transform;
 }
 
@@ -9311,7 +10100,17 @@ ol.menu {
 }
 
 .list-menu-items > .list-item {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   cursor: pointer;
+}
+
+.list-menu-items > .list-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.list-menu-items > .list-item.active {
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .list-menu-animating .list-menu-items {
@@ -9346,6 +10145,71 @@ ol.menu {
 .list-menu-bottom-right {
   -webkit-transform-origin: bottom right !important;
           transform-origin: bottom right !important;
+}
+
+.list-menu-cascaded {
+  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(0, 0, 0, 0.14), 0 0 0 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(0, 0, 0, 0.14), 0 0 0 0 rgba(0, 0, 0, 0.12);
+}
+
+.list-menu-cascaded .list-menu-items {
+  min-width: 180px;
+  -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.list-menu-cascaded .list-item {
+  position: relative;
+  background-color: transparent;
+}
+
+.list-menu-cascaded .list-item[aria-level="branch"]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  z-index: 1;
+  width: .5rem;
+  height: .5rem;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  -webkit-transform: translateY(-50%) rotate(45deg);
+          transform: translateY(-50%) rotate(45deg);
+  will-change: border-color;
+  border-color: rgba(0, 0, 0, 0.38);
+  border-color: var(--theme-dark-hint, rgba(0, 0, 0, 0.38));
+  -webkit-transition: border-color 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 120ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.list-menu-cascaded .list-item > .list {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  will-change: visibility, transform;
+  -webkit-transition: visibility 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: visibility 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition: -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 120ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.list-menu-cascaded .list-item:hover::after {
+  border-color: rgba(0, 0, 0, 0.87);
+  border-color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
+}
+
+.list-menu-cascaded .list-item.expanded > .list,
+.list-menu-cascaded:not([aria-controls="click"]) .list-item:hover > .list {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
 }
 
 /**
@@ -11380,24 +12244,24 @@ a.page-item:hover {
 }
 
 .tab-bar-warning .tab {
-  color: #ffb74d;
-  color: var(--theme-warning-light, #ffb74d);
+  color: #fff176;
+  color: var(--theme-warning-light, #fff176);
 }
 
 .tab-bar-warning .tab::after {
-  background-color: #fb8c00;
-  background-color: var(--theme-warning, #fb8c00);
+  background-color: #fbc02d;
+  background-color: var(--theme-warning, #fbc02d);
 }
 
 .tab-bar-warning .tab.active,
 .tab-bar-warning .tab:hover {
-  color: #fb8c00;
-  color: var(--theme-warning, #fb8c00);
+  color: #fbc02d;
+  color: var(--theme-warning, #fbc02d);
 }
 
 .tab-bar-warning .tab:focus {
-  outline-color: #ffb74d;
-  outline-color: var(--theme-warning-light, #ffb74d);
+  outline-color: #fff176;
+  outline-color: var(--theme-warning-light, #fff176);
 }
 
 .tab-bar-warning .tab.disabled {
@@ -11406,8 +12270,8 @@ a.page-item:hover {
 }
 
 .tab-bar-warning.tab-bar-smooth .tab-bar-smooth-line {
-  background-color: #fb8c00;
-  background-color: var(--theme-warning, #fb8c00);
+  background-color: #fbc02d;
+  background-color: var(--theme-warning, #fbc02d);
 }
 
 .tab-bar-error .tab {
@@ -11533,241 +12397,6 @@ a.page-item:hover {
 
 .tab-bar-scroller-indicator .enabled {
   visibility: visible;
-}
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-
-/**
- * Applies the correct theme color style to the specified property.
- * $property is typically color or background-color, but can be any CSS property that accepts color values.
- * $style should be one of the map keys in $theme-property-values (_variables.scss).
- */
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-
-.list {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: block;
-  padding-left: 0;
-  margin: 0;
-  list-style-type: none;
-  color: rgba(0, 0, 0, 0.87);
-  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
-}
-
-.list-item-action {
-  color: rgba(0, 0, 0, 0.87);
-  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
-  width: 100%;
-  text-align: inherit;
-  cursor: pointer;
-}
-
-.list-item-action:focus,
-.list-item-action:hover {
-  color: rgba(0, 0, 0, 0.87);
-  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
-  background-color: rgba(0, 0, 0, 0.04);
-  text-decoration: none;
-}
-
-.list-item-action.disabled:hover,
-.list-item-action:disabled:hover {
-  background-color: #ffffff;
-  background-color: var(--theme-light-primary, #ffffff);
-}
-
-button.list-item-action {
-  border: 0;
-}
-
-button.list-item-action:focus {
-  outline: 0;
-}
-
-.list-item {
-  position: relative;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: start;
-      justify-content: flex-start;
-  padding: 0.75rem 1rem;
-  background-color: #ffffff;
-  background-color: var(--theme-light-primary, #ffffff);
-}
-
-.list-item.active {
-  background-color: rgba(0, 0, 0, 0.065);
-}
-
-.list-item.disabled,
-.list-item:disabled {
-  color: rgba(0, 0, 0, 0.38);
-  color: var(--theme-dark-disabled, rgba(0, 0, 0, 0.38));
-}
-
-.list-dense {
-  font-size: .75rem;
-}
-
-.list-dense > .list-item {
-  padding: 0.5625rem 1rem;
-}
-
-.list-border .list-item {
-  margin-bottom: -1px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.list-border-inner .list-item {
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.list-border-inner .list-item:first-child {
-  border-top: 0;
-}
-
-.list-spacing .list-item {
-  margin-bottom: 0.625rem;
-}
-
-.list-spacing .list-item:last-child {
-  margin-bottom: 0;
-}
-
-.list-item-icon-start,
-.list-item-icon-end {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.list-item-icon-start {
-  margin-left: 0;
-  margin-right: 1rem;
-}
-
-.list-item-icon-end {
-  margin-left: auto;
-}
-
-.list-dense .list-item-icon-start,
-.list-dense .list-item-icon-end {
-  width: 1.24995rem;
-  height: 1.24995rem;
-  margin-right: 1rem;
-}
-
-.list-item-avatar {
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-left: 0;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.list-item-text-center {
-  width: 100%;
-  text-align: center;
-}
-
-.list-item-text-center + .list-item-icon-end {
-  position: absolute;
-  right: 1rem;
-}
-
-.list-item-text-right {
-  margin-left: auto;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
-}
-
-.list-item-text-right + .list-item-icon-end {
-  margin-left: inherit;
-}
-
-.list-item-text {
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
-}
-
-.list-item-text-secondary {
-  font-size: 0.75rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.54);
-  color: var(--theme-dark-secondary, rgba(0, 0, 0, 0.54));
-}
-
-.list-dense .list-item-text-secondary {
-  font-size: 0.75rem;
-}
-
-.list-divider {
-  width: 100%;
-  height: 0;
-  margin: 0;
-  border: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.list-divider-inset {
-  width: calc(100% - 1rem);
-  margin-left: 1rem;
-  margin-right: 0;
-}
-
-.list-divider-inset-icon {
-  width: calc(100% - 3.5rem);
-  margin-left: 3.5rem;
-  margin-right: 0;
-}
-
-.list-divider-inset-avatar {
-  width: calc(100% - 4.5rem);
-  margin-left: 4.5rem;
-  margin-right: 0;
-}
-
-.list-group {
-  padding: .5rem 0;
-  background-color: #ffffff;
-  background-color: var(--theme-light-primary, #ffffff);
-}
-
-.list-group-header {
-  margin: 0.75rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.87);
-  color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
 }
 
 /**
@@ -12874,7 +13503,7 @@ th {
 }
 
 .border-warning {
-  border-color: #fb8c00 !important;
+  border-color: #fbc02d !important;
 }
 
 .border-error {
@@ -12890,7 +13519,7 @@ th {
 }
 
 .border-warning-light {
-  border-color: #ffb74d !important;
+  border-color: #fff176 !important;
 }
 
 .border-error-light {
@@ -12906,7 +13535,7 @@ th {
 }
 
 .border-warning-lighter {
-  border-color: #ffe0b2 !important;
+  border-color: #fff9c4 !important;
 }
 
 .border-error-lighter {
@@ -12922,7 +13551,7 @@ th {
 }
 
 .border-warning-dark {
-  border-color: #ef6c00 !important;
+  border-color: #f9a825 !important;
 }
 
 .border-error-dark {
@@ -12938,7 +13567,7 @@ th {
 }
 
 .border-warning-alpha {
-  border-color: rgba(255, 152, 0, 0.16) !important;
+  border-color: rgba(255, 235, 59, 0.16) !important;
 }
 
 .border-error-alpha {

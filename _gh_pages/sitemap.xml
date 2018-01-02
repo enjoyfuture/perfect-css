@@ -205,6 +205,9 @@
 <loc>http://0.0.0.0:9090/docs/forms/form-field/</loc>
 </url>
 <url>
+<loc>http://0.0.0.0:9090/components/forms/forms/</loc>
+</url>
+<url>
 <loc>http://0.0.0.0:9090/docs/perfect-tour/getting-started/</loc>
 </url>
 <url>
@@ -229,10 +232,10 @@
 <loc>http://0.0.0.0:9090/docs/elements/image/</loc>
 </url>
 <url>
-<loc>http://0.0.0.0:9090/</loc>
+<loc>http://0.0.0.0:9090/examples/</loc>
 </url>
 <url>
-<loc>http://0.0.0.0:9090/examples/</loc>
+<loc>http://0.0.0.0:9090/</loc>
 </url>
 <url>
 <loc>http://0.0.0.0:9090/components/forms/input/</loc>
@@ -250,10 +253,10 @@
 <loc>http://0.0.0.0:9090/docs/elements/list-menu/</loc>
 </url>
 <url>
-<loc>http://0.0.0.0:9090/components/container/list/</loc>
+<loc>http://0.0.0.0:9090/components/elements/list/</loc>
 </url>
 <url>
-<loc>http://0.0.0.0:9090/docs/container/list/</loc>
+<loc>http://0.0.0.0:9090/docs/elements/list/</loc>
 </url>
 <url>
 <loc>http://0.0.0.0:9090/components/elements/loading/</loc>
