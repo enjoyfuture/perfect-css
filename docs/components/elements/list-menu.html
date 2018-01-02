@@ -5,7 +5,7 @@ group: elements
 anchor: true
 ---
 
-<h2>列表菜单</h2>
+<h2>一级列表菜单</h2>
 
 <h3>静态展示</h3>
 <section class="component-container" style="height: 280px;">
@@ -14,7 +14,7 @@ anchor: true
       <li class="list-item">Undo</li>
       <li class="list-item">Redo</li>
       <li class="list-divider"></li>
-      <li class="list-item">Cut</li>
+      <li class="list-item active">Cut</li>
       <li class="list-item">Copy</li>
       <li class="list-item">Paste</li>
       <li class="list-divider"></li>
@@ -95,6 +95,121 @@ anchor: true
   </div>
 </section>
 
+<h2>多级列表菜单</h2>
+
+<h3>静态展示</h3>
+<section class="component-container" style="height: 280px;">
+  <div class="list-menu list-menu-cascaded list-menu-open">
+    <ul class="list-menu-items list">
+      <li class="list-item active" aria-level="branch">
+        水果
+        <ul class="list-menu-items list">
+          <li class="list-item" aria-level="branch">
+            热带水果
+            <ul class="list-menu-items list">
+              <li class="list-item">香蕉</li>
+              <li class="list-item">榴莲</li>
+            </ul>
+          </li>
+          <li class="list-item active" aria-level="branch">
+            其他水果
+            <ul class="list-menu-items list">
+              <li class="list-item">梨</li>
+              <li class="list-item active">苹果</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="list-item" aria-level="branch">
+        蔬菜
+        <ul class="list-menu-items list">
+          <li class="list-item">土豆</li>
+          <li class="list-item">白菜</li>
+        </ul>
+      </li>
+      <li class="list-divider"></li>
+      <li class="list-item" aria-level="branch">
+        肉类
+        <ul class="list-menu-items list">
+          <li class="list-item">牛肉</li>
+          <li class="list-item">猪肉</li>
+        </ul>
+      </li>
+      <li class="list-item">米饭</li>
+      <li class="list-divider"></li>
+      <li class="list-item" aria-level="branch">
+        面食
+        <ul class="list-menu-items list">
+          <li class="list-item">馒头</li>
+          <li class="list-item">大饼</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<h3>显示菜单</h3>
+
+<section class="component-container">
+  <div class="d-flex align-items-center m-b-3">
+    <label>结果：</label>
+    <span>您选中的是<em id="cascaded-last-selected"></em></span>
+  </div>
+
+  <div class="menu-demo-panel">
+    <div class="menu-anchor">
+      <button class="btn btn-secondary btn-raised" id="foodBtn">食物</button>
+      <div class="list-menu list-menu-cascaded" aria-controls="click" id="foodList">
+        <ul class="list-menu-items list">
+          <li class="list-item" aria-level="branch">
+            水果
+            <ul class="list-menu-items list">
+              <li class="list-item" aria-level="branch">
+                热带水果
+                <ul class="list-menu-items list">
+                  <li class="list-item">香蕉</li>
+                  <li class="list-item">榴莲</li>
+                </ul>
+              </li>
+              <li class="list-item" aria-level="branch">
+                其他水果
+                <ul class="list-menu-items list">
+                  <li class="list-item">梨</li>
+                  <li class="list-item">苹果</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="list-item" aria-level="branch">
+            蔬菜
+            <ul class="list-menu-items list">
+              <li class="list-item">土豆</li>
+              <li class="list-item">白菜</li>
+            </ul>
+          </li>
+          <li class="list-divider"></li>
+          <li class="list-item" aria-level="branch">
+            肉类
+            <ul class="list-menu-items list">
+              <li class="list-item">牛肉</li>
+              <li class="list-item">猪肉</li>
+            </ul>
+          </li>
+          <li class="list-item">米饭</li>
+          <li class="list-divider"></li>
+          <li class="list-item" aria-level="branch">
+            面食
+            <ul class="list-menu-items list">
+              <li class="list-item">馒头</li>
+              <li class="list-item">大饼</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <script>
   (function () {
     const menuEl = document.getElementById('listMenuDemo');
@@ -133,8 +248,39 @@ anchor: true
     // 添加监听事件，ListMenu 组件中，当选择完会触发该事件
     menuEl.addEventListener('listmenu:selected', function (evt) {
       const {detail} = evt;
-      lastSelected.textContent = '"第' + detail.index + '个，值为' + detail.item.textContent.trim();
+      const {index, items} = detail;
+      lastSelected.textContent = '"第' + index + '个，值为' + items.map((item) => `${item.textContent.trim()} `);
     });
+
+    const foodBtn = document.getElementById('foodBtn');
+    const foodList = document.getElementById('foodList');
+
+    const cascadedMenu = new perfect.ListMenu(foodList, {
+      cascaded: true,
+    });
+
+    foodBtn.addEventListener('click', function (e) {
+      // 阻止冒泡
+      e.stopPropagation();
+      cascadedMenu.open = !cascadedMenu.open;
+    });
+
+    const cascadedLastSelected = document.getElementById('cascaded-last-selected');
+    // 添加监听事件，ListMenu 组件中，当选择完会触发该事件
+    foodList.addEventListener('listmenu:selected', function (evt) {
+      const {detail} = evt;
+      const {index, items} = detail;
+      cascadedLastSelected.textContent = '"第' + index + '个，值为' + items.map((item) => {
+        let text = '';
+        item.childNodes.forEach((it) => {
+          if(it.nodeType === 3){
+            text += it.data.trim() + ' ';
+          }
+        });
+        return text;
+      });
+    });
+
   })();
 
 </script>

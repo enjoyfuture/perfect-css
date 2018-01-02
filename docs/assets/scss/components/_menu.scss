@@ -6,12 +6,35 @@
 
 .menu-demo-panel {
   position: relative;
-  height: 240px;
-  padding: 1rem;
-  border: 1px solid;
+  height:   240px;
+  padding:  1rem;
+  border:   1px solid;
   @include theme-prop(border-color, secondary-lighter);
 }
 
 .menu-anchor {
   position: absolute;
+}
+
+.menu-highlight {
+  .menu-title {
+    &:hover {
+      @include theme-prop(color, primary-light);
+    }
+    &.active {
+      @include theme-prop(color, primary);
+    }
+  }
+
+  .menu-sub-title {
+    &:hover {
+      @include theme-prop(color, primary);
+    }
+
+    &.active {
+      border-right: 3px solid;
+      @include theme-prop(color, primary-darker);
+      @include theme-prop(background-color, primary-lightest);
+    }
+  }
 }

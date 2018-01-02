@@ -5,118 +5,369 @@ group: elements
 anchor: true
 ---
 
-<div class="component-wrap">
-  <section class="component-container">
-    <h3> 普通菜单 </h3>
-    <ul class="menu">
-      <li>
-        <a href="#" class="menu-title menu-header">menu-1</a>
-        <ul class="menu">
-          <li><a href="#" class="menu-title">menu-1-1</a></li>
-          <li><a href="#" class="menu-title">menu-1-2</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="menu-title menu-header">menu-2</a>
-        <ul class="menu">
-          <li><a href="#" class="menu-title">menu-2-1</a></li>
-          <li>
-            <a href="#" class="menu-title">menu-2-2</a>
-            <ul class="menu">
-              <li><a href="#" class="menu-title">menu-2-2-1</a></li>
-              <li>
-                <a href="#" class="menu-title">menu-2-2-2</a>
+<h2>普通菜单</h2>
 
-              </li>
-              <li><a href="#" class="menu-title">menu-2-2-3</a></li>
-            </ul>
-          </li>
-          <li><a href="#" class="menu-title">menu-2-3</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="menu-title menu-header active">menu-3</a>
-        <ul class="menu">
-          <li><a href="#" class="menu-title">menu-3-1</a></li>
-          <li><a href="#" class="menu-title">menu-3-2</a></li>
-          <li><a href="#" class="menu-title">menu-3-3</a></li>
-        </ul>
-      </li>
-    </ul>
+<h3>基本用法</h3>
+<section class="component-container">
+  <div class="row">
+    <div class="col-sm-8 col-md-6">
+      <ul class="menu">
+        <li>
+          <a href="#" class="menu-title">河北</a>
+          <ul class="menu menu-nested">
+            <li>
+              <a href="#" class="menu-title active">张家口</a>
+              <ul class="menu menu-nested">
+                <li><a href="#" class="menu-title">宣化</a></li>
+                <li><a href="#" class="menu-title">康保</a></li>
+                <li>
+                  <a href="#" class="menu-title active">张北</a>
+                  <ul class="menu menu-nested">
+                    <li><a href="#" class="menu-title">两面井</a></li>
+                    <li><a href="#" class="menu-title active">大西湾</a></li>
+                  </ul>
+                </li>
+                <li><a href="#" class="menu-title">崇礼</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="menu-title">保定</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="menu-title">天津</a>
+        </li>
+        <li><a href="#" class="menu-title">北京</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-8 col-md-6">
+      <ul class="menu menu-border">
+        <li>
+          <a href="#" class="menu-title">河北</a>
+          <ul class="menu menu-nested">
+            <li>
+              <a href="#" class="menu-title active">张家口</a>
+              <ul class="menu menu-nested">
+                <li><a href="#" class="menu-title">宣化</a></li>
+                <li><a href="#" class="menu-title">康保</a></li>
+                <li>
+                  <a href="#" class="menu-title active">张北</a>
+                  <ul class="menu menu-nested">
+                    <li><a href="#" class="menu-title">两面井</a></li>
+                    <li><a href="#" class="menu-title active">大西湾</a></li>
+                  </ul>
+                </li>
+                <li><a href="#" class="menu-title">崇礼</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="menu-title">保定</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="menu-title">天津</a>
+        </li>
+        <li><a href="#" class="menu-title">北京</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-8 col-md-6">
+      <ul class="menu menu-border menu-active-bg">
+        <li>
+          <a href="#" class="menu-title">河北</a>
+          <ul class="menu">
+            <li>
+              <a href="#" class="menu-title menu-spacing-2 active">张家口</a>
+              <ul class="menu">
+                <li><a href="#" class="menu-title menu-spacing-3">宣化</a></li>
+                <li><a href="#" class="menu-title menu-spacing-3">康保</a></li>
+                <li>
+                  <a href="#" class="menu-title menu-spacing-3 active">张北</a>
+                  <ul class="menu">
+                    <li><a href="#" class="menu-title menu-spacing-4">两面井</a></li>
+                    <li><a href="#" class="menu-title menu-spacing-4 active">大西湾</a></li>
+                  </ul>
+                </li>
+                <li><a href="#" class="menu-title menu-spacing-3">崇礼</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="menu-title menu-spacing-2">保定</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="menu-title">天津</a>
+        </li>
+        <li><a href="#" class="menu-title">北京</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <h3> 下拉菜单 </h3>
-    <ul class="menu menu-dropdown">
-      <li>
-        <a href="#" class="menu-title menu-header">menu-1</a>
-        <ul class="menu">
-          <li><a href="#" class="menu-title">menu-1-1</a></li>
-          <li><a href="#" class="menu-title">menu-1-2</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="menu-title menu-header">menu-2</a>
-        <ul class="menu">
-          <li><a href="#" class="menu-title">menu-2-1</a></li>
-          <li>
-            <a href="#" class="menu-title">menu-2-2</a>
-            <ul class="menu">
-              <li><a href="#" class="menu-title">menu-2-2-1</a></li>
-              <li>
-                <a href="#" class="menu-title">menu-2-2-2</a>
+<h3>自定义菜单高亮</h3>
+<section class="component-container">
+  <div class="row">
+    <div class="col-sm-8 col-md-6">
+      <ul class="menu menu-highlight">
+        <li>
+          <a href="#" class="menu-title active">水果</a>
+          <ul class="menu">
+            <li><a href="#" class="menu-title menu-sub-title menu-spacing-2 active">苹果</a></li>
+            <li><a href="#" class="menu-title menu-sub-title menu-spacing-2 ">香蕉</a></li>
+          </ul>
+        </li>
+        <li><a href="#" class="menu-title">蔬菜</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-8 col-md-6">
+      <ul class="menu menu-highlight menu-border">
+        <li>
+          <a href="#" class="menu-title active">水果</a>
+          <ul class="menu">
+            <li><a href="#" class="menu-title menu-sub-title menu-spacing-2 active">苹果</a></li>
+            <li><a href="#" class="menu-title menu-sub-title menu-spacing-2 ">香蕉</a></li>
+          </ul>
+        </li>
+        <li><a href="#" class="menu-title">蔬菜</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-              </li>
-              <li><a href="#" class="menu-title">menu-2-2-3</a></li>
-            </ul>
-          </li>
-          <li><a href="#" class="menu-title">menu-2-3</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="menu-title menu-header active">menu-3</a>
-        <ul class="menu">
-          <li><a href="#" class="menu-title">menu-3-1</a></li>
-          <li><a href="#" class="menu-title">menu-3-2</a></li>
-          <li><a href="#" class="menu-title">menu-3-3</a></li>
-        </ul>
-      </li>
-    </ul>
+<h2>级联菜单</h2>
+<section class="component-container component-vertical-spacing" style="height: 360px;">
+  <ul class="menu menu-cascaded">
+    <li class="menu-cascaded-item active">
+      <a href="#" class="menu-title">河北</a>
+      <ul class="menu">
+        <li class="menu-cascaded-item active">
+          <a href="#" class="menu-title">张家口</a>
+          <ul class="menu">
+            <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">宣化</a></li>
+            <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">康保</a></li>
+            <li class="menu-cascaded-item active">
+              <a href="#" class="menu-title">张北</a>
+              <ul class="menu">
+                <li class="menu-cascaded-item active" data-leaf><a href="#" class="menu-title">大西湾</a></li>
+                <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">两面井</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="menu-title">崇礼</a></li>
+          </ul>
+        </li>
+        <li class="menu-cascaded-item">
+          <a href="#" class="menu-title">保定</a>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-cascaded-item">
+      <a href="#" class="menu-title">天津</a>
+    </li>
+    <li class="menu-cascaded-item">
+      <a href="#" class="menu-title">北京</a>
+      <ul class="menu">
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">大兴</a></li>
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">海淀</a></li>
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">通州</a></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="m-t-6 menu menu-cascaded menu-border">
+    <li class="menu-cascaded-item active">
+      <a href="#" class="menu-title">河北</a>
+      <ul class="menu">
+        <li class="menu-cascaded-item active">
+          <a href="#" class="menu-title">张家口</a>
+          <ul class="menu">
+            <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">宣化</a></li>
+            <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">康保</a></li>
+            <li class="menu-cascaded-item active">
+              <a href="#" class="menu-title">张北</a>
+              <ul class="menu">
+                <li class="menu-cascaded-item active" data-leaf><a href="#" class="menu-title">大西湾</a></li>
+                <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">两面井</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="menu-title">崇礼</a></li>
+          </ul>
+        </li>
+        <li class="menu-cascaded-item">
+          <a href="#" class="menu-title">保定</a>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-cascaded-item">
+      <a href="#" class="menu-title">天津</a>
+    </li>
+    <li class="menu-cascaded-item">
+      <a href="#" class="menu-title">北京</a>
+      <ul class="menu">
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">大兴</a></li>
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">海淀</a></li>
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">通州</a></li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
-    <h3> 目录菜单，最多支持6级目录结构 </h3>
-    <ul class="menu menu-catalogue">
-      <li>
-        <a href="#" class="menu-title menu-header">menu-1</a>
-        <ul class="menu menu-catalogue">
-          <li><a href="#" class="menu-title">menu-1-1</a></li>
-          <li><a href="#" class="menu-title">menu-1-2</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="menu-title menu-header">menu-2</a>
-        <ul class="menu menu-catalogue">
-          <li><a href="#" class="menu-title">menu-2-1</a></li>
-          <li>
-            <a href="#" class="menu-title">menu-2-2</a>
-            <ul class="menu menu-catalogue">
-              <li><a href="#" class="menu-title">menu-2-2-1</a></li>
-              <li>
-                <a href="#" class="menu-title">menu-2-2-2</a>
+<h2>下拉菜单</h2>
+<section class="component-container" style="height: 150px;">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="menu menu-dropdown">
+        <li class="menu-dropdown-item active">
+          <a href="#" class="menu-title">menu-1</a>
+          <ul class="menu">
+            <li><a href="#" class="menu-title">menu-1-1</a></li>
+            <li><a href="#" class="menu-title active">menu-1-2</a></li>
+          </ul>
+        </li>
+        <li class="menu-dropdown-item">
+          <a href="#" class="menu-title">menu-2</a>
+          <ul class="menu">
+            <li><a href="#" class="menu-title">menu-2-1</a></li>
+            <li><a href="#" class="menu-title active">menu-2-2</a></li>
+            <li><a href="#" class="menu-title">menu-2-3</a></li>
+          </ul>
+        </li>
+        <li class="menu-dropdown-item">
+          <a href="#" class="menu-title active">menu-3</a>
+          <ul class="menu">
+            <li><a href="#" class="menu-title">menu-3-1</a></li>
+            <li><a href="#" class="menu-title">menu-3-2</a></li>
+            <li><a href="#" class="menu-title active">menu-3-3</a></li>
+          </ul>
+        </li>
 
-              </li>
-              <li><a href="#" class="menu-title">menu-2-2-3</a></li>
-            </ul>
-          </li>
-          <li><a href="#" class="menu-title">menu-2-3</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="menu-title menu-header active">menu-3</a>
-        <ul class="menu menu-catalogue">
-          <li><a href="#" class="menu-title">menu-3-1</a></li>
-          <li><a href="#" class="menu-title">menu-3-2</a></li>
-          <li><a href="#" class="menu-title">menu-3-3</a></li>
-        </ul>
-      </li>
-    </ul>
-  </section>
+        <li class="menu-dropdown-item" data-leaf>
+          <a href="#" class="menu-title">menu-4</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-12">
+      <ul class="menu menu-dropdown">
+        <li class="menu-dropdown-item active">
+          <a href="#" class="menu-title">menu-1</a>
+          <ul class="menu menu-border menu-active-bg">
+            <li><a href="#" class="menu-title">menu-1-1</a></li>
+            <li><a href="#" class="menu-title active">menu-1-2</a></li>
+          </ul>
+        </li>
+        <li class="menu-dropdown-item">
+          <a href="#" class="menu-title">menu-2</a>
+          <ul class="menu menu-border menu-active-bg">
+            <li><a href="#" class="menu-title">menu-2-1</a></li>
+            <li><a href="#" class="menu-title active">menu-2-2</a></li>
+            <li><a href="#" class="menu-title">menu-2-3</a></li>
+          </ul>
+        </li>
+        <li class="menu-dropdown-item">
+          <a href="#" class="menu-title active">menu-3</a>
+          <ul class="menu menu-border menu-active-bg">
+            <li><a href="#" class="menu-title">menu-3-1</a></li>
+            <li><a href="#" class="menu-title">menu-3-2</a></li>
+            <li><a href="#" class="menu-title active">menu-3-3</a></li>
+          </ul>
+        </li>
 
-</div>
+        <li class="menu-dropdown-item" data-leaf>
+          <a href="#" class="menu-title">menu-4</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<h2>带级联的下拉菜单</h2>
+<section class="component-container" style="height: 250px;">
+  <ul class="menu menu-dropdown">
+    <li class="menu-dropdown-item active">
+      <a href="#" class="menu-title">menu-1</a>
+      <ul class="menu menu-cascaded menu-border">
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-1-1</a></li>
+        <li class="menu-cascaded-item active">
+          <a href="#" class="menu-title">menu-1-2</a>
+          <ul class="menu">
+            <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-1-2-1</a></li>
+            <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-1-2-2</a></li>
+            <li class="menu-cascaded-item active">
+              <a href="#" class="menu-title">menu-1-2-3</a>
+              <ul class="menu">
+                <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-1-2-3-1</a></li>
+                <li class="menu-cascaded-item active" data-leaf><a href="#" class="menu-title">menu-1-2-3-2</a></li>
+              </ul>
+            </li>
+            <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-1-2-4</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="menu-dropdown-item">
+      <a href="#" class="menu-title">menu-2</a>
+      <ul class="menu menu-cascaded menu-border">
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-2-1</a></li>
+        <li class="menu-cascaded-item">
+          <a href="#" class="menu-title">menu-2-2</a>
+          <ul class="menu menu-cascaded menu-border">
+            <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-2-2-1</a></li>
+            <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-2-2-2</a></li>
+            <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-2-2-3</a></li>
+          </ul>
+        </li>
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-2-3</a></li>
+      </ul>
+    </li>
+    <li class="menu-dropdown-item">
+      <a href="#" class="menu-title">menu-3</a>
+      <ul class="menu menu-cascaded menu-border">
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-3-1</a></li>
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-3-2</a></li>
+        <li class="menu-cascaded-item" data-leaf><a href="#" class="menu-title">menu-3-3</a></li>
+      </ul>
+    </li>
+
+    <li class="menu-dropdown-item" data-leaf>
+      <a href="#" class="menu-title">menu-4</a>
+    </li>
+  </ul>
+</section>
+
+<h3> 目录菜单，最多支持6级目录结构 </h3>
+<section class="component-container">
+  <ul class="menu menu-catalogue">
+    <li>
+      <a href="#" class="menu-title active">menu-1</a>
+      <ul class="menu menu-catalogue menu-nested">
+        <li><a href="#" class="menu-title active">menu-1-1</a></li>
+        <li><a href="#" class="menu-title">menu-1-2</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#" class="menu-title">menu-2</a>
+      <ul class="menu menu-catalogue menu-nested">
+        <li><a href="#" class="menu-title">menu-2-1</a></li>
+        <li>
+          <a href="#" class="menu-title">menu-2-2</a>
+          <ul class="menu menu-catalogue menu-nested">
+            <li><a href="#" class="menu-title">menu-2-2-1</a></li>
+            <li>
+              <a href="#" class="menu-title">menu-2-2-2</a>
+            </li>
+            <li><a href="#" class="menu-title">menu-2-2-3</a></li>
+          </ul>
+        </li>
+        <li><a href="#" class="menu-title">menu-2-3</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#" class="menu-title active">menu-3</a>
+      <ul class="menu menu-catalogue menu-nested">
+        <li><a href="#" class="menu-title">menu-3-1</a></li>
+        <li><a href="#" class="menu-title">menu-3-2</a></li>
+        <li><a href="#" class="menu-title">menu-3-3</a></li>
+      </ul>
+    </li>
+  </ul>
+</section>

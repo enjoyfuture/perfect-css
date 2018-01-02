@@ -261,31 +261,31 @@ $theme-assist: ("success", "info", "warning", "error") !default;
 $theme-assist-colors: (
   success: #43a047, // $green-600
   info: #0097a7, // $cyan-700
-  warning: #fb8c00, // $orange-600
+  warning: #fbc02d, // $yellow-700
   error: #f44336, //$red-500
 
   // 辅助颜色浅色
   success-light: #81c784, // $green-300
   info-light: #4dd0e1, // $cyan-300
-  warning-light: #ffb74d, // $orange-300
+  warning-light: #fff176, // $yellow-300
   error-light: #e57373, // $red-300
 
   // 辅助颜色更浅色
   success-lighter: #c8e6c9, // $green-100
   info-lighter: #b2ebf2, // $cyan-100
-  warning-lighter: #ffe0b2, // $orange-100
+  warning-lighter: #fff9c4, // $yellow-100
   error-lighter: #ffcdd2, // $red-100
 
   // 辅助颜色深色
   success-dark: #2e7d32, // $green-800
   info-dark: #00838f, // $cyan-800
-  warning-dark: #ef6c00, // $orange-800
+  warning-dark: #f9a825, // $yellow-800
   error-dark: #c62828, // $red-800
 
   // 辅助颜色透明色
   success-alpha: rgba(#4caf50, $alpha),
   info-alpha: rgba(#00bcd4, $alpha),
-  warning-alpha: rgba(#ff9800, $alpha),
+  warning-alpha: rgba(#ffeb3b, $alpha),
   error-alpha: rgba(#f44336, $alpha),
 ) !default;
 

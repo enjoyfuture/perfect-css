@@ -1,11 +1,12 @@
 @import "../../theme/mixin";
 @import "../../theme/variable";
+@import "../../base/variables/form";
 @import "variable";
 
 // Disabled
 @mixin input-disabled {
   @include theme-prop(color, disabled-on-light);
-  background-color: $grey-color-100;
+  background-color: $input-disabled-background-color;
   pointer-events:   none;
 }
 

@@ -43,7 +43,7 @@
 
 // 组件间距
 .component-spacing {
-  > div, > button, > a, > label, > img, > span {
+  > div, > button, > a, > label, > img, > span, > select {
     margin-right: 1rem;
     &:last-child {
       margin-right: 0;
@@ -58,7 +58,7 @@
 }
 
 .component-vertical-spacing {
-  > div, > button, > a, > nav {
+  > div, > button, > a, > nav, > ul {
     margin-bottom: 1rem;
     &:last-child {
       margin-bottom: 0;

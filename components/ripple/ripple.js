@@ -13,7 +13,7 @@ const classes = {
   INACTIVE: 'ripple-impact-inactive',
 };
 
-const cssVar = {
+const strings = {
   VAR_SIZE: '--ripple-size',
   VAR_LEFT: '--ripple-left',
   VAR_TOP: '--ripple-top',
@@ -40,16 +40,28 @@ const DEACTIVATION_ACTIVATION_PAIRS = {
 
 class Ripple extends Component {
 
+  static get classes() {
+    return classes;
+  }
+
+  static get strings() {
+    return strings;
+  }
+
+  static get numbers() {
+    return numbers;
+  }
+
   /**
    * 静态方法实例化 Ripple 组件
    * @param element
-   * @param isUnbounded
+   * @param unbounded
    * @returns {Ripple}
    */
-  static mount(element, {isUnbounded = undefined} = {}) {
+  static mount(element, {unbounded = undefined} = {}) {
     const ripple = new Ripple(element);
-    if (isUnbounded !== undefined) {
-      ripple.unbounded = /** @type {boolean} */ isUnbounded;
+    if (unbounded !== undefined) {
+      ripple.unbounded = /** @type {boolean} */ unbounded;
     }
     return ripple;
   }
@@ -98,13 +110,14 @@ class Ripple extends Component {
     };
   }
 
-  constructor(...config) {
-    super(...config);
+  constructor(element, config) {
+    super(element, config);
     // 用来处理是否设置了 disabled
-    this.disabled = false;
+    /* config.disabled */
+    this.disabled = this.disabled || false;
 
     // 是否是无界限的 Ripple
-    this.unbounded = false;
+    this.unbounded = this.unbounded || false;
 
     // 创建适配器
     this.adapter = Ripple.createAdapter(this);
@@ -236,7 +249,7 @@ class Ripple extends Component {
   updateCssVariableValue() {
     const {
       VAR_SIZE, VAR_LEFT, VAR_TOP, VAR_SCALE,
-    } = cssVar;
+    } = strings;
 
     this.adapter.updateCssVariable(VAR_SIZE, `${this.initialSize}px`);
     this.adapter.updateCssVariable(VAR_SCALE, this.scale);
@@ -315,7 +328,7 @@ class Ripple extends Component {
 
   // 处理 Ripple 动画
   animateActivation() {
-    const {VAR_TRANSLATE_START, VAR_TRANSLATE_END} = cssVar;
+    const {VAR_TRANSLATE_START, VAR_TRANSLATE_END} = strings;
     const {
       ACTIVE,
       INACTIVE,

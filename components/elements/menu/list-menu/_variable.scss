@@ -1,12 +1,11 @@
-@import "../../theme/variable";
-
-// 菜单变量
-$menu-nested-spacing: 1rem !default;
-// 菜单最大嵌套深度
-$menu-nested-max-depth: 6 !default;
+@import "../../../theme/variable";
 
 // 列表菜单动画
 $list-menu-fade-duration: .2s;
 $list-menu-item-fade-duration: .3s;
+
+$list-menu-min-width: 180px !default;
 $list-menu-item-hover-bg: $grey-color-100 !default;
+$list-menu-item-active-bg: $grey-color-300 !default;
+$list-menu-item-padding-y: .5rem !default;
 

@@ -1,4 +1,3 @@
-
 /** @type {string|undefined} */
 let storedTransformPropertyName;
 
@@ -140,4 +139,21 @@ function solvePositionFromXValue(xVal, x1, x2) {
   return t;
 }
 
-export {getTransformPropertyName, clamp, bezierProgress};
+// 返回当前元素在父元素中的索引 index，是否过滤掉分隔符 list-divider，默认过滤
+function getElementIndexOfParent(element, filter) {
+  const parentNode = element.parentNode;
+  const children = parentNode.children;
+  let index = 0;
+  for (let i = 0, len = children.length; i < len; i++) {
+    if (filter && children[i].classList.contains(filter)) {
+      continue;
+    }
+    if (children[i] === element) {
+      return index;
+    }
+    index++;
+  }
+  return -1;
+}
+
+export {getTransformPropertyName, clamp, bezierProgress, getElementIndexOfParent};

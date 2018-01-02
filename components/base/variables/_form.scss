@@ -1,18 +1,35 @@
 // form 表单通用变量
 // Input 、Select 、Button 、Radio 和 Checkbox 统一的大小
 // 包括 width padding line-height 等
-
 @import "../../theme/variable";
 @import "../../base/variables/border";
+@import "../../base/variables/font";
 
+//  FIXME 以下两个变量待重构完删除
 $form-input-width: 180px !default;
 $form-label-width: 80px !default;
+
 // 对于表单元素行高设为 1.5
 $input-line-height: 1.5 !default;
 
+$input-height: 2.25rem; // 36px
+$input-margin-left: .5rem !default;
 $input-padding-x: .75rem !default;
 $input-padding-y: .375rem !default;
+$input-focus-border-color: $grey-color-500 !default;
+$input-disabled-background-color: $grey-color-100 !default;
 
-$input-border-color: $grey-color-300 !default;
+// Sizing
+$input-height-lg: 2.5rem; // 40px
+$input-font-size-lg: $font-size-lg !default;
+$input-padding-x-lg: 1rem !default;
+$input-padding-y-lg: .5rem !default;
+
+$input-height-sm: 2rem; // 32px
+$input-font-size-sm: $font-size-sm !default;
+$input-padding-x-sm: .5rem !default;
+$input-padding-y-sm: .25rem !default;
+
+$input-border-color: $grey-color-200 !default;
 $input-border-radius: $border-radius-sm !default;
 

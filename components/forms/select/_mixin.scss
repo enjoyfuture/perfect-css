@@ -1,0 +1,9 @@
+@import "../../theme/mixin";
+@import "../../base/variables/form";
+
+// Disabled
+@mixin select-disabled {
+  @include theme-prop(color, disabled-on-light);
+  background-color: $grey-color-100;
+  pointer-events:   none;
+}

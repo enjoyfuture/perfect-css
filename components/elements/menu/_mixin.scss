@@ -1,0 +1,9 @@
+@import "list-menu/variable";
+
+@mixin menu-nested-spacing {
+  @for $i from 1 through $menu-nested-max-depth {
+    .menu-spacing-#{$i} {
+      padding-left: $menu-nested-spacing * $i;
+    }
+  }
+}

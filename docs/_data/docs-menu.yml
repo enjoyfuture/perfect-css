@@ -85,6 +85,8 @@
 - title: 元素组件
   file: elements
   pages:
+    - title: List 列表
+      file: list
     - title: Menu 菜单
       file: menu
     - title: List Menu 列表菜单
@@ -131,8 +133,6 @@
 - title: 容器组件
   file: container
   pages:
-    - title: List 列表
-      file: list
     - title: Table 表格
       file: table
     - title: Card 卡片

@@ -1,7 +1,23 @@
+@import "../../theme/variable";
+
 // 箭头大小
 $arrow-size: 5px !default;
+$arrow-position-right: .5rem !default;
 // 箭头与 select 间距
 $arrow-spacer: 1.5rem !default;
 
 // 是否开启定制主题，包括主颜色和辅助颜色，默认开启，需要的话可关闭
 $enable-custom-theme-for-select: true !default;
+
+// select 多选
+$select-multi-width: 250px !default;
+$select-option-group-spacing: 1rem !default;
+$select-option-item-padding-x: 1rem !default;
+$select-option-item-padding-y: .5rem !default;
+$select-option-item-margin-top: .75rem !default;
+$select-option-item-margin-bottom: .5rem !default;
+
+$select-option-divider-padding-top: .25rem !default;
+$select-option-divider-margin-bottom: .5rem !default;
+$select-option-divider-border-color: $grey-color-300 !default;
+

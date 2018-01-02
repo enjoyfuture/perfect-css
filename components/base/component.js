@@ -13,12 +13,13 @@ class Component {
     return new Component(element);
   }
 
-  constructor(element, ...config) {
+  constructor(element, config = {}) {
     this.element = element;
     // 设置 config 到 this 上
-    for (const key of config) {
+    Object.keys(config).forEach((key) => {
       this[key] = config[key];
-    }
+    });
+
     this.init();
   }
 

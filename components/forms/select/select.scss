@@ -6,12 +6,12 @@
 @import "../../theme/mixin";
 @import "../../shadow/mixin";
 @import "variable";
+@import "mixin";
 
 .select {
   position:   relative;
   box-sizing: border-box;
   display:    inline-block;
-  width:      $form-input-width;
   cursor:     pointer;
   @include theme-prop(color, primary-on-light);
 
@@ -20,7 +20,7 @@
     content:             "";
     position:            absolute;
     top:                 calc(50% - #{$arrow-size} / 2);
-    right:               $arrow-size;
+    right:               $arrow-position-right;
     border:              $arrow-size solid transparent;
     border-bottom-width: 0;
     pointer-events:      none;
@@ -29,6 +29,12 @@
 
   &:focus {
     outline: none;
+  }
+
+  // 如果加入 label 则设置间距
+  label > .select-inner,
+  label + .select-inner {
+    margin-left: $input-margin-left;
   }
 }
 
@@ -41,13 +47,13 @@
   display:                 inline-flex;
   align-items:             center;
   justify-content:         flex-start;
-  width:                   100%;
+  height:                  $input-height;
   padding:                 $input-padding-y $arrow-spacer $input-padding-y $input-padding-x;
   border:                  1px solid $input-border-color;
   line-height:             $input-line-height;
   background:              none;
   cursor:                  pointer;
-  transition:              animation-leave(border-bottom-color, 150ms), animation-leave(background-color, 150ms);
+  transition:              animation-leave(border-color, 150ms), animation-leave(background-color, 150ms);
   -webkit-font-smoothing:  antialiased; // 抗锯齿效果
   -moz-osx-font-smoothing: grayscale; // 抗锯齿效果
   -webkit-appearance:      none; // 重置 select 样式
@@ -65,18 +71,128 @@
 
   // 为 select 设置 focus 样式
   &:focus {
-    @include theme-prop(border-color, primary-on-light);
-    outline: none;
+    border-color: $input-focus-border-color;
+    outline:      none;
+  }
+
+  // Disabled
+  &:disabled {
+    @include select-disabled;
   }
 }
 
-// 以下样式为 模拟 select TODO, 待结合 list-menu 和 js 处理
-// 已经选择的文本值
-.select-selected-text {
-  overflow:    hidden;
-  white-space: nowrap;
-  transition:  animation-leave(opacity, 125ms), animation-leave(transform, 125ms);
+// 扁平化输入框，即只有一条底边框表单
+.select-flat {
+  .select-inner {
+    border-width:  0 0 1px;
+    border-radius: 0;
+  }
 }
+
+// full width select
+.select-full {
+  display: block;
+  flex:    1;
+  width:   100%;
+
+  .select-inner {
+    width: 100%;
+  }
+}
+
+// select 多选
+.select-multi {
+  width:              $select-multi-width;
+  padding:            0;
+  border:             1px solid;
+  outline:            none;
+  -webkit-appearance: none;
+  @include theme-prop(border-color, hint-on-light);
+
+  &:disabled {
+    .option-item {
+      @include theme-prop(color, disabled-on-light);
+      cursor: default;
+    }
+  }
+
+  .option-group {
+    padding-left: $select-option-group-spacing;
+    margin-top:   $select-option-group-spacing;
+    font-weight:  normal;
+    @include theme-prop(color, hint-on-light);
+
+    &:last-child {
+      margin-bottom: $select-option-group-spacing;
+    }
+
+    .option-divider {
+      margin-left: -$select-option-group-spacing;
+    }
+
+    .option-item {
+      margin-left: -$select-option-group-spacing;
+    }
+  }
+
+  .option-item {
+    display:     flex;
+    align-items: center;
+    padding:     $select-option-item-padding-y $select-option-item-padding-x;
+    @include theme-prop(color, primary-on-light);
+    cursor:      pointer;
+
+    &:first-child {
+      margin-top: $select-option-item-margin-top;
+    }
+    &:last-child {
+      margin-bottom: $select-option-item-margin-bottom;
+    }
+
+    &:disabled {
+      @include theme-prop(color, disabled-on-light);
+      cursor: default;
+    }
+  }
+
+  .option-divider {
+    padding-top:   $select-option-divider-padding-top;
+    margin-bottom: $select-option-divider-margin-bottom;
+    border-bottom: 1px solid $select-option-divider-border-color;
+    font-size:     0;
+  }
+}
+
+// 以下样式为模拟原生的 select 实现
+
+.select {
+  &-menu.list-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    max-height: 100%;
+    transform-origin: center center;
+  }
+
+  // 已经选择的文本值
+  &-selected-text {
+    overflow:    hidden;
+    white-space: nowrap;
+    transition:  animation-leave(opacity, 125ms), animation-leave(transform, 125ms);
+  }
+
+  &-scroll-lock {
+    overflow: hidden;
+  }
+}
+
+
+
+
+
+
+
 
 // 下拉列表项
 .select-options {
@@ -181,77 +297,6 @@
     cursor:         default;
     user-select:    none;
   }
-}
-
-// select 多选
-.select-multi {
-  width:              250px;
-  padding:            0;
-  border:             1px solid;
-  outline:            none;
-  -webkit-appearance: none;
-  @include theme-prop(border-color, hint-on-light);
-
-  .option-group {
-    padding:     0 0 0 1rem;
-    margin:      1rem 0 0;
-    font-weight: normal;
-    @include theme-prop(color, hint-on-light);
-
-    &:last-child {
-      margin-bottom: 1rem;
-    }
-
-    .option-divider {
-      margin-left: -1rem;
-    }
-
-    .option-item {
-      margin: 0 0 0 -1rem;
-    }
-  }
-
-  .option-item {
-    display:     flex;
-    align-items: center;
-    padding:     .5rem 1rem;
-    @include theme-prop(color, primary-on-light);
-    cursor:      pointer;
-
-    &:first-child {
-      margin-top: .75rem;
-    }
-    &:last-child {
-      margin-bottom: .5rem;
-    }
-
-    &:disabled {
-      @include theme-prop(color, disabled-on-light);
-      cursor: default;
-    }
-
-  }
-
-  .option-divider {
-    padding-top:   .25rem;
-    margin-bottom: .5rem;
-    border-bottom: 1px solid rgba(0, 0, 0, .12);
-    font-size:     0;
-  }
-}
-
-// full width select
-.select-full {
-  display: block;
-  flex:    1;
-  width:   100%;
-}
-
-// 扁平化输入框，即只有一条底边框表单
-.select-flat {
-  padding-left:  0;
-  border-width:  0 0 1px;
-  border-radius: 0;
 }
 
 // 定义主题样式

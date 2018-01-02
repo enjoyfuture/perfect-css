@@ -20,11 +20,48 @@ anchor: true
 
 <h2 class="m-t-3">原生的 Select 标签</h2>
 
-<h3>默认样式</h3>
-<section class="component-container">
-  <div class="form-field">
-    <label for="select-native">食物</label>
-    <div class="select" id="select-native">
+<h3>四边带边框</h3>
+
+<h4>不使用 label 标签</h4>
+<section class="component-container component-spacing">
+  <div class="select">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+  <div class="select">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains" selected>面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+
+  <div class="select">
+    <select class="select-inner" disabled>
+      <option value="">选择食物</option>
+      <option value="grains" selected>面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+</section>
+
+<h4>select 放在 label 中</h4>
+<section class="component-container component-spacing">
+  <div class="select">
+    <label>
+      食物:
       <select class="select-inner">
         <option value="">选择食物</option>
         <option value="grains">面包</option>
@@ -33,28 +70,67 @@ anchor: true
         <option value="milk">牛奶</option>
         <option value="meat">肉</option>
       </select>
-    </div>
+    </label>
+  </div>
+
+  <div class="select">
+    <label>
+      食物:
+      <select class="select-inner">
+        <option value="">选择食物</option>
+        <option value="grains">面包</option>
+        <option value="vegetables" disabled>蔬菜(disabled)</option>
+        <option value="fruit" selected>水果水果水果水果水果水果水果</option>
+        <option value="milk">牛奶</option>
+        <option value="meat">肉</option>
+      </select>
+    </label>
+  </div>
+
+</section>
+
+<h4>select 跟 label 同级</h4>
+<section class="component-container component-spacing">
+
+  <div class="select">
+    <label for="select1">食物:</label>
+    <select class="select-inner" id="select1">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit" selected>水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
   </div>
 </section>
 
 <h3>扁平的</h3>
-<section class="component-container">
-  <div class="form-field">
-    <label for="select-native-flat">食物</label>
-    <div class="select" id="select-native-flat">
-      <select class="select-inner select-flat">
-        <option value="">选择食物</option>
-        <option value="grains">面包</option>
-        <option value="vegetables" disabled>蔬菜(disabled)</option>
-        <option value="fruit">水果水果水果水果水果水果水果</option>
-        <option value="milk">牛奶</option>
-        <option value="meat">肉</option>
-      </select>
-    </div>
+<section class="component-container component-spacing">
+  <div class="select select-flat">
+    <select class="select-inner">
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit">水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
+  </div>
+
+  <div class="select select-flat">
+    <select class="select-inner" disabled>
+      <option value="">选择食物</option>
+      <option value="grains">面包</option>
+      <option value="vegetables" disabled>蔬菜(disabled)</option>
+      <option value="fruit" selected>水果水果水果水果水果水果水果</option>
+      <option value="milk">牛奶</option>
+      <option value="meat">肉</option>
+    </select>
   </div>
 </section>
 
-<h3>百分比 select</h3>
+<h3>宽度为 100% 的 select</h3>
 <section class="component-container component-vertical-spacing">
   <div class="select select-full">
     <select class="select-inner">
@@ -66,8 +142,8 @@ anchor: true
       <option value="meat">肉</option>
     </select>
   </div>
-  <div class="select select-full">
-    <select class="select-inner select-flat">
+  <div class="select select-flat select-full">
+    <select class="select-inner">
       <option value="">选择食物</option>
       <option value="grains">面包</option>
       <option value="vegetables" disabled>蔬菜(disabled)</option>
@@ -78,44 +154,11 @@ anchor: true
   </div>
 </section>
 
-<h2> 用 div 模拟 Select (options 使用 list-menu 来处理，待 TODO)</h2>
-
+<h3>Select Multiple 多选</h3>
 <section class="component-container component-spacing">
-  <div class="form-field">
-    <label for="select-native">食物</label>
-    <div id="selectEl" class="select" tabindex="0">
-      <div class="select-inner" tabindex="0">
-        <span class="select-selected-text">选择食物</span>
-        <ul class="select-options">
-          <li class="select-options-item" tabindex="0" aria-selected="true">
-            选择食物
-          </li>
-          <li class="select-options-item" tabindex="0">
-            面包
-          </li>
-          <li class="select-options-item" aria-disabled="true" tabindex="0">
-            蔬菜(disabled)
-          </li>
-          <li class="select-options-item" tabindex="0">
-            水果水果水果水果水果水果水果水果水果水果水果水
-          </li>
-          <li class="select-options-item" tabindex="0">
-            牛奶
-          </li>
-          <li class="select-options-item" tabindex="0">
-            肉
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<h2>Select Multiple 多选</h2>
-<section class="component-container">
   <select multiple="" size="8" class="select-multi">
     <optgroup class="option-group" label="蔬菜">
-      <option class="option-item" checked>土豆</option>
+      <option class="option-item" selected>土豆</option>
       <option class="option-item">茄子</option>
       <option class="option-item" disabled>西红柿</option>
     </optgroup>
@@ -136,6 +179,93 @@ anchor: true
     <option class="option-item">哈密瓜</option>
     <option class="option-item">葡萄</option>
   </select>
+</section>
+
+<h2> 用 div 模拟 Select</h2>
+
+<h3>只有一层结构</h3>
+<section class="component-container component-spacing">
+  <div class="form-field">
+    <label class="select-label">食物</label>
+    <div class="select" tabindex="0" id="selectDemo">
+      <div class="select-inner" tabindex="0">
+        <span class="select-selected-text">选择食物</span>
+      </div>
+      <div class="list-menu select-menu">
+        <ul class="list-menu-items list">
+          <li class="list-item" data-value="">选择食物</li>
+          <li class="list-item" data-value="bread">面包</li>
+          <li class="list-item" data-value="vegetables">蔬菜(disabled)</li>
+          <li class="list-item" data-value="fruits">水果水果水果水果水果水果水果水果水果水果水果水</li>
+          <li class="list-item" data-value="milk">牛奶</li>
+          <li class="list-item" data-value="meat">肉</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <p>当前的选择: <span id="box-currently-selected">(none)</span></p>
+</section>
+
+<h3>级联</h3>
+<section class="component-container component-spacing">
+  <div class="form-field">
+    <label class="select-label">食物</label>
+    <div class="select" tabindex="0" id="selectDemoCascaded">
+      <div class="select-inner" tabindex="0">
+        <span class="select-selected-text">选择食物</span>
+      </div>
+      <div class="list-menu select-menu list-menu-cascaded" aria-controls="click">
+        <ul class="list-menu-items list">
+          <li class="list-item" aria-level="branch">
+            水果
+            <ul class="list-menu-items list">
+              <li class="list-item" aria-level="branch">
+                热带水果
+                <ul class="list-menu-items list">
+                  <li class="list-item" data-value="fruit,tropical-fruit,banana">香蕉</li>
+                  <li class="list-item" data-value="fruit,tropical-fruit,durian">榴莲</li>
+                </ul>
+              </li>
+              <li class="list-item" aria-level="branch">
+                其他水果
+                <ul class="list-menu-items list">
+                  <li class="list-item" data-value="fruit,other-fruit,pear">梨</li>
+                  <li class="list-item" data-value="fruit,other-fruit,apple">苹果</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="list-item" aria-level="branch">
+            蔬菜
+            <ul class="list-menu-items list">
+              <li class="list-item" data-value="vegetables,potato">土豆</li>
+              <li class="list-item" data-value="vegetables,cabbage">白菜</li>
+            </ul>
+          </li>
+          <li class="list-divider"></li>
+          <li class="list-item" aria-level="branch">
+            肉类
+            <ul class="list-menu-items list">
+              <li class="list-item" data-value="meat,beef">牛肉</li>
+              <li class="list-item" data-value="meat,pork">猪肉</li>
+            </ul>
+          </li>
+          <li class="list-item" data-value="rice">米饭</li>
+          <li class="list-divider"></li>
+          <li class="list-item" aria-level="branch">
+            面食
+            <ul class="list-menu-items list">
+              <li class="list-item" data-value="pasta,steamedbun">馒头</li>
+              <li class="list-item" data-value="meat,bigbreadcake">大饼</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <p>当前的选择: <span id="cascaded-currently-selected">(none)</span></p>
 </section>
 
 <h2>Select 主题</h2>
@@ -287,44 +417,72 @@ anchor: true
 </section>
 
 <script>
-  $(function () {
-    $(window).click(function () {
-      $('.select').removeClass('select-open');
+  (function () {
+    //    $(window).click(function () {
+    //      $('.select').removeClass('select-open');
+    //    });
+    //
+    //    $('#selectEl .select-inner').click(function (e) {
+    //      e.stopPropagation();
+    //
+    //      $('#selectEl').addClass('select-open');
+    //
+    //      $('#selectEl .select-options-item[aria-selected="true"]').focus();
+    //    });
+    //
+    //    $('#selectEl .select-options-item').click(function (e) {
+    //      e.stopPropagation();
+    //
+    //      var $el = $(e.currentTarget);
+    //      if ($el.attr('aria-disabled') !== 'true') {
+    //        $('#selectEl .select-selected-text').text($el.text());
+    //        $('#selectEl').removeClass('select-open');
+    //        $('#selectEl .select-inner').focus();
+    //        $el.attr('aria-selected', true).siblings().removeAttr('aria-selected');
+    //      }
+    //    });
+
+    const selectEl = document.getElementById('selectDemo');
+    const boxCurrentlySelected = document.getElementById('box-currently-selected');
+    const select = new perfect.Select(selectEl);
+
+    selectEl.addEventListener('select:change', function(evt) {
+      const {detail} = evt;
+      const {index, value} = detail;
+
+      boxCurrentlySelected.textContent = '"第' + index + '个，值为' + value;
     });
 
-    $('#selectEl .select-inner').click(function (e) {
-      e.stopPropagation();
+    const cascadedSelectEl = document.getElementById('selectDemoCascaded');
+    const currentlySelected = document.getElementById('cascaded-currently-selected');
+    const cascadedSelect = new perfect.Select(cascadedSelectEl);
 
-      $('#selectEl').addClass('select-open');
+    cascadedSelectEl.addEventListener('select:change', function(evt) {
+      const {detail} = evt;
+      const {index, value} = detail;
 
-      $('#selectEl .select-options-item[aria-selected="true"]').focus();
-    });
-
-    $('#selectEl .select-options-item').click(function (e) {
-      e.stopPropagation();
-
-      var $el = $(e.currentTarget);
-      if ($el.attr('aria-disabled') !== 'true') {
-        $('#selectEl .select-selected-text').text($el.text());
-        $('#selectEl').removeClass('select-open');
-        $('#selectEl .select-inner').focus();
-        $el.attr('aria-selected', true).siblings().removeAttr('aria-selected');
-      }
+      currentlySelected.textContent = '"第' + index + '个，值为' + value;
     });
 
     // Disabled
-    $('#disabledState').change(function () {
-      const $el = $(this);
-      const checked = $el.prop('checked');
+    document.getElementById('disabledState').addEventListener('change', function (e) {
+      const target = e.target;
+      const checked = target.checked;
 
-      $('.select').each(function (index, el) {
+      [].forEach.call(document.querySelectorAll('.select-multi'), function (el) {
+        el.disabled = checked;
+      });
+
+      [].forEach.call(document.querySelectorAll('.select'), function (el) {
         if (checked) {
-          $(el).addClass('select-disabled').find('select.select-inner').prop('disabled', true);
+          el.classList.add('select-disabled');
+          el.querySelector('.select-inner').disabled = true;
         } else {
-          $(el).removeClass('radio-disabled').find('select.select-inner').prop('disabled', false);
+          el.classList.remove('select-disabled');
+          el.querySelector('.select-inner').disabled = false;
         }
       });
     });
-  });
+  })();
 </script>
 

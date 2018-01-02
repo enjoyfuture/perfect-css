@@ -143,8 +143,8 @@ anchor: true
 <script>
   (function() {
     [].forEach.call(document.querySelectorAll('.ripple-impact:not(.inactive-demo)'), function(el) {
-      const isUnbounded = el.classList.contains('ripple-unbounded');
-      perfect.Ripple.mount(el, {isUnbounded});
+      const unbounded = el.classList.contains('ripple-unbounded');
+      perfect.Ripple.mount(el, {unbounded});
     });
   })();
 </script>

@@ -1,5 +1,7 @@
-@import "../../shadow/mixin";
-@import "../../animation/variable";
+@import "../../../shadow/mixin";
+@import "../../../theme/mixin";
+@import "../../../animation/mixin";
+@import "../../../animation/variable";
 @import "variable";
 
 // 列表菜单，需要与列表 .list 和 .list-item 结合使用
@@ -8,12 +10,10 @@
   z-index:          3;
   box-sizing:       border-box;
   display:          none;
-  min-width:        180px;
+  min-width:        $list-menu-min-width;
   max-width:        calc(100vw - 32px);
   max-height:       calc(100vh - 32px);
   border-radius:    2px;
-  //overflow-x:       hidden;
-  //overflow-y:       auto;
   background-color: #fff;
   white-space:      nowrap;
   opacity:          0;
@@ -43,8 +43,6 @@
   // 菜单元素父节点
   &-items {
     box-sizing:  border-box;
-    //overflow-x: hidden;
-    //overflow-y: auto;
     will-change: transform;
 
     // 所有子元素没有显示时透明处理
@@ -53,9 +51,14 @@
     }
 
     > .list-item {
-      cursor: pointer;
+      padding-top:    $list-menu-item-padding-y;
+      padding-bottom: $list-menu-item-padding-y;
+      cursor:         pointer;
       &:hover {
         background-color: $list-menu-item-hover-bg;
+      }
+      &.active {
+        background-color: $list-menu-item-active-bg;
       }
     }
 
@@ -97,12 +100,62 @@
 
 }
 
-.list-menu-cascade {
-  position: relative;
+// 级联
+.list-menu-cascaded {
+  @include shadow(0);
 
   .list-menu-items {
-    position: absolute;
-    top:      0;
-    left:     100%;
+    min-width: $list-menu-min-width;
+    @include shadow(2);
+  }
+
+  .list-item {
+    position:         relative;
+    background-color: transparent;
+
+    // 不是叶子节点，即分支节点，右侧加箭头
+    &[aria-level="branch"]::after {
+      content:      "";
+      position:     absolute;
+      top:          50%;
+      right:        1rem;
+      z-index:      1;
+      width:        .5rem;
+      height:       .5rem;
+      border-top:   1px solid;
+      border-right: 1px solid;
+      transform:    translateY(-50%) rotate(45deg);
+      will-change:  border-color;
+      @include theme-prop(border-color, hint-on-light);
+      @include animation-transition(border-color);
+    }
+
+    > .list {
+      position:         absolute;
+      top:              0;
+      left:             100%;
+      visibility:       hidden;
+      transform:        scaleX(0);
+      transform-origin: left;
+      will-change:      visibility, transform;
+      @include animation-transition(visibility);
+      @include animation-transition(transform);
+    }
+
+    &:hover {
+      // 箭头高亮
+      &::after {
+        @include theme-prop(border-color, primary-on-light);
+      }
+    }
+  }
+
+  // 对于点击才展开时，需要设置 aria-controls="click"
+  & .list-item.expanded,
+  &:not([aria-controls="click"]) .list-item:hover {
+    > .list {
+      visibility: visible;
+      transform:  scaleX(1);
+    }
   }
 }
