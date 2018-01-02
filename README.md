@@ -64,7 +64,7 @@ http://perfect-css.com
 ## Build
 
 ```
-npm run dist
+npm run build
 ```
 
 ## Build jekyll doc
