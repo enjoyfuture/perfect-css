@@ -42,8 +42,9 @@
 
   // 菜单元素父节点
   &-items {
-    box-sizing:  border-box;
-    will-change: transform;
+    box-sizing:       border-box;
+    background-color: #fff;
+    will-change:      transform;
 
     // 所有子元素没有显示时透明处理
     > * {
@@ -114,22 +115,25 @@
     background-color: transparent;
 
     // 不是叶子节点，即分支节点，右侧加箭头
-    &[aria-level="branch"]::after {
-      content:      "";
-      position:     absolute;
-      top:          50%;
-      right:        1rem;
-      z-index:      1;
-      width:        .5rem;
-      height:       .5rem;
-      border-top:   1px solid;
-      border-right: 1px solid;
-      transform:    translateY(-50%) rotate(45deg);
-      will-change:  border-color;
-      @include theme-prop(border-color, hint-on-light);
-      @include animation-transition(border-color);
-    }
+    &[aria-level="branch"] {
+      padding-right: 1.75rem;
 
+      &::after {
+        content:      "";
+        position:     absolute;
+        top:          50%;
+        right:        1rem;
+        z-index:      1;
+        width:        .5rem;
+        height:       .5rem;
+        border-top:   1px solid;
+        border-right: 1px solid;
+        transform:    translateY(-50%) rotate(45deg);
+        will-change:  border-color;
+        @include theme-prop(border-color, hint-on-light);
+        @include animation-transition(border-color);
+      }
+    }
     > .list {
       position:         absolute;
       top:              0;

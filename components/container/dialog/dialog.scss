@@ -142,17 +142,6 @@
     overflow: hidden;
   }
 
-  // 把动画涉及到的样式封装成 mixin 方便自定义动画时调用，展开结果为
-  //.dialog-panel {
-  //  opacity: 0;
-  //  transform: translateY(150px) scale(.8);
-  //}
-  //.dialog-open .dialog-panel {
-  //  opacity: 1;
-  //  transform: translateY(0) scale(1);
-  //}
-  @include dialog-animation($animation-start: (opacity: 0, transform: translateY(150px) scale(.8)), $animation-end: (opacity: 1, transform: translateY(0) scale(1)));
-
   // 动画效果
   &-animating {
     &.dialog {
@@ -165,6 +154,18 @@
     .dialog-panel {
       transition: animation-enter(opacity, 120ms), animation-enter(transform, 120ms);
     }
+
+    // 把动画涉及到的样式封装成 mixin 方便自定义动画时调用，展开结果为
+    //.dialog-panel {
+    //  opacity: 0;
+    //  transform: translateY(150px) scale(.8);
+    //}
+    //.dialog-open .dialog-panel {
+    //  opacity: 1;
+    //  transform: translateY(0) scale(1);
+    //}
+    @include dialog-animation($animation-start: (opacity: 0, transform: translateY(150px) scale(.8)), $animation-end: (opacity: 1, transform: translateY(0) scale(1)));
+
   }
 
   // 从顶部弹出，该 class 样式作用于 dialog-panel 上

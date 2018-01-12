@@ -335,7 +335,7 @@ anchor: true
 </section>
 
 <h3> 目录菜单，最多支持6级目录结构 </h3>
-<section class="component-container">
+<section class="component-container" style="width: 200px;">
   <ul class="menu menu-catalogue">
     <li>
       <a href="#" class="menu-title active">menu-1</a>
@@ -371,3 +371,41 @@ anchor: true
     </li>
   </ul>
 </section>
+
+<section class="component-container" style="width: 400px;">
+  <button class="btn btn-primary btn-raised" id="enableCatalogue">开启目录菜单</button>
+  <ul class="menu menu-catalogue menu-no-catalogue" id="menuCatalogue">
+    <li><a class="menu-title" href="#">主题设计理念</a>
+      <ul class="menu menu-catalogue menu-nested">
+        <li><a class="menu-title" href="#">色彩和色调</a></li>
+        <li><a class="menu-title" href="#">颜色</a></li>
+      </ul>
+    </li>
+    <li><a class="menu-title" href="#">使用</a></li>
+    <li><a class="menu-title" href="#">例子</a></li>
+    <li>
+      <a class="menu-title" href="#">主题 Sass 变量</a>
+      <ul class="menu menu-catalogue menu-nested">
+        <li><a class="menu-title" href="#">基本颜色</a>
+          <ul class="menu menu-catalogue menu-nested">
+            <li><a class="menu-title" href="#">基本颜色基础值</a></li>
+            <li><a class="menu-title" href="#">基本颜色对比色调判断值（深色或浅色）</a></li>
+            <li><a class="menu-title" href="#">深色和浅色色调颜色值</a></li>
+            <li><a class="menu-title" href="#">基本颜色对应的对比色调值</a></li>
+          </ul>
+        </li>
+        <li><a class="menu-title" href="#">辅助颜色</a></li>
+        <li><a class="menu-title" href="#">灰色颜色</a></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<script>
+  (function () {
+    document.getElementById('enableCatalogue').addEventListener('click', () => {
+      const menuCatalogue = document.getElementById('menuCatalogue');
+      menuCatalogue.classList.toggle('menu-no-catalogue');
+    });
+  })();
+</script>

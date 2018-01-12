@@ -1,6 +1,6 @@
 {
   "name": "perfect-css",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": {
     "name": "Linder Wang",
     "email": "linder0209@126.com",
@@ -42,7 +42,7 @@
     "github-pages": "npm run jekyll:docs && git add _gh_pages && git commit -m \"Update docs\" && git subtree push --prefix=_gh_pages origin gh-pages --squash && git push",
     "pregenerate-zip": "npm run dist",
     "generate-zip": "npm run clean:tmp && mkdirp _tmp/dist/css && mkdirp _tmp/dist/js && babel-node generate-dist-zip.js",
-    "prepublishOnly": "npm run dist"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {
@@ -58,9 +58,9 @@
     "clipboard": "^1.7.1",
     "cpy-cli": "^1.0.1",
     "cross-env": "^5.1.3",
-    "css-loader": "^0.28.7",
+    "css-loader": "^0.28.8",
     "cssnano": "^3.10.0",
-    "eslint": "^4.14.0",
+    "eslint": "^4.15.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-ava": "^4.4.0",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -72,7 +72,7 @@
     "normalize.css": "^7.0.0",
     "npm-run-all": "^4.1.2",
     "postcss-flexbugs-fixes": "^3.2.0",
-    "postcss-loader": "^2.0.9",
+    "postcss-loader": "^2.0.10",
     "resolve-url-loader": "^2.2.1",
     "rimraf": "^2.6.2",
     "sass-lint": "^1.12.1",

@@ -1,9 +1,12 @@
 import Component from '../../../base/component';
 import {getTransformPropertyName, clamp, bezierProgress, getElementIndexOfParent} from './util';
+import {isWheel} from '../../../base/util';
 
 const win = window;
 const dom = document;
 const body = dom.body;
+
+const reg = /translateY\(([-\w]+)\)/;
 
 // 定义常量
 // class 样式
@@ -33,6 +36,7 @@ const strings = {
   ARIA_CONTROLS_CLICK: 'click',
   ARIA_LEVEL_ATTR: 'aria-level',
   ARIA_LEVEL_BRANCH: 'branch',
+  EXPANDED: '.expanded',
 };
 
 const numbers = {
@@ -97,6 +101,11 @@ class ListMenu extends Component {
       this.filterDivider = 'list-divider';
     }
 
+    // 如果没有已选中的 option，是否默认选中第一个
+    if (this.selectedFirstOption === undefined) {
+      this.selectedFirstOption = true;
+    }
+
     // 定义上一个获取焦点的元素
     this.previousFocus = null;
 
@@ -138,22 +147,6 @@ class ListMenu extends Component {
     this.previousActiveItemsIndex = null; // 记录当前选择的元素 index
 
     this.render();
-  }
-
-  init() {
-    const {ITEMS_SELECTOR, LIST_ITEM_SELECTOR, LIST_ITEM_LEAF_SELECTOR} = strings;
-
-    // 返回菜单 item 根容器
-    this.itemsContainer = this.element.querySelector(ITEMS_SELECTOR);
-    // 返回菜单第一层 items 中的所有 item
-    this.items = [].slice.call(this.itemsContainer.querySelectorAll(LIST_ITEM_SELECTOR));
-
-    // 返回菜单 items 中的所有叶子节点item
-    this.leafItems = [].slice.call(this.itemsContainer.querySelectorAll(LIST_ITEM_LEAF_SELECTOR));
-
-    if (this.activeItemIndex === undefined) {
-      this.activeItemIndex = 0;
-    }
   }
 
   /**
@@ -204,6 +197,8 @@ class ListMenu extends Component {
         this.previousActiveItems.push(this.leafItems[index]);
         this.previousActiveItemsIndex.push(getElementIndexOfParent(this.leafItems[index], this.filterDivider));
         let parentNode = this.leafItems[index].parentNode.parentNode;
+
+        // 分支节点也设置 ACTIVE
         while (parentNode && parentNode.classList.contains(classes.LIST_ITEM)) {
           parentNode.classList.add(classes.ACTIVE);
           this.previousActiveItems.unshift(parentNode);
@@ -224,6 +219,7 @@ class ListMenu extends Component {
       notifySelected: () => {
         this.emit(strings.SELECTED_EVENT, {
           index: this.previousActiveItemsIndex,
+          leafIndex: this.activeItemIndex, // 叶子节点活动的 id
           items: this.previousActiveItems,
         });
       }, // 选中某一 item，通过注册的事件调用该方法
@@ -253,6 +249,22 @@ class ListMenu extends Component {
     };
   }
 
+  init() {
+    const {ITEMS_SELECTOR, LIST_ITEM_SELECTOR, LIST_ITEM_LEAF_SELECTOR} = strings;
+
+    // 返回菜单 item 根容器
+    this.itemsContainer = this.element.querySelector(ITEMS_SELECTOR);
+    // 返回菜单第一层 items 中的所有 item
+    this.items = [].slice.call(this.itemsContainer.querySelectorAll(LIST_ITEM_SELECTOR));
+
+    // 返回菜单 items 中的所有叶子节点item
+    this.leafItems = [].slice.call(this.itemsContainer.querySelectorAll(LIST_ITEM_LEAF_SELECTOR));
+
+    if (this.activeItemIndex === undefined && this.selectedFirstOption) {
+      this.activeItemIndex = 0;
+    }
+  }
+
   // 渲染组件
   render() {
     const {ELEMENT, OPEN} = classes;
@@ -273,7 +285,9 @@ class ListMenu extends Component {
     // 先清空已经设置的 active
     this.adapter.clearActiveItem();
     // 设置当前活动的 item
-    this.adapter.setActiveItemAtIndex(this.activeItemIndex);
+    if (this.activeItemIndex !== undefined) {
+      this.adapter.setActiveItemAtIndex(this.activeItemIndex);
+    }
 
     this.addEventListeners();
   }
@@ -298,6 +312,15 @@ class ListMenu extends Component {
     this.element.removeEventListener('keyup', this.handleKeyboardUp);
     this.element.removeEventListener('keydown', this.handleKeyboardDown);
     body.removeEventListener('click', this.handleDocumentClick);
+    this.itemsContainer.removeEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
+  }
+
+  // 设置活动的元素
+  setActiveItemAtIndex(index) {
+    if (index !== undefined && index !== null) {
+      this.activeItemIndex = index;
+      this.adapter.setActiveItemAtIndex(index);
+    }
   }
 
   /**
@@ -448,7 +471,64 @@ class ListMenu extends Component {
     }
 
     this.adapter.notifyCancel();
+
+    const expandedEl = this.element.querySelectorAll(strings.EXPANDED);
+
+    [].forEach.call(expandedEl, (el) => {
+      el.classList.remove(classes.EXPANDED);
+    });
+
+    this.items.forEach((el) => {
+      el.style.removeProperty('display');
+    });
+
     this.hide(evt);
+  };
+
+  /**
+   * 滚动菜单列表时触发
+   * @param evt
+   */
+  handleItemScroll = (evt) => {
+    const step = 10;
+
+    if (this.visibleItemHeight <= this.maxItemHeight) {
+      evt.preventDefault();
+      evt.stopPropagation();
+    }
+
+    // 判断鼠标滑轮向上还是向下滑动
+    let upDown;
+    const {detail, wheelDelta} = evt;
+    if (detail) {
+      if (detail < 0) { // up
+        upDown = 'up';
+      } else if (detail > 0) { // down
+        upDown = 'down';
+      }
+    } else if (wheelDelta) { //
+      if (wheelDelta > 0) { // up
+        upDown = 'up';
+      }
+      if (wheelDelta < 0) { // down
+        upDown = 'down';
+      }
+    }
+
+    const {transform} = this.itemsContainer.style;
+
+    let y = reg.exec(transform);
+    y = y ? parseFloat(y[1], 10) : 0;
+
+    if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === this.maxOffset)) {
+      return;
+    }
+
+    if (upDown === 'up' && y < 0) {
+      this.itemsContainer.style.transform = `translateY(${Math.min(y + step, 0)}px)`;
+    } else if (upDown === 'down' && Math.abs(y) < this.maxOffset) {
+      this.itemsContainer.style.transform = `translateY(${Math.max(y - step, -this.maxOffset)}px)`;
+    }
   };
 
   /** @param {{focusIndex: ?number}=} options */
@@ -458,6 +538,7 @@ class ListMenu extends Component {
     this.adapter.addClass(classes.ANIMATING);
     this.animationRequestId = requestAnimationFrame(() => {
       this.dimensions = this.adapter.getInnerDimensions();
+      this.adjustMenuMaxHeight();
       this.applyTransitionDelays();
       this.autoPosition();
       this.animateMenu();
@@ -466,6 +547,8 @@ class ListMenu extends Component {
 
       // 添加 document 事件
       body.addEventListener('click', this.handleDocumentClick);
+      // http://www.zhangxinxu.com/wordpress/2013/04/js-mousewheel-dommousescroll-event/
+      this.itemsContainer.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
     });
     this.isOpen = true;
   }
@@ -495,6 +578,37 @@ class ListMenu extends Component {
     this.isOpen = false;
     // 把焦点定位到上一个焦点
     this.adapter.restoreFocus();
+  }
+
+  /**
+   * 计算 Item 的高度
+   */
+  calcItemHeight() {
+    const property = window.getComputedStyle(this.items[0]);
+    const lineHeight = property.getPropertyValue('line-height');
+    const paddingTop = property.getPropertyValue('padding-top');
+    const paddingBottom = property.getPropertyValue('padding-bottom');
+
+    return parseInt(lineHeight, 10) + parseInt(paddingTop, 10) + parseInt(paddingBottom, 10);
+  }
+
+  /**
+   * 调整菜单高度
+   */
+  adjustMenuMaxHeight() {
+    const rect = this.itemsContainer.getBoundingClientRect();
+    const {height} = this.adapter.getWindowDimensions();
+    const itemHeight = this.calcItemHeight();
+    const maxHeight = height - rect.top;
+    const visibleItemNum = Math.floor(maxHeight / itemHeight);
+    this.visibleItemHeight = visibleItemNum * itemHeight;
+    this.maxItemHeight = this.items.length * itemHeight;
+
+    this.itemsContainer.style.setProperty('height', `${this.visibleItemHeight}px`);
+    // 隐藏多余的 item
+    for (let i = visibleItemNum; i < this.items.length; i++) {
+      this.items[i].style.setProperty('display', 'none');
+    }
   }
 
   /**
