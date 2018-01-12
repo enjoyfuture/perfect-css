@@ -38,3 +38,21 @@
     }
   }
 }
+
+
+.menu-demo {
+  $shadow: "";
+  @for $i from 1 through 20 {
+    $shadow: $shadow + "," + $i + "px 0";
+  }
+  @for $i from 1 through 10 {
+    $shadow: $shadow + ", 20px " + $i + "px";
+  }
+  @for $i from 1 through 10 {
+    $shadow: $shadow + "," + ($i + 20) + "px 10px";
+  }
+  @for $i from 1 through 10 {
+    $shadow: $shadow + ", 30px " + $i + "px";
+  }
+  box-shadow: #{str-slice($shadow, 2)};
+}

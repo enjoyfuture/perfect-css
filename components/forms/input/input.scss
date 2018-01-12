@@ -27,6 +27,7 @@
 // 定义在 Input 元素上
 .input-field {
   box-sizing:              border-box;
+  width:                   100%;
   height:                  $input-height;
   padding:                 $input-padding-y $input-padding-x;
   border:                  1px solid $input-border-color;

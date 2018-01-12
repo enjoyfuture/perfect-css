@@ -55,7 +55,8 @@ class Select extends Component {
     return new Select(element);
   }
 
-  get value() {
+  // 返回当前选中的 value 和 text
+  get valueText() {
     return this.getSelectedValue ? this.getSelectedValue() : '';
   }
 
@@ -79,15 +80,23 @@ class Select extends Component {
     this.disabled = false; // 是否禁用
     this.isFocused = false; // 获取焦点
 
-    // 提供一个默认获取 select value 方法
+    // 如果没有已选中的 option，是否默认选中第一个
+    if (this.selectedFirstOption === undefined) {
+      this.selectedFirstOption = true;
+    }
+
+    // 提供一个默认获取 select value 和 text 方法
     if (!this.getSelectedValue) {
-      this.getSelectedValue = () => {
+      this.getSelectedValue = (isText) => {
         const {selectedIndex} = this;
         if (selectedIndex > -1) {
           // 返回叶子节点 data-value 设置的值
-          return this.options[selectedIndex].dataset.value;
+          return {
+            value: this.options[selectedIndex].dataset.value,
+            text: this.adapter.getTextForOptionAtIndex(selectedIndex),
+          };
         }
-        return '';
+        return {};
       };
     }
 
@@ -140,7 +149,7 @@ class Select extends Component {
         this.emit(strings.CHANGE_EVENT, {
           index: menu.previousActiveItemsIndex,
           items: menu.previousActiveItems,
-          value: this.value,
+          valueText: this.valueText,
         });
       },
       getWindowInnerHeight: () => win.innerHeight,
@@ -158,12 +167,16 @@ class Select extends Component {
   }
 
   initialSyncWithDOM() {
+    // 设置当前活动的 index
     const selectedOption = this.selectedOptions[0];
-    const idx = selectedOption ? this.options.indexOf(selectedOption) : -1;
+    const idx = selectedOption ? this.options.indexOf(selectedOption) : (this.selectedFirstOption ? 0 : -1);
+
     if (idx > -1) {
       this.selectedIndex = idx;
+      this.menu.setActiveItemAtIndex(idx);
     }
 
+    // 设置禁用
     if (this.element.getAttribute('aria-disabled') === 'true') {
       this.disabled = true;
     }

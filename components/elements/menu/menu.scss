@@ -224,7 +224,6 @@
       counter-increment: catalogue1;
     }
   }
-
   .menu-catalogue {
     counter-reset: catalogue2;
     > .menu-item, > li {
@@ -275,6 +274,11 @@
   }
 }
 
+.menu.menu-no-catalogue {
+  a::before {
+    content: '' !important;
+  }
+}
 //折叠菜单
 
 //主题 theme

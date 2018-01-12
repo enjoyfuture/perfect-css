@@ -224,7 +224,7 @@ anchor: true
                 热带水果
                 <ul class="list-menu-items list">
                   <li class="list-item" data-value="fruit,tropical-fruit,banana">香蕉</li>
-                  <li class="list-item" data-value="fruit,tropical-fruit,durian">榴莲</li>
+                  <li class="list-item" aria-selected="true" data-value="fruit,tropical-fruit,durian">榴莲</li>
                 </ul>
               </li>
               <li class="list-item" aria-level="branch">
@@ -418,39 +418,18 @@ anchor: true
 
 <script>
   (function () {
-    //    $(window).click(function () {
-    //      $('.select').removeClass('select-open');
-    //    });
-    //
-    //    $('#selectEl .select-inner').click(function (e) {
-    //      e.stopPropagation();
-    //
-    //      $('#selectEl').addClass('select-open');
-    //
-    //      $('#selectEl .select-options-item[aria-selected="true"]').focus();
-    //    });
-    //
-    //    $('#selectEl .select-options-item').click(function (e) {
-    //      e.stopPropagation();
-    //
-    //      var $el = $(e.currentTarget);
-    //      if ($el.attr('aria-disabled') !== 'true') {
-    //        $('#selectEl .select-selected-text').text($el.text());
-    //        $('#selectEl').removeClass('select-open');
-    //        $('#selectEl .select-inner').focus();
-    //        $el.attr('aria-selected', true).siblings().removeAttr('aria-selected');
-    //      }
-    //    });
 
     const selectEl = document.getElementById('selectDemo');
     const boxCurrentlySelected = document.getElementById('box-currently-selected');
-    const select = new perfect.Select(selectEl);
+    const select = new perfect.Select(selectEl, {
+      selectedFirstOption: false
+    });
 
     selectEl.addEventListener('select:change', function(evt) {
       const {detail} = evt;
-      const {index, value} = detail;
+      const {index, valueText} = detail;
 
-      boxCurrentlySelected.textContent = '"第' + index + '个，值为' + value;
+      boxCurrentlySelected.textContent = '"第' + index + '个，值为' + valueText.value + '文本值为' + valueText.text;
     });
 
     const cascadedSelectEl = document.getElementById('selectDemoCascaded');
@@ -459,9 +438,9 @@ anchor: true
 
     cascadedSelectEl.addEventListener('select:change', function(evt) {
       const {detail} = evt;
-      const {index, value} = detail;
+      const {index, valueText} = detail;
 
-      currentlySelected.textContent = '"第' + index + '个，值为' + value;
+      currentlySelected.textContent = '"第' + index + '个，值为' + valueText.value + '文本值为' + valueText.text;
     });
 
     // Disabled
