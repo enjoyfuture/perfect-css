@@ -1,6 +1,6 @@
 import Component from '../../../base/component';
 import {getTransformPropertyName, clamp, bezierProgress, getElementIndexOfParent} from './util';
-import {isWheel} from '../../../base/util';
+//import {isWheel} from '../../../base/util';
 
 const win = window;
 const dom = document;
@@ -312,7 +312,7 @@ class ListMenu extends Component {
     this.element.removeEventListener('keyup', this.handleKeyboardUp);
     this.element.removeEventListener('keydown', this.handleKeyboardDown);
     body.removeEventListener('click', this.handleDocumentClick);
-    this.itemsContainer.removeEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
+    //this.itemsContainer.removeEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
   }
 
   // 设置活动的元素
@@ -538,7 +538,7 @@ class ListMenu extends Component {
     this.adapter.addClass(classes.ANIMATING);
     this.animationRequestId = requestAnimationFrame(() => {
       this.dimensions = this.adapter.getInnerDimensions();
-      this.adjustMenuMaxHeight();
+      //this.adjustMenuMaxHeight();
       this.applyTransitionDelays();
       this.autoPosition();
       this.animateMenu();
@@ -548,7 +548,7 @@ class ListMenu extends Component {
       // 添加 document 事件
       body.addEventListener('click', this.handleDocumentClick);
       // http://www.zhangxinxu.com/wordpress/2013/04/js-mousewheel-dommousescroll-event/
-      this.itemsContainer.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
+      //this.itemsContainer.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
     });
     this.isOpen = true;
   }
