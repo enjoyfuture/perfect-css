@@ -450,15 +450,15 @@
       'theme-green', 'theme-light-green', 'theme-lime', 'theme-amber',
       'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
     let lastTheme = '';
-    setInterval(function () {
-      const r = Math.floor(Math.random() * 16);
-      const classList = document.body.classList;
-      if (classList.length > 0 && lastTheme) {
-        classList.remove(lastTheme);
-      }
-      classList.add(themes[r]);
-      lastTheme = themes[r];
-    }, 10000);
+    // setInterval(function () {
+    //   const r = Math.floor(Math.random() * 16);
+    //   const classList = document.body.classList;
+    //   if (classList.length > 0 && lastTheme) {
+    //     classList.remove(lastTheme);
+    //   }
+    //   classList.add(themes[r]);
+    //   lastTheme = themes[r];
+    // }, 10000);
   })();
 </script>
   </body>

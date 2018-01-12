@@ -630,7 +630,7 @@
                 热带水果
                 <ul class="list-menu-items list">
                   <li class="list-item" data-value="fruit,tropical-fruit,banana">香蕉</li>
-                  <li class="list-item" data-value="fruit,tropical-fruit,durian">榴莲</li>
+                  <li class="list-item" aria-selected="true" data-value="fruit,tropical-fruit,durian">榴莲</li>
                 </ul>
               </li>
               <li class="list-item" aria-level="branch">
@@ -833,44 +833,23 @@
 </section>
 <script>
   (function () {
-    //    $(window).click(function () {
-    //      $('.select').removeClass('select-open');
-    //    });
-    //
-    //    $('#selectEl .select-inner').click(function (e) {
-    //      e.stopPropagation();
-    //
-    //      $('#selectEl').addClass('select-open');
-    //
-    //      $('#selectEl .select-options-item[aria-selected="true"]').focus();
-    //    });
-    //
-    //    $('#selectEl .select-options-item').click(function (e) {
-    //      e.stopPropagation();
-    //
-    //      var $el = $(e.currentTarget);
-    //      if ($el.attr('aria-disabled') !== 'true') {
-    //        $('#selectEl .select-selected-text').text($el.text());
-    //        $('#selectEl').removeClass('select-open');
-    //        $('#selectEl .select-inner').focus();
-    //        $el.attr('aria-selected', true).siblings().removeAttr('aria-selected');
-    //      }
-    //    });
     const selectEl = document.getElementById('selectDemo');
     const boxCurrentlySelected = document.getElementById('box-currently-selected');
-    const select = new perfect.Select(selectEl);
+    const select = new perfect.Select(selectEl, {
+      selectedFirstOption: false
+    });
     selectEl.addEventListener('select:change', function(evt) {
       const {detail} = evt;
-      const {index, value} = detail;
-      boxCurrentlySelected.textContent = '"第' + index + '个，值为' + value;
+      const {index, valueText} = detail;
+      boxCurrentlySelected.textContent = '"第' + index + '个，值为' + valueText.value + '文本值为' + valueText.text;
     });
     const cascadedSelectEl = document.getElementById('selectDemoCascaded');
     const currentlySelected = document.getElementById('cascaded-currently-selected');
     const cascadedSelect = new perfect.Select(cascadedSelectEl);
     cascadedSelectEl.addEventListener('select:change', function(evt) {
       const {detail} = evt;
-      const {index, value} = detail;
-      currentlySelected.textContent = '"第' + index + '个，值为' + value;
+      const {index, valueText} = detail;
+      currentlySelected.textContent = '"第' + index + '个，值为' + valueText.value + '文本值为' + valueText.text;
     });
     // Disabled
     document.getElementById('disabledState').addEventListener('change', function (e) {
@@ -932,15 +911,15 @@
       'theme-green', 'theme-light-green', 'theme-lime', 'theme-amber',
       'theme-orange', 'theme-deep-orange', 'theme-brown', 'theme-grey', 'theme-blue-grey'];
     let lastTheme = '';
-    setInterval(function () {
-      const r = Math.floor(Math.random() * 16);
-      const classList = document.body.classList;
-      if (classList.length > 0 && lastTheme) {
-        classList.remove(lastTheme);
-      }
-      classList.add(themes[r]);
-      lastTheme = themes[r];
-    }, 10000);
+    // setInterval(function () {
+    //   const r = Math.floor(Math.random() * 16);
+    //   const classList = document.body.classList;
+    //   if (classList.length > 0 && lastTheme) {
+    //     classList.remove(lastTheme);
+    //   }
+    //   classList.add(themes[r]);
+    //   lastTheme = themes[r];
+    // }, 10000);
   })();
 </script>
   </body>
