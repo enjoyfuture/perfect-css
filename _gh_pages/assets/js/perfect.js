@@ -380,8 +380,6 @@ var _component2 = _interopRequireDefault(_component);
 
 var _util = __webpack_require__(8);
 
-var _util2 = __webpack_require__(1);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -391,6 +389,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+//import {isWheel} from '../../../base/util';
 
 var win = window;
 var dom = document;
@@ -973,7 +973,7 @@ var ListMenu = function (_Component) {
       this.element.removeEventListener('keyup', this.handleKeyboardUp);
       this.element.removeEventListener('keydown', this.handleKeyboardDown);
       body.removeEventListener('click', this.handleDocumentClick);
-      this.itemsContainer.removeEventListener(_util2.isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
+      //this.itemsContainer.removeEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
     }
 
     // 设置活动的元素
@@ -1039,7 +1039,7 @@ var ListMenu = function (_Component) {
       this.adapter.addClass(classes.ANIMATING);
       this.animationRequestId = requestAnimationFrame(function () {
         _this3.dimensions = _this3.adapter.getInnerDimensions();
-        _this3.adjustMenuMaxHeight();
+        //this.adjustMenuMaxHeight();
         _this3.applyTransitionDelays();
         _this3.autoPosition();
         _this3.animateMenu();
@@ -1049,7 +1049,7 @@ var ListMenu = function (_Component) {
         // 添加 document 事件
         body.addEventListener('click', _this3.handleDocumentClick);
         // http://www.zhangxinxu.com/wordpress/2013/04/js-mousewheel-dommousescroll-event/
-        _this3.itemsContainer.addEventListener(_util2.isWheel ? 'mousewheel' : 'DOMMouseScroll', _this3.handleItemScroll);
+        //this.itemsContainer.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
       });
       this.isOpen = true;
     }
