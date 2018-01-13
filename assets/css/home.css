@@ -98,27 +98,51 @@ body {
   background: #fff;
 }
 
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-
-/**
- * 计算两种颜色的对比度，一般指前景色和背景色
- * https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests 第3点
- */
-
-/**
- * Applies the correct theme color style to the specified property.
- * $property is typically color or background-color, but can be any CSS property that accepts color values.
- * $style should be one of the map keys in $theme-property-values (_variables.scss).
- */
-
 .doc-journey {
   position: relative;
-  min-height: 400px;
-  background-color: #2196f3;
-  background-color: var(--theme-primary, #2196f3);
+  padding: 2rem 15px;
+}
+
+.doc-journey h1 {
+  line-height: 1;
+}
+
+.doc-journey .btn {
+  width: 100%;
+  padding: .75rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  font-size: 1.125rem;
+}
+
+@media (min-width: 600px) {
+  .doc-journey {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .doc-journey h1 {
+    font-size: 3rem;
+  }
+
+  .doc-journey .btn {
+    height: 3.5rem;
+    padding: .875rem 2rem;
+    border-radius: 5px;
+    font-size: 1.125rem;
+  }
+
+  .doc-journey .btn:first-child {
+    margin-right: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .doc-journey .btn {
+    width: 40%;
+  }
 }
 
 
