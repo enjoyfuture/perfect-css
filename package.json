@@ -1,6 +1,6 @@
 {
   "name": "perfect-css",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": {
     "name": "Linder Wang",
     "email": "linder0209@126.com",
@@ -25,7 +25,7 @@
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel components --out-dir dist/lib",
     "build:es": "cross-env BABEL_ENV=es babel components --out-dir dist/es",
     "dev": "cross-env NODE_ENV=development webpack --progress --colors --config webpack.config.babel.js --watch",
-    "dev:min": "cross-env NODE_ENV=development webpack -p --progress --colors --config webpack.config.babel.js",
+    "dev:min": "cross-env NODE_ENV=development webpack --progress --colors --config webpack.config.babel.js",
     "build:umd": "cross-env NODE_ENV=production webpack --progress --colors --config webpack.config.babel.js",
     "build:umd:min": "cross-env NODE_ENV=production NODE_UGLIFY=true webpack -p --progress --colors --config webpack.config.babel.js",
     "prebuild": "npm run clean",
