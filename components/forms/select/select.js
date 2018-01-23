@@ -21,6 +21,7 @@ export const classes = {
   DISABLED: 'select-disabled',
   OPEN: 'select-open',
   SCROLL_LOCK: 'select-scroll-lock',
+  SELECT_MENU_FIXED: 'select-menu-fixed',
 };
 
 export const strings = {
@@ -49,10 +50,11 @@ class Select extends Component {
   /**
    * 静态方法实例化 Select 组件
    * @param element
+   * @param config
    * @returns {Select}
    */
-  static mount(element) {
-    return new Select(element);
+  static mount(element, config) {
+    return new Select(element, config);
   }
 
   // 返回当前选中的 value 和 text
@@ -83,6 +85,16 @@ class Select extends Component {
     // 如果没有已选中的 option，是否默认选中第一个
     if (this.selectedFirstOption === undefined) {
       this.selectedFirstOption = true;
+    }
+
+    // 是否滚动锁屏
+    if (this.isScrollLock === undefined) {
+      this.isScrollLock = true;
+    }
+
+    // 是否设置 select 为 fixed
+    if (this.isFixed === undefined) {
+      this.isFixed = true;
     }
 
     // 提供一个默认获取 select value 和 text 方法
@@ -183,6 +195,9 @@ class Select extends Component {
   }
 
   render() {
+    if (this.isFixed) {
+      this.menuEl.classList.add(classes.SELECT_MENU_FIXED);
+    }
     this.addEventListeners();
   }
 
@@ -306,13 +321,16 @@ class Select extends Component {
 
 
   open() {
-    this.disableScroll();
+    if (this.isScrollLock) {
+      this.disableScroll();
+    }
     const {OPEN} = classes;
     // 根据已选的叶子节点 this.selectedIndex 拿到第一层 select item
     const focusIndex = this.selectedIndex < 0 ? 0 : this.selectedIndex;
-    const selectedRootOption = getRootSelectedOption(this.options[focusIndex]);
-
-    this.setMenuStylesForOpen(selectedRootOption);
+    if (this.isFixed) {
+      const selectedRootOption = getRootSelectedOption(this.options[focusIndex]);
+      this.setMenuStylesForOpen(selectedRootOption);
+    }
     this.adapter.addClass(OPEN);
     this.adapter.openMenu(focusIndex);
     this.isFocused = true;
@@ -323,7 +341,9 @@ class Select extends Component {
     const {OPEN} = classes;
     this.adapter.removeClass(OPEN);
     this.adapter.focus();
-    this.enableScroll();
+    if (this.isScrollLock) {
+      this.enableScroll();
+    }
   }
 
   setMenuStylesForOpen(selectedRootOption) {

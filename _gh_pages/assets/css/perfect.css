@@ -6928,13 +6928,16 @@ hr {
 }
 
 .select-menu.list-menu {
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 4;
   max-height: 100%;
   -webkit-transform-origin: center center;
           transform-origin: center center;
+}
+
+.select-menu-fixed.list-menu {
+  position: fixed;
 }
 
 .select-selected-text {

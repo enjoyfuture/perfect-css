@@ -223,15 +223,75 @@ anchor: true
               <li class="list-item" aria-level="branch">
                 热带水果
                 <ul class="list-menu-items list">
-                  <li class="list-item" data-value="fruit,tropical-fruit,banana">香蕉</li>
-                  <li class="list-item" aria-selected="true" data-value="fruit,tropical-fruit,durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
+                  <li class="list-item" data-value="banana">香蕉</li>
+                  <li class="list-item" data-value="durian">榴莲</li>
                 </ul>
               </li>
               <li class="list-item" aria-level="branch">
                 其他水果
                 <ul class="list-menu-items list">
-                  <li class="list-item" data-value="fruit,other-fruit,pear">梨</li>
-                  <li class="list-item" data-value="fruit,other-fruit,apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
+                  <li class="list-item" data-value="pear">梨</li>
+                  <li class="list-item" data-value="apple">苹果</li>
                 </ul>
               </li>
             </ul>
@@ -422,10 +482,10 @@ anchor: true
     const selectEl = document.getElementById('selectDemo');
     const boxCurrentlySelected = document.getElementById('box-currently-selected');
     const select = new perfect.Select(selectEl, {
-      selectedFirstOption: false
+      selectedFirstOption: false,
     });
 
-    selectEl.addEventListener('select:change', function(evt) {
+    selectEl.addEventListener('select:change', function (evt) {
       const {detail} = evt;
       const {index, valueText} = detail;
 
@@ -434,9 +494,12 @@ anchor: true
 
     const cascadedSelectEl = document.getElementById('selectDemoCascaded');
     const currentlySelected = document.getElementById('cascaded-currently-selected');
-    const cascadedSelect = new perfect.Select(cascadedSelectEl);
+    const cascadedSelect = new perfect.Select(cascadedSelectEl, {
+      isScrollLock: false,
+      isFixed: false
+    });
 
-    cascadedSelectEl.addEventListener('select:change', function(evt) {
+    cascadedSelectEl.addEventListener('select:change', function (evt) {
       const {detail} = evt;
       const {index, valueText} = detail;
 

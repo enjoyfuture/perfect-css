@@ -3121,7 +3121,8 @@ var classes = exports.classes = {
   ELEMENT: 'select',
   DISABLED: 'select-disabled',
   OPEN: 'select-open',
-  SCROLL_LOCK: 'select-scroll-lock'
+  SCROLL_LOCK: 'select-scroll-lock',
+  SELECT_MENU_FIXED: 'select-menu-fixed'
 };
 
 var strings = exports.strings = {
@@ -3165,10 +3166,11 @@ var Select = function (_Component) {
     /**
      * 静态方法实例化 Select 组件
      * @param element
+     * @param config
      * @returns {Select}
      */
-    value: function mount(element) {
-      return new Select(element);
+    value: function mount(element, config) {
+      return new Select(element, config);
     }
   }, {
     key: 'classes',
@@ -3224,6 +3226,16 @@ var Select = function (_Component) {
     // 如果没有已选中的 option，是否默认选中第一个
     if (_this.selectedFirstOption === undefined) {
       _this.selectedFirstOption = true;
+    }
+
+    // 是否滚动锁屏
+    if (_this.isScrollLock === undefined) {
+      _this.isScrollLock = true;
+    }
+
+    // 是否设置 select 为 fixed
+    if (_this.isFixed === undefined) {
+      _this.isFixed = true;
     }
 
     // 提供一个默认获取 select value 和 text 方法
@@ -3379,6 +3391,9 @@ var Select = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      if (this.isFixed) {
+        this.menuEl.classList.add(classes.SELECT_MENU_FIXED);
+      }
       this.addEventListeners();
     }
   }, {
@@ -3496,14 +3511,17 @@ var Select = function (_Component) {
   }, {
     key: 'open',
     value: function open() {
-      this.disableScroll();
+      if (this.isScrollLock) {
+        this.disableScroll();
+      }
       var OPEN = classes.OPEN;
       // 根据已选的叶子节点 this.selectedIndex 拿到第一层 select item
 
       var focusIndex = this.selectedIndex < 0 ? 0 : this.selectedIndex;
-      var selectedRootOption = getRootSelectedOption(this.options[focusIndex]);
-
-      this.setMenuStylesForOpen(selectedRootOption);
+      if (this.isFixed) {
+        var selectedRootOption = getRootSelectedOption(this.options[focusIndex]);
+        this.setMenuStylesForOpen(selectedRootOption);
+      }
       this.adapter.addClass(OPEN);
       this.adapter.openMenu(focusIndex);
       this.isFocused = true;
@@ -3515,7 +3533,9 @@ var Select = function (_Component) {
 
       this.adapter.removeClass(OPEN);
       this.adapter.focus();
-      this.enableScroll();
+      if (this.isScrollLock) {
+        this.enableScroll();
+      }
     }
   }, {
     key: 'setMenuStylesForOpen',
