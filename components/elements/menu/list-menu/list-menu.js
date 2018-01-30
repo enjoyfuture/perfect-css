@@ -212,7 +212,7 @@ class ListMenu extends Component {
         });
       }, // 清空活动 item
       removeExpandClass: () => {
-        this.element.querySelectorAll(strings.LIST_ITEM_BRANCH_SELECTOR).forEach((el) => {
+        [].forEach.call(this.element.querySelectorAll(strings.LIST_ITEM_BRANCH_SELECTOR), (el) => {
           el.classList.remove(classes.EXPANDED);
         });
       },
