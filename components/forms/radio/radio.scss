@@ -67,7 +67,8 @@
     cursor:   inherit;
     opacity:  0;
 
-    // 获取焦点时
+    // 获取 hover 或焦点时
+    &:hover,
     &:focus {
       + .radio-background {
         .radio-circle-outer {

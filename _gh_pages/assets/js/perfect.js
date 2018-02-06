@@ -845,7 +845,7 @@ var ListMenu = function (_Component) {
           });
         }, // 清空活动 item
         removeExpandClass: function removeExpandClass() {
-          _this2.element.querySelectorAll(strings.LIST_ITEM_BRANCH_SELECTOR).forEach(function (el) {
+          [].forEach.call(_this2.element.querySelectorAll(strings.LIST_ITEM_BRANCH_SELECTOR), function (el) {
             el.classList.remove(classes.EXPANDED);
           });
         },

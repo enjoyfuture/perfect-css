@@ -7164,6 +7164,11 @@ hr {
   opacity: 0;
 }
 
+.radio-native-control:hover + .radio-background .radio-circle-outer {
+  border-color: rgba(0, 0, 0, 0.87);
+  border-color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
+}
+
 .radio-native-control:focus + .radio-background .radio-circle-outer {
   border-color: rgba(0, 0, 0, 0.87);
   border-color: var(--theme-dark-primary, rgba(0, 0, 0, 0.87));
