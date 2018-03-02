@@ -1343,7 +1343,7 @@ exports.default = ListMenu;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Select = exports.ListMenu = exports.Ripple = exports.CatalogueSpy = exports.ScrollSpy = undefined;
+exports.Paging = exports.Select = exports.ListMenu = exports.Ripple = exports.CatalogueSpy = exports.ScrollSpy = undefined;
 
 var _scrollSpy = __webpack_require__(4);
 
@@ -1365,6 +1365,10 @@ var _select = __webpack_require__(9);
 
 var _select2 = _interopRequireDefault(_select);
 
+var _paging = __webpack_require__(10);
+
+var _paging2 = _interopRequireDefault(_paging);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.ScrollSpy = _scrollSpy2.default;
@@ -1372,6 +1376,7 @@ exports.CatalogueSpy = _catalogueSpy2.default;
 exports.Ripple = _ripple2.default;
 exports.ListMenu = _listMenu2.default;
 exports.Select = _select2.default;
+exports.Paging = _paging2.default;
 
 /***/ }),
 /* 4 */
@@ -2003,6 +2008,7 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.handleScroll = function (prevent) {
+    /*eslint-disable complexity*/
     return function (event) {
       var _$menuPanel = _this.$menuPanel,
           scrollHeight = _$menuPanel.scrollHeight,
@@ -2010,11 +2016,6 @@ var _initialiseProps = function _initialiseProps() {
       var step = _this.config.step;
 
       _this.maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
-
-      if (prevent && _this.maxOffset > 0) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
 
       // 判断鼠标滑轮向上还是向下滑动
       var upDown = void 0;
@@ -2046,6 +2047,11 @@ var _initialiseProps = function _initialiseProps() {
 
       var y = reg.exec(transform);
       y = y ? parseFloat(y[1], 10) : 0;
+
+      if (prevent && _this.maxOffset > 0 && (upDown === 'down' && Math.abs(y) < _this.maxOffset || upDown === 'up' && y > 0)) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
 
       if (upDown === 'up' && y === 0 || upDown === 'down' && Math.abs(y) === _this.maxOffset) {
         return;
@@ -3610,6 +3616,348 @@ var Select = function (_Component) {
 }(_component2.default);
 
 exports.default = Select;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.strings = exports.classes = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _component = __webpack_require__(0);
+
+var _component2 = _interopRequireDefault(_component);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var win = window;
+var dom = document;
+var body = dom.body;
+
+// 定义常量
+// class 样式
+var classes = exports.classes = {
+  PAGING_ITEM: 'paging-item',
+  DISABLED: 'select-disabled',
+  OPEN: 'select-open',
+  SCROLL_LOCK: 'select-scroll-lock',
+  SELECT_MENU_FIXED: 'select-menu-fixed'
+};
+
+var strings = exports.strings = {
+  SELECT_INNER: '.select-inner',
+  CHANGE_EVENT: 'select:change',
+  SELECT_MENU: '.select-menu',
+  SELECT_SELECTED_TEXT: '.select-selected-text'
+};
+
+var Paging = function (_Component) {
+  _inherits(Paging, _Component);
+
+  _createClass(Paging, null, [{
+    key: 'mount',
+
+
+    /**
+     * 静态方法实例化 Paging 组件
+     * @param element
+     * @param config
+     * @returns {Select}
+     */
+    value: function mount(element, config) {
+      return new Paging(element, config);
+    }
+  }, {
+    key: 'classes',
+    get: function get() {
+      return classes;
+    }
+  }, {
+    key: 'strings',
+    get: function get() {
+      return strings;
+    }
+  }]);
+
+  function Paging(element, config) {
+    _classCallCheck(this, Paging);
+
+    // 当前页，从1开始，默认1
+    var _this = _possibleConstructorReturn(this, (Paging.__proto__ || Object.getPrototypeOf(Paging)).call(this, element, config));
+
+    _this.handleSwitchPage = function (evt) {
+      evt.preventDefault();
+      var target = evt.target;
+      var classList = target.classList;
+
+
+      if (classList.contains(classes.PAGING_ITEM)) {
+        // 切换下一页逻辑
+        var pageNum = parseInt(target.dataset.pagenum, 10);
+        _this.handleChangePage(pageNum);
+      }
+    };
+
+    if (_this.pageNum === undefined) {
+      _this.pageNum = 1;
+    }
+
+    // 每页条数，默认10
+    if (_this.pageSize === undefined) {
+      _this.pageSize = 10;
+    }
+
+    // 总页码
+    if (_this.totalPage === undefined) {
+      _this.totalPage = 1;
+    }
+
+    // 加载数据回调函数
+    // this.loadPageData = function() {}
+
+    // 创建适配器
+    _this.adapter = _this.createAdapter();
+
+    _this.render();
+    return _this;
+  }
+
+  /**
+   * 封装适配器方法
+   * @return {object}
+   */
+
+
+  _createClass(Paging, [{
+    key: 'createAdapter',
+    value: function createAdapter() {
+      var _this2 = this;
+
+      return {
+        addClass: function addClass(className) {
+          return _this2.element.classList.add(className);
+        },
+        removeClass: function removeClass(className) {
+          return _this2.element.classList.remove(className);
+        },
+        setAttr: function setAttr(attr, value) {
+          return _this2.element.setAttribute(attr, value);
+        },
+        rmAttr: function rmAttr(attr) {
+          return _this2.element.removeAttribute(attr);
+        },
+        computeBoundingRect: function computeBoundingRect() {
+          return _this2.selectInner.getBoundingClientRect();
+        },
+        focus: function focus() {
+          return _this2.selectInner.focus();
+        },
+        makeTabbable: function makeTabbable() {
+          _this2.selectInner.tabIndex = 0;
+        },
+        makeUntabbable: function makeUntabbable() {
+          _this2.selectInner.tabIndex = -1;
+        },
+        setMenuElStyle: function setMenuElStyle(propertyName, value) {
+          return _this2.menuEl.style.setProperty(propertyName, value);
+        },
+        setMenuElAttr: function setMenuElAttr(attr, value) {
+          return _this2.menuEl.setAttribute(attr, value);
+        },
+        rmMenuElAttr: function rmMenuElAttr(attr) {
+          return _this2.menuEl.removeAttribute(attr);
+        },
+        getMenuElOffsetHeight: function getMenuElOffsetHeight() {
+          return _this2.menuEl.offsetHeight;
+        },
+        openMenu: function openMenu(focusIndex) {
+          return _this2.menu.show({ focusIndex: focusIndex });
+        },
+        isMenuOpen: function isMenuOpen() {
+          return _this2.menu.open;
+        },
+        setSelectedTextContent: function setSelectedTextContent(selectedTextContent) {
+          _this2.selectedText.textContent = selectedTextContent;
+        },
+        getNumberOfOptions: function getNumberOfOptions() {
+          return _this2.options.length;
+        },
+        getTextForOptionAtIndex: function getTextForOptionAtIndex(index) {
+          return _this2.options[index].textContent;
+        },
+        setAttrForOptionAtIndex: function setAttrForOptionAtIndex(index, attr, value) {
+          return _this2.options[index].setAttribute(attr, value);
+        },
+        rmAttrForOptionAtIndex: function rmAttrForOptionAtIndex(index, attr) {
+          return _this2.options[index].removeAttribute(attr);
+        },
+        getLeafOptionIndex: function getLeafOptionIndex(item) {
+          var len = _this2.options.length;
+          for (var i = 0; i < len; i++) {
+            if (_this2.options[i] === item) {
+              return i;
+            }
+          }
+          return -1;
+        },
+        notifyChange: function notifyChange() {
+          var menu = _this2.menu;
+          _this2.emit(strings.CHANGE_EVENT, {
+            index: menu.previousActiveItemsIndex,
+            items: menu.previousActiveItems,
+            valueText: _this2.valueText
+          });
+        },
+        getWindowInnerHeight: function getWindowInnerHeight() {
+          return win.innerHeight;
+        },
+        addBodyClass: function addBodyClass(className) {
+          return body.classList.add(className);
+        },
+        removeBodyClass: function removeBodyClass(className) {
+          return body.classList.remove(className);
+        }
+      };
+    }
+  }, {
+    key: 'init',
+    value: function init() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      this.addEventListeners();
+      this.renderPage();
+    }
+  }, {
+    key: 'unmount',
+    value: function unmount() {
+      this.removeEventListeners();
+    }
+
+    // 设置监听事件
+
+  }, {
+    key: 'addEventListeners',
+    value: function addEventListeners() {
+      this.element.addEventListener('click', this.handleSwitchPage);
+    }
+
+    // 删除事件
+
+  }, {
+    key: 'removeEventListeners',
+    value: function removeEventListeners() {
+      this.selectInner.removeEventListener('click', this.handleSwitchPage);
+    }
+  }, {
+    key: 'handleChangePage',
+    value: function handleChangePage(pageNum) {
+      var _this3 = this;
+
+      if (pageNum <= 0 || pageNum > this.totalPage || this.totalPage === 1) {
+        return;
+      }
+
+      if (this.loadPageData && typeof this.loadPageData === 'function') {
+        this.loadPageData(pageNum).then(function (_ref) {
+          var totalPage = _ref.totalPage,
+              pageNum = _ref.pageNum;
+
+          _this3.totalPage = totalPage;
+          _this3.pageNum = pageNum;
+          _this3.renderPage();
+        });
+      } else {
+        this.pageNum = pageNum;
+        this.renderPage();
+      }
+    }
+
+    /**
+     * 计算页码显示算法，返回一个页码数组
+     * @returns {Array}
+     */
+
+  }, {
+    key: 'calculatePage',
+    value: function calculatePage() {
+      var totalPage = this.totalPage;
+      var pageNum = this.pageNum;
+
+      var pageArray = [];
+      if (totalPage < 8) {
+        for (var i = 1; i <= totalPage; i++) {
+          pageArray.push(i);
+        }
+      } else {
+        pageArray.push(1);
+        if (pageNum > 4) {
+          pageArray.push('...');
+        }
+
+        if (pageNum < 4) {
+          for (var _i = 2; _i <= 6; _i++) {
+            pageArray.push(_i);
+          }
+        } else if (pageNum >= 4 && totalPage - pageNum >= 3) {
+          for (var _i2 = pageNum - 2; _i2 <= pageNum + 2; _i2++) {
+            pageArray.push(_i2);
+          }
+        } else {
+          for (var _i3 = totalPage - 4; _i3 < totalPage; _i3++) {
+            pageArray.push(_i3);
+          }
+        }
+
+        //总页码 - 当前页 大于 3 显示
+        if (totalPage - pageNum > 3) {
+          pageArray.push('...');
+        }
+        pageArray.push(totalPage);
+      }
+
+      return pageArray;
+    }
+  }, {
+    key: 'renderPage',
+    value: function renderPage() {
+      var _this4 = this;
+
+      var pageArray = this.calculatePage();
+
+      var html = '<ul class="paging-items">';
+      html += '<li class="paging-item' + (this.pageNum === 1 ? ' disabled' : '') + '" data-pagenum="' + (this.pageNum - 1) + '">\u4E0A\u4E00\u9875</li>';
+      var pageItems = pageArray.map(function (item, index) {
+        if (item === '...') {
+          return '<li class="paging-item paging-more"></li>';
+        }
+        return '<li class="paging-item' + (_this4.pageNum === item ? ' active' : '') + '" data-pagenum="' + item + '">' + item + '</li>';
+      });
+      html += pageItems.join('');
+      html += '<li class="paging-item' + (this.pageNum === this.totalPage ? ' disabled' : '') + '" data-pagenum="' + (this.pageNum + 1) + '">\u4E0B\u4E00\u9875</li>';
+      html += '</ul>';
+
+      this.element.innerHTML = html;
+    }
+  }]);
+
+  return Paging;
+}(_component2.default);
+
+exports.default = Paging;
 
 /***/ })
 /******/ ]);

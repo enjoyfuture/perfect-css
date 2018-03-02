@@ -45,15 +45,11 @@ class CatalogueSpy {
   }
 
   handleScroll = (prevent) => {
+    /*eslint-disable complexity*/
     return (event) => {
       const {scrollHeight, clientHeight} = this.$menuPanel;
       const {step} = this.config;
       this.maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
-
-      if (prevent && this.maxOffset > 0) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
 
       // 判断鼠标滑轮向上还是向下滑动
       let upDown;
@@ -77,6 +73,12 @@ class CatalogueSpy {
 
       let y = reg.exec(transform);
       y = y ? parseFloat(y[1], 10) : 0;
+
+      if (prevent && this.maxOffset > 0 &&
+        ((upDown === 'down' && Math.abs(y) < this.maxOffset) || (upDown === 'up' && y > 0))) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
 
       if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === this.maxOffset)) {
         return;

@@ -3,6 +3,7 @@ import CatalogueSpy from './scroll-spy/plugins/catalogueSpy';
 import Ripple from './ripple/ripple';
 import ListMenu from './elements/menu/list-menu/list-menu';
 import Select from './forms/select/select';
+import Paging from './elements/paging/paging';
 
 export {
   ScrollSpy,
@@ -10,4 +11,5 @@ export {
   Ripple,
   ListMenu,
   Select,
+  Paging,
 };

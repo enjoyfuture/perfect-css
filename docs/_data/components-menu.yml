@@ -64,8 +64,8 @@
       file: list-menu
     - title: Tree 树形组件
       file: tree
-    - title: Page 分页
-      file: page
+    - title: Paging 分页
+      file: paging
     - title: Loading 加载
       file: loading
     - title: Toast 吐司提示

@@ -1,0 +1,195 @@
+---
+layout: components
+title: Paging 分页
+group: elements
+anchor: true
+---
+
+<h2>只有页码的分页</h2>
+
+<h3>基本页码</h3>
+<section class="component-container">
+  <div class="paging">
+    <ul class="paging-items">
+      <li class="paging-item disabled">上一页</li>
+      <li class="paging-item active">1</li>
+      <li class="paging-item">2</li>
+      <li class="paging-item paging-more"></li>
+      <li class="paging-item">3</li>
+      <li class="paging-item">4</li>
+      <li class="paging-item paging-more"></li>
+      <li class="paging-item">5</li>
+      <li class="paging-item">6</li>
+      <li class="paging-item">下一页</li>
+    </ul>
+  </div>
+</section>
+
+<h3>左对齐</h3>
+<section class="component-container">
+  <div class="paging justify-content-start">
+    <ul class="paging-items">
+      <li class="paging-item disabled">上一页</li>
+      <li class="paging-item active">1</li>
+      <li class="paging-item">2</li>
+      <li class="paging-item paging-more"></li>
+      <li class="paging-item">3</li>
+      <li class="paging-item">4</li>
+      <li class="paging-item paging-more"></li>
+      <li class="paging-item">5</li>
+      <li class="paging-item">6</li>
+      <li class="paging-item">下一页</li>
+    </ul>
+  </div>
+</section>
+
+<h3>居中</h3>
+<section class="component-container">
+  <div class="paging justify-content-center">
+    <ul class="paging-items">
+      <li class="paging-item disabled">上一页</li>
+      <li class="paging-item active">1</li>
+      <li class="paging-item">2</li>
+      <li class="paging-item paging-more"></li>
+      <li class="paging-item">3</li>
+      <li class="paging-item">4</li>
+      <li class="paging-item paging-more"></li>
+      <li class="paging-item">5</li>
+      <li class="paging-item">6</li>
+      <li class="paging-item">下一页</li>
+    </ul>
+  </div>
+</section>
+
+<h3>带箭头的页码</h3>
+<section class="component-container">
+  <div class="paging">
+    <ul class="paging-items">
+      <li class="paging-item paging-prev disabled"></li>
+      <li class="paging-item active">1</li>
+      <li class="paging-item">2</li>
+      <li class="paging-item paging-more"></li>
+      <li class="paging-item">3</li>
+      <li class="paging-item">4</li>
+      <li class="paging-item paging-more"></li>
+      <li class="paging-item">5</li>
+      <li class="paging-item">6</li>
+      <li class="paging-item paging-next"></li>
+    </ul>
+  </div>
+</section>
+
+<h3>可前进后退 n 页</h3>
+<section class="component-container">
+  <div class="paging">
+    <ul class="paging-items">
+      <li class="paging-item disabled">上一页</li>
+      <li class="paging-item active">1</li>
+      <li class="paging-item">2</li>
+      <li class="paging-item paging-more paging-prev" title="后退5页"></li>
+      <li class="paging-item">3</li>
+      <li class="paging-item">4</li>
+      <li class="paging-item paging-more paging-next" title="前进5页"></li>
+      <li class="paging-item">5</li>
+      <li class="paging-item">6</li>
+      <li class="paging-item">下一页</li>
+    </ul>
+  </div>
+</section>
+
+<h3>a 标签分页</h3>
+<section class="component-container">
+  <div class="paging">
+    <div class="paging-items">
+      <a class="paging-item disabled" href="#">上一页</a>
+      <a class="paging-item active" href="#">1</a>
+      <a class="paging-item" href="#">2</a>
+      <a class="paging-item paging-more paging-prev" href="#" title="后退5页"></a>
+      <a class="paging-item" href="#">3</a>
+      <a class="paging-item" href="#">4</a>
+      <a class="paging-item paging-more paging-next" href="#" title="前进5页"></a>
+      <a class="paging-item" href="#">5</a>
+      <a class="paging-item" href="#">6</a>
+      <a class="paging-item" href="#">下一页</a>
+    </div>
+  </div>
+</section>
+
+<h3>带显示记录数和页码总数，以及可以设置每页显示条数，跳转页码控制等</h3>
+<section class="component-container">
+  <div class="paging">
+    <ul class="paging-items">
+      <li class="paging-item disabled">上一页</li>
+      <li class="paging-item active">1</li>
+      <li class="paging-item">2</li>
+      <li class="paging-item paging-more"></li>
+      <li class="paging-item">3</li>
+      <li class="paging-item">4</li>
+      <li class="paging-item paging-more"></li>
+      <li class="paging-item">5</li>
+      <li class="paging-item">6</li>
+      <li class="paging-item">下一页</li>
+    </ul>
+    <ul class="paging-control">
+      <li class="paging-control-item">共26页259条记录,</li>
+      <li class="paging-control-item">
+        每页
+        <div class="select">
+          <select class="select-inner">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+        条,
+      </li>
+      <li class="paging-control-item">
+        跳至
+        <div class="input">
+          <input type="text" class="input-field"/>
+        </div>
+        页
+      </li>
+      <li class="paging-control-item">
+        <a href="" class="btn btn-raised btn-primary">确定</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<h3>JavaScript 实例化分页</h3>
+<section class="component-container">
+  <div class="paging" id="pagingDemo1"></div>
+</section>
+
+<script>
+  const pagingEl = document.querySelector('#pagingDemo1');
+  const loadPageData = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let result = false;
+        if (Math.random() > 0.2) {
+          result = true;
+        }
+        if (result) {
+          this.setState({
+            items: 20,
+            hasMore: true
+          }, () => {
+            resolve();
+          });
+        } else {
+          reject(new Error('错误'));
+        }
+      }, 1000);
+    });
+  };
+
+  const paging = new perfect.Paging(pagingEl, {
+    totalPage: 30,
+    pageNum: 5,
+  });
+</script>
+

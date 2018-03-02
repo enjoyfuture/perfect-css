@@ -7,10 +7,10 @@
 
 // 由两部分组成，由页码和控制显示每页多少记录组成
 // 默认右对齐，可以通过设置 justify-content 来控制显示位置
-.page {
+.paging {
   display:         flex;
   justify-content: flex-end;
-  margin-top:      $page-margin-top;
+  margin-top:      $paging-margin-top;
 
   &-items {
     display:     flex;
@@ -25,10 +25,10 @@
     display:         inline-flex;
     align-items:     center;
     justify-content: center;
-    min-width:       $page-item-width;
-    height:          $page-item-height;
-    padding:         0 $page-item-padding-x;
-    margin-left:     $page-item-margin-left;
+    min-width:       $paging-item-width;
+    height:          $paging-item-height;
+    padding:         0 $paging-item-padding-x;
+    margin-left:     $paging-item-margin-left;
     border:          1px solid $grey-300;
     border-radius:   2px;
     cursor:          pointer;
@@ -109,9 +109,9 @@
     display:         inline-flex;
     align-items:     center;
     justify-content: center;
-    min-width:       $page-item-width;
-    height:          $page-item-height;
-    margin-left:     $page-item-margin-left;
+    min-width:       $paging-item-width;
+    height:          $paging-item-height;
+    margin-left:     $paging-item-margin-left;
     user-select:     none;
 
     .select,
@@ -135,8 +135,8 @@
 }
 
 // 对于前进和后退几页
-.page-prev.page-more,
-.page-next.page-more {
+.paging-prev.paging-more,
+.paging-next.paging-more {
   border: 1px solid $grey-300;
   cursor: pointer;
 
@@ -157,7 +157,7 @@
 }
 
 // 对于 a 标签
-a.page-item {
+a.paging-item {
   @include theme-prop(color, primary-on-light);
   &:hover {
     text-decoration: none;
