@@ -1,0 +1,50 @@
+{
+  "success": true,
+  "data": {
+    "pageNum": 1,
+    "totalPages": 11,
+    "totalCount": 106,
+    "items": [
+      {
+        "id": 1,
+        "name": "张三",
+        "mobile": "19912345678",
+        "email": "999@999.com",
+        "position": "前端程序猿",
+        "department": "前端研发部"
+      },
+      {
+        "id": 2,
+        "name": "李四",
+        "mobile": "19912345678",
+        "email": "999@999.com",
+        "position": "前端程序猿",
+        "department": "前端研发部"
+      },
+      {
+        "id": 3,
+        "name": "王五",
+        "mobile": "19912345678",
+        "email": "999@999.com",
+        "position": "前端👨‍💻",
+        "department": "前端研发部"
+      },
+      {
+        "id": 4,
+        "name": "赵六",
+        "mobile": "19912345678",
+        "email": "999@999.com",
+        "position": "前端程序媛",
+        "department": "前端研发部"
+      },
+      {
+        "id": 5,
+        "name": "冯七",
+        "mobile": "19912345678",
+        "email": "999@999.com",
+        "position": "前端程序猿",
+        "department": "前端研发部"
+      }
+    ]
+  }
+}

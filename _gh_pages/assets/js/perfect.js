@@ -3629,6 +3629,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.strings = exports.classes = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _component = __webpack_require__(0);
@@ -3685,6 +3687,14 @@ var Paging = function (_Component) {
     get: function get() {
       return classes;
     }
+
+    /**
+     * pagingControl 控制是否显示数据信息 {Boolean}
+     * recordPerPage 是否显示改变每页记录数 {Boolean}
+     * jumpControl 是否显示跳至某一页 {Boolean}
+     * @type {{pagingControl: boolean, recordPerPage: boolean, jumpControl: boolean}}
+     */
+
   }, {
     key: 'strings',
     get: function get() {
@@ -3696,7 +3706,7 @@ var Paging = function (_Component) {
     _classCallCheck(this, Paging);
 
     // 当前页，从1开始，默认1
-    var _this = _possibleConstructorReturn(this, (Paging.__proto__ || Object.getPrototypeOf(Paging)).call(this, element, config));
+    var _this = _possibleConstructorReturn(this, (Paging.__proto__ || Object.getPrototypeOf(Paging)).call(this, element, _extends({}, Paging.defaultConfig, config)));
 
     _this.handleSwitchPage = function (evt) {
       evt.preventDefault();
@@ -3708,6 +3718,26 @@ var Paging = function (_Component) {
         // 切换下一页逻辑
         var pageNum = parseInt(target.dataset.pagenum, 10);
         _this.handleChangePage(pageNum);
+      } else if (classList.contains('js-jump-btn')) {
+        var input = target.parentNode.previousElementSibling.children[0].children[0];
+        var _pageNum = parseInt(input.value, 10);
+        if (!Number.isNaN(_pageNum)) {
+          _this.handleChangePage(_pageNum);
+        }
+      }
+    };
+
+    _this.handleChangePerPage = function (evt) {
+      evt.preventDefault();
+      var target = evt.target;
+      var classList = target.classList;
+
+
+      if (classList.contains('select-inner')) {
+        // 切换下一页逻辑
+        var pageSize = parseInt(target.value, 10);
+        _this.pageSize = pageSize;
+        _this.loadData();
       }
     };
 
@@ -3721,12 +3751,22 @@ var Paging = function (_Component) {
     }
 
     // 总页码
-    if (_this.totalPage === undefined) {
-      _this.totalPage = 1;
-    }
+    // this.totalPages
+
+    // 总记录数
+    // this.totalCount
 
     // 加载数据回调函数
     // this.loadPageData = function() {}
+
+    // 控制是否显示数据信息 {Boolean}
+    // this.pagingControl
+
+    // 是否显示改变每页记录数 {Boolean}
+    // this.recordPerPage
+
+    // 是否显示跳至某一页 {Boolean}
+    // this.jumpControl
 
     // 创建适配器
     _this.adapter = _this.createAdapter();
@@ -3744,93 +3784,7 @@ var Paging = function (_Component) {
   _createClass(Paging, [{
     key: 'createAdapter',
     value: function createAdapter() {
-      var _this2 = this;
-
-      return {
-        addClass: function addClass(className) {
-          return _this2.element.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return _this2.element.classList.remove(className);
-        },
-        setAttr: function setAttr(attr, value) {
-          return _this2.element.setAttribute(attr, value);
-        },
-        rmAttr: function rmAttr(attr) {
-          return _this2.element.removeAttribute(attr);
-        },
-        computeBoundingRect: function computeBoundingRect() {
-          return _this2.selectInner.getBoundingClientRect();
-        },
-        focus: function focus() {
-          return _this2.selectInner.focus();
-        },
-        makeTabbable: function makeTabbable() {
-          _this2.selectInner.tabIndex = 0;
-        },
-        makeUntabbable: function makeUntabbable() {
-          _this2.selectInner.tabIndex = -1;
-        },
-        setMenuElStyle: function setMenuElStyle(propertyName, value) {
-          return _this2.menuEl.style.setProperty(propertyName, value);
-        },
-        setMenuElAttr: function setMenuElAttr(attr, value) {
-          return _this2.menuEl.setAttribute(attr, value);
-        },
-        rmMenuElAttr: function rmMenuElAttr(attr) {
-          return _this2.menuEl.removeAttribute(attr);
-        },
-        getMenuElOffsetHeight: function getMenuElOffsetHeight() {
-          return _this2.menuEl.offsetHeight;
-        },
-        openMenu: function openMenu(focusIndex) {
-          return _this2.menu.show({ focusIndex: focusIndex });
-        },
-        isMenuOpen: function isMenuOpen() {
-          return _this2.menu.open;
-        },
-        setSelectedTextContent: function setSelectedTextContent(selectedTextContent) {
-          _this2.selectedText.textContent = selectedTextContent;
-        },
-        getNumberOfOptions: function getNumberOfOptions() {
-          return _this2.options.length;
-        },
-        getTextForOptionAtIndex: function getTextForOptionAtIndex(index) {
-          return _this2.options[index].textContent;
-        },
-        setAttrForOptionAtIndex: function setAttrForOptionAtIndex(index, attr, value) {
-          return _this2.options[index].setAttribute(attr, value);
-        },
-        rmAttrForOptionAtIndex: function rmAttrForOptionAtIndex(index, attr) {
-          return _this2.options[index].removeAttribute(attr);
-        },
-        getLeafOptionIndex: function getLeafOptionIndex(item) {
-          var len = _this2.options.length;
-          for (var i = 0; i < len; i++) {
-            if (_this2.options[i] === item) {
-              return i;
-            }
-          }
-          return -1;
-        },
-        notifyChange: function notifyChange() {
-          var menu = _this2.menu;
-          _this2.emit(strings.CHANGE_EVENT, {
-            index: menu.previousActiveItemsIndex,
-            items: menu.previousActiveItems,
-            valueText: _this2.valueText
-          });
-        },
-        getWindowInnerHeight: function getWindowInnerHeight() {
-          return win.innerHeight;
-        },
-        addBodyClass: function addBodyClass(className) {
-          return body.classList.add(className);
-        },
-        removeBodyClass: function removeBodyClass(className) {
-          return body.classList.remove(className);
-        }
-      };
+      return {};
     }
   }, {
     key: 'init',
@@ -3839,7 +3793,7 @@ var Paging = function (_Component) {
     key: 'render',
     value: function render() {
       this.addEventListeners();
-      this.renderPage();
+      this.loadData();
     }
   }, {
     key: 'unmount',
@@ -3853,6 +3807,7 @@ var Paging = function (_Component) {
     key: 'addEventListeners',
     value: function addEventListeners() {
       this.element.addEventListener('click', this.handleSwitchPage);
+      this.element.addEventListener('change', this.handleChangePerPage);
     }
 
     // 删除事件
@@ -3860,30 +3815,48 @@ var Paging = function (_Component) {
   }, {
     key: 'removeEventListeners',
     value: function removeEventListeners() {
-      this.selectInner.removeEventListener('click', this.handleSwitchPage);
+      this.element.removeEventListener('click', this.handleSwitchPage);
+      this.element.addEventListener('change', this.handleChangePerPage);
+    }
+  }, {
+    key: 'loadData',
+    value: function loadData() {
+      var _this2 = this;
+
+      var pageNum = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+      // 渲染数据
+      if (this.loadPageData && typeof this.loadPageData === 'function') {
+        this.loadPageData(pageNum, this.pageSize).then(function (json) {
+          var _json$data = json.data,
+              totalCount = _json$data.totalCount,
+              totalPages = _json$data.totalPages;
+
+          _this2.totalPages = totalPages;
+          _this2.pageNum = pageNum;
+          _this2.totalCount = totalCount;
+          _this2.renderPaging();
+        });
+      } else {
+        this.pageNum = pageNum;
+        this.renderPaging();
+      }
     }
   }, {
     key: 'handleChangePage',
     value: function handleChangePage(pageNum) {
-      var _this3 = this;
-
-      if (pageNum <= 0 || pageNum > this.totalPage || this.totalPage === 1) {
+      if (this.totalPages === 1) {
         return;
       }
-
-      if (this.loadPageData && typeof this.loadPageData === 'function') {
-        this.loadPageData(pageNum).then(function (_ref) {
-          var totalPage = _ref.totalPage,
-              pageNum = _ref.pageNum;
-
-          _this3.totalPage = totalPage;
-          _this3.pageNum = pageNum;
-          _this3.renderPage();
-        });
-      } else {
-        this.pageNum = pageNum;
-        this.renderPage();
+      if (pageNum <= 1) {
+        pageNum = 1;
       }
+
+      if (pageNum >= this.totalPages) {
+        pageNum = this.totalPages;
+      }
+
+      this.loadData(pageNum);
     }
 
     /**
@@ -3894,12 +3867,12 @@ var Paging = function (_Component) {
   }, {
     key: 'calculatePage',
     value: function calculatePage() {
-      var totalPage = this.totalPage;
+      var totalPages = this.totalPages;
       var pageNum = this.pageNum;
 
       var pageArray = [];
-      if (totalPage < 8) {
-        for (var i = 1; i <= totalPage; i++) {
+      if (totalPages < 8) {
+        for (var i = 1; i <= totalPages; i++) {
           pageArray.push(i);
         }
       } else {
@@ -3912,29 +3885,29 @@ var Paging = function (_Component) {
           for (var _i = 2; _i <= 6; _i++) {
             pageArray.push(_i);
           }
-        } else if (pageNum >= 4 && totalPage - pageNum >= 3) {
+        } else if (pageNum >= 4 && totalPages - pageNum >= 3) {
           for (var _i2 = pageNum - 2; _i2 <= pageNum + 2; _i2++) {
             pageArray.push(_i2);
           }
         } else {
-          for (var _i3 = totalPage - 4; _i3 < totalPage; _i3++) {
+          for (var _i3 = totalPages - 4; _i3 < totalPages; _i3++) {
             pageArray.push(_i3);
           }
         }
 
         //总页码 - 当前页 大于 3 显示
-        if (totalPage - pageNum > 3) {
+        if (totalPages - pageNum > 3) {
           pageArray.push('...');
         }
-        pageArray.push(totalPage);
+        pageArray.push(totalPages);
       }
 
       return pageArray;
     }
   }, {
-    key: 'renderPage',
-    value: function renderPage() {
-      var _this4 = this;
+    key: 'renderPaging',
+    value: function renderPaging() {
+      var _this3 = this;
 
       var pageArray = this.calculatePage();
 
@@ -3944,19 +3917,45 @@ var Paging = function (_Component) {
         if (item === '...') {
           return '<li class="paging-item paging-more"></li>';
         }
-        return '<li class="paging-item' + (_this4.pageNum === item ? ' active' : '') + '" data-pagenum="' + item + '">' + item + '</li>';
+        return '<li class="paging-item' + (_this3.pageNum === item ? ' active' : '') + '" data-pagenum="' + item + '">' + item + '</li>';
       });
       html += pageItems.join('');
-      html += '<li class="paging-item' + (this.pageNum === this.totalPage ? ' disabled' : '') + '" data-pagenum="' + (this.pageNum + 1) + '">\u4E0B\u4E00\u9875</li>';
+      html += '<li class="paging-item' + (this.pageNum === this.totalPages ? ' disabled' : '') + '" data-pagenum="' + (this.pageNum + 1) + '">\u4E0B\u4E00\u9875</li>';
       html += '</ul>';
 
+      if (this.pagingControl) {
+        html += this.renderPagingControl();
+      }
       this.element.innerHTML = html;
+    }
+  }, {
+    key: 'renderPagingControl',
+    value: function renderPagingControl() {
+      var html = '<ul class="paging-control">';
+      html += '<li class="paging-control-item">\u5171' + this.totalPages + '\u9875' + (this.totalCount || 0) + '\u6761\u8BB0\u5F55,</li>';
+
+      if (this.recordPerPage) {
+        html += '<li class="paging-control-item">\n        \u6BCF\u9875\n        <div class="select">\n        <select class="select-inner">\n          <option value="5"' + (this.pageSize === 5 ? ' selected' : '') + '>5</option>\n          <option value="10"' + (this.pageSize === 10 ? ' selected' : '') + '>10</option>\n          <option value="20"' + (this.pageSize === 20 ? ' selected' : '') + '>20</option>\n          <option value="50"' + (this.pageSize === 50 ? ' selected' : '') + '>50</option>\n          <option value="100"' + (this.pageSize === 100 ? ' selected' : '') + '>100</option>\n        </select>\n        </div>\n      \u6761,\n    </li>';
+      }
+
+      if (this.jumpControl) {
+        html += '<li class="paging-control-item">\n        \u8DF3\u81F3\n        <div class="input">\n          <input type="text" class="input-field"/>\n        </div>\n        \u9875\n      </li>\n      <li class="paging-control-item">\n        <a href="" class="btn btn-raised btn-primary btn-sm js-jump-btn">\u786E\u5B9A</a>\n      </li>';
+      }
+
+      html += '</ul>';
+
+      return html;
     }
   }]);
 
   return Paging;
 }(_component2.default);
 
+Paging.defaultConfig = {
+  pagingControl: true,
+  recordPerPage: true,
+  jumpControl: true
+};
 exports.default = Paging;
 
 /***/ })

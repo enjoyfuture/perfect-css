@@ -23,6 +23,18 @@ export const strings = {
 
 class Paging extends Component {
 
+  /**
+   * pagingControl 控制是否显示数据信息 {Boolean}
+   * recordPerPage 是否显示改变每页记录数 {Boolean}
+   * jumpControl 是否显示跳至某一页 {Boolean}
+   * @type {{pagingControl: boolean, recordPerPage: boolean, jumpControl: boolean}}
+   */
+  static defaultConfig = {
+    pagingControl: true,
+    recordPerPage: true,
+    jumpControl: true,
+  };
+
   static get classes() {
     return classes;
   }
@@ -42,7 +54,7 @@ class Paging extends Component {
   }
 
   constructor(element, config) {
-    super(element, config);
+    super(element, {...Paging.defaultConfig, ...config});
     // 当前页，从1开始，默认1
     if (this.pageNum === undefined) {
       this.pageNum = 1;
@@ -54,12 +66,22 @@ class Paging extends Component {
     }
 
     // 总页码
-    if (this.totalPage === undefined) {
-      this.totalPage = 1;
-    }
+    // this.totalPages
+
+    // 总记录数
+    // this.totalCount
 
     // 加载数据回调函数
     // this.loadPageData = function() {}
+
+    // 控制是否显示数据信息 {Boolean}
+    // this.pagingControl
+
+    // 是否显示改变每页记录数 {Boolean}
+    // this.recordPerPage
+
+    // 是否显示跳至某一页 {Boolean}
+    // this.jumpControl
 
     // 创建适配器
     this.adapter = this.createAdapter();
@@ -73,51 +95,6 @@ class Paging extends Component {
    */
   createAdapter() {
     return {
-      addClass: (className) => this.element.classList.add(className),
-      removeClass: (className) => this.element.classList.remove(className),
-      setAttr: (attr, value) => this.element.setAttribute(attr, value),
-      rmAttr: (attr) => this.element.removeAttribute(attr),
-      computeBoundingRect: () => this.selectInner.getBoundingClientRect(),
-      focus: () => this.selectInner.focus(),
-      makeTabbable: () => {
-        this.selectInner.tabIndex = 0;
-      },
-      makeUntabbable: () => {
-        this.selectInner.tabIndex = -1;
-      },
-      setMenuElStyle: (propertyName, value) => this.menuEl.style.setProperty(propertyName, value),
-      setMenuElAttr: (attr, value) => this.menuEl.setAttribute(attr, value),
-      rmMenuElAttr: (attr) => this.menuEl.removeAttribute(attr),
-      getMenuElOffsetHeight: () => this.menuEl.offsetHeight,
-      openMenu: (focusIndex) => this.menu.show({focusIndex}),
-      isMenuOpen: () => this.menu.open,
-      setSelectedTextContent: (selectedTextContent) => {
-        this.selectedText.textContent = selectedTextContent;
-      },
-      getNumberOfOptions: () => this.options.length,
-      getTextForOptionAtIndex: (index) => this.options[index].textContent,
-      setAttrForOptionAtIndex: (index, attr, value) => this.options[index].setAttribute(attr, value),
-      rmAttrForOptionAtIndex: (index, attr) => this.options[index].removeAttribute(attr),
-      getLeafOptionIndex: (item) => {
-        const len = this.options.length;
-        for (let i = 0; i < len; i++) {
-          if (this.options[i] === item) {
-            return i;
-          }
-        }
-        return -1;
-      },
-      notifyChange: () => {
-        const menu = this.menu;
-        this.emit(strings.CHANGE_EVENT, {
-          index: menu.previousActiveItemsIndex,
-          items: menu.previousActiveItems,
-          valueText: this.valueText,
-        });
-      },
-      getWindowInnerHeight: () => win.innerHeight,
-      addBodyClass: (className) => body.classList.add(className),
-      removeBodyClass: (className) => body.classList.remove(className),
     };
   }
 
@@ -126,7 +103,7 @@ class Paging extends Component {
 
   render() {
     this.addEventListeners();
-    this.renderPage();
+    this.loadData();
   }
 
   unmount() {
@@ -136,11 +113,13 @@ class Paging extends Component {
   // 设置监听事件
   addEventListeners() {
     this.element.addEventListener('click', this.handleSwitchPage);
+    this.element.addEventListener('change', this.handleChangePerPage);
   }
 
   // 删除事件
   removeEventListeners() {
-    this.selectInner.removeEventListener('click', this.handleSwitchPage);
+    this.element.removeEventListener('click', this.handleSwitchPage);
+    this.element.addEventListener('change', this.handleChangePerPage);
   }
 
   handleSwitchPage = (evt) => {
@@ -152,24 +131,57 @@ class Paging extends Component {
     if (classList.contains(classes.PAGING_ITEM)) { // 切换下一页逻辑
       const pageNum = parseInt(target.dataset.pagenum, 10);
       this.handleChangePage(pageNum);
+    } else if (classList.contains('js-jump-btn')) {
+      const input = target.parentNode.previousElementSibling.children[0].children[0];
+      const pageNum = parseInt(input.value, 10);
+      if (!Number.isNaN(pageNum)) {
+        this.handleChangePage(pageNum);
+      }
     }
   };
 
-  handleChangePage(pageNum) {
-    if (pageNum <= 0 || pageNum > this.totalPage || this.totalPage === 1) {
-      return;
-    }
+  handleChangePerPage = (evt) => {
+    evt.preventDefault();
+    const {target} = evt;
 
+    const {classList} = target;
+
+    if (classList.contains('select-inner')) { // 切换下一页逻辑
+      const pageSize = parseInt(target.value, 10);
+      this.pageSize = pageSize;
+      this.loadData();
+    }
+  };
+
+  loadData(pageNum = 1) {
+    // 渲染数据
     if (this.loadPageData && typeof this.loadPageData === 'function') {
-      this.loadPageData(pageNum).then(({totalPage, pageNum}) => {
-        this.totalPage = totalPage;
+      this.loadPageData(pageNum, this.pageSize).then((json) => {
+        const {totalCount, totalPages} = json.data;
+        this.totalPages = totalPages;
         this.pageNum = pageNum;
-        this.renderPage();
+        this.totalCount = totalCount;
+        this.renderPaging();
       });
     } else {
       this.pageNum = pageNum;
-      this.renderPage();
+      this.renderPaging();
     }
+  }
+
+  handleChangePage(pageNum) {
+    if (this.totalPages === 1) {
+      return;
+    }
+    if (pageNum <= 1) {
+      pageNum = 1;
+    }
+
+    if (pageNum >= this.totalPages) {
+      pageNum = this.totalPages;
+    }
+
+    this.loadData(pageNum);
   }
 
   /**
@@ -177,12 +189,12 @@ class Paging extends Component {
    * @returns {Array}
    */
   calculatePage() {
-    const totalPage = this.totalPage;
+    const totalPages = this.totalPages;
     const pageNum = this.pageNum;
 
     const pageArray = [];
-    if (totalPage < 8) {
-      for (let i = 1; i <= totalPage; i++) {
+    if (totalPages < 8) {
+      for (let i = 1; i <= totalPages; i++) {
         pageArray.push(i);
       }
     } else {
@@ -195,27 +207,27 @@ class Paging extends Component {
         for (let i = 2; i <= 6; i++) {
           pageArray.push(i);
         }
-      } else if (pageNum >= 4 && totalPage - pageNum >= 3) {
+      } else if (pageNum >= 4 && totalPages - pageNum >= 3) {
         for (let i = pageNum - 2; i <= pageNum + 2; i++) {
           pageArray.push(i);
         }
       } else {
-        for (let i = totalPage - 4; i < totalPage; i++) {
+        for (let i = totalPages - 4; i < totalPages; i++) {
           pageArray.push(i);
         }
       }
 
       //总页码 - 当前页 大于 3 显示
-      if (totalPage - pageNum > 3) {
+      if (totalPages - pageNum > 3) {
         pageArray.push('...');
       }
-      pageArray.push(totalPage);
+      pageArray.push(totalPages);
     }
 
     return pageArray;
   }
 
-  renderPage() {
+  renderPaging() {
     const pageArray = this.calculatePage();
 
     let html = '<ul class="paging-items">';
@@ -228,10 +240,51 @@ class Paging extends Component {
 
     });
     html += pageItems.join('');
-    html += `<li class="paging-item${this.pageNum === this.totalPage ? ' disabled' : ''}" data-pagenum="${this.pageNum + 1}">下一页</li>`;
+    html += `<li class="paging-item${this.pageNum === this.totalPages ? ' disabled' : ''}" data-pagenum="${this.pageNum + 1}">下一页</li>`;
     html += '</ul>';
 
+    if (this.pagingControl) {
+      html += this.renderPagingControl();
+    }
     this.element.innerHTML = html;
+  }
+
+  renderPagingControl() {
+    let html = '<ul class="paging-control">';
+    html += `<li class="paging-control-item">共${this.totalPages}页${this.totalCount || 0}条记录,</li>`;
+
+    if (this.recordPerPage) {
+      html += `<li class="paging-control-item">
+        每页
+        <div class="select">
+        <select class="select-inner">
+          <option value="5"${this.pageSize === 5 ? ' selected' : ''}>5</option>
+          <option value="10"${this.pageSize === 10 ? ' selected' : ''}>10</option>
+          <option value="20"${this.pageSize === 20 ? ' selected' : ''}>20</option>
+          <option value="50"${this.pageSize === 50 ? ' selected' : ''}>50</option>
+          <option value="100"${this.pageSize === 100 ? ' selected' : ''}>100</option>
+        </select>
+        </div>
+      条,
+    </li>`;
+    }
+
+    if (this.jumpControl) {
+      html += `<li class="paging-control-item">
+        跳至
+        <div class="input">
+          <input type="text" class="input-field"/>
+        </div>
+        页
+      </li>
+      <li class="paging-control-item">
+        <a href="" class="btn btn-raised btn-primary btn-sm js-jump-btn">确定</a>
+      </li>`;
+    }
+
+    html += '</ul>';
+
+    return html;
   }
 }
 

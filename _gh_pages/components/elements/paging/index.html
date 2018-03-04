@@ -577,31 +577,86 @@
   <div class="paging" id="pagingDemo1"></div>
 </section>
 <script>
-  const pagingEl = document.querySelector('#pagingDemo1');
-  const loadPageData = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        let result = false;
-        if (Math.random() > 0.2) {
-          result = true;
-        }
-        if (result) {
-          this.setState({
-            items: 20,
-            hasMore: true
-          }, () => {
-            resolve();
-          });
-        } else {
-          reject(new Error('错误'));
-        }
-      }, 1000);
+  (function () {
+    const pagingEl = document.querySelector('#pagingDemo1');
+    const paging = new perfect.Paging(pagingEl, {
+      totalPages: 30,
+      pageNum: 5,
     });
-  };
-  const paging = new perfect.Paging(pagingEl, {
-    totalPage: 30,
-    pageNum: 5,
-  });
+  })();
+</script>
+<h3>
+<div class="anchor-header" id="anchor-1-9"></div>带 table 的分页组件<a class="anchor-link" href="#anchor-1-9">#</a>
+</h3>
+<section class="component-container">
+  <table class="table table-thead-primary table-striped table-hover-primary">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>姓名</th>
+        <th>手机</th>
+        <th>邮箱</th>
+        <th>职位</th>
+        <th>部门</th>
+      </tr>
+    </thead>
+    <tbody id="pagingTable">
+    </tbody>
+  </table>
+  <div class="paging" id="pagingDemo2"></div>
+</section>
+<script>
+  (function () {
+    const pagingEl = document.querySelector('#pagingDemo2');
+    const pagingTable = document.querySelector('#pagingTable');
+    const renderTable = (items, pageNum, pageSize) => {
+      // 这里处理了模拟数据
+      let step = 1;
+      const multiple = Math.ceil(pageSize / 5);
+      const html = items.map((item, index) => {
+        if (pageSize * (pageNum - 1) + step >= 106) {
+          return '';
+        }
+        const {name, mobile, email, position, department} = item;
+        let trHtml = '';
+        for (let i = 0; i < multiple; i++) {
+          trHtml += `<tr>
+      <td>${(pageSize * (pageNum - 1) + step)}</td>
+      <td>${name + (pageSize * (pageNum - 1) + step)}</td>
+      <td>${mobile + (pageSize * (pageNum - 1) + step)}</td>
+      <td>${email + (pageSize * (pageNum - 1) + step)}</td>
+      <td>${position + (pageSize * (pageNum - 1) + step)}</td>
+      <td>${department + (pageSize * (pageNum - 1) + step)}</td>
+    </tr>`;
+          step++;
+        }
+        return trHtml;
+      });
+      pagingTable.innerHTML = html.join('');
+    };
+    const loadPageData = (pageNum, pageSize) => {
+      return fetch(`data1.json?pageNum=${pageNum}&pageSize=${pageSize}`)
+        .then(response =>
+          response.json().then(json => ({json, response})),
+        ).then(({json, response}) => {
+          if (!response.ok || !json.success) {
+            // 根据后台实际返回数据来定义错误格式
+            const error = new Error(json.message || '获取数据出错');
+            error.errorCode = json.errorCode;
+            return Promise.reject(error, json);
+          }
+          // 模拟后台处理一下总页数
+          json.data.totalPages = Math.ceil(json.data.totalCount / pageSize);
+          renderTable(json.data.items, pageNum, pageSize);
+          return json;
+        }).catch((error) => {
+          return Promise.reject(error);
+        });
+    };
+    perfect.Paging.mount(pagingEl, {
+      loadPageData,
+    });
+  })();
 </script>
       </section>
     </main>
