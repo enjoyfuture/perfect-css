@@ -3,6 +3,7 @@
   @if ($font-size) {
     font-size: $font-size;
   }
+
   @if ($crumb-divider) {
     .crumb-item {
       + .crumb-item::before {

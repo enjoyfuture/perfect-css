@@ -1,7 +1,6 @@
 // ripple function
 // 定义 ripple 默认 config
 @function ripple-default-config() {
-  // sass-lint:disable indentation
   @return (
     pseudo: null,
     radius: 100%,

@@ -3,50 +3,53 @@
 
 // 由三部分组成，slider 容器，滑块进度（轨迹），滑块按钮
 .slider {
-  position:                    relative;
-  width:                       100%;
-  height:                      48px;
+  position: relative;
+  width: 100%;
+  height: 48px;
+  cursor: pointer;
   //用来只允许水平方向滑动 https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action
-  touch-action:                pan-x;
-  cursor:                      pointer;
+  touch-action: pan-x;
   -webkit-tap-highlight-color: rgba(#000, 0);
 
   &-track {
     position: absolute;
-    top:      50%;
-    width:    100%;
-    height:   2px;
+    top: 50%;
+    width: 100%;
+    height: 2px;
     overflow: hidden;
+
     @include theme-prop(background-color, primary-alpha);
   }
 
   &-track-inner {
-    position:         absolute;
-    height:           100%;
+    position: absolute;
+    height: 100%;
     transform-origin: left top;
-    will-change:      transform;
+    will-change: transform;
+
     @include theme-prop(background-color, primary);
   }
   // 滑块按钮
   &-button {
-    position:    absolute;
-    top:         15px;
-    left:        0;
-    width:       20px;
-    height:      100%;
-    user-select: none;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 20px;
+    height: 100%;
     will-change: transform;
+    user-select: none;
   }
 
   &-button-inner {
     position: absolute;
-    top:          0;
-    left:         0;
+    top: 0;
+    left: 0;
     width: 20px;
     height: 20px;
     border-radius: 50%;
+    transform: scale(.6);
+    transition: transform 100ms ease-out;
+
     @include theme-prop(background-color, primary);
-    transform:    scale(.6);
-    transition:   transform 100ms ease-out;
   }
 }

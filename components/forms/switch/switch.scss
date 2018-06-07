@@ -19,16 +19,49 @@
 // switch-knob 用来定义开关切换纽扣，伪类 ::before 用来定义聚焦效果
 .switch {
   position: relative;
-  display:  inline-block;
+  display: inline-block;
 
   // 用来控制开关的 input type="checkbox" 组件
   &-control {
-    @include switch-control-size;
-    z-index:    2;
-    display:    inline-block;
-    cursor:     pointer;
-    opacity:    0;
+    z-index: 2;
+    display: inline-block;
+    opacity: 0;
     transition: switch-transition(transform);
+    cursor: pointer;
+
+    @include switch-control-size;
+
+    // Track 当开关切换时，显示的轨迹
+    &-track {
+      position: relative;
+      display: block;
+      outline: none;
+      user-select: none;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: .38;
+        transition: switch-transition(opacity), switch-transition(background-color);
+      }
+
+      @include switch-track-size;
+    }
+
+    &-knob {
+      position: absolute;
+      z-index: 1;
+      display: block;
+      transform: translateX(0);
+      transition: switch-transition(transform), switch-transition(background-color);
+
+      @include shadow(2);
+      @include switch-knob-size;
+    }
 
     // 选中时
     &:checked ~ .switch-track {
@@ -63,36 +96,27 @@
     }
   }
 
-  // Track 当开关切换时，显示的轨迹
-  &-track {
-    position:      relative;
-    display:       block;
-    user-select:   none;
-    outline:       none;
+  // 聚焦效果
+  &-focus-ring {
+    .switch-knob {
+      &::before {
+        content: "";
+        opacity: .2;
+        transform: scale(0);
+        transition: switch-transition(transform), switch-transition(background-color);
 
-    &::before {
-      content:       "";
-      position:      absolute;
-      top:           0;
-      bottom:        0;
-      left:          0;
-      right:         0;
-      opacity:       .38;
-      transition:    switch-transition(opacity), switch-transition(background-color);
+        @include switch-focus-ring-size;
+      }
     }
 
-    @include switch-track-size;
-  }
-
-  &-knob {
-    @include shadow(2);
-    position:      absolute;
-    z-index:       1;
-    display:       block;
-    transform:     translateX(0);
-    transition:    switch-transition(transform), switch-transition(background-color);
-
-    @include switch-knob-size;
+    // 获取焦点时
+    .switch-control:focus ~ .switch-track {
+      .switch-knob {
+        &::before {
+          transform: scale(1);
+        }
+      }
+    }
   }
 
   // 没有选中时背景颜色
@@ -100,27 +124,6 @@
 
   // 选中时的背景颜色
   @include switch-checked-bg-color($switch-baseline-theme-color);
-}
-
-// 聚焦效果
-.switch-focus-ring {
-  .switch-knob {
-    &::before {
-      content:       "";
-      opacity:       .2;
-      transform:     scale(0);
-      transition:    switch-transition(transform), switch-transition(background-color);
-      @include switch-focus-ring-size;
-    }
-  }
-  // 获取焦点时
-  .switch-control:focus ~ .switch-track {
-    .switch-knob {
-      &::before {
-        transform: scale(1);
-      }
-    }
-  }
 }
 
 // 定义主题样式

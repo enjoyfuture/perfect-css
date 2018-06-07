@@ -3,9 +3,8 @@
 
 // box shadow 属性值，支持修改颜色值
 @mixin shadow($z-value, $umbra-color: $shadow-umbra-color,
-  $penumbra-color: $shadow-penumbra-color,
-  $ambient-color: $shadow-ambient-color) {
-
+$penumbra-color: $shadow-penumbra-color,
+$ambient-color: $shadow-ambient-color) {
   @if type-of($z-value) != number or not unitless($z-value) {
     @error "$z-value 必须是无单位数值";
   }
@@ -14,9 +13,7 @@
     @error "$z-value must be between 0 and 24";
   }
 
-  box-shadow: #{map-get($shadow-umbra-map, $z-value)} #{$umbra-color},
-  #{map-get($shadow-penumbra-map, $z-value)} #{$penumbra-color},
-  #{map-get($shadow-ambient-map, $z-value)} $ambient-color;
+  box-shadow: #{map-get($shadow-umbra-map, $z-value)} #{$umbra-color}, #{map-get($shadow-penumbra-map, $z-value)} #{$penumbra-color}, #{map-get($shadow-ambient-map, $z-value)} $ambient-color;
 }
 
 // 动画效果

@@ -9,23 +9,24 @@
 
 // 导航容器
 .navbar {
-  position:        relative;
-  box-sizing:      border-box;
-  display:         flex;
-  flex-wrap:       wrap; // 当导航过多时，允许折行处理
-  align-items:     center;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap; // 当导航过多时，允许折行处理
+  align-items: center;
   justify-content: space-between;
-  padding:         0 $navbar-padding-x $navbar-padding-y;
+  box-sizing: border-box;
+  padding: 0 $navbar-padding-x $navbar-padding-y;
 
   // Navbar brand
   // 该样式用来设置 brand, project, or site 的名字，另一个就是当设备变小后，只显示该名称
   &-brand {
-    box-sizing:   border-box;
-    display:      inline-flex;
+    display: inline-flex;
+    box-sizing: border-box;
     margin-right: $navbar-brand-margin-right;
-    font-size:    $navbar-brand-font-size;
-    line-height:  inherit;
-    white-space:  nowrap;
+    font-size: $navbar-brand-font-size;
+    line-height: inherit;
+    white-space: nowrap;
+
     @include theme-prop(color, primary-on-light);
 
     &:focus,
@@ -36,37 +37,39 @@
 
   // 当小屏幕时，隐藏导航，通过该按钮显示导航
   &-toggler {
-    box-sizing:         content-box;
-    display:            inline-flex;
-    align-items:        center;
-    height:             $navbar-toggler-height;
-    padding:            $navbar-item-padding-y;
-    border:             0; // remove default button style
-    background:         transparent; // remove default button style
-    @include theme-prop(color, secondary-on-light);
-    cursor:             pointer;
+    display: inline-flex;
+    align-items: center;
+    box-sizing: content-box;
+    height: $navbar-toggler-height;
+    padding: $navbar-item-padding-y;
+    border: 0; // remove default button style
+    background: transparent; // remove default button style
+    cursor: pointer;
     -webkit-appearance: none;
 
+    @include theme-prop(color, secondary-on-light);
+
     &-icon {
-      display:    inline-block;
-      width:      1.5rem;
-      height:     2px;
+      display: inline-block;
+      width: 1.5rem;
+      height: 2px;
       box-shadow: 0 -10px, 0 -2px, 0 6px;
     }
 
     &:hover {
       text-decoration: none;
+
       @include theme-prop(color, primary-on-light);
     }
   }
 
   // 控制导航显示
   &-collapse {
-    display:     none;
-    flex-basis:  100%;
+    display: none;
+    flex-basis: 100%;
     align-items: center;
-    opacity:     0;
-    transition:  animation-enter(opacity, 120ms);
+    opacity: 0;
+    transition: animation-enter(opacity, 120ms);
 
     // 添加 show 样式来显示导航，TODO 需要实现动画，待处理，开始高度为0，再设置高度，
     &.show {
@@ -79,44 +82,46 @@
 // 当在移动端时，如果默认不想隐藏 nav 可以使用该样式
 @include media-breakpoint-down(xs) {
   .navbar-brand {
-    padding-top:    $navbar-item-padding-y;
+    padding-top: $navbar-item-padding-y;
     padding-bottom: $navbar-item-padding-y;
   }
 
   .navbar-scroll {
     max-width: 100%;
-    overflow:  hidden;
+    overflow: hidden;
 
     .navbar-nav {
-      overflow-x:                 auto;
+      overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      white-space:                nowrap;
+      white-space: nowrap;
     }
   }
 }
 
 // 导航列表栏，与 nav-link 一起使用
 .navbar-nav {
-  display:        flex;
+  display: flex;
   flex-direction: column;
-  padding-left:   0;
-  margin-bottom:  0;
-  margin-left:    0;
-  font-size:      $navbar-font-size;
-  list-style:     none;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding-left: 0;
+  font-size: $navbar-font-size;
+  list-style: none;
 }
 
 .nav-link {
-  box-sizing:    border-box;
-  display:       inline-flex;
-  padding:       $navbar-item-padding-y $navbar-item-padding-x;
-  margin-right:  .25rem;
+  display: inline-flex;
+  box-sizing: border-box;
+  margin-right: .25rem;
+  padding: $navbar-item-padding-y $navbar-item-padding-x;
   border-bottom: $nav-link-border-width solid transparent;
-  cursor:        pointer;
+  cursor: pointer;
+
   @include theme-prop(color, secondary-on-light);
 
   &:hover {
     text-decoration: none;
+
     @include theme-prop(color, primary-on-light);
     @include theme-prop(border-bottom-color, secondary-on-light);
   }
@@ -128,8 +133,9 @@
 
   &.disabled {
     border-bottom-color: transparent;
-    pointer-events:      none;
-    cursor:              default;
+    cursor: default;
+    pointer-events: none;
+
     @include theme-prop(color, disabled-on-light);
   }
 }
@@ -145,8 +151,8 @@
 
     &#{$infix} {
       @include media-breakpoint-up($next) {
-        flex-direction:  row;
-        flex-wrap:       nowrap;
+        flex-direction: row;
+        flex-wrap: nowrap;
         justify-content: flex-start;
 
         .navbar-nav {
@@ -160,6 +166,8 @@
 
         .navbar-toggler {
           display: none;
+
+          /* stylelint-disable max-nesting-depth */
           &.show {
             display: block;
           }
@@ -172,9 +180,9 @@
 // 固定在顶部
 .navbar-top {
   position: sticky;
-  top:      0;
+  top: 0;
   // todo z-index 应该设置为变量，与页面中其他元素的层级待处理
-  z-index:  100;
+  z-index: 100;
 }
 
 // 当导航设为 fixed 时，需要给 navbar 下面元素额外设置 margin-top
@@ -229,5 +237,3 @@
     }
   }
 }
-
-

@@ -1,25 +1,14 @@
 import Component from '../../base/component';
 
-const win = window;
-const dom = document;
-const body = dom.body;
-
 // 定义常量
 // class 样式
 export const classes = {
   PAGING_ITEM: 'paging-item',
-  DISABLED: 'select-disabled',
-  OPEN: 'select-open',
-  SCROLL_LOCK: 'select-scroll-lock',
-  SELECT_MENU_FIXED: 'select-menu-fixed',
+  DISABLED: 'disabled',
+  ACTIVE: 'active',
 };
 
-export const strings = {
-  SELECT_INNER: '.select-inner',
-  CHANGE_EVENT: 'select:change',
-  SELECT_MENU: '.select-menu',
-  SELECT_SELECTED_TEXT: '.select-selected-text',
-};
+export const strings = {};
 
 class Paging extends Component {
 
@@ -94,8 +83,7 @@ class Paging extends Component {
    * @return {object}
    */
   createAdapter() {
-    return {
-    };
+    return {};
   }
 
   init() {
@@ -231,16 +219,16 @@ class Paging extends Component {
     const pageArray = this.calculatePage();
 
     let html = '<ul class="paging-items">';
-    html += `<li class="paging-item${this.pageNum === 1 ? ' disabled' : ''}" data-pagenum="${this.pageNum - 1}">上一页</li>`;
+    html += `<li class="paging-item${this.pageNum === 1 ? ` ${classes.DISABLED}` : ''}" data-pagenum="${this.pageNum - 1}">上一页</li>`;
     const pageItems = pageArray.map((item, index) => {
       if (item === '...') {
         return '<li class="paging-item paging-more"></li>';
       }
-      return `<li class="paging-item${this.pageNum === item ? ' active' : ''}" data-pagenum="${item}">${item}</li>`;
+      return `<li class="paging-item${this.pageNum === item ? ` ${classes.ACTIVE}` : ''}" data-pagenum="${item}">${item}</li>`;
 
     });
     html += pageItems.join('');
-    html += `<li class="paging-item${this.pageNum === this.totalPages ? ' disabled' : ''}" data-pagenum="${this.pageNum + 1}">下一页</li>`;
+    html += `<li class="paging-item${this.pageNum === this.totalPages ? ` ${classes.DISABLED}` : ''}" data-pagenum="${this.pageNum + 1}">下一页</li>`;
     html += '</ul>';
 
     if (this.pagingControl) {

@@ -17,15 +17,16 @@
 // 4. 在 IOS 下点击高亮修改为完全透明
 
 html {
-  -ms-overflow-style:          scrollbar; // 1
-  font-family:                 sans-serif; // 2
-  font-weight:                 $font-weight-base;
-  -webkit-text-size-adjust:    100%; // 3
-  -ms-text-size-adjust:        100%; // 3
+  -ms-overflow-style: scrollbar; // 1
+  font-family: sans-serif; // 2
+  font-weight: $font-weight-base;
+  -webkit-text-size-adjust: 100%; // 3
+  -ms-text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 4
 }
 
 // IE10+ doesn't honor `<meta name="viewport">` in some cases.
+/* stylelint-disable at-rule-no-vendor-prefix */
 @at-root {
   @-ms-viewport {
     width: #{device-width};
@@ -36,9 +37,10 @@ html {
 body {
   font-family: $font-family;
   // 设置默认字体大小，其他元素采用 rem ，动态的根据 body 的字体大小来计算其大小
-  font-size:   var(--font-size-base, $font-size-base);
+  font-size: var(--font-size-base, $font-size-base);
   font-weight: $font-weight-base;
   line-height: $line-height-base;
+
   @include theme-prop(color, primary-on-light); // 1 前景对应  rgba(0, 0, 0, .87),
   @include theme-prop(background-color, primary-on-dark); // 1 背景对应 #fff
 }
@@ -62,36 +64,38 @@ main {
 // 排版重置样式
 //
 
+/* stylelint-disable selector-list-comma-newline-after */
 // 重置 margin-top margin-bottom
 h1, h2, h3, h4, h5, h6 {
-  margin-top:    0;
+  margin-top: 0;
   margin-bottom: $header-margin-bottom;
 }
 
 // 重置
 // 用 rem 设置 margin-top margin-bottom
 p {
-  margin-top:    0;
+  margin-top: 0;
   margin-bottom: $p-margin-bottom;
 }
 
 // Abbreviations
 //
 // 1. 鼠标图标设置为帮助形式
+/* stylelint-disable selector-no-qualifying-type */
 abbr[title] {
   cursor: help; // 1
 }
 
 address {
   margin-bottom: $address-margin-bottom;
-  font-style:    normal;
-  line-height:   inherit;
+  font-style: normal;
+  line-height: inherit;
 }
 
 ol,
 ul,
 dl {
-  margin-top:    0;
+  margin-top: 0;
   margin-bottom: $list-spacer;
 }
 
@@ -113,7 +117,7 @@ dt {
 
 dd {
   margin-bottom: $list-spacer / 2;
-  margin-left:   0; // 取消浏览器默认左外边距
+  margin-left: 0; // 取消浏览器默认左外边距
 }
 
 blockquote {
@@ -124,11 +128,13 @@ blockquote {
 
 a {
   text-decoration: $link-decoration;
+
   @include theme-prop(color, primary);
 
   &:hover {
-    @include theme-prop(color, primary-dark);
     text-decoration: $link-hover-decoration;
+
+    @include theme-prop(color, primary-dark);
   }
 }
 
@@ -136,11 +142,11 @@ a {
 
 pre {
   // 去掉浏览器默认的上边距
-  margin-top:         0;
+  margin-top: 0;
   // 设置浏览器的下边距
-  margin-bottom:      $spacer;
+  margin-bottom: $spacer;
   // 设置为超过高度后自动显示滚动条
-  overflow:           auto;
+  overflow: auto;
   // 恢复 IE11 and Edge 上的显示滚动条
   -ms-overflow-style: scrollbar;
 }
@@ -189,7 +195,7 @@ select,
 optgroup,
 textarea {
   font-family: inherit;
-  font-size:   inherit;
+  font-size: inherit;
   line-height: inherit;
 }
 
@@ -213,17 +219,17 @@ fieldset {
   // https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
   min-width: 0;
   // 重置其他默认样式
-  padding:   0;
-  margin:    0;
-  border:    0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 legend {
-  display:       block;
-  width:         100%;
+  display: block;
+  width: 100%;
   margin-bottom: $spacer / 2;
-  font-size:     $font-size-lg;
-  line-height:   inherit;
+  font-size: $font-size-lg;
+  line-height: inherit;
 }
 
 [type="search"] {

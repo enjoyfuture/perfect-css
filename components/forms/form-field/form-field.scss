@@ -3,27 +3,27 @@
 @import "variable";
 
 .form-field {
-  display:       flex;
-  align-items:   center;
+  display: flex;
+  align-items: center;
   margin-bottom: $form-field-margin-bottom;
 
   > label {
+    order: 0;
     padding-right: $label-spacing;
-    order:         0;
   }
 }
 
 // 行内
 .form-field-inline {
-  display:       inline-flex;
-  align-items:   center;
+  display: inline-flex;
+  align-items: center;
 
   // 默认设置 80px 右对齐
   > label {
-    width:         $form-label-width;
+    order: 0;
+    width: $form-label-width;
     padding-right: $label-spacing;
-    text-align:    $text-align;
-    order:         0;
+    text-align: $text-align;
   }
 }
 
@@ -32,8 +32,8 @@
   display: inline-flex;
 
   > label {
+    order: -1;
     margin-left: auto;
-    order:       -1;
   }
 }
 
@@ -42,19 +42,19 @@
   display: inline-flex;
 
   > label {
+    order: 1;
     margin-right: auto;
-    order:        1;
   }
 }
 
 // Radio 和 Checkbox
 .radio-checkbox-group {
-  display:     inline-flex;
+  display: inline-flex;
   align-items: center;
 
   .form-field {
+    margin-right: $radio-checkbox-field-margin-right;
     margin-bottom: 0;
-    margin-right:  $radio-checkbox-field-margin-right;
 
     &:last-child {
       margin-right: 0;
@@ -64,25 +64,25 @@
 
 // form 表单组
 .form-field-group {
-  margin-left:  -$form-field-group-item-margin;
   margin-right: -$form-field-group-item-margin;
+  margin-left: -$form-field-group-item-margin;
 
   > .form-field {
-    display:      inline-flex;
-    margin-left:  $form-field-group-item-margin;
+    display: inline-flex;
     margin-right: $form-field-group-item-margin;
+    margin-left: $form-field-group-item-margin;
   }
 }
 
 // form 面板
 .form-panel {
-  padding:       $form-panel-padding;
-  border:        1px solid $grey-color-200;
+  padding: $form-panel-padding;
+  border: 1px solid $grey-color-200;
   border-radius: $form-border-radius;
 }
 
 // 可设置 label 默认宽度
 .label-inline {
-  width:      $form-label-width;
+  width: $form-label-width;
   text-align: $text-align;
 }

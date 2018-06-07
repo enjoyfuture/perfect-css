@@ -30,7 +30,7 @@ $theme-secondary-dark: #d500f9 !default; // 取 $purple-a-400
 
 // 主题颜色更深色
 $theme-primary-darker: #1565c0 !default; // 取 $blue-800
-$theme-secondary-darker: #aa00ff !default; // 取 $purple-a-700
+$theme-secondary-darker: #a0f !default; // 取 $purple-a-700
 
 // 主题颜色最深色
 $theme-primary-darkest: #0d47a1 !default; // 取 $blue-900
@@ -88,7 +88,7 @@ $theme-text-colors: (
     disabled: rgba(0, 0, 0, .38)
   ),
   light: (
-    primary: #ffffff,
+    primary: #fff,
     secondary: rgba(255, 255, 255, .7),
     hint: rgba(255, 255, 255, .5),
     disabled: rgba(255, 255, 255, .5)
@@ -296,7 +296,7 @@ $theme-assist-colors: (
 $greys: (
   50: #fafafa,
   100: #f5f5f5,
-  200: #eeeeee,
+  200: #eee,
   300: #e0e0e0,
   400: #bdbdbd,
   500: #9e9e9e,
@@ -321,8 +321,8 @@ $greys-transparent: (
 ) !default;
 
 // 白色、黑色和透明色
-$white: #ffffff !default;
-$black: #000000 !default;
+$white: #fff !default;
+$black: #000 !default;
 $transparent: rgba(0, 0, 0, 0) !default; // 透明色
 
 $grey-color-50: if($enable-transparent, map-get($greys-transparent, 50), map-get($greys, 50)) !default;

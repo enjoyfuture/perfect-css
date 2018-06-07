@@ -9,32 +9,32 @@ $positions: static, relative, absolute, fixed, sticky;
 
 // 利用定位实现水平垂直居中
 .position-center {
-  position:  absolute;
-  top:       50%;
-  left:      50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .fixed-top {
   position: fixed;
-  top:      0;
-  left:     0;
-  right:    0;
-  z-index:  $zindex-fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $zindex-fixed;
 }
 
 .fixed-bottom {
   position: fixed;
-  bottom:   0;
-  left:     0;
-  right:    0;
-  z-index:  $zindex-fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-fixed;
 }
 
 .sticky-top {
   @supports (position: sticky) {
     position: sticky;
-    top:      0;
-    z-index:  $zindex-sticky;
+    top: 0;
+    z-index: $zindex-sticky;
   }
 }

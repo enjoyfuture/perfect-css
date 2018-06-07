@@ -36,6 +36,7 @@
 // 数字表示字体粗细
 @for $i from 1 through 9 {
   $infix: $i * 100;
+
   .font-weight-#{$infix} {
     font-weight: $infix !important;
   }

@@ -5,30 +5,32 @@
 
 // Disabled
 @mixin input-disabled {
-  @include theme-prop(color, disabled-on-light);
   background-color: $input-disabled-background-color;
-  pointer-events:   none;
+  pointer-events: none;
+
+  @include theme-prop(color, disabled-on-light);
 }
 
 // Input 大小 mixin
 @mixin input-size($font-size, $input-height, $input-padding-x, $input-padding-y,
-  $input-icon-field-padding: $input-icon-field-padding, $input-float-top: $input-float-top) {
+$input-icon-field-padding: $input-icon-field-padding, $input-float-top: $input-float-top) {
   font-size: $font-size;
 
   .input-field {
-    height:  $input-height;
+    height: $input-height;
     padding: $input-padding-y $input-padding-x;
   }
 
   .input-float-label {
     bottom: $input-padding-y;
-    left:   $input-padding-x;
+    left: $input-padding-x;
   }
 
   &.input-icon-start {
     .input-field {
       padding-left: $input-icon-field-padding;
     }
+
     .input-float-label {
       left: $input-icon-field-padding;
     }
@@ -38,13 +40,14 @@
     .input-field {
       padding-right: $input-icon-field-padding;
     }
+
     .input-float-label {
       right: $input-icon-field-padding;
     }
   }
 
   &.input-float .input-field {
-    height:      auto;
+    height: auto;
     padding-top: $input-float-top;
   }
 }
@@ -54,6 +57,7 @@
   .input-field {
     @if type-of($theme) == "color" {
       border-color: lighten($theme, 20%);
+
       &:focus {
         border-color: $theme;
       }

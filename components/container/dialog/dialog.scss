@@ -8,51 +8,53 @@
 @import "./mixin";
 
 .dialog {
-  position:        fixed;
-  top:             0;
-  left:            0;
-  z-index:         $zindex-dialog;
-  display:         flex;
-  align-items:     center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $zindex-dialog;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  width:           100%;
-  height:          100%;
-  pointer-events:  none;
-  visibility:      hidden;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  visibility: hidden;
 
   // 遮罩层
   &-backdrop {
     position: fixed;
-    top:      0;
-    left:     0;
-    z-index:  -1;
-    width:    100%;
-    height:   100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
     @include theme-prop(background-color, primary-on-light);
-    opacity:  0;
   }
 
   // 对话框面板
   &-panel {
-    display:        inline-flex;
+    display: inline-flex;
     flex-direction: column;
-    width:          calc(100% - #{$dialog-panel-margin-x});
-    border-radius:  2px;
+    width: calc(100% - #{$dialog-panel-margin-x});
+    border-radius: 2px;
+
     @include theme-prop(background-color, background);
     @include shadow(24);
 
     // 设为 inline-block
     &-inline {
-      display:   inline-block;
+      display: inline-block;
       max-width: 150px;
     }
   }
 
   // 头部
   &-header {
-    display:     flex;
+    display: flex;
     align-items: center;
-    padding:     $dialog-header-padding / 2 $dialog-header-padding 0;
+    padding: $dialog-header-padding / 2 $dialog-header-padding 0;
 
     &-empty {
       padding: $dialog-header-padding / 2 0;
@@ -60,25 +62,25 @@
 
     // 头部内容文本
     &-title {
-      flex:                    1;
-      padding:                 $dialog-header-padding / 2 0;
-      margin:                  0;
-      font-size:               $dialog-header-font-size;
-      font-weight:             $dialog-header-font-weight;
-      line-height:             $dialog-header-line-height;
+      flex: 1;
+      margin: 0;
+      padding: $dialog-header-padding / 2 0;
+      font-size: $dialog-header-font-size;
+      font-weight: $dialog-header-font-weight;
       -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing:  antialiased;
+      -webkit-font-smoothing: antialiased;
+      line-height: $dialog-header-line-height;
     }
   }
 
   // 关闭图标
   &-close {
-    padding:     $dialog-header-padding / 2;
-    border:      0;
-    background:  transparent;
-    cursor:      pointer;
+    padding: $dialog-header-padding / 2;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    cursor: pointer;
     user-select: none;
-    outline:     0;
     -webkit-appearance: none;
 
     // 获取焦点时，去掉 outline
@@ -89,47 +91,48 @@
 
   // 内容
   &-body {
-    padding:                 0 $dialog-body-padding $dialog-body-padding;
-    margin-top:              $dialog-body-margin-top;
-    font-size:               $dialog-body-font-size;
-    font-weight:             $dialog-body-font-weight;
-    line-height:             $dialog-body-line-height;
+    margin-top: $dialog-body-margin-top;
+    padding: 0 $dialog-body-padding $dialog-body-padding;
+    font-size: $dialog-body-font-size;
+    font-weight: $dialog-body-font-weight;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing:  antialiased;
+    -webkit-font-smoothing: antialiased;
+    line-height: $dialog-body-line-height;
+
     @include theme-prop(color, secondary-on-light);
   }
 
   // 内容太多时，可以嵌入该样式，滚动内容
   &-scrollable {
-    max-height:                 200px;
-    border-top:                 1px solid rgba(0, 0, 0, .1);
-    border-bottom:              1px solid rgba(0, 0, 0, .1);
-    overflow-x:                 auto;
-    overflow-y:                 scroll;
+    max-height: 200px;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    overflow-x: auto;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
   }
 
   // 底部区域
   &-footer {
-    padding:    0 $dialog-footer-padding $dialog-footer-padding;
+    padding: 0 $dialog-footer-padding $dialog-footer-padding;
     text-align: right;
   }
 
   // 运用到按钮上，通常用来设置底部按钮
   &-button {
-    margin-left:  0;
     margin-right: 1rem;
+    margin-left: 0;
 
     &:last-child {
-      margin-left:  0;
       margin-right: 0;
+      margin-left: 0;
     }
   }
 
   // 展示
   &-open {
     pointer-events: all;
-    visibility:     visible;
+    visibility: visible;
 
     .dialog-backdrop {
       opacity: .3;
@@ -138,7 +141,7 @@
 
   // 为 body 设置样式
   &-scroll-lock {
-    height:   100vh;
+    height: 100vh;
     overflow: hidden;
   }
 
@@ -147,6 +150,7 @@
     &.dialog {
       transition: animation-enter(visibility, 120ms);
     }
+
     .dialog-backdrop {
       transition: animation-enter(opacity, 120ms);
     }
@@ -165,13 +169,12 @@
     //  transform: translateY(0) scale(1);
     //}
     @include dialog-animation($animation-start: (opacity: 0, transform: translateY(150px) scale(.8)), $animation-end: (opacity: 1, transform: translateY(0) scale(1)));
-
   }
 
   // 从顶部弹出，该 class 样式作用于 dialog-panel 上
   .dialog-popup-top {
-    position:  absolute;
-    top:       0;
+    position: absolute;
+    top: 0;
     transform: translateY(-200%);
   }
 
@@ -181,8 +184,8 @@
 
   // 从底部部弹出，该 class 样式作用于 dialog-panel 上
   .dialog-popup-bottom {
-    position:  absolute;
-    bottom:    0;
+    position: absolute;
+    bottom: 0;
     transform: translateY(200%);
   }
 

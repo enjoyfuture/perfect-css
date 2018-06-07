@@ -1,15 +1,14 @@
 // 把盒子按比例分成 12 份
 @mixin box-column($columns) {
-
   .box-item {
     flex-basis: 0;
-    flex-grow:  1;
+    flex-grow: 1;
     align-self: stretch;
   }
 
   @for $i from 1 through $columns {
     .box-item-#{$i} {
-      flex:       0 0 percentage($i / $columns);
+      flex: 0 0 percentage($i / $columns);
       // 覆盖父元素 align-items 属性，不用担心父元素设置了其他值
       // 撑满整个区域
       align-self: stretch;

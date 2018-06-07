@@ -2,10 +2,10 @@
 
 // 自定义大小，只定义了大小，自定义主题可以使用主题相关 .class
 @mixin progress-size($height: $progress-height, $radius: $progress-border-radius,
-  $dot-height: $progress-dot-height, $dot-size: $progress-dot-size) {
+$dot-height: $progress-dot-height, $dot-size: $progress-dot-size) {
   @if ($height != $progress-height) {
     &.progress {
-      height:        $height;
+      height: $height;
       border-radius: $radius;
     }
 
@@ -36,12 +36,12 @@
 
   &:root {
     .progress-radius-left {
-      border-top-left-radius:    $radius;
+      border-top-left-radius: $radius;
       border-bottom-left-radius: $radius;
     }
 
     .progress-radius-right {
-      border-top-right-radius:    $radius;
+      border-top-right-radius: $radius;
       border-bottom-right-radius: $radius;
     }
   }
@@ -51,10 +51,10 @@
       height: $dot-height;
 
       .progress-dot-inner {
-        top:       -$dot-size / 4;
-        width:     $dot-size;
-        height:    $dot-size;
-        border:    $dot-size / 4 solid #eee;
+        top: -$dot-size / 4;
+        width: $dot-size;
+        height: $dot-size;
+        border: $dot-size / 4 solid #eee;
         transform: translateX(-$dot-size / 2);
       }
     }

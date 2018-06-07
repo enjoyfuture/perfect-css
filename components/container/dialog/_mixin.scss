@@ -1,9 +1,10 @@
 // dialog 动画
 @mixin dialog-animation($animation-start: (opacity: 1, transform: null),
-  $animation-end: (opacity: 1, transform: null)) {
+$animation-end: (opacity: 1, transform: null)) {
   .dialog-panel {
     opacity: map-get($animation-start, opacity);
     $transform: map-get($animation-start, transform);
+
     @if ($transform) {
       transform: $transform;
     }
@@ -12,6 +13,7 @@
   &.dialog-open .dialog-panel {
     opacity: map-get($animation-end, opacity);
     $transform: map-get($animation-end, transform);
+
     @if ($transform) {
       transform: $transform;
     }

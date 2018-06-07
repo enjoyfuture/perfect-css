@@ -1,6 +1,5 @@
 
 @import "../../theme/variable";
-
 @import "../../theme/mixin";
 @import "../../base/mixins/hover";
 
@@ -16,6 +15,7 @@
   &[href] {
     @include hover-focus {
       text-decoration: none;
+
       @include theme-prop(background-color, $style);
     }
   }

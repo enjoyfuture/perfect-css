@@ -7,28 +7,35 @@
 
 // 基础样式
 .list {
-  box-sizing: border-box;
   display: block;
-  padding-left: 0;
+  box-sizing: border-box;
   margin: 0;
-
+  padding-left: 0;
   // 对于 ul ol list-style-type 设为 none
   list-style-type: none;
+
   @include theme-prop(color, primary-on-background);
 }
 
 // 运用在 a 或 button 上 ，放在 .list-item 前书写，因为 .list-item 中 的 active 会覆盖样式
 .list-item-action {
-  @include theme-prop(color, primary-on-background);
   width: 100%; // 把 button 的宽度设为 100%
+  border: 0;
   text-align: inherit; // 重置 button
   cursor: pointer;
 
+  @include theme-prop(color, primary-on-background);
+
   // Hover 一般用在 a 或 button 标签上
   @include hover-focus {
-    @include theme-prop(color, primary-on-background);
     background-color: $list-item-hover-bg;
     text-decoration: none;
+
+    @include theme-prop(color, primary-on-background);
+  }
+
+  &:focus {
+    outline: 0;
   }
 
   // 不可用样式
@@ -40,23 +47,15 @@
   }
 }
 
-// 单独处理 button
-button.list-item-action {
-  border: 0;
-
-  &:focus {
-    outline: 0;
-  }
-}
-
 // list 列表项
 .list-item {
   position: relative;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  box-sizing: border-box;
   padding: $list-item-padding-y $list-item-padding-x;
+
   @include theme-prop(background-color, primary-on-dark);
 
   // 活动样式
@@ -71,8 +70,20 @@ button.list-item-action {
   }
 }
 
+// 紧凑的
 .list-dense {
   font-size: .75rem;
+
+  .list-item-icon-start,
+  .list-item-icon-end {
+    width: $list-item-icon-size * .8333;
+    height: $list-item-icon-size * .8333;
+    margin-right: $list-item-icon-margin;
+  }
+
+  .list-item-text-secondary {
+    font-size: $list-dense-font-size;
+  }
 
   > .list-item {
     padding: $list-dense-item-padding-y $list-item-padding-x;
@@ -94,6 +105,7 @@ button.list-item-action {
 .list-border-inner {
   .list-item {
     border-top: $list-border-width solid $list-border-color;
+
     &:first-child {
       border-top: 0;
     }
@@ -104,6 +116,7 @@ button.list-item-action {
 .list-spacing {
   .list-item {
     margin-bottom: $list-border-spacing;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -119,30 +132,20 @@ button.list-item-action {
 }
 
 .list-item-icon-start {
-  margin-left: 0;
   margin-right: $list-item-icon-margin;
+  margin-left: 0;
 }
 
 .list-item-icon-end {
   margin-left: auto;
 }
 
-// 紧凑的
-.list-dense {
-  .list-item-icon-start,
-  .list-item-icon-end {
-    width: $list-item-icon-size * .8333;
-    height: $list-item-icon-size * .8333;
-    margin-right: $list-item-icon-margin;
-  }
-}
-
 // 头像 avatar
 .list-item-avatar {
   width: $list-item-avatar-size;
   height: $list-item-avatar-size;
-  margin-left: 0;
   margin-right: $list-item-avatar-margin;
+  margin-left: 0;
   border-radius: 50%;
 }
 
@@ -159,8 +162,8 @@ button.list-item-action {
 
 // 右侧文本
 .list-item-text-right {
-  margin-left: auto;
   margin-right: $list-item-text-right-margin-right;
+  margin-left: auto;
   font-size: $list-item-text-right-font-size;
 
   + .list-item-icon-end {
@@ -178,13 +181,8 @@ button.list-item-action {
   font-size: $list-item-text-secondary-font-size;
   font-weight: $list-item-text-secondary-font-weight;
   line-height: $list-item-text-line-height;
-  @include theme-prop(color, secondary-on-background)
-}
 
-.list-dense {
-  .list-item-text-secondary {
-    font-size: $list-dense-font-size;
-  }
+  @include theme-prop(color, secondary-on-background);
 }
 
 // 列表分隔线
@@ -198,33 +196,35 @@ button.list-item-action {
 
 .list-divider-inset {
   width: calc(100% - #{$list-divider-inset-left});
-  margin-left: $list-divider-inset-left;
   margin-right: 0;
+  margin-left: $list-divider-inset-left;
 }
 
 // 当列表前面设置 list-item-icon-start 时，使用该样式来作为分隔线
 .list-divider-inset-icon {
   width: calc(100% - #{$list-divider-inset-icon-left});
-  margin-left: $list-divider-inset-icon-left;
   margin-right: 0;
+  margin-left: $list-divider-inset-icon-left;
 }
 
 // 当列表前面设置 list-item-avatar 时，使用该样式来作为分隔线
 .list-divider-inset-avatar {
   width: calc(100% - #{$list-divider-inset-avatar-left});
-  margin-left: $list-divider-inset-avatar-left;
   margin-right: 0;
+  margin-left: $list-divider-inset-avatar-left;
 }
 
 // 列表组
 .list-group {
   padding: .5rem 0;
+
   @include theme-prop(background-color, primary-on-dark);
 
   &-header {
     margin: $list-group-header-padding-y $list-group-header-padding-x;
     font-size: $list-group-header-font-size;
     font-weight: $list-group-header-font-weight;
+
     @include theme-prop(color, primary-on-light);
   }
 }

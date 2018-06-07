@@ -6,6 +6,7 @@
   $red: (1 - alpha($color)) * red($background) + alpha($color) * red($color);
   $green: (1 - alpha($color)) * green($background) + alpha($color) * green($color);
   $blue: (1 - alpha($color)) * blue($background) + alpha($color) * blue($color);
+
   @return rgb($red, $green, $blue);
 }
 
@@ -16,12 +17,11 @@
   $min: min($red, $green, $blue);
   $alpha: (255 - $min) / 255;
 
-  // sass-lint:disable indentation
   // alpha 保留两位有效数字
   @return rgba(
-      ($red - $min) / $alpha,
-      ($green - $min) / $alpha,
-      ($blue - $min) / $alpha,
-      round($alpha * 100) / 100);
+    ($red - $min) / $alpha,
+    ($green - $min) / $alpha,
+    ($blue - $min) / $alpha,
+    round($alpha * 100) / 100);
 }
 

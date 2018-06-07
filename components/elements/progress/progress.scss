@@ -8,29 +8,31 @@
 
 // 进度条的实现：由两层结构实现，外层定义总宽度，内层定义进度
 .progress {
-  box-sizing:       border-box;
-  display:          flex;
-  width:            100%;
-  height:           $progress-height;
-  border-radius:    $progress-border-radius;
-  overflow:         hidden;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: $progress-height;
+  border-radius: $progress-border-radius;
+  overflow: hidden;
   background-color: $progress-bg;
 
   &-inner {
-    position:        relative;
-    display:         flex;
-    flex-direction:  column; // 用来设置多行文本
-    align-items:     center;
+    position: relative;
+    display: flex;
+    flex-direction: column; // 用来设置多行文本
+    align-items: center;
     justify-content: center;
+    transition: progress-transition(width);
+
     @include theme-prop(color, secondary-on-dark);
     @include theme-prop(background-color, secondary-on-light);
-    transition:      progress-transition(width);
   }
 
   // 有条纹的进度条
   &-inner-striped {
-    @include gradient-striped();
     background-size: $progress-height $progress-height;
+
+    @include gradient-striped();
   }
 
   // 带动画有条纹的进度条
@@ -55,9 +57,10 @@
   // 内容
   &-inner-top,
   &-inner-bottom {
-    position:  absolute;
+    position: absolute;
     font-size: $font-size-sm;
     transform: translateX(50%);
+
     @include theme-prop(color, secondary-on-light);
   }
 
@@ -72,32 +75,32 @@
 
 // 进度条设为 .progress-text 时，额外提供两个圆角类，根据需要设置
 .progress-radius-left {
-  border-top-left-radius:    $progress-border-radius;
+  border-top-left-radius: $progress-border-radius;
   border-bottom-left-radius: $progress-border-radius;
 }
 
 .progress-radius-right {
-  border-top-right-radius:    $progress-border-radius;
+  border-top-right-radius: $progress-border-radius;
   border-bottom-right-radius: $progress-border-radius;
 }
 
 // 带点的进度条
 .progress-dot {
   position: relative;
-  height:   $progress-dot-height;
+  height: $progress-dot-height;
   overflow: visible;
 
   &-inner {
-    position:         absolute;
-    top:              -$progress-dot-size / 4;
-    box-sizing:       border-box;
-    width:            $progress-dot-size;
-    height:           $progress-dot-size;
-    border:           $progress-dot-size / 4 solid #eee;
-    border-radius:    100%;
+    position: absolute;
+    top: -$progress-dot-size / 4;
+    box-sizing: border-box;
+    width: $progress-dot-size;
+    height: $progress-dot-size;
+    border: $progress-dot-size / 4 solid #eee;
+    border-radius: 100%;
     background-color: #fff;
-    transform:        translateX(-$progress-dot-size / 2);
-    transition:       progress-transition(left);
+    transform: translateX(-$progress-dot-size / 2);
+    transition: progress-transition(left);
 
     &.active {
       @include theme-prop(border-color, primary-lighter);

@@ -8,38 +8,43 @@
 // 由两部分组成，由页码和控制显示每页多少记录组成
 // 默认右对齐，可以通过设置 justify-content 来控制显示位置
 .paging {
-  display:         flex;
+  display: flex;
   justify-content: flex-end;
-  margin-top:      $paging-margin-top;
+  margin-top: $paging-margin-top;
 
   &-items {
-    display:     flex;
+    display: flex;
     align-items: center;
     // 重置 ul 样式
-    margin:      0;
-    list-style:  none;
+    margin: 0;
+    list-style: none;
   }
 
   &-item {
-    box-sizing:      border-box;
-    display:         inline-flex;
-    align-items:     center;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    min-width:       $paging-item-width;
-    height:          $paging-item-height;
-    padding:         0 $paging-item-padding-x;
-    margin-left:     $paging-item-margin-left;
-    border:          1px solid $grey-300;
-    border-radius:   2px;
-    cursor:          pointer;
-    user-select:     none;
-    transition:      border-color 200ms $animation-ease-in-out, color 200ms $animation-ease-in-out;
+    box-sizing: border-box;
+    min-width: $paging-item-width;
+    height: $paging-item-height;
+    margin-left: $paging-item-margin-left;
+    padding: 0 $paging-item-padding-x;
+    border: 1px solid $grey-300;
+    border-radius: 2px;
+    transition: border-color 200ms $animation-ease-in-out, color 200ms $animation-ease-in-out;
+    cursor: pointer;
+    user-select: none;
+
+    @include theme-prop(color, primary-on-light);
 
     &:first-child {
       margin-left: 0;
     }
 
     &:hover {
+      // 对于 a 标签
+      text-decoration: none;
+
       @include theme-prop(color, primary);
       @include theme-prop(border-color, primary);
     }
@@ -50,23 +55,26 @@
     }
 
     &.disabled {
+      cursor: default;
       pointer-events: none;
-      cursor:         default;
+
       @include theme-prop(color, disabled-on-light);
     }
   }
 
   &-more {
     position: relative;
-    border:   0;
-    cursor:   default;
+    border: 0;
+    cursor: default;
+
     &::after {
-      content:       "";
-      position:      absolute;
-      width:         4px;
-      height:        4px;
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
-      box-shadow:    6px 0 0 0, -6px 0 0 0;
+      box-shadow: 6px 0 0 0, -6px 0 0 0;
+
       @include theme-prop(color, secondary-on-light);
       @include theme-prop(background-color, secondary-on-light);
     }
@@ -75,16 +83,17 @@
   &-prev,
   &-next {
     position: relative;
+
     &::before {
-      content:    "";
-      position:   absolute;
-      width:      2px;
-      height:     2px;
-      // sass-lint:disable indentation
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      /* stylelint-disable declaration-colon-newline-after,value-list-comma-newline-after */
       box-shadow: -4px -8px, -2px -8px, 0 -8px, 2px -8px, 4px -8px, 6px -8px, 8px -8px, // 上面的线
-                  8px -6px, 8px -4px, 8px -2px, 8px 0, 8px 2px, 8px 4px, // 右侧的线
-                  -10px -2px, -8px -2px, -6px -2px, -4px -2px, -2px -2px, 0 -2px, 2px -2px, // 上面的线
-                  2px 0, 2px 2px, 2px 4px, 2px 6px, 2px 8px, 2px 10px; // 右侧的线
+        8px -6px, 8px -4px, 8px -2px, 8px 0, 8px 2px, 8px 4px, // 右侧的线
+        -10px -2px, -8px -2px, -6px -2px, -4px -2px, -2px -2px, 0 -2px, 2px -2px, // 上面的线
+        2px 0, 2px 2px, 2px 4px, 2px 6px, 2px 8px, 2px 10px; // 右侧的线
     }
   }
 
@@ -97,29 +106,30 @@
   }
 
   &-control {
-    display:     flex;
+    display: flex;
     align-items: center;
     // 重置 ul 样式
-    margin:      0;
-    list-style:  none;
+    margin: 0;
+    list-style: none;
   }
 
   &-control-item {
-    box-sizing:      border-box;
-    display:         inline-flex;
-    align-items:     center;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    min-width:       $paging-item-width;
-    height:          $paging-item-height;
-    margin-left:     $paging-item-margin-left;
-    user-select:     none;
+    box-sizing: border-box;
+    min-width: $paging-item-width;
+    height: $paging-item-height;
+    margin-left: $paging-item-margin-left;
+    user-select: none;
 
     .select,
     .input {
       width: 45px;
-      margin-left: .25rem;
       margin-right: .25rem;
+      margin-left: .25rem;
     }
+
     .select-inner,
     .input-field {
       height: 2rem;
@@ -150,16 +160,9 @@
     &::before {
       content: "";
     }
+
     &::after {
       content: normal;
     }
-  }
-}
-
-// 对于 a 标签
-a.paging-item {
-  @include theme-prop(color, primary-on-light);
-  &:hover {
-    text-decoration: none;
   }
 }

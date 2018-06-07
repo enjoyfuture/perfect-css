@@ -5,24 +5,18 @@
 :root {
   // 主题变量
   @each $style in map-keys($theme-property-values) {
-    // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
-    // https://github.com/sasstools/sass-lint/issues/877
     #{--theme-#{$style}}: map-get($theme-property-values, $style);
   }
 
   // 浅色和深色变量
   @each $theme, $dark-light in $theme-text-colors {
     @each $style, $value in $dark-light {
-      // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
-      // https://github.com/sasstools/sass-lint/issues/877
       #{--theme-#{$theme}-#{$style}}: $value;
     }
   }
 
   // 辅助颜色
   @each $theme, $color in $theme-assist-colors {
-    // FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
-    // https://github.com/sasstools/sass-lint/issues/877
     #{--theme-#{$theme}}: $color;
   }
 }

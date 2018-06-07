@@ -7,9 +7,10 @@
   transform: rotate(-45deg);
 
   &::before {
-    @include icon-center-middle;
     width: $icon-size;
     height: 2px;
+
+    @include icon-center-middle;
   }
 
   &::after {
@@ -21,7 +22,6 @@
   }
 
   &[data-circle] {
-
     &::before {
       top: 55%;
       left: 55%;

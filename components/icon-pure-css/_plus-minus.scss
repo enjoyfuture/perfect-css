@@ -6,19 +6,21 @@
 // 减
 .icon-pure-minus {
   &::before {
-    @include icon-center-middle;
     width: $icon-size;
     height: 2px;
+
+    @include icon-center-middle;
   }
 }
 
 // 加
 .icon-pure-plus {
-  @extend .icon-pure-minus;
-
   &::after {
-    @include icon-center-middle;
     width: 2px;
     height: $icon-size;
+
+    @include icon-center-middle;
   }
+
+  @extend .icon-pure-minus;
 }

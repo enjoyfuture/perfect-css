@@ -4,7 +4,6 @@
 @import "../../base/variables/font";
 @import "../../base/variables/zindex";
 @import "./variable";
-
 @import "../../base/mixins/reset-text";
 @import "../../base/mixins/border-radius";
 @import "../../theme/mixin";
@@ -14,13 +13,14 @@
   z-index: $zindex-tooltip;
   display: none;
   margin: $tooltip-margin;
-  // tooltip 可在任意元素中使用，这样有可能会被这些目标元素文本样式所影响
-  // 这里重置文本相关样式
-  @include reset-text();
   font-size: $font-size-sm;
   // 折行处理
   word-wrap: break-word;
   opacity: 0;
+
+  // tooltip 可在任意元素中使用，这样有可能会被这些目标元素文本样式所影响
+  // 这里重置文本相关样式
+  @include reset-text();
 
   &.show {
     opacity: $tooltip-opacity;
@@ -31,10 +31,17 @@
     display: block;
     width: $tooltip-arrow-width;
     height: $tooltip-arrow-height;
+
+    &::before {
+      position: absolute;
+      border-style: solid;
+      border-color: transparent;
+    }
   }
 
   &.tooltip-top {
     padding: $tooltip-arrow-width 0;
+
     .arrow {
       bottom: 0;
       left: 48%;
@@ -51,6 +58,7 @@
 
   &.tooltip-right {
     padding: 0 $tooltip-arrow-width;
+
     .arrow {
       top: 40%;
       left: 0;
@@ -60,12 +68,14 @@
       content: "";
       margin-top: -($tooltip-arrow-width - 2);
       border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
+
       @include theme-prop(border-right-color, primary-on-light);
     }
   }
 
   &.tooltip-bottom {
     padding: $tooltip-arrow-width 0;
+
     .arrow {
       top: 0;
       left: 48%;
@@ -75,12 +85,14 @@
       content: "";
       margin-left: -($tooltip-arrow-width - 2);
       border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+
       @include theme-prop(border-bottom-color, primary-on-light);
     }
   }
 
   &.tooltip-left {
     padding: 0 $tooltip-arrow-width;
+
     .arrow {
       top: 40%;
       right: 0;
@@ -91,28 +103,27 @@
       right: 0;
       margin-top: -($tooltip-arrow-width - 2);
       border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
+
       @include theme-prop(border-left-color, primary-on-light);
     }
   }
+
   &.tooltip-auto {
     &[x-placement^="top"] {
       @extend .tooltip-top;
     }
+
     &[x-placement^="right"] {
       @extend .tooltip-right;
     }
+
     &[x-placement^="bottom"] {
       @extend .tooltip-bottom;
     }
+
     &[x-placement^="left"] {
       @extend .tooltip-left;
     }
-  }
-
-  .arrow::before {
-    position: absolute;
-    border-style: solid;
-    border-color: transparent;
   }
 }
 
@@ -121,8 +132,8 @@
   max-width: $tooltip-max-width;
   padding: $tooltip-padding-y $tooltip-padding-x;
   text-align: center;
-  @include border-radius($border-radius);
 
+  @include border-radius($border-radius);
   @include theme-prop(color, primary-on-dark);
   @include theme-prop(background-color, primary-on-light);
 }

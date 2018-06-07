@@ -29,6 +29,7 @@
 @mixin theme-contrast-tone-prop($property, $style, $important) {
   // 根据 $style 返回变量，主要是 light 或 dark 变量
   $theme-var: theme-contrast-tone-var($style);
+
   @if $important {
     #{$property}: map-get($theme-contrast-tone-property-values, $style) !important;
     #{$property}: var(--theme-#{$theme-var}, map-get($theme-contrast-tone-property-values, $style)) !important;
@@ -53,6 +54,7 @@
     @if ($property == "backgroud-color" and $opacity != 1) {
       // 变量 --theme-#{$style} 在 theme.scss 中定义
       $css-var: var(--theme-#{$style}, $color);
+
       @if $important {
         background-color: rgba($color, $opacity) !important;
       } @else {
@@ -108,15 +110,18 @@
     }
   } @else {
     $color: map-get($theme-property-values, $style);
+
     @if ($color) {
       @include theme-color-prop($property, $style, $important);
     } @else {
       $color: map-get($theme-contrast-tone-property-values, $style);
+
       @if ($color) {
         @include theme-contrast-tone-prop($property, $style, $important);
       } @else {
         // 用辅助颜色来设置
         $color: map-get($theme-assist-colors, $style);
+
         @if ($color) {
           @include theme-assist($property, $style, $important: $important);
         } @else {
@@ -145,13 +150,13 @@
   $contrast-tone: theme-contrast-tone($color);
 
   @if ($fore) {
-    color:            $color;
-    color:            var(--theme-#{$style}, $color);
+    color: $color;
+    color: var(--theme-#{$style}, $color);
     background-color: map-get($theme-contrast-tone-property-values, primary-on-#{$tone});
     background-color: var(--theme-#{$contrast-tone}-primary, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
   } @else {
-    color:            map-get($theme-contrast-tone-property-values, primary-on-#{$tone});
-    color:            var(--theme-#{$contrast-tone}-primary, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
+    color: map-get($theme-contrast-tone-property-values, primary-on-#{$tone});
+    color: var(--theme-#{$contrast-tone}-primary, map-get($theme-contrast-tone-property-values, primary-on-#{$tone}));
     background-color: $color;
     background-color: var(--theme-#{$style}, $color);
   }
@@ -172,6 +177,7 @@
 
     .theme-#{$class-name} {
       @include theme-prop(background-color, $style, true);
+
       @if ($tone) {
         @if ($color-alpha == 1) {
           @include theme-prop(color, primary-on-#{$style}, true);
@@ -211,9 +217,11 @@
     .theme-#{$theme}-bg {
       background-color: $color !important;
       background-color: var(--theme-#{$theme}, $color) !important;
+
       @if ($tone) {
         $contrast-tone: if($color-alpha == 1, theme-contrast-tone($color), "dark");
         $color: map-get(map-get($theme-text-colors, $contrast-tone), primary);
+
         color: $color !important;
       }
     }
@@ -223,9 +231,11 @@
     .theme-#{$theme} {
       color: $color !important;
       color: var(--theme-#{$theme}, $color) !important;
+
       @if ($tone) {
         $contrast-tone: theme-contrast-tone($color);
         $color: map-get(map-get($theme-text-colors, $contrast-tone), primary);
+
         background-color: $color !important;
       }
     }
@@ -240,17 +250,22 @@
   @each $theme, $color in $greys {
     .theme-grey-#{$theme} {
       color: $color !important;
+
       @if ($tone) {
         $contrast-tone: theme-contrast-tone($color);
         $color: map-get(map-get($theme-text-colors, $contrast-tone), primary);
+
         background-color: $color !important;
       }
     }
+
     .theme-grey-bg-#{$theme} {
       background-color: $color !important;
+
       @if ($tone) {
         $contrast-tone: theme-contrast-tone($color);
         $color: map-get(map-get($theme-text-colors, $contrast-tone), primary);
+
         color: $color !important;
       }
     }

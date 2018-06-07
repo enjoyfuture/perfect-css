@@ -6,10 +6,10 @@
 
 @mixin make-container($gutter: $grid-gutter-width) {
   box-sizing: border-box;
-  padding-left: ($gutter / 2);
-  padding-right: ($gutter / 2);
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
+  padding-right: ($gutter / 2);
+  padding-left: ($gutter / 2);
 }
 
 // 根据 media query 设置响应式容器的最大宽度

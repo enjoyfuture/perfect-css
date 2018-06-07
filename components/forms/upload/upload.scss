@@ -6,17 +6,17 @@
 @import "variable";
 
 .upload {
-  position:    relative;
-  box-sizing:  border-box;
-  display:     inline-flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  width:       $form-input-width;
-  padding:     $input-padding-y $input-padding-x;
-  border:      1px solid $input-border-color;
+  box-sizing: border-box;
+  width: $form-input-width;
+  padding: $input-padding-y $input-padding-x;
+  border: 1px solid $input-border-color;
   line-height: $input-line-height;
   white-space: nowrap;
-  user-select: none;
   will-change: opacity, transform, color;
+  user-select: none;
 
   &:focus,
   &:active {
@@ -25,22 +25,23 @@
 
   &-file {
     position: absolute;
-    top:      0;
-    bottom:   0;
-    left:     0;
-    width:    100%;
-    opacity:  0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
   }
 
   &-filename {
     margin-left: .25rem;
-    font-size:   $font-size-sm;
-    color:       $grey-color-600;
+    font-size: $font-size-sm;
+    color: $grey-color-600;
+
     @include text-ellipsis;
   }
 
   &-filetype {
     font-size: $font-size-sm;
-    color:     $grey-color-600;
+    color: $grey-color-600;
   }
 }

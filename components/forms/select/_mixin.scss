@@ -3,7 +3,8 @@
 
 // Disabled
 @mixin select-disabled {
-  @include theme-prop(color, disabled-on-light);
   background-color: $grey-color-100;
-  pointer-events:   none;
+  pointer-events: none;
+
+  @include theme-prop(color, disabled-on-light);
 }

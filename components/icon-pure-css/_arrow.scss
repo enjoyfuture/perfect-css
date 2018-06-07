@@ -1,5 +1,4 @@
 // 实心箭头
-
 @import "./variable";
 @import "./mixin";
 
@@ -16,25 +15,25 @@
 }
 
 .icon-pure-arrow-up {
-  border-color: transparent transparent currentColor;
   border-top-width: 0;
   border-bottom-style: solid;
+  border-color: transparent transparent currentColor;
 }
 
 .icon-pure-arrow-down {
-  border-color: currentColor transparent transparent;
-  border-top-style: solid;
   border-bottom-width: 0;
+  border-top-style: solid;
+  border-color: currentColor transparent transparent;
 }
 
 .icon-pure-arrow-left {
-  border-color: transparent currentColor transparent transparent;
   border-left-width: 0;
   border-right-style: solid;
+  border-color: transparent currentColor transparent transparent;
 }
 
 .icon-pure-arrow-right {
-  border-color: transparent transparent transparent currentColor;
-  border-left-style: solid;
   border-right-width: 0;
+  border-left-style: solid;
+  border-color: transparent transparent transparent currentColor;
 }

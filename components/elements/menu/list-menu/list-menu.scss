@@ -6,20 +6,21 @@
 
 // 列表菜单，需要与列表 .list 和 .list-item 结合使用
 .list-menu {
-  position:         absolute;
-  z-index:          3;
-  box-sizing:       border-box;
-  display:          none;
-  min-width:        $list-menu-min-width;
-  max-width:        calc(100vw - 32px);
-  max-height:       calc(100vh - 32px);
-  border-radius:    2px;
+  position: absolute;
+  z-index: 3;
+  display: none;
+  box-sizing: border-box;
+  min-width: $list-menu-min-width;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+  border-radius: 2px;
   background-color: #fff;
-  white-space:      nowrap;
-  opacity:          0;
-  transform:        scale(0);
+  white-space: nowrap;
+  opacity: 0;
+  transform: scale(0);
   transform-origin: top left;
-  will-change:      transform, opacity;
+  will-change: transform, opacity;
+
   @include shadow(2);
 
   &:focus {
@@ -28,36 +29,39 @@
 
   // 显示时
   &-open {
-    display:   inline-block;
-    opacity:   1;
+    display: inline-block;
+    opacity: 1;
     transform: scale(1);
   }
 
   // 动画效果
   &-animating {
-    display:    inline-block;
+    display: inline-block;
     overflow-y: hidden;
     transition: opacity $list-menu-fade-duration $animation-ease-out;
   }
 
   // 菜单元素父节点
   &-items {
-    box-sizing:       border-box;
+    box-sizing: border-box;
     background-color: #fff;
-    will-change:      transform;
+    will-change: transform;
 
+    /* stylelint-disable selector-max-universal */
     // 所有子元素没有显示时透明处理
     > * {
       opacity: 0;
     }
 
     > .list-item {
-      padding-top:    $list-menu-item-padding-y;
+      padding-top: $list-menu-item-padding-y;
       padding-bottom: $list-menu-item-padding-y;
-      cursor:         pointer;
+      cursor: pointer;
+
       &:hover {
         background-color: $list-menu-item-hover-bg;
       }
+
       &.active {
         background-color: $list-menu-item-active-bg;
       }
@@ -76,7 +80,7 @@
     // scss 语法，相当于 .list-menu-open .list-menu-items > *
     .list-menu-open & {
       > * {
-        opacity:     1;
+        opacity: 1;
         will-change: opacity;
       }
     }
@@ -98,7 +102,6 @@
   &-bottom-right {
     transform-origin: bottom right !important;
   }
-
 }
 
 // 级联
@@ -107,11 +110,12 @@
 
   .list-menu-items {
     min-width: $list-menu-min-width;
+
     @include shadow(2);
   }
 
   .list-item {
-    position:         relative;
+    position: relative;
     background-color: transparent;
 
     // 不是叶子节点，即分支节点，右侧加箭头
@@ -119,29 +123,32 @@
       padding-right: 1.75rem;
 
       &::after {
-        content:      "";
-        position:     absolute;
-        top:          50%;
-        right:        1rem;
-        z-index:      1;
-        width:        .5rem;
-        height:       .5rem;
-        border-top:   1px solid;
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        z-index: 1;
+        width: .5rem;
+        height: .5rem;
+        border-top: 1px solid;
         border-right: 1px solid;
-        transform:    translateY(-50%) rotate(45deg);
-        will-change:  border-color;
+        transform: translateY(-50%) rotate(45deg);
+        will-change: border-color;
+
         @include theme-prop(border-color, hint-on-light);
         @include animation-transition(border-color);
       }
     }
+
     > .list {
-      position:         absolute;
-      top:              0;
-      left:             100%;
-      visibility:       hidden;
-      transform:        scaleX(0);
+      position: absolute;
+      top: 0;
+      left: 100%;
+      transform: scaleX(0);
       transform-origin: left;
-      will-change:      visibility, transform;
+      will-change: visibility, transform;
+      visibility: hidden;
+
       @include animation-transition(visibility);
       @include animation-transition(transform);
     }
@@ -155,11 +162,12 @@
   }
 
   // 对于点击才展开时，需要设置 aria-controls="click"
-  & .list-item.expanded,
+  /* stylelint-disable selector-max-specificity */
+  .list-item.expanded,
   &:not([aria-controls="click"]) .list-item:hover {
     > .list {
+      transform: scaleX(1);
       visibility: visible;
-      transform:  scaleX(1);
     }
   }
 }

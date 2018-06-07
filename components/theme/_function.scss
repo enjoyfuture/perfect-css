@@ -12,6 +12,7 @@
 // 注意 sass 中的数组下标是从 1 开始
 @function coefficient($rgb) {
   $rgb: $rgb / 255;
+
   @return if($rgb < .03928, $rgb / 12.92, pow(($rgb + .055) / 1.055, 2.4));
 }
 
@@ -33,6 +34,7 @@
   $r: coefficient($red);
   $g: coefficient($green);
   $b: coefficient($blue);
+
   @return .2126 * $r + .7152 * $g + .0722 * $b;
 }
 

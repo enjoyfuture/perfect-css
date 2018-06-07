@@ -1,12 +1,13 @@
+/* stylelint-disable declaration-block-trailing-semicolon, block-closing-brace-newline-before */
+
 @mixin hover {
-  &:hover { @content }
+  &:hover { @content; }
 }
 
-// sass-lint:disable brace-style
 @mixin hover-focus {
   &:focus,
   &:hover {
-    @content
+    @content;
   }
 }
 
@@ -15,7 +16,7 @@
   &,
   &:focus,
   &:hover {
-    @content
+    @content;
   }
 }
 
@@ -24,6 +25,6 @@
   &:focus,
   &:active,
   &:hover {
-    @content
+    @content;
   }
 }

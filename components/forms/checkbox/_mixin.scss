@@ -5,13 +5,14 @@
 @mixin checkbox-size($checkbox-outline-size: $checkbox-outline-size, $checkbox-size: $checkbox-size) {
   // checkbox 渲染百分比
   $checkbox-pct: percentage($checkbox-size / $checkbox-outline-size);
-  width:   $checkbox-outline-size;
-  height:  $checkbox-outline-size;
+
+  width: $checkbox-outline-size;
+  height: $checkbox-outline-size;
   padding: ($checkbox-outline-size - $checkbox-size) / 2;
 
   .checkbox-background {
-    left:   ($checkbox-outline-size - $checkbox-size) / 2;
-    width:  $checkbox-pct;
+    left: ($checkbox-outline-size - $checkbox-size) / 2;
+    width: $checkbox-pct;
     height: $checkbox-pct;
   }
 }

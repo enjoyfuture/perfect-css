@@ -44,8 +44,8 @@ $code-size: $icon-size * .5;
     left: 8px;
     width: $code-size;
     height: $code-size;
-    border-bottom: $code-border solid currentColor;
     border-right: $code-border solid currentColor;
+    border-bottom: $code-border solid currentColor;
   }
 
   &::after {

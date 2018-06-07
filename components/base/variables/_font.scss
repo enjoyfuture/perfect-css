@@ -1,4 +1,5 @@
 // font weight
+
 /**
 * 关于 font weight 的设置，跟字体粗细值有关
 * 1. 在 Safari 和 IOS 系统下，默认字体粗细分为
@@ -26,27 +27,27 @@ $font-weight-base: $font-weight-normal !default;
 
 // 设置全局字体，使用系统自带的字体，参考 https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
 
-// sass-lint:disable indentation
+/* stylelint-disable value-keyword-case */
 $font-family:
-    // 设置数字字体等宽，更紧凑美观，同时也会影响到超链接字体
+  // 设置数字字体等宽，更紧凑美观，同时也会影响到超链接字体
   Helvetica Neue For Number,
-    // Safari for OS X and iOS (San Francisco)
+  // Safari for OS X and iOS (San Francisco)
   -apple-system,
-    // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
+  // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
   system-ui,
-    // Chrome < 56 for OS X (San Francisco)
+  // Chrome < 56 for OS X (San Francisco)
   BlinkMacSystemFont,
-    // Windows
+  // Windows
   "Segoe UI",
-    // Android
+  // Android
   "Roboto",
-    // 平方字体，字体对比度更强，更细长
+  // 平方字体，字体对比度更强，更细长
   PingFang SC,
-    // 备用字体
+  // 备用字体
   Hiragino Sans GB,
-    // 在 window 系统下备用字体
+  // 在 window 系统下备用字体
   Microsoft YaHei,
-    // Basic web fallback
+  // Basic web fallback
   "Helvetica Neue", Arial, sans-serif !default;
 
 // 代码标签使用该字体，用在 code, kbd, pre, samp 中

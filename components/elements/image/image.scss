@@ -20,7 +20,6 @@
   @include border-radius($thumbnail-border-radius);
   @include animation-transition(all, 200ms, ease-in-out);
   @include shadow(4);
-
   // 确保 100%宽度
   @include img-fluid;
 }
@@ -39,8 +38,9 @@
 
 .figure-caption {
   font-size: $figure-caption-font-size;
-  @include theme-prop(color, secondary-on-light);
   text-align: center;
+
+  @include theme-prop(color, secondary-on-light);
 }
 
 // 圆角图片

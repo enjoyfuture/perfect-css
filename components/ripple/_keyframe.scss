@@ -6,8 +6,8 @@
   // 从里向外扩散
   @keyframes ripple-radius-in {
     from {
-      transform: translate(var(--ripple-translate-start, 0)) scale(1);
       animation-timing-function: $animation-ease-in-out;
+      transform: translate(var(--ripple-translate-start, 0)) scale(1);
     }
 
     to {
@@ -22,8 +22,8 @@
     }
 
     to {
-      transform: translate(var(--ripple-translate-start, 0)) scale(1);
       animation-timing-function: $animation-ease-in-out;
+      transform: translate(var(--ripple-translate-start, 0)) scale(1);
     }
   }
 

@@ -7,10 +7,12 @@
 @function _exp ($x) {
   $ret: 0;
   $i: 1;
+
   @for $n from 0 to 24 {
     $ret: $ret + $i;
     $i: $i * $x / ($n + 1);
   }
+
   @return $ret;
 }
 
@@ -23,10 +25,12 @@
   @if $exp == floor($exp) {
     $r: 1;
     $s: 0;
+
     @if $exp < 0 {
       $exp: $exp * -1;
       $s: 1;
     }
+
     @while $exp > 0 {
       @if $exp % 2 == 1 {
         $r: $r * $base;
@@ -34,6 +38,7 @@
       $exp: floor($exp * .5);
       $base: $base * $base;
     }
+
     @return if($s != 0, 1 / $r, $r);
   } @else if $base == 0 and $exp > 0 {
     @return 0;
@@ -41,6 +46,7 @@
     $expint: floor($exp);
     $r1: pow($base, $expint);
     $r2: _exp(log($base) * ($exp - $expint));
+
     @return $r1 * $r2;
   }
 }

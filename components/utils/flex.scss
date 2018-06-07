@@ -1,5 +1,4 @@
 // Flex style
-
 @import "../responsive/variable";
 @import "../responsive/mixin";
 
@@ -11,19 +10,19 @@
 
     // 定义主轴的方向
     // 主轴为水平方向，起点在左端
-    .flex#{$infix}-row            { flex-direction: row !important; }
+    .flex#{$infix}-row { flex-direction: row !important; }
     // 主轴为垂直方向，起点在上端
-    .flex#{$infix}-column         { flex-direction: column !important; }
+    .flex#{$infix}-column { flex-direction: column !important; }
     // 主轴为水平方向，起点在右端
-    .flex#{$infix}-row-reverse    { flex-direction: row-reverse !important; }
+    .flex#{$infix}-row-reverse { flex-direction: row-reverse !important; }
     // 主轴为垂直方向，起点在下端
     .flex#{$infix}-column-reverse { flex-direction: column-reverse !important; }
 
     // 在主轴线上，如何换行
     // 在主轴线遵循从上往下(flex-direction: row)，从左往右(flex-direction: column)
-    .flex#{$infix}-wrap         { flex-wrap: wrap !important; }
+    .flex#{$infix}-wrap { flex-wrap: wrap !important; }
     // 不换行
-    .flex#{$infix}-nowrap       { flex-wrap: nowrap !important; }
+    .flex#{$infix}-nowrap { flex-wrap: nowrap !important; }
     // 在主轴线遵循从下往上(flex-direction: row)，从右往左(flex-direction: column)
     .flex#{$infix}-wrap-reverse { flex-wrap: wrap-reverse !important; }
 
@@ -31,45 +30,45 @@
     // 当设为 flex-direction: column 时垂直方向上对齐
     // 以下说明假设主轴是水平方向
     // （默认值）,左对齐
-    .justify-content#{$infix}-start   { justify-content: flex-start !important; }
+    .justify-content#{$infix}-start { justify-content: flex-start !important; }
     // 右对齐
-    .justify-content#{$infix}-end     { justify-content: flex-end !important; }
+    .justify-content#{$infix}-end { justify-content: flex-end !important; }
     // 居中
-    .justify-content#{$infix}-center  { justify-content: center !important; }
+    .justify-content#{$infix}-center { justify-content: center !important; }
     // 两端对齐，子元素之间的间隔都相等
     .justify-content#{$infix}-between { justify-content: space-between !important; }
     // 每个子元素两侧的间隔相等，故子元素的间隔比子元素与两端的间隔大一倍
-    .justify-content#{$infix}-around  { justify-content: space-around !important; }
+    .justify-content#{$infix}-around { justify-content: space-around !important; }
     // 子元素的间距都相等，包括两端与子元素的间距
-    .justify-content#{$infix}-evenly  { justify-content: space-evenly !important; }
+    .justify-content#{$infix}-evenly { justify-content: space-evenly !important; }
 
     // 定义交叉轴对齐方式，当设为 flex-direction: row 时垂直方向对齐，
     // 当设为 flex-direction: column 时水平方向上对齐
     // 以下说明假设交叉轴是从上往下
     // 交叉轴的起点对齐
-    .align-items#{$infix}-start    { align-items: flex-start !important; }
+    .align-items#{$infix}-start { align-items: flex-start !important; }
     // 交叉轴的终点对齐
-    .align-items#{$infix}-end      { align-items: flex-end !important; }
+    .align-items#{$infix}-end { align-items: flex-end !important; }
     // 交叉轴的中点对齐
-    .align-items#{$infix}-center   { align-items: center !important; }
+    .align-items#{$infix}-center { align-items: center !important; }
     // 文字的基线对齐
     .align-items#{$infix}-baseline { align-items: baseline !important; }
     // 默认值，如果子元素未设置高度或设为auto，将占满整个容器的高度
-    .align-items#{$infix}-stretch  { align-items: stretch !important; }
+    .align-items#{$infix}-stretch { align-items: stretch !important; }
 
     // align-content 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
     // 与交叉轴的起点对齐
-    .align-content#{$infix}-start   { align-content: flex-start !important; }
+    .align-content#{$infix}-start { align-content: flex-start !important; }
     // 与交叉轴的终点对齐
-    .align-content#{$infix}-end     { align-content: flex-end !important; }
+    .align-content#{$infix}-end { align-content: flex-end !important; }
     // 与交叉轴的中点对齐
-    .align-content#{$infix}-center  { align-content: center !important; }
+    .align-content#{$infix}-center { align-content: center !important; }
     // 与交叉轴两端对齐，轴线之间的间隔平均分布
     .align-content#{$infix}-between { align-content: space-between !important; }
     // 每根轴线两侧的间隔都相等。故子元素的间隔比子元素与两端的间隔大一倍
-    .align-content#{$infix}-around  { align-content: space-around !important; }
+    .align-content#{$infix}-around { align-content: space-around !important; }
     // 子元素的间距都相等，包括两端与子元素的间距
-    .align-content#{$infix}-evenly  { align-content: space-evenly !important; }
+    .align-content#{$infix}-evenly { align-content: space-evenly !important; }
     // 默认值，如果子元素未设置高度或设为auto，轴线占满整个交叉轴
     .align-content#{$infix}-stretch { align-content: stretch !important; }
 
@@ -77,11 +76,11 @@
     // align-self 属性允许单个子元素与其他子元素不一样的对齐方式，可覆盖父元素 align-items 属性，
     // 默认值为auto，表示继承父元素的 align-items 属性，如果父元素没有设置 align-items，则等同于stretch
     // 说明参见 align-items
-    .align-self#{$infix}-auto     { align-self: auto !important; }
-    .align-self#{$infix}-start    { align-self: flex-start !important; }
-    .align-self#{$infix}-end      { align-self: flex-end !important; }
-    .align-self#{$infix}-center   { align-self: center !important; }
+    .align-self#{$infix}-auto { align-self: auto !important; }
+    .align-self#{$infix}-start { align-self: flex-start !important; }
+    .align-self#{$infix}-end { align-self: flex-end !important; }
+    .align-self#{$infix}-center { align-self: center !important; }
     .align-self#{$infix}-baseline { align-self: baseline !important; }
-    .align-self#{$infix}-stretch  { align-self: stretch !important; }
+    .align-self#{$infix}-stretch { align-self: stretch !important; }
   }
 }

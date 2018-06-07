@@ -10,13 +10,13 @@
 // 当采用列布局时，不需要设置间距时，可以加上改样式
 // 用法： <div class="row no-gutters"> </div>
 .no-gutters {
-  margin-left:  0;
   margin-right: 0;
+  margin-left: 0;
 
   > .col,
   > [class*="col-"] {
-    padding-left:  0;
     padding-right: 0;
+    padding-left: 0;
   }
 }
 

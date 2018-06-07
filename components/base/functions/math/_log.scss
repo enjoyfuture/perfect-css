@@ -9,12 +9,14 @@
   $i: 1;
   $s: $x;
   $sp: null;
+
   @while $sp != $s {
     $x: $x * $x2;
     $i: $i + 2;
     $sp: $s;
     $s: $s + $x / $i;
   }
+
   @return 2 * $s;
 }
 
@@ -33,7 +35,7 @@
   @if $x <= 0 {
     @return 0 / 0;
   }
-  // sass-lint:disable variable-name-format
+
   $k: nth(frexp($x / $SQRT2), 2);
   $x: $x / ldexp(1, $k);
 

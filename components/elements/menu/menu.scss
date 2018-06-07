@@ -9,22 +9,23 @@
 
 // 1. 对于使用 ul 或 ol 书写菜单时，设置其默认样式
 .menu {
-  position:   relative;
-  padding:    0; // 1
-  margin:     0; // 1
+  position: relative;
+  margin: 0; // 1
+  padding: 0; // 1
   list-style: none; // 1
 
   // 菜单 title
   &-title {
-    display:         block;
-    padding:         $menu-title-padding-y $menu-title-padding-x;
-    font-weight:     400;
+    display: block;
+    padding: $menu-title-padding-y $menu-title-padding-x;
     text-decoration: none;
+
     @include theme-prop(color, secondary-on-light);
 
     &:hover,
     &:focus {
       text-decoration: none;
+
       @include theme-prop(color, primary-on-light);
     }
 
@@ -71,43 +72,45 @@
 
   // 级联 item
   &-item {
-    position:    relative;
-    display:     flex;
+    position: relative;
+    display: flex;
     align-items: center;
-    cursor:      pointer;
+    cursor: pointer;
 
     // 不是叶子节点，右侧加箭头
     &:not([data-leaf])::after {
-      content:      "";
-      position:     absolute;
-      right:        $menu-menu-cascaded-arrow-right;
-      z-index:      1;
-      width:        $menu-menu-arrow-size;
-      height:       $menu-menu-arrow-size;
-      border-top:   1px solid;
+      content: "";
+      position: absolute;
+      right: $menu-menu-cascaded-arrow-right;
+      z-index: 1;
+      width: $menu-menu-arrow-size;
+      height: $menu-menu-arrow-size;
+      border-top: 1px solid;
       border-right: 1px solid;
-      transform:    rotate(45deg);
-      will-change:  border-color;
+      transform: rotate(45deg);
+      will-change: border-color;
+
       @include theme-prop(border-color, hint-on-light);
       @include animation-transition(border-color);
     }
 
     > .menu {
-      position:         absolute;
-      top:              0;
-      left:             100%;
-      visibility:       hidden;
-      transform:        scaleX(0);
+      position: absolute;
+      top: 0;
+      left: 100%;
+      transform: scaleX(0);
       transform-origin: left;
-      will-change:      visibility, transform;
+      will-change: visibility, transform;
+      visibility: hidden;
+
       @include animation-transition(visibility);
       @include animation-transition(transform);
     }
 
     &:hover {
       > .menu {
+        transform: scaleX(1);
         visibility: visible;
-        transform:  scaleX(1);
       }
       // 箭头高亮
       &::after {
@@ -122,8 +125,9 @@
     }
     // 当前活动状态
     &.active {
-      @include theme-prop(color, primary-on-light);
       background-color: $menu-item-active-bg;
+
+      @include theme-prop(color, primary-on-light);
     }
   }
 
@@ -144,10 +148,10 @@
   }
 
   &-item {
-    position:    relative;
-    display:     flex;
+    position: relative;
+    display: flex;
     align-items: center;
-    cursor:      pointer;
+    cursor: pointer;
 
     .menu-title {
       padding-right: 2rem;
@@ -155,37 +159,39 @@
 
     // 不是叶子节点，右侧加箭头
     &:not([data-leaf])::after {
-      content:       "";
-      position:      absolute;
-      top:           $menu-menu-dropdown-arrow-top;
-      right:         $menu-menu-dropdown-arrow-right;
-      z-index:       1;
-      width:         $menu-menu-arrow-size;
-      height:        $menu-menu-arrow-size;
+      content: "";
+      position: absolute;
+      top: $menu-menu-dropdown-arrow-top;
+      right: $menu-menu-dropdown-arrow-right;
+      z-index: 1;
+      width: $menu-menu-arrow-size;
+      height: $menu-menu-arrow-size;
       border-bottom: 1px solid;
-      border-left:   1px solid;
-      transform:     rotate(-45deg);
-      will-change:   border-color;
+      border-left: 1px solid;
+      transform: rotate(-45deg);
+      will-change: border-color;
+
       @include theme-prop(border-color, hint-on-light);
       @include animation-transition(border-color);
     }
 
     > .menu {
-      position:         absolute;
-      top:              100%;
-      left:             0;
-      visibility:       hidden;
-      transform:        scaleY(0);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transform: scaleY(0);
       transform-origin: top;
-      will-change:      visibility, transform;
+      will-change: visibility, transform;
+      visibility: hidden;
+
       @include animation-transition(visibility);
       @include animation-transition(transform);
     }
 
     &:hover {
       > .menu {
+        transform: scaleY(1);
         visibility: visible;
-        transform:  scaleY(1);
       }
       // 箭头高亮
       &::after {
@@ -200,35 +206,42 @@
     }
     // 当前活动状态
     &.active {
-      @include theme-prop(color, primary-on-light);
       background-color: $menu-item-active-bg;
+
+      @include theme-prop(color, primary-on-light);
     }
   }
 
-  > .menu-item, > li {
+  > .menu-item,
+  > li {
     &:hover > .menu {
       display: block;
     }
   }
-
 }
 
-//目录菜单，如果采用 li 来书写菜单，则直接定义 li 样式即可
-//最多支持6级目录结构
+// 目录菜单，如果采用 li 来书写菜单，则直接定义 li 样式即可
+// 最多支持6级目录结构
+/* stylelint-disable selector-max-compound-selectors, selector-max-specificity */
 .menu-catalogue {
   counter-reset: catalogue1;
-  > .menu-item, > li {
+
+  > .menu-item,
+  > li {
     > a::before {
-      content:           counter(catalogue1, decimal) ". ";
-      font-weight:       bold;
+      content: counter(catalogue1, decimal) ". ";
+      font-weight: bold;
       counter-increment: catalogue1;
     }
   }
+
   .menu-catalogue {
     counter-reset: catalogue2;
-    > .menu-item, > li {
+
+    > .menu-item,
+    > li {
       > a::before {
-        content:           counter(catalogue1, decimal) "." counter(catalogue2, decimal) ". ";
+        content: counter(catalogue1, decimal) "." counter(catalogue2, decimal) ". ";
         counter-increment: catalogue2;
       }
     }
@@ -236,18 +249,23 @@
 
   .menu-catalogue .menu-catalogue {
     counter-reset: catalogue3;
-    > .menu-item, > li {
+
+    > .menu-item,
+    > li {
       > a::before {
-        content:           counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) ". ";
+        content: counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) ". ";
         counter-increment: catalogue3;
       }
     }
   }
+
   .menu-catalogue .menu-catalogue .menu-catalogue {
     counter-reset: catalogue4;
-    > .menu-item, > li {
+
+    > .menu-item,
+    > li {
       > a::before {
-        content:           counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) "." counter(catalogue4, decimal) ". ";
+        content: counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) "." counter(catalogue4, decimal) ". ";
         counter-increment: catalogue4;
       }
     }
@@ -255,9 +273,11 @@
 
   .menu-catalogue .menu-catalogue .menu-catalogue .menu-catalogue {
     counter-reset: catalogue5;
-    > .menu-item, > li {
+
+    > .menu-item,
+    > li {
       > a::before {
-        content:           counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) "." counter(catalogue4, decimal) "." counter(catalogue5, decimal) ". ";
+        content: counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) "." counter(catalogue4, decimal) "." counter(catalogue5, decimal) ". ";
         counter-increment: catalogue5;
       }
     }
@@ -265,9 +285,11 @@
 
   .menu-catalogue .menu-catalogue .menu-catalogue .menu-catalogue .menu-catalogue {
     counter-reset: catalogue6;
-    > .menu-item, > li {
+
+    > .menu-item,
+    > li {
       > a::before {
-        content:           counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) "." counter(catalogue4, decimal) "." counter(catalogue5, decimal) "." counter(catalogue6, decimal) ". ";
+        content: counter(catalogue1, decimal) "." counter(catalogue2, decimal) "." counter(catalogue3, decimal) "." counter(catalogue4, decimal) "." counter(catalogue5, decimal) "." counter(catalogue6, decimal) ". ";
         counter-increment: catalogue6;
       }
     }
@@ -276,9 +298,10 @@
 
 .menu.menu-no-catalogue {
   a::before {
-    content: '' !important;
+    content: "" !important;
   }
 }
+
 //折叠菜单
 
 //主题 theme

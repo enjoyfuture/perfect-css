@@ -1,5 +1,4 @@
 // responsive mixin
-
 @import "variable";
 
 // 响应式和媒体查询，设备大小分界点为
@@ -11,7 +10,6 @@
 //   xl: 1600px, // xlarge
 // }
 
-
 // 返回响应式设备大小的下一个名称值
 // $name 当前值
 // $breakpoint 响应式布局列表值
@@ -22,6 +20,7 @@
 // breakpoint-next(md, $breakpoint-names: (xs sm md)) 结果为 null
 @function breakpoint-next($name, $breakpoints: $responsive-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
   $n: index($breakpoint-names, $name);
+
   @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
 
@@ -30,6 +29,7 @@
 // breakpoint-min(xs) 结果为 null
 @function breakpoint-min($name, $breakpoints: $responsive-breakpoints) {
   $min: map-get($breakpoints, $name);
+
   @return if($min != 0, $min, null);
 }
 
@@ -38,6 +38,7 @@
 // breakpoint-max(xl) 结果为 null
 @function breakpoint-max($name, $breakpoints: $responsive-breakpoints) {
   $next: breakpoint-next($name, $breakpoints);
+
   @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
 }
 
@@ -46,5 +47,5 @@
 // breakpoint-infix(md) 结果为 "-md"
 // 如果 $dash 设为 false 则不加连字符
 @function breakpoint-infix($name, $breakpoints: $responsive-breakpoints, $dash: true) {
-  @return if(breakpoint-min($name, $breakpoints) == null, "",  if($dash, "-#{$name}", "#{$name}"));
+  @return if(breakpoint-min($name, $breakpoints) == null, "", if($dash, "-#{$name}", "#{$name}"));
 }

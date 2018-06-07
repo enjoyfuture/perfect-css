@@ -1,7 +1,6 @@
 // 标记组件，用来标示信息等
 
 @import "./variable";
-
 @import "../../base/mixins/border-radius";
 
 .badge {
@@ -12,6 +11,7 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
+
   @include border-radius();
 
   // 为空时隐藏
@@ -31,8 +31,9 @@
 // Make them extra rounded with a modifier to replace v3's badges.
 
 .badge-pill {
-  padding-left: $badge-pill-padding-x;
   padding-right: $badge-pill-padding-x;
+  padding-left: $badge-pill-padding-x;
+
   @include border-radius($badge-pill-border-radius);
 }
 

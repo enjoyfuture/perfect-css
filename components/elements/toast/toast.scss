@@ -9,22 +9,22 @@
 .toast {
   position: fixed;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
   z-index: 2001;
   display: flex;
   align-items: center;
   justify-content: center;
-
+  outline: 0;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
 
   //防止阻挡下面元素的操作
-  pointer-events: none;
-  outline: 0;
   opacity: 0;
-  will-change: opacity; /* 动画性能优化 https://www.w3cplus.com/css3/introduction-css-will-change-property.html*/
+  will-change: opacity; /* 动画性能优化 https://www.w3cplus.com/css3/introduction-css-will-change-property.html */
+  pointer-events: none;
+
   @include animation-transition(opacity, $toast-transition-duration-leave, ease-out);
 
   .toast-content {
@@ -35,18 +35,18 @@
     opacity: 0;
 
     @include animation-transition(opacity, $toast-transition-duration-leave, ease-out);
-
     @include theme-prop(background-color, primary-on-light);
   }
 
   &.enter {
     opacity: 1;
-    transition-timing-function: $animation-ease-in-out;
     transition-duration: $toast-transition-duration-enter;
+    transition-timing-function: $animation-ease-in-out;
+
     .toast-content {
       opacity: 1;
-      transition-timing-function: $animation-ease-in-out;
       transition-duration: $toast-transition-duration-enter;
+      transition-timing-function: $animation-ease-in-out;
     }
   }
 }

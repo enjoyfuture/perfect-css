@@ -7,9 +7,9 @@
 
 // tab-bar 外层 scroller
 .tab-bar-scroller {
-  box-sizing: border-box;
   display: flex;
   align-items: center;
+  box-sizing: border-box;
   width: 100%;
   overflow: hidden;
   background-color: inherit;
@@ -41,6 +41,7 @@
     width: $tab-bar-scroller-indicator-width;
     cursor: pointer;
     visibility: hidden;
+
     @include theme-prop(color, secondary-on-light);
 
     &:hover {
@@ -55,6 +56,7 @@
       &:focus {
         outline-color: inherit;
       }
+
       &:hover {
         color: inherit;
       }

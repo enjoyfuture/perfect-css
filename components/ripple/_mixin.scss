@@ -10,14 +10,16 @@ $ripple-common-styles: false !default;
 // 确保只加载一次
 @if not $ripple-common-styles {
   $ripple-common-styles: true;
+
   @include ripple-keyframes;
 
   // 用来测试在 Edge 15 下，伪类不支持 css 变量
   // Styles used to detect buggy behavior of CSS custom properties in Edge.
   // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
   .ripple-test-edge-var-bug {
-    #{--ripple-test-edge-var}: 1px solid #000;
-    visibility:                hidden;
+    --ripple-test-edge-var: 1px solid #000;
+
+    visibility: hidden;
 
     &::before {
       border: var(--ripple-test-edge-var);
@@ -35,9 +37,9 @@ $ripple-common-styles: false !default;
     &:focus::before,
     &:hover::before,
     &:active::after {
-      opacity:             $opacity;
+      opacity: $opacity;
       transition-duration: $states-wash-duration;
-      will-change:         transform, opacity;
+      will-change: transform, opacity;
     }
   }
 }
@@ -65,7 +67,9 @@ $ripple-common-styles: false !default;
 
     $css-var: $theme-value;
     $css-var: var(--theme-#{$theme-style}, $theme-value);
+
     background-color: rgba($theme-value, $opacity);
+
     // 使用 css 变量
     @if ($opacity == 1 or $opacity == null) {
       background-color: $css-var;
@@ -80,12 +84,12 @@ $ripple-common-styles: false !default;
   } @else {
     background-color: rgba($background-color, $opacity);
   }
-
 }
 
 // 设置 ripple 主题
 @mixin ripple-theme($config) {
   $config: map-merge(ripple-default-config(), $config);
+
   @include ripple-backgroud-color($config);
 }
 
@@ -100,16 +104,18 @@ $ripple-common-styles: false !default;
 // ripple bg 基础设置
 @mixin ripple-bg-base($config) {
   $radius: map-get($config, radius);
-  @include ripple-theme($config);
-  position:       absolute;
-  top:            calc(50% - #{$radius});
-  left:           calc(50% - #{$radius});
-  width:          $radius * 2;
-  height:         $radius * 2;
-  border-radius:  50%;
+
+  position: absolute;
+  top: calc(50% - #{$radius});
+  left: calc(50% - #{$radius});
+  width: $radius * 2;
+  height: $radius * 2;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity $ripple-translate-duration linear;
   pointer-events: none;
-  opacity:        0;
-  transition:     opacity $ripple-translate-duration linear;
+
+  @include ripple-theme($config);
 }
 
 // 处理 ripple 背景
@@ -120,6 +126,7 @@ $ripple-common-styles: false !default;
   @if ($pseudo) {
     &#{$pseudo} {
       content: "";
+
       @include ripple-bg-base($config);
     }
   } @else {
@@ -127,26 +134,22 @@ $ripple-common-styles: false !default;
   }
 }
 
-// FIXME 由于 sass-lint 不支持 css variables，故这里用 #{} 包一层
-// https://github.com/sasstools/sass-lint/issues/877
-// 待 sass-lint 支持后，去掉包裹 #{}
-
 // 更具有冲击力的动画效果
 // 设置 ripple 基本变量，这些变量会根据调用的组件大小和位置，动态的修改其值
 // 需要借助 JavaScript 来实现
 @mixin ripple-impact() {
-  #{--ripple-size}:            0;
-  #{--ripple-left}:            0;
-  #{--ripple-top}:             0;
-  #{--ripple-scale}:           1;
-  #{--ripple-translate-end}:   0;
-  #{--ripple-translate-start}: 0;
+  --ripple-size: 0;
+  --ripple-left: 0;
+  --ripple-top: 0;
+  --ripple-scale: 1;
+  --ripple-translate-end: 0;
+  --ripple-translate-start: 0;
 
   // 当 :active 时，显示背景
   // 当 :focus 时，添加该样式 ripple-impact-focused
   &.ripple-impact-focused::after,
   &:active::after {
-    opacity:             .6;
+    opacity: .6;
     transition-duration: $ripple-fade-in-duration;
   }
 }
@@ -157,23 +160,24 @@ $ripple-common-styles: false !default;
   $radius: map-get($config, radius);
 
   &#{$pseudo} {
-    top:              0;
-    left:             0;
-    width:            var(--ripple-size, $radius);
-    height:           var(--ripple-size, $radius);
-    transform:        scale(0);
+    top: 0;
+    left: 0;
+    width: var(--ripple-size, $radius);
+    height: var(--ripple-size, $radius);
+    transform: scale(0);
     transform-origin: center center;
   }
 
   // 活动态
+  /* stylelint-disable no-unknown-animations */
   &.ripple-impact-active#{$pseudo} {
     animation: $ripple-translate-duration ripple-radius-in forwards, $ripple-fade-in-duration ripple-opacity-in forwards;
   }
 
   // 取消活动态
   &.ripple-impact-inactive#{$pseudo} {
-    transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
     animation: $ripple-fade-out-duration ripple-opacity-out forwards;
+    transform: translate(var(--ripple-translate-end, 0)) scale(var(--ripple-scale, 1));
   }
 }
 
@@ -189,9 +193,9 @@ $ripple-common-styles: false !default;
     overflow: visible;
 
     &::after {
-      top:    var(--ripple-top, calc(50% - #{$radius / 2}));
-      left:   var(--ripple-left, calc(50% - #{$radius / 2}));
-      width:  var(--ripple-size, $radius);
+      top: var(--ripple-top, calc(50% - #{$radius / 2}));
+      left: var(--ripple-left, calc(50% - #{$radius / 2}));
+      width: var(--ripple-size, $radius);
       height: var(--ripple-size, $radius);
     }
   }
@@ -200,8 +204,9 @@ $ripple-common-styles: false !default;
     &.ripple-unbounded::after {
       transform: scale(var(--ripple-scale, 0));
     }
+
     &.ripple-unbounded::before {
-      top:  var(--ripple-top, 0);
+      top: var(--ripple-top, 0);
       left: var(--ripple-left, 0);
     }
   }

@@ -4,20 +4,23 @@
 @import "./mixin";
 
 .icon-pure-caret-right {
-  &::before, &::after {
+  &::before,
+  &::after {
     position: absolute;
-    bottom: 0;
     right: 4px;
+    bottom: 0;
     width: $icon-size / 2 * 1.4142135623730951 - 2px;
     height: 2px;
     margin: auto 0;
     box-shadow: inset 0 0 0 4px;
     transform-origin: right;
   }
+
   &::before {
     top: 2px;
     transform: rotate(45deg);
   }
+
   &::after {
     top: 0;
     transform: rotate(-45deg);
@@ -25,16 +28,19 @@
 }
 
 .icon-pure-caret-up {
-  @extend .icon-pure-caret-right;
   transform: rotate(-90deg);
+
+  @extend .icon-pure-caret-right;
 }
 
 .icon-pure-caret-down {
-  @extend .icon-pure-caret-right;
   transform: rotate(90deg);
+
+  @extend .icon-pure-caret-right;
 }
 
 .icon-pure-caret-left {
-  @extend .icon-pure-caret-right;
   transform: rotate(180deg);
+
+  @extend .icon-pure-caret-right;
 }

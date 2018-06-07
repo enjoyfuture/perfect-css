@@ -13,9 +13,9 @@
 
 // 定义在 Input 元素外层包裹上
 .input {
-  position:   relative;
+  position: relative;
+  display: inline-block;
   box-sizing: border-box;
-  display:    inline-block;
 
   // 如果加入 label 则设置间距
   label > .input-field,
@@ -26,18 +26,18 @@
 
 // 定义在 Input 元素上
 .input-field {
-  box-sizing:              border-box;
-  width:                   100%;
-  height:                  $input-height;
-  padding:                 $input-padding-y $input-padding-x;
-  border:                  1px solid $input-border-color;
-  line-height:             $input-line-height;
-  background:              none;
-  background-clip:         padding-box;
-  will-change:             opacity, transform, color;
-  -webkit-appearance:      none; // 去掉 input 默认的行为和样式表现
-  -webkit-font-smoothing:  antialiased; // 抗锯齿效果
+  box-sizing: border-box;
+  width: 100%;
+  height: $input-height;
+  padding: $input-padding-y $input-padding-x;
+  border: 1px solid $input-border-color;
+  -webkit-font-smoothing: antialiased; // 抗锯齿效果
   -moz-osx-font-smoothing: grayscale; // 抗锯齿效果
+  line-height: $input-line-height;
+  background: none;
+  background-clip: padding-box;
+  will-change: opacity, transform, color;
+  -webkit-appearance: none; // 去掉 input 默认的行为和样式表现
 
   @if $enable-rounded {
     border-radius: $input-border-radius;
@@ -47,16 +47,17 @@
 
   // Placeholder
   &::placeholder {
-    @include theme-prop(color, hint-on-light);
-    opacity:    1;
+    opacity: 1;
     transition: input-transition(opacity);
+
+    @include theme-prop(color, hint-on-light);
   }
 
   // 定义 `:focus` 样式
   &:focus {
     border-color: $input-focus-border-color;
-    outline:      none;
-    transition:   input-transition(opacity);
+    outline: none;
+    transition: input-transition(opacity);
 
     // 获取焦点时，隐藏 placeholder
     &::placeholder {
@@ -73,13 +74,13 @@
   // 设置 type="color" 样式
   &[type="color"] {
     padding: 0;
-    border:  0;
+    border: 0;
   }
 
   // 滑块
   &[type="range"] {
-    padding:            0;
-    border:             0;
+    padding: 0;
+    border: 0;
     -webkit-appearance: slider-horizontal;
   }
 }
@@ -87,7 +88,7 @@
 // 扁平化输入框，即只有一条底边框表单
 .input-flat {
   .input-field {
-    border-width:  0 0 1px;
+    border-width: 0 0 1px;
     border-radius: 0;
   }
 }
@@ -95,36 +96,38 @@
 // full width input
 .input-full {
   display: block;
-  flex:    1;
-  width:   100%;
+  flex: 1;
+  width: 100%;
 
   .input-field {
     display: block;
-    width:   100%;
+    width: 100%;
   }
 }
 
 // 点击input时提示文字缩小上移，并改变颜色为高亮色
 .input-float {
   .input-field {
-    height:        auto;
-    padding-top:   $input-float-top;
-    border-width:  0 0 1px;
+    height: auto;
+    padding-top: $input-float-top;
+    border-width: 0 0 1px;
     border-radius: 0;
+
     &::placeholder {
       opacity: 0;
     }
   }
 
   &-label {
-    position:         absolute;
-    bottom:           $input-padding-y;
-    left:             $input-padding-x;
-    pointer-events:   none;
-    cursor:           text;
-    transform:        translateY(-20%);
+    position: absolute;
+    bottom: $input-padding-y;
+    left: $input-padding-x;
+    transform: translateY(-20%);
     transform-origin: left top;
-    transition:       input-transition(transform), input-transition(color), input-transition(font-size);
+    transition: input-transition(transform), input-transition(color), input-transition(font-size);
+    cursor: text;
+    pointer-events: none;
+
     @include theme-prop(color, hint-on-light);
   }
 
@@ -133,15 +136,16 @@
   .input-field:focus + .input-float-label,
   .input-field-focused + .input-float-label,
   .input-field:-webkit-autofill + .input-float-label {
-    cursor:    auto;
     transform: translateY(-90%) scale(.8, .8);
+    cursor: auto;
+
     @include theme-prop(color, secondary-on-light);
   }
 
   // Disabled
   .input-field:disabled,
   .input-field[readonly] {
-    & + .input-float-label {
+    + .input-float-label {
       @include theme-prop(color, disabled-on-light);
     }
   }
@@ -163,9 +167,11 @@
     &::placeholder {
       transition: input-transition(color);
     }
+
     &:focus {
       &::placeholder {
         opacity: 1;
+
         @include theme-prop(color, secondary-on-light);
       }
     }
@@ -185,6 +191,7 @@
     &:disabled,
     &[readonly] {
       border-color: $grey-color-100;
+
       @include theme-prop(color, disabled-on-light);
       // Placeholder
       &::placeholder {
@@ -203,10 +210,10 @@
 
 // 输入框带图标
 .input-icon {
-  position:  absolute;
-  top:       50%;
-  cursor:    pointer;
+  position: absolute;
+  top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .input-icon-start {
@@ -215,8 +222,8 @@
   }
 
   .input-icon {
-    left:  $input-icon-pos-x;
     right: initial;
+    left: $input-icon-pos-x;
   }
 
   .input-float-label {
@@ -230,8 +237,8 @@
   }
 
   .input-icon {
-    left:  initial;
     right: $input-icon-pos-x;
+    left: initial;
   }
 
   .input-float-label {

@@ -46,8 +46,8 @@
 // 设置 button disabled
 @mixin button-disabled($style) {
   // disabled
-  fieldset:disabled &,
   &:disabled,
+  fieldset:disabled &,
   &.disabled {
     @include theme-prop(color, disabled-on-light);
     @include theme-prop(background-color, $style);
@@ -56,10 +56,10 @@
 
 // 设置按钮大小
 @mixin btn-size($btn-font-size, $btn-height, $btn-border-radius: $input-border-radius) {
-  height:        $btn-height;
+  height: $btn-height;
   border-radius: $btn-border-radius;
-  font-size:     $btn-font-size;
-  line-height:   $btn-height;
+  font-size: $btn-font-size;
+  line-height: $btn-height;
 }
 
 // 设置按钮主题
@@ -78,8 +78,10 @@
   &.btn-raised,
   &.btn-unshadow {
     $color: $theme;
+
     @if type-of($theme) != "color" {
       $color: map-get($theme-property-values, $theme);
+
       @if ($color == null) {
         $color: map-get($theme-assist-colors, $theme);
       }

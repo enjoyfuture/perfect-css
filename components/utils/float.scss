@@ -1,7 +1,7 @@
 @import "../base/mixins/clearfix";
 
 .clearfix {
-  @include clearfix();
+  @include clearfix;
 }
 
 .float-left {

@@ -6,9 +6,65 @@
 @import "../../animation/function";
 
 // tabs 基本样式由 .tab-bar 和 .tab 组成
+.tab {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+
+  @include theme-prop(color, secondary-on-light);
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    transform: scale(0);
+    transition: animation-leave-sharp(transform, $tab-transition-duration);
+    will-change: transform;
+    pointer-events: none;
+
+    @include theme-prop(background-color, primary-on-light);
+  }
+
+  &.active {
+    @include theme-prop(color, primary-on-light);
+
+    // 当前为活动节点时，显示底部边框
+    &::after {
+      transform: scale(1);
+      transition: animation-enter(transform, $tab-transition-duration);
+    }
+  }
+
+  &:hover {
+    // a 标签
+    text-decoration: none;
+
+    @include theme-prop(color, primary-on-light);
+  }
+
+  &:focus {
+    @include theme-prop(outline-color, secondary-on-light);
+  }
+
+  // disabled
+  &.disabled {
+    cursor: default;
+    pointer-events: none;
+
+    @include theme-prop(color, disabled-on-light);
+  }
+}
+
 .tab-bar {
-  position:       relative;
-  display:        flex;
+  position: relative;
+  display: flex;
   flex-direction: row;
 
   &-left {
@@ -34,59 +90,6 @@
   @include tab-size();
 }
 
-.tab {
-  position:                relative;
-  display:                 inline-block;
-  overflow:                hidden;
-  text-align:              center;
-  text-decoration:         none;
-  white-space:             nowrap;
-  vertical-align:          middle;
-  cursor:                  pointer;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing:  antialiased;
-  @include theme-prop(color, secondary-on-light);
-
-  &::after {
-    content:        "";
-    position:       absolute;
-    bottom:         0;
-    @include theme-prop(background-color, primary-on-light);
-    pointer-events: none;
-    transform:      scale(0);
-    transition:     animation-leave-sharp(transform, $tab-transition-duration);
-    will-change:    transform;
-  }
-
-  &.active {
-    @include theme-prop(color, primary-on-light);
-
-    // 当前为活动节点时，显示底部边框
-    &::after {
-      transform:  scale(1);
-      transition: animation-enter(transform, $tab-transition-duration);
-    }
-  }
-
-  &:hover {
-    // a 标签
-    text-decoration: none;
-    @include theme-prop(color, primary-on-light);
-  }
-
-  &:focus {
-    @include theme-prop(outline-color, secondary-on-light);
-  }
-
-  // disabled
-  &.disabled {
-    pointer-events: none;
-    cursor:         default;
-    @include theme-prop(color, disabled-on-light);
-  }
-
-}
-
 // Tab 底部线条平滑的移动
 .tab-bar-smooth {
   .tab::after {
@@ -94,14 +97,15 @@
   }
 
   &-line {
-    position:         absolute;
-    bottom:           0;
-    left:             0;
-    height:           2px;
-    visibility:       hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
     transform-origin: left top;
-    transition:       animation-enter(transform, $tab-transition-duration);
-    will-change:      transform;
+    transition: animation-enter(transform, $tab-transition-duration);
+    will-change: transform;
+    visibility: hidden;
+
     @include theme-prop(background-color, primary-on-light);
   }
 }

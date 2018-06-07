@@ -11,11 +11,10 @@
 // http://dev.mobify.com/blog/multiline-ellipsis-in-pure-css/
 // http://www.cnblogs.com/accordion/p/6507320.html
 // http://www.css88.com/archives/5206
-// sass-lint:disable property-sort-order
 @mixin text-ellipsis-line($line: 2) {
-  display: -webkit-box;
+  // display: -webkit-box;
   -webkit-line-clamp: $line;
   -webkit-box-orient: vertical;
-  word-break: break-all;
   overflow: hidden;
+  word-break: break-all;
 }

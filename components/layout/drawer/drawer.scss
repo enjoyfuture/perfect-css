@@ -2,7 +2,6 @@
 @import "../../animation/function";
 @import "../../shadow/mixin";
 @import "../../theme/mixin";
-@import "../../shadow/mixin";
 @import "../../responsive/mixin";
 @import "variable";
 @import "mixin";
@@ -37,8 +36,8 @@ $drawer-width: 240px;
     position: absolute;
     top: 0;
     left: 0;
-    box-sizing: border-box;
     display: block;
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, .4);
@@ -50,9 +49,9 @@ $drawer-width: 240px;
   // 用来显示导航菜单或列表等
   &-nav {
     position: absolute;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: auto;
     touch-action: none;
@@ -64,10 +63,16 @@ $drawer-width: 240px;
     // 根据不同的设备设置 drawer nav 宽度
     @each $breakpoint in map-keys($responsive-breakpoints) {
       $infix: breakpoint-infix($breakpoint, $responsive-breakpoints, $dash: false);
+
       @include media-breakpoint-up(#{$infix}) {
         width: 100%;
         max-width: map-get($drawer-breakpoints-width, #{$breakpoint});
       }
+    }
+
+    // 当屏幕变宽时，为了使菜单平滑过渡，需要设置以下动画
+    &:not(.drawer-animating) {
+      transition: $drawer-transition-close;
     }
   }
 
@@ -78,15 +83,15 @@ $drawer-width: 240px;
 
   // 内容
   &-content {
-    box-sizing: border-box;
     flex-grow: 1;
+    box-sizing: border-box;
+    margin: 0;
     padding-top: .5rem;
     padding-bottom: .5rem;
-    margin: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
   }
 
   // 动画效果
@@ -95,12 +100,12 @@ $drawer-width: 240px;
       transition: animation-enter(opacity, .3s);
     }
 
-    &.drawer-open .drawer-nav {
-      transition: $drawer-transition-open;
-    }
-
     .drawer-nav {
       transition: $drawer-transition-close;
+    }
+
+    &.drawer-open .drawer-nav {
+      transition: $drawer-transition-open;
     }
   }
 
@@ -130,8 +135,8 @@ $drawer-width: 240px;
   // 内层还需要加入图标等额外的样式，比如 .icon-pure-menu
   // <div class="drawer-toggle"><i class="icon-pure-menu"></i></div>
   &-toggle {
-    padding: .5rem 1rem .5rem 0;
     margin-right: 1rem;
+    padding: .5rem 1rem .5rem 0;
     cursor: pointer;
   }
 }
@@ -149,11 +154,6 @@ $drawer-width: 240px;
     height: 100vh;
     overflow: hidden;
   }
-}
-
-// 当屏幕变宽时，为了使菜单平滑过渡，需要设置以下动画
-.drawer-nav:not(.drawer-animating) {
-  transition: $drawer-transition-close;
 }
 
 // 当设备宽度超过 1200px 时，drawer nav 默认显示
@@ -193,8 +193,8 @@ $drawer-width: 240px;
 
     // 调整 margin-top 给 navbar 留出阴影空间
     &.navbar-fixed-adjust .drawer-nav {
-      padding-bottom: .4rem;
       margin-top: .4rem;
+      padding-bottom: .4rem;
     }
   }
 }
@@ -215,7 +215,6 @@ $drawer-width: 240px;
       padding-left: $width;
     }
   }
-
 }
 
 // 如果设备宽度超过 1200px 时，还可以通过切换隐藏导航菜单，则需要加上样式 drawer-permanent
@@ -224,6 +223,7 @@ $drawer-width: 240px;
 
   .drawer-permanent {
     width: $width;
+
     &.drawer-open {
       &::before {
         opacity: 0;
@@ -234,10 +234,10 @@ $drawer-width: 240px;
     // 隐藏显示
     &.drawer-close {
       left: -$width;
-      visibility: hidden;
       transform: translateX(-$width);
+      visibility: hidden;
 
-      & + .drawer-main {
+      + .drawer-main {
         padding-left: 0;
       }
     }
@@ -245,6 +245,7 @@ $drawer-width: 240px;
     // 动画效果
     &.drawer-animating {
       transition: $drawer-transition-open;
+
       &.drawer-close {
         transition: $drawer-transition-close;
       }
