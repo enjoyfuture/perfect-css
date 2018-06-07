@@ -11,46 +11,53 @@
 
 The Perfect docs use the Jekyll to generator.
 
-If you want to add and contribute to improve the document or translate this document.
-Please exec the following command to start the document service.
+You can learn perfect css from the official http://perfect-css.com/ .
+
+Of course, If you want to join in and contribute to improve the document or translate this document. Please exec the following command to start the document service.
 
 ### Clone repository from [github](https://github.com/joy-web/perfect-css)
 
-```git
+```bash
 git clone git@github.com:joy-web/perfect-css.git
 cd perfect-css
 npm install
 ```
 
-### The development environment
+### Initialize the development environment
 
-At first, You need to install Ruby. The Perfect docs is based on the [Ruby](https://www.ruby-lang.org/zh_cn/).
+At first, You need to install Jekyll. The Perfect CSS docs is based on the [Jekyll](https://jekyllrb.com/).
 
-###  Jekyll server
+Note: Jekyll is running in the ruby environment. You need to install [Ruby](https://www.ruby-lang.org/zh_cn/).
 
-```npm
+1. Make sure you have installed the latest version ruby. And we use the rvm to manage ruby.
+
+    ```bash
+      rvm install 2.5.1 # or the latest version for ruby
+      gem update
+      # or
+      sudo gem update
+    ```
+
+2. Install jekyll and dependency package.
+
+    Note: Make sure to install dependencies in the current directory('perfect-css').
+    
+    ```bash
+    gem install jekyll bundler
+    bundle install
+    # or
+    bundle update
+    ```
+    
+    You can refer to more information to http://jekyllrb.com/
+
+##  Jekyll server
+
+### Start server in the local
+
+```bash
 npm start
 ```
-
-Note: If you exec the command the first, You should exec the following command
-
-1. Make sure you have installed the ruby. And we use the rvm to manage ruby.
-  ```
-    rvm install 2.4.2 # or the latest version for ruby
-    gem update 
-    # or 
-    sudo gem update
-  ```
-2.  Install jekyll and dependency package.
-
-```
-gem install jekyll bundler
-bundle install
-# or
-bundle update
-```
-
-You can refer to more information to http://jekyllrb.com/
 
 Then, You can open the serve in browser
 
@@ -60,37 +67,62 @@ http://localhost:9090/
 
 http://perfect-css.com
 
-
 ## Build
 
-```
+```bash
 npm run build
 ```
 
 ## Build jekyll doc
 
-```
+```bash
 npm run jekyll:docs
-```
-
-## Publish to Npm
-
-```npm
-npm publish
 ```
 
 ## Test 
 
-## SCSS test
+```bash
+npm run test
+```
 
-```npm
-npm run scss-test
+### SCSS test
+
+```bash
+npm run test:scss
+```
+
+### Javascript test
+
+```bash
+npm run test:js
+```
+
+## lint and fix lint
+We use eslint to normalize the JavaScript code and use stylelint to normalize the CSS code.
+
+You can exec the following command to lint or fix the code.
+
+```bash
+npm run lint:css
+npm run lint:js
+npm run lint
+npm run fix:css
+npm run fix:js
+npm run fix
+```
+
+## Publish to npm
+
+```bash
+npm publish
 ```
 
 ## push github pages to git branch gh-pages
-```npm
+
+```bash
 npm run github-pages
 ```
+
 If there is an error, you can view [github-pages.md](./github-pages.md)
 
 ## Other Development
@@ -99,7 +131,7 @@ If there is an error, you can view [github-pages.md](./github-pages.md)
 
 Generate a highlighter rouge theme
 
-```npm
+```bash
 npm run rouge-theme
 ```
 
@@ -112,14 +144,15 @@ Note:
 * You can search the theme from github https://github.com/search?q=pygments+style
 * https://havee.me/internet/2016-02/upgrade-github-pages-site-to-jekyll-3.html
 
-### Test Css prefix
-```npm
+### View Css prefix
+
+```bash
 npm run css-prefix
 ```
 
 ### Generate Perfect CSS dist zip
 
-```npm
+```bash
 npm run generate-zip
 ```
 
