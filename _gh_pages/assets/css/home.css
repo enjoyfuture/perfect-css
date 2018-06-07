@@ -37,8 +37,8 @@ body {
 }
 
 .drawer-toggle:hover .icon-pure-menu {
-  color: #ffffff;
-  color: var(--theme-light-primary, #ffffff);
+  color: #fff;
+  color: var(--theme-light-primary, #fff);
 }
 
 /**

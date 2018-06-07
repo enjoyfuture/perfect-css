@@ -7,7 +7,7 @@
 		exports["perfect"] = factory();
 	else
 		root["perfect"] = factory();
-})(typeof self !== 'undefined' ? self : this, function() {
+})(window, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -54,6 +54,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		}
 /******/ 	};
 /******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -69,12 +74,18 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = "./components/perfect.js");
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ "./components/base/component.js":
+/*!**************************************!*\
+  !*** ./components/base/component.js ***!
+  \**************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -198,7 +209,12 @@ var Component = function () {
 exports.default = Component;
 
 /***/ }),
-/* 1 */
+
+/***/ "./components/base/util.js":
+/*!*********************************!*\
+  !*** ./components/base/util.js ***!
+  \*********************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -362,7 +378,12 @@ var util = {
 exports.default = util;
 
 /***/ }),
-/* 2 */
+
+/***/ "./components/elements/menu/list-menu/list-menu.js":
+/*!*********************************************************!*\
+  !*** ./components/elements/menu/list-menu/list-menu.js ***!
+  \*********************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -374,11 +395,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _component = __webpack_require__(0);
+var _component = __webpack_require__(/*! ../../../base/component */ "./components/base/component.js");
 
 var _component2 = _interopRequireDefault(_component);
 
-var _util = __webpack_require__(8);
+var _util = __webpack_require__(/*! ./util */ "./components/elements/menu/list-menu/util.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1334,7 +1355,1073 @@ var ListMenu = function (_Component) {
 exports.default = ListMenu;
 
 /***/ }),
-/* 3 */
+
+/***/ "./components/elements/menu/list-menu/util.js":
+/*!****************************************************!*\
+  !*** ./components/elements/menu/list-menu/util.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/** @type {string|undefined} */
+var storedTransformPropertyName = void 0;
+
+/**
+ * Returns the name of the correct transform property to use on the current browser.
+ * 返回 transform 兼容性写法
+ * @param {!Window} globalObj
+ * @param {boolean=} forceRefresh
+ * @return {string}
+ */
+function getTransformPropertyName(globalObj) {
+  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  if (storedTransformPropertyName === undefined || forceRefresh) {
+    var el = globalObj.document.createElement('div');
+    storedTransformPropertyName = 'transform' in el.style ? 'transform' : 'webkitTransform';
+  }
+
+  return storedTransformPropertyName;
+}
+
+/**
+ * 如果 value 落在 min 和 max 之间则返回 value，否则小于 min 则返回 min， 大于 max 则返回 max
+ * 比如 min=0，max=1，value=0.5，则返回 0.5
+ * 比如 min=0，max=1，value=3，则返回 1
+ * 比如 min=0，max=1，value=-0.5，则返回 0
+ * @param {number} value
+ * @param {number} min
+ * @param {number} max
+ * @return {number}
+ */
+function clamp(value) {
+  var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+
+  return Math.min(max, Math.max(min, value));
+}
+
+/**
+ * Returns the easing value to apply at time t, for a given cubic bezier curve.
+ * Control points P0 and P3 are assumed to be (0,0) and (1,1), respectively.
+ * Parameters are as follows:
+ * - time: The current time in the animation, scaled between 0 and 1.
+ * - x1: The x value of control point P1.
+ * - y1: The y value of control point P1.
+ * - x2: The x value of control point P2.
+ * - y2: The y value of control point P2.
+ * @param {number} time
+ * @param {number} x1
+ * @param {number} y1
+ * @param {number} x2
+ * @param {number} y2
+ * @return {number}
+ */
+function bezierProgress(time, x1, y1, x2, y2) {
+  return getBezierCoordinate(solvePositionFromXValue(time, x1, x2), y1, y2);
+}
+
+/**
+ * Compute a single coordinate at a position point between 0 and 1.
+ * c1 and c2 are the matching coordinate on control points P1 and P2, respectively.
+ * Control points P0 and P3 are assumed to be (0,0) and (1,1), respectively.
+ * Adapted from https://github.com/google/closure-library/blob/master/closure/goog/math/bezier.js.
+ * @param {number} t
+ * @param {number} c1
+ * @param {number} c2
+ * @return {number}
+ */
+function getBezierCoordinate(t, c1, c2) {
+  // Special case start and end.
+  if (t === 0 || t === 1) {
+    return t;
+  }
+
+  // Step one - from 4 points to 3
+  var ic0 = t * c1;
+  var ic1 = c1 + t * (c2 - c1);
+  var ic2 = c2 + t * (1 - c2);
+
+  // Step two - from 3 points to 2
+  ic0 += t * (ic1 - ic0);
+  ic1 += t * (ic2 - ic1);
+
+  // Final step - last point
+  return ic0 + t * (ic1 - ic0);
+}
+
+/**
+ * Project a point onto the Bezier curve, from a given X. Calculates the position t along the curve.
+ * Adapted from https://github.com/google/closure-library/blob/master/closure/goog/math/bezier.js.
+ * @param {number} xVal
+ * @param {number} x1
+ * @param {number} x2
+ * @return {number}
+ */
+function solvePositionFromXValue(xVal, x1, x2) {
+  var epsilon = 1e-6;
+  var maxIterations = 8; // 迭代次数
+
+  if (xVal <= 0) {
+    return 0;
+  } else if (xVal >= 1) {
+    return 1;
+  }
+
+  // Initial estimate of t using linear interpolation.
+  var t = xVal;
+
+  // Try gradient descent to solve for t. If it works, it is very fast.
+  var tMin = 0;
+  var tMax = 1;
+  var value = 0;
+  for (var i = 0; i < maxIterations; i++) {
+    value = getBezierCoordinate(t, x1, x2);
+    var derivative = (getBezierCoordinate(t + epsilon, x1, x2) - value) / epsilon;
+    if (Math.abs(value - xVal) < epsilon) {
+      return t;
+    } else if (Math.abs(derivative) < epsilon) {
+      break;
+    } else {
+      if (value < xVal) {
+        tMin = t;
+      } else {
+        tMax = t;
+      }
+      t -= (value - xVal) / derivative;
+    }
+  }
+
+  // If the gradient descent got stuck in a local minimum, e.g. because
+  // the derivative was close to 0, use a Dichotomy refinement instead.
+  // We limit the number of interations to 8.
+  for (var _i = 0; Math.abs(value - xVal) > epsilon && _i < maxIterations; _i++) {
+    if (value < xVal) {
+      tMin = t;
+      t = (t + tMax) / 2;
+    } else {
+      tMax = t;
+      t = (t + tMin) / 2;
+    }
+    value = getBezierCoordinate(t, x1, x2);
+  }
+  return t;
+}
+
+// 返回当前元素在父元素中的索引 index，是否过滤掉分隔符 list-divider，默认过滤
+function getElementIndexOfParent(element, filter) {
+  var parentNode = element.parentNode;
+  var children = parentNode.children;
+  var index = 0;
+  for (var i = 0, len = children.length; i < len; i++) {
+    if (filter && children[i].classList.contains(filter)) {
+      continue;
+    }
+    if (children[i] === element) {
+      return index;
+    }
+    index++;
+  }
+  return -1;
+}
+
+exports.getTransformPropertyName = getTransformPropertyName;
+exports.clamp = clamp;
+exports.bezierProgress = bezierProgress;
+exports.getElementIndexOfParent = getElementIndexOfParent;
+
+/***/ }),
+
+/***/ "./components/elements/paging/paging.js":
+/*!**********************************************!*\
+  !*** ./components/elements/paging/paging.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.strings = exports.classes = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _component = __webpack_require__(/*! ../../base/component */ "./components/base/component.js");
+
+var _component2 = _interopRequireDefault(_component);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// 定义常量
+// class 样式
+var classes = exports.classes = {
+  PAGING_ITEM: 'paging-item',
+  DISABLED: 'disabled',
+  ACTIVE: 'active'
+};
+
+var strings = exports.strings = {};
+
+var Paging = function (_Component) {
+  _inherits(Paging, _Component);
+
+  _createClass(Paging, null, [{
+    key: 'mount',
+
+
+    /**
+     * 静态方法实例化 Paging 组件
+     * @param element
+     * @param config
+     * @returns {Select}
+     */
+    value: function mount(element, config) {
+      return new Paging(element, config);
+    }
+  }, {
+    key: 'classes',
+    get: function get() {
+      return classes;
+    }
+
+    /**
+     * pagingControl 控制是否显示数据信息 {Boolean}
+     * recordPerPage 是否显示改变每页记录数 {Boolean}
+     * jumpControl 是否显示跳至某一页 {Boolean}
+     * @type {{pagingControl: boolean, recordPerPage: boolean, jumpControl: boolean}}
+     */
+
+  }, {
+    key: 'strings',
+    get: function get() {
+      return strings;
+    }
+  }]);
+
+  function Paging(element, config) {
+    _classCallCheck(this, Paging);
+
+    // 当前页，从1开始，默认1
+    var _this = _possibleConstructorReturn(this, (Paging.__proto__ || Object.getPrototypeOf(Paging)).call(this, element, _extends({}, Paging.defaultConfig, config)));
+
+    _this.handleSwitchPage = function (evt) {
+      evt.preventDefault();
+      var target = evt.target;
+      var classList = target.classList;
+
+
+      if (classList.contains(classes.PAGING_ITEM)) {
+        // 切换下一页逻辑
+        var pageNum = parseInt(target.dataset.pagenum, 10);
+        _this.handleChangePage(pageNum);
+      } else if (classList.contains('js-jump-btn')) {
+        var input = target.parentNode.previousElementSibling.children[0].children[0];
+        var _pageNum = parseInt(input.value, 10);
+        if (!Number.isNaN(_pageNum)) {
+          _this.handleChangePage(_pageNum);
+        }
+      }
+    };
+
+    _this.handleChangePerPage = function (evt) {
+      evt.preventDefault();
+      var target = evt.target;
+      var classList = target.classList;
+
+
+      if (classList.contains('select-inner')) {
+        // 切换下一页逻辑
+        var pageSize = parseInt(target.value, 10);
+        _this.pageSize = pageSize;
+        _this.loadData();
+      }
+    };
+
+    if (_this.pageNum === undefined) {
+      _this.pageNum = 1;
+    }
+
+    // 每页条数，默认10
+    if (_this.pageSize === undefined) {
+      _this.pageSize = 10;
+    }
+
+    // 总页码
+    // this.totalPages
+
+    // 总记录数
+    // this.totalCount
+
+    // 加载数据回调函数
+    // this.loadPageData = function() {}
+
+    // 控制是否显示数据信息 {Boolean}
+    // this.pagingControl
+
+    // 是否显示改变每页记录数 {Boolean}
+    // this.recordPerPage
+
+    // 是否显示跳至某一页 {Boolean}
+    // this.jumpControl
+
+    // 创建适配器
+    _this.adapter = _this.createAdapter();
+
+    _this.render();
+    return _this;
+  }
+
+  /**
+   * 封装适配器方法
+   * @return {object}
+   */
+
+
+  _createClass(Paging, [{
+    key: 'createAdapter',
+    value: function createAdapter() {
+      return {};
+    }
+  }, {
+    key: 'init',
+    value: function init() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      this.addEventListeners();
+      this.loadData();
+    }
+  }, {
+    key: 'unmount',
+    value: function unmount() {
+      this.removeEventListeners();
+    }
+
+    // 设置监听事件
+
+  }, {
+    key: 'addEventListeners',
+    value: function addEventListeners() {
+      this.element.addEventListener('click', this.handleSwitchPage);
+      this.element.addEventListener('change', this.handleChangePerPage);
+    }
+
+    // 删除事件
+
+  }, {
+    key: 'removeEventListeners',
+    value: function removeEventListeners() {
+      this.element.removeEventListener('click', this.handleSwitchPage);
+      this.element.addEventListener('change', this.handleChangePerPage);
+    }
+  }, {
+    key: 'loadData',
+    value: function loadData() {
+      var _this2 = this;
+
+      var pageNum = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+      // 渲染数据
+      if (this.loadPageData && typeof this.loadPageData === 'function') {
+        this.loadPageData(pageNum, this.pageSize).then(function (json) {
+          var _json$data = json.data,
+              totalCount = _json$data.totalCount,
+              totalPages = _json$data.totalPages;
+
+          _this2.totalPages = totalPages;
+          _this2.pageNum = pageNum;
+          _this2.totalCount = totalCount;
+          _this2.renderPaging();
+        });
+      } else {
+        this.pageNum = pageNum;
+        this.renderPaging();
+      }
+    }
+  }, {
+    key: 'handleChangePage',
+    value: function handleChangePage(pageNum) {
+      if (this.totalPages === 1) {
+        return;
+      }
+      if (pageNum <= 1) {
+        pageNum = 1;
+      }
+
+      if (pageNum >= this.totalPages) {
+        pageNum = this.totalPages;
+      }
+
+      this.loadData(pageNum);
+    }
+
+    /**
+     * 计算页码显示算法，返回一个页码数组
+     * @returns {Array}
+     */
+
+  }, {
+    key: 'calculatePage',
+    value: function calculatePage() {
+      var totalPages = this.totalPages;
+      var pageNum = this.pageNum;
+
+      var pageArray = [];
+      if (totalPages < 8) {
+        for (var i = 1; i <= totalPages; i++) {
+          pageArray.push(i);
+        }
+      } else {
+        pageArray.push(1);
+        if (pageNum > 4) {
+          pageArray.push('...');
+        }
+
+        if (pageNum < 4) {
+          for (var _i = 2; _i <= 6; _i++) {
+            pageArray.push(_i);
+          }
+        } else if (pageNum >= 4 && totalPages - pageNum >= 3) {
+          for (var _i2 = pageNum - 2; _i2 <= pageNum + 2; _i2++) {
+            pageArray.push(_i2);
+          }
+        } else {
+          for (var _i3 = totalPages - 4; _i3 < totalPages; _i3++) {
+            pageArray.push(_i3);
+          }
+        }
+
+        //总页码 - 当前页 大于 3 显示
+        if (totalPages - pageNum > 3) {
+          pageArray.push('...');
+        }
+        pageArray.push(totalPages);
+      }
+
+      return pageArray;
+    }
+  }, {
+    key: 'renderPaging',
+    value: function renderPaging() {
+      var _this3 = this;
+
+      var pageArray = this.calculatePage();
+
+      var html = '<ul class="paging-items">';
+      html += '<li class="paging-item' + (this.pageNum === 1 ? ' ' + classes.DISABLED : '') + '" data-pagenum="' + (this.pageNum - 1) + '">\u4E0A\u4E00\u9875</li>';
+      var pageItems = pageArray.map(function (item, index) {
+        if (item === '...') {
+          return '<li class="paging-item paging-more"></li>';
+        }
+        return '<li class="paging-item' + (_this3.pageNum === item ? ' ' + classes.ACTIVE : '') + '" data-pagenum="' + item + '">' + item + '</li>';
+      });
+      html += pageItems.join('');
+      html += '<li class="paging-item' + (this.pageNum === this.totalPages ? ' ' + classes.DISABLED : '') + '" data-pagenum="' + (this.pageNum + 1) + '">\u4E0B\u4E00\u9875</li>';
+      html += '</ul>';
+
+      if (this.pagingControl) {
+        html += this.renderPagingControl();
+      }
+      this.element.innerHTML = html;
+    }
+  }, {
+    key: 'renderPagingControl',
+    value: function renderPagingControl() {
+      var html = '<ul class="paging-control">';
+      html += '<li class="paging-control-item">\u5171' + this.totalPages + '\u9875' + (this.totalCount || 0) + '\u6761\u8BB0\u5F55,</li>';
+
+      if (this.recordPerPage) {
+        html += '<li class="paging-control-item">\n        \u6BCF\u9875\n        <div class="select">\n        <select class="select-inner">\n          <option value="5"' + (this.pageSize === 5 ? ' selected' : '') + '>5</option>\n          <option value="10"' + (this.pageSize === 10 ? ' selected' : '') + '>10</option>\n          <option value="20"' + (this.pageSize === 20 ? ' selected' : '') + '>20</option>\n          <option value="50"' + (this.pageSize === 50 ? ' selected' : '') + '>50</option>\n          <option value="100"' + (this.pageSize === 100 ? ' selected' : '') + '>100</option>\n        </select>\n        </div>\n      \u6761,\n    </li>';
+      }
+
+      if (this.jumpControl) {
+        html += '<li class="paging-control-item">\n        \u8DF3\u81F3\n        <div class="input">\n          <input type="text" class="input-field"/>\n        </div>\n        \u9875\n      </li>\n      <li class="paging-control-item">\n        <a href="" class="btn btn-raised btn-primary btn-sm js-jump-btn">\u786E\u5B9A</a>\n      </li>';
+      }
+
+      html += '</ul>';
+
+      return html;
+    }
+  }]);
+
+  return Paging;
+}(_component2.default);
+
+Paging.defaultConfig = {
+  pagingControl: true,
+  recordPerPage: true,
+  jumpControl: true
+};
+exports.default = Paging;
+
+/***/ }),
+
+/***/ "./components/forms/select/select.js":
+/*!*******************************************!*\
+  !*** ./components/forms/select/select.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.strings = exports.classes = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _component = __webpack_require__(/*! ../../base/component */ "./components/base/component.js");
+
+var _component2 = _interopRequireDefault(_component);
+
+var _listMenu = __webpack_require__(/*! ../../elements/menu/list-menu/list-menu */ "./components/elements/menu/list-menu/list-menu.js");
+
+var _listMenu2 = _interopRequireDefault(_listMenu);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var win = window;
+var dom = document;
+var body = dom.body;
+
+// 返回已选中的根 root option
+function getRootSelectedOption(el) {
+  var parentEl = el.parentNode.parentNode;
+  if (parentEl.classList.contains('list-menu')) {
+    return el;
+  }
+  return getRootSelectedOption(parentEl);
+}
+
+// 定义常量
+// class 样式
+var classes = exports.classes = {
+  ELEMENT: 'select',
+  DISABLED: 'select-disabled',
+  OPEN: 'select-open',
+  SCROLL_LOCK: 'select-scroll-lock',
+  SELECT_MENU_FIXED: 'select-menu-fixed'
+};
+
+var strings = exports.strings = {
+  SELECT_INNER: '.select-inner',
+  CHANGE_EVENT: 'select:change',
+  SELECT_MENU: '.select-menu',
+  SELECT_SELECTED_TEXT: '.select-selected-text'
+};
+
+var openerKeys = [{ key: 'ArrowUp', keyCode: 38, forType: 'keydown' }, { key: 'ArrowDown', keyCode: 40, forType: 'keydown' }, { key: 'Space', keyCode: 32, forType: 'keyup' }];
+
+var Select = function (_Component) {
+  _inherits(Select, _Component);
+
+  _createClass(Select, [{
+    key: 'valueText',
+
+
+    // 返回当前选中的 value 和 text
+    get: function get() {
+      return this.getSelectedValue ? this.getSelectedValue() : '';
+    }
+  }, {
+    key: 'options',
+    get: function get() {
+      // 返回叶子节点作为 options
+      return this.menu.leafItems;
+    }
+
+    // 返回已经选中的 select option，只处理可以多选的 select，FIXME
+
+  }, {
+    key: 'selectedOptions',
+    get: function get() {
+      return this.element.querySelectorAll('[aria-selected]');
+    }
+  }], [{
+    key: 'mount',
+
+
+    /**
+     * 静态方法实例化 Select 组件
+     * @param element
+     * @param config
+     * @returns {Select}
+     */
+    value: function mount(element, config) {
+      return new Select(element, config);
+    }
+  }, {
+    key: 'classes',
+    get: function get() {
+      return classes;
+    }
+  }, {
+    key: 'strings',
+    get: function get() {
+      return strings;
+    }
+  }]);
+
+  function Select(element, config) {
+    _classCallCheck(this, Select);
+
+    // 创建适配器
+    var _this = _possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).call(this, element, config));
+
+    _this.displayHandler = function (evt) {
+      evt.preventDefault();
+      if (!_this.adapter.isMenuOpen()) {
+        _this.open();
+      }
+    };
+
+    _this.selectionHandler = function (_ref) {
+      var detail = _ref.detail;
+      var index = detail.index,
+          items = detail.items;
+
+      // 如果不相等
+
+      if (!_this.compareSelectedIndex(index)) {
+        var len = items.length;
+        var leafIndex = _this.adapter.getLeafOptionIndex(items[len - 1]);
+        _this.setSelectedIndex(leafIndex);
+        _this.adapter.notifyChange();
+      }
+      _this.close();
+    };
+
+    _this.cancelHandler = function () {
+      _this.close();
+    };
+
+    _this.adapter = _this.createAdapter();
+
+    _this.selectedIndex = -1; // 已选的 select option，指叶子节点索引
+    _this.disabled = false; // 是否禁用
+    _this.isFocused = false; // 获取焦点
+
+    // 如果没有已选中的 option，是否默认选中第一个
+    if (_this.selectedFirstOption === undefined) {
+      _this.selectedFirstOption = true;
+    }
+
+    // 是否滚动锁屏
+    if (_this.isScrollLock === undefined) {
+      _this.isScrollLock = true;
+    }
+
+    // 是否设置 select 为 fixed
+    if (_this.isFixed === undefined) {
+      _this.isFixed = true;
+    }
+
+    // 提供一个默认获取 select value 和 text 方法
+    if (!_this.getSelectedValue) {
+      _this.getSelectedValue = function (isText) {
+        var selectedIndex = _this.selectedIndex;
+
+        if (selectedIndex > -1) {
+          // 返回叶子节点 data-value 设置的值
+          return {
+            value: _this.options[selectedIndex].dataset.value,
+            text: _this.adapter.getTextForOptionAtIndex(selectedIndex)
+          };
+        }
+        return {};
+      };
+    }
+
+    _this.render();
+    _this.initialSyncWithDOM();
+    return _this;
+  }
+
+  /**
+   * 封装适配器方法
+   * @return {object}
+   */
+
+
+  _createClass(Select, [{
+    key: 'createAdapter',
+    value: function createAdapter() {
+      var _this2 = this;
+
+      return {
+        addClass: function addClass(className) {
+          return _this2.element.classList.add(className);
+        },
+        removeClass: function removeClass(className) {
+          return _this2.element.classList.remove(className);
+        },
+        setAttr: function setAttr(attr, value) {
+          return _this2.element.setAttribute(attr, value);
+        },
+        rmAttr: function rmAttr(attr) {
+          return _this2.element.removeAttribute(attr);
+        },
+        computeBoundingRect: function computeBoundingRect() {
+          return _this2.selectInner.getBoundingClientRect();
+        },
+        focus: function focus() {
+          return _this2.selectInner.focus();
+        },
+        makeTabbable: function makeTabbable() {
+          _this2.selectInner.tabIndex = 0;
+        },
+        makeUntabbable: function makeUntabbable() {
+          _this2.selectInner.tabIndex = -1;
+        },
+        setMenuElStyle: function setMenuElStyle(propertyName, value) {
+          return _this2.menuEl.style.setProperty(propertyName, value);
+        },
+        setMenuElAttr: function setMenuElAttr(attr, value) {
+          return _this2.menuEl.setAttribute(attr, value);
+        },
+        rmMenuElAttr: function rmMenuElAttr(attr) {
+          return _this2.menuEl.removeAttribute(attr);
+        },
+        getMenuElOffsetHeight: function getMenuElOffsetHeight() {
+          return _this2.menuEl.offsetHeight;
+        },
+        openMenu: function openMenu(focusIndex) {
+          return _this2.menu.show({ focusIndex: focusIndex });
+        },
+        isMenuOpen: function isMenuOpen() {
+          return _this2.menu.open;
+        },
+        setSelectedTextContent: function setSelectedTextContent(selectedTextContent) {
+          _this2.selectedText.textContent = selectedTextContent;
+        },
+        getNumberOfOptions: function getNumberOfOptions() {
+          return _this2.options.length;
+        },
+        getTextForOptionAtIndex: function getTextForOptionAtIndex(index) {
+          return _this2.options[index].textContent;
+        },
+        setAttrForOptionAtIndex: function setAttrForOptionAtIndex(index, attr, value) {
+          return _this2.options[index].setAttribute(attr, value);
+        },
+        rmAttrForOptionAtIndex: function rmAttrForOptionAtIndex(index, attr) {
+          return _this2.options[index].removeAttribute(attr);
+        },
+        getLeafOptionIndex: function getLeafOptionIndex(item) {
+          var len = _this2.options.length;
+          for (var i = 0; i < len; i++) {
+            if (_this2.options[i] === item) {
+              return i;
+            }
+          }
+          return -1;
+        },
+        notifyChange: function notifyChange() {
+          var menu = _this2.menu;
+          _this2.emit(strings.CHANGE_EVENT, {
+            index: menu.previousActiveItemsIndex,
+            items: menu.previousActiveItems,
+            valueText: _this2.valueText
+          });
+        },
+        getWindowInnerHeight: function getWindowInnerHeight() {
+          return win.innerHeight;
+        },
+        addBodyClass: function addBodyClass(className) {
+          return body.classList.add(className);
+        },
+        removeBodyClass: function removeBodyClass(className) {
+          return body.classList.remove(className);
+        }
+      };
+    }
+
+    // 默认 menuFactory 为 ListMenu
+
+  }, {
+    key: 'init',
+    value: function init() {
+      var menuFactory = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (el) {
+        return new _listMenu2.default(el);
+      };
+
+      this.selectInner = this.element.querySelector(strings.SELECT_INNER);
+      this.selectedText = this.element.querySelector(strings.SELECT_SELECTED_TEXT);
+      this.menuEl = this.element.querySelector(strings.SELECT_MENU);
+      this.menu = menuFactory(this.menuEl);
+    }
+  }, {
+    key: 'initialSyncWithDOM',
+    value: function initialSyncWithDOM() {
+      // 设置当前活动的 index
+      var selectedOption = this.selectedOptions[0];
+      var idx = selectedOption ? this.options.indexOf(selectedOption) : this.selectedFirstOption ? 0 : -1;
+
+      if (idx > -1) {
+        this.selectedIndex = idx;
+        this.menu.setActiveItemAtIndex(idx);
+      }
+
+      // 设置禁用
+      if (this.element.getAttribute('aria-disabled') === 'true') {
+        this.disabled = true;
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (this.isFixed) {
+        this.menuEl.classList.add(classes.SELECT_MENU_FIXED);
+      }
+      this.addEventListeners();
+    }
+  }, {
+    key: 'unmount',
+    value: function unmount() {
+      this.removeEventListeners();
+    }
+
+    // 设置监听事件
+
+  }, {
+    key: 'addEventListeners',
+    value: function addEventListeners() {
+      this.selectInner.addEventListener('click', this.displayHandler);
+      this.selectInner.addEventListener('keydown', this.handleDisplayKeyboard);
+      this.selectInner.addEventListener('keyup', this.handleDisplayKeyboard);
+
+      // 监听 ListMenu 事件
+      this.menu.listen(_listMenu2.default.strings.SELECTED_EVENT, this.selectionHandler);
+      this.menu.listen(_listMenu2.default.strings.CANCEL_EVENT, this.cancelHandler);
+    }
+
+    // 删除事件
+
+  }, {
+    key: 'removeEventListeners',
+    value: function removeEventListeners() {
+      this.selectInner.removeEventListener('click', this.displayHandler);
+      this.selectInner.removeEventListener('keydown', this.handleDisplayKeyboard);
+      this.selectInner.removeEventListener('keyup', this.handleDisplayKeyboard);
+
+      // 监听 ListMenu 事件
+      this.menu.unlisten(_listMenu2.default.strings.SELECTED_EVENT, this.selectionHandler);
+      this.menu.unlisten(_listMenu2.default.strings.CANCEL_EVENT, this.cancelHandler);
+    }
+  }, {
+    key: 'item',
+    value: function item(index) {
+      return this.options[index] || null;
+    }
+  }, {
+    key: 'handleDisplayKeyboard',
+    value: function handleDisplayKeyboard(evt) {
+      // We use a hard-coded 2 instead of Event.AT_TARGET to avoid having to reference a browser
+      // global.
+      var EVENT_PHASE_AT_TARGET = 2;
+      if (evt.eventPhase !== EVENT_PHASE_AT_TARGET) {
+        return;
+      }
+
+      // Prevent pressing space down from scrolling the page
+      var isSpaceDown = evt.type === 'keydown' && (evt.key === 'Space' || evt.keyCode === 32);
+      if (isSpaceDown) {
+        evt.preventDefault();
+      }
+
+      var isOpenerKey = openerKeys.some(function (_ref2) {
+        var key = _ref2.key,
+            keyCode = _ref2.keyCode,
+            forType = _ref2.forType;
+
+        return evt.type === forType && (evt.key === key || evt.keyCode === keyCode);
+      });
+
+      if (isOpenerKey) {
+        this.displayHandler(evt);
+      }
+    }
+
+    // ListMenu SELECTED_EVENT 事件
+
+  }, {
+    key: 'getSelectedIndex',
+    value: function getSelectedIndex() {
+      return this.selectedIndex;
+    }
+  }, {
+    key: 'setSelectedIndex',
+    value: function setSelectedIndex(index) {
+      // 先删除上一次选择的 option
+      var prevSelectedIndex = this.selectedIndex;
+      if (prevSelectedIndex >= 0) {
+        this.adapter.rmAttrForOptionAtIndex(this.selectedIndex, 'aria-selected');
+      }
+
+      this.selectedIndex = index >= 0 && index < this.adapter.getNumberOfOptions() ? index : -1;
+      var selectedTextContent = '';
+      if (this.selectedIndex >= 0) {
+        selectedTextContent = this.adapter.getTextForOptionAtIndex(this.selectedIndex).trim();
+        this.adapter.setAttrForOptionAtIndex(this.selectedIndex, 'aria-selected', 'true');
+      }
+      this.adapter.setSelectedTextContent(selectedTextContent);
+    }
+  }, {
+    key: 'isDisabled',
+    value: function isDisabled() {
+      return this.disabled;
+    }
+  }, {
+    key: 'setDisabled',
+    value: function setDisabled(disabled) {
+      var DISABLED = classes.DISABLED;
+
+      this.disabled = disabled;
+      if (this.disabled) {
+        this.adapter.addClass(DISABLED);
+        this.adapter.setAttr('aria-disabled', 'true');
+        this.adapter.makeUntabbable();
+      } else {
+        this.adapter.removeClass(DISABLED);
+        this.adapter.rmAttr('aria-disabled');
+        this.adapter.makeTabbable();
+      }
+    }
+  }, {
+    key: 'open',
+    value: function open() {
+      if (this.isScrollLock) {
+        this.disableScroll();
+      }
+      var OPEN = classes.OPEN;
+      // 根据已选的叶子节点 this.selectedIndex 拿到第一层 select item
+
+      var focusIndex = this.selectedIndex < 0 ? 0 : this.selectedIndex;
+      if (this.isFixed) {
+        var selectedRootOption = getRootSelectedOption(this.options[focusIndex]);
+        this.setMenuStylesForOpen(selectedRootOption);
+      }
+      this.adapter.addClass(OPEN);
+      this.adapter.openMenu(focusIndex);
+      this.isFocused = true;
+    }
+  }, {
+    key: 'close',
+    value: function close() {
+      var OPEN = classes.OPEN;
+
+      this.adapter.removeClass(OPEN);
+      this.adapter.focus();
+      if (this.isScrollLock) {
+        this.enableScroll();
+      }
+    }
+  }, {
+    key: 'setMenuStylesForOpen',
+    value: function setMenuStylesForOpen(selectedRootOption) {
+      var innerHeight = this.adapter.getWindowInnerHeight();
+
+      var _adapter$computeBound = this.adapter.computeBoundingRect(),
+          left = _adapter$computeBound.left,
+          top = _adapter$computeBound.top;
+
+      this.adapter.setMenuElAttr('aria-hidden', 'true');
+      this.adapter.setMenuElStyle('display', 'block');
+      var menuHeight = this.adapter.getMenuElOffsetHeight();
+      var itemOffsetTop = selectedRootOption.offsetTop;
+      this.adapter.setMenuElStyle('display', '');
+      this.adapter.rmMenuElAttr('aria-hidden');
+
+      var adjustedTop = top - itemOffsetTop;
+      var overflowsTop = adjustedTop < 0;
+      var overflowsBottom = adjustedTop + menuHeight > innerHeight;
+      if (overflowsTop) {
+        adjustedTop = 0;
+      } else if (overflowsBottom) {
+        adjustedTop = Math.max(0, innerHeight - menuHeight);
+      }
+
+      this.adapter.setMenuElStyle('left', left + 'px');
+      this.adapter.setMenuElStyle('top', adjustedTop + 'px');
+      this.adapter.setMenuElStyle('transform-origin', 'center ' + itemOffsetTop + 'px');
+    }
+  }, {
+    key: 'nameditem',
+    value: function nameditem(key) {
+      // NOTE: IE11 precludes us from using Array.prototype.find
+      for (var i = 0, options = this.options, option; option = options[i]; i++) {
+        if (option.id === key || option.getAttribute('name') === key) {
+          return option;
+        }
+      }
+      return null;
+    }
+  }, {
+    key: 'disableScroll',
+    value: function disableScroll() {
+      this.adapter.addBodyClass(classes.SCROLL_LOCK);
+    }
+  }, {
+    key: 'enableScroll',
+    value: function enableScroll() {
+      this.adapter.removeBodyClass(classes.SCROLL_LOCK);
+    }
+  }, {
+    key: 'compareSelectedIndex',
+    value: function compareSelectedIndex(index) {
+      if (!this.selectedIndex || !index) {
+        return false;
+      }
+      if (this.selectedIndex.length !== index.length) {
+        return false;
+      }
+      var len = index.length;
+      for (var i = 0; i < len; i++) {
+        if (this.selectedIndex[i] !== index[i]) {
+          return false;
+        }
+      }
+      return true;
+    }
+  }]);
+
+  return Select;
+}(_component2.default);
+
+exports.default = Select;
+
+/***/ }),
+
+/***/ "./components/perfect.js":
+/*!*******************************!*\
+  !*** ./components/perfect.js ***!
+  \*******************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1345,27 +2432,27 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Paging = exports.Select = exports.ListMenu = exports.Ripple = exports.CatalogueSpy = exports.ScrollSpy = undefined;
 
-var _scrollSpy = __webpack_require__(4);
+var _scrollSpy = __webpack_require__(/*! ./scroll-spy/scrollSpy */ "./components/scroll-spy/scrollSpy.js");
 
 var _scrollSpy2 = _interopRequireDefault(_scrollSpy);
 
-var _catalogueSpy = __webpack_require__(5);
+var _catalogueSpy = __webpack_require__(/*! ./scroll-spy/plugins/catalogueSpy */ "./components/scroll-spy/plugins/catalogueSpy.js");
 
 var _catalogueSpy2 = _interopRequireDefault(_catalogueSpy);
 
-var _ripple = __webpack_require__(6);
+var _ripple = __webpack_require__(/*! ./ripple/ripple */ "./components/ripple/ripple.js");
 
 var _ripple2 = _interopRequireDefault(_ripple);
 
-var _listMenu = __webpack_require__(2);
+var _listMenu = __webpack_require__(/*! ./elements/menu/list-menu/list-menu */ "./components/elements/menu/list-menu/list-menu.js");
 
 var _listMenu2 = _interopRequireDefault(_listMenu);
 
-var _select = __webpack_require__(9);
+var _select = __webpack_require__(/*! ./forms/select/select */ "./components/forms/select/select.js");
 
 var _select2 = _interopRequireDefault(_select);
 
-var _paging = __webpack_require__(10);
+var _paging = __webpack_require__(/*! ./elements/paging/paging */ "./components/elements/paging/paging.js");
 
 var _paging2 = _interopRequireDefault(_paging);
 
@@ -1379,7 +2466,12 @@ exports.Select = _select2.default;
 exports.Paging = _paging2.default;
 
 /***/ }),
-/* 4 */
+
+/***/ "./components/ripple/ripple.js":
+/*!*************************************!*\
+  !*** ./components/ripple/ripple.js ***!
+  \*************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1393,736 +2485,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(1);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var win = window;
-var doc = document;
-var _Array$prototype = Array.prototype,
-    forEach = _Array$prototype.forEach,
-    map = _Array$prototype.map;
-
-var ScrollSpy = function () {
-  function ScrollSpy(element) {
-    var _this = this;
-
-    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, ScrollSpy);
-
-    this.scrollEvent = function (event) {
-      _this.process();
-    };
-
-    this.element = element;
-    this.scrollElement = element.tagName === 'BODY' ? win : element;
-    this.config = this.getConfig(config);
-    var _config2 = this.config,
-        menu = _config2.menu,
-        menuClsPrefix = _config2.menuClsPrefix,
-        extend = _config2.extend;
-    // 菜单 目录 等选择器
-
-    this.menuSelector = menu + ' .' + menuClsPrefix + '-title';
-    this.offsets = [];
-    this.targets = [];
-    this.activeTarget = null;
-    this.scrollHeight = 0;
-
-    // 如果默认不展开，则用样式来控制
-    if (!extend) {
-      var extendStyle = doc.createElement('style');
-      extendStyle.innerHTML = '\n          .menu-catalogue .menu-catalogue {\n            display: none;\n          }\n          .active + .menu-catalogue {\n            display: block;\n          }';
-      doc.getElementsByTagName('head')[0].append(extendStyle);
-    }
-
-    // 添加事件，页面滚动时，处理目录和内容对应坐标
-    this.scrollElement.addEventListener(_util.isWheel ? 'mousewheel' : 'DOMMouseScroll', this.scrollEvent, false);
-    var _config3 = this.config,
-        immedLoad = _config3.immedLoad,
-        initMenus = _config3.initMenus,
-        anchor = _config3.anchor;
-    // 需要根据内容动态创建菜单列表
-
-    if (initMenus) {
-      this.generateMenus();
-    }
-
-    // 菜单面板
-    this.menuPanel = menu + ' .' + menuClsPrefix + '.' + menuClsPrefix + '-catalogue';
-    this.$menuPanel = doc.querySelector(this.menuPanel);
-
-    // 不用锚点处理的情况
-    if (anchor === false) {
-      // fixme 待改进，改成 事件代理模式
-      var menuElements = doc.querySelectorAll(this.menuSelector);
-      forEach.call(menuElements, function (element) {
-        element.addEventListener('click', function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          var el = e.currentTarget;
-          var menu = el.dataset.menu;
-          var _config4 = _this.config,
-              offsetMethod = _config4.offsetMethod,
-              container = _config4.container;
-
-          var offsetXY = _this.config.offset;
-
-          var targetEl = doc.querySelector(container + ' [data-target="' + menu + '"]').parentNode;
-          var top = offsetMethod === 'offset' ? (0, _util.offset)(targetEl).top : (0, _util.position)(targetEl).top;
-          var offsetBase = offsetMethod === 'position' ? _this.getScrollTop() : 0;
-
-          // fixme
-          _this.scrollElement.scrollTo(0, top + offsetBase - offsetXY);
-          el.blur();
-          _this.process();
-        }, false);
-      });
-    }
-
-    // 加载插件
-    var pluginConfig = this.config.pluginConfig;
-    var plugins = this.config.plugins;
-
-    if (plugins) {
-      if (!Array.isArray(plugins)) {
-        plugins = [plugins];
-      }
-      this.plugins = [];
-      var container = this.config.container;
-
-      plugins.forEach(function (plugin) {
-        // 把当前实例传给插件
-        var instance = new plugin(_this, pluginConfig);
-        instance.mount();
-        _this.plugins.push(instance);
-      });
-    }
-
-    // 显示菜单
-    // doc.querySelector(menu).style.display = 'block';
-    if (immedLoad) {
-      this.refresh();
-      this.process();
-    }
-  }
-
-  _createClass(ScrollSpy, [{
-    key: 'getConfig',
-    value: function getConfig(config) {
-      var _config = _extends({}, ScrollSpy.defaultConfig, config);
-
-      var menu = _config.menu;
-      var container = _config.container;
-
-
-      if (typeof menu !== 'string') {
-        // dom 对象
-        var id = menu.id;
-
-        if (!id) {
-          id = (0, _util.getUuid)('scrollspy');
-          menu.id = id;
-        }
-        _config.menu = '#' + id;
-      }
-
-      if (!container) {
-        container = doc.body; // 默认取 body
-      }
-      if (typeof container !== 'string') {
-        var _container = container,
-            _id = _container.id;
-
-        if (!_id) {
-          _id = (0, _util.getUuid)('scrollspy');
-          container.id = _id;
-        }
-        _config.container = '#' + _id;
-      }
-
-      var autoMethod = this.scrollElement !== this.scrollElement.window ? 'position' : 'offset';
-
-      var offsetMethod = _config.method === 'auto' ? autoMethod : _config.method;
-
-      _config.offsetMethod = offsetMethod;
-
-      return _config;
-    }
-
-    /**
-     * 动态创建菜单
-     */
-
-  }, {
-    key: 'generateMenus',
-    value: function generateMenus() {
-      var menus = this.element.querySelectorAll('h1,h2,h3,h4,h5,h6');
-      // 初始化根节点
-      var entries = {
-        level: 0,
-        children: [],
-        depth: 0,
-        parent: null,
-        text: null,
-        root: true
-      };
-
-      // 前一个元素 level
-      var prevLevel = 0;
-      // 上一个节点
-      var lastNode = null;
-
-      forEach.call(menus, function (el, index) {
-        var entry = null;
-        var level = 7 - parseInt(el.tagName[1], 10);
-        var text = el.innerHTML;
-
-        if (index === 0) {
-          // 初始化第一个元素
-          entry = {
-            level: level,
-            children: [],
-            depth: 1,
-            parent: entries,
-            text: text,
-            el: el
-          };
-          entries.children.push(entry);
-        } else {
-          if (level === prevLevel) {
-            // 相等的话
-            entry = {
-              level: level,
-              children: [],
-              depth: lastNode.depth,
-              parent: lastNode.parent,
-              text: text,
-              el: el
-            };
-            lastNode.parent.children.push(entry);
-          } else if (level < prevLevel) {
-            // 如果当前级别小于前一个
-            entry = {
-              level: level,
-              children: [],
-              depth: lastNode.depth + 1,
-              parent: lastNode,
-              text: text,
-              el: el
-            };
-            lastNode.children.push(entry);
-          } else {
-            // 如果当前级别大于前一个 查找祖先节点
-            var ancestor = lastNode.parent;
-            while (ancestor.level <= level && !ancestor.root) {
-              ancestor = ancestor.parent;
-            }
-            entry = {
-              level: level,
-              children: [],
-              depth: ancestor.depth + 1,
-              parent: ancestor,
-              text: text,
-              el: el
-            };
-            ancestor.children.push(entry);
-          }
-        }
-        lastNode = entry;
-        prevLevel = level;
-      });
-
-      var html = this.generateMenusHtml(entries.children, this.config.prefix);
-      doc.querySelector(this.config.menu).innerHTML = html;
-    }
-
-    /**
-     * 根据 nodes 节点 生成 html
-     * @param nodes
-     * @param prefix
-     * @return {string}
-     */
-
-  }, {
-    key: 'generateMenusHtml',
-    value: function generateMenusHtml(nodes, prefix) {
-      var _config5 = this.config,
-          menuClsPrefix = _config5.menuClsPrefix,
-          menuCls = _config5.menuCls;
-
-      var html = '';
-      if (nodes && nodes.length > 0) {
-        html = '<ul class="' + menuClsPrefix + ' ' + menuClsPrefix + '-catalogue' + (menuCls ? ' ' + menuCls : '') + '">';
-        for (var i = 0, len = nodes.length; i < len; i++) {
-          var node = nodes[i];
-          // 为对应的内容加锚点
-          var newChild = document.createElement('a');
-          newChild.id = prefix + (i + 1);
-          newChild.className = menuClsPrefix + '-anchor';
-          if (this.config.anchor) {
-            newChild.href = '#' + (prefix + (i + 1));
-          } else {
-            newChild.dataset.menu = '' + (prefix + (i + 1));
-          }
-
-          newChild.setAttribute('aria-hidden', true);
-          node.el.insertBefore(newChild, node.el.firstChild);
-
-          html += '<li>';
-          if (this.config.anchor) {
-            html += '<a class="' + menuClsPrefix + '-title" href="#' + prefix + (i + 1) + '">' + node.text + '</a>';
-          } else {
-            // 用 data-target 来控制，需要结合 js 来控制
-            html += '<a class="' + menuClsPrefix + '-title" data-target="' + prefix + (i + 1) + '" href="#">' + node.text + '</a>';
-          }
-          if (node.children && node.children.length > 0) {
-            html += this.generateMenusHtml(node.children, '' + prefix + (i + 1) + '-');
-          }
-          html += '</li>';
-        }
-        html += '</ul>';
-      }
-      return html;
-    }
-
-    /**
-     * 滚动页面时，刷新相关数据
-     */
-
-  }, {
-    key: 'refresh',
-    value: function refresh() {
-      var _this2 = this;
-
-      var offsetMethod = this.config.offsetMethod;
-
-      var offsetBase = offsetMethod === 'position' ? this.getScrollTop() : 0;
-
-      this.offsets = [];
-      this.targets = [];
-      this.scrollHeight = this.getScrollHeight();
-
-      // 把滚动监听的元素和坐标保存到offsets和targets中
-      var menuElements = doc.querySelectorAll(this.menuSelector);
-
-      map.call(menuElements, function (element) {
-        // 目标元素
-        var target = null;
-        var _config6 = _this2.config,
-            anchor = _config6.anchor,
-            container = _config6.container;
-
-        var selector = anchor ? element.getAttribute('href') : element.dataset.menu;
-        var targetSelector = anchor ? element.getAttribute('href') : container + ' [data-target="' + element.dataset.menu + '"]';
-
-        if (targetSelector) {
-          target = doc.querySelector(targetSelector).parentNode;
-          var targetBCR = target.getBoundingClientRect();
-          if (targetBCR.width || targetBCR.height) {
-            return [(offsetMethod === 'offset' ? (0, _util.offset)(target).top : (0, _util.position)(target).top) + offsetBase, selector];
-          }
-        }
-        return null;
-      }).sort(function (a, b) {
-        if (!a || !b) {
-          return 0;
-        }
-        return a[0] - b[0];
-      }).forEach(function (item) {
-        if (item) {
-          _this2.offsets.push(item[0]);
-          _this2.targets.push(item[1]);
-        }
-      });
-    }
-
-    // 鼠标滚动事件
-
-  }, {
-    key: 'process',
-
-
-    /**
-     * 滚动时触发该方法
-     * @returns {boolean|*}
-     */
-    value: function process() {
-      // 需要加 1 微调
-      var scrollTop = this.getScrollTop() + this.config.offset + 1;
-      var scrollHeight = this.getScrollHeight();
-      var maxScroll = this.config.offset + scrollHeight - this.getOffsetHeight();
-
-      // 不相等的话，重新刷新，比如改变页面窗口后
-      if (this.scrollHeight !== scrollHeight) {
-        this.refresh();
-      }
-
-      // 滑到底部
-      if (scrollTop >= maxScroll) {
-        // 取最后一个
-        var target = this.targets[this.targets.length - 1];
-
-        if (this.activeTarget !== target) {
-          this.activate(target);
-        }
-        return;
-      }
-
-      // 滑到头部
-      if (this.activeTarget && scrollTop < this.offsets[0] && this.offsets[0] > 0) {
-        this.activeTarget = null;
-        this.clearActiveCls();
-        return;
-      }
-
-      for (var i = this.offsets.length; i--;) {
-        var isActiveTarget = this.activeTarget !== this.targets[i] && scrollTop >= this.offsets[i] && (this.offsets[i + 1] === undefined || scrollTop < this.offsets[i + 1]);
-
-        if (isActiveTarget) {
-          this.activate(this.targets[i]);
-        }
-      }
-    }
-
-    /**
-     * 设置当前活动的内容
-     * @param target
-     */
-
-  }, {
-    key: 'activate',
-    value: function activate(target) {
-      this.activeTarget = target;
-
-      this.clearActiveCls();
-
-      var anchor = this.config.anchor;
-
-      var queries = this.menuSelector.split(',');
-      var lastSelector = []; // 最后一个菜单项，即当前的子节点
-      // 当前选中的和父目录都添加活动样式
-      var parentEls = target.split('-');
-      queries = queries.map(function (query) {
-        var selector = [];
-        var catalog = '';
-        parentEls.forEach(function (it, index) {
-          if (index === 0) {
-            catalog += it;
-          } else {
-            catalog += '-' + it;
-            selector.push(anchor ? query + '[href="' + catalog + '"]' : query + '[data-menu="' + catalog + '"]');
-          }
-        });
-        lastSelector.push(selector[selector.length - 1]);
-        return selector.join(',');
-      });
-
-      var $link = doc.querySelectorAll(queries.join(','));
-
-      for (var i = 0, len = $link.length; i < len; i++) {
-        $link[i].classList.add('active');
-      }
-
-      this.plugins.forEach(function (plugin) {
-        if (typeof plugin.scrollMenu === 'function') {
-          plugin.scrollMenu(lastSelector);
-        }
-      });
-
-      // todo 事件，待补充
-
-      /* $(this._scrollElement).trigger(Event.ACTIVATE, {
-       relatedTarget: target
-       }) */
-    }
-  }, {
-    key: 'clearActiveCls',
-    value: function clearActiveCls() {
-      // 删除当前活动样式
-      var activeEls = doc.querySelectorAll(this.menuSelector + '.active');
-      if (activeEls) {
-        for (var i = 0, len = activeEls.length; i < len; i++) {
-          activeEls[i].classList.remove('active');
-        }
-      }
-    }
-
-    // 卸载
-
-  }, {
-    key: 'unmount',
-    value: function unmount() {
-      // $.removeData(this._element, DATA_KEY)
-      this.scrollElement.removeEventListener(_util.isWheel ? 'mousewheel' : 'DOMMouseScroll', this.scrollEvent, false);
-
-      this.element = null;
-      this.scrollElement = null;
-      this.config = null;
-      this.menu = null;
-      this.menuSelector = null;
-      this.container = null;
-      this.offsets = null;
-      this.targets = null;
-      this.activeTarget = null;
-      this.scrollHeight = null;
-
-      // 卸载插件
-      if (this.plugins) {
-        this.plugins.forEach(function (plugin) {
-          plugin.unmount();
-        });
-        this.plugins = null;
-      }
-    }
-  }, {
-    key: 'getScrollTop',
-    value: function getScrollTop() {
-      return this.scrollElement === win ? this.scrollElement.pageYOffset : this.scrollElement.scrollTop;
-    }
-  }, {
-    key: 'getScrollHeight',
-    value: function getScrollHeight() {
-      return this.scrollElement.scrollHeight || Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
-    }
-  }, {
-    key: 'getOffsetHeight',
-    value: function getOffsetHeight() {
-      return this.scrollElement === win ? win.innerHeight : this.scrollElement.getBoundingClientRect().height;
-    }
-  }]);
-
-  return ScrollSpy;
-}();
-
-ScrollSpy.defaultConfig = {
-  offset: 0,
-  method: 'auto',
-  menu: '', // 菜单导航
-  menuCls: null, // 自定义菜单样式
-  menuClsPrefix: 'menu', // 菜单样式前缀
-  container: null, // 需要监听的内容容器
-  immedLoad: true, // 是否立即监听，如果设为 false， 则通过滑动鼠标来激活监听
-  prefix: 'menu-', // 导航目录前缀
-  anchor: true, // 是否用锚点来控制，默认用锚点处理
-  animation: true, // 是否开启动画
-  extend: false // 默认菜单没有展开
-};
-exports.default = ScrollSpy;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _util = __webpack_require__(1);
-
-var _util2 = _interopRequireDefault(_util);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var isWheel = _util2.default.isWheel;
-
-
-var win = window;
-var doc = document;
-var resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize';
-
-var reg = /translateY\(([-\w]+)\)/;
-
-var CatalogueSpy = function () {
-  function CatalogueSpy(scrollSpy) {
-    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, CatalogueSpy);
-
-    _initialiseProps.call(this);
-
-    this.scrollSpy = scrollSpy;
-    this.config = _extends({}, CatalogueSpy.defaultConfig, config);
-
-    var menuHeight = this.config.menuHeight;
-
-    if (!menuHeight) {
-      menuHeight = document.documentElement.clientHeight - 64;
-      this.config.menuHeight = menuHeight;
-    }
-
-    var $menuPanel = scrollSpy.$menuPanel;
-
-    $menuPanel.style.transform = 'translateY(0)';
-    $menuPanel.style.maxHeight = menuHeight + 'px';
-    this.$menuPanel = $menuPanel;
-
-    win.addEventListener(resizeEvt, this.adjustMenuHeight, false);
-  }
-
-  // 调整菜单最大高度
-
-
-  _createClass(CatalogueSpy, [{
-    key: 'mount',
-    value: function mount() {
-      // fixme 待改进，改成 scrollSpy 触发该事件，参考 web-guide 项目
-      // http://www.zhangxinxu.com/wordpress/2013/04/js-mousewheel-dommousescroll-event/
-      this.$menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleScroll(true), false);
-    }
-
-    // 当定位到某一个菜单项时，而由于限制了高度，该菜单有可能不在可视范围内
-
-  }, {
-    key: 'unmount',
-    value: function unmount() {
-      console.info('待补充');
-      win.removeEventListener(resizeEvt, this.adjustMenuHeight, false);
-    }
-  }]);
-
-  return CatalogueSpy;
-}();
-
-CatalogueSpy.defaultConfig = {
-  menuHeight: null, // 设置菜单高度，如果不设置，则取当前浏览器可视高度
-  step: 30 // 滚动鼠标，菜单滑动步长
-};
-
-var _initialiseProps = function _initialiseProps() {
-  var _this = this;
-
-  this.adjustMenuHeight = function () {
-    var menuHeight = doc.documentElement.clientHeight - 64;
-    _this.$menuPanel.style.maxHeight = menuHeight + 'px';
-  };
-
-  this.handleScroll = function (prevent) {
-    /*eslint-disable complexity*/
-    return function (event) {
-      var _$menuPanel = _this.$menuPanel,
-          scrollHeight = _$menuPanel.scrollHeight,
-          clientHeight = _$menuPanel.clientHeight;
-      var step = _this.config.step;
-
-      _this.maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
-
-      // 判断鼠标滑轮向上还是向下滑动
-      var upDown = void 0;
-      var detail = event.detail,
-          wheelDelta = event.wheelDelta;
-
-      if (detail) {
-        if (detail < 0) {
-          // up
-          upDown = 'up';
-        } else if (detail > 0) {
-          // down
-          upDown = 'down';
-        }
-      } else if (wheelDelta) {
-        //
-        if (wheelDelta > 0) {
-          // up
-          upDown = 'up';
-        }
-        if (wheelDelta < 0) {
-          // down
-          upDown = 'down';
-        }
-      }
-
-      var transform = _this.$menuPanel.style.transform;
-
-
-      var y = reg.exec(transform);
-      y = y ? parseFloat(y[1], 10) : 0;
-
-      if (prevent && _this.maxOffset > 0 && (upDown === 'down' && Math.abs(y) < _this.maxOffset || upDown === 'up' && y > 0)) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-
-      if (upDown === 'up' && y === 0 || upDown === 'down' && Math.abs(y) === _this.maxOffset) {
-        return;
-      }
-
-      if (upDown === 'up' && y < 0) {
-        _this.$menuPanel.style.transform = 'translateY(' + Math.min(y + step, 0) + 'px)';
-      } else if (upDown === 'down' && Math.abs(y) < _this.maxOffset) {
-        _this.$menuPanel.style.transform = 'translateY(' + Math.max(y - step, -_this.maxOffset) + 'px)';
-      }
-    };
-  };
-
-  this.scrollMenu = function (lastSelector) {
-    var step = _this.config.step;
-    var $menuPanel = _this.$menuPanel;
-    var scrollHeight = $menuPanel.scrollHeight,
-        clientHeight = $menuPanel.clientHeight;
-
-    var maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
-    if (maxOffset === 0) {
-      return;
-    }
-    maxOffset += 1; // 由于计算偏差，需要微调1个像素
-    // 如果当前菜单项隐藏，则向上拉
-    // Fixme 注意这里还需计算 $menuPanel.parentElement padding 和 border 的值，待处理
-    var menuRect = $menuPanel.parentElement.getBoundingClientRect();
-    var currentTarget = doc.querySelectorAll(lastSelector.join(','));
-    if (currentTarget) {
-      Array.prototype.forEach.call(currentTarget, function (el) {
-        var rect = el.getBoundingClientRect();
-        while (rect.top > 0 && rect.bottom > 0 && (rect.top < menuRect.top || rect.bottom > menuRect.bottom)) {
-          // 向上移动
-          var transform = $menuPanel.style.transform;
-
-          var y = reg.exec(transform);
-          y = y ? parseFloat(y[1], 10) : 0;
-          if (rect.top < menuRect.top) {
-            $menuPanel.style.transform = 'translateY(' + Math.min(y + step, 0) + 'px)';
-          } else {
-            $menuPanel.style.transform = 'translateY(' + Math.max(y - step, -maxOffset) + 'px)';
-          }
-          rect = el.getBoundingClientRect();
-        }
-      });
-    }
-  };
-};
-
-exports.default = CatalogueSpy;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(0);
+var _component = __webpack_require__(/*! ../base/component */ "./components/base/component.js");
 
 var _component2 = _interopRequireDefault(_component);
 
-var _util = __webpack_require__(7);
+var _util = __webpack_require__(/*! ./util */ "./components/ripple/util.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2746,7 +3113,12 @@ var Ripple = function (_Component) {
 exports.default = Ripple;
 
 /***/ }),
-/* 7 */
+
+/***/ "./components/ripple/util.js":
+/*!***********************************!*\
+  !*** ./components/ripple/util.js ***!
+  \***********************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2902,7 +3274,12 @@ exports.getMatchesProperty = getMatchesProperty;
 exports.getNormalizedEventCoords = getNormalizedEventCoords;
 
 /***/ }),
-/* 8 */
+
+/***/ "./components/scroll-spy/plugins/catalogueSpy.js":
+/*!*******************************************************!*\
+  !*** ./components/scroll-spy/plugins/catalogueSpy.js ***!
+  \*******************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2911,1054 +3288,728 @@ exports.getNormalizedEventCoords = getNormalizedEventCoords;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-/** @type {string|undefined} */
-var storedTransformPropertyName = void 0;
-
-/**
- * Returns the name of the correct transform property to use on the current browser.
- * 返回 transform 兼容性写法
- * @param {!Window} globalObj
- * @param {boolean=} forceRefresh
- * @return {string}
- */
-function getTransformPropertyName(globalObj) {
-  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  if (storedTransformPropertyName === undefined || forceRefresh) {
-    var el = globalObj.document.createElement('div');
-    storedTransformPropertyName = 'transform' in el.style ? 'transform' : 'webkitTransform';
-  }
-
-  return storedTransformPropertyName;
-}
-
-/**
- * 如果 value 落在 min 和 max 之间则返回 value，否则小于 min 则返回 min， 大于 max 则返回 max
- * 比如 min=0，max=1，value=0.5，则返回 0.5
- * 比如 min=0，max=1，value=3，则返回 1
- * 比如 min=0，max=1，value=-0.5，则返回 0
- * @param {number} value
- * @param {number} min
- * @param {number} max
- * @return {number}
- */
-function clamp(value) {
-  var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-
-  return Math.min(max, Math.max(min, value));
-}
-
-/**
- * Returns the easing value to apply at time t, for a given cubic bezier curve.
- * Control points P0 and P3 are assumed to be (0,0) and (1,1), respectively.
- * Parameters are as follows:
- * - time: The current time in the animation, scaled between 0 and 1.
- * - x1: The x value of control point P1.
- * - y1: The y value of control point P1.
- * - x2: The x value of control point P2.
- * - y2: The y value of control point P2.
- * @param {number} time
- * @param {number} x1
- * @param {number} y1
- * @param {number} x2
- * @param {number} y2
- * @return {number}
- */
-function bezierProgress(time, x1, y1, x2, y2) {
-  return getBezierCoordinate(solvePositionFromXValue(time, x1, x2), y1, y2);
-}
-
-/**
- * Compute a single coordinate at a position point between 0 and 1.
- * c1 and c2 are the matching coordinate on control points P1 and P2, respectively.
- * Control points P0 and P3 are assumed to be (0,0) and (1,1), respectively.
- * Adapted from https://github.com/google/closure-library/blob/master/closure/goog/math/bezier.js.
- * @param {number} t
- * @param {number} c1
- * @param {number} c2
- * @return {number}
- */
-function getBezierCoordinate(t, c1, c2) {
-  // Special case start and end.
-  if (t === 0 || t === 1) {
-    return t;
-  }
-
-  // Step one - from 4 points to 3
-  var ic0 = t * c1;
-  var ic1 = c1 + t * (c2 - c1);
-  var ic2 = c2 + t * (1 - c2);
-
-  // Step two - from 3 points to 2
-  ic0 += t * (ic1 - ic0);
-  ic1 += t * (ic2 - ic1);
-
-  // Final step - last point
-  return ic0 + t * (ic1 - ic0);
-}
-
-/**
- * Project a point onto the Bezier curve, from a given X. Calculates the position t along the curve.
- * Adapted from https://github.com/google/closure-library/blob/master/closure/goog/math/bezier.js.
- * @param {number} xVal
- * @param {number} x1
- * @param {number} x2
- * @return {number}
- */
-function solvePositionFromXValue(xVal, x1, x2) {
-  var epsilon = 1e-6;
-  var maxIterations = 8; // 迭代次数
-
-  if (xVal <= 0) {
-    return 0;
-  } else if (xVal >= 1) {
-    return 1;
-  }
-
-  // Initial estimate of t using linear interpolation.
-  var t = xVal;
-
-  // Try gradient descent to solve for t. If it works, it is very fast.
-  var tMin = 0;
-  var tMax = 1;
-  var value = 0;
-  for (var i = 0; i < maxIterations; i++) {
-    value = getBezierCoordinate(t, x1, x2);
-    var derivative = (getBezierCoordinate(t + epsilon, x1, x2) - value) / epsilon;
-    if (Math.abs(value - xVal) < epsilon) {
-      return t;
-    } else if (Math.abs(derivative) < epsilon) {
-      break;
-    } else {
-      if (value < xVal) {
-        tMin = t;
-      } else {
-        tMax = t;
-      }
-      t -= (value - xVal) / derivative;
-    }
-  }
-
-  // If the gradient descent got stuck in a local minimum, e.g. because
-  // the derivative was close to 0, use a Dichotomy refinement instead.
-  // We limit the number of interations to 8.
-  for (var _i = 0; Math.abs(value - xVal) > epsilon && _i < maxIterations; _i++) {
-    if (value < xVal) {
-      tMin = t;
-      t = (t + tMax) / 2;
-    } else {
-      tMax = t;
-      t = (t + tMin) / 2;
-    }
-    value = getBezierCoordinate(t, x1, x2);
-  }
-  return t;
-}
-
-// 返回当前元素在父元素中的索引 index，是否过滤掉分隔符 list-divider，默认过滤
-function getElementIndexOfParent(element, filter) {
-  var parentNode = element.parentNode;
-  var children = parentNode.children;
-  var index = 0;
-  for (var i = 0, len = children.length; i < len; i++) {
-    if (filter && children[i].classList.contains(filter)) {
-      continue;
-    }
-    if (children[i] === element) {
-      return index;
-    }
-    index++;
-  }
-  return -1;
-}
-
-exports.getTransformPropertyName = getTransformPropertyName;
-exports.clamp = clamp;
-exports.bezierProgress = bezierProgress;
-exports.getElementIndexOfParent = getElementIndexOfParent;
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.strings = exports.classes = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _component = __webpack_require__(0);
-
-var _component2 = _interopRequireDefault(_component);
-
-var _listMenu = __webpack_require__(2);
-
-var _listMenu2 = _interopRequireDefault(_listMenu);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var win = window;
-var dom = document;
-var body = dom.body;
-
-// 返回已选中的根 root option
-function getRootSelectedOption(el) {
-  var parentEl = el.parentNode.parentNode;
-  if (parentEl.classList.contains('list-menu')) {
-    return el;
-  }
-  return getRootSelectedOption(parentEl);
-}
-
-// 定义常量
-// class 样式
-var classes = exports.classes = {
-  ELEMENT: 'select',
-  DISABLED: 'select-disabled',
-  OPEN: 'select-open',
-  SCROLL_LOCK: 'select-scroll-lock',
-  SELECT_MENU_FIXED: 'select-menu-fixed'
-};
-
-var strings = exports.strings = {
-  SELECT_INNER: '.select-inner',
-  CHANGE_EVENT: 'select:change',
-  SELECT_MENU: '.select-menu',
-  SELECT_SELECTED_TEXT: '.select-selected-text'
-};
-
-var openerKeys = [{ key: 'ArrowUp', keyCode: 38, forType: 'keydown' }, { key: 'ArrowDown', keyCode: 40, forType: 'keydown' }, { key: 'Space', keyCode: 32, forType: 'keyup' }];
-
-var Select = function (_Component) {
-  _inherits(Select, _Component);
-
-  _createClass(Select, [{
-    key: 'valueText',
-
-
-    // 返回当前选中的 value 和 text
-    get: function get() {
-      return this.getSelectedValue ? this.getSelectedValue() : '';
-    }
-  }, {
-    key: 'options',
-    get: function get() {
-      // 返回叶子节点作为 options
-      return this.menu.leafItems;
-    }
-
-    // 返回已经选中的 select option，只处理可以多选的 select，FIXME
-
-  }, {
-    key: 'selectedOptions',
-    get: function get() {
-      return this.element.querySelectorAll('[aria-selected]');
-    }
-  }], [{
-    key: 'mount',
-
-
-    /**
-     * 静态方法实例化 Select 组件
-     * @param element
-     * @param config
-     * @returns {Select}
-     */
-    value: function mount(element, config) {
-      return new Select(element, config);
-    }
-  }, {
-    key: 'classes',
-    get: function get() {
-      return classes;
-    }
-  }, {
-    key: 'strings',
-    get: function get() {
-      return strings;
-    }
-  }]);
-
-  function Select(element, config) {
-    _classCallCheck(this, Select);
-
-    // 创建适配器
-    var _this = _possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).call(this, element, config));
-
-    _this.displayHandler = function (evt) {
-      evt.preventDefault();
-      if (!_this.adapter.isMenuOpen()) {
-        _this.open();
-      }
-    };
-
-    _this.selectionHandler = function (_ref) {
-      var detail = _ref.detail;
-      var index = detail.index,
-          items = detail.items;
-
-      // 如果不相等
-
-      if (!_this.compareSelectedIndex(index)) {
-        var len = items.length;
-        var leafIndex = _this.adapter.getLeafOptionIndex(items[len - 1]);
-        _this.setSelectedIndex(leafIndex);
-        _this.adapter.notifyChange();
-      }
-      _this.close();
-    };
-
-    _this.cancelHandler = function () {
-      _this.close();
-    };
-
-    _this.adapter = _this.createAdapter();
-
-    _this.selectedIndex = -1; // 已选的 select option，指叶子节点索引
-    _this.disabled = false; // 是否禁用
-    _this.isFocused = false; // 获取焦点
-
-    // 如果没有已选中的 option，是否默认选中第一个
-    if (_this.selectedFirstOption === undefined) {
-      _this.selectedFirstOption = true;
-    }
-
-    // 是否滚动锁屏
-    if (_this.isScrollLock === undefined) {
-      _this.isScrollLock = true;
-    }
-
-    // 是否设置 select 为 fixed
-    if (_this.isFixed === undefined) {
-      _this.isFixed = true;
-    }
-
-    // 提供一个默认获取 select value 和 text 方法
-    if (!_this.getSelectedValue) {
-      _this.getSelectedValue = function (isText) {
-        var selectedIndex = _this.selectedIndex;
-
-        if (selectedIndex > -1) {
-          // 返回叶子节点 data-value 设置的值
-          return {
-            value: _this.options[selectedIndex].dataset.value,
-            text: _this.adapter.getTextForOptionAtIndex(selectedIndex)
-          };
-        }
-        return {};
-      };
-    }
-
-    _this.render();
-    _this.initialSyncWithDOM();
-    return _this;
-  }
-
-  /**
-   * 封装适配器方法
-   * @return {object}
-   */
-
-
-  _createClass(Select, [{
-    key: 'createAdapter',
-    value: function createAdapter() {
-      var _this2 = this;
-
-      return {
-        addClass: function addClass(className) {
-          return _this2.element.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return _this2.element.classList.remove(className);
-        },
-        setAttr: function setAttr(attr, value) {
-          return _this2.element.setAttribute(attr, value);
-        },
-        rmAttr: function rmAttr(attr) {
-          return _this2.element.removeAttribute(attr);
-        },
-        computeBoundingRect: function computeBoundingRect() {
-          return _this2.selectInner.getBoundingClientRect();
-        },
-        focus: function focus() {
-          return _this2.selectInner.focus();
-        },
-        makeTabbable: function makeTabbable() {
-          _this2.selectInner.tabIndex = 0;
-        },
-        makeUntabbable: function makeUntabbable() {
-          _this2.selectInner.tabIndex = -1;
-        },
-        setMenuElStyle: function setMenuElStyle(propertyName, value) {
-          return _this2.menuEl.style.setProperty(propertyName, value);
-        },
-        setMenuElAttr: function setMenuElAttr(attr, value) {
-          return _this2.menuEl.setAttribute(attr, value);
-        },
-        rmMenuElAttr: function rmMenuElAttr(attr) {
-          return _this2.menuEl.removeAttribute(attr);
-        },
-        getMenuElOffsetHeight: function getMenuElOffsetHeight() {
-          return _this2.menuEl.offsetHeight;
-        },
-        openMenu: function openMenu(focusIndex) {
-          return _this2.menu.show({ focusIndex: focusIndex });
-        },
-        isMenuOpen: function isMenuOpen() {
-          return _this2.menu.open;
-        },
-        setSelectedTextContent: function setSelectedTextContent(selectedTextContent) {
-          _this2.selectedText.textContent = selectedTextContent;
-        },
-        getNumberOfOptions: function getNumberOfOptions() {
-          return _this2.options.length;
-        },
-        getTextForOptionAtIndex: function getTextForOptionAtIndex(index) {
-          return _this2.options[index].textContent;
-        },
-        setAttrForOptionAtIndex: function setAttrForOptionAtIndex(index, attr, value) {
-          return _this2.options[index].setAttribute(attr, value);
-        },
-        rmAttrForOptionAtIndex: function rmAttrForOptionAtIndex(index, attr) {
-          return _this2.options[index].removeAttribute(attr);
-        },
-        getLeafOptionIndex: function getLeafOptionIndex(item) {
-          var len = _this2.options.length;
-          for (var i = 0; i < len; i++) {
-            if (_this2.options[i] === item) {
-              return i;
-            }
-          }
-          return -1;
-        },
-        notifyChange: function notifyChange() {
-          var menu = _this2.menu;
-          _this2.emit(strings.CHANGE_EVENT, {
-            index: menu.previousActiveItemsIndex,
-            items: menu.previousActiveItems,
-            valueText: _this2.valueText
-          });
-        },
-        getWindowInnerHeight: function getWindowInnerHeight() {
-          return win.innerHeight;
-        },
-        addBodyClass: function addBodyClass(className) {
-          return body.classList.add(className);
-        },
-        removeBodyClass: function removeBodyClass(className) {
-          return body.classList.remove(className);
-        }
-      };
-    }
-
-    // 默认 menuFactory 为 ListMenu
-
-  }, {
-    key: 'init',
-    value: function init() {
-      var menuFactory = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (el) {
-        return new _listMenu2.default(el);
-      };
-
-      this.selectInner = this.element.querySelector(strings.SELECT_INNER);
-      this.selectedText = this.element.querySelector(strings.SELECT_SELECTED_TEXT);
-      this.menuEl = this.element.querySelector(strings.SELECT_MENU);
-      this.menu = menuFactory(this.menuEl);
-    }
-  }, {
-    key: 'initialSyncWithDOM',
-    value: function initialSyncWithDOM() {
-      // 设置当前活动的 index
-      var selectedOption = this.selectedOptions[0];
-      var idx = selectedOption ? this.options.indexOf(selectedOption) : this.selectedFirstOption ? 0 : -1;
-
-      if (idx > -1) {
-        this.selectedIndex = idx;
-        this.menu.setActiveItemAtIndex(idx);
-      }
-
-      // 设置禁用
-      if (this.element.getAttribute('aria-disabled') === 'true') {
-        this.disabled = true;
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      if (this.isFixed) {
-        this.menuEl.classList.add(classes.SELECT_MENU_FIXED);
-      }
-      this.addEventListeners();
-    }
-  }, {
-    key: 'unmount',
-    value: function unmount() {
-      this.removeEventListeners();
-    }
-
-    // 设置监听事件
-
-  }, {
-    key: 'addEventListeners',
-    value: function addEventListeners() {
-      this.selectInner.addEventListener('click', this.displayHandler);
-      this.selectInner.addEventListener('keydown', this.handleDisplayKeyboard);
-      this.selectInner.addEventListener('keyup', this.handleDisplayKeyboard);
-
-      // 监听 ListMenu 事件
-      this.menu.listen(_listMenu2.default.strings.SELECTED_EVENT, this.selectionHandler);
-      this.menu.listen(_listMenu2.default.strings.CANCEL_EVENT, this.cancelHandler);
-    }
-
-    // 删除事件
-
-  }, {
-    key: 'removeEventListeners',
-    value: function removeEventListeners() {
-      this.selectInner.removeEventListener('click', this.displayHandler);
-      this.selectInner.removeEventListener('keydown', this.handleDisplayKeyboard);
-      this.selectInner.removeEventListener('keyup', this.handleDisplayKeyboard);
-
-      // 监听 ListMenu 事件
-      this.menu.unlisten(_listMenu2.default.strings.SELECTED_EVENT, this.selectionHandler);
-      this.menu.unlisten(_listMenu2.default.strings.CANCEL_EVENT, this.cancelHandler);
-    }
-  }, {
-    key: 'item',
-    value: function item(index) {
-      return this.options[index] || null;
-    }
-  }, {
-    key: 'handleDisplayKeyboard',
-    value: function handleDisplayKeyboard(evt) {
-      // We use a hard-coded 2 instead of Event.AT_TARGET to avoid having to reference a browser
-      // global.
-      var EVENT_PHASE_AT_TARGET = 2;
-      if (evt.eventPhase !== EVENT_PHASE_AT_TARGET) {
-        return;
-      }
-
-      // Prevent pressing space down from scrolling the page
-      var isSpaceDown = evt.type === 'keydown' && (evt.key === 'Space' || evt.keyCode === 32);
-      if (isSpaceDown) {
-        evt.preventDefault();
-      }
-
-      var isOpenerKey = openerKeys.some(function (_ref2) {
-        var key = _ref2.key,
-            keyCode = _ref2.keyCode,
-            forType = _ref2.forType;
-
-        return evt.type === forType && (evt.key === key || evt.keyCode === keyCode);
-      });
-
-      if (isOpenerKey) {
-        this.displayHandler(evt);
-      }
-    }
-
-    // ListMenu SELECTED_EVENT 事件
-
-  }, {
-    key: 'getSelectedIndex',
-    value: function getSelectedIndex() {
-      return this.selectedIndex;
-    }
-  }, {
-    key: 'setSelectedIndex',
-    value: function setSelectedIndex(index) {
-      // 先删除上一次选择的 option
-      var prevSelectedIndex = this.selectedIndex;
-      if (prevSelectedIndex >= 0) {
-        this.adapter.rmAttrForOptionAtIndex(this.selectedIndex, 'aria-selected');
-      }
-
-      this.selectedIndex = index >= 0 && index < this.adapter.getNumberOfOptions() ? index : -1;
-      var selectedTextContent = '';
-      if (this.selectedIndex >= 0) {
-        selectedTextContent = this.adapter.getTextForOptionAtIndex(this.selectedIndex).trim();
-        this.adapter.setAttrForOptionAtIndex(this.selectedIndex, 'aria-selected', 'true');
-      }
-      this.adapter.setSelectedTextContent(selectedTextContent);
-    }
-  }, {
-    key: 'isDisabled',
-    value: function isDisabled() {
-      return this.disabled;
-    }
-  }, {
-    key: 'setDisabled',
-    value: function setDisabled(disabled) {
-      var DISABLED = classes.DISABLED;
-
-      this.disabled = disabled;
-      if (this.disabled) {
-        this.adapter.addClass(DISABLED);
-        this.adapter.setAttr('aria-disabled', 'true');
-        this.adapter.makeUntabbable();
-      } else {
-        this.adapter.removeClass(DISABLED);
-        this.adapter.rmAttr('aria-disabled');
-        this.adapter.makeTabbable();
-      }
-    }
-  }, {
-    key: 'open',
-    value: function open() {
-      if (this.isScrollLock) {
-        this.disableScroll();
-      }
-      var OPEN = classes.OPEN;
-      // 根据已选的叶子节点 this.selectedIndex 拿到第一层 select item
-
-      var focusIndex = this.selectedIndex < 0 ? 0 : this.selectedIndex;
-      if (this.isFixed) {
-        var selectedRootOption = getRootSelectedOption(this.options[focusIndex]);
-        this.setMenuStylesForOpen(selectedRootOption);
-      }
-      this.adapter.addClass(OPEN);
-      this.adapter.openMenu(focusIndex);
-      this.isFocused = true;
-    }
-  }, {
-    key: 'close',
-    value: function close() {
-      var OPEN = classes.OPEN;
-
-      this.adapter.removeClass(OPEN);
-      this.adapter.focus();
-      if (this.isScrollLock) {
-        this.enableScroll();
-      }
-    }
-  }, {
-    key: 'setMenuStylesForOpen',
-    value: function setMenuStylesForOpen(selectedRootOption) {
-      var innerHeight = this.adapter.getWindowInnerHeight();
-
-      var _adapter$computeBound = this.adapter.computeBoundingRect(),
-          left = _adapter$computeBound.left,
-          top = _adapter$computeBound.top;
-
-      this.adapter.setMenuElAttr('aria-hidden', 'true');
-      this.adapter.setMenuElStyle('display', 'block');
-      var menuHeight = this.adapter.getMenuElOffsetHeight();
-      var itemOffsetTop = selectedRootOption.offsetTop;
-      this.adapter.setMenuElStyle('display', '');
-      this.adapter.rmMenuElAttr('aria-hidden');
-
-      var adjustedTop = top - itemOffsetTop;
-      var overflowsTop = adjustedTop < 0;
-      var overflowsBottom = adjustedTop + menuHeight > innerHeight;
-      if (overflowsTop) {
-        adjustedTop = 0;
-      } else if (overflowsBottom) {
-        adjustedTop = Math.max(0, innerHeight - menuHeight);
-      }
-
-      this.adapter.setMenuElStyle('left', left + 'px');
-      this.adapter.setMenuElStyle('top', adjustedTop + 'px');
-      this.adapter.setMenuElStyle('transform-origin', 'center ' + itemOffsetTop + 'px');
-    }
-  }, {
-    key: 'nameditem',
-    value: function nameditem(key) {
-      // NOTE: IE11 precludes us from using Array.prototype.find
-      for (var i = 0, options = this.options, option; option = options[i]; i++) {
-        if (option.id === key || option.getAttribute('name') === key) {
-          return option;
-        }
-      }
-      return null;
-    }
-  }, {
-    key: 'disableScroll',
-    value: function disableScroll() {
-      this.adapter.addBodyClass(classes.SCROLL_LOCK);
-    }
-  }, {
-    key: 'enableScroll',
-    value: function enableScroll() {
-      this.adapter.removeBodyClass(classes.SCROLL_LOCK);
-    }
-  }, {
-    key: 'compareSelectedIndex',
-    value: function compareSelectedIndex(index) {
-      if (!this.selectedIndex || !index) {
-        return false;
-      }
-      if (this.selectedIndex.length !== index.length) {
-        return false;
-      }
-      var len = index.length;
-      for (var i = 0; i < len; i++) {
-        if (this.selectedIndex[i] !== index[i]) {
-          return false;
-        }
-      }
-      return true;
-    }
-  }]);
-
-  return Select;
-}(_component2.default);
-
-exports.default = Select;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.strings = exports.classes = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _component = __webpack_require__(0);
+var _util = __webpack_require__(/*! ../../base/util */ "./components/base/util.js");
 
-var _component2 = _interopRequireDefault(_component);
+var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+var isWheel = _util2.default.isWheel;
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var win = window;
-var dom = document;
-var body = dom.body;
+var doc = document;
+var resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize';
 
-// 定义常量
-// class 样式
-var classes = exports.classes = {
-  PAGING_ITEM: 'paging-item',
-  DISABLED: 'select-disabled',
-  OPEN: 'select-open',
-  SCROLL_LOCK: 'select-scroll-lock',
-  SELECT_MENU_FIXED: 'select-menu-fixed'
-};
+var reg = /translateY\(([-\w]+)\)/;
 
-var strings = exports.strings = {
-  SELECT_INNER: '.select-inner',
-  CHANGE_EVENT: 'select:change',
-  SELECT_MENU: '.select-menu',
-  SELECT_SELECTED_TEXT: '.select-selected-text'
-};
+var CatalogueSpy = function () {
+  function CatalogueSpy(scrollSpy) {
+    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-var Paging = function (_Component) {
-  _inherits(Paging, _Component);
+    _classCallCheck(this, CatalogueSpy);
 
-  _createClass(Paging, null, [{
-    key: 'mount',
+    _initialiseProps.call(this);
 
+    this.scrollSpy = scrollSpy;
+    this.config = _extends({}, CatalogueSpy.defaultConfig, config);
 
-    /**
-     * 静态方法实例化 Paging 组件
-     * @param element
-     * @param config
-     * @returns {Select}
-     */
-    value: function mount(element, config) {
-      return new Paging(element, config);
-    }
-  }, {
-    key: 'classes',
-    get: function get() {
-      return classes;
+    var menuHeight = this.config.menuHeight;
+
+    if (!menuHeight) {
+      menuHeight = document.documentElement.clientHeight - 64;
+      this.config.menuHeight = menuHeight;
     }
 
-    /**
-     * pagingControl 控制是否显示数据信息 {Boolean}
-     * recordPerPage 是否显示改变每页记录数 {Boolean}
-     * jumpControl 是否显示跳至某一页 {Boolean}
-     * @type {{pagingControl: boolean, recordPerPage: boolean, jumpControl: boolean}}
-     */
+    var $menuPanel = scrollSpy.$menuPanel;
 
-  }, {
-    key: 'strings',
-    get: function get() {
-      return strings;
-    }
-  }]);
+    $menuPanel.style.transform = 'translateY(0)';
+    $menuPanel.style.maxHeight = menuHeight + 'px';
+    this.$menuPanel = $menuPanel;
 
-  function Paging(element, config) {
-    _classCallCheck(this, Paging);
-
-    // 当前页，从1开始，默认1
-    var _this = _possibleConstructorReturn(this, (Paging.__proto__ || Object.getPrototypeOf(Paging)).call(this, element, _extends({}, Paging.defaultConfig, config)));
-
-    _this.handleSwitchPage = function (evt) {
-      evt.preventDefault();
-      var target = evt.target;
-      var classList = target.classList;
-
-
-      if (classList.contains(classes.PAGING_ITEM)) {
-        // 切换下一页逻辑
-        var pageNum = parseInt(target.dataset.pagenum, 10);
-        _this.handleChangePage(pageNum);
-      } else if (classList.contains('js-jump-btn')) {
-        var input = target.parentNode.previousElementSibling.children[0].children[0];
-        var _pageNum = parseInt(input.value, 10);
-        if (!Number.isNaN(_pageNum)) {
-          _this.handleChangePage(_pageNum);
-        }
-      }
-    };
-
-    _this.handleChangePerPage = function (evt) {
-      evt.preventDefault();
-      var target = evt.target;
-      var classList = target.classList;
-
-
-      if (classList.contains('select-inner')) {
-        // 切换下一页逻辑
-        var pageSize = parseInt(target.value, 10);
-        _this.pageSize = pageSize;
-        _this.loadData();
-      }
-    };
-
-    if (_this.pageNum === undefined) {
-      _this.pageNum = 1;
-    }
-
-    // 每页条数，默认10
-    if (_this.pageSize === undefined) {
-      _this.pageSize = 10;
-    }
-
-    // 总页码
-    // this.totalPages
-
-    // 总记录数
-    // this.totalCount
-
-    // 加载数据回调函数
-    // this.loadPageData = function() {}
-
-    // 控制是否显示数据信息 {Boolean}
-    // this.pagingControl
-
-    // 是否显示改变每页记录数 {Boolean}
-    // this.recordPerPage
-
-    // 是否显示跳至某一页 {Boolean}
-    // this.jumpControl
-
-    // 创建适配器
-    _this.adapter = _this.createAdapter();
-
-    _this.render();
-    return _this;
+    win.addEventListener(resizeEvt, this.adjustMenuHeight, false);
   }
 
-  /**
-   * 封装适配器方法
-   * @return {object}
-   */
+  // 调整菜单最大高度
 
 
-  _createClass(Paging, [{
-    key: 'createAdapter',
-    value: function createAdapter() {
-      return {};
+  _createClass(CatalogueSpy, [{
+    key: 'mount',
+    value: function mount() {
+      // fixme 待改进，改成 scrollSpy 触发该事件，参考 web-guide 项目
+      // http://www.zhangxinxu.com/wordpress/2013/04/js-mousewheel-dommousescroll-event/
+      this.$menuPanel.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleScroll(true), false);
     }
-  }, {
-    key: 'init',
-    value: function init() {}
-  }, {
-    key: 'render',
-    value: function render() {
-      this.addEventListeners();
-      this.loadData();
-    }
+
+    // 当定位到某一个菜单项时，而由于限制了高度，该菜单有可能不在可视范围内
+
   }, {
     key: 'unmount',
     value: function unmount() {
-      this.removeEventListeners();
-    }
-
-    // 设置监听事件
-
-  }, {
-    key: 'addEventListeners',
-    value: function addEventListeners() {
-      this.element.addEventListener('click', this.handleSwitchPage);
-      this.element.addEventListener('change', this.handleChangePerPage);
-    }
-
-    // 删除事件
-
-  }, {
-    key: 'removeEventListeners',
-    value: function removeEventListeners() {
-      this.element.removeEventListener('click', this.handleSwitchPage);
-      this.element.addEventListener('change', this.handleChangePerPage);
-    }
-  }, {
-    key: 'loadData',
-    value: function loadData() {
-      var _this2 = this;
-
-      var pageNum = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-
-      // 渲染数据
-      if (this.loadPageData && typeof this.loadPageData === 'function') {
-        this.loadPageData(pageNum, this.pageSize).then(function (json) {
-          var _json$data = json.data,
-              totalCount = _json$data.totalCount,
-              totalPages = _json$data.totalPages;
-
-          _this2.totalPages = totalPages;
-          _this2.pageNum = pageNum;
-          _this2.totalCount = totalCount;
-          _this2.renderPaging();
-        });
-      } else {
-        this.pageNum = pageNum;
-        this.renderPaging();
-      }
-    }
-  }, {
-    key: 'handleChangePage',
-    value: function handleChangePage(pageNum) {
-      if (this.totalPages === 1) {
-        return;
-      }
-      if (pageNum <= 1) {
-        pageNum = 1;
-      }
-
-      if (pageNum >= this.totalPages) {
-        pageNum = this.totalPages;
-      }
-
-      this.loadData(pageNum);
-    }
-
-    /**
-     * 计算页码显示算法，返回一个页码数组
-     * @returns {Array}
-     */
-
-  }, {
-    key: 'calculatePage',
-    value: function calculatePage() {
-      var totalPages = this.totalPages;
-      var pageNum = this.pageNum;
-
-      var pageArray = [];
-      if (totalPages < 8) {
-        for (var i = 1; i <= totalPages; i++) {
-          pageArray.push(i);
-        }
-      } else {
-        pageArray.push(1);
-        if (pageNum > 4) {
-          pageArray.push('...');
-        }
-
-        if (pageNum < 4) {
-          for (var _i = 2; _i <= 6; _i++) {
-            pageArray.push(_i);
-          }
-        } else if (pageNum >= 4 && totalPages - pageNum >= 3) {
-          for (var _i2 = pageNum - 2; _i2 <= pageNum + 2; _i2++) {
-            pageArray.push(_i2);
-          }
-        } else {
-          for (var _i3 = totalPages - 4; _i3 < totalPages; _i3++) {
-            pageArray.push(_i3);
-          }
-        }
-
-        //总页码 - 当前页 大于 3 显示
-        if (totalPages - pageNum > 3) {
-          pageArray.push('...');
-        }
-        pageArray.push(totalPages);
-      }
-
-      return pageArray;
-    }
-  }, {
-    key: 'renderPaging',
-    value: function renderPaging() {
-      var _this3 = this;
-
-      var pageArray = this.calculatePage();
-
-      var html = '<ul class="paging-items">';
-      html += '<li class="paging-item' + (this.pageNum === 1 ? ' disabled' : '') + '" data-pagenum="' + (this.pageNum - 1) + '">\u4E0A\u4E00\u9875</li>';
-      var pageItems = pageArray.map(function (item, index) {
-        if (item === '...') {
-          return '<li class="paging-item paging-more"></li>';
-        }
-        return '<li class="paging-item' + (_this3.pageNum === item ? ' active' : '') + '" data-pagenum="' + item + '">' + item + '</li>';
-      });
-      html += pageItems.join('');
-      html += '<li class="paging-item' + (this.pageNum === this.totalPages ? ' disabled' : '') + '" data-pagenum="' + (this.pageNum + 1) + '">\u4E0B\u4E00\u9875</li>';
-      html += '</ul>';
-
-      if (this.pagingControl) {
-        html += this.renderPagingControl();
-      }
-      this.element.innerHTML = html;
-    }
-  }, {
-    key: 'renderPagingControl',
-    value: function renderPagingControl() {
-      var html = '<ul class="paging-control">';
-      html += '<li class="paging-control-item">\u5171' + this.totalPages + '\u9875' + (this.totalCount || 0) + '\u6761\u8BB0\u5F55,</li>';
-
-      if (this.recordPerPage) {
-        html += '<li class="paging-control-item">\n        \u6BCF\u9875\n        <div class="select">\n        <select class="select-inner">\n          <option value="5"' + (this.pageSize === 5 ? ' selected' : '') + '>5</option>\n          <option value="10"' + (this.pageSize === 10 ? ' selected' : '') + '>10</option>\n          <option value="20"' + (this.pageSize === 20 ? ' selected' : '') + '>20</option>\n          <option value="50"' + (this.pageSize === 50 ? ' selected' : '') + '>50</option>\n          <option value="100"' + (this.pageSize === 100 ? ' selected' : '') + '>100</option>\n        </select>\n        </div>\n      \u6761,\n    </li>';
-      }
-
-      if (this.jumpControl) {
-        html += '<li class="paging-control-item">\n        \u8DF3\u81F3\n        <div class="input">\n          <input type="text" class="input-field"/>\n        </div>\n        \u9875\n      </li>\n      <li class="paging-control-item">\n        <a href="" class="btn btn-raised btn-primary btn-sm js-jump-btn">\u786E\u5B9A</a>\n      </li>';
-      }
-
-      html += '</ul>';
-
-      return html;
+      console.info('待补充');
+      win.removeEventListener(resizeEvt, this.adjustMenuHeight, false);
     }
   }]);
 
-  return Paging;
-}(_component2.default);
+  return CatalogueSpy;
+}();
 
-Paging.defaultConfig = {
-  pagingControl: true,
-  recordPerPage: true,
-  jumpControl: true
+CatalogueSpy.defaultConfig = {
+  menuHeight: null, // 设置菜单高度，如果不设置，则取当前浏览器可视高度
+  step: 30 // 滚动鼠标，菜单滑动步长
 };
-exports.default = Paging;
+
+var _initialiseProps = function _initialiseProps() {
+  var _this = this;
+
+  this.adjustMenuHeight = function () {
+    var menuHeight = doc.documentElement.clientHeight - 64;
+    _this.$menuPanel.style.maxHeight = menuHeight + 'px';
+  };
+
+  this.handleScroll = function (prevent) {
+    /*eslint-disable complexity*/
+    return function (event) {
+      var _$menuPanel = _this.$menuPanel,
+          scrollHeight = _$menuPanel.scrollHeight,
+          clientHeight = _$menuPanel.clientHeight;
+      var step = _this.config.step;
+
+      _this.maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+
+      // 判断鼠标滑轮向上还是向下滑动
+      var upDown = void 0;
+      var detail = event.detail,
+          wheelDelta = event.wheelDelta;
+
+      if (detail) {
+        if (detail < 0) {
+          // up
+          upDown = 'up';
+        } else if (detail > 0) {
+          // down
+          upDown = 'down';
+        }
+      } else if (wheelDelta) {
+        //
+        if (wheelDelta > 0) {
+          // up
+          upDown = 'up';
+        }
+        if (wheelDelta < 0) {
+          // down
+          upDown = 'down';
+        }
+      }
+
+      var transform = _this.$menuPanel.style.transform;
+
+
+      var y = reg.exec(transform);
+      y = y ? parseFloat(y[1], 10) : 0;
+
+      if (prevent && _this.maxOffset > 0 && (upDown === 'down' && Math.abs(y) < _this.maxOffset || upDown === 'up' && y > 0)) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      if (upDown === 'up' && y === 0 || upDown === 'down' && Math.abs(y) === _this.maxOffset) {
+        return;
+      }
+
+      if (upDown === 'up' && y < 0) {
+        _this.$menuPanel.style.transform = 'translateY(' + Math.min(y + step, 0) + 'px)';
+      } else if (upDown === 'down' && Math.abs(y) < _this.maxOffset) {
+        _this.$menuPanel.style.transform = 'translateY(' + Math.max(y - step, -_this.maxOffset) + 'px)';
+      }
+    };
+  };
+
+  this.scrollMenu = function (lastSelector) {
+    var step = _this.config.step;
+    var $menuPanel = _this.$menuPanel;
+    var scrollHeight = $menuPanel.scrollHeight,
+        clientHeight = $menuPanel.clientHeight;
+
+    var maxOffset = scrollHeight - clientHeight; // 最大滚动的高度
+    if (maxOffset === 0) {
+      return;
+    }
+    maxOffset += 1; // 由于计算偏差，需要微调1个像素
+    // 如果当前菜单项隐藏，则向上拉
+    // Fixme 注意这里还需计算 $menuPanel.parentElement padding 和 border 的值，待处理
+    var menuRect = $menuPanel.parentElement.getBoundingClientRect();
+    var currentTarget = doc.querySelectorAll(lastSelector.join(','));
+    if (currentTarget) {
+      Array.prototype.forEach.call(currentTarget, function (el) {
+        var rect = el.getBoundingClientRect();
+        while (rect.top > 0 && rect.bottom > 0 && (rect.top < menuRect.top || rect.bottom > menuRect.bottom)) {
+          // 向上移动
+          var transform = $menuPanel.style.transform;
+
+          var y = reg.exec(transform);
+          y = y ? parseFloat(y[1], 10) : 0;
+          if (rect.top < menuRect.top) {
+            $menuPanel.style.transform = 'translateY(' + Math.min(y + step, 0) + 'px)';
+          } else {
+            $menuPanel.style.transform = 'translateY(' + Math.max(y - step, -maxOffset) + 'px)';
+          }
+          rect = el.getBoundingClientRect();
+        }
+      });
+    }
+  };
+};
+
+exports.default = CatalogueSpy;
+
+/***/ }),
+
+/***/ "./components/scroll-spy/scrollSpy.js":
+/*!********************************************!*\
+  !*** ./components/scroll-spy/scrollSpy.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _util = __webpack_require__(/*! ../base/util */ "./components/base/util.js");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var win = window;
+var doc = document;
+var _Array$prototype = Array.prototype,
+    forEach = _Array$prototype.forEach,
+    map = _Array$prototype.map;
+
+var ScrollSpy = function () {
+  function ScrollSpy(element) {
+    var _this = this;
+
+    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    _classCallCheck(this, ScrollSpy);
+
+    this.scrollEvent = function (event) {
+      _this.process();
+    };
+
+    this.element = element;
+    this.scrollElement = element.tagName === 'BODY' ? win : element;
+    this.config = this.getConfig(config);
+    var _config2 = this.config,
+        menu = _config2.menu,
+        menuClsPrefix = _config2.menuClsPrefix,
+        extend = _config2.extend;
+    // 菜单 目录 等选择器
+
+    this.menuSelector = menu + ' .' + menuClsPrefix + '-title';
+    this.offsets = [];
+    this.targets = [];
+    this.activeTarget = null;
+    this.scrollHeight = 0;
+
+    // 如果默认不展开，则用样式来控制
+    if (!extend) {
+      var extendStyle = doc.createElement('style');
+      extendStyle.innerHTML = '\n          .menu-catalogue .menu-catalogue {\n            display: none;\n          }\n          .active + .menu-catalogue {\n            display: block;\n          }';
+      doc.getElementsByTagName('head')[0].append(extendStyle);
+    }
+
+    // 添加事件，页面滚动时，处理目录和内容对应坐标
+    this.scrollElement.addEventListener(_util.isWheel ? 'mousewheel' : 'DOMMouseScroll', this.scrollEvent, false);
+    var _config3 = this.config,
+        immedLoad = _config3.immedLoad,
+        initMenus = _config3.initMenus,
+        anchor = _config3.anchor;
+    // 需要根据内容动态创建菜单列表
+
+    if (initMenus) {
+      this.generateMenus();
+    }
+
+    // 菜单面板
+    this.menuPanel = menu + ' .' + menuClsPrefix + '.' + menuClsPrefix + '-catalogue';
+    this.$menuPanel = doc.querySelector(this.menuPanel);
+
+    // 不用锚点处理的情况
+    if (anchor === false) {
+      // fixme 待改进，改成 事件代理模式
+      var menuElements = doc.querySelectorAll(this.menuSelector);
+      forEach.call(menuElements, function (element) {
+        element.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var el = e.currentTarget;
+          var menu = el.dataset.menu;
+          var _config4 = _this.config,
+              offsetMethod = _config4.offsetMethod,
+              container = _config4.container;
+
+          var offsetXY = _this.config.offset;
+
+          var targetEl = doc.querySelector(container + ' [data-target="' + menu + '"]').parentNode;
+          var top = offsetMethod === 'offset' ? (0, _util.offset)(targetEl).top : (0, _util.position)(targetEl).top;
+          var offsetBase = offsetMethod === 'position' ? _this.getScrollTop() : 0;
+
+          // fixme
+          _this.scrollElement.scrollTo(0, top + offsetBase - offsetXY);
+          el.blur();
+          _this.process();
+        }, false);
+      });
+    }
+
+    // 加载插件
+    var pluginConfig = this.config.pluginConfig;
+    var plugins = this.config.plugins;
+
+    if (plugins) {
+      if (!Array.isArray(plugins)) {
+        plugins = [plugins];
+      }
+      this.plugins = [];
+      var container = this.config.container;
+
+      plugins.forEach(function (plugin) {
+        // 把当前实例传给插件
+        var instance = new plugin(_this, pluginConfig);
+        instance.mount();
+        _this.plugins.push(instance);
+      });
+    }
+
+    // 显示菜单
+    // doc.querySelector(menu).style.display = 'block';
+    if (immedLoad) {
+      this.refresh();
+      this.process();
+    }
+  }
+
+  _createClass(ScrollSpy, [{
+    key: 'getConfig',
+    value: function getConfig(config) {
+      var _config = _extends({}, ScrollSpy.defaultConfig, config);
+
+      var menu = _config.menu;
+      var container = _config.container;
+
+
+      if (typeof menu !== 'string') {
+        // dom 对象
+        var id = menu.id;
+
+        if (!id) {
+          id = (0, _util.getUuid)('scrollspy');
+          menu.id = id;
+        }
+        _config.menu = '#' + id;
+      }
+
+      if (!container) {
+        container = doc.body; // 默认取 body
+      }
+      if (typeof container !== 'string') {
+        var _container = container,
+            _id = _container.id;
+
+        if (!_id) {
+          _id = (0, _util.getUuid)('scrollspy');
+          container.id = _id;
+        }
+        _config.container = '#' + _id;
+      }
+
+      var autoMethod = this.scrollElement !== this.scrollElement.window ? 'position' : 'offset';
+
+      var offsetMethod = _config.method === 'auto' ? autoMethod : _config.method;
+
+      _config.offsetMethod = offsetMethod;
+
+      return _config;
+    }
+
+    /**
+     * 动态创建菜单
+     */
+
+  }, {
+    key: 'generateMenus',
+    value: function generateMenus() {
+      var menus = this.element.querySelectorAll('h1,h2,h3,h4,h5,h6');
+      // 初始化根节点
+      var entries = {
+        level: 0,
+        children: [],
+        depth: 0,
+        parent: null,
+        text: null,
+        root: true
+      };
+
+      // 前一个元素 level
+      var prevLevel = 0;
+      // 上一个节点
+      var lastNode = null;
+
+      forEach.call(menus, function (el, index) {
+        var entry = null;
+        var level = 7 - parseInt(el.tagName[1], 10);
+        var text = el.innerHTML;
+
+        if (index === 0) {
+          // 初始化第一个元素
+          entry = {
+            level: level,
+            children: [],
+            depth: 1,
+            parent: entries,
+            text: text,
+            el: el
+          };
+          entries.children.push(entry);
+        } else {
+          if (level === prevLevel) {
+            // 相等的话
+            entry = {
+              level: level,
+              children: [],
+              depth: lastNode.depth,
+              parent: lastNode.parent,
+              text: text,
+              el: el
+            };
+            lastNode.parent.children.push(entry);
+          } else if (level < prevLevel) {
+            // 如果当前级别小于前一个
+            entry = {
+              level: level,
+              children: [],
+              depth: lastNode.depth + 1,
+              parent: lastNode,
+              text: text,
+              el: el
+            };
+            lastNode.children.push(entry);
+          } else {
+            // 如果当前级别大于前一个 查找祖先节点
+            var ancestor = lastNode.parent;
+            while (ancestor.level <= level && !ancestor.root) {
+              ancestor = ancestor.parent;
+            }
+            entry = {
+              level: level,
+              children: [],
+              depth: ancestor.depth + 1,
+              parent: ancestor,
+              text: text,
+              el: el
+            };
+            ancestor.children.push(entry);
+          }
+        }
+        lastNode = entry;
+        prevLevel = level;
+      });
+
+      var html = this.generateMenusHtml(entries.children, this.config.prefix);
+      doc.querySelector(this.config.menu).innerHTML = html;
+    }
+
+    /**
+     * 根据 nodes 节点 生成 html
+     * @param nodes
+     * @param prefix
+     * @return {string}
+     */
+
+  }, {
+    key: 'generateMenusHtml',
+    value: function generateMenusHtml(nodes, prefix) {
+      var _config5 = this.config,
+          menuClsPrefix = _config5.menuClsPrefix,
+          menuCls = _config5.menuCls;
+
+      var html = '';
+      if (nodes && nodes.length > 0) {
+        html = '<ul class="' + menuClsPrefix + ' ' + menuClsPrefix + '-catalogue' + (menuCls ? ' ' + menuCls : '') + '">';
+        for (var i = 0, len = nodes.length; i < len; i++) {
+          var node = nodes[i];
+          // 为对应的内容加锚点
+          var newChild = document.createElement('a');
+          newChild.id = prefix + (i + 1);
+          newChild.className = menuClsPrefix + '-anchor';
+          if (this.config.anchor) {
+            newChild.href = '#' + (prefix + (i + 1));
+          } else {
+            newChild.dataset.menu = '' + (prefix + (i + 1));
+          }
+
+          newChild.setAttribute('aria-hidden', true);
+          node.el.insertBefore(newChild, node.el.firstChild);
+
+          html += '<li>';
+          if (this.config.anchor) {
+            html += '<a class="' + menuClsPrefix + '-title" href="#' + prefix + (i + 1) + '">' + node.text + '</a>';
+          } else {
+            // 用 data-target 来控制，需要结合 js 来控制
+            html += '<a class="' + menuClsPrefix + '-title" data-target="' + prefix + (i + 1) + '" href="#">' + node.text + '</a>';
+          }
+          if (node.children && node.children.length > 0) {
+            html += this.generateMenusHtml(node.children, '' + prefix + (i + 1) + '-');
+          }
+          html += '</li>';
+        }
+        html += '</ul>';
+      }
+      return html;
+    }
+
+    /**
+     * 滚动页面时，刷新相关数据
+     */
+
+  }, {
+    key: 'refresh',
+    value: function refresh() {
+      var _this2 = this;
+
+      var offsetMethod = this.config.offsetMethod;
+
+      var offsetBase = offsetMethod === 'position' ? this.getScrollTop() : 0;
+
+      this.offsets = [];
+      this.targets = [];
+      this.scrollHeight = this.getScrollHeight();
+
+      // 把滚动监听的元素和坐标保存到offsets和targets中
+      var menuElements = doc.querySelectorAll(this.menuSelector);
+
+      map.call(menuElements, function (element) {
+        // 目标元素
+        var target = null;
+        var _config6 = _this2.config,
+            anchor = _config6.anchor,
+            container = _config6.container;
+
+        var selector = anchor ? element.getAttribute('href') : element.dataset.menu;
+        var targetSelector = anchor ? element.getAttribute('href') : container + ' [data-target="' + element.dataset.menu + '"]';
+
+        if (targetSelector) {
+          target = doc.querySelector(targetSelector).parentNode;
+          var targetBCR = target.getBoundingClientRect();
+          if (targetBCR.width || targetBCR.height) {
+            return [(offsetMethod === 'offset' ? (0, _util.offset)(target).top : (0, _util.position)(target).top) + offsetBase, selector];
+          }
+        }
+        return null;
+      }).sort(function (a, b) {
+        if (!a || !b) {
+          return 0;
+        }
+        return a[0] - b[0];
+      }).forEach(function (item) {
+        if (item) {
+          _this2.offsets.push(item[0]);
+          _this2.targets.push(item[1]);
+        }
+      });
+    }
+
+    // 鼠标滚动事件
+
+  }, {
+    key: 'process',
+
+
+    /**
+     * 滚动时触发该方法
+     * @returns {boolean|*}
+     */
+    value: function process() {
+      // 需要加 1 微调
+      var scrollTop = this.getScrollTop() + this.config.offset + 1;
+      var scrollHeight = this.getScrollHeight();
+      var maxScroll = this.config.offset + scrollHeight - this.getOffsetHeight();
+
+      // 不相等的话，重新刷新，比如改变页面窗口后
+      if (this.scrollHeight !== scrollHeight) {
+        this.refresh();
+      }
+
+      // 滑到底部
+      if (scrollTop >= maxScroll) {
+        // 取最后一个
+        var target = this.targets[this.targets.length - 1];
+
+        if (this.activeTarget !== target) {
+          this.activate(target);
+        }
+        return;
+      }
+
+      // 滑到头部
+      if (this.activeTarget && scrollTop < this.offsets[0] && this.offsets[0] > 0) {
+        this.activeTarget = null;
+        this.clearActiveCls();
+        return;
+      }
+
+      for (var i = this.offsets.length; i--;) {
+        var isActiveTarget = this.activeTarget !== this.targets[i] && scrollTop >= this.offsets[i] && (this.offsets[i + 1] === undefined || scrollTop < this.offsets[i + 1]);
+
+        if (isActiveTarget) {
+          this.activate(this.targets[i]);
+        }
+      }
+    }
+
+    /**
+     * 设置当前活动的内容
+     * @param target
+     */
+
+  }, {
+    key: 'activate',
+    value: function activate(target) {
+      this.activeTarget = target;
+
+      this.clearActiveCls();
+
+      var anchor = this.config.anchor;
+
+      var queries = this.menuSelector.split(',');
+      var lastSelector = []; // 最后一个菜单项，即当前的子节点
+      // 当前选中的和父目录都添加活动样式
+      var parentEls = target.split('-');
+      queries = queries.map(function (query) {
+        var selector = [];
+        var catalog = '';
+        parentEls.forEach(function (it, index) {
+          if (index === 0) {
+            catalog += it;
+          } else {
+            catalog += '-' + it;
+            selector.push(anchor ? query + '[href="' + catalog + '"]' : query + '[data-menu="' + catalog + '"]');
+          }
+        });
+        lastSelector.push(selector[selector.length - 1]);
+        return selector.join(',');
+      });
+
+      var $link = doc.querySelectorAll(queries.join(','));
+
+      for (var i = 0, len = $link.length; i < len; i++) {
+        $link[i].classList.add('active');
+      }
+
+      this.plugins.forEach(function (plugin) {
+        if (typeof plugin.scrollMenu === 'function') {
+          plugin.scrollMenu(lastSelector);
+        }
+      });
+
+      // todo 事件，待补充
+
+      /* $(this._scrollElement).trigger(Event.ACTIVATE, {
+       relatedTarget: target
+       }) */
+    }
+  }, {
+    key: 'clearActiveCls',
+    value: function clearActiveCls() {
+      // 删除当前活动样式
+      var activeEls = doc.querySelectorAll(this.menuSelector + '.active');
+      if (activeEls) {
+        for (var i = 0, len = activeEls.length; i < len; i++) {
+          activeEls[i].classList.remove('active');
+        }
+      }
+    }
+
+    // 卸载
+
+  }, {
+    key: 'unmount',
+    value: function unmount() {
+      // $.removeData(this._element, DATA_KEY)
+      this.scrollElement.removeEventListener(_util.isWheel ? 'mousewheel' : 'DOMMouseScroll', this.scrollEvent, false);
+
+      this.element = null;
+      this.scrollElement = null;
+      this.config = null;
+      this.menu = null;
+      this.menuSelector = null;
+      this.container = null;
+      this.offsets = null;
+      this.targets = null;
+      this.activeTarget = null;
+      this.scrollHeight = null;
+
+      // 卸载插件
+      if (this.plugins) {
+        this.plugins.forEach(function (plugin) {
+          plugin.unmount();
+        });
+        this.plugins = null;
+      }
+    }
+  }, {
+    key: 'getScrollTop',
+    value: function getScrollTop() {
+      return this.scrollElement === win ? this.scrollElement.pageYOffset : this.scrollElement.scrollTop;
+    }
+  }, {
+    key: 'getScrollHeight',
+    value: function getScrollHeight() {
+      return this.scrollElement.scrollHeight || Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
+    }
+  }, {
+    key: 'getOffsetHeight',
+    value: function getOffsetHeight() {
+      return this.scrollElement === win ? win.innerHeight : this.scrollElement.getBoundingClientRect().height;
+    }
+  }]);
+
+  return ScrollSpy;
+}();
+
+ScrollSpy.defaultConfig = {
+  offset: 0,
+  method: 'auto',
+  menu: '', // 菜单导航
+  menuCls: null, // 自定义菜单样式
+  menuClsPrefix: 'menu', // 菜单样式前缀
+  container: null, // 需要监听的内容容器
+  immedLoad: true, // 是否立即监听，如果设为 false， 则通过滑动鼠标来激活监听
+  prefix: 'menu-', // 导航目录前缀
+  anchor: true, // 是否用锚点来控制，默认用锚点处理
+  animation: true, // 是否开启动画
+  extend: false // 默认菜单没有展开
+};
+exports.default = ScrollSpy;
 
 /***/ })
-/******/ ]);
+
+/******/ });
 });
 //# sourceMappingURL=perfect.js.map

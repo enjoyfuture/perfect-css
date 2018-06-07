@@ -17,10 +17,8 @@ device-resizer {
   bottom: 0;
   left: 0;
   right: 0;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
+  flex-direction: column;
   height: 100vh;
   overflow: hidden;
   color: rgba(0, 0, 0, 0.74);
@@ -28,15 +26,12 @@ device-resizer {
 }
 
 .device-header {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
   padding: .5rem 1.25rem;
   overflow: hidden;
-  background: #ffffff;
+  background: #fff;
 }
 
 .device-brand {
@@ -62,10 +57,8 @@ device-resizer {
 }
 
 .device-url-container {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
+  flex-direction: row;
   width: 400px;
   height: 1.5rem;
   padding: .375rem;
@@ -91,12 +84,9 @@ device-resizer {
 }
 
 .device-select {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .device-icon {
@@ -116,7 +106,7 @@ device-resizer {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   font-weight: 500;
   color: rgba(0, 0, 0, 0.87);
-  background: #ffffff;
+  background: #fff;
   white-space: nowrap;
 }
 
@@ -130,8 +120,7 @@ device-resizer {
   position: absolute;
   left: 0;
   right: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   height: 1rem;
   margin-left: auto;
   margin-right: auto;
@@ -195,12 +184,9 @@ device-view[device="handset"][landscape] {
 
 .device-container {
   position: relative;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-positive: 1;
-      flex-grow: 1;
-  -ms-flex-align: center;
-      align-items: center;
+  flex-grow: 1;
+  align-items: center;
   overflow: auto;
 }
 
@@ -223,8 +209,7 @@ device-view[device="handset"][landscape] {
 
 .device-list[view="all"] > device-view {
   bottom: 0;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   display: block;
   -webkit-transform: scale(0.5);
           transform: scale(0.5);
@@ -289,10 +274,8 @@ device-view[device="handset"][landscape] {
   bottom: 0;
   left: 0;
   right: 0;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
+  justify-content: center;
 }
 
 .device-list[view="window"] > device-view[device="window"] {

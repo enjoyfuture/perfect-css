@@ -27,8 +27,8 @@
 }
 
 .drawer-toggle:hover .icon-pure-menu {
-  color: #ffffff;
-  color: var(--theme-light-primary, #ffffff);
+  color: #fff;
+  color: var(--theme-light-primary, #fff);
 }
 
 /**
@@ -303,7 +303,6 @@
   font-weight: 400;
   color: #64b5f6;
   color: var(--theme-primary-light, #64b5f6);
-  -webkit-transition: color 0.16s cubic-bezier(0, 0, 0.2, 1), opacity 0.16s cubic-bezier(0, 0, 0.2, 1);
   transition: color 0.16s cubic-bezier(0, 0, 0.2, 1), opacity 0.16s cubic-bezier(0, 0, 0.2, 1);
 }
 
@@ -551,7 +550,6 @@ body {
           transform: translate(200%, 0);
   border-color: #f3e5f5;
   border-color: var(--theme-secondary-lightest, #f3e5f5);
-  -webkit-transition: -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: transform 120ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 120ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -582,20 +580,17 @@ body {
   }
 
   .doc-main {
-    display: -ms-flexbox;
     display: flex;
   }
 
   .doc-content {
-    -ms-flex: 0 0 79.1666666667%;
-        flex: 0 0 79.1666666667%;
+    flex: 0 0 79.1666666667%;
     max-width: 79.1666666667%;
   }
 
   .doc-catalogue-menu-right {
     display: block;
-    -ms-flex: 0 0 20.8333333333%;
-        flex: 0 0 20.8333333333%;
+    flex: 0 0 20.8333333333%;
     max-width: 20.8333333333%;
     margin-left: 1rem;
     border-left: 1px solid rgba(0, 0, 0, 0.12);
@@ -694,7 +689,6 @@ body {
   border-color: #e1bee7;
   border-color: var(--theme-secondary-lighter, #e1bee7);
   border-radius: 4px;
-  -webkit-transition: all .2s;
   transition: all .2s;
 }
 
@@ -714,10 +708,8 @@ body {
 
 .doc-example-expand {
   position: relative;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: end;
-      justify-content: flex-end;
+  justify-content: flex-end;
   margin: .5rem 2rem;
 }
 
@@ -753,7 +745,6 @@ body {
   border-top: 1px dashed;
   border-top-color: #e1bee7;
   border-top-color: var(--theme-secondary-lighter, #e1bee7);
-  -webkit-transition: display 120ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: display 120ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1181,10 +1172,8 @@ body {
 }
 
 .doc-color {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
+  justify-content: space-between;
   padding: .75rem 1rem;
 }
 

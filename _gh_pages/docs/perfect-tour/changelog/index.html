@@ -598,7 +598,7 @@ IE10+ Edge Chrome Firefox Android 4.4+ IOS 9.3+ 但会尽量做到 Android 4+ IO
         item.insertBefore(div.childNodes[1], item.lastChild);
       });
       // 复制到剪贴板
-      const clipboard = new Clipboard('.doc-code-copy', {
+      const clipboard = new ClipboardJS('.doc-code-copy', {
         target: function (trigger) {
           return trigger.nextElementSibling.nextElementSibling;
         },
