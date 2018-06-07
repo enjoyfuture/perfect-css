@@ -6,9 +6,9 @@
 
 .menu-demo-panel {
   position: relative;
-  height:   240px;
-  padding:  1rem;
-  border:   1px solid;
+  height: 240px;
+  padding: 1rem;
+  border: 1px solid;
   @include theme-prop(border-color, secondary-lighter);
 }
 
@@ -21,6 +21,7 @@
     &:hover {
       @include theme-prop(color, primary-light);
     }
+
     &.active {
       @include theme-prop(color, primary);
     }
@@ -39,7 +40,6 @@
   }
 }
 
-
 .menu-demo {
   $shadow: "";
   @for $i from 1 through 20 {
@@ -54,5 +54,6 @@
   @for $i from 1 through 10 {
     $shadow: $shadow + ", 30px " + $i + "px";
   }
+
   box-shadow: #{str-slice($shadow, 2)};
 }

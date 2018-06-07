@@ -11,32 +11,33 @@
   @include header-anchor;
 
   > h1, > h2, > h3, > h4, > h5, > h6 {
-    position:     relative;
+    position: relative;
     padding-left: 1rem;
 
     &::after {
-      content:        "";
-      position:       absolute;
-      top:            calc(50% - .25rem);
-      left:           0;
-      display:        inline-block;
-      width:          .5rem;
-      height:         .5rem;
+      content: "";
+      position: absolute;
+      top: calc(50% - .25rem);
+      left: 0;
+      display: inline-block;
+      width: .5rem;
+      height: .5rem;
       vertical-align: middle;
       @include theme-prop(background, primary);
-      // sass-lint:disable indentation
+
+      /* stylelint-disable indentation */
       @include shadow(6,
-                      $umbra-color: var(--theme-primary-lighter),
-                      $penumbra-color: var(--theme-primary-lighter),
-                      $ambient-color: var(--theme-primary-lightest)
-      );
+      $umbra-color: var(--theme-primary-lighter),
+      $penumbra-color: var(--theme-primary-lighter),
+      $ambient-color: var(--theme-primary-lightest)
+    );
     }
   }
 }
 
 .component-container {
-  padding:       1rem 0;
-  margin:        0 1rem;
+  margin: 0 1rem;
+  padding: 1rem 0;
   border-bottom: 1px dashed;
   @include theme-prop(border-bottom-color, primary-lighter);
 }
@@ -45,6 +46,7 @@
 .component-spacing {
   > div, > button, > a, > label, > img, > span, > select {
     margin-right: 1rem;
+
     &:last-child {
       margin-right: 0;
     }
@@ -60,6 +62,7 @@
 .component-vertical-spacing {
   > div, > button, > a, > nav, > ul {
     margin-bottom: 1rem;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -68,7 +71,8 @@
 
 .component-list {
   max-width: 720px;
-  border:    1px solid rgba(0, 0, 0, .2);
+  border: 1px solid rgba(0, 0, 0, .2);
+
   + .component-list {
     margin-top: 1rem;
   }
@@ -80,8 +84,8 @@
   }
 
   .component-list {
-    max-width:     none;
-    border:        0;
+    max-width: none;
+    border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
 
     + .component-list {
@@ -91,7 +95,7 @@
 }
 
 .iframe-demo {
-  width:  100%;
+  width: 100%;
   height: 300px;
   border: 1px dotted;
   @include theme-prop(border-color, primary);
@@ -99,10 +103,10 @@
 
 // 圆形图标
 .icon-circle {
-  width:         1.5rem;
-  height:        1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
-  background:    $grey-color-700;
+  background: $grey-color-700;
 }
 
 // 灰色小图标

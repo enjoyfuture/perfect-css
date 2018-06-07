@@ -8,6 +8,7 @@
   .icon-pure-menu {
     @include theme-prop(color, secondary-on-dark);
   }
+
   &:hover {
     .icon-pure-menu {
       @include theme-prop(color, primary-on-dark);

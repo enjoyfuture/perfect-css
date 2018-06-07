@@ -8,15 +8,17 @@
   .row .row {
     border: 1px solid;
   }
+
   [class*="col"] {
-    padding-top:    .5rem;
+    padding-top: .5rem;
     padding-bottom: .5rem;
-    color:          #fff;
+    color: #fff;
+    text-align: center;
+
     @include theme-prop(background-color, primary-light);
-    text-align:     center;
 
     &:nth-of-type(2n) {
-      @include theme-prop(background-color, primary);
+      @include theme-prop(background-color, primary)
     }
   }
 }

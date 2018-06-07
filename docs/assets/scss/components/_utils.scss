@@ -3,22 +3,22 @@
 
 // border
 .border-panel {
-  display:         flex;
-  align-items:     center;
+  display: flex;
+  align-items: center;
 
   [class*="border"],
   [class*="radius"] {
-    box-sizing:       border-box;
-    display:          inline-flex;
-    align-items:      center;
-    justify-content:  center;
-    width:            100px;
-    height:           100px;
-    padding:          .5rem;
-    margin-left:      .5rem;
-    margin-right:     .5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    margin-right: .5rem;
+    margin-left: .5rem;
+    padding: .5rem;
     background-color: $grey-color-50;
-    text-align:       center;
+    text-align: center;
   }
 
   [class*="radius"] {

@@ -5,6 +5,7 @@
   &.menu, .menu {
     margin-left: 0;
   }
+
   .menu-title {
     padding: .5rem 1rem;
 
@@ -34,6 +35,7 @@
       @supports (background-color: color(green a(10%))) {
         $bg-color: var(--theme-primary-lightest);
         $opacity: .8;
+
         background-color: color(#{$bg-color} a(#{percentage($opacity)}));
       }
     }

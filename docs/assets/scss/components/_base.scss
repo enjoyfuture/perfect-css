@@ -9,40 +9,41 @@
   margin: 1rem;
 
   .ripple {
-    display:         flex;
-    align-items:     center;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    width:           200px;
-    height:          100px;
-    padding:         1rem;
-    cursor:          pointer;
-    user-select:     none;
+    width: 200px;
+    height: 100px;
+    padding: 1rem;
+    cursor: pointer;
+    user-select: none;
     @include shadow(5);
 
-    & + .ripple {
+    + .ripple {
       margin-left: 2rem;
     }
   }
 
+  /* stylelint-disable selector-no-qualifying-type */
   button.ripple {
-    display:    inline-block;
-    border:     0;
+    display: inline-block;
+    border: 0;
     background: none;
     appearance: none;
   }
 
   .ripple-unbounded {
-    width:         40px;
-    height:        40px;
-    padding:       0;
+    width: 40px;
+    height: 40px;
+    padding: 0;
     border-radius: 50%;
-    box-shadow:    none;
+    box-shadow: none;
   }
 
   .ripple-unbounded:not(.ripple-impact)::before {
-    top:    0;
-    left:   0;
-    width:  100%;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
   }
 
@@ -62,28 +63,28 @@
 
 // shadow
 .shadow-wrap {
-
   [class*="shadow"] {
-    display:         flex;
-    align-items:     center;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    width:           200px;
-    height:          100px;
-    margin:          0 40px 60px;
-    border-radius:   3px;
-    color:           $grey-color-500;
-    background:      $white;
+    width: 200px;
+    height: 100px;
+    margin: 0 40px 60px;
+    border-radius: 3px;
+    color: $grey-color-500;
+    background: $white;
   }
 }
 
 .shadow-custom {
   @for $z-value from 0 through 24 {
+    /* stylelint-disable indentation */
     .shadow-#{$z-value} {
       @include theme-prop(color, primary);
       @include shadow($z-value, $umbra-color: var(--theme-primary-lighter),
-        $penumbra-color: var(--theme-primary-lighter),
-        $ambient-color: var(--theme-primary-lighter)
-      );
+      $penumbra-color: var(--theme-primary-lighter),
+      $ambient-color: var(--theme-primary-lighter)
+    );
     }
   }
 }
@@ -93,15 +94,15 @@
 }
 
 .shadow-transition2 {
-  display:         flex;
-  align-items:     center;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  width:           200px;
-  height:          100px;
-  margin:          0 40px 60px;
-  border-radius:   3px;
-  transition:      shadow-transition-rule(), opacity $shadow-transition-duration $shadow-transition-timing-function;
-  will-change:     box-shadow, opacity;
+  width: 200px;
+  height: 100px;
+  margin: 0 40px 60px;
+  border-radius: 3px;
+  transition: shadow-transition-rule(), opacity $shadow-transition-duration $shadow-transition-timing-function;
+  will-change: box-shadow, opacity;
   @include theme-prop(background-color, secondary-lightest);
   @include shadow(15);
 }
@@ -109,7 +110,7 @@
 .shadow-custom-animation {
   opacity: .5;
   @include shadow(15, $umbra-color: var(--theme-primary-lighter),
-    $penumbra-color: var(--theme-primary-lighter),
-    $ambient-color: var(--theme-primary-lighter)
-  );
+  $penumbra-color: var(--theme-primary-lighter),
+  $ambient-color: var(--theme-primary-lighter)
+);
 }

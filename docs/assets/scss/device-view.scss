@@ -1,18 +1,18 @@
-
 @import "../../../components/theme/variable";
 
 body {
-  padding: 0;
   margin: 0;
+  padding: 0;
   overflow: hidden;
 }
 
+/* stylelint-disable selector-type-no-unknown */
 device-resizer {
   position: relative;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -60,8 +60,8 @@ device-resizer {
   padding: .375rem;
   border-radius: 2px;
   background: #eee;
-  cursor: pointer;
   fill: currentColor;
+  cursor: pointer;
 }
 
 .device-url-icon {
@@ -75,9 +75,9 @@ device-resizer {
   width: 100%;
   padding-left: 1rem;
   border: 0;
+  outline: 0;
   font-size: .875rem;
   background: inherit;
-  outline: 0;
 }
 
 .device-select {
@@ -89,6 +89,7 @@ device-resizer {
 .device-icon {
   margin: 6px 12px;
   cursor: pointer;
+
   [class*="icon-pure-"] {
     transform: scale(.9);
   }
@@ -107,20 +108,20 @@ device-resizer {
 
 .device-selector-topbar {
   position: absolute;
-  left: -100px;
   right: -100px;
+  left: -100px;
 }
 
 .device-selector-item {
   position: absolute;
-  left: 0;
   right: 0;
+  left: 0;
   box-sizing: border-box;
   height: 1rem;
-  margin-left: auto;
   margin-right: auto;
-  border-left: 1px solid $grey-color-300;
+  margin-left: auto;
   border-right: 1px solid $grey-color-300;
+  border-left: 1px solid $grey-color-300;
   font-size: .75rem;
   font-weight: 500;
   line-height: 1rem;
@@ -134,10 +135,11 @@ device-resizer {
   }
 
   > .size {
-    margin-left: 4px;
     margin-right: 4px;
+    margin-left: 4px;
     color: $grey-color-600;
   }
+
   > .left {
     float: left;
   }
@@ -172,6 +174,7 @@ device-view {
     border-color: #999;
     border-radius: 36px;
   }
+
   &[device="handset"][landscape] {
     border-width: 16px 60px;
   }
@@ -202,10 +205,11 @@ device-view {
 
     > device-view {
       bottom: 0;
-      box-sizing: content-box;
       display: block;
+      box-sizing: content-box;
       transform: scale(.5);
     }
+
     > device-view[device="window"] {
       position: static;
       width: 1366px;
@@ -220,9 +224,9 @@ device-view {
       &::after {
         content: "";
         position: absolute;
+        right: -140px;
         bottom: -56px;
         left: -140px;
-        right: -140px;
         display: block;
         height: 56px;
         margin: -24px;
@@ -231,6 +235,7 @@ device-view {
         background: #666;
       }
     }
+
     > device-view[device="table"] {
       position: absolute;
       right: 17%;
@@ -242,6 +247,7 @@ device-view {
       border-radius: 36px;
       transform-origin: bottom right;
     }
+
     > device-view[device="handset"] {
       position: absolute;
       right: 5%;
@@ -258,13 +264,13 @@ device-view {
   &[view="window"] {
     position: absolute;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
     display: flex;
     justify-content: center;
 
-    & > device-view[device="window"] {
+    > device-view[device="window"] {
       display: block;
     }
   }
@@ -272,7 +278,7 @@ device-view {
   &[view="handset"] {
     margin: auto;
 
-    & > device-view[device="handset"] {
+    > device-view[device="handset"] {
       display: block;
       margin: 40px;
     }
@@ -288,7 +294,6 @@ device-view {
       transform: scale(.75);
     }
   }
-
 }
 
 @media screen and (max-width: 1024px), screen and (max-height: 550px) {
@@ -316,9 +321,9 @@ device-view {
 .frame-container {
   position: absolute;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
   overflow: hidden;
 }
 

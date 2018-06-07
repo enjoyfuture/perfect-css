@@ -11,29 +11,29 @@
 }
 
 .doc-catalogue-panel {
-  position:         fixed;
-  top:              64px;
-  right:            0;
-  z-index:          1000;
-  padding-top:      .5rem;
-  padding-left:     .5rem;
-  border-top:       1px solid;
-  border-bottom:    1px solid;
-  border-left:      1px solid;
-  overflow:         hidden;
+  position: fixed;
+  top: 64px;
+  right: 0;
+  z-index: 1000;
+  padding-top: .5rem;
+  padding-left: .5rem;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  overflow: hidden;
   background-color: #fff;
-  transform:        translate(200%, 0);
+  transform: translate(200%, 0);
   @include theme-prop(border-color, secondary-lightest);
   @include animation-transition(transform);
 }
 
 .doc-catalogue-icon {
   position: fixed;
-  top:      4.5rem;
-  right:    .5rem;
-  z-index:  1000;
+  top: 4.5rem;
+  right: .5rem;
+  z-index: 1000;
+  cursor: pointer;
   @include theme-prop(background-color, hint-on-dark);
-  cursor:   pointer;
 
   .icon-pure-catalogue {
     @include theme-prop(color, secondary);
@@ -48,64 +48,67 @@
   .doc-catalogue-menu {
     display: none;
   }
+
   .doc-main {
     display: flex;
   }
+
   .doc-content {
-    flex:      0 0 79.1666666667%;
+    flex: 0 0 79.1666666667%;
     max-width: 79.1666666667%;
   }
 
   .doc-catalogue-menu-right {
-    display:     block;
-    flex:        0 0 20.8333333333%;
-    max-width:   20.8333333333%;
+    display: block;
+    flex: 0 0 20.8333333333%;
+    max-width: 20.8333333333%;
     margin-left: 1rem;
     border-left: 1px solid $grey-color-300;
   }
 
   .doc-catalogue-panel {
-    position:   static;
-    right:      auto;
+    position: static;
+    right: auto;
     margin-top: 1rem;
-    border:     0;
-    transform:  translate(0, 0);
+    border: 0;
+    transform: translate(0, 0);
   }
 
   .doc-catalogue-header {
-    position:   relative;
+    position: relative;
     margin-top: 1.25rem;
 
     &::before {
-      content:      "目录";
-      position:     absolute;
-      top:          -2rem;
+      content: "目录";
+      position: absolute;
+      top: -2rem;
       padding-left: .5rem;
-      font-size:    $font-size;
-      font-weight:  500;
+      font-size: $font-size;
+      font-weight: 500;
     }
   }
 }
 
 .doc-catalogue {
   .menu-title {
-    position:      relative;
-    min-width:     200px;
-    padding-left:  .5rem;
-    overflow:      hidden;
+    position: relative;
+    min-width: 200px;
+    padding-left: .5rem;
+    overflow: hidden;
     text-overflow: ellipsis;
-    white-space:   nowrap;
+    white-space: nowrap;
 
     &:hover::after,
     &.active::after {
-      content:     "";
-      position:    absolute;
-      top:         25%;
-      bottom:      20%;
-      left:        0;
+      content: "";
+      position: absolute;
+      top: 25%;
+      bottom: 20%;
+      left: 0;
       border-left: 1px solid;
       @include theme-prop(border-left-color, secondary);
     }
+
     &.active::after {
       border-left-width: 2px;
     }

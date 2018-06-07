@@ -134,3 +134,6 @@ http://www.cnblogs.com/mayicao/articles/lang.html
 * WebStorm plugin   https://github.com/idok/sass-lint-plugin
 * Convert your SCSS-Lint Config File to Sass-Lint  http://sasstools.github.io/make-sass-lint-config/
 
+## 使用 stylelint 来检测 scss 代码
+
+

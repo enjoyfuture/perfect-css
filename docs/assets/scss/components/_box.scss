@@ -9,8 +9,8 @@
   }
 
   > [class*="box"] {
-    display:         flex;
-    align-items:     center;
+    display: flex;
+    align-items: center;
     justify-content: center;
     @include theme-prop(background-color, primary-alpha);
 

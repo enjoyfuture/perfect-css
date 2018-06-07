@@ -3,11 +3,13 @@
 
 .anchor-link {
   font-weight: 400;
+  transition: color .16s $animation-ease-out, opacity .16s $animation-ease-out;
+
   @include theme-prop(color, primary-light);
-  transition:  color .16s $animation-ease-out, opacity .16s $animation-ease-out;
 
   &:hover {
-    @include theme-prop(color, primary);
     text-decoration: none;
+
+    @include theme-prop(color, primary);
   }
 }

@@ -6,12 +6,13 @@
 
 // 例子样式
 .doc-example {
-  position:      relative;
+  position: relative;
   margin-bottom: 1rem;
-  border:        1px solid;
-  @include theme-prop(border-color, secondary-lighter);
+  border: 1px solid;
   border-radius: 4px;
-  transition:    all .2s;
+  transition: all .2s;
+
+  @include theme-prop(border-color, secondary-lighter);
 
   &:hover {
     .icon-pure-code,
@@ -30,10 +31,10 @@
 }
 
 .doc-example-expand {
-  position:        relative;
-  display:         flex;
+  position: relative;
+  display: flex;
   justify-content: flex-end;
-  margin:          .5rem 2rem;
+  margin: .5rem 2rem;
 }
 
 .icon-pure-code,
@@ -43,7 +44,7 @@
 }
 
 .doc-code-icon {
-  width:  2.5rem;
+  width: 2.5rem;
   cursor: pointer;
 
   &:hover {
@@ -52,9 +53,9 @@
       @include theme-prop(color, secondary);
     }
 
-    & + .tooltip {
-      top:     -3rem;
-      right:   -.8rem;
+    + .tooltip {
+      top: -3rem;
+      right: -.8rem;
       display: block;
       opacity: .8;
     }
@@ -62,8 +63,8 @@
 }
 
 .doc-example-highlight.highlight {
-  display:    none;
-  border:     0;
+  display: none;
+  border: 0;
   border-top: 1px dashed;
   @include theme-prop(border-top-color, secondary-lighter);
   @include animation-transition(display);
@@ -71,13 +72,13 @@
 
 .doc-code-copy {
   position: absolute;
-  top:      1rem;
-  right:    3rem;
-  display:  none;
+  top: 1rem;
+  right: 3rem;
+  display: none;
 
   .icon-pure-copy {
-    cursor:    pointer;
     transform: scale(.4);
+    cursor: pointer;
     @include theme-prop(color, secondary-lighter);
   }
 
@@ -86,9 +87,9 @@
       @include theme-prop(color, secondary);
     }
 
-    & + .tooltip {
-      top:     -2rem;
-      right:   1.5rem;
+    + .tooltip {
+      top: -2rem;
+      right: 1.5rem;
       display: block;
       opacity: .8;
     }
@@ -97,8 +98,10 @@
 
 .doc-example-highlight {
   position: relative;
+
   &:hover .doc-code-copy {
     display: block;
+
     .icon-pure-copy {
       @include theme-prop(color, secondary);
     }
@@ -119,6 +122,7 @@
   .no-gutters {
     margin-top: 1rem;
   }
+
   [class^="col"] > div {
     @include theme-prop(background-color, secondary-light);
   }
