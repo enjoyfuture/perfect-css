@@ -110,6 +110,9 @@
   },
   "homepage": "https://github.com/joy-web/perfect-css#readme",
   "lint-staged": {
+    "*.{scss,js}": [
+      "npm run validate"
+    ],
     "*.{js,md}": [
       "prettier --trailing-comma es5 --single-quote --write",
       "git add"
