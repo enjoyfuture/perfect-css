@@ -2,6 +2,7 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
 const CLIEngine = require('eslint').CLIEngine;
+// https://eslint.org/docs/developer-guide/nodejs-api#cliengine
 const cli = new CLIEngine({});
 const stylelint = require('stylelint');
 
@@ -80,10 +81,12 @@ async function runStyleLint() {
     const files = stdout.split('\n');
     files.pop();
 
+    // https://stylelint.io/user-guide/node-api/
     return stylelint
       .lint({
         configFile: '.stylelintrc.yaml',
         files,
+        fix: true,
       })
       .then(results => {
         let errorCount = 0;
