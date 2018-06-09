@@ -1,8 +1,10 @@
 const util = require('util');
+const chalk = require('chalk');
 const exec = util.promisify(require('child_process').exec);
 
 const CLIEngine = require('eslint').CLIEngine;
-const cli = new CLIEngine({});
+// https://eslint.org/docs/developer-guide/nodejs-api#cliengine
+const cli = new CLIEngine({ fix: true });
 const stylelint = require('stylelint');
 
 function getstderrLevel(number) {
@@ -28,7 +30,7 @@ async function runEsLint() {
   );
 
   if (stderr) {
-    console.log(`exec stderr: ${stderr}`);
+    console.log(chalk.red(`exec stderr: ${stderr}`));
   }
 
   if (stdout.length) {
@@ -42,13 +44,18 @@ async function runEsLint() {
       warningCount += result.warningCount;
       if (result.messages.length > 0) {
         console.log('\n');
-        console.log('不符合 eslint 规则文件：', result.filePath);
+        console.log(
+          chalk.red('不符合 eslint 规则文件：'),
+          chalk.red(result.filePath)
+        );
         result.messages.forEach(obj => {
           const level = getstderrLevel(obj.severity);
           console.log(
-            `错误或警告信息：  ${obj.line}:${obj.column}  ${level}  ${
-              obj.message
-            }  ${obj.ruleId}`
+            chalk.red(
+              `错误或警告信息：  ${obj.line}:${obj.column}  ${level} ${
+                obj.message
+              }  ${obj.ruleId}`
+            )
           );
           pass = 1;
         });
@@ -56,8 +63,10 @@ async function runEsLint() {
     });
     if (warningCount > 0 || errorCount > 0) {
       console.log(
-        `\n   ${errorCount +
-          warningCount} problems (${errorCount} ${'errors'} ${warningCount} warnings)`
+        chalk.red(
+          `\n   ${errorCount +
+            warningCount} problems (${errorCount} ${'errors'} ${warningCount} warnings)`
+        )
       );
     }
   }
@@ -73,17 +82,19 @@ async function runStyleLint() {
     'git diff --cached --name-only| grep .scss$'
   );
   if (stderr) {
-    console.log(`exec stderr: ${stderr}`);
+    console.log(chalk.red(`exec stderr: ${stderr}`));
   }
 
   if (stdout.length) {
     const files = stdout.split('\n');
     files.pop();
 
+    // https://stylelint.io/user-guide/node-api/
     return stylelint
       .lint({
         configFile: '.stylelintrc.yaml',
         files,
+        fix: true,
       })
       .then(results => {
         let errorCount = 0;
@@ -95,13 +106,15 @@ async function runStyleLint() {
 
           if (result.warnings.length > 0) {
             console.log('\n');
-            console.log(`不符合 stylelint 文件：${result.source}`);
+            console.log(chalk.red(`不符合 stylelint 文件：${result.source}`));
             result.warnings.forEach(obj => {
               const level = getstderrLevel(obj.severity);
               console.log(
-                `   ${obj.line}:${obj.column}  ${level}  ${obj.text}  ${
-                  obj.rule
-                }`
+                chalk.red(
+                  `   ${obj.line}:${obj.column}  ${level}  ${obj.text}  ${
+                    obj.rule
+                  }`
+                )
               );
               pass = 1;
             });
@@ -109,8 +122,10 @@ async function runStyleLint() {
         });
         if (warningCount > 0 || errorCount > 0) {
           console.log(
-            `\n   ${errorCount +
-              warningCount} problems (${errorCount} ${'errors'} ${warningCount} warnings)`
+            chalk.red(
+              `\n   ${errorCount +
+                warningCount} problems (${errorCount} ${'errors'} ${warningCount} warnings)`
+            )
           );
         }
 

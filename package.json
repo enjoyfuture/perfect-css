@@ -50,7 +50,8 @@
     "rouge-theme": "rougify style github > docs/assets/scss/docs/_highlight.scss",
     "css-prefix": "node scripts/css-prefix.js",
     "pregenerate-zip": "npm run dist",
-    "generate-zip": "npm run clean:tmp && mkdirp _tmp/dist/css && mkdirp _tmp/dist/js && babel-node scripts/generate-dist-zip.js"
+    "generate-zip": "npm run clean:tmp && mkdirp _tmp/dist/css && mkdirp _tmp/dist/js && babel-node scripts/generate-dist-zip.js",
+    "precommit": "lint-staged"
   },
   "dependencies": {},
   "devDependencies": {
@@ -107,5 +108,14 @@
   "bugs": {
     "url": "https://github.com/joy-web/perfect-css/issues"
   },
-  "homepage": "https://github.com/joy-web/perfect-css#readme"
+  "homepage": "https://github.com/joy-web/perfect-css#readme",
+  "lint-staged": {
+    "*.{scss,js}": [
+      "npm run validate"
+    ],
+    "*.{js,md}": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ]
+  }
 }
