@@ -559,97 +559,97 @@
 <p>根据是 pc 端项目还是 mobile 项目的不同，导入需要用到的组件，
 一般在项目 scss 目录中创建一文件 <code class="highlighter-rouge">perfect-custom.scss</code> 来设置要导入的组件库，下面给出样板文件，
 <code class="highlighter-rouge">~</code> 表示 perfect-css 所在的 node_modules，需要借助于 Webpack 来打包编译成 CSS</p>
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 根据页面需要，自定义需要导入的 Perfect css 样式
-</span>
-<span class="c1">// 变量、mixin 和函数
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/base/variables"</span><span class="p">;</span>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 根据页面需要，自定义需要导入的 Perfect css 样式</span>
+
+<span class="c1">// 变量、mixin 和函数</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/base/variables"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"~perfect-css/components/base/mixins"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"~perfect-css/components/base/functions"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"~perfect-css/components/base/base"</span><span class="p">;</span>
 
-<span class="c1">// Theme 主题
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/theme/theme"</span><span class="p">;</span>
+<span class="c1">// Theme 主题</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/theme/theme"</span><span class="p">;</span>
 
-<span class="c1">// Normalize 重置样式
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/normalize/normalize"</span><span class="p">;</span>
+<span class="c1">// Normalize 重置样式</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/normalize/normalize"</span><span class="p">;</span>
 
-<span class="c1">// Animation 动画
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/animation/animation"</span><span class="p">;</span>
+<span class="c1">// Animation 动画</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/animation/animation"</span><span class="p">;</span>
 
-<span class="c1">// Ripple 波纹效果
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/ripple/ripple"</span><span class="p">;</span>
+<span class="c1">// Ripple 波纹效果</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/ripple/ripple"</span><span class="p">;</span>
 
-<span class="c1">// Shadow 阴影效果
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/shadow/shadow"</span><span class="p">;</span>
+<span class="c1">// Shadow 阴影效果</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/shadow/shadow"</span><span class="p">;</span>
 
-<span class="c1">// Typography 排版
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/typography/typography"</span><span class="p">;</span>
+<span class="c1">// Typography 排版</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/typography/typography"</span><span class="p">;</span>
 
-<span class="c1">// 纯 css 图标
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/icon-pure-css/icon-pure-css"</span><span class="p">;</span>
+<span class="c1">// 纯 css 图标</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/icon-pure-css/icon-pure-css"</span><span class="p">;</span>
 
-<span class="c1">// Layout 布局
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/layout/box/box"</span><span class="p">;</span> <span class="c1">// Box 盒子布局
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/layout/drawer/drawer"</span><span class="p">;</span> <span class="c1">// Drawer 抽屉布局
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/layout/container/container"</span><span class="p">;</span> <span class="c1">// Container 容器
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/layout/grid/grid"</span><span class="p">;</span> <span class="c1">// Grid 栅格
-</span>
-<span class="c1">// 表单组件
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/input/input"</span><span class="p">;</span> <span class="c1">// Input 输入框
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/select/select"</span><span class="p">;</span> <span class="c1">// Select 下拉选择框
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/dropdown/dropdown"</span><span class="p">;</span> <span class="c1">// Dropdown 下拉菜单
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/radio/radio"</span><span class="p">;</span> <span class="c1">// Radio 单选框
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/checkbox/checkbox"</span><span class="p">;</span> <span class="c1">// Checkbox 复选框
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/upload/upload"</span><span class="p">;</span> <span class="c1">// Upload 文件上传
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/switch/switch"</span><span class="p">;</span> <span class="c1">// Switch 开关
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/slider/slider"</span><span class="p">;</span> <span class="c1">// Slider 滑块
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/button/button"</span><span class="p">;</span> <span class="c1">// Button 按钮
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/form-field/form-field"</span><span class="p">;</span> <span class="c1">// Form Field 表单域
-</span>
-<span class="c1">// 元素组件
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/menu/menu"</span><span class="p">;</span> <span class="c1">// Menu 菜单
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/menu/list-menu"</span><span class="p">;</span> <span class="c1">// List Menu 列表菜单
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/tree/tree"</span><span class="p">;</span> <span class="c1">// Tree 树形组件
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/page/page"</span><span class="p">;</span> <span class="c1">// Page 分页
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/loading/loading"</span><span class="p">;</span> <span class="c1">// Loading 加载
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/toast/toast"</span><span class="p">;</span> <span class="c1">// Toast 吐司提示
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/tooltip/tooltip"</span><span class="p">;</span> <span class="c1">// Tooltip 提示
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/image/image"</span><span class="p">;</span> <span class="c1">// Image 图像
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/callout/callout"</span><span class="p">;</span> <span class="c1">// Callout 引线式标注
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/progress/progress"</span><span class="p">;</span> <span class="c1">// Progress 进度条
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/tag/tag"</span><span class="p">;</span> <span class="c1">// Tag 标签
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/badge/badge"</span><span class="p">;</span> <span class="c1">// Badge 角标
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/back-top/back-top"</span><span class="p">;</span> <span class="c1">// Back Top 返回顶部
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/date-picker/date-picker"</span><span class="p">;</span> <span class="c1">// Date Picker 日期选择器
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/color-picker/color-picker"</span><span class="p">;</span> <span class="c1">// Color Picker 颜色选择器
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/timeline/timeline"</span><span class="p">;</span> <span class="c1">// Timeline 时间轴
-</span>
-<span class="c1">// navigation 导航样式
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/navigation/crumb/crumb"</span><span class="p">;</span> <span class="c1">// Crumb 面包屑
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/navigation/navbar/navbar"</span><span class="p">;</span> <span class="c1">// Navbar 导航栏
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/navigation/steps/steps"</span><span class="p">;</span> <span class="c1">// Steps 步骤条
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/navigation/tabs/tabs"</span><span class="p">;</span> <span class="c1">// Tabs 标签页
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/navigation/tabs/tab-bar-scroller"</span><span class="p">;</span> <span class="c1">// 可滑动的 Tabs 标签页
-</span>
-<span class="c1">// container 容器样式
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/container/list/list"</span><span class="p">;</span> <span class="c1">// List 列表
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/container/table/table"</span><span class="p">;</span> <span class="c1">// Table 表格
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/container/card/card"</span><span class="p">;</span> <span class="c1">// Card 卡片
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/container/dialog/dialog"</span><span class="p">;</span> <span class="c1">// Dialog 对话框
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/container/accordion/accordion"</span><span class="p">;</span> <span class="c1">// Accordion 手风琴
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/container/carousel/carousel"</span><span class="p">;</span> <span class="c1">// Carousel 轮播图
-</span>
-<span class="c1">// 工具类 classes
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/align"</span><span class="p">;</span> <span class="c1">// 文本对齐方式
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/border"</span><span class="p">;</span> <span class="c1">// 边框和圆角
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/display"</span><span class="p">;</span> <span class="c1">// display 相关属性值样式
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/flex"</span><span class="p">;</span> <span class="c1">// 弹性布局样式
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/float"</span><span class="p">;</span> <span class="c1">// 浮层和清空浮层
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/position"</span><span class="p">;</span> <span class="c1">// 定位
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/sizing"</span><span class="p">;</span> <span class="c1">// 元素大小
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/spacing"</span><span class="p">;</span> <span class="c1">// 间距
-</span><span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/text"</span><span class="p">;</span> <span class="c1">// 文本修饰
-</span>
+<span class="c1">// Layout 布局</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/layout/box/box"</span><span class="p">;</span> <span class="c1">// Box 盒子布局</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/layout/drawer/drawer"</span><span class="p">;</span> <span class="c1">// Drawer 抽屉布局</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/layout/container/container"</span><span class="p">;</span> <span class="c1">// Container 容器</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/layout/grid/grid"</span><span class="p">;</span> <span class="c1">// Grid 栅格</span>
+
+<span class="c1">// 表单组件</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/input/input"</span><span class="p">;</span> <span class="c1">// Input 输入框</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/select/select"</span><span class="p">;</span> <span class="c1">// Select 下拉选择框</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/dropdown/dropdown"</span><span class="p">;</span> <span class="c1">// Dropdown 下拉菜单</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/radio/radio"</span><span class="p">;</span> <span class="c1">// Radio 单选框</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/checkbox/checkbox"</span><span class="p">;</span> <span class="c1">// Checkbox 复选框</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/upload/upload"</span><span class="p">;</span> <span class="c1">// Upload 文件上传</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/switch/switch"</span><span class="p">;</span> <span class="c1">// Switch 开关</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/slider/slider"</span><span class="p">;</span> <span class="c1">// Slider 滑块</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/button/button"</span><span class="p">;</span> <span class="c1">// Button 按钮</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/forms/form-field/form-field"</span><span class="p">;</span> <span class="c1">// Form Field 表单域</span>
+
+<span class="c1">// 元素组件</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/menu/menu"</span><span class="p">;</span> <span class="c1">// Menu 菜单</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/menu/list-menu"</span><span class="p">;</span> <span class="c1">// List Menu 列表菜单</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/tree/tree"</span><span class="p">;</span> <span class="c1">// Tree 树形组件</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/page/page"</span><span class="p">;</span> <span class="c1">// Page 分页</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/loading/loading"</span><span class="p">;</span> <span class="c1">// Loading 加载</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/toast/toast"</span><span class="p">;</span> <span class="c1">// Toast 吐司提示</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/tooltip/tooltip"</span><span class="p">;</span> <span class="c1">// Tooltip 提示</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/image/image"</span><span class="p">;</span> <span class="c1">// Image 图像</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/callout/callout"</span><span class="p">;</span> <span class="c1">// Callout 引线式标注</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/progress/progress"</span><span class="p">;</span> <span class="c1">// Progress 进度条</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/tag/tag"</span><span class="p">;</span> <span class="c1">// Tag 标签</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/badge/badge"</span><span class="p">;</span> <span class="c1">// Badge 角标</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/back-top/back-top"</span><span class="p">;</span> <span class="c1">// Back Top 返回顶部</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/date-picker/date-picker"</span><span class="p">;</span> <span class="c1">// Date Picker 日期选择器</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/color-picker/color-picker"</span><span class="p">;</span> <span class="c1">// Color Picker 颜色选择器</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/elements/timeline/timeline"</span><span class="p">;</span> <span class="c1">// Timeline 时间轴</span>
+
+<span class="c1">// navigation 导航样式</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/navigation/crumb/crumb"</span><span class="p">;</span> <span class="c1">// Crumb 面包屑</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/navigation/navbar/navbar"</span><span class="p">;</span> <span class="c1">// Navbar 导航栏</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/navigation/steps/steps"</span><span class="p">;</span> <span class="c1">// Steps 步骤条</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/navigation/tabs/tabs"</span><span class="p">;</span> <span class="c1">// Tabs 标签页</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/navigation/tabs/tab-bar-scroller"</span><span class="p">;</span> <span class="c1">// 可滑动的 Tabs 标签页</span>
+
+<span class="c1">// container 容器样式</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/container/list/list"</span><span class="p">;</span> <span class="c1">// List 列表</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/container/table/table"</span><span class="p">;</span> <span class="c1">// Table 表格</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/container/card/card"</span><span class="p">;</span> <span class="c1">// Card 卡片</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/container/dialog/dialog"</span><span class="p">;</span> <span class="c1">// Dialog 对话框</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/container/accordion/accordion"</span><span class="p">;</span> <span class="c1">// Accordion 手风琴</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/container/carousel/carousel"</span><span class="p">;</span> <span class="c1">// Carousel 轮播图</span>
+
+<span class="c1">// 工具类 classes</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/align"</span><span class="p">;</span> <span class="c1">// 文本对齐方式</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/border"</span><span class="p">;</span> <span class="c1">// 边框和圆角</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/display"</span><span class="p">;</span> <span class="c1">// display 相关属性值样式</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/flex"</span><span class="p">;</span> <span class="c1">// 弹性布局样式</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/float"</span><span class="p">;</span> <span class="c1">// 浮层和清空浮层</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/position"</span><span class="p">;</span> <span class="c1">// 定位</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/sizing"</span><span class="p">;</span> <span class="c1">// 元素大小</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/spacing"</span><span class="p">;</span> <span class="c1">// 间距</span>
+<span class="k">@import</span> <span class="s2">"~perfect-css/components/utils/text"</span><span class="p">;</span> <span class="c1">// 文本修饰</span>
+
 </code></pre></div></div>
 <p>以上样板文件与 Perfect CSS 源文件<a href="https://github.com/joy-web/perfect-css/tree/master/scss/perfect.scss" target="_blank">scss/perfect.scss</a>保持一致，我们根据需要去掉或注释掉暂时用不到的组件，
 强力建议使用注释方式，因为后续业务可能会用到该组件。</p>

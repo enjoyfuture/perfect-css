@@ -784,19 +784,19 @@
   <li>每行长度最多100个字符，对于超长的样式，在样式值的 <code class="highlighter-rouge">空格</code> 处或 <code class="highlighter-rouge">,</code> 后换行
     <div class="language-scss highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code><span class="nc">.guide</span> <span class="p">{</span>
-  <span class="c1">// 同一属性，多个属性值，以逗号换行
-</span>  <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="mh">#655</span><span class="o">,</span>
+  <span class="c1">// 同一属性，多个属性值，以逗号换行</span>
+  <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="mh">#655</span><span class="o">,</span>
   <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">15px</span> <span class="no">deeppink</span><span class="o">,</span>
   <span class="m">0</span> <span class="m">2px</span> <span class="m">5px</span> <span class="m">15px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="mi">.6</span><span class="p">);</span>
    
-  <span class="c1">// 函数属性值，适当时候以逗号来换行
-</span>  <span class="nl">background</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="m">45deg</span><span class="o">,</span>
+  <span class="c1">// 函数属性值，适当时候以逗号来换行</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="m">45deg</span><span class="o">,</span>
     <span class="mh">#fb3</span> <span class="m">25%</span><span class="o">,</span> <span class="mh">#58a</span> <span class="m">0</span><span class="o">,</span> <span class="mh">#58a</span> <span class="m">50%</span><span class="o">,</span>
     <span class="mh">#fb3</span> <span class="m">0</span><span class="o">,</span> <span class="mh">#fb3</span> <span class="m">75%</span><span class="o">,</span> <span class="mh">#58a</span> <span class="m">0</span><span class="p">);</span>
   <span class="nl">background-size</span><span class="p">:</span> <span class="m">30px</span> <span class="m">30px</span><span class="p">;</span>
    
-  <span class="c1">// 同一属性，多个属性值，以逗号换行
-</span>  <span class="nl">background</span><span class="p">:</span> <span class="mh">#58a</span><span class="p">;</span>
+  <span class="c1">// 同一属性，多个属性值，以逗号换行</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="mh">#58a</span><span class="p">;</span>
   <span class="nl">background-image</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="no">white</span> <span class="m">2px</span><span class="o">,</span> <span class="nb">transparent</span> <span class="m">0</span><span class="p">)</span><span class="o">,</span>
   <span class="nf">linear-gradient</span><span class="p">(</span><span class="m">90deg</span><span class="o">,</span> <span class="no">white</span> <span class="m">2px</span><span class="o">,</span> <span class="nb">transparent</span> <span class="m">0</span><span class="p">)</span><span class="o">,</span>
   <span class="nf">linear-gradient</span><span class="p">(</span><span class="nf">hsla</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0%</span><span class="o">,</span> <span class="m">100%</span><span class="o">,</span> <span class="mi">.3</span><span class="p">)</span> <span class="m">1px</span><span class="o">,</span> <span class="nb">transparent</span> <span class="m">0</span><span class="p">)</span><span class="o">,</span>
@@ -836,19 +836,19 @@
   <li>子选择器样式</li>
 </ol>
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.product-teaser</span> <span class="p">{</span>
-  <span class="c1">// 1. Style attributes
-</span>  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+  <span class="c1">// 1. Style attributes</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
   <span class="nl">padding</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
   <span class="nl">color</span><span class="p">:</span> <span class="mh">#00a8c6</span><span class="p">;</span>
   <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#fff9ff</span><span class="p">;</span>
 
-  <span class="c1">// 2. Pseudo selectors with parent selector
-</span>  <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="c1">// 2. Pseudo selectors with parent selector</span>
+  <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
     <span class="nl">color</span><span class="p">:</span> <span class="mh">#00a8c6</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="c1">// 3. Pseudo elements with parent selector
-</span>  <span class="err">&amp;</span><span class="p">:</span><span class="o">:</span><span class="n">before</span> <span class="p">{</span>
+  <span class="c1">// 3. Pseudo elements with parent selector</span>
+  <span class="err">&amp;</span><span class="p">:</span><span class="o">:</span><span class="n">before</span> <span class="p">{</span>
     <span class="nl">content</span><span class="p">:</span> <span class="s2">""</span><span class="p">;</span>
     <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
     <span class="nl">border-top</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="mh">#00c176</span><span class="p">;</span>
@@ -860,34 +860,34 @@
     <span class="nl">border-top</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="mh">#00a8c6</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="c1">// 4. State classes with parent selector
-</span>  <span class="k">&amp;</span><span class="nc">.active</span> <span class="p">{</span>
+  <span class="c1">// 4. State classes with parent selector</span>
+  <span class="k">&amp;</span><span class="nc">.active</span> <span class="p">{</span>
     <span class="nl">color</span><span class="p">:</span> <span class="mh">#ff003c</span><span class="p">;</span>
     <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#ff8edf</span><span class="p">;</span>
 
-    <span class="c1">// 4.2. Pseuso selector in state class selector
-</span>    <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="c1">// 4.2. Pseuso selector in state class selector</span>
+    <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
       <span class="nl">color</span><span class="p">:</span> <span class="mh">#d14</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="p">}</span>
 
-  <span class="c1">// 5. Contextual media queries
-</span>  <span class="k">@media</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">640px</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 5. Contextual media queries</span>
+  <span class="k">@media</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">640px</span><span class="p">)</span> <span class="p">{</span>
     <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
     <span class="nl">font-size</span><span class="p">:</span> <span class="m">2em</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="c1">// 6. Brother selectors
-</span>  <span class="o">+</span> <span class="nc">.main</span>  <span class="p">{</span>
+  <span class="c1">// 6. Brother selectors</span>
+  <span class="o">+</span> <span class="nc">.main</span>  <span class="p">{</span>
     <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.2em</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="c1">// 7. Sub selectors
-</span>  <span class="o">&gt;</span> <span class="nc">.content</span> <span class="o">&gt;</span> <span class="nc">.title</span> <span class="p">{</span>
+  <span class="c1">// 7. Sub selectors</span>
+  <span class="o">&gt;</span> <span class="nc">.content</span> <span class="o">&gt;</span> <span class="nc">.title</span> <span class="p">{</span>
     <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.2em</span><span class="p">;</span>
 
-    <span class="c1">// 7.5. Contextual media queries in sub selector
-</span>    <span class="k">@media</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">640px</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 7.5. Contextual media queries in sub selector</span>
+    <span class="k">@media</span> <span class="n">screen</span> <span class="nf">and</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">640px</span><span class="p">)</span> <span class="p">{</span>
       <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
       <span class="nl">letter-spacing</span><span class="p">:</span> <span class="mi">.2em</span><span class="p">;</span>
     <span class="p">}</span>
@@ -941,15 +941,15 @@
 *. 为选择器中的属性值添加双引号，例如，<code class="highlighter-rouge">input[type="text"]</code>
 *. 当一个 rule 包含多个 selector 时，每个选择器声明必须独占一行
     <div class="language-scss highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  <span class="c1">// good
-</span>  <span class="nc">.post</span><span class="o">,</span>
+<div class="highlight"><pre class="highlight"><code>  <span class="c1">// good</span>
+  <span class="nc">.post</span><span class="o">,</span>
   <span class="nc">.page</span><span class="o">,</span>
   <span class="nc">.comment</span> <span class="p">{</span>
     <span class="nl">color</span><span class="p">:</span> <span class="mh">#00a8c6</span><span class="p">;</span>
   <span class="p">}</span>
     
-  <span class="c1">// bad
-</span>  <span class="nc">.post</span><span class="o">,</span> <span class="nc">.page</span><span class="o">,</span> <span class="nc">.comment</span> <span class="p">{</span>
+  <span class="c1">// bad</span>
+  <span class="nc">.post</span><span class="o">,</span> <span class="nc">.page</span><span class="o">,</span> <span class="nc">.comment</span> <span class="p">{</span>
     <span class="nl">color</span><span class="p">:</span> <span class="mh">#00a8c6</span><span class="p">;</span>
   <span class="p">}</span>
 </code></pre></div>    </div>
@@ -962,8 +962,8 @@
 <p>注释不要简单地重申组件或 class 名称，最好能以详细的说明。对于较长的注释，务必书写完整的句子；对于一般性注解，可以书写简洁的短语。</p>
 <p>由于采用 Sass 来书写 css，我们统一使用 // 来注释，只在打包样式主文件，添加多行注释</p>
 <p>单行注释</p>
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// comment
-</span></code></pre></div></div>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// comment</span>
+</code></pre></div></div>
 <p>多行注释</p>
 <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*  
 * comment 1
@@ -984,7 +984,7 @@
 <div class="anchor-header" id="toc-7"></div>sass-lint 代码检测工具<a class="anchor-link" href="#toc-7" data-target="toc-7" aria-hidden="true">#</a>
 </h2>
 <p>需要安装 sass-lint</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install <span class="nt">--save-dev</span> sass-lint
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save-dev</span> sass-lint
 </code></pre></div></div>
 <p>并设置 <code class="highlighter-rouge">.sass-lint.yml</code> 配置文件</p>
 <p>对于 WebStorm，需要安装插件<a href="https://github.com/idok/sass-lint-plugin">sass-lint-plugin</a></p>
