@@ -1,24 +1,19 @@
 import path from 'path';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import glob from 'glob';
-import autoprefixer from 'autoprefixer';
-import flexbugs from 'postcss-flexbugs-fixes'; // 修复 flexbox 已知的 bug
-
-import CopyrightBannerPlugin from './webpack/copyright-banner-plugin';
-import getBrowsers from './webpack/get-browsers';
+import {
+  copyrightBanner,
+  createCssExtractPlugin,
+  createScssModuleRules,
+  createJsModuleRules,
+  commonConfig,
+  commonOptimization,
+} from './webpack/config';
 import OutputPathPlugin from './webpack-plugins/OutputPathPlugin';
+import webpack from 'webpack';
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = process.env.NODE_ENV === 'production';
 const isMin = process.env.NODE_UGLIFY === 'true';
-
-// 生成 css 文件
-const createCssExtractTextPlugin = () =>
-  new ExtractTextPlugin({
-    filename: `[name]${isMin ? '.min' : ''}.css`,
-    allChunks: true,
-    ignoreOrder: true,
-  });
 
 // 生成 scss 入口文件 entry
 // 打包时 pathPattern 为 'components/**/!(_)*.scss'
@@ -32,72 +27,10 @@ const createScssEntry = pathPattern => {
   return entry;
 };
 
-// 生成 Module Rules
-const createScssModuleRules = isDocs => {
-  const rules = [];
-
-  if (isDocs) {
-    // https://github.com/webpack/url-loader
-    rules.push({
-      test: /\.(png|jpe?g|gif)/,
-      use: {
-        loader: 'url-loader',
-        options: {
-          name: '[hash].[ext]',
-          limit: 10000, // 10kb
-        },
-      },
-    });
-  }
-
-  rules.push({
-    test: /\.scss/,
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: [
-        {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
-        {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true,
-            plugins: () => [
-              flexbugs(),
-              autoprefixer({
-                flexbox: 'no-2009',
-                grid: false,
-                browsers: getBrowsers(),
-              }),
-            ],
-          },
-        },
-        {
-          // Webpack loader that resolves relative paths in url() statements
-          // based on the original source file
-          loader: 'resolve-url-loader',
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true,
-            precision: 15, // 设置小数精度
-          },
-        },
-      ],
-    }),
-  });
-
-  return rules;
-};
-
+// 基于 webpack 的持久化缓存方案 可以参考 https://github.com/pigcan/blog/issues/9
 const webpackConfig = [
   {
-    mode: process.env.NODE_ENV,
-    cache: true, // 开启缓存，增量编译
+    ...commonConfig(),
     name: 'js-all',
     entry: path.resolve('./components/perfect.js'),
     output: {
@@ -105,54 +38,41 @@ const webpackConfig = [
       filename: `perfect.${isMin ? 'min.' : ''}js`,
       libraryTarget: 'umd',
       library: 'perfect',
+      // Point sourcemap entries to original disk location (format as URL on Windows)
+      devtoolModuleFilenameTemplate: info =>
+        path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
+      sourceMapFilename: 'map/[file].map',
     },
-    devtool: 'source-map', // 生成 source-map 文件
     module: {
-      rules: [
-        // https://github.com/MoOx/eslint-loader
-        {
-          enforce: 'pre',
-          test: /\.js$/,
-          use: {
-            loader: 'eslint-loader',
-            options: {
-              fix: true, // 自动修复
-              cache: true, // 开启缓存
-              configFile: '.eslintrc.js',
-              emitError: false, // 验证失败，终止
-            },
-          },
-        },
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-          },
-        },
-      ],
+      // Make missing exports an error instead of warning
+      // 缺少 exports 时报错，而不是警告
+      strictExportPresence: true,
+      rules: createJsModuleRules(),
     },
+    optimization: commonOptimization(),
+    plugins: [
+      // 用来优化生成的代码 chunk，合并相同的代码
+      new webpack.optimize.AggressiveMergingPlugin(),
+      new copyrightBanner(),
+    ],
   },
 ];
 
 if (isDev) {
   webpackConfig.push(
     {
-      mode: process.env.NODE_ENV,
-      cache: true, // 开启缓存，增量编译
+      ...commonConfig(),
       name: 'css-docs',
-      devtool: 'source-map', // 生成 source-map 文件
       entry: createScssEntry('docs/assets/scss/*.scss'),
       output: {
-        path: path.resolve('docs/assets/css'),
+        path: path.resolve('docs/assets/tmp'),
         filename: '[name].css',
         sourceMapFilename: '[file].map',
       },
       module: {
         rules: createScssModuleRules(true),
       },
-      plugins: [createCssExtractTextPlugin()],
+      plugins: [createCssExtractPlugin(), new copyrightBanner()],
     },
     {
       mode: process.env.NODE_ENV,
@@ -192,19 +112,23 @@ if (isDev) {
           },
         ],
       },
+      optimization: commonOptimization(),
+      plugins: [
+        // 用来优化生成的代码 chunk，合并相同的代码
+        new webpack.optimize.AggressiveMergingPlugin(),
+        new copyrightBanner(),
+      ],
     }
   );
 }
 
 if (isProd) {
   webpackConfig.push({
-    mode: process.env.NODE_ENV,
-    cache: true, // 开启缓存，增量编译
+    ...commonConfig(),
     name: 'css-components',
-    devtool: 'source-map', // 生成 source-map 文件
     entry: createScssEntry('components/**/!(_)*.scss'),
     output: {
-      path: path.resolve('dist/css'),
+      path: path.resolve('dist/tmp'),
       filename: `[name]${isMin ? '.min' : ''}.css`,
       sourceMapFilename: '[file].map',
     },
@@ -212,8 +136,8 @@ if (isProd) {
       rules: createScssModuleRules(),
     },
     plugins: [
-      new CopyrightBannerPlugin(),
-      createCssExtractTextPlugin(),
+      new copyrightBanner(),
+      createCssExtractPlugin(),
       new OutputPathPlugin(),
     ],
   });

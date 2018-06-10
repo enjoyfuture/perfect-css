@@ -13,7 +13,7 @@ function copyFile() {
   glob.sync('dist/perfect.*').forEach(item => {
     const sourceFile = path.resolve(item);
     const targetFile = path.resolve(
-      `_tmp/dist/${item.indexOf('.css') !== -1 ? 'css' : 'js'}/${
+      `tmp/dist/${item.indexOf('.css') !== -1 ? 'css' : 'js'}/${
         item.split('/')[1]
       }`
     );
@@ -28,7 +28,7 @@ function zipFile() {
   const version = getVersion();
   const filePath = `perfect-css-${version}-dist`;
   const fileName = `${filePath}.zip`;
-  filePackage('_tmp/dist', `_tmp/zip/${fileName}`, {
+  filePackage('tmp/dist', `tmp/zip/${fileName}`, {
     packageRoot: filePath,
   });
 }

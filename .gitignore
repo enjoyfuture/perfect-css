@@ -2,7 +2,7 @@
 .idea
 node_modules
 dist
-_tmp
+tmp
 docs/assets/css
 docs/assets/js
 !docs/assets/js/src
