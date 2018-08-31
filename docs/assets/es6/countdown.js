@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 var WINDOW_WIDTH = 1024;
 var WINDOW_HEIGHT = 768;
 var RADIUS = 8;
@@ -8,15 +10,25 @@ const endTime = new Date(2014, 6, 11, 18, 47, 52);
 var curShowTimeSeconds = 0;
 
 var balls = [];
-const colors = ['#33B5E5', '#0099CC', '#AA66CC', '#9933CC', '#99CC00', '#669900', '#FFBB33', '#FF8800', '#FF4444', '#CC0000'];
+const colors = [
+  '#33B5E5',
+  '#0099CC',
+  '#AA66CC',
+  '#9933CC',
+  '#99CC00',
+  '#669900',
+  '#FFBB33',
+  '#FF8800',
+  '#FF4444',
+  '#CC0000',
+];
 
-window.onload = function () {
-
+window.onload = function() {
   WINDOW_WIDTH = document.body.clientWidth;
   WINDOW_HEIGHT = document.body.clientHeight;
 
   MARGIN_LEFT = Math.round(WINDOW_WIDTH / 10);
-  RADIUS = Math.round(WINDOW_WIDTH * 4 / 5 / 108) - 1;
+  RADIUS = Math.round((WINDOW_WIDTH * 4) / 5 / 108) - 1;
 
   MARGIN_TOP = Math.round(WINDOW_HEIGHT / 5);
 
@@ -27,14 +39,10 @@ window.onload = function () {
   canvas.height = WINDOW_HEIGHT;
 
   curShowTimeSeconds = getCurrentShowTimeSeconds();
-  setInterval(
-    function () {
-      render(context);
-      update();
-    }
-    ,
-    50,
-  );
+  setInterval(function() {
+    render(context);
+    update();
+  }, 50);
 };
 
 function getCurrentShowTimeSeconds() {
@@ -46,7 +54,6 @@ function getCurrentShowTimeSeconds() {
 }
 
 function update() {
-
   var nextShowTimeSeconds = getCurrentShowTimeSeconds();
 
   var nextHours = parseInt(nextShowTimeSeconds / 3600);
@@ -62,21 +69,41 @@ function update() {
       addBalls(MARGIN_LEFT + 0, MARGIN_TOP, parseInt(curHours / 10));
     }
     if (parseInt(curHours % 10) != parseInt(nextHours % 10)) {
-      addBalls(MARGIN_LEFT + 15 * (RADIUS + 1), MARGIN_TOP, parseInt(curHours / 10));
+      addBalls(
+        MARGIN_LEFT + 15 * (RADIUS + 1),
+        MARGIN_TOP,
+        parseInt(curHours / 10)
+      );
     }
 
     if (parseInt(curMinutes / 10) != parseInt(nextMinutes / 10)) {
-      addBalls(MARGIN_LEFT + 39 * (RADIUS + 1), MARGIN_TOP, parseInt(curMinutes / 10));
+      addBalls(
+        MARGIN_LEFT + 39 * (RADIUS + 1),
+        MARGIN_TOP,
+        parseInt(curMinutes / 10)
+      );
     }
     if (parseInt(curMinutes % 10) != parseInt(nextMinutes % 10)) {
-      addBalls(MARGIN_LEFT + 54 * (RADIUS + 1), MARGIN_TOP, parseInt(curMinutes % 10));
+      addBalls(
+        MARGIN_LEFT + 54 * (RADIUS + 1),
+        MARGIN_TOP,
+        parseInt(curMinutes % 10)
+      );
     }
 
     if (parseInt(curSeconds / 10) != parseInt(nextSeconds / 10)) {
-      addBalls(MARGIN_LEFT + 78 * (RADIUS + 1), MARGIN_TOP, parseInt(curSeconds / 10));
+      addBalls(
+        MARGIN_LEFT + 78 * (RADIUS + 1),
+        MARGIN_TOP,
+        parseInt(curSeconds / 10)
+      );
     }
     if (parseInt(curSeconds % 10) != parseInt(nextSeconds % 10)) {
-      addBalls(MARGIN_LEFT + 93 * (RADIUS + 1), MARGIN_TOP, parseInt(nextSeconds % 10));
+      addBalls(
+        MARGIN_LEFT + 93 * (RADIUS + 1),
+        MARGIN_TOP,
+        parseInt(nextSeconds % 10)
+      );
     }
 
     curShowTimeSeconds = nextShowTimeSeconds;
@@ -88,9 +115,7 @@ function update() {
 }
 
 function updateBalls() {
-
   for (var i = 0; i < balls.length; i++) {
-
     balls[i].x += balls[i].vx;
     balls[i].y += balls[i].vy;
     balls[i].vy += balls[i].g;
@@ -112,9 +137,8 @@ function updateBalls() {
 }
 
 function addBalls(x, y, num) {
-
   for (var i = 0; i < digit[num].length; i++)
-    for (var j = 0;; j < digit[num][i].length; j++)
+    for (var j = 0; j < digit[num][i].length; j++)
       if (digit[num][i][j] == 1) {
         var aBall = {
           x: x + j * 2 * (RADIUS + 1) + (RADIUS + 1),
@@ -130,7 +154,6 @@ function addBalls(x, y, num) {
 }
 
 function render(cxt) {
-
   cxt.clearRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
   var hours = parseInt(curShowTimeSeconds / 3600);
@@ -138,13 +161,38 @@ function render(cxt) {
   var seconds = curShowTimeSeconds % 60;
 
   renderDigit(MARGIN_LEFT, MARGIN_TOP, parseInt(hours / 10), cxt);
-  renderDigit(MARGIN_LEFT + 15 * (RADIUS + 1), MARGIN_TOP, parseInt(hours % 10), cxt);
+  renderDigit(
+    MARGIN_LEFT + 15 * (RADIUS + 1),
+    MARGIN_TOP,
+    parseInt(hours % 10),
+    cxt
+  );
   renderDigit(MARGIN_LEFT + 30 * (RADIUS + 1), MARGIN_TOP, 10, cxt);
-  renderDigit(MARGIN_LEFT + 39 * (RADIUS + 1), MARGIN_TOP, parseInt(minutes / 10), cxt);
-  renderDigit(MARGIN_LEFT + 54 * (RADIUS + 1), MARGIN_TOP, parseInt(minutes % 10), cxt);
+  renderDigit(
+    MARGIN_LEFT + 39 * (RADIUS + 1),
+    MARGIN_TOP,
+    parseInt(minutes / 10),
+    cxt
+  );
+  renderDigit(
+    MARGIN_LEFT + 54 * (RADIUS + 1),
+    MARGIN_TOP,
+    parseInt(minutes % 10),
+    cxt
+  );
   renderDigit(MARGIN_LEFT + 69 * (RADIUS + 1), MARGIN_TOP, 10, cxt);
-  renderDigit(MARGIN_LEFT + 78 * (RADIUS + 1), MARGIN_TOP, parseInt(seconds / 10), cxt);
-  renderDigit(MARGIN_LEFT + 93 * (RADIUS + 1), MARGIN_TOP, parseInt(seconds % 10), cxt);
+  renderDigit(
+    MARGIN_LEFT + 78 * (RADIUS + 1),
+    MARGIN_TOP,
+    parseInt(seconds / 10),
+    cxt
+  );
+  renderDigit(
+    MARGIN_LEFT + 93 * (RADIUS + 1),
+    MARGIN_TOP,
+    parseInt(seconds % 10),
+    cxt
+  );
 
   for (var i = 0; i < balls.length; i++) {
     cxt.fillStyle = balls[i].color;
@@ -158,17 +206,21 @@ function render(cxt) {
 }
 
 function renderDigit(x, y, num, cxt) {
-
   cxt.fillStyle = 'rgb(0,102,153)';
 
   for (var i = 0; i < digit[num].length; i++)
-    for (var j = 0;; j < digit[num][i].length; j++)
+    for (var j = 0; j < digit[num][i].length; j++)
       if (digit[num][i][j] == 1) {
         cxt.beginPath();
-        cxt.arc(x + j * 2 * (RADIUS + 1) + (RADIUS + 1), y + i * 2 * (RADIUS + 1) + (RADIUS + 1), RADIUS, 0, 2 * Math.PI);
+        cxt.arc(
+          x + j * 2 * (RADIUS + 1) + (RADIUS + 1),
+          y + i * 2 * (RADIUS + 1) + (RADIUS + 1),
+          RADIUS,
+          0,
+          2 * Math.PI
+        );
         cxt.closePath();
 
         cxt.fill();
       }
 }
-
