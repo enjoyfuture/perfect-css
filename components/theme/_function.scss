@@ -8,7 +8,7 @@
 // 例如 coefficient(0) => 0   coefficient(1) => .000303526983549
 // coefficient(2) => .000607053967098  coefficient(3) => .000910580950647
 // 如果不用第三方 pow 函数求解，也可以使用提前用 JavaScript 计算好的数组
-// 比如 $mdc-theme-linear-channel-values: 0 .0003035269835488375 .000607053967097675 .0009105809506465125;
+// 比如 $theme-linear-channel-values: 0 .0003035269835488375 .000607053967097675 .0009105809506465125;
 // 注意 sass 中的数组下标是从 1 开始
 @function coefficient($rgb) {
   $rgb: $rgb / 255;
@@ -27,7 +27,6 @@
 // }
 // 该定义已封装为函数 coefficient
 @function theme-luminance($color) {
-  // 注意这里不需要加 1
   $red: red($color);
   $green: green($color);
   $blue: blue($color);
@@ -51,11 +50,17 @@
 
 // 根据给定的颜色来判断色调是浅色还是深色
 @function theme-tone($color) {
-  //$alpha: alpha($color);
-  //// 如果是透明色，需要先转换为对应的不透明色
-  //@if ($alpha < 1) {
-  //  $color: rgba-to-rgb($color, $background: rgb(red($color), green($color), blue($color)));
-  //}
+  // 如果直接传的是 dark 或 light，则直接返回
+  @if $color == "dark" or $color == "light" {
+    @return $color;
+  }
+
+  // 如果是透明色，需要先转换为对应的不透明色
+  // FIXME，此处处理待验证
+  $alpha: alpha($color);
+  @if ($alpha < 1) {
+    $color: rgba-to-rgb($color, $background: rgb(red($color), green($color), blue($color)));
+  }
   // 最小对比度设为 3.1
   $minimum-contrast: 3.1;
   $light-contrast: theme-contrast-ratio($color, #fff);
@@ -124,5 +129,10 @@
   }
 
   @return #{$contrast-tone}-#{$on-prev-str};
+}
+
+// 判断是定义的主题变量属性值还是颜色值
+@function theme-is-valid-theme-prop-value($style) {
+  @return type-of($style) == "color" or $style == "currentColor" or str_slice($style, 1, 4) == "var(";
 }
 

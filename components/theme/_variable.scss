@@ -1,11 +1,12 @@
 // 自定义主题颜色
-@import "./color_palette";
+@import "./color-palette";
 @import "../base/variables/options";
 @import "./function";
 
 // 定义颜色透明度
 $alpha: .16 !default;
 
+// FIXME 是否把浅色和深色颜色值去掉
 // 主题颜色，换肤一般改变这三个基本颜色即可
 // 这三种基本颜色主题，会用在所有 CSS 组件上，
 $theme-primary: #2196f3 !default; // 主颜色，使用蓝色 $blue-500 #2196f3
