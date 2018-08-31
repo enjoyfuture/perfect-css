@@ -170,6 +170,7 @@ module.exports = {
           'origin',
           'window',
           'name',
+          'top',
         ],
         builtinGlobals: true,
       },
