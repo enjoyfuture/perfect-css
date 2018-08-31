@@ -1,7 +1,9 @@
 import Component from '../base/component';
 import {
-  supportsCssVariables, applyPassive,
-  getMatchesProperty, getNormalizedEventCoords,
+  supportsCssVariables,
+  applyPassive,
+  getMatchesProperty,
+  getNormalizedEventCoords,
 } from './util';
 
 // 定义常量
@@ -39,7 +41,6 @@ const DEACTIVATION_ACTIVATION_PAIRS = {
 };
 
 class Ripple extends Component {
-
   static get classes() {
     return classes;
   }
@@ -58,7 +59,7 @@ class Ripple extends Component {
    * @param unbounded
    * @returns {Ripple}
    */
-  static mount(element, {unbounded = undefined} = {}) {
+  static mount(element, { unbounded = undefined } = {}) {
     const ripple = new Ripple(element);
     if (unbounded !== undefined) {
       ripple.unbounded = /** @type {boolean} */ unbounded;
@@ -75,22 +76,29 @@ class Ripple extends Component {
 
     // 封装一些适配器方法
     return {
-      isSupportsCssVars: () => supportsCssVariables(window),
+      isSupportsCssVars: () => supportsCssVariables(),
       isUnbounded: () => instance.unbounded,
       isActive: () => instance.element[matches](':active'),
       isDisabled: () => instance.disabled,
-      addClass: (className) => instance.element.classList.add(className),
-      removeClass: (className) => instance.element.classList.remove(className),
+      addClass: className => instance.element.classList.add(className),
+      removeClass: className => instance.element.classList.remove(className),
       registerImpactHandler: (evtType, handler) =>
         instance.element.addEventListener(evtType, handler, applyPassive()),
       deregisterImpactHandler: (evtType, handler) =>
         instance.element.removeEventListener(evtType, handler, applyPassive()),
-      registerResizeHandler: (handler) => window.addEventListener('resize', handler),
-      deregisterResizeHandler: (handler) => window.removeEventListener('resize', handler),
-      updateCssVariable: (varName, value) => instance.element.style.setProperty(varName, value),
-      removeCssVariable: (varName) => instance.element.style.removeProperty(varName),
+      registerResizeHandler: handler =>
+        window.addEventListener('resize', handler),
+      deregisterResizeHandler: handler =>
+        window.removeEventListener('resize', handler),
+      updateCssVariable: (varName, value) =>
+        instance.element.style.setProperty(varName, value),
+      removeCssVariable: varName =>
+        instance.element.style.removeProperty(varName),
       computeBoundingRect: () => instance.element.getBoundingClientRect(),
-      getWindowPageOffset: () => ({x: window.pageXOffset, y: window.pageYOffset}),
+      getWindowPageOffset: () => ({
+        x: window.pageXOffset,
+        y: window.pageYOffset,
+      }),
     };
   }
 
@@ -126,7 +134,7 @@ class Ripple extends Component {
     this.layoutFrame = 0;
 
     // Ripple Rect size
-    this.rippleSize = {width: 0, height: 0};
+    this.rippleSize = { width: 0, height: 0 };
 
     // 初始化 Ripple 默认活动状态
     this.activationState = Ripple.resetActivationState();
@@ -166,23 +174,21 @@ class Ripple extends Component {
 
     // 事件与监听函数名称对应
     this.listenerInfos = [
-      {activate: 'touchstart', deactivate: 'touchend'},
-      {activate: 'pointerdown', deactivate: 'pointerup'},
-      {activate: 'mousedown', deactivate: 'mouseup'},
-      {activate: 'keydown', deactivate: 'keyup'},
-      {focus: 'focus', blur: 'blur'},
+      { activate: 'touchstart', deactivate: 'touchend' },
+      { activate: 'pointerdown', deactivate: 'pointerup' },
+      { activate: 'mousedown', deactivate: 'mouseup' },
+      { activate: 'keydown', deactivate: 'keyup' },
+      { focus: 'focus', blur: 'blur' },
     ];
 
     // 监听函数 Map
     this.listeners = {
-      activate: (e) => this.activate(e),
-      deactivate: (e) => this.deactivate(e),
-      focus: () => requestAnimationFrame(
-        () => this.adapter.addClass(classes.FOCUSED),
-      ),
-      blur: () => requestAnimationFrame(
-        () => this.adapter.removeClass(classes.FOCUSED),
-      ),
+      activate: e => this.activate(e),
+      deactivate: e => this.deactivate(e),
+      focus: () =>
+        requestAnimationFrame(() => this.adapter.addClass(classes.FOCUSED)),
+      blur: () =>
+        requestAnimationFrame(() => this.adapter.removeClass(classes.FOCUSED)),
     };
 
     this._init();
@@ -201,7 +207,7 @@ class Ripple extends Component {
 
     this.addEventListeners();
 
-    const {ELEMENT, UNBOUNDED} = classes;
+    const { ELEMENT, UNBOUNDED } = classes;
     requestAnimationFrame(() => {
       this.adapter.addClass(ELEMENT);
       if (this.adapter.isUnbounded()) {
@@ -228,7 +234,7 @@ class Ripple extends Component {
   // 初始化波纹个参数
   layoutInternal() {
     this.rippleRect = this.adapter.computeBoundingRect();
-    const {width, height} = this.rippleRect;
+    const { width, height } = this.rippleRect;
 
     // 元素大小
     const maxDim = Math.max(width, height);
@@ -247,29 +253,30 @@ class Ripple extends Component {
   }
 
   updateCssVariableValue() {
-    const {
-      VAR_SIZE, VAR_LEFT, VAR_TOP, VAR_SCALE,
-    } = strings;
+    const { VAR_SIZE, VAR_LEFT, VAR_TOP, VAR_SCALE } = strings;
 
     this.adapter.updateCssVariable(VAR_SIZE, `${this.initialSize}px`);
     this.adapter.updateCssVariable(VAR_SCALE, this.scale);
 
     if (this.adapter.isUnbounded()) {
-      const {width, height} = this.rippleRect;
+      const { width, height } = this.rippleRect;
       this.unboundedCoords = {
-        left: Math.round((width / 2) - (this.initialSize / 2)),
-        top: Math.round((height / 2) - (this.initialSize / 2)),
+        left: Math.round(width / 2 - this.initialSize / 2),
+        top: Math.round(height / 2 - this.initialSize / 2),
       };
 
-      this.adapter.updateCssVariable(VAR_LEFT, `${this.unboundedCoords.left}px`);
+      this.adapter.updateCssVariable(
+        VAR_LEFT,
+        `${this.unboundedCoords.left}px`
+      );
       this.adapter.updateCssVariable(VAR_TOP, `${this.unboundedCoords.top}px`);
     }
   }
 
   // 设置监听事件
   addEventListeners() {
-    this.listenerInfos.forEach((info) => {
-      Object.keys(info).forEach((k) => {
+    this.listenerInfos.forEach(info => {
+      Object.keys(info).forEach(k => {
         this.adapter.registerImpactHandler(info[k], this.listeners[k]);
       });
     });
@@ -280,8 +287,8 @@ class Ripple extends Component {
 
   // 删除事件
   removeEventListeners() {
-    this.listenerInfos.forEach((info) => {
-      Object.keys(info).forEach((k) => {
+    this.listenerInfos.forEach(info => {
+      Object.keys(info).forEach(k => {
         this.adapter.deregisterImpactHandler(info[k], this.listeners[k]);
       });
     });
@@ -299,7 +306,7 @@ class Ripple extends Component {
       return;
     }
 
-    const {activationState} = this;
+    const { activationState } = this;
     if (activationState.isActivated) {
       return;
     }
@@ -307,16 +314,21 @@ class Ripple extends Component {
     activationState.isActivated = true;
     activationState.isProgrammatic = e === null;
     activationState.activationEvent = e;
-    activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : (
-      e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown'
-    );
+    activationState.wasActivatedByPointer = activationState.isProgrammatic
+      ? false
+      : e.type === 'mousedown' ||
+        e.type === 'touchstart' ||
+        e.type === 'pointerdown';
     activationState.activationStartTime = Date.now();
 
     requestAnimationFrame(() => {
-      // 对于 keydown 事件需要判断是否当前为活动状态，即 element.matches(':active')
-      // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
-      // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
-      activationState.wasElementMadeActive = (e && e.type === 'keydown') ? this.adapter.isActive() : true;
+      /*
+       * 对于 keydown 事件需要判断是否当前为活动状态，即 element.matches(':active')
+       * - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
+       * - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
+       */
+      activationState.wasElementMadeActive =
+        e && e.type === 'keydown' ? this.adapter.isActive() : true;
       if (activationState.wasElementMadeActive) {
         this.animateActivation();
       } else {
@@ -328,18 +340,15 @@ class Ripple extends Component {
 
   // 处理 Ripple 动画
   animateActivation() {
-    const {VAR_TRANSLATE_START, VAR_TRANSLATE_END} = strings;
-    const {
-      ACTIVE,
-      INACTIVE,
-    } = classes;
-    const {DEACTIVATION_TIMEOUT_MS} = numbers;
+    const { VAR_TRANSLATE_START, VAR_TRANSLATE_END } = strings;
+    const { ACTIVE, INACTIVE } = classes;
+    const { DEACTIVATION_TIMEOUT_MS } = numbers;
 
     let translateStart = '';
     let translateEnd = '';
 
     if (!this.adapter.isUnbounded()) {
-      const {startPoint, endPoint} = this.getTranslationCoords();
+      const { startPoint, endPoint } = this.getTranslationCoords();
       translateStart = `${startPoint.x}px, ${startPoint.y}px`;
       translateEnd = `${endPoint.x}px, ${endPoint.y}px`;
     }
@@ -355,7 +364,10 @@ class Ripple extends Component {
     // 强制重绘，触发动画
     this.adapter.computeBoundingRect();
     this.adapter.addClass(ACTIVE);
-    this.activationTimer = setTimeout(() => this.activationTimerCallback(), DEACTIVATION_TIMEOUT_MS);
+    this.activationTimer = setTimeout(
+      () => this.activationTimerCallback(),
+      DEACTIVATION_TIMEOUT_MS
+    );
   }
 
   /**
@@ -363,14 +375,16 @@ class Ripple extends Component {
    * @returns {{startPoint: ({x: number, y: number}|*), endPoint: {x: number, y: number}}}
    */
   getTranslationCoords() {
-    const {activationState} = this;
-    const {activationEvent, wasActivatedByPointer} = activationState;
-    const {width, height} = this.rippleRect;
+    const { activationState } = this;
+    const { activationEvent, wasActivatedByPointer } = activationState;
+    const { width, height } = this.rippleRect;
 
     let startPoint;
     if (wasActivatedByPointer) {
-      startPoint = getNormalizedEventCoords(activationEvent,
-        this.adapter.getWindowPageOffset(), this.adapter.computeBoundingRect(),
+      startPoint = getNormalizedEventCoords(
+        activationEvent,
+        this.adapter.getWindowPageOffset(),
+        this.adapter.computeBoundingRect()
       );
     } else {
       startPoint = {
@@ -380,24 +394,24 @@ class Ripple extends Component {
     }
     // Center the element around the start point.
     startPoint = {
-      x: startPoint.x - (this.initialSize / 2),
-      y: startPoint.y - (this.initialSize / 2),
+      x: startPoint.x - this.initialSize / 2,
+      y: startPoint.y - this.initialSize / 2,
     };
 
     const endPoint = {
-      x: (width / 2) - (this.initialSize / 2),
-      y: (height / 2) - (this.initialSize / 2),
+      x: width / 2 - this.initialSize / 2,
+      y: height / 2 - this.initialSize / 2,
     };
 
-    return {startPoint, endPoint};
+    return { startPoint, endPoint };
   }
 
   /**
    * 运行 Deactivation 动画
    */
   runDeactivationAnimation() {
-    const {INACTIVE} = classes;
-    const {hasDeactivationUXRun, isActivated} = this.activationState;
+    const { INACTIVE } = classes;
+    const { hasDeactivationUXRun, isActivated } = this.activationState;
     const activationHasEnded = hasDeactivationUXRun || !isActivated;
     if (activationHasEnded && this.activationAnimationHasEnded) {
       this.rmActivationClasses();
@@ -412,7 +426,7 @@ class Ripple extends Component {
    * 删除活动状态
    */
   rmActivationClasses() {
-    const {ACTIVE} = classes;
+    const { ACTIVE } = classes;
     this.adapter.removeClass(ACTIVE);
     this.activationAnimationHasEnded = false;
     this.adapter.computeBoundingRect();
@@ -424,7 +438,7 @@ class Ripple extends Component {
    * @private
    */
   deactivate(e) {
-    const {activationState} = this;
+    const { activationState } = this;
     // 如果当前不是活动状态，则取消
     if (!activationState.isActivated) {
       return;
@@ -432,7 +446,7 @@ class Ripple extends Component {
     // 如果是进行中的取消过程
     if (activationState.isProgrammatic) {
       const evtObject = null;
-      const state = {...activationState};
+      const state = { ...activationState };
       requestAnimationFrame(() => this.animateDeactivation(evtObject, state));
       this.activationState = Ripple.resetActivationState();
       return;
@@ -440,17 +454,19 @@ class Ripple extends Component {
 
     const actualActivationType = DEACTIVATION_ACTIVATION_PAIRS[e.type];
     const expectedActivationType = activationState.activationEvent.type;
-    // NOTE: Pointer events are tricky - https://patrickhlauke.github.io/touch/tests/results/
-    // Essentially, what we need to do here is decouple the deactivation UX from the actual
-    // deactivation state itself. This way, touch/pointer events in sequence do not trample one
-    // another.
+    /*
+     * NOTE: Pointer events are tricky - https://patrickhlauke.github.io/touch/tests/results/
+     * Essentially, what we need to do here is decouple the deactivation UX from the actual
+     * deactivation state itself. This way, touch/pointer events in sequence do not trample one
+     * another.
+     */
     const needsDeactivationUX = actualActivationType === expectedActivationType;
     let needsActualDeactivation = needsDeactivationUX;
     if (activationState.wasActivatedByPointer) {
       needsActualDeactivation = e.type === 'mouseup';
     }
 
-    const state = {...activationState};
+    const state = { ...activationState };
     requestAnimationFrame(() => {
       if (needsDeactivationUX) {
         this.activationState.hasDeactivationUXRun = true;
@@ -468,8 +484,8 @@ class Ripple extends Component {
    * @param {!ActivationStateType} options
    * @private
    */
-  animateDeactivation(e, {wasActivatedByPointer, wasElementMadeActive}) {
-    const {FOCUSED} = classes;
+  animateDeactivation(e, { wasActivatedByPointer, wasElementMadeActive }) {
+    const { FOCUSED } = classes;
     if (wasActivatedByPointer || wasElementMadeActive) {
       // Remove class left over by element being focused
       this.adapter.removeClass(FOCUSED);
@@ -477,6 +493,5 @@ class Ripple extends Component {
     }
   }
 }
-
 
 export default Ripple;

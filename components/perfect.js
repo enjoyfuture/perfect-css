@@ -5,11 +5,4 @@ import ListMenu from './elements/menu/list-menu/list-menu';
 import Select from './forms/select/select';
 import Paging from './elements/paging/paging';
 
-export {
-  ScrollSpy,
-  CatalogueSpy,
-  Ripple,
-  ListMenu,
-  Select,
-  Paging,
-};
+export { ScrollSpy, CatalogueSpy, Ripple, ListMenu, Select, Paging };

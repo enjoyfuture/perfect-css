@@ -1,6 +1,11 @@
 import Component from '../../../base/component';
-import {getTransformPropertyName, clamp, bezierProgress, getElementIndexOfParent} from './util';
-//import {isWheel} from '../../../base/util';
+import {
+  getTransformPropertyName,
+  clamp,
+  bezierProgress,
+  getElementIndexOfParent,
+} from './util';
+// import {isWheel} from '../../../base/util';
 
 const win = window;
 const dom = document;
@@ -8,8 +13,10 @@ const body = dom.body;
 
 const reg = /translateY\(([-\w]+)\)/;
 
-// 定义常量
-// class 样式
+/*
+ * 定义常量
+ * class 样式
+ */
 const classes = {
   ELEMENT: 'list-menu',
   LIST_MENU_ITEMS: 'list-menu-items',
@@ -56,7 +63,6 @@ const numbers = {
 };
 
 class ListMenu extends Component {
-
   static get classes() {
     return classes;
   }
@@ -75,7 +81,7 @@ class ListMenu extends Component {
    * @param config
    * @returns {ListMenu}
    */
-  static mount(element, config = {filterDivider: 'list-divider'}) {
+  static mount(element, config = { filterDivider: 'list-divider' }) {
     return new ListMenu(element, config);
   }
 
@@ -155,36 +161,46 @@ class ListMenu extends Component {
    */
   createAdapter() {
     return {
-      addClass: (className) => this.element.classList.add(className),
-      removeClass: (className) => this.element.classList.remove(className),
-      hasClass: (className) => this.element.classList.contains(className),
+      addClass: className => this.element.classList.add(className),
+      removeClass: className => this.element.classList.remove(className),
+      hasClass: className => this.element.classList.contains(className),
       hasNecessaryDom: () => Boolean(this.itemsContainer),
-      eventTargetHasClass: (target, className) => target.classList.contains(className),
+      eventTargetHasClass: (target, className) =>
+        target.classList.contains(className),
       getInnerDimensions: () => {
-        const {itemsContainer} = this;
-        return {width: itemsContainer.offsetWidth, height: itemsContainer.offsetHeight};
+        const { itemsContainer } = this;
+        return {
+          width: itemsContainer.offsetWidth,
+          height: itemsContainer.offsetHeight,
+        };
       },
-      hasAnchor: () => this.element.parentElement && this.element.parentElement.classList.contains('menu-anchor'),
-      getAnchorDimensions: () => this.element.parentElement.getBoundingClientRect(),
-      getWindowDimensions: () => {
-        return {width: win.innerWidth, height: win.innerHeight};
-      },
+      hasAnchor: () =>
+        this.element.parentElement &&
+        this.element.parentElement.classList.contains('menu-anchor'),
+      getAnchorDimensions: () =>
+        this.element.parentElement.getBoundingClientRect(),
+      getWindowDimensions: () => ({
+        width: win.innerWidth,
+        height: win.innerHeight,
+      }),
       setScale: (x, y) => {
         this.element.style[getTransformPropertyName(win)] = `scale(${x}, ${y})`;
       },
       setInnerScale: (x, y) => {
-        this.itemsContainer.style[getTransformPropertyName(win)] = `scale(${x}, ${y})`;
+        this.itemsContainer.style[
+          getTransformPropertyName(win)
+        ] = `scale(${x}, ${y})`;
       },
       getNumberOfItems: () => this.items.length,
-      getYParamsForItemAtIndex: (index) => {
-        const {offsetTop: top, offsetHeight: height} = this.items[index];
-        return {top, height};
+      getYParamsForItemAtIndex: index => {
+        const { offsetTop: top, offsetHeight: height } = this.items[index];
+        return { top, height };
       },
       setTransitionDelayForItemAtIndex: (index, value) =>
         this.items[index].style.setProperty('transition-delay', value),
-      setActiveItemAtIndex: (index) => {
+      setActiveItemAtIndex: index => {
         if (this.previousActiveItems) {
-          this.previousActiveItems.forEach((el) => {
+          this.previousActiveItems.forEach(el => {
             el.classList.remove(classes.ACTIVE);
           });
         }
@@ -195,26 +211,33 @@ class ListMenu extends Component {
         this.previousActiveItemsIndex = []; // 记录活动元素 index
 
         this.previousActiveItems.push(this.leafItems[index]);
-        this.previousActiveItemsIndex.push(getElementIndexOfParent(this.leafItems[index], this.filterDivider));
+        this.previousActiveItemsIndex.push(
+          getElementIndexOfParent(this.leafItems[index], this.filterDivider)
+        );
         let parentNode = this.leafItems[index].parentNode.parentNode;
 
         // 分支节点也设置 ACTIVE
         while (parentNode && parentNode.classList.contains(classes.LIST_ITEM)) {
           parentNode.classList.add(classes.ACTIVE);
           this.previousActiveItems.unshift(parentNode);
-          this.previousActiveItemsIndex.unshift(getElementIndexOfParent(parentNode, this.filterDivider));
+          this.previousActiveItemsIndex.unshift(
+            getElementIndexOfParent(parentNode, this.filterDivider)
+          );
           parentNode = parentNode.parentNode.parentNode;
         }
       }, // 设置当前活动 item 样式
       clearActiveItem: () => {
-        this.leafItems.forEach((item) => {
+        this.leafItems.forEach(item => {
           item.classList.remove(classes.ACTIVE);
         });
       }, // 清空活动 item
       removeExpandClass: () => {
-        [].forEach.call(this.element.querySelectorAll(strings.LIST_ITEM_BRANCH_SELECTOR), (el) => {
-          el.classList.remove(classes.EXPANDED);
-        });
+        [].forEach.call(
+          this.element.querySelectorAll(strings.LIST_ITEM_BRANCH_SELECTOR),
+          el => {
+            el.classList.remove(classes.EXPANDED);
+          }
+        );
       },
       notifySelected: () => {
         this.emit(strings.SELECTED_EVENT, {
@@ -235,30 +258,39 @@ class ListMenu extends Component {
       isFocused: () => dom.activeElement === this.element,
       focus: () => this.element.focus(),
       getFocusedItemIndex: () => this.items.indexOf(dom.activeElement),
-      focusItemAtIndex: (index) => this.leafItems[index].focus(),
-      setTransformOrigin: (origin) => {
+      focusItemAtIndex: index => this.leafItems[index].focus(),
+      setTransformOrigin: origin => {
         this.element.style[`${getTransformPropertyName(win)}-origin`] = origin;
       },
-      setPosition: (position) => {
+      setPosition: position => {
         this.element.style.left = 'left' in position ? position.left : null;
         this.element.style.right = 'right' in position ? position.right : null;
         this.element.style.top = 'top' in position ? position.top : null;
-        this.element.style.bottom = 'bottom' in position ? position.bottom : null;
+        this.element.style.bottom =
+          'bottom' in position ? position.bottom : null;
       },
       getAccurateTime: () => win.performance.now(), // 系统时间
     };
   }
 
   init() {
-    const {ITEMS_SELECTOR, LIST_ITEM_SELECTOR, LIST_ITEM_LEAF_SELECTOR} = strings;
+    const {
+      ITEMS_SELECTOR,
+      LIST_ITEM_SELECTOR,
+      LIST_ITEM_LEAF_SELECTOR,
+    } = strings;
 
     // 返回菜单 item 根容器
     this.itemsContainer = this.element.querySelector(ITEMS_SELECTOR);
     // 返回菜单第一层 items 中的所有 item
-    this.items = [].slice.call(this.itemsContainer.querySelectorAll(LIST_ITEM_SELECTOR));
+    this.items = [].slice.call(
+      this.itemsContainer.querySelectorAll(LIST_ITEM_SELECTOR)
+    );
 
     // 返回菜单 items 中的所有叶子节点item
-    this.leafItems = [].slice.call(this.itemsContainer.querySelectorAll(LIST_ITEM_LEAF_SELECTOR));
+    this.leafItems = [].slice.call(
+      this.itemsContainer.querySelectorAll(LIST_ITEM_LEAF_SELECTOR)
+    );
 
     if (this.activeItemIndex === undefined && this.selectedFirstOption) {
       this.activeItemIndex = 0;
@@ -267,7 +299,7 @@ class ListMenu extends Component {
 
   // 渲染组件
   render() {
-    const {ELEMENT, OPEN} = classes;
+    const { ELEMENT, OPEN } = classes;
 
     if (!this.adapter.hasClass(ELEMENT)) {
       throw new Error(`列表菜单根节点需要设置 class ${ELEMENT}.`);
@@ -312,7 +344,7 @@ class ListMenu extends Component {
     this.element.removeEventListener('keyup', this.handleKeyboardUp);
     this.element.removeEventListener('keydown', this.handleKeyboardDown);
     body.removeEventListener('click', this.handleDocumentClick);
-    //this.itemsContainer.removeEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
+    // this.itemsContainer.removeEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
   }
 
   // 设置活动的元素
@@ -327,9 +359,9 @@ class ListMenu extends Component {
    * @param {!Event} e
    * @private
    */
-  handleClickMenu = (e) => {
-    const {target} = e;
-    const {ARIA_DISABLED_ATTR, ARIA_LEVEL_ATTR, ARIA_LEVEL_BRANCH} = strings;
+  handleClickMenu = e => {
+    const { target } = e;
+    const { ARIA_DISABLED_ATTR, ARIA_LEVEL_ATTR, ARIA_LEVEL_BRANCH } = strings;
     // disabled 返回
     if (target.getAttribute(ARIA_DISABLED_ATTR) === 'true') {
       return;
@@ -376,13 +408,13 @@ class ListMenu extends Component {
    * @return {boolean}
    * @private
    */
-  handleKeyboardUp = (evt) => {
+  handleKeyboardUp = evt => {
     // Do nothing if Alt, Ctrl or Meta are pressed.
     if (evt.altKey || evt.ctrlKey || evt.metaKey) {
       return true;
     }
 
-    const {keyCode, key} = evt;
+    const { keyCode, key } = evt;
     const isEnter = key === 'Enter' || keyCode === 13;
     const isSpace = key === 'Space' || keyCode === 32;
     const isEscape = key === 'Escape' || keyCode === 27;
@@ -405,14 +437,14 @@ class ListMenu extends Component {
    * @return {boolean}
    * @private
    */
-  /*eslint-disable complexity*/
-  handleKeyboardDown = (evt) => {
+  /* eslint-disable complexity */
+  handleKeyboardDown = evt => {
     // Do nothing if Alt, Ctrl or Meta are pressed.
     if (evt.altKey || evt.ctrlKey || evt.metaKey) {
       return true;
     }
 
-    const {keyCode, key, shiftKey} = evt;
+    const { keyCode, key, shiftKey } = evt;
     const isTab = key === 'Tab' || keyCode === 9;
     const isArrowUp = key === 'ArrowUp' || keyCode === 38;
     const isArrowDown = key === 'ArrowDown' || keyCode === 40;
@@ -460,7 +492,7 @@ class ListMenu extends Component {
    * @param {!Event} evt
    * @private
    */
-  handleDocumentClick = (evt) => {
+  handleDocumentClick = evt => {
     let el = evt.target;
 
     while (el && el !== dom.documentElement) {
@@ -474,12 +506,12 @@ class ListMenu extends Component {
 
     const expandedEl = this.element.querySelectorAll(strings.EXPANDED);
 
-    [].forEach.call(expandedEl, (el) => {
-      el.classList.remove(classes.EXPANDED);
+    [].forEach.call(expandedEl, element => {
+      element.classList.remove(classes.EXPANDED);
     });
 
-    this.items.forEach((el) => {
-      el.style.removeProperty('display');
+    this.items.forEach(item => {
+      item.style.removeProperty('display');
     });
 
     this.hide(evt);
@@ -489,7 +521,7 @@ class ListMenu extends Component {
    * 滚动菜单列表时触发
    * @param evt
    */
-  handleItemScroll = (evt) => {
+  handleItemScroll = evt => {
     const step = 10;
 
     if (this.visibleItemHeight <= this.maxItemHeight) {
@@ -499,46 +531,60 @@ class ListMenu extends Component {
 
     // 判断鼠标滑轮向上还是向下滑动
     let upDown;
-    const {detail, wheelDelta} = evt;
+    const { detail, wheelDelta } = evt;
     if (detail) {
-      if (detail < 0) { // up
+      if (detail < 0) {
+        // up
         upDown = 'up';
-      } else if (detail > 0) { // down
+      } else if (detail > 0) {
+        // down
         upDown = 'down';
       }
-    } else if (wheelDelta) { //
-      if (wheelDelta > 0) { // up
+    } else if (wheelDelta) {
+      //
+      if (wheelDelta > 0) {
+        // up
         upDown = 'up';
       }
-      if (wheelDelta < 0) { // down
+      if (wheelDelta < 0) {
+        // down
         upDown = 'down';
       }
     }
 
-    const {transform} = this.itemsContainer.style;
+    const { transform } = this.itemsContainer.style;
 
     let y = reg.exec(transform);
     y = y ? parseFloat(y[1], 10) : 0;
 
-    if ((upDown === 'up' && y === 0) || (upDown === 'down' && Math.abs(y) === this.maxOffset)) {
+    if (
+      (upDown === 'up' && y === 0) ||
+      (upDown === 'down' && Math.abs(y) === this.maxOffset)
+    ) {
       return;
     }
 
     if (upDown === 'up' && y < 0) {
-      this.itemsContainer.style.transform = `translateY(${Math.min(y + step, 0)}px)`;
+      this.itemsContainer.style.transform = `translateY(${Math.min(
+        y + step,
+        0
+      )}px)`;
     } else if (upDown === 'down' && Math.abs(y) < this.maxOffset) {
-      this.itemsContainer.style.transform = `translateY(${Math.max(y - step, -this.maxOffset)}px)`;
+      this.itemsContainer.style.transform = `translateY(${Math.max(
+        y - step,
+        -this.maxOffset
+      )}px)`;
     }
   };
 
   /** @param {{focusIndex: ?number}=} options */
-  show({focusIndex = null} = {}) {
+  show({ focusIndex = null } = {}) {
     // 设置当前焦点元素
     this.adapter.saveFocus();
     this.adapter.addClass(classes.ANIMATING);
     this.animationRequestId = requestAnimationFrame(() => {
       this.dimensions = this.adapter.getInnerDimensions();
-      //this.adjustMenuMaxHeight();
+      // this.adjustMenuMaxHeight();
       this.applyTransitionDelays();
       this.autoPosition();
       this.animateMenu();
@@ -547,8 +593,10 @@ class ListMenu extends Component {
 
       // 添加 document 事件
       body.addEventListener('click', this.handleDocumentClick);
-      // http://www.zhangxinxu.com/wordpress/2013/04/js-mousewheel-dommousescroll-event/
-      //this.itemsContainer.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
+      /*
+       * http://www.zhangxinxu.com/wordpress/2013/04/js-mousewheel-dommousescroll-event/
+       *this.itemsContainer.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.handleItemScroll);
+       */
     });
     this.isOpen = true;
   }
@@ -558,9 +606,9 @@ class ListMenu extends Component {
    * @param {Event=} evt
    */
   hide(evt = null) {
-    const disabled = evt ?
-      evt.target.getAttribute(strings.ARIA_DISABLED_ATTR) === 'true' :
-      false;
+    const disabled = evt
+      ? evt.target.getAttribute(strings.ARIA_DISABLED_ATTR) === 'true'
+      : false;
 
     if (disabled) {
       return;
@@ -589,7 +637,11 @@ class ListMenu extends Component {
     const paddingTop = property.getPropertyValue('padding-top');
     const paddingBottom = property.getPropertyValue('padding-bottom');
 
-    return parseInt(lineHeight, 10) + parseInt(paddingTop, 10) + parseInt(paddingBottom, 10);
+    return (
+      parseInt(lineHeight, 10) +
+      parseInt(paddingTop, 10) +
+      parseInt(paddingBottom, 10)
+    );
   }
 
   /**
@@ -597,14 +649,17 @@ class ListMenu extends Component {
    */
   adjustMenuMaxHeight() {
     const rect = this.itemsContainer.getBoundingClientRect();
-    const {height} = this.adapter.getWindowDimensions();
+    const { height } = this.adapter.getWindowDimensions();
     const itemHeight = this.calcItemHeight();
     const maxHeight = height - rect.top;
     const visibleItemNum = Math.floor(maxHeight / itemHeight);
     this.visibleItemHeight = visibleItemNum * itemHeight;
     this.maxItemHeight = this.items.length * itemHeight;
 
-    this.itemsContainer.style.setProperty('height', `${this.visibleItemHeight}px`);
+    this.itemsContainer.style.setProperty(
+      'height',
+      `${this.visibleItemHeight}px`
+    );
     // 隐藏多余的 item
     for (let i = visibleItemNum; i < this.items.length; i++) {
       this.items[i].style.setProperty('display', 'none');
@@ -616,22 +671,32 @@ class ListMenu extends Component {
    * @private
    */
   applyTransitionDelays() {
-    const {BOTTOM_LEFT, BOTTOM_RIGHT} = classes;
+    const { BOTTOM_LEFT, BOTTOM_RIGHT } = classes;
     const numItems = this.adapter.getNumberOfItems();
-    const {height} = this.dimensions;
+    const { height } = this.dimensions;
     const transitionDuration = numbers.TRANSITION_DURATION_MS / 1000;
     const start = numbers.TRANSITION_SCALE_ADJUSTMENT_Y;
 
     for (let index = 0; index < numItems; index++) {
-      const {top: itemTop, height: itemHeight} = this.adapter.getYParamsForItemAtIndex(index);
+      const {
+        top: itemTop,
+        height: itemHeight,
+      } = this.adapter.getYParamsForItemAtIndex(index);
       this.itemHeight = itemHeight;
       let itemDelayFraction = itemTop / height;
-      if (this.adapter.hasClass(BOTTOM_LEFT) || this.adapter.hasClass(BOTTOM_RIGHT)) {
-        itemDelayFraction = ((height - itemTop - itemHeight) / height);
+      if (
+        this.adapter.hasClass(BOTTOM_LEFT) ||
+        this.adapter.hasClass(BOTTOM_RIGHT)
+      ) {
+        itemDelayFraction = (height - itemTop - itemHeight) / height;
       }
-      const itemDelay = (start + itemDelayFraction * (1 - start)) * transitionDuration;
+      const itemDelay =
+        (start + itemDelayFraction * (1 - start)) * transitionDuration;
       // Use toFixed() here to normalize CSS unit precision across browsers
-      this.adapter.setTransitionDelayForItemAtIndex(index, `${itemDelay.toFixed(3)}s`);
+      this.adapter.setTransitionDelayForItemAtIndex(
+        index,
+        `${itemDelay.toFixed(3)}s`
+      );
     }
   }
 
@@ -649,7 +714,8 @@ class ListMenu extends Component {
     const anchor = this.adapter.getAnchorDimensions();
     const windowDimensions = this.adapter.getWindowDimensions();
 
-    const topOverflow = anchor.top + this.dimensions.height - windowDimensions.height;
+    const topOverflow =
+      anchor.top + this.dimensions.height - windowDimensions.height;
     const bottomOverflow = this.dimensions.height - anchor.bottom;
     const extendsBeyondTopBounds = topOverflow > 0;
 
@@ -659,7 +725,8 @@ class ListMenu extends Component {
       }
     }
 
-    const leftOverflow = anchor.left + this.dimensions.width - windowDimensions.width;
+    const leftOverflow =
+      anchor.left + this.dimensions.width - windowDimensions.width;
     const rightOverflow = this.dimensions.width - anchor.right;
     const extendsBeyondLeftBounds = leftOverflow > 0;
 
@@ -718,7 +785,9 @@ class ListMenu extends Component {
     // 处理菜单动画
     if (!this.running) {
       this.running = true;
-      this.animationRequestId = requestAnimationFrame(() => this.animationLoop());
+      this.animationRequestId = requestAnimationFrame(() =>
+        this.animationLoop()
+      );
     }
   }
 
@@ -729,15 +798,21 @@ class ListMenu extends Component {
   animationLoop() {
     const time = this.adapter.getAccurateTime();
     const {
-      TRANSITION_DURATION_MS, TRANSITION_X1, TRANSITION_Y1, TRANSITION_X2, TRANSITION_Y2,
-      TRANSITION_SCALE_ADJUSTMENT_X, TRANSITION_SCALE_ADJUSTMENT_Y,
+      TRANSITION_DURATION_MS,
+      TRANSITION_X1,
+      TRANSITION_Y1,
+      TRANSITION_X2,
+      TRANSITION_Y2,
+      TRANSITION_SCALE_ADJUSTMENT_X,
+      TRANSITION_SCALE_ADJUSTMENT_Y,
     } = numbers;
 
     const currentTime = clamp((time - this.startTime) / TRANSITION_DURATION_MS);
 
     // Animate X axis very slowly, so that only the Y axis animation is visible during fade-out.
     let currentTimeX = clamp(
-      (currentTime - TRANSITION_SCALE_ADJUSTMENT_X) / (1 - TRANSITION_SCALE_ADJUSTMENT_X),
+      (currentTime - TRANSITION_SCALE_ADJUSTMENT_X) /
+        (1 - TRANSITION_SCALE_ADJUSTMENT_X)
     );
     // No time-shifting on the Y axis when closing.
     let currentTimeY = currentTime;
@@ -746,22 +821,39 @@ class ListMenu extends Component {
     if (this.targetScale === 1) {
       // Start with the menu at the height of a single item.
       if (this.itemHeight) {
-        startScaleY = Math.max(this.itemHeight / this.dimensions.height, startScaleY);
+        startScaleY = Math.max(
+          this.itemHeight / this.dimensions.height,
+          startScaleY
+        );
       }
       // X axis moves faster, so time-shift forward.
       currentTimeX = clamp(currentTime + TRANSITION_SCALE_ADJUSTMENT_X);
       // Y axis moves slower, so time-shift backwards and adjust speed by the difference.
       currentTimeY = clamp(
-        (currentTime - TRANSITION_SCALE_ADJUSTMENT_Y) / (1 - TRANSITION_SCALE_ADJUSTMENT_Y),
+        (currentTime - TRANSITION_SCALE_ADJUSTMENT_Y) /
+          (1 - TRANSITION_SCALE_ADJUSTMENT_Y)
       );
     }
 
     // 为 X 和 Y 轴方向设置贝塞尔曲线
-    const easeX = bezierProgress(currentTimeX, TRANSITION_X1, TRANSITION_Y1, TRANSITION_X2, TRANSITION_Y2);
-    const easeY = bezierProgress(currentTimeY, TRANSITION_X1, TRANSITION_Y1, TRANSITION_X2, TRANSITION_Y2);
+    const easeX = bezierProgress(
+      currentTimeX,
+      TRANSITION_X1,
+      TRANSITION_Y1,
+      TRANSITION_X2,
+      TRANSITION_Y2
+    );
+    const easeY = bezierProgress(
+      currentTimeY,
+      TRANSITION_X1,
+      TRANSITION_Y1,
+      TRANSITION_X2,
+      TRANSITION_Y2
+    );
 
     // Calculate the scales to apply to the outer container and inner container.
-    this.scaleX = this.startScaleX + (this.targetScale - this.startScaleX) * easeX;
+    this.scaleX =
+      this.startScaleX + (this.targetScale - this.startScaleX) * easeX;
     const invScaleX = 1 / (this.scaleX === 0 ? 1 : this.scaleX);
     this.scaleY = startScaleY + (this.targetScale - startScaleY) * easeY;
     const invScaleY = 1 / (this.scaleY === 0 ? 1 : this.scaleY);
@@ -770,17 +862,20 @@ class ListMenu extends Component {
     this.adapter.setScale(this.scaleX, this.scaleY);
     this.adapter.setInnerScale(invScaleX, invScaleY);
 
-    // Stop animation when we've covered the entire 0 - 1 range of time.
-    // 如果不在 0 到 1 之间则停止动画
+    /*
+     * Stop animation when we've covered the entire 0 - 1 range of time.
+     * 如果不在 0 到 1 之间则停止动画
+     */
     if (currentTime < 1) {
-      this.animationRequestId = requestAnimationFrame(() => this.animationLoop());
+      this.animationRequestId = requestAnimationFrame(() =>
+        this.animationLoop()
+      );
     } else {
       this.animationRequestId = 0;
       this.running = false;
       this.adapter.removeClass(classes.ANIMATING);
     }
   }
-
 }
 
 export default ListMenu;

@@ -1,8 +1,8 @@
-import {getUuid, isWheel, offset, position} from '../base/util';
+import { getUuid, isWheel, offset, position } from '../base/util';
 
 const win = window;
 const doc = document;
-const {forEach, map} = Array.prototype;
+const { forEach, map } = Array.prototype;
 
 class ScrollSpy {
   static defaultConfig = {
@@ -23,7 +23,7 @@ class ScrollSpy {
     this.element = element;
     this.scrollElement = element.tagName === 'BODY' ? win : element;
     this.config = this.getConfig(config);
-    const {menu, menuClsPrefix, extend} = this.config;
+    const { menu, menuClsPrefix, extend } = this.config;
     // 菜单 目录 等选择器
     this.menuSelector = `${menu} .${menuClsPrefix}-title`;
     this.offsets = [];
@@ -45,8 +45,12 @@ class ScrollSpy {
     }
 
     // 添加事件，页面滚动时，处理目录和内容对应坐标
-    this.scrollElement.addEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.scrollEvent, false);
-    const {immedLoad, initMenus, anchor} = this.config;
+    this.scrollElement.addEventListener(
+      isWheel ? 'mousewheel' : 'DOMMouseScroll',
+      this.scrollEvent,
+      false
+    );
+    const { immedLoad, initMenus, anchor } = this.config;
     // 需要根据内容动态创建菜单列表
     if (initMenus) {
       this.generateMenus();
@@ -60,37 +64,46 @@ class ScrollSpy {
     if (anchor === false) {
       // fixme 待改进，改成 事件代理模式
       const menuElements = doc.querySelectorAll(this.menuSelector);
-      forEach.call(menuElements, (element) => {
-        element.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          const el = e.currentTarget;
-          const {menu} = el.dataset;
-          const {offsetMethod, container} = this.config;
-          const offsetXY = this.config.offset;
+      forEach.call(menuElements, el => {
+        el.addEventListener(
+          'click',
+          e => {
+            e.preventDefault();
+            e.stopPropagation();
+            const target = e.currentTarget;
+            const { offsetMethod, container } = this.config;
+            const offsetXY = this.config.offset;
 
-          const targetEl = doc.querySelector(`${container} [data-target="${menu}"]`).parentNode;
-          const top = offsetMethod === 'offset' ? offset(targetEl).top : position(targetEl).top;
-          const offsetBase = offsetMethod === 'position' ? this.getScrollTop() : 0;
+            const targetEl = doc.querySelector(
+              `${container} [data-target="${target.dataset}"]`
+            ).parentNode;
+            const top =
+              offsetMethod === 'offset'
+                ? offset(targetEl).top
+                : position(targetEl).top;
+            const offsetBase =
+              offsetMethod === 'position' ? this.getScrollTop() : 0;
 
-          // fixme
-          this.scrollElement.scrollTo(0, top + offsetBase - offsetXY);
-          el.blur();
-          this.process();
-        }, false);
+            // fixme
+            this.scrollElement.scrollTo(0, top + offsetBase - offsetXY);
+            target.blur();
+            this.process();
+          },
+          false
+        );
       });
     }
 
     // 加载插件
-    const {pluginConfig} = this.config;
-    let {plugins} = this.config;
+    const { pluginConfig } = this.config;
+    let { plugins } = this.config;
     if (plugins) {
       if (!Array.isArray(plugins)) {
         plugins = [plugins];
       }
       this.plugins = [];
-      const {container} = this.config;
-      plugins.forEach((plugin) => {
+      const { container } = this.config;
+      plugins.forEach(plugin => {
         // 把当前实例传给插件
         const instance = new plugin(this, pluginConfig);
         instance.mount();
@@ -98,8 +111,10 @@ class ScrollSpy {
       });
     }
 
-    // 显示菜单
-    // doc.querySelector(menu).style.display = 'block';
+    /*
+     * 显示菜单
+     * doc.querySelector(menu).style.display = 'block';
+     */
     if (immedLoad) {
       this.refresh();
       this.process();
@@ -107,13 +122,14 @@ class ScrollSpy {
   }
 
   getConfig(config) {
-    const _config = {...ScrollSpy.defaultConfig, ...config};
+    const _config = { ...ScrollSpy.defaultConfig, ...config };
 
-    const {menu} = _config;
-    let {container} = _config;
+    const { menu } = _config;
+    let { container } = _config;
 
-    if (typeof menu !== 'string') { // dom 对象
-      let {id} = menu;
+    if (typeof menu !== 'string') {
+      // dom 对象
+      let { id } = menu;
       if (!id) {
         id = getUuid('scrollspy');
         menu.id = id;
@@ -125,7 +141,7 @@ class ScrollSpy {
       container = doc.body; // 默认取 body
     }
     if (typeof container !== 'string') {
-      let {id} = container;
+      let { id } = container;
       if (!id) {
         id = getUuid('scrollspy');
         container.id = id;
@@ -133,13 +149,11 @@ class ScrollSpy {
       _config.container = `#${id}`;
     }
 
-    const autoMethod = this.scrollElement !== this.scrollElement.window ?
-      'position' :
-      'offset';
+    const autoMethod =
+      this.scrollElement !== this.scrollElement.window ? 'position' : 'offset';
 
-    const offsetMethod = _config.method === 'auto' ?
-      autoMethod :
-      _config.method;
+    const offsetMethod =
+      _config.method === 'auto' ? autoMethod : _config.method;
 
     _config.offsetMethod = offsetMethod;
 
@@ -158,7 +172,7 @@ class ScrollSpy {
       depth: 0,
       parent: null,
       text: null,
-      root: true
+      root: true,
     };
 
     // 前一个元素 level
@@ -179,31 +193,34 @@ class ScrollSpy {
           depth: 1,
           parent: entries,
           text,
-          el
+          el,
         };
         entries.children.push(entry);
       } else {
-        if (level === prevLevel) { // 相等的话
+        if (level === prevLevel) {
+          // 相等的话
           entry = {
             level,
             children: [],
             depth: lastNode.depth,
             parent: lastNode.parent,
             text,
-            el
+            el,
           };
           lastNode.parent.children.push(entry);
-        } else if (level < prevLevel) { // 如果当前级别小于前一个
+        } else if (level < prevLevel) {
+          // 如果当前级别小于前一个
           entry = {
             level,
             children: [],
             depth: lastNode.depth + 1,
             parent: lastNode,
             text,
-            el
+            el,
           };
           lastNode.children.push(entry);
-        } else { // 如果当前级别大于前一个 查找祖先节点
+        } else {
+          // 如果当前级别大于前一个 查找祖先节点
           let ancestor = lastNode.parent;
           while (ancestor.level <= level && !ancestor.root) {
             ancestor = ancestor.parent;
@@ -214,7 +231,7 @@ class ScrollSpy {
             depth: ancestor.depth + 1,
             parent: ancestor,
             text,
-            el
+            el,
           };
           ancestor.children.push(entry);
         }
@@ -234,10 +251,12 @@ class ScrollSpy {
    * @return {string}
    */
   generateMenusHtml(nodes, prefix) {
-    const {menuClsPrefix, menuCls} = this.config;
+    const { menuClsPrefix, menuCls } = this.config;
     let html = '';
     if (nodes && nodes.length > 0) {
-      html = `<ul class="${menuClsPrefix} ${menuClsPrefix}-catalogue${menuCls ? ` ${menuCls}` : ''}">`;
+      html = `<ul class="${menuClsPrefix} ${menuClsPrefix}-catalogue${
+        menuCls ? ` ${menuCls}` : ''
+      }">`;
       for (let i = 0, len = nodes.length; i < len; i++) {
         const node = nodes[i];
         // 为对应的内容加锚点
@@ -255,9 +274,12 @@ class ScrollSpy {
 
         html += '<li>';
         if (this.config.anchor) {
-          html += `<a class="${menuClsPrefix}-title" href="#${prefix}${i + 1}">${node.text}</a>`;
-        } else { // 用 data-target 来控制，需要结合 js 来控制
-          html += `<a class="${menuClsPrefix}-title" data-target="${prefix}${i + 1}" href="#">${node.text}</a>`;
+          html += `<a class="${menuClsPrefix}-title" href="#${prefix}${i +
+            1}">${node.text}</a>`;
+        } else {
+          // 用 data-target 来控制，需要结合 js 来控制
+          html += `<a class="${menuClsPrefix}-title" data-target="${prefix}${i +
+            1}" href="#">${node.text}</a>`;
         }
         if (node.children && node.children.length > 0) {
           html += this.generateMenusHtml(node.children, `${prefix}${i + 1}-`);
@@ -273,52 +295,58 @@ class ScrollSpy {
    * 滚动页面时，刷新相关数据
    */
   refresh() {
-    const {offsetMethod} = this.config;
+    const { offsetMethod } = this.config;
     const offsetBase = offsetMethod === 'position' ? this.getScrollTop() : 0;
 
     this.offsets = [];
     this.targets = [];
     this.scrollHeight = this.getScrollHeight();
 
-
     // 把滚动监听的元素和坐标保存到offsets和targets中
     const menuElements = doc.querySelectorAll(this.menuSelector);
 
-    map.call(menuElements, (element) => {
-      // 目标元素
-      let target = null;
-      const {anchor, container} = this.config;
-      const selector = anchor ? element.getAttribute('href') : element.dataset.menu;
-      const targetSelector = anchor ?
-        element.getAttribute('href') :
-        `${container} [data-target="${element.dataset.menu}"]`;
+    map
+      .call(menuElements, element => {
+        // 目标元素
+        let target = null;
+        const { anchor, container } = this.config;
+        const selector = anchor
+          ? element.getAttribute('href')
+          : element.dataset.menu;
+        const targetSelector = anchor
+          ? element.getAttribute('href')
+          : `${container} [data-target="${element.dataset.menu}"]`;
 
-      if (targetSelector) {
-        target = doc.querySelector(targetSelector).parentNode;
-        const targetBCR = target.getBoundingClientRect();
-        if (targetBCR.width || targetBCR.height) {
-          return [
-            (offsetMethod === 'offset' ? offset(target).top : position(target).top) + offsetBase,
-            selector
-          ];
+        if (targetSelector) {
+          target = doc.querySelector(targetSelector).parentNode;
+          const targetBCR = target.getBoundingClientRect();
+          if (targetBCR.width || targetBCR.height) {
+            return [
+              (offsetMethod === 'offset'
+                ? offset(target).top
+                : position(target).top) + offsetBase,
+              selector,
+            ];
+          }
         }
-      }
-      return null;
-    }).sort((a, b) => {
-      if (!a || !b) {
-        return 0;
-      }
-      return a[0] - b[0];
-    }).forEach((item) => {
-      if (item) {
-        this.offsets.push(item[0]);
-        this.targets.push(item[1]);
-      }
-    });
+        return null;
+      })
+      .sort((a, b) => {
+        if (!a || !b) {
+          return 0;
+        }
+        return a[0] - b[0];
+      })
+      .forEach(item => {
+        if (item) {
+          this.offsets.push(item[0]);
+          this.targets.push(item[1]);
+        }
+      });
   }
 
   // 鼠标滚动事件
-  scrollEvent = (event) => {
+  scrollEvent = e => {
     this.process();
   };
 
@@ -330,9 +358,8 @@ class ScrollSpy {
     // 需要加 1 微调
     const scrollTop = this.getScrollTop() + this.config.offset + 1;
     const scrollHeight = this.getScrollHeight();
-    const maxScroll = this.config.offset
-      + scrollHeight
-      - this.getOffsetHeight();
+    const maxScroll =
+      this.config.offset + scrollHeight - this.getOffsetHeight();
 
     // 不相等的话，重新刷新，比如改变页面窗口后
     if (this.scrollHeight !== scrollHeight) {
@@ -351,17 +378,21 @@ class ScrollSpy {
     }
 
     // 滑到头部
-    if (this.activeTarget && scrollTop < this.offsets[0] && this.offsets[0] > 0) {
+    if (
+      this.activeTarget &&
+      scrollTop < this.offsets[0] &&
+      this.offsets[0] > 0
+    ) {
       this.activeTarget = null;
       this.clearActiveCls();
       return;
     }
 
-    for (let i = this.offsets.length; i--;) {
-      const isActiveTarget = this.activeTarget !== this.targets[i]
-        && scrollTop >= this.offsets[i]
-        && (this.offsets[i + 1] === undefined ||
-          scrollTop < this.offsets[i + 1]);
+    for (let i = this.offsets.length; i--; ) {
+      const isActiveTarget =
+        this.activeTarget !== this.targets[i] &&
+        scrollTop >= this.offsets[i] &&
+        (this.offsets[i + 1] === undefined || scrollTop < this.offsets[i + 1]);
 
       if (isActiveTarget) {
         this.activate(this.targets[i]);
@@ -378,20 +409,24 @@ class ScrollSpy {
 
     this.clearActiveCls();
 
-    const {anchor} = this.config;
+    const { anchor } = this.config;
     let queries = this.menuSelector.split(',');
     const lastSelector = []; // 最后一个菜单项，即当前的子节点
     // 当前选中的和父目录都添加活动样式
     const parentEls = target.split('-');
-    queries = queries.map((query) => {
+    queries = queries.map(query => {
       const selector = [];
       let catalog = '';
-      parentEls.forEach((it, index) => {
+      parentEls.forEach((item, index) => {
         if (index === 0) {
-          catalog += it;
+          catalog += item;
         } else {
-          catalog += `-${it}`;
-          selector.push(anchor ? `${query}[href="${catalog}"]` : `${query}[data-menu="${catalog}"]`);
+          catalog += `-${item}`;
+          selector.push(
+            anchor
+              ? `${query}[href="${catalog}"]`
+              : `${query}[data-menu="${catalog}"]`
+          );
         }
       });
       lastSelector.push(selector[selector.length - 1]);
@@ -404,7 +439,7 @@ class ScrollSpy {
       $link[i].classList.add('active');
     }
 
-    this.plugins.forEach((plugin) => {
+    this.plugins.forEach(plugin => {
       if (typeof plugin.scrollMenu === 'function') {
         plugin.scrollMenu(lastSelector);
       }
@@ -412,9 +447,11 @@ class ScrollSpy {
 
     // todo 事件，待补充
 
-    /* $(this._scrollElement).trigger(Event.ACTIVATE, {
-     relatedTarget: target
-     }) */
+    /*
+     * $(this._scrollElement).trigger(Event.ACTIVATE, {
+     * relatedTarget: target
+     *})
+     */
   }
 
   clearActiveCls() {
@@ -430,7 +467,11 @@ class ScrollSpy {
   // 卸载
   unmount() {
     // $.removeData(this._element, DATA_KEY)
-    this.scrollElement.removeEventListener(isWheel ? 'mousewheel' : 'DOMMouseScroll', this.scrollEvent, false);
+    this.scrollElement.removeEventListener(
+      isWheel ? 'mousewheel' : 'DOMMouseScroll',
+      this.scrollEvent,
+      false
+    );
 
     this.element = null;
     this.scrollElement = null;
@@ -445,7 +486,7 @@ class ScrollSpy {
 
     // 卸载插件
     if (this.plugins) {
-      this.plugins.forEach((plugin) => {
+      this.plugins.forEach(plugin => {
         plugin.unmount();
       });
       this.plugins = null;
@@ -453,25 +494,23 @@ class ScrollSpy {
   }
 
   getScrollTop() {
-    return this.scrollElement === win ?
-      this.scrollElement.pageYOffset :
-      this.scrollElement.scrollTop;
+    return this.scrollElement === win
+      ? this.scrollElement.pageYOffset
+      : this.scrollElement.scrollTop;
   }
 
   getScrollHeight() {
-    return this.scrollElement.scrollHeight ||
-      Math.max(
-        doc.body.scrollHeight,
-        doc.documentElement.scrollHeight
-      );
+    return (
+      this.scrollElement.scrollHeight ||
+      Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight)
+    );
   }
 
   getOffsetHeight() {
-    return this.scrollElement === win ?
-      win.innerHeight :
-      this.scrollElement.getBoundingClientRect().height;
+    return this.scrollElement === win
+      ? win.innerHeight
+      : this.scrollElement.getBoundingClientRect().height;
   }
-
 }
 
 export default ScrollSpy;

@@ -17,7 +17,10 @@ function getWindow(elem) {
  * @returns {styles}
  */
 function getStyles(element, property, extra) {
-  const styles = element.ownerDocument.defaultView.getComputedStyle(element, null);
+  const styles = element.ownerDocument.defaultView.getComputedStyle(
+    element,
+    null
+  );
   if (property) {
     const cssValue = styles.getPropertyValue(property) || styles[property];
     if (extra) {
@@ -33,8 +36,11 @@ function getOffsetParent(elem) {
   /* eslint-disable prefer-destructuring */
   let offsetParent = elem.offsetParent;
 
-  while (offsetParent && elem.tagName.toLowerCase() !== 'html' &&
-  getStyles(offsetParent, 'position') === 'static') {
+  while (
+    offsetParent &&
+    elem.tagName.toLowerCase() !== 'html' &&
+    getStyles(offsetParent, 'position') === 'static'
+  ) {
     offsetParent = offsetParent.offsetParent;
   }
   return offsetParent || document.documentElement;
@@ -57,11 +63,14 @@ export function getUuid(prefix) {
 
 // 根据浏览器设置其鼠标滑轮事件
 export const isWheel = (() => {
-  // compatibility: mouse wheel event
-  // http://www.w3help.org/zh-cn/causes/SD9015
+  /*
+   * compatibility: mouse wheel event
+   * http://www.w3help.org/zh-cn/causes/SD9015
+   */
   const ua = navigator.userAgent;
   // ie 11 /gecko/i.test(ua) value is true ,so need to judge /firefox/i.test(ua)
-  if (/gecko/i.test(ua) && !(/webkit/i.test(ua)) && (/firefox/i.test(ua))) { // Firefox
+  if (/gecko/i.test(ua) && !/webkit/i.test(ua) && /firefox/i.test(ua)) {
+    // Firefox
     return false;
   }
   // IE Safari Chrome Opera
@@ -83,11 +92,13 @@ export function offset(el) {
 
   let docElem, win, doc;
 
-  // Support: IE <=11 only
-  // Running getBoundingClientRect on a
-  // disconnected node in IE throws an error
+  /*
+   * Support: IE <=11 only
+   * Running getBoundingClientRect on a
+   * disconnected node in IE throws an error
+   */
   if (!el.getClientRects().length) {
-    return {top: 0, left: 0};
+    return { top: 0, left: 0 };
   }
 
   const rect = el.getBoundingClientRect();
@@ -116,8 +127,9 @@ export function position(elem) {
     return null;
   }
 
-  let offsetParent, offsetXY,
-    parentOffset = {top: 0, left: 0};
+  let offsetParent,
+    offsetXY,
+    parentOffset = { top: 0, left: 0 };
 
   if (getStyles(elem, 'position') === 'fixed') {
     offsetXY = elem.getBoundingClientRect();
@@ -133,7 +145,8 @@ export function position(elem) {
 
   return {
     top: offsetXY.top - parentOffset.top - getStyles(elem, 'marginTop', true),
-    left: offsetXY.left - parentOffset.left - getStyles(elem, 'marginLeft', true),
+    left:
+      offsetXY.left - parentOffset.left - getStyles(elem, 'marginLeft', true),
   };
 }
 

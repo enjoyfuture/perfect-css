@@ -1,7 +1,9 @@
 import Component from '../../base/component';
 
-// 定义常量
-// class 样式
+/*
+ * 定义常量
+ * class 样式
+ */
 export const classes = {
   PAGING_ITEM: 'paging-item',
   DISABLED: 'disabled',
@@ -11,7 +13,6 @@ export const classes = {
 export const strings = {};
 
 class Paging extends Component {
-
   /**
    * pagingControl 控制是否显示数据信息 {Boolean}
    * recordPerPage 是否显示改变每页记录数 {Boolean}
@@ -43,7 +44,7 @@ class Paging extends Component {
   }
 
   constructor(element, config) {
-    super(element, {...Paging.defaultConfig, ...config});
+    super(element, { ...Paging.defaultConfig, ...config });
     // 当前页，从1开始，默认1
     if (this.pageNum === undefined) {
       this.pageNum = 1;
@@ -54,23 +55,35 @@ class Paging extends Component {
       this.pageSize = 10;
     }
 
-    // 总页码
-    // this.totalPages
+    /*
+     * 总页码
+     * this.totalPages
+     */
 
-    // 总记录数
-    // this.totalCount
+    /*
+     * 总记录数
+     * this.totalCount
+     */
 
-    // 加载数据回调函数
-    // this.loadPageData = function() {}
+    /*
+     * 加载数据回调函数
+     * this.loadPageData = function() {}
+     */
 
-    // 控制是否显示数据信息 {Boolean}
-    // this.pagingControl
+    /*
+     * 控制是否显示数据信息 {Boolean}
+     * this.pagingControl
+     */
 
-    // 是否显示改变每页记录数 {Boolean}
-    // this.recordPerPage
+    /*
+     * 是否显示改变每页记录数 {Boolean}
+     * this.recordPerPage
+     */
 
-    // 是否显示跳至某一页 {Boolean}
-    // this.jumpControl
+    /*
+     * 是否显示跳至某一页 {Boolean}
+     * this.jumpControl
+     */
 
     // 创建适配器
     this.adapter = this.createAdapter();
@@ -86,8 +99,7 @@ class Paging extends Component {
     return {};
   }
 
-  init() {
-  }
+  init() {}
 
   render() {
     this.addEventListeners();
@@ -110,17 +122,19 @@ class Paging extends Component {
     this.element.addEventListener('change', this.handleChangePerPage);
   }
 
-  handleSwitchPage = (evt) => {
+  handleSwitchPage = evt => {
     evt.preventDefault();
-    const {target} = evt;
+    const { target } = evt;
 
-    const {classList} = target;
+    const { classList } = target;
 
-    if (classList.contains(classes.PAGING_ITEM)) { // 切换下一页逻辑
+    if (classList.contains(classes.PAGING_ITEM)) {
+      // 切换下一页逻辑
       const pageNum = parseInt(target.dataset.pagenum, 10);
       this.handleChangePage(pageNum);
     } else if (classList.contains('js-jump-btn')) {
-      const input = target.parentNode.previousElementSibling.children[0].children[0];
+      const input =
+        target.parentNode.previousElementSibling.children[0].children[0];
       const pageNum = parseInt(input.value, 10);
       if (!Number.isNaN(pageNum)) {
         this.handleChangePage(pageNum);
@@ -128,13 +142,14 @@ class Paging extends Component {
     }
   };
 
-  handleChangePerPage = (evt) => {
+  handleChangePerPage = evt => {
     evt.preventDefault();
-    const {target} = evt;
+    const { target } = evt;
 
-    const {classList} = target;
+    const { classList } = target;
 
-    if (classList.contains('select-inner')) { // 切换下一页逻辑
+    if (classList.contains('select-inner')) {
+      // 切换下一页逻辑
       const pageSize = parseInt(target.value, 10);
       this.pageSize = pageSize;
       this.loadData();
@@ -144,8 +159,8 @@ class Paging extends Component {
   loadData(pageNum = 1) {
     // 渲染数据
     if (this.loadPageData && typeof this.loadPageData === 'function') {
-      this.loadPageData(pageNum, this.pageSize).then((json) => {
-        const {totalCount, totalPages} = json.data;
+      this.loadPageData(pageNum, this.pageSize).then(json => {
+        const { totalCount, totalPages } = json.data;
         this.totalPages = totalPages;
         this.pageNum = pageNum;
         this.totalCount = totalCount;
@@ -205,7 +220,7 @@ class Paging extends Component {
         }
       }
 
-      //总页码 - 当前页 大于 3 显示
+      // 总页码 - 当前页 大于 3 显示
       if (totalPages - pageNum > 3) {
         pageArray.push('...');
       }
@@ -219,16 +234,21 @@ class Paging extends Component {
     const pageArray = this.calculatePage();
 
     let html = '<ul class="paging-items">';
-    html += `<li class="paging-item${this.pageNum === 1 ? ` ${classes.DISABLED}` : ''}" data-pagenum="${this.pageNum - 1}">上一页</li>`;
+    html += `<li class="paging-item${
+      this.pageNum === 1 ? ` ${classes.DISABLED}` : ''
+    }" data-pagenum="${this.pageNum - 1}">上一页</li>`;
     const pageItems = pageArray.map((item, index) => {
       if (item === '...') {
         return '<li class="paging-item paging-more"></li>';
       }
-      return `<li class="paging-item${this.pageNum === item ? ` ${classes.ACTIVE}` : ''}" data-pagenum="${item}">${item}</li>`;
-
+      return `<li class="paging-item${
+        this.pageNum === item ? ` ${classes.ACTIVE}` : ''
+      }" data-pagenum="${item}">${item}</li>`;
     });
     html += pageItems.join('');
-    html += `<li class="paging-item${this.pageNum === this.totalPages ? ` ${classes.DISABLED}` : ''}" data-pagenum="${this.pageNum + 1}">下一页</li>`;
+    html += `<li class="paging-item${
+      this.pageNum === this.totalPages ? ` ${classes.DISABLED}` : ''
+    }" data-pagenum="${this.pageNum + 1}">下一页</li>`;
     html += '</ul>';
 
     if (this.pagingControl) {
@@ -239,18 +259,28 @@ class Paging extends Component {
 
   renderPagingControl() {
     let html = '<ul class="paging-control">';
-    html += `<li class="paging-control-item">共${this.totalPages}页${this.totalCount || 0}条记录,</li>`;
+    html += `<li class="paging-control-item">共${this.totalPages}页${this
+      .totalCount || 0}条记录,</li>`;
 
+    /* eslint-disable prettier/prettier */
     if (this.recordPerPage) {
       html += `<li class="paging-control-item">
         每页
         <div class="select">
         <select class="select-inner">
           <option value="5"${this.pageSize === 5 ? ' selected' : ''}>5</option>
-          <option value="10"${this.pageSize === 10 ? ' selected' : ''}>10</option>
-          <option value="20"${this.pageSize === 20 ? ' selected' : ''}>20</option>
-          <option value="50"${this.pageSize === 50 ? ' selected' : ''}>50</option>
-          <option value="100"${this.pageSize === 100 ? ' selected' : ''}>100</option>
+          <option value="10"${
+            this.pageSize === 10 ? ' selected' : ''
+          }>10</option>
+          <option value="20"${
+            this.pageSize === 20 ? ' selected' : ''
+          }>20</option>
+          <option value="50"${
+            this.pageSize === 50 ? ' selected' : ''
+          }>50</option>
+          <option value="100"${
+            this.pageSize === 100 ? ' selected' : ''
+          }>100</option>
         </select>
         </div>
       条,

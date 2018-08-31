@@ -2,7 +2,6 @@
  * 组件接口，所有的组件都应该继承该组件
  */
 class Component {
-
   /**
    * 提供静态方法，用来挂载实例化组件
    * 子组件可以覆盖该方法
@@ -16,7 +15,7 @@ class Component {
   constructor(element, config = {}) {
     this.element = element;
     // 设置 config 到 this 上
-    Object.keys(config).forEach((key) => {
+    Object.keys(config).forEach(key => {
       this[key] = config[key];
     });
 
@@ -24,8 +23,10 @@ class Component {
   }
 
   init() {
-    // 初始化
-    // 子组件可以覆盖该方法，具体实现要初始化的内容
+    /*
+     * 初始化
+     * 子组件可以覆盖该方法，具体实现要初始化的内容
+     */
   }
 
   // 卸载组件

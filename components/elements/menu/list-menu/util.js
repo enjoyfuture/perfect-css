@@ -11,7 +11,8 @@ let storedTransformPropertyName;
 function getTransformPropertyName(globalObj, forceRefresh = false) {
   if (storedTransformPropertyName === undefined || forceRefresh) {
     const el = globalObj.document.createElement('div');
-    storedTransformPropertyName = 'transform' in el.style ? 'transform' : 'webkitTransform';
+    storedTransformPropertyName =
+      'transform' in el.style ? 'transform' : 'webkitTransform';
   }
 
   return storedTransformPropertyName;
@@ -30,7 +31,6 @@ function getTransformPropertyName(globalObj, forceRefresh = false) {
 function clamp(value, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
 }
-
 
 /**
  * Returns the easing value to apply at time t, for a given cubic bezier curve.
@@ -108,7 +108,8 @@ function solvePositionFromXValue(xVal, x1, x2) {
   let value = 0;
   for (let i = 0; i < maxIterations; i++) {
     value = getBezierCoordinate(t, x1, x2);
-    const derivative = (getBezierCoordinate(t + epsilon, x1, x2) - value) / epsilon;
+    const derivative =
+      (getBezierCoordinate(t + epsilon, x1, x2) - value) / epsilon;
     if (Math.abs(value - xVal) < epsilon) {
       return t;
     } else if (Math.abs(derivative) < epsilon) {
@@ -123,9 +124,11 @@ function solvePositionFromXValue(xVal, x1, x2) {
     }
   }
 
-  // If the gradient descent got stuck in a local minimum, e.g. because
-  // the derivative was close to 0, use a Dichotomy refinement instead.
-  // We limit the number of interations to 8.
+  /*
+   * If the gradient descent got stuck in a local minimum, e.g. because
+   * the derivative was close to 0, use a Dichotomy refinement instead.
+   * We limit the number of interations to 8.
+   */
   for (let i = 0; Math.abs(value - xVal) > epsilon && i < maxIterations; i++) {
     if (value < xVal) {
       tMin = t;
@@ -156,4 +159,9 @@ function getElementIndexOfParent(element, filter) {
   return -1;
 }
 
-export {getTransformPropertyName, clamp, bezierProgress, getElementIndexOfParent};
+export {
+  getTransformPropertyName,
+  clamp,
+  bezierProgress,
+  getElementIndexOfParent,
+};
