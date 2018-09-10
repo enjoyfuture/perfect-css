@@ -1,16 +1,5 @@
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "browsers": ["Android >= 4.3", "iOS >=9.3"],
-        "debug": true
-      }
-    }]
-  ],
-  "plugins": [
-    // 解析类属性，静态和实例的属性
-    "transform-class-properties",
-    // 支持对象和数组 rest 格式
-    "transform-object-rest-spread"
+    "@babel/preset-env"
   ]
 }

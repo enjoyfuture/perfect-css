@@ -167,7 +167,7 @@ export const createJsModuleRules = () => {
          */
         presets: [
           [
-            'env',
+            '@babel/preset-env',
             {
               // 设为 true 会根据需要自动导入用到的 es6 新方法，而不是一次性的引入 babel-polyfill
               targets: {
@@ -175,16 +175,16 @@ export const createJsModuleRules = () => {
               },
               modules: false, // 设为 false，交由 Webpack 来处理模块化
               /*
-               * 设为 true 会根据需要自动导入用到的 es6 新方法，而不是一次性的引入 babel-polyfill
+               * 设为 'usage' 会根据需要自动导入用到的 es6 新方法，而不是一次性的引入 babel-polyfill
                * 比如使用 Promise 会导入 import "babel-polyfill/core-js/modules/es6.promise";
                */
-              useBuiltIns: true,
+              useBuiltIns: 'usage',
             },
           ],
         ],
         plugins: [
-          'transform-class-properties', // 解析类属性，静态和实例的属性
-          'transform-object-rest-spread', // 支持对象 rest
+          '@babel/plugin-proposal-class-properties', // 解析类属性，静态和实例的属性
+          '@babel/plugin-proposal-object-rest-spread', // 支持对象和数组 rest 格式
         ],
       },
     },

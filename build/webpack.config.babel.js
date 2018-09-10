@@ -1,5 +1,6 @@
 import path from 'path';
 import glob from 'glob';
+import webpack from 'webpack';
 import {
   copyrightBanner,
   createCssExtractPlugin,
@@ -9,7 +10,6 @@ import {
   commonOptimization,
 } from './webpack/config';
 import OutputPathPlugin from './webpack-plugins/OutputPathPlugin';
-import webpack from 'webpack';
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = process.env.NODE_ENV === 'production';
@@ -89,30 +89,12 @@ if (isDev) {
       },
       devtool: 'eval-source-map', // 生成 eval-source-map 文件
       module: {
-        rules: [
-          // https://github.com/MoOx/eslint-loader
-          {
-            enforce: 'pre',
-            test: /\.js$/,
-            use: {
-              loader: 'eslint-loader',
-              options: {
-                fix: true, // 自动修复
-                cache: true, // 开启缓存
-                configFile: '.eslintrc.js',
-                emitError: false, // 验证失败，终止
-              },
-            },
-          },
-          {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true,
-            },
-          },
-        ],
+        /*
+         * Make missing exports an error instead of warning
+         * 缺少 exports 时报错，而不是警告
+         */
+        strictExportPresence: true,
+        rules: createJsModuleRules(),
       },
       optimization: commonOptimization(),
       plugins: [
