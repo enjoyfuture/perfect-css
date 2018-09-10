@@ -262,7 +262,7 @@ class Paging extends Component {
     html += `<li class="paging-control-item">共${this.totalPages}页${this
       .totalCount || 0}条记录,</li>`;
 
-    /* eslint-disable prettier/prettier */
+    /* eslint-disable prettier/prettier, indent */
     if (this.recordPerPage) {
       html += `<li class="paging-control-item">
         每页
