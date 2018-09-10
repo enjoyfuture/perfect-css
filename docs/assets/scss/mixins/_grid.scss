@@ -18,7 +18,7 @@
     @include theme-prop(background-color, primary-light);
 
     &:nth-of-type(2n) {
-      @include theme-prop(background-color, primary)
+      @include theme-prop(background-color, primary);
     }
   }
 }
