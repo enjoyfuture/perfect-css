@@ -17,3 +17,7 @@
   @return $name $duration $delay $animation-sharp;
 }
 
+// 柔和动画
+@function animation-standard($name, $duration, $delay: 0ms) {
+  @return $name $duration $delay $animation-ease-in-out;
+}

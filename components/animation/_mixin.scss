@@ -2,6 +2,7 @@
 
 @import "./variable";
 
+// 定义几个动画函数 mixin
 @mixin animation-ease-out {
   animation-timing-function: $animation-ease-out;
 }
@@ -21,7 +22,8 @@
 // animation transition
 @mixin animation-transition ($property, $duration: 120ms, $timing-function: ease-in-out, $delay: 0) {
   $animation-function: map-get($animation-timing-function, $timing-function);
-  $animation-function: if($animation-function, $animation-function, $timing-function);
+  // 默认取 $animation-ease-in-out
+  $animation-function: if($animation-function, $animation-function, $animation-ease-in-out);
 
   @if $delay > 0 {
     transition: #{$property} $duration $animation-function $delay;
