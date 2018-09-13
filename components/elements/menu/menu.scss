@@ -222,7 +222,7 @@
 
 // 目录菜单，如果采用 li 来书写菜单，则直接定义 li 样式即可
 // 最多支持6级目录结构
-/* stylelint-disable selector-max-compound-selectors, selector-max-specificity */
+/* stylelint-disable selector-max-compound-selectors, selector-max-class, selector-max-combinators, selector-max-specificity */
 .menu-catalogue {
   counter-reset: catalogue1;
 
@@ -302,6 +302,6 @@
   }
 }
 
-//折叠菜单
+// 折叠菜单
 
-//主题 theme
+// 主题 theme

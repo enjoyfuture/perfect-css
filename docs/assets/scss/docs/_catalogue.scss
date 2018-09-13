@@ -3,6 +3,7 @@
 @import "../../../../components/theme/mixin";
 @import "../../../../components/animation/mixin";
 @import "../../../../components/base/variables/font";
+@import "../../../../components/layout/grid/variable";
 
 .doc-catalogue-menu:hover {
   .doc-catalogue-panel {
@@ -21,6 +22,7 @@
   border-bottom: 1px solid;
   border-left: 1px solid;
   overflow: hidden;
+  font-size: 12px;
   background-color: #fff;
   transform: translate(200%, 0);
   @include theme-prop(border-color, secondary-lightest);
@@ -54,14 +56,14 @@
   }
 
   .doc-content {
-    flex: 0 0 79.1666666667%;
-    max-width: 79.1666666667%;
+    flex: 0 0 percentage(20 / $grid-columns);
+    max-width: percentage(20 / $grid-columns);
   }
 
   .doc-catalogue-menu-right {
     display: block;
-    flex: 0 0 20.8333333333%;
-    max-width: 20.8333333333%;
+    flex: 0 0 percentage(4 / $grid-columns);
+    max-width: percentage(4 / $grid-columns);
     margin-left: 1rem;
     border-left: 1px solid $grey-color-300;
   }

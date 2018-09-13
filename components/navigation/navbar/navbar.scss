@@ -77,6 +77,10 @@
       opacity: 1;
     }
   }
+
+  &-right {
+    margin-left: auto;
+  }
 }
 
 // 当在移动端时，如果默认不想隐藏 nav 可以使用该样式

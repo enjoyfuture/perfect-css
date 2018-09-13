@@ -97,9 +97,9 @@ th {
   }
 
   // 辅助颜色对应
-  //@each $theme in $theme-assist {
+  // @each $theme in $theme-assist {
   //  @include table-theme($theme);
-  //}
+  // }
 }
 
 // 响应式 tables

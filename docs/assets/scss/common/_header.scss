@@ -1,7 +1,7 @@
 @import "../../../../components/theme/mixin";
 
 .navbar-primary {
-  @include theme-prop(background-color, primary-dark);
+  @include theme-prop(background-color, primary-on-light);
 }
 
 .drawer-toggle {

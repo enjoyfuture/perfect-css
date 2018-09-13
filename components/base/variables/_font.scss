@@ -28,8 +28,7 @@ $font-weight-base: $font-weight-normal !default;
 // 设置全局字体，使用系统自带的字体，参考 https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
 
 /* stylelint-disable value-keyword-case */
-$font-family:
-  // 设置数字字体等宽，更紧凑美观，同时也会影响到超链接字体
+$font-family: // 设置数字字体等宽，更紧凑美观，同时也会影响到超链接字体
   Helvetica Neue For Number,
   // Safari for OS X and iOS (San Francisco)
   -apple-system,

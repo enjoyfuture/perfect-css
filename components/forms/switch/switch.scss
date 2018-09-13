@@ -7,12 +7,12 @@
 
 // 开关、切换按钮
 // 实现思想
-//<div class="switch">
+// <div class="switch">
 //  <input type="checkbox" class="switch-control">
 //  <div class="switch-track">
 //    <div class="switch-knob"></div>
 //  </div>
-//</div>
+// </div>
 // 最外层为 switch wrapper
 // input checkbox 用来控制选中状态，透明处理，不可见，但可点击，高度和宽度等于 switch 大小，让可点击区域覆盖整个 switch
 // switch-track 定义开关切换运动轨迹，长度要和 switch 保持一致，需要伪类 ::before
@@ -66,16 +66,16 @@
     // 选中时
     &:checked ~ .switch-track {
       //// Track
-      //&::before {
+      // &::before {
       //  opacity: .5;
-      //}
+      // }
 
       .switch-knob {
 
         // Focus indicator
-        //&::before {
+        // &::before {
         //  opacity: .15;
-        //}
+        // }
       }
     }
 

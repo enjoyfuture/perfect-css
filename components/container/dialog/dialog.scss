@@ -160,14 +160,14 @@
     }
 
     // 把动画涉及到的样式封装成 mixin 方便自定义动画时调用，展开结果为
-    //.dialog-panel {
+    // .dialog-panel {
     //  opacity: 0;
     //  transform: translateY(150px) scale(.8);
-    //}
-    //.dialog-open .dialog-panel {
+    // }
+    // .dialog-open .dialog-panel {
     //  opacity: 1;
     //  transform: translateY(0) scale(1);
-    //}
+    // }
     @include dialog-animation($animation-start: (opacity: 0, transform: translateY(150px) scale(.8)), $animation-end: (opacity: 1, transform: translateY(0) scale(1)));
   }
 

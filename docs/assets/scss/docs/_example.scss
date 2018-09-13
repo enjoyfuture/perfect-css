@@ -129,16 +129,16 @@
 }
 
 //// 例子样式
-//.doc-example-render {
+// .doc-example-render {
 //  position: relative;
 //  padding: 1rem;
 //  margin: 1rem .5rem;
 //  border: solid $theme-primary;
 //  border-width: 1px 0 0;
 //  @include clearfix();
-//}
+// }
 //
-//@media (min-width: 640px) {
+// @media (min-width: 640px) {
 //  .doc-example-render {
 //    padding: 1.5rem;
 //    margin-bottom: 0;
@@ -146,10 +146,10 @@
 //    margin-right: 0;
 //    border-width: 1px 1px 0;
 //  }
-//}
+// }
 //
 //// 容器例子样式
-//.doc-example-container {
+// .doc-example-container {
 //  .container-fluid,
 //  .container {
 //    padding: 20px;
@@ -157,6 +157,6 @@
 //    background-color: lighten(#9c27b0, 48%);
 //    text-align: center;
 //  }
-//}
+// }
 //
 

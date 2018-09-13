@@ -20,7 +20,7 @@
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
 
-  //防止阻挡下面元素的操作
+  // 防止阻挡下面元素的操作
   opacity: 0;
   will-change: opacity; /* 动画性能优化 https://www.w3cplus.com/css3/introduction-css-will-change-property.html */
   pointer-events: none;

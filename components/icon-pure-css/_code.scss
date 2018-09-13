@@ -6,7 +6,7 @@ $code-border: $icon-size * .1;
 $code-size: $icon-size * .5;
 
 // 第一种实现方式
-//.icon-pure-code {
+// .icon-pure-code {
 //  display: inline-flex;
 //  align-items: center;
 //
@@ -28,7 +28,7 @@ $code-size: $icon-size * .5;
 //    border-bottom: $code-border solid currentColor;
 //    border-right: $code-border solid currentColor;
 //  }
-//}
+// }
 
 // 第二种实现方式
 .icon-pure-code {

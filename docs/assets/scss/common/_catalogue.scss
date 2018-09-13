@@ -10,7 +10,7 @@
   }
 }
 
-/* stylelint-disable selector-max-compound-selectors */
+/* stylelint-disable selector-max-compound-selectors, selector-max-combinators */
 // 如果大纲第一级别是 h1
 .catalogue-counter > h1 {
   counter-reset: outline2;
