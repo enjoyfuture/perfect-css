@@ -50,8 +50,7 @@
     "rouge-theme": "rougify style github > docs/assets/scss/docs/_highlight.scss",
     "css-prefix": "node build/css-prefix.js",
     "pregenerate-zip": "npm run dist",
-    "generate-zip": "npm run clean:tmp && mkdirp tmp/dist/css && mkdirp tmp/dist/js && babel-node build/generate-dist-zip.js",
-    "precommit": "lint-staged"
+    "generate-zip": "npm run clean:tmp && mkdirp tmp/dist/css && mkdirp tmp/dist/js && babel-node build/generate-dist-zip.js"
   },
   "dependencies": {},
   "devDependencies": {
@@ -127,5 +126,10 @@
     "ignore": [
       ".eslintrc.js"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
