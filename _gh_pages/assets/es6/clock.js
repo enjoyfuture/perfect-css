@@ -5,7 +5,7 @@ class Clock {
   constructor(selector) {
     const clockEl = dom.querySelector(selector);
     const ctx = clockEl.getContext('2d');
-    const {width, height} = ctx.canvas;
+    const { width, height } = ctx.canvas;
 
     const r = width / 2;
 
@@ -16,7 +16,6 @@ class Clock {
     this.draw();
     setInterval(this.draw, 1000);
   }
-
 
   // 画整个时钟
   draw = () => {
@@ -52,14 +51,14 @@ class Clock {
     ctx.textBaseline = 'middle';
 
     hours.forEach((item, i) => {
-      const rad = 2 * Math.PI / 12 * i;
+      const rad = ((2 * Math.PI) / 12) * i;
       const x = Math.cos(rad) * (r - 30 * rem);
       const y = Math.sin(rad) * (r - 30 * rem);
       ctx.fillText(item, x, y);
     });
 
     for (let i = 0; i < 60; i++) {
-      const rad = 2 * Math.PI / 60 * i;
+      const rad = ((2 * Math.PI) / 60) * i;
       const x = Math.cos(rad) * (r - 18 * rem);
       const y = Math.sin(rad) * (r - 18 * rem);
       ctx.beginPath();
@@ -80,8 +79,8 @@ class Clock {
 
     ctx.save();
     ctx.beginPath();
-    const rad = 2 * Math.PI / 12 * hour;
-    const mrad = 2 * Math.PI / 12 / 60 * minute;
+    const rad = ((2 * Math.PI) / 12) * hour;
+    const mrad = ((2 * Math.PI) / 12 / 60) * minute;
     ctx.rotate(rad + mrad);
     ctx.lineWidth = 6 * rem;
     ctx.lineCap = 'round';
@@ -98,7 +97,7 @@ class Clock {
 
     ctx.save();
     ctx.beginPath();
-    const rad = 2 * Math.PI / 60 * minute;
+    const rad = ((2 * Math.PI) / 60) * minute;
     ctx.rotate(rad);
     ctx.lineWidth = 3 * rem;
     ctx.lineCap = 'round';
@@ -116,7 +115,7 @@ class Clock {
     ctx.save();
     ctx.beginPath();
     ctx.fillStyle = '#c14513';
-    const rad = 2 * Math.PI / 60 * second;
+    const rad = ((2 * Math.PI) / 60) * second;
     ctx.rotate(rad);
     ctx.moveTo(-2 * rem, 20 * rem);
     ctx.lineTo(2 * rem, 20 * rem);
