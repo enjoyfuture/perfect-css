@@ -26,6 +26,8 @@
       file: design-concept
     - title: 颜色
       file: color
+    - title: 主题 Classes
+      file: classes
     - title: 自定义主题
       file: custom-theme
 - title: 基础
@@ -42,19 +44,19 @@
 - title: Typography 排版
   file: typography
   pages:
-    - title: Typography 排版
-      file: typography
+    - title: Paragraph 段落
+      file: paragraph
     - title: Code 代码
       file: code
 - title: Layout 布局
   file: layout
   pages:
+    - title: Container 容器
+      file: container
     - title: Box 盒子布局
       file: box
     - title: Drawer 抽屉布局
       file: drawer
-    - title: Container 容器
-      file: container
     - title: Grid 栅格
       file: grid
     - title: Responsive 响应式
@@ -62,6 +64,8 @@
 - title: 表单组件
   file: forms
   pages:
+    - title: Button 按钮
+      file: button
     - title: Input 输入框
       file: input
     - title: Select 下拉选择框
@@ -78,8 +82,6 @@
       file: switch
     - title: Slider 滑块
       file: slider
-    - title: Button 按钮
-      file: button
     - title: Form Field 表单域
       file: form-field
 - title: 元素组件
@@ -93,9 +95,9 @@
       file: list-menu
     - title: Tree 树形组件
       file: tree
-    - title: Page 分页
-      file: page
-    - title: Loading 加载
+    - title: Paging 分页
+      file: paging
+    - title: Loading 加载中
       file: loading
     - title: Toast 吐司提示
       file: toast
@@ -111,14 +113,22 @@
       file: tag
     - title: Badge 角标
       file: badge
-    - title: Back Top 返回顶部
-      file: back-top
     - title: Date Picker 日期选择器
       file: date-picker
     - title: Color Picker 颜色选择器
       file: color-picker
     - title: Timeline 时间轴
       file: timeline
+    - title: Alert 警告提示
+      file: alert
+    - title: Message 全局提示
+      file: message
+    - title: Notification 通知
+      file: notification
+    - title: Popovers 气泡
+      file: popovers
+    - title: Rate 评分
+      file: rate
 - title: 导航组件
   file: navigation
   pages:
@@ -143,6 +153,17 @@
       file: accordion
     - title: Carousel 轮播图
       file: carousel
+    - title: Collapse 折叠面板
+      file: collapse
+    - title: Calendar 日历
+      file: calendar
+- title: 其他组件
+  file: other
+  pages:
+  - title: Back Top 返回顶部
+    file: back-top
+  - title: Divider 分割线
+    file: divider
 - title: 工具样式
   file: utils
   pages:
@@ -150,11 +171,11 @@
       file: align
     - title: Border 边框和圆角
       file: border
-    - title: Display 相关属性值
+    - title: Display 盒子
       file: display
     - title: Flex 弹性布局
       file: flex
-    - title: Float 浮层和清空浮层
+    - title: Float 浮层
       file: float
     - title: Position 定位
       file: position
@@ -167,12 +188,5 @@
 - title: 图标
   file: icons
   pages:
-    - title: 纯 CSS 图标
-      file: icon-pure-css
-- title: Html 标签和样式属性
-  file: tag-property
-  pages:
-    - title: Html 标签
-      file: tag
-    - title: 样式属性
-      file: property
+    - title: Font Icon 字体图标
+      file: font-icon
