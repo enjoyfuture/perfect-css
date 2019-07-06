@@ -19,17 +19,23 @@ title: Dialog 对话框-标题+正文+大按钮
 </div>
 
 <script>
-  $(function () {
-    $('.btn').click(function (e) {
-      $('.dialog').addClass('dialog-open');
-      $('body').addClass('dialog-scroll-lock');
-      $('#btn_wrap').hide();
+  (function() {
+    const btns = document.querySelectorAll('.btn');
+    [].forEach.call(btns, item => {
+      item.addEventListener('click', (e) => {
+        [].forEach.call(document.querySelectorAll('.dialog'), item => item.classList.add('dialog-open'));
+        document.body.classList.add('dialog-scroll-lock');
+        document.getElementById('btn_wrap').style.display = 'none';
+      }, false);
     });
 
-    $('.dialog .btn, .dialog .dialog-close, .dialog-backdrop').click(function () {
-      $('.dialog').removeClass('dialog-open');
-      $('body').removeClass('dialog-scroll-lock');
-      $('#btn_wrap').show();
+    const dialogClose = document.querySelectorAll('.dialog .btn, .dialog .dialog-close, .dialog-backdrop');
+    [].forEach.call(dialogClose, item => {
+      item.addEventListener('click', (e) => {
+        [].forEach.call(document.querySelectorAll('.dialog'), item => item.classList.remove('dialog-open'));
+        document.body.classList.remove('dialog-scroll-lock');
+        document.getElementById('btn_wrap').style.display = '';
+      }, false);
     });
-  });
+  })();
 </script>

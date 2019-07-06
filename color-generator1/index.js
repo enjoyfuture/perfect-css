@@ -1,10 +1,11 @@
+/* eslint-disable */
 (function(global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined'
     ? (module.exports = factory())
     : typeof define === 'function' && define.amd
     ? define(factory)
     : (global.materialpalette = factory());
-})(this, function() {
+})(this, () => {
   'use strict';
 
   /**
@@ -15,7 +16,7 @@
    * @return     {number}             A number between 0 and 100
    */
 
-  var minimax = function minimax(val) {
+  const minimax = function minimax(val) {
     return Math.min(100, Math.max(0, val));
   };
 
@@ -48,10 +49,10 @@
    * @property   {Object}           A400            The accent variant 400 of the color
    * @property   {Object}           A700            The accent variant 700 of the color
    */
-  var generator = function generator(_ref) {
-    var h = _ref.h;
-    var s = _ref.s;
-    var l = _ref.l;
+  const generator = function generator(_ref) {
+    let h = _ref.h;
+    let s = _ref.s;
+    let l = _ref.l;
 
     h = Math.round(h);
     s = Math.round(s);
@@ -62,35 +63,35 @@
     }
     if (h < 0 || h > 360) {
       throw new RangeError(
-        'Hue must be an integer within [0, 360]; given ' + h
+        `Hue must be an integer within [0, 360]; given ${h}`
       );
     }
     if (s < 0 || s > 100) {
       throw new RangeError(
-        'Saturation must be an integer within [0, 100]; given ' + s
+        `Saturation must be an integer within [0, 100]; given ${s}`
       );
     }
     if (l < 0 || l > 100) {
       throw new RangeError(
-        'Lightness must be an integer within [0, 100]; given ' + l
+        `Lightness must be an integer within [0, 100]; given ${l}`
       );
     }
 
     return {
-      '50': { h: h, s: s, l: minimax(l + 52) },
-      '100': { h: h, s: s, l: minimax(l + 37) },
-      '200': { h: h, s: s, l: minimax(l + 26) },
-      '300': { h: h, s: s, l: minimax(l + 12) },
-      '400': { h: h, s: s, l: minimax(l + 6) },
-      '500': { h: h, s: s, l: l },
-      '600': { h: h, s: s, l: minimax(l - 6) },
-      '700': { h: h, s: s, l: minimax(l - 12) },
-      '800': { h: h, s: s, l: minimax(l - 18) },
-      '900': { h: h, s: s, l: minimax(l - 24) },
-      A100: { h: h + 5, s: s, l: minimax(l + 24) }, // { h, s, l: minimax(l + 52) }
-      A200: { h: h + 5, s: s, l: minimax(l + 16) }, // { h, s, l: minimax(l + 37) }
-      A400: { h: h + 5, s: s, l: minimax(l - 1) }, // { h, s, l: minimax(l + 6) }
-      A700: { h: h + 5, s: s, l: minimax(l - 12) }, // { h, s, l: minimax(l - 12) }
+      50: { h, s, l: minimax(l + 52) },
+      100: { h, s, l: minimax(l + 37) },
+      200: { h, s, l: minimax(l + 26) },
+      300: { h, s, l: minimax(l + 12) },
+      400: { h, s, l: minimax(l + 6) },
+      500: { h, s, l },
+      600: { h, s, l: minimax(l - 6) },
+      700: { h, s, l: minimax(l - 12) },
+      800: { h, s, l: minimax(l - 18) },
+      900: { h, s, l: minimax(l - 24) },
+      A100: { h: h + 5, s, l: minimax(l + 24) }, // { h, s, l: minimax(l + 52) }
+      A200: { h: h + 5, s, l: minimax(l + 16) }, // { h, s, l: minimax(l + 37) }
+      A400: { h: h + 5, s, l: minimax(l - 1) }, // { h, s, l: minimax(l + 6) }
+      A700: { h: h + 5, s, l: minimax(l - 12) }, // { h, s, l: minimax(l - 12) }
     };
   };
 

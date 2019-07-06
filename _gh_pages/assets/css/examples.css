@@ -1,8 +1,8 @@
 /*!
  Perfect CSS for the web
- Copyright © 2016-2018 JD Finance Inc.
+ Copyright © 2016-2019 JD Finance Inc.
  License: MIT (https://github.com/joy-web/perfect-css/blob/master/LICENSE)
 */
-.navbar-primary{background-color:rgba(0,0,0,.87);background-color:var(--theme-dark-primary,rgba(0,0,0,.87))}.drawer-toggle .icon-pure-menu{color:hsla(0,0%,100%,.7);color:var(--theme-light-secondary,hsla(0,0%,100%,.7))}.drawer-toggle:hover .icon-pure-menu{color:#fff;color:var(--theme-light-primary,#fff)}.footer-assist{margin-top:3.3125rem}.footer{background:#fff;border-top:1px solid rgba(0,0,0,.12);bottom:0;color:rgba(0,0,0,.54);padding:1rem 0;position:absolute;width:100%}.component-wrap{padding:0 4rem 1rem}.component-wrap h1,.component-wrap h2,.component-wrap h3{margin-top:3rem}.component-wrap h4,.component-wrap h5{margin-top:2rem}.component-wrap h1,.component-wrap h2,.component-wrap h3,.component-wrap h4,.component-wrap h5,.component-wrap p{margin-bottom:1rem}
+.navbar-primary{background-color:rgba(0,0,0,.87);background-color:var(--theme-dark-primary,rgba(0,0,0,.87))}.drawer-toggle .icon-pure-menu{color:hsla(0,0%,100%,.7);color:var(--theme-light-secondary,hsla(0,0%,100%,.7))}.drawer-toggle:hover .icon-pure-menu{color:#fff;color:var(--theme-light-primary,#fff)}.footer-assist{margin-top:3.3125rem}.footer{position:absolute;bottom:0;width:100%;padding:1rem 0;border-top:1px solid rgba(0,0,0,.12);color:rgba(0,0,0,.54);background:#fff}.component-wrap{padding:0 4rem 1rem}.component-wrap h1,.component-wrap h2,.component-wrap h3{margin-top:3rem}.component-wrap h4,.component-wrap h5{margin-top:2rem}.component-wrap h1,.component-wrap h2,.component-wrap h3,.component-wrap h4,.component-wrap h5,.component-wrap p{margin-bottom:1rem}
 
 /*# sourceMappingURL=examples.css.map*/

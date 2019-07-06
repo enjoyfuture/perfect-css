@@ -29,10 +29,10 @@ At first, You need to install Jekyll. The Perfect CSS docs is based on the [Jeky
 
 Note: Jekyll is running in the ruby environment. You need to install [Ruby](https://www.ruby-lang.org/zh_cn/).
 
-1. Make sure you have installed the latest version ruby. And we use the rvm to manage ruby.
+1. Make sure you have installed the latest version ruby. And we use the [rvm](https://rvm.io/) to manage ruby.
 
     ```bash
-      rvm install 2.5.1 # or the latest version for ruby
+      rvm install 2.6.0 # or the latest version for ruby
       gem update
       # or
       sudo gem update
