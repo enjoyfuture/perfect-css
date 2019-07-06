@@ -116,5 +116,24 @@
   "bugs": {
     "url": "https://github.com/joy-web/perfect-css/issues"
   },
-  "homepage": "https://github.com/joy-web/perfect-css#readme"
+  "homepage": "https://github.com/joy-web/perfect-css#readme",
+  "lint-staged": {
+    "linters": {
+      "*.{scss,js}": [
+        "npm run validate"
+      ],
+      "*.{js,md}": [
+        "prettier --trailing-comma es5 --single-quote --write",
+        "git add"
+      ]
+    },
+    "ignore": [
+      ".eslintrc.js"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
