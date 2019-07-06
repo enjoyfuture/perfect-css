@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .main {
+        width: 500px;
+        padding: 50px;
+      }
+      .header {
+        padding: 10px;
+        color: #fff;
+      }
+      .btn {
+        position: relative;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        display: inline-block;
+        min-width: 5rem;
+        height: 2rem;
+        padding: 0 1.25rem;
+        border: 0;
+        border-radius: 0.125rem;
+        overflow: hidden;
+        font-weight: 500;
+        line-height: 2rem;
+        background-color: #2196f3;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        outline: 0;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      基准颜色：
+      <div>
+        h: <input type="text" id="h" value="87"/>
+        s: <input type="text" id="s" value="100">%
+        l: <input type="text" id="l" value="22">%
+      </div>
+      <p>
+        <button class="btn" id="generator">生成颜色面板值</button>
+      </p>
+      <header id="header" style="margin-top: 10px;">
+      </header>
+      <ul id="colors"></ul>
+    </div>
+    <script src="index.js"></script>
+    <script>
+      (function() {
+        function generator () {
+          const h = document.getElementById('h').value;
+          const s = document.getElementById('s').value;
+          const l = document.getElementById('l').value;
+          const ciao = window.materialpalette({ h, s, l });
+          const lis = Object.keys(ciao).map(function(item, index) {
+            const color = ciao[item];
+            return `<li style="background-color: hsl(${color.h}, ${color.s}%, ${color.l}%)">${item}</li>`;
+          });
+          document.getElementById("colors").innerHTML = lis.join("");
+          document.getElementById("header").innerHTML = `<div class="header" style="background-color: hsl(${h}, ${s}%, ${l}%)"><div>hsl(${h}, ${s}%, ${l}%)</div><div style="margin-top: 8px;">500</div></div>`;
+        }
+        document.getElementById('generator').addEventListener('click', generator, false);
+        generator();
+      })();
+    </script>
+  </body>
+</html>
